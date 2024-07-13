@@ -60,6 +60,13 @@
                 var paramCsName = settings.GetParameterName(i, cppField.Name);
                 var direction = cppField.Type.GetDirection();
 
+                {
+                    if (cppField.Type is CppArrayType arrayType && arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType && settings.DelegatesAsVoidPointer)
+                    {
+                        paramCsTypeName = "nint*";
+                    }
+                }
+
                 var subClass = subClasses.Find(x => x.CppType == cppField.Type);
                 if (subClass != null && cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                 {
@@ -83,14 +90,16 @@
 
                 parameterList[i] = new(paramCsName, cppField.Type, new(paramCsTypeName, kind), direction, "default", fieldCsName);
 
-                if (cppField.Type is CppArrayType arrayType)
                 {
-                    var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType, false);
-                    spanParameterList[i] = new(paramCsName, cppField.Type, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
-                }
-                else
-                {
-                    spanParameterList[i] = new(paramCsName, cppField.Type, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+                    if (cppField.Type is CppArrayType arrayType)
+                    {
+                        var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType, false);
+                        spanParameterList[i] = new(paramCsName, cppField.Type, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
+                    }
+                    else
+                    {
+                        spanParameterList[i] = new(paramCsName, cppField.Type, new(paramCsTypeName, kind), direction, "default", fieldCsName);
+                    }
                 }
             }
 

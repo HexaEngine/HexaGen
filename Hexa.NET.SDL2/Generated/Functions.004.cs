@@ -17,878 +17,204 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
-		/// <summary>/// Set the display mode to use when a window is visible at fullscreen.<br/>/// This only affects the display mode used when the window is fullscreen. To<br/>/// change the window size when the window is not fullscreen, use<br/>/// SDL_SetWindowSize().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			fixed (SDLDisplayMode* pmode = &mode)
+			fixed (SDLAudioSpec* pspec = &spec)
 			{
-				int ret = SDLSetWindowDisplayModeNative(window, (SDLDisplayMode*)pmode);
+				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, audioBuf, audioLen);
 				return ret;
 			}
 		}
 
-		/// <summary>
-		/// Query the display mode to use when a window is visible at fullscreen.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowDisplayMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetWindowDisplayModeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode);
-
-		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			int ret = SDLGetWindowDisplayModeNative(window, mode);
-			return ret;
-		}
-
-		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
-		{
-			fixed (SDLDisplayMode* pmode = &mode)
+			fixed (SDLRWops* psrc = &src)
 			{
-				int ret = SDLGetWindowDisplayModeNative(window, (SDLDisplayMode*)pmode);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the raw ICC profile data for the screen the window is currently on.<br/>
-		/// Data returned should be freed with SDL_free.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowICCProfile")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLGetWindowICCProfileNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* size);
-
-		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* size)
-		{
-			void* ret = SDLGetWindowICCProfileNative(window, size);
-			return ret;
-		}
-
-		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint size)
-		{
-			fixed (nuint* psize = &size)
-			{
-				void* ret = SDLGetWindowICCProfileNative(window, (ulong*)psize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the pixel format associated with the window.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowPixelFormat")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowPixelFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetWindowPixelFormatNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the pixel format associated with the window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPixelFormat")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetWindowPixelFormat([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			uint ret = SDLGetWindowPixelFormatNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a window with the specified position, dimensions, and flags.<br/>
-		/// `flags` may be any of the following OR'd together:<br/>
-		/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>
-		/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>
-		/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>
-		/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>
-		/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>
-		/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>
-		/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>
-		/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>
-		/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>
-		/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>
-		/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>
-		/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>
-		/// supported (>= SDL 2.0.1)<br/>
-		/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>
-		/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>
-		/// queried later using SDL_GetWindowFlags().<br/>
-		/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>
-		/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>
-		/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>
-		/// in pixels may differ from its size in screen coordinates on platforms with<br/>
-		/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>
-		/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>
-		/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>
-		/// when this flag is set, the drawable size can vary after the window is<br/>
-		/// created and should be queried after major window events such as when the<br/>
-		/// window is resized or moved between displays.<br/>
-		/// If the window is set fullscreen, the width and height parameters `w` and<br/>
-		/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>
-		/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>
-		/// platforms at window creation.<br/>
-		/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>
-		/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>
-		/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>
-		/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>
-		/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>
-		/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>
-		/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>
-		/// SDL_CreateWindow() will fail.<br/>
-		/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>
-		/// loader or link to a dynamic library version. This limitation may be removed<br/>
-		/// in a future version of SDL.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLCreateWindowNative([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
-
-		/// <summary>/// Create a window with the specified position, dimensions, and flags.<br/>/// `flags` may be any of the following OR'd together:<br/>/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>/// supported (>= SDL 2.0.1)<br/>/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>/// queried later using SDL_GetWindowFlags().<br/>/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>/// in pixels may differ from its size in screen coordinates on platforms with<br/>/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>/// when this flag is set, the drawable size can vary after the window is<br/>/// created and should be queried after major window events such as when the<br/>/// window is resized or moved between displays.<br/>/// If the window is set fullscreen, the width and height parameters `w` and<br/>/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>/// platforms at window creation.<br/>/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>/// SDL_CreateWindow() will fail.<br/>/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>/// loader or link to a dynamic library version. This limitation may be removed<br/>/// in a future version of SDL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLCreateWindow([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
-		{
-			SDLWindow* ret = SDLCreateWindowNative(title, x, y, w, h, flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create an SDL window from an existing native window.<br/>
-		/// In some cases (e.g. OpenGL) and on some platforms (e.g. Microsoft Windows)<br/>
-		/// the hint `SDL_HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT` needs to be configured<br/>
-		/// before using SDL_CreateWindowFrom().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateWindowFrom")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateWindowFrom")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLCreateWindowFromNative([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data);
-
-		/// <summary>/// Create an SDL window from an existing native window.<br/>/// In some cases (e.g. OpenGL) and on some platforms (e.g. Microsoft Windows)<br/>/// the hint `SDL_HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT` needs to be configured<br/>/// before using SDL_CreateWindowFrom().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowFrom")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLCreateWindowFrom([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data)
-		{
-			SDLWindow* ret = SDLCreateWindowFromNative(data);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the numeric ID of a window.<br/>
-		/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>
-		/// these events to specific SDL_Window objects.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowID")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetWindowIDNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the numeric ID of a window.<br/>/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>/// these events to specific SDL_Window objects.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowID")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetWindowID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			uint ret = SDLGetWindowIDNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a window from a stored ID.<br/>
-		/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>
-		/// these events to specific SDL_Window objects.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowFromID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowFromID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLGetWindowFromIDNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "Uint32")] uint id);
-
-		/// <summary>/// Get a window from a stored ID.<br/>/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>/// these events to specific SDL_Window objects.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowFromID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLGetWindowFromID([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "Uint32")] uint id)
-		{
-			SDLWindow* ret = SDLGetWindowFromIDNative(id);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the window flags.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowFlags")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowFlags")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetWindowFlagsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the window flags.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowFlags")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetWindowFlags([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			uint ret = SDLGetWindowFlagsNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the title of a window.<br/>
-		/// This string is expected to be in UTF-8 encoding.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowTitle")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title);
-
-		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
-		{
-			SDLSetWindowTitleNative(window, title);
-		}
-
-		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title)
-		{
-			fixed (byte* ptitle = &title)
-			{
-				SDLSetWindowTitleNative(window, (byte*)ptitle);
-			}
-		}
-
-		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
+				fixed (SDLAudioSpec* pspec = &spec)
 				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLSetWindowTitleNative(window, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Get the title of a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowTitle")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			byte* ret = SDLGetWindowTitleNative(window);
-			return ret;
-		}
-
-		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetWindowTitleS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetWindowTitleNative(window));
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the icon for a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowIcon")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowIconNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* icon);
-
-		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* icon)
-		{
-			SDLSetWindowIconNative(window, icon);
-		}
-
-		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface icon)
-		{
-			fixed (SDLSurface* picon = &icon)
-			{
-				SDLSetWindowIconNative(window, (SDLSurface*)picon);
-			}
-		}
-
-		/// <summary>
-		/// Associate an arbitrary named pointer with a window.<br/>
-		/// `name` is case-sensitive.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLSetWindowDataNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
-		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			void* ret = SDLSetWindowDataNative(window, name, userdata);
-			return ret;
-		}
-
-		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			fixed (byte* pname = &name)
-			{
-				void* ret = SDLSetWindowDataNative(window, (byte*)pname, userdata);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (name != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(name);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			void* ret = SDLSetWindowDataNative(window, pStr0, userdata);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Retrieve the data pointer associated with a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLGetWindowDataNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			void* ret = SDLGetWindowDataNative(window, name);
-			return ret;
-		}
-
-		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name)
-		{
-			fixed (byte* pname = &name)
-			{
-				void* ret = SDLGetWindowDataNative(window, (byte*)pname);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (name != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(name);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			void* ret = SDLGetWindowDataNative(window, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the position of a window.<br/>
-		/// The window coordinate origin is the upper left of the display.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowPosition")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowPositionNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y);
-
-		/// <summary>/// Set the position of a window.<br/>/// The window coordinate origin is the upper left of the display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y)
-		{
-			SDLSetWindowPositionNative(window, x, y);
-		}
-
-		/// <summary>
-		/// Get the position of a window.<br/>
-		/// If you do not need the value for one of the positions a NULL may be passed<br/>
-		/// in the `x` or `y` parameter.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowPosition")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetWindowPositionNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y);
-
-		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
-		{
-			SDLGetWindowPositionNative(window, x, y);
-		}
-
-		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
-		{
-			fixed (int* px = &x)
-			{
-				SDLGetWindowPositionNative(window, (int*)px, y);
-			}
-		}
-
-		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
-		{
-			fixed (int* py = &y)
-			{
-				SDLGetWindowPositionNative(window, x, (int*)py);
-			}
-		}
-
-		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
-		{
-			fixed (int* px = &x)
-			{
-				fixed (int* py = &y)
-				{
-					SDLGetWindowPositionNative(window, (int*)px, (int*)py);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Set the size of a window's client area.<br/>
-		/// The window size in screen coordinates may differ from the size in pixels,<br/>
-		/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>
-		/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize() or<br/>
-		/// SDL_GetRendererOutputSize() to get the real client area size in pixels.<br/>
-		/// Fullscreen windows automatically match the size of the display mode, and<br/>
-		/// you should use SDL_SetWindowDisplayMode() to change their size.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h);
-
-		/// <summary>/// Set the size of a window's client area.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to get the real client area size in pixels.<br/>/// Fullscreen windows automatically match the size of the display mode, and<br/>/// you should use SDL_SetWindowDisplayMode() to change their size.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
-		{
-			SDLSetWindowSizeNative(window, w, h);
-		}
-
-		/// <summary>
-		/// Get the size of a window's client area.<br/>
-		/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>
-		/// height value is not desired.<br/>
-		/// The window size in screen coordinates may differ from the size in pixels,<br/>
-		/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>
-		/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>
-		/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>
-		/// real client area size in pixels.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			SDLGetWindowSizeNative(window, w, h);
-		}
-
-		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
-			{
-				SDLGetWindowSizeNative(window, (int*)pw, h);
-			}
-		}
-
-		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* ph = &h)
-			{
-				SDLGetWindowSizeNative(window, w, (int*)ph);
-			}
-		}
-
-		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* pw = &w)
-			{
-				fixed (int* ph = &h)
-				{
-					SDLGetWindowSizeNative(window, (int*)pw, (int*)ph);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Get the size of a window's borders (decorations) around the client area.<br/>
-		/// Note: If this function fails (returns -1), the size values will be<br/>
-		/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>
-		/// window in question was borderless.<br/>
-		/// Note: This function may fail on systems where the window has not yet been<br/>
-		/// decorated by the display server (for example, immediately after calling<br/>
-		/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>
-		/// window has been presented and composited, so that the window system has a<br/>
-		/// chance to decorate the window and provide the border dimensions to SDL.<br/>
-		/// This function also returns -1 if getting the information is not supported.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowBordersSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetWindowBordersSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right);
-
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
-		{
-			int ret = SDLGetWindowBordersSizeNative(window, top, left, bottom, right);
-			return ret;
-		}
-
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
-		{
-			fixed (int* ptop = &top)
-			{
-				int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, bottom, right);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
-		{
-			fixed (int* pleft = &left)
-			{
-				int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, bottom, right);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
-		{
-			fixed (int* ptop = &top)
-			{
-				fixed (int* pleft = &left)
-				{
-					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, bottom, right);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, (SDLAudioSpec*)pspec, audioBuf, audioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			fixed (int* pbottom = &bottom)
+			fixed (byte** paudioBuf = &audioBuf)
 			{
-				int ret = SDLGetWindowBordersSizeNative(window, top, left, (int*)pbottom, right);
+				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, (byte**)paudioBuf, audioLen);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pbottom = &bottom)
+				fixed (byte** paudioBuf = &audioBuf)
 				{
-					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, (int*)pbottom, right);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, spec, (byte**)paudioBuf, audioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			fixed (int* pleft = &left)
+			fixed (SDLAudioSpec* pspec = &spec)
 			{
-				fixed (int* pbottom = &bottom)
+				fixed (byte** paudioBuf = &audioBuf)
 				{
-					int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, (int*)pbottom, right);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, audioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pleft = &left)
+				fixed (SDLAudioSpec* pspec = &spec)
 				{
-					fixed (int* pbottom = &bottom)
+					fixed (byte** paudioBuf = &audioBuf)
 					{
-						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, (int*)pbottom, right);
+						SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, audioLen);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* pright = &right)
+			fixed (uint* paudioLen = &audioLen)
 			{
-				int ret = SDLGetWindowBordersSizeNative(window, top, left, bottom, (int*)pright);
+				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, audioBuf, (uint*)paudioLen);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pright = &right)
+				fixed (uint* paudioLen = &audioLen)
 				{
-					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, bottom, (int*)pright);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, spec, audioBuf, (uint*)paudioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* pleft = &left)
+			fixed (SDLAudioSpec* pspec = &spec)
 			{
-				fixed (int* pright = &right)
+				fixed (uint* paudioLen = &audioLen)
 				{
-					int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, bottom, (int*)pright);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, audioBuf, (uint*)paudioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pleft = &left)
+				fixed (SDLAudioSpec* pspec = &spec)
 				{
-					fixed (int* pright = &right)
+					fixed (uint* paudioLen = &audioLen)
 					{
-						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, bottom, (int*)pright);
+						SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, (SDLAudioSpec*)pspec, audioBuf, (uint*)paudioLen);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* pbottom = &bottom)
+			fixed (byte** paudioBuf = &audioBuf)
 			{
-				fixed (int* pright = &right)
+				fixed (uint* paudioLen = &audioLen)
 				{
-					int ret = SDLGetWindowBordersSizeNative(window, top, left, (int*)pbottom, (int*)pright);
+					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, (byte**)paudioBuf, (uint*)paudioLen);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pbottom = &bottom)
+				fixed (byte** paudioBuf = &audioBuf)
 				{
-					fixed (int* pright = &right)
+					fixed (uint* paudioLen = &audioLen)
 					{
-						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, (int*)pbottom, (int*)pright);
+						SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, spec, (byte**)paudioBuf, (uint*)paudioLen);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* pleft = &left)
+			fixed (SDLAudioSpec* pspec = &spec)
 			{
-				fixed (int* pbottom = &bottom)
+				fixed (byte** paudioBuf = &audioBuf)
 				{
-					fixed (int* pright = &right)
+					fixed (uint* paudioLen = &audioLen)
 					{
-						int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, (int*)pbottom, (int*)pright);
+						SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, (uint*)paudioLen);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
 		{
-			fixed (int* ptop = &top)
+			fixed (SDLRWops* psrc = &src)
 			{
-				fixed (int* pleft = &left)
+				fixed (SDLAudioSpec* pspec = &spec)
 				{
-					fixed (int* pbottom = &bottom)
+					fixed (byte** paudioBuf = &audioBuf)
 					{
-						fixed (int* pright = &right)
+						fixed (uint* paudioLen = &audioLen)
 						{
-							int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, (int*)pbottom, (int*)pright);
+							SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, (uint*)paudioLen);
 							return ret;
 						}
 					}
@@ -897,2410 +223,2606 @@ namespace Hexa.NET.SDL2
 		}
 
 		/// <summary>
-		/// Get the size of a window in pixels.<br/>
-		/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>
-		/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>
-		/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>
-		/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>
+		/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>
+		/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>
+		/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>
+		/// this function with a NULL pointer.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSizeInPixels")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FreeWAV")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetWindowSizeInPixelsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+		internal static partial void SDLFreeWAVNative([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf);
 
-		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		/// <summary>/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>/// this function with a NULL pointer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		public static void SDLFreeWAV([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf)
 		{
-			SDLGetWindowSizeInPixelsNative(window, w, h);
+			SDLFreeWAVNative(audioBuf);
 		}
 
-		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		/// <summary>/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>/// this function with a NULL pointer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		public static void SDLFreeWAV([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte audioBuf)
 		{
-			fixed (int* pw = &w)
+			fixed (byte* paudioBuf = &audioBuf)
 			{
-				SDLGetWindowSizeInPixelsNative(window, (int*)pw, h);
+				SDLFreeWAVNative((byte*)paudioBuf);
 			}
 		}
 
-		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>
+		/// Initialize an SDL_AudioCVT structure for conversion.<br/>
+		/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>
+		/// be initialized with source and destination information.<br/>
+		/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>
+		/// called before the application fills in the final buffer information.<br/>
+		/// Once this function has returned successfully, and reported that a<br/>
+		/// conversion is necessary, the application fills in the rest of the fields in<br/>
+		/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>
+		/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_BuildAudioCVT")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLBuildAudioCVTNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate);
+
+		/// <summary>/// Initialize an SDL_AudioCVT structure for conversion.<br/>/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>/// be initialized with source and destination information.<br/>/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>/// called before the application fills in the final buffer information.<br/>/// Once this function has returned successfully, and reported that a<br/>/// conversion is necessary, the application fills in the rest of the fields in<br/>/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLBuildAudioCVT([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate)
 		{
-			fixed (int* ph = &h)
+			int ret = SDLBuildAudioCVTNative(cvt, srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+			return ret;
+		}
+
+		/// <summary>/// Initialize an SDL_AudioCVT structure for conversion.<br/>/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>/// be initialized with source and destination information.<br/>/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>/// called before the application fills in the final buffer information.<br/>/// Once this function has returned successfully, and reported that a<br/>/// conversion is necessary, the application fills in the rest of the fields in<br/>/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLBuildAudioCVT([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] ref SDLAudioCVT cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate)
+		{
+			fixed (SDLAudioCVT* pcvt = &cvt)
 			{
-				SDLGetWindowSizeInPixelsNative(window, w, (int*)ph);
+				int ret = SDLBuildAudioCVTNative((SDLAudioCVT*)pcvt, srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+				return ret;
 			}
 		}
 
-		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>
+		/// Convert audio data to a desired audio format.<br/>
+		/// This function does the actual audio data conversion, after the application<br/>
+		/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>
+		/// then filled in the buffer details.<br/>
+		/// Once the application has initialized the `cvt` structure using<br/>
+		/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>
+		/// data in the source format, this function will convert the buffer, in-place,<br/>
+		/// to the desired format.<br/>
+		/// The data conversion may go through several passes; any given pass may<br/>
+		/// possibly temporarily increase the size of the data. For example, SDL might<br/>
+		/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>
+		/// shrinking the data size after having grown it briefly. Since the supplied<br/>
+		/// buffer will be both the source and destination, converting as necessary<br/>
+		/// in-place, the application must allocate a buffer that will fully contain<br/>
+		/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>
+		/// returns, the application should set the `cvt->len` field to the size, in<br/>
+		/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>
+		/// cvt->len_mult` bytes long for the `buf` field.<br/>
+		/// The source data should be copied into this buffer before the call to<br/>
+		/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>
+		/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>
+		/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>
+		/// this function returns.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ConvertAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLConvertAudioNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt);
+
+		/// <summary>/// Convert audio data to a desired audio format.<br/>/// This function does the actual audio data conversion, after the application<br/>/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>/// then filled in the buffer details.<br/>/// Once the application has initialized the `cvt` structure using<br/>/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>/// data in the source format, this function will convert the buffer, in-place,<br/>/// to the desired format.<br/>/// The data conversion may go through several passes; any given pass may<br/>/// possibly temporarily increase the size of the data. For example, SDL might<br/>/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>/// shrinking the data size after having grown it briefly. Since the supplied<br/>/// buffer will be both the source and destination, converting as necessary<br/>/// in-place, the application must allocate a buffer that will fully contain<br/>/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>/// returns, the application should set the `cvt->len` field to the size, in<br/>/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>/// cvt->len_mult` bytes long for the `buf` field.<br/>/// The source data should be copied into this buffer before the call to<br/>/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>/// this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLConvertAudio([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt)
 		{
-			fixed (int* pw = &w)
+			int ret = SDLConvertAudioNative(cvt);
+			return ret;
+		}
+
+		/// <summary>/// Convert audio data to a desired audio format.<br/>/// This function does the actual audio data conversion, after the application<br/>/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>/// then filled in the buffer details.<br/>/// Once the application has initialized the `cvt` structure using<br/>/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>/// data in the source format, this function will convert the buffer, in-place,<br/>/// to the desired format.<br/>/// The data conversion may go through several passes; any given pass may<br/>/// possibly temporarily increase the size of the data. For example, SDL might<br/>/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>/// shrinking the data size after having grown it briefly. Since the supplied<br/>/// buffer will be both the source and destination, converting as necessary<br/>/// in-place, the application must allocate a buffer that will fully contain<br/>/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>/// returns, the application should set the `cvt->len` field to the size, in<br/>/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>/// cvt->len_mult` bytes long for the `buf` field.<br/>/// The source data should be copied into this buffer before the call to<br/>/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>/// this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLConvertAudio([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] ref SDLAudioCVT cvt)
+		{
+			fixed (SDLAudioCVT* pcvt = &cvt)
 			{
-				fixed (int* ph = &h)
+				int ret = SDLConvertAudioNative((SDLAudioCVT*)pcvt);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Create a new audio stream.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_NewAudioStream")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLAudioStream* SDLNewAudioStreamNative([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate);
+
+		/// <summary>/// Create a new audio stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
+		public static SDLAudioStream* SDLNewAudioStream([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate)
+		{
+			SDLAudioStream* ret = SDLNewAudioStreamNative(srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+			return ret;
+		}
+
+		/// <summary>
+		/// Add data to be converted/resampled to the stream.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamPut")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAudioStreamPutNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
+
+		/// <summary>/// Add data to be converted/resampled to the stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamPut([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			int ret = SDLAudioStreamPutNative(stream, buf, len);
+			return ret;
+		}
+
+		/// <summary>/// Add data to be converted/resampled to the stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamPut([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				int ret = SDLAudioStreamPutNative((SDLAudioStream*)pstream, buf, len);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get converted/resampled data from the stream<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamGet")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAudioStreamGetNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
+
+		/// <summary>/// Get converted/resampled data from the stream<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamGet([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			int ret = SDLAudioStreamGetNative(stream, buf, len);
+			return ret;
+		}
+
+		/// <summary>/// Get converted/resampled data from the stream<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamGet([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				int ret = SDLAudioStreamGetNative((SDLAudioStream*)pstream, buf, len);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the number of converted/resampled bytes available.<br/>
+		/// The stream may be buffering data behind the scenes until it has enough to<br/>
+		/// resample correctly, so this number might be lower than what you expect, or<br/>
+		/// even be zero. Add more data or flush the stream if you need the data now.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamAvailable")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAudioStreamAvailableNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
+
+		/// <summary>/// Get the number of converted/resampled bytes available.<br/>/// The stream may be buffering data behind the scenes until it has enough to<br/>/// resample correctly, so this number might be lower than what you expect, or<br/>/// even be zero. Add more data or flush the stream if you need the data now.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamAvailable([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			int ret = SDLAudioStreamAvailableNative(stream);
+			return ret;
+		}
+
+		/// <summary>/// Get the number of converted/resampled bytes available.<br/>/// The stream may be buffering data behind the scenes until it has enough to<br/>/// resample correctly, so this number might be lower than what you expect, or<br/>/// even be zero. Add more data or flush the stream if you need the data now.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamAvailable([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				int ret = SDLAudioStreamAvailableNative((SDLAudioStream*)pstream);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Tell the stream that you're done sending data, and anything being buffered<br/>
+		/// should be converted/resampled and made available immediately.<br/>
+		/// It is legal to add more data to a stream after flushing, but there will be<br/>
+		/// audio gaps in the output. Generally this is intended to signal the end of<br/>
+		/// input, so the complete output becomes available.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamFlush")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAudioStreamFlushNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
+
+		/// <summary>/// Tell the stream that you're done sending data, and anything being buffered<br/>/// should be converted/resampled and made available immediately.<br/>/// It is legal to add more data to a stream after flushing, but there will be<br/>/// audio gaps in the output. Generally this is intended to signal the end of<br/>/// input, so the complete output becomes available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamFlush([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			int ret = SDLAudioStreamFlushNative(stream);
+			return ret;
+		}
+
+		/// <summary>/// Tell the stream that you're done sending data, and anything being buffered<br/>/// should be converted/resampled and made available immediately.<br/>/// It is legal to add more data to a stream after flushing, but there will be<br/>/// audio gaps in the output. Generally this is intended to signal the end of<br/>/// input, so the complete output becomes available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAudioStreamFlush([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				int ret = SDLAudioStreamFlushNative((SDLAudioStream*)pstream);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Clear any pending data in the stream without converting it<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamClear")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLAudioStreamClearNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
+
+		/// <summary>/// Clear any pending data in the stream without converting it<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLAudioStreamClear([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			SDLAudioStreamClearNative(stream);
+		}
+
+		/// <summary>/// Clear any pending data in the stream without converting it<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLAudioStreamClear([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				SDLAudioStreamClearNative((SDLAudioStream*)pstream);
+			}
+		}
+
+		/// <summary>
+		/// Free an audio stream<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FreeAudioStream")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLFreeAudioStreamNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
+
+		/// <summary>/// Free an audio stream<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeAudioStream([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			SDLFreeAudioStreamNative(stream);
+		}
+
+		/// <summary>/// Free an audio stream<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeAudioStream([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] ref SDLAudioStream stream)
+		{
+			fixed (SDLAudioStream* pstream = &stream)
+			{
+				SDLFreeAudioStreamNative((SDLAudioStream*)pstream);
+			}
+		}
+
+		/// <summary>
+		/// This function is a legacy means of mixing audio.<br/>
+		/// This function is equivalent to calling...<br/>
+		/// ```c<br/>
+		/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>
+		/// ```<br/>
+		/// ...where `format` is the obtained format of the audio device from the<br/>
+		/// legacy SDL_OpenAudio() function.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MixAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLMixAudioNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
+
+		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			SDLMixAudioNative(dst, src, len, volume);
+		}
+
+		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				SDLMixAudioNative((byte*)pdst, src, len, volume);
+			}
+		}
+
+		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			fixed (byte* psrc = &src)
+			{
+				SDLMixAudioNative(dst, (byte*)psrc, len, volume);
+			}
+		}
+
+		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (byte* psrc = &src)
 				{
-					SDLGetWindowSizeInPixelsNative(window, (int*)pw, (int*)ph);
+					SDLMixAudioNative((byte*)pdst, (byte*)psrc, len, volume);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Set the minimum size of a window's client area.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowMinimumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMinimumSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowMinimumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "min_w")] [NativeName(NativeNameType.Type, "int")] int minW, [NativeName(NativeNameType.Param, "min_h")] [NativeName(NativeNameType.Type, "int")] int minH);
-
-		/// <summary>/// Set the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMinimumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "min_w")] [NativeName(NativeNameType.Type, "int")] int minW, [NativeName(NativeNameType.Param, "min_h")] [NativeName(NativeNameType.Type, "int")] int minH)
-		{
-			SDLSetWindowMinimumSizeNative(window, minW, minH);
-		}
-
-		/// <summary>
-		/// Get the minimum size of a window's client area.<br/>
-		/// <br/>
+		/// Mix audio data in a specified format.<br/>
+		/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>
+		/// it into `dst`, performing addition, volume adjustment, and overflow<br/>
+		/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>
+		/// `format` data.<br/>
+		/// This is provided for convenience -- you can mix your own audio data.<br/>
+		/// Do not use this function for mixing together more than two streams of<br/>
+		/// sample data. The output from repeated application of this function may be<br/>
+		/// distorted by clipping, because there is no accumulator with greater range<br/>
+		/// than the input (not to mention this being an inefficient way of doing it).<br/>
+		/// It is a common misconception that this function is required to write audio<br/>
+		/// data to an output stream in an audio callback. While you can do that,<br/>
+		/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>
+		/// audio stream with a volume adjustment.<br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMinimumSize")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MixAudioFormat")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetWindowMinimumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+		internal static partial void SDLMixAudioFormatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
 
-		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
 		{
-			SDLGetWindowMinimumSizeNative(window, w, h);
+			SDLMixAudioFormatNative(dst, src, format, len, volume);
 		}
 
-		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
 		{
-			fixed (int* pw = &w)
+			fixed (byte* pdst = &dst)
 			{
-				SDLGetWindowMinimumSizeNative(window, (int*)pw, h);
+				SDLMixAudioFormatNative((byte*)pdst, src, format, len, volume);
 			}
 		}
 
-		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
 		{
-			fixed (int* ph = &h)
+			fixed (byte* psrc = &src)
 			{
-				SDLGetWindowMinimumSizeNative(window, w, (int*)ph);
+				SDLMixAudioFormatNative(dst, (byte*)psrc, format, len, volume);
 			}
 		}
 
-		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
 		{
-			fixed (int* pw = &w)
+			fixed (byte* pdst = &dst)
 			{
-				fixed (int* ph = &h)
+				fixed (byte* psrc = &src)
 				{
-					SDLGetWindowMinimumSizeNative(window, (int*)pw, (int*)ph);
+					SDLMixAudioFormatNative((byte*)pdst, (byte*)psrc, format, len, volume);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Set the maximum size of a window's client area.<br/>
+		/// Queue more audio on non-callback devices.<br/>
+		/// If you are looking to retrieve queued audio from a non-callback capture<br/>
+		/// device, you want SDL_DequeueAudio() instead. SDL_QueueAudio() will return<br/>
+		/// -1 to signify an error if you use it with capture devices.<br/>
+		/// SDL offers two ways to feed audio to the device: you can either supply a<br/>
+		/// callback that SDL triggers with some frequency to obtain more audio (pull<br/>
+		/// method), or you can supply no callback, and then SDL will expect you to<br/>
+		/// supply data at regular intervals (push method) with this function.<br/>
+		/// There are no limits on the amount of data you can queue, short of<br/>
+		/// exhaustion of address space. Queued data will drain to the device as<br/>
+		/// necessary without further intervention from you. If the device needs audio<br/>
+		/// but there is not enough queued, it will play silence to make up the<br/>
+		/// difference. This means you will have skips in your audio playback if you<br/>
+		/// aren't routinely queueing sufficient data.<br/>
+		/// This function copies the supplied data, so you are safe to free it when the<br/>
+		/// function returns. This function is thread-safe, but queueing to the same<br/>
+		/// device from two threads at once does not promise which buffer will be<br/>
+		/// queued first.<br/>
+		/// You may not queue audio on a device that is using an application-supplied<br/>
+		/// callback; doing so returns an error. You have to use the audio callback or<br/>
+		/// queue audio with this function, but not both.<br/>
+		/// You should not call SDL_LockAudio() on the device before queueing; SDL<br/>
+		/// handles locking internally for this function.<br/>
+		/// Note that SDL2 does not support planar audio. You will need to resample<br/>
+		/// from planar audio formats into a non-planar one (see SDL_AudioFormat)<br/>
+		/// before queuing audio.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMaximumSize")]
+		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_QueueAudio")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowMaximumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "max_w")] [NativeName(NativeNameType.Type, "int")] int maxW, [NativeName(NativeNameType.Param, "max_h")] [NativeName(NativeNameType.Type, "int")] int maxH);
+		internal static partial int SDLQueueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
 
-		/// <summary>/// Set the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "max_w")] [NativeName(NativeNameType.Type, "int")] int maxW, [NativeName(NativeNameType.Param, "max_h")] [NativeName(NativeNameType.Type, "int")] int maxH)
+		/// <summary>/// Queue more audio on non-callback devices.<br/>/// If you are looking to retrieve queued audio from a non-callback capture<br/>/// device, you want SDL_DequeueAudio() instead. SDL_QueueAudio() will return<br/>/// -1 to signify an error if you use it with capture devices.<br/>/// SDL offers two ways to feed audio to the device: you can either supply a<br/>/// callback that SDL triggers with some frequency to obtain more audio (pull<br/>/// method), or you can supply no callback, and then SDL will expect you to<br/>/// supply data at regular intervals (push method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Queued data will drain to the device as<br/>/// necessary without further intervention from you. If the device needs audio<br/>/// but there is not enough queued, it will play silence to make up the<br/>/// difference. This means you will have skips in your audio playback if you<br/>/// aren't routinely queueing sufficient data.<br/>/// This function copies the supplied data, so you are safe to free it when the<br/>/// function returns. This function is thread-safe, but queueing to the same<br/>/// device from two threads at once does not promise which buffer will be<br/>/// queued first.<br/>/// You may not queue audio on a device that is using an application-supplied<br/>/// callback; doing so returns an error. You have to use the audio callback or<br/>/// queue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before queueing; SDL<br/>/// handles locking internally for this function.<br/>/// Note that SDL2 does not support planar audio. You will need to resample<br/>/// from planar audio formats into a non-planar one (see SDL_AudioFormat)<br/>/// before queuing audio.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLQueueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
 		{
-			SDLSetWindowMaximumSizeNative(window, maxW, maxH);
+			int ret = SDLQueueAudioNative(dev, data, len);
+			return ret;
 		}
 
 		/// <summary>
-		/// Get the maximum size of a window's client area.<br/>
+		/// Dequeue more audio on non-callback devices.<br/>
+		/// If you are looking to queue audio for output on a non-callback playback<br/>
+		/// device, you want SDL_QueueAudio() instead. SDL_DequeueAudio() will always<br/>
+		/// return 0 if you use it with playback devices.<br/>
+		/// SDL offers two ways to retrieve audio from a capture device: you can either<br/>
+		/// supply a callback that SDL triggers with some frequency as the device<br/>
+		/// records more audio data, (push method), or you can supply no callback, and<br/>
+		/// then SDL will expect you to retrieve data at regular intervals (pull<br/>
+		/// method) with this function.<br/>
+		/// There are no limits on the amount of data you can queue, short of<br/>
+		/// exhaustion of address space. Data from the device will keep queuing as<br/>
+		/// necessary without further intervention from you. This means you will<br/>
+		/// eventually run out of memory if you aren't routinely dequeueing data.<br/>
+		/// Capture devices will not queue data when paused; if you are expecting to<br/>
+		/// not need captured audio for some length of time, use SDL_PauseAudioDevice()<br/>
+		/// to stop the capture device from queueing more data. This can be useful<br/>
+		/// during, say, level loading times. When unpaused, capture devices will start<br/>
+		/// queueing data from that point, having flushed any capturable data available<br/>
+		/// while paused.<br/>
+		/// This function is thread-safe, but dequeueing from the same device from two<br/>
+		/// threads at once does not promise which thread will dequeue data first.<br/>
+		/// You may not dequeue audio from a device that is using an<br/>
+		/// application-supplied callback; doing so returns an error. You have to use<br/>
+		/// the audio callback, or dequeue audio with this function, but not both.<br/>
+		/// You should not call SDL_LockAudio() on the device before dequeueing; SDL<br/>
+		/// handles locking internally for this function.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMaximumSize")]
+		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DequeueAudio")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetWindowMaximumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+		internal static partial uint SDLDequeueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
 
-		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		/// <summary>/// Dequeue more audio on non-callback devices.<br/>/// If you are looking to queue audio for output on a non-callback playback<br/>/// device, you want SDL_QueueAudio() instead. SDL_DequeueAudio() will always<br/>/// return 0 if you use it with playback devices.<br/>/// SDL offers two ways to retrieve audio from a capture device: you can either<br/>/// supply a callback that SDL triggers with some frequency as the device<br/>/// records more audio data, (push method), or you can supply no callback, and<br/>/// then SDL will expect you to retrieve data at regular intervals (pull<br/>/// method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Data from the device will keep queuing as<br/>/// necessary without further intervention from you. This means you will<br/>/// eventually run out of memory if you aren't routinely dequeueing data.<br/>/// Capture devices will not queue data when paused; if you are expecting to<br/>/// not need captured audio for some length of time, use SDL_PauseAudioDevice()<br/>/// to stop the capture device from queueing more data. This can be useful<br/>/// during, say, level loading times. When unpaused, capture devices will start<br/>/// queueing data from that point, having flushed any capturable data available<br/>/// while paused.<br/>/// This function is thread-safe, but dequeueing from the same device from two<br/>/// threads at once does not promise which thread will dequeue data first.<br/>/// You may not dequeue audio from a device that is using an<br/>/// application-supplied callback; doing so returns an error. You have to use<br/>/// the audio callback, or dequeue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before dequeueing; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLDequeueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
 		{
-			SDLGetWindowMaximumSizeNative(window, w, h);
+			uint ret = SDLDequeueAudioNative(dev, data, len);
+			return ret;
 		}
 
-		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		/// <summary>
+		/// Get the number of bytes of still-queued audio.<br/>
+		/// For playback devices: this is the number of bytes that have been queued for<br/>
+		/// playback with SDL_QueueAudio(), but have not yet been sent to the hardware.<br/>
+		/// Once we've sent it to the hardware, this function can not decide the exact<br/>
+		/// byte boundary of what has been played. It's possible that we just gave the<br/>
+		/// hardware several kilobytes right before you called this function, but it<br/>
+		/// hasn't played any of it yet, or maybe half of it, etc.<br/>
+		/// For capture devices, this is the number of bytes that have been captured by<br/>
+		/// the device and are waiting for you to dequeue. This number may grow at any<br/>
+		/// time, so this only informs of the lower-bound of available data.<br/>
+		/// You may not queue or dequeue audio on a device that is using an<br/>
+		/// application-supplied callback; calling this function on such a device<br/>
+		/// always returns 0. You have to use the audio callback or queue audio, but<br/>
+		/// not both.<br/>
+		/// You should not call SDL_LockAudio() on the device before querying; SDL<br/>
+		/// handles locking internally for this function.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetQueuedAudioSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial uint SDLGetQueuedAudioSizeNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+
+		/// <summary>/// Get the number of bytes of still-queued audio.<br/>/// For playback devices: this is the number of bytes that have been queued for<br/>/// playback with SDL_QueueAudio(), but have not yet been sent to the hardware.<br/>/// Once we've sent it to the hardware, this function can not decide the exact<br/>/// byte boundary of what has been played. It's possible that we just gave the<br/>/// hardware several kilobytes right before you called this function, but it<br/>/// hasn't played any of it yet, or maybe half of it, etc.<br/>/// For capture devices, this is the number of bytes that have been captured by<br/>/// the device and are waiting for you to dequeue. This number may grow at any<br/>/// time, so this only informs of the lower-bound of available data.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before querying; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLGetQueuedAudioSize([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
 		{
-			fixed (int* pw = &w)
+			uint ret = SDLGetQueuedAudioSizeNative(dev);
+			return ret;
+		}
+
+		/// <summary>
+		/// Drop any queued audio data waiting to be sent to the hardware.<br/>
+		/// Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For<br/>
+		/// output devices, the hardware will start playing silence if more audio isn't<br/>
+		/// queued. For capture devices, the hardware will start filling the empty<br/>
+		/// queue with new data if the capture device isn't paused.<br/>
+		/// This will not prevent playback of queued audio that's already been sent to<br/>
+		/// the hardware, as we can not undo that, so expect there to be some fraction<br/>
+		/// of a second of audio that might still be heard. This can be useful if you<br/>
+		/// want to, say, drop any pending music or any unprocessed microphone input<br/>
+		/// during a level change in your game.<br/>
+		/// You may not queue or dequeue audio on a device that is using an<br/>
+		/// application-supplied callback; calling this function on such a device<br/>
+		/// always returns 0. You have to use the audio callback or queue audio, but<br/>
+		/// not both.<br/>
+		/// You should not call SDL_LockAudio() on the device before clearing the<br/>
+		/// queue; SDL handles locking internally for this function.<br/>
+		/// This function always succeeds and thus returns void.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ClearQueuedAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLClearQueuedAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+
+		/// <summary>/// Drop any queued audio data waiting to be sent to the hardware.<br/>/// Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For<br/>/// output devices, the hardware will start playing silence if more audio isn't<br/>/// queued. For capture devices, the hardware will start filling the empty<br/>/// queue with new data if the capture device isn't paused.<br/>/// This will not prevent playback of queued audio that's already been sent to<br/>/// the hardware, as we can not undo that, so expect there to be some fraction<br/>/// of a second of audio that might still be heard. This can be useful if you<br/>/// want to, say, drop any pending music or any unprocessed microphone input<br/>/// during a level change in your game.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before clearing the<br/>/// queue; SDL handles locking internally for this function.<br/>/// This function always succeeds and thus returns void.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLClearQueuedAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			SDLClearQueuedAudioNative(dev);
+		}
+
+		/// <summary>
+		/// This function is a legacy means of locking the audio device.<br/>
+		/// New programs might want to use SDL_LockAudioDevice() instead. This function<br/>
+		/// is equivalent to calling...<br/>
+		/// ```c<br/>
+		/// SDL_LockAudioDevice(1);<br/>
+		/// ```<br/>
+		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LockAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLLockAudioNative();
+
+		/// <summary>/// This function is a legacy means of locking the audio device.<br/>/// New programs might want to use SDL_LockAudioDevice() instead. This function<br/>/// is equivalent to calling...<br/>/// ```c<br/>/// SDL_LockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLLockAudio()
+		{
+			SDLLockAudioNative();
+		}
+
+		/// <summary>
+		/// Use this function to lock out the audio callback function for a specified<br/>
+		/// device.<br/>
+		/// The lock manipulated by these functions protects the audio callback<br/>
+		/// function specified in SDL_OpenAudioDevice(). During a<br/>
+		/// SDL_LockAudioDevice()/SDL_UnlockAudioDevice() pair, you can be guaranteed<br/>
+		/// that the callback function for that device is not running, even if the<br/>
+		/// device is not paused. While a device is locked, any other unpaused,<br/>
+		/// unlocked devices may still run their callbacks.<br/>
+		/// Calling this function from inside your audio callback is unnecessary. SDL<br/>
+		/// obtains this lock before calling your function, and releases it when the<br/>
+		/// function returns.<br/>
+		/// You should not hold the lock longer than absolutely necessary. If you hold<br/>
+		/// it too long, you'll experience dropouts in your audio playback. Ideally,<br/>
+		/// your application locks the device, sets a few variables and unlocks again.<br/>
+		/// Do not do heavy work while holding the lock for a device.<br/>
+		/// It is safe to lock the audio device multiple times, as long as you unlock<br/>
+		/// it an equivalent number of times. The callback will not run until the<br/>
+		/// device has been unlocked completely in this way. If your application fails<br/>
+		/// to unlock the device appropriately, your callback will never run, you might<br/>
+		/// hear repeating bursts of audio, and SDL_CloseAudioDevice() will probably<br/>
+		/// deadlock.<br/>
+		/// Internally, the audio device lock is a mutex; if you lock from two threads<br/>
+		/// at once, not only will you block the audio callback, you'll block the other<br/>
+		/// thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LockAudioDevice")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLLockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+
+		/// <summary>/// Use this function to lock out the audio callback function for a specified<br/>/// device.<br/>/// The lock manipulated by these functions protects the audio callback<br/>/// function specified in SDL_OpenAudioDevice(). During a<br/>/// SDL_LockAudioDevice()/SDL_UnlockAudioDevice() pair, you can be guaranteed<br/>/// that the callback function for that device is not running, even if the<br/>/// device is not paused. While a device is locked, any other unpaused,<br/>/// unlocked devices may still run their callbacks.<br/>/// Calling this function from inside your audio callback is unnecessary. SDL<br/>/// obtains this lock before calling your function, and releases it when the<br/>/// function returns.<br/>/// You should not hold the lock longer than absolutely necessary. If you hold<br/>/// it too long, you'll experience dropouts in your audio playback. Ideally,<br/>/// your application locks the device, sets a few variables and unlocks again.<br/>/// Do not do heavy work while holding the lock for a device.<br/>/// It is safe to lock the audio device multiple times, as long as you unlock<br/>/// it an equivalent number of times. The callback will not run until the<br/>/// device has been unlocked completely in this way. If your application fails<br/>/// to unlock the device appropriately, your callback will never run, you might<br/>/// hear repeating bursts of audio, and SDL_CloseAudioDevice() will probably<br/>/// deadlock.<br/>/// Internally, the audio device lock is a mutex; if you lock from two threads<br/>/// at once, not only will you block the audio callback, you'll block the other<br/>/// thread.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLLockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			SDLLockAudioDeviceNative(dev);
+		}
+
+		/// <summary>
+		/// This function is a legacy means of unlocking the audio device.<br/>
+		/// New programs might want to use SDL_UnlockAudioDevice() instead. This<br/>
+		/// function is equivalent to calling...<br/>
+		/// ```c<br/>
+		/// SDL_UnlockAudioDevice(1);<br/>
+		/// ```<br/>
+		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLUnlockAudioNative();
+
+		/// <summary>/// This function is a legacy means of unlocking the audio device.<br/>/// New programs might want to use SDL_UnlockAudioDevice() instead. This<br/>/// function is equivalent to calling...<br/>/// ```c<br/>/// SDL_UnlockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnlockAudio()
+		{
+			SDLUnlockAudioNative();
+		}
+
+		/// <summary>
+		/// Use this function to unlock the audio callback function for a specified<br/>
+		/// device.<br/>
+		/// This function should be paired with a previous SDL_LockAudioDevice() call.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudioDevice")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLUnlockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+
+		/// <summary>/// Use this function to unlock the audio callback function for a specified<br/>/// device.<br/>/// This function should be paired with a previous SDL_LockAudioDevice() call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnlockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			SDLUnlockAudioDeviceNative(dev);
+		}
+
+		/// <summary>
+		/// This function is a legacy means of closing the audio device.<br/>
+		/// This function is equivalent to calling...<br/>
+		/// ```c<br/>
+		/// SDL_CloseAudioDevice(1);<br/>
+		/// ```<br/>
+		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudio")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLCloseAudioNative();
+
+		/// <summary>/// This function is a legacy means of closing the audio device.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_CloseAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLCloseAudio()
+		{
+			SDLCloseAudioNative();
+		}
+
+		/// <summary>
+		/// Use this function to shut down audio processing and close the audio device.<br/>
+		/// The application should close open audio devices once they are no longer<br/>
+		/// needed. Calling this function will wait until the device's audio callback<br/>
+		/// is not running, release the audio hardware and then clean up internal<br/>
+		/// state. No further audio will play from this device once this function<br/>
+		/// returns.<br/>
+		/// This function may block briefly while pending audio data is played by the<br/>
+		/// hardware, so that applications don't drop the last buffer of data they<br/>
+		/// supplied.<br/>
+		/// The device ID is invalid as soon as the device is closed, and is eligible<br/>
+		/// for reuse in a new SDL_OpenAudioDevice() call immediately.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudioDevice")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLCloseAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+
+		/// <summary>/// Use this function to shut down audio processing and close the audio device.<br/>/// The application should close open audio devices once they are no longer<br/>/// needed. Calling this function will wait until the device's audio callback<br/>/// is not running, release the audio hardware and then clean up internal<br/>/// state. No further audio will play from this device once this function<br/>/// returns.<br/>/// This function may block briefly while pending audio data is played by the<br/>/// hardware, so that applications don't drop the last buffer of data they<br/>/// supplied.<br/>/// The device ID is invalid as soon as the device is closed, and is eligible<br/>/// for reuse in a new SDL_OpenAudioDevice() call immediately.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLCloseAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			SDLCloseAudioDeviceNative(dev);
+		}
+
+		/// <summary>
+		/// Put UTF-8 text into the clipboard.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetClipboardText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetClipboardTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
+
+		/// <summary>/// Put UTF-8 text into the clipboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetClipboardText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
+		{
+			int ret = SDLSetClipboardTextNative(text);
+			return ret;
+		}
+
+		/// <summary>/// Put UTF-8 text into the clipboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetClipboardText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text)
+		{
+			fixed (byte* ptext = &text)
 			{
-				SDLGetWindowMaximumSizeNative(window, (int*)pw, h);
+				int ret = SDLSetClipboardTextNative((byte*)ptext);
+				return ret;
 			}
 		}
 
-		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Put UTF-8 text into the clipboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetClipboardText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text)
 		{
-			fixed (int* ph = &h)
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
 			{
-				SDLGetWindowMaximumSizeNative(window, w, (int*)ph);
-			}
-		}
-
-		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* pw = &w)
-			{
-				fixed (int* ph = &h)
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
-					SDLGetWindowMaximumSizeNative(window, (int*)pw, (int*)ph);
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
 				}
-			}
-		}
-
-		/// <summary>
-		/// Set the border state of a window.<br/>
-		/// This will add or remove the window's `SDL_WINDOW_BORDERLESS` flag and add<br/>
-		/// or remove the border from the actual window. This is a no-op if the<br/>
-		/// window's border already matches the requested state.<br/>
-		/// You can't change the border state of a fullscreen window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowBordered")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowBordered")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowBorderedNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "bordered")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool bordered);
-
-		/// <summary>/// Set the border state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_BORDERLESS` flag and add<br/>/// or remove the border from the actual window. This is a no-op if the<br/>/// window's border already matches the requested state.<br/>/// You can't change the border state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBordered")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowBordered([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "bordered")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool bordered)
-		{
-			SDLSetWindowBorderedNative(window, bordered);
-		}
-
-		/// <summary>
-		/// Set the user-resizable state of a window.<br/>
-		/// This will add or remove the window's `SDL_WINDOW_RESIZABLE` flag and<br/>
-		/// allow/disallow user resizing of the window. This is a no-op if the window's<br/>
-		/// resizable state already matches the requested state.<br/>
-		/// You can't change the resizable state of a fullscreen window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowResizable")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowResizable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowResizableNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "resizable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool resizable);
-
-		/// <summary>/// Set the user-resizable state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_RESIZABLE` flag and<br/>/// allow/disallow user resizing of the window. This is a no-op if the window's<br/>/// resizable state already matches the requested state.<br/>/// You can't change the resizable state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowResizable")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowResizable([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "resizable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool resizable)
-		{
-			SDLSetWindowResizableNative(window, resizable);
-		}
-
-		/// <summary>
-		/// Set the window to always be above the others.<br/>
-		/// This will add or remove the window's `SDL_WINDOW_ALWAYS_ON_TOP` flag. This<br/>
-		/// will bring the window to the front and keep the window above the rest.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowAlwaysOnTop")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowAlwaysOnTop")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowAlwaysOnTopNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "on_top")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool onTop);
-
-		/// <summary>/// Set the window to always be above the others.<br/>/// This will add or remove the window's `SDL_WINDOW_ALWAYS_ON_TOP` flag. This<br/>/// will bring the window to the front and keep the window above the rest.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowAlwaysOnTop")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowAlwaysOnTop([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "on_top")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool onTop)
-		{
-			SDLSetWindowAlwaysOnTopNative(window, onTop);
-		}
-
-		/// <summary>
-		/// Show a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ShowWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLShowWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Show a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLShowWindowNative(window);
-		}
-
-		/// <summary>
-		/// Hide a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HideWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HideWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHideWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Hide a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HideWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLHideWindowNative(window);
-		}
-
-		/// <summary>
-		/// Raise a window above other windows and set the input focus.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RaiseWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RaiseWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRaiseWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Raise a window above other windows and set the input focus.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RaiseWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRaiseWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLRaiseWindowNative(window);
-		}
-
-		/// <summary>
-		/// Make a window as large as possible.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MaximizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MaximizeWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMaximizeWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Make a window as large as possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MaximizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLMaximizeWindowNative(window);
-		}
-
-		/// <summary>
-		/// Minimize a window to an iconic representation.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MinimizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MinimizeWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMinimizeWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Minimize a window to an iconic representation.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MinimizeWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMinimizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLMinimizeWindowNative(window);
-		}
-
-		/// <summary>
-		/// Restore the size and position of a minimized or maximized window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RestoreWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RestoreWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRestoreWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Restore the size and position of a minimized or maximized window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RestoreWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLRestoreWindowNative(window);
-		}
-
-		/// <summary>
-		/// Set a window's fullscreen state.<br/>
-		/// `flags` may be `SDL_WINDOW_FULLSCREEN`, for "real" fullscreen with a<br/>
-		/// videomode change; `SDL_WINDOW_FULLSCREEN_DESKTOP` for "fake" fullscreen<br/>
-		/// that takes the size of the desktop; and 0 for windowed mode.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowFullscreen")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowFullscreen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowFullscreenNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
-
-		/// <summary>/// Set a window's fullscreen state.<br/>/// `flags` may be `SDL_WINDOW_FULLSCREEN`, for "real" fullscreen with a<br/>/// videomode change; `SDL_WINDOW_FULLSCREEN_DESKTOP` for "fake" fullscreen<br/>/// that takes the size of the desktop; and 0 for windowed mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowFullscreen")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowFullscreen([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
-		{
-			int ret = SDLSetWindowFullscreenNative(window, flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// Return whether the window has a surface associated with it.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasWindowSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Return whether the window has a surface associated with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLBool ret = SDLHasWindowSurfaceNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL surface associated with the window.<br/>
-		/// A new surface will be created with the optimal format for the window, if<br/>
-		/// necessary. This surface will be freed when the window is destroyed. Do not<br/>
-		/// free this surface.<br/>
-		/// This surface will be invalidated if the window is resized. After resizing a<br/>
-		/// window this function must be called again to return a valid surface.<br/>
-		/// You may not combine this with 3D or the rendering API on this window.<br/>
-		/// This function is affected by `SDL_HINT_FRAMEBUFFER_ACCELERATION`.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLGetWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the SDL surface associated with the window.<br/>/// A new surface will be created with the optimal format for the window, if<br/>/// necessary. This surface will be freed when the window is destroyed. Do not<br/>/// free this surface.<br/>/// This surface will be invalidated if the window is resized. After resizing a<br/>/// window this function must be called again to return a valid surface.<br/>/// You may not combine this with 3D or the rendering API on this window.<br/>/// This function is affected by `SDL_HINT_FRAMEBUFFER_ACCELERATION`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		public static SDLSurface* SDLGetWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLSurface* ret = SDLGetWindowSurfaceNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Copy the window surface to the screen.<br/>
-		/// This is the function you use to reflect any changes to the surface on the<br/>
-		/// screen.<br/>
-		/// This function is equivalent to the SDL 1.2 API SDL_Flip().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UpdateWindowSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUpdateWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Copy the window surface to the screen.<br/>/// This is the function you use to reflect any changes to the surface on the<br/>/// screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_Flip().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			int ret = SDLUpdateWindowSurfaceNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Copy areas of the window surface to the screen.<br/>
-		/// This is the function you use to reflect changes to portions of the surface<br/>
-		/// on the screen.<br/>
-		/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>
-		/// Note that this function will update _at least_ the rectangles specified,<br/>
-		/// but this is only intended as an optimization; in practice, this might<br/>
-		/// update more of the screen (or all of the screen!), depending on what<br/>
-		/// method SDL uses to send pixels to the system.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UpdateWindowSurfaceRects")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUpdateWindowSurfaceRectsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects);
-
-		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
-		{
-			int ret = SDLUpdateWindowSurfaceRectsNative(window, rects, numrects);
-			return ret;
-		}
-
-		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
-		{
-			fixed (SDLRect* prects = &rects)
-			{
-				int ret = SDLUpdateWindowSurfaceRectsNative(window, (SDLRect*)prects, numrects);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Destroy the surface associated with the window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DestroyWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DestroyWindowSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLDestroyWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Destroy the surface associated with the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyWindowSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLDestroyWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			int ret = SDLDestroyWindowSurfaceNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set a window's input grab mode.<br/>
-		/// When input is grabbed, the mouse is confined to the window. This function<br/>
-		/// will also grab the keyboard if `SDL_HINT_GRAB_KEYBOARD` is set. To grab the<br/>
-		/// keyboard without also grabbing the mouse, use SDL_SetWindowKeyboardGrab().<br/>
-		/// If the caller enables a grab while another window is currently grabbed, the<br/>
-		/// other window loses its grab in favor of the caller's window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
-
-		/// <summary>/// Set a window's input grab mode.<br/>/// When input is grabbed, the mouse is confined to the window. This function<br/>/// will also grab the keyboard if `SDL_HINT_GRAB_KEYBOARD` is set. To grab the<br/>/// keyboard without also grabbing the mouse, use SDL_SetWindowKeyboardGrab().<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
-		{
-			SDLSetWindowGrabNative(window, grabbed);
-		}
-
-		/// <summary>
-		/// Set a window's keyboard grab mode.<br/>
-		/// Keyboard grab enables capture of system keyboard shortcuts like Alt+Tab or<br/>
-		/// the Meta/Super key. Note that not all system keyboard shortcuts can be<br/>
-		/// captured by applications (one example is Ctrl+Alt+Del on Windows).<br/>
-		/// This is primarily intended for specialized applications such as VNC clients<br/>
-		/// or VM frontends. Normal games should not use keyboard grab.<br/>
-		/// When keyboard grab is enabled, SDL will continue to handle Alt+Tab when the<br/>
-		/// window is full-screen to ensure the user is not trapped in your<br/>
-		/// application. If you have a custom keyboard shortcut to exit fullscreen<br/>
-		/// mode, you may suppress this behavior with<br/>
-		/// `SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED`.<br/>
-		/// If the caller enables a grab while another window is currently grabbed, the<br/>
-		/// other window loses its grab in favor of the caller's window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowKeyboardGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowKeyboardGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowKeyboardGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
-
-		/// <summary>/// Set a window's keyboard grab mode.<br/>/// Keyboard grab enables capture of system keyboard shortcuts like Alt+Tab or<br/>/// the Meta/Super key. Note that not all system keyboard shortcuts can be<br/>/// captured by applications (one example is Ctrl+Alt+Del on Windows).<br/>/// This is primarily intended for specialized applications such as VNC clients<br/>/// or VM frontends. Normal games should not use keyboard grab.<br/>/// When keyboard grab is enabled, SDL will continue to handle Alt+Tab when the<br/>/// window is full-screen to ensure the user is not trapped in your<br/>/// application. If you have a custom keyboard shortcut to exit fullscreen<br/>/// mode, you may suppress this behavior with<br/>/// `SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED`.<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowKeyboardGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
-		{
-			SDLSetWindowKeyboardGrabNative(window, grabbed);
-		}
-
-		/// <summary>
-		/// Set a window's mouse grab mode.<br/>
-		/// Mouse grab confines the mouse cursor to the window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMouseGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetWindowMouseGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
-
-		/// <summary>/// Set a window's mouse grab mode.<br/>/// Mouse grab confines the mouse cursor to the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseGrab")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
-		{
-			SDLSetWindowMouseGrabNative(window, grabbed);
-		}
-
-		/// <summary>
-		/// Get a window's input grab mode.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetWindowGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get a window's input grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLBool ret = SDLGetWindowGrabNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a window's keyboard grab mode.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowKeyboardGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowKeyboardGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetWindowKeyboardGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get a window's keyboard grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowKeyboardGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLBool ret = SDLGetWindowKeyboardGrabNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a window's mouse grab mode.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMouseGrab")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetWindowMouseGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get a window's mouse grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseGrab")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLBool ret = SDLGetWindowMouseGrabNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the window that currently has an input grab enabled.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetGrabbedWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetGrabbedWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLGetGrabbedWindowNative();
-
-		/// <summary>/// Get the window that currently has an input grab enabled.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetGrabbedWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLGetGrabbedWindow()
-		{
-			SDLWindow* ret = SDLGetGrabbedWindowNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Confines the cursor to the specified area of a window.<br/>
-		/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>
-		/// is restricted to when the window has mouse focus.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMouseRect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowMouseRectNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
-		{
-			int ret = SDLSetWindowMouseRectNative(window, rect);
-			return ret;
-		}
-
-		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLSetWindowMouseRectNative(window, (SDLRect*)prect);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the mouse confinement rectangle of a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseRect")]
-		[return: NativeName(NativeNameType.Type, "const SDL_Rect*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMouseRect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLRect* SDLGetWindowMouseRectNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the mouse confinement rectangle of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseRect")]
-		[return: NativeName(NativeNameType.Type, "const SDL_Rect*")]
-		public static SDLRect* SDLGetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLRect* ret = SDLGetWindowMouseRectNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the brightness (gamma multiplier) for a given window's display.<br/>
-		/// Despite the name and signature, this method sets the brightness of the<br/>
-		/// entire display, not an individual window. A window is considered to be<br/>
-		/// owned by the display that contains the window's center pixel. (The index of<br/>
-		/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The<br/>
-		/// brightness set will not follow the window if it is moved to another<br/>
-		/// display.<br/>
-		/// Many platforms will refuse to set the display brightness in modern times.<br/>
-		/// You are better off using a shader to adjust gamma during rendering, or<br/>
-		/// something similar.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowBrightness")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowBrightness")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowBrightnessNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "brightness")] [NativeName(NativeNameType.Type, "float")] float brightness);
-
-		/// <summary>/// Set the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method sets the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The<br/>/// brightness set will not follow the window if it is moved to another<br/>/// display.<br/>/// Many platforms will refuse to set the display brightness in modern times.<br/>/// You are better off using a shader to adjust gamma during rendering, or<br/>/// something similar.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBrightness")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "brightness")] [NativeName(NativeNameType.Type, "float")] float brightness)
-		{
-			int ret = SDLSetWindowBrightnessNative(window, brightness);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the brightness (gamma multiplier) for a given window's display.<br/>
-		/// Despite the name and signature, this method retrieves the brightness of the<br/>
-		/// entire display, not an individual window. A window is considered to be<br/>
-		/// owned by the display that contains the window's center pixel. (The index of<br/>
-		/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowBrightness")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowBrightness")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial float SDLGetWindowBrightnessNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method retrieves the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBrightness")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float SDLGetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			float ret = SDLGetWindowBrightnessNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the opacity for a window.<br/>
-		/// The parameter `opacity` will be clamped internally between 0.0f<br/>
-		/// (transparent) and 1.0f (opaque).<br/>
-		/// This function also returns -1 if setting the opacity isn't supported.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowOpacity")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity);
-
-		/// <summary>/// Set the opacity for a window.<br/>/// The parameter `opacity` will be clamped internally between 0.0f<br/>/// (transparent) and 1.0f (opaque).<br/>/// This function also returns -1 if setting the opacity isn't supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
-		{
-			int ret = SDLSetWindowOpacityNative(window, opacity);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the opacity of a window.<br/>
-		/// If transparency isn't supported on this platform, opacity will be reported<br/>
-		/// as 1.0f without error.<br/>
-		/// The parameter `opacity` is ignored if it is NULL.<br/>
-		/// This function also returns -1 if an invalid window was provided.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowOpacity")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] float* outOpacity);
-
-		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] float* outOpacity)
-		{
-			int ret = SDLGetWindowOpacityNative(window, outOpacity);
-			return ret;
-		}
-
-		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] ref float outOpacity)
-		{
-			fixed (float* poutOpacity = &outOpacity)
-			{
-				int ret = SDLGetWindowOpacityNative(window, (float*)poutOpacity);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Set the window as a modal for another window.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowModalFor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowModalForNative([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* parentWindow);
-
-		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* parentWindow)
-		{
-			int ret = SDLSetWindowModalForNative(modalWindow, parentWindow);
-			return ret;
-		}
-
-		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow parentWindow)
-		{
-			fixed (SDLWindow* pparentWindow = &parentWindow)
-			{
-				int ret = SDLSetWindowModalForNative(modalWindow, (SDLWindow*)pparentWindow);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Explicitly set input focus to the window.<br/>
-		/// You almost certainly want SDL_RaiseWindow() instead of this function. Use<br/>
-		/// this with caution, as you might give focus to a window that is completely<br/>
-		/// obscured by other windows.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowInputFocus")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowInputFocus")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowInputFocusNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Explicitly set input focus to the window.<br/>/// You almost certainly want SDL_RaiseWindow() instead of this function. Use<br/>/// this with caution, as you might give focus to a window that is completely<br/>/// obscured by other windows.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowInputFocus")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowInputFocus([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			int ret = SDLSetWindowInputFocusNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the gamma ramp for the display that owns a given window.<br/>
-		/// Set the gamma translation table for the red, green, and blue channels of<br/>
-		/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>
-		/// representing a mapping between the input and output for that channel. The<br/>
-		/// input is the index into the array, and the output is the 16-bit gamma value<br/>
-		/// at that index, scaled to the output color precision.<br/>
-		/// Despite the name and signature, this method sets the gamma ramp of the<br/>
-		/// entire display, not an individual window. A window is considered to be<br/>
-		/// owned by the display that contains the window's center pixel. (The index of<br/>
-		/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>
-		/// ramp set will not follow the window if it is moved to another display.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowGammaRamp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowGammaRampNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue);
-
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
-		{
-			int ret = SDLSetWindowGammaRampNative(window, red, green, blue);
-			return ret;
-		}
-
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
-		{
-			fixed (ushort* pred = &red)
-			{
-				int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, green, blue);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
-		{
-			fixed (ushort* pgreen = &green)
-			{
-				int ret = SDLSetWindowGammaRampNative(window, red, (ushort*)pgreen, blue);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
-		{
-			fixed (ushort* pred = &red)
-			{
-				fixed (ushort* pgreen = &green)
+				else
 				{
-					int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, blue);
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			int ret = SDLSetClipboardTextNative(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>
+		/// This functions returns empty string if there was not enough memory left for<br/>
+		/// a copy of the clipboard's content.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetClipboardText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetClipboardTextNative();
+
+		/// <summary>/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the clipboard's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLGetClipboardText()
+		{
+			byte* ret = SDLGetClipboardTextNative();
+			return ret;
+		}
+
+		/// <summary>/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the clipboard's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLGetClipboardTextS()
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetClipboardTextNative());
+			return ret;
+		}
+
+		/// <summary>
+		/// Query whether the clipboard exists and contains a non-empty text string.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasClipboardText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasClipboardTextNative();
+
+		/// <summary>/// Query whether the clipboard exists and contains a non-empty text string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasClipboardText()
+		{
+			SDLBool ret = SDLHasClipboardTextNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Put UTF-8 text into the primary selection.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetPrimarySelectionText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetPrimarySelectionTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
+
+		/// <summary>/// Put UTF-8 text into the primary selection.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPrimarySelectionText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
+		{
+			int ret = SDLSetPrimarySelectionTextNative(text);
+			return ret;
+		}
+
+		/// <summary>/// Put UTF-8 text into the primary selection.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPrimarySelectionText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text)
+		{
+			fixed (byte* ptext = &text)
+			{
+				int ret = SDLSetPrimarySelectionTextNative((byte*)ptext);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Put UTF-8 text into the primary selection.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPrimarySelectionText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			int ret = SDLSetPrimarySelectionTextNative(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Get UTF-8 text from the primary selection, which must be freed with<br/>
+		/// SDL_free().<br/>
+		/// This functions returns empty string if there was not enough memory left for<br/>
+		/// a copy of the primary selection's content.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetPrimarySelectionText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetPrimarySelectionTextNative();
+
+		/// <summary>/// Get UTF-8 text from the primary selection, which must be freed with<br/>/// SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the primary selection's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLGetPrimarySelectionText()
+		{
+			byte* ret = SDLGetPrimarySelectionTextNative();
+			return ret;
+		}
+
+		/// <summary>/// Get UTF-8 text from the primary selection, which must be freed with<br/>/// SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the primary selection's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLGetPrimarySelectionTextS()
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetPrimarySelectionTextNative());
+			return ret;
+		}
+
+		/// <summary>
+		/// Query whether the primary selection exists and contains a non-empty text<br/>
+		/// string.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasPrimarySelectionText")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasPrimarySelectionTextNative();
+
+		/// <summary>/// Query whether the primary selection exists and contains a non-empty text<br/>/// string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasPrimarySelectionText()
+		{
+			SDLBool ret = SDLHasPrimarySelectionTextNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the number of CPU cores available.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCount")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetCPUCountNative();
+
+		/// <summary>/// Get the number of CPU cores available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetCPUCount()
+		{
+			int ret = SDLGetCPUCountNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine the L1 cache line size of the CPU.<br/>
+		/// This is useful for determining multi-threaded structure padding or SIMD<br/>
+		/// prefetch sizes.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCacheLineSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetCPUCacheLineSizeNative();
+
+		/// <summary>/// Determine the L1 cache line size of the CPU.<br/>/// This is useful for determining multi-threaded structure padding or SIMD<br/>/// prefetch sizes.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetCPUCacheLineSize()
+		{
+			int ret = SDLGetCPUCacheLineSizeNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has the RDTSC instruction.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasRDTSC")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasRDTSCNative();
+
+		/// <summary>/// Determine whether the CPU has the RDTSC instruction.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasRDTSC()
+		{
+			SDLBool ret = SDLHasRDTSCNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has AltiVec features.<br/>
+		/// This always returns false on CPUs that aren't using PowerPC instruction<br/>
+		/// sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasAltiVec")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasAltiVecNative();
+
+		/// <summary>/// Determine whether the CPU has AltiVec features.<br/>/// This always returns false on CPUs that aren't using PowerPC instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasAltiVec()
+		{
+			SDLBool ret = SDLHasAltiVecNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has MMX features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasMMX")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasMMXNative();
+
+		/// <summary>/// Determine whether the CPU has MMX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasMMX()
+		{
+			SDLBool ret = SDLHasMMXNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has 3DNow! features.<br/>
+		/// This always returns false on CPUs that aren't using AMD instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_Has3DNow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHas3DNowNative();
+
+		/// <summary>/// Determine whether the CPU has 3DNow! features.<br/>/// This always returns false on CPUs that aren't using AMD instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHas3DNow()
+		{
+			SDLBool ret = SDLHas3DNowNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has SSE features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSSENative();
+
+		/// <summary>/// Determine whether the CPU has SSE features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSSE()
+		{
+			SDLBool ret = SDLHasSSENative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has SSE2 features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE2")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSSE2Native();
+
+		/// <summary>/// Determine whether the CPU has SSE2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSSE2()
+		{
+			SDLBool ret = SDLHasSSE2Native();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has SSE3 features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE3")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSSE3Native();
+
+		/// <summary>/// Determine whether the CPU has SSE3 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSSE3()
+		{
+			SDLBool ret = SDLHasSSE3Native();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has SSE4.1 features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE41")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSSE41Native();
+
+		/// <summary>/// Determine whether the CPU has SSE4.1 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSSE41()
+		{
+			SDLBool ret = SDLHasSSE41Native();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has SSE4.2 features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE42")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSSE42Native();
+
+		/// <summary>/// Determine whether the CPU has SSE4.2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSSE42()
+		{
+			SDLBool ret = SDLHasSSE42Native();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has AVX features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasAVXNative();
+
+		/// <summary>/// Determine whether the CPU has AVX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasAVX()
+		{
+			SDLBool ret = SDLHasAVXNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has AVX2 features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX2")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasAVX2Native();
+
+		/// <summary>/// Determine whether the CPU has AVX2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasAVX2()
+		{
+			SDLBool ret = SDLHasAVX2Native();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has AVX-512F (foundation) features.<br/>
+		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX512F")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasAVX512FNative();
+
+		/// <summary>/// Determine whether the CPU has AVX-512F (foundation) features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasAVX512F()
+		{
+			SDLBool ret = SDLHasAVX512FNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has ARM SIMD (ARMv6) features.<br/>
+		/// This is different from ARM NEON, which is a different instruction set.<br/>
+		/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasARMSIMD")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasARMSIMDNative();
+
+		/// <summary>/// Determine whether the CPU has ARM SIMD (ARMv6) features.<br/>/// This is different from ARM NEON, which is a different instruction set.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasARMSIMD()
+		{
+			SDLBool ret = SDLHasARMSIMDNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has NEON (ARM SIMD) features.<br/>
+		/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasNEON")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasNEONNative();
+
+		/// <summary>/// Determine whether the CPU has NEON (ARM SIMD) features.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasNEON()
+		{
+			SDLBool ret = SDLHasNEONNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has LSX (LOONGARCH SIMD) features.<br/>
+		/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>
+		/// sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasLSX")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasLSXNative();
+
+		/// <summary>/// Determine whether the CPU has LSX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasLSX()
+		{
+			SDLBool ret = SDLHasLSXNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.<br/>
+		/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>
+		/// sets.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasLASX")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasLASXNative();
+
+		/// <summary>/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasLASX()
+		{
+			SDLBool ret = SDLHasLASXNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the amount of RAM configured in the system.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetSystemRAM")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetSystemRAMNative();
+
+		/// <summary>/// Get the amount of RAM configured in the system.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSystemRAM()
+		{
+			int ret = SDLGetSystemRAMNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Report the alignment this system needs for SIMD allocations.<br/>
+		/// This will return the minimum number of bytes to which a pointer must be<br/>
+		/// aligned to be compatible with SIMD instructions on the current machine. For<br/>
+		/// example, if the machine supports SSE only, it will return 16, but if it<br/>
+		/// supports AVX-512F, it'll return 64 (etc). This only reports values for<br/>
+		/// instruction sets SDL knows about, so if your SDL build doesn't have<br/>
+		/// SDL_HasAVX512F(), then it might return 16 for the SSE support it sees and<br/>
+		/// not 64 for the AVX-512 instructions that exist but SDL doesn't know about.<br/>
+		/// Plan accordingly.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SIMDGetAlignment")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial ulong SDLSIMDGetAlignmentNative();
+
+		/// <summary>/// Report the alignment this system needs for SIMD allocations.<br/>/// This will return the minimum number of bytes to which a pointer must be<br/>/// aligned to be compatible with SIMD instructions on the current machine. For<br/>/// example, if the machine supports SSE only, it will return 16, but if it<br/>/// supports AVX-512F, it'll return 64 (etc). This only reports values for<br/>/// instruction sets SDL knows about, so if your SDL build doesn't have<br/>/// SDL_HasAVX512F(), then it might return 16 for the SSE support it sees and<br/>/// not 64 for the AVX-512 instructions that exist but SDL doesn't know about.<br/>/// Plan accordingly.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLSIMDGetAlignment()
+		{
+			ulong ret = SDLSIMDGetAlignmentNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Allocate memory in a SIMD-friendly way.<br/>
+		/// This will allocate a block of memory that is suitable for use with SIMD<br/>
+		/// instructions. Specifically, it will be properly aligned and padded for the<br/>
+		/// system's supported vector instructions.<br/>
+		/// The memory returned will be padded such that it is safe to read or write an<br/>
+		/// incomplete vector at the end of the memory block. This can be useful so you<br/>
+		/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>
+		/// processing loop to deal with the final elements without overflowing the<br/>
+		/// allocated buffer.<br/>
+		/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>
+		/// delete[], etc.<br/>
+		/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>
+		/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>
+		/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>
+		/// 64. To be clear: if you can't decide to use an instruction set with an<br/>
+		/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>
+		/// through here.<br/>
+		/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>
+		/// out of memory, but you are not allowed to dereference it (because you only<br/>
+		/// own zero bytes of that buffer).<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SIMDAlloc")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLSIMDAllocNative([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
+
+		/// <summary>/// Allocate memory in a SIMD-friendly way.<br/>/// This will allocate a block of memory that is suitable for use with SIMD<br/>/// instructions. Specifically, it will be properly aligned and padded for the<br/>/// system's supported vector instructions.<br/>/// The memory returned will be padded such that it is safe to read or write an<br/>/// incomplete vector at the end of the memory block. This can be useful so you<br/>/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>/// processing loop to deal with the final elements without overflowing the<br/>/// allocated buffer.<br/>/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>/// delete[], etc.<br/>/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>/// 64. To be clear: if you can't decide to use an instruction set with an<br/>/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>/// through here.<br/>/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>/// out of memory, but you are not allowed to dereference it (because you only<br/>/// own zero bytes of that buffer).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSIMDAlloc([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
+		{
+			void* ret = SDLSIMDAllocNative(len);
+			return ret;
+		}
+
+		/// <summary>/// Allocate memory in a SIMD-friendly way.<br/>/// This will allocate a block of memory that is suitable for use with SIMD<br/>/// instructions. Specifically, it will be properly aligned and padded for the<br/>/// system's supported vector instructions.<br/>/// The memory returned will be padded such that it is safe to read or write an<br/>/// incomplete vector at the end of the memory block. This can be useful so you<br/>/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>/// processing loop to deal with the final elements without overflowing the<br/>/// allocated buffer.<br/>/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>/// delete[], etc.<br/>/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>/// 64. To be clear: if you can't decide to use an instruction set with an<br/>/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>/// through here.<br/>/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>/// out of memory, but you are not allowed to dereference it (because you only<br/>/// own zero bytes of that buffer).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSIMDAlloc([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] nuint len)
+		{
+			void* ret = SDLSIMDAllocNative(len);
+			return ret;
+		}
+
+		/// <summary>
+		/// Reallocate memory obtained from SDL_SIMDAlloc<br/>
+		/// It is not valid to use this function on a pointer from anything but<br/>
+		/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>
+		/// SDL_malloc, memalign, new[], etc.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SIMDRealloc")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLSIMDReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
+
+		/// <summary>/// Reallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>/// SDL_malloc, memalign, new[], etc.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSIMDRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
+		{
+			void* ret = SDLSIMDReallocNative(mem, len);
+			return ret;
+		}
+
+		/// <summary>/// Reallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>/// SDL_malloc, memalign, new[], etc.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSIMDRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] nuint len)
+		{
+			void* ret = SDLSIMDReallocNative(mem, len);
+			return ret;
+		}
+
+		/// <summary>
+		/// Deallocate memory obtained from SDL_SIMDAlloc<br/>
+		/// It is not valid to use this function on a pointer from anything but<br/>
+		/// SDL_SIMDAlloc() or SDL_SIMDRealloc(). It can't be used on pointers from<br/>
+		/// malloc, realloc, SDL_malloc, memalign, new[], etc.<br/>
+		/// However, SDL_SIMDFree(NULL) is a legal no-op.<br/>
+		/// The memory pointed to by `ptr` is no longer valid for access upon return,<br/>
+		/// and may be returned to the system or reused by a future allocation. The<br/>
+		/// pointer passed to this function is no longer safe to dereference once this<br/>
+		/// function returns, and should be discarded.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SIMDFree")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSIMDFreeNative([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr);
+
+		/// <summary>/// Deallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc() or SDL_SIMDRealloc(). It can't be used on pointers from<br/>/// malloc, realloc, SDL_malloc, memalign, new[], etc.<br/>/// However, SDL_SIMDFree(NULL) is a legal no-op.<br/>/// The memory pointed to by `ptr` is no longer valid for access upon return,<br/>/// and may be returned to the system or reused by a future allocation. The<br/>/// pointer passed to this function is no longer safe to dereference once this<br/>/// function returns, and should be discarded.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSIMDFree([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr)
+		{
+			SDLSIMDFreeNative(ptr);
+		}
+
+		/// <summary>
+		/// Get the human readable name of a pixel format.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetPixelFormatName")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetPixelFormatNameNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format);
+
+		/// <summary>/// Get the human readable name of a pixel format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetPixelFormatName([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
+		{
+			byte* ret = SDLGetPixelFormatNameNative(format);
+			return ret;
+		}
+
+		/// <summary>/// Get the human readable name of a pixel format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetPixelFormatNameS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetPixelFormatNameNative(format));
+			return ret;
+		}
+
+		/// <summary>
+		/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_PixelFormatEnumToMasks")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLPixelFormatEnumToMasksNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask);
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, bmask, amask);
+			return ret;
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, bmask, amask);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, bmask, amask);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, bmask, amask);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pblue = &blue)
+			fixed (uint* pgmask = &gmask)
 			{
-				int ret = SDLSetWindowGammaRampNative(window, red, green, (ushort*)pblue);
+				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, bmask, amask);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pred = &red)
+			fixed (int* pbpp = &bpp)
 			{
-				fixed (ushort* pblue = &blue)
+				fixed (uint* pgmask = &gmask)
 				{
-					int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, green, (ushort*)pblue);
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, bmask, amask);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pgreen = &green)
+			fixed (uint* prmask = &rmask)
 			{
-				fixed (ushort* pblue = &blue)
+				fixed (uint* pgmask = &gmask)
 				{
-					int ret = SDLSetWindowGammaRampNative(window, red, (ushort*)pgreen, (ushort*)pblue);
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, bmask, amask);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pred = &red)
+			fixed (int* pbpp = &bpp)
 			{
-				fixed (ushort* pgreen = &green)
+				fixed (uint* prmask = &rmask)
 				{
-					fixed (ushort* pblue = &blue)
+					fixed (uint* pgmask = &gmask)
 					{
-						int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, (ushort*)pblue);
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, bmask, amask);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>
-		/// Get the gamma ramp for a given window's display.<br/>
-		/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>
-		/// entire display, not an individual window. A window is considered to be<br/>
-		/// owned by the display that contains the window's center pixel. (The index of<br/>
-		/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowGammaRamp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetWindowGammaRampNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue);
-
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			int ret = SDLGetWindowGammaRampNative(window, red, green, blue);
-			return ret;
-		}
-
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
-		{
-			fixed (ushort* pred = &red)
+			fixed (uint* pbmask = &bmask)
 			{
-				int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, green, blue);
+				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, (uint*)pbmask, amask);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pgreen = &green)
+			fixed (int* pbpp = &bpp)
 			{
-				int ret = SDLGetWindowGammaRampNative(window, red, (ushort*)pgreen, blue);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
-		{
-			fixed (ushort* pred = &red)
-			{
-				fixed (ushort* pgreen = &green)
+				fixed (uint* pbmask = &bmask)
 				{
-					int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, blue);
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, (uint*)pbmask, amask);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pblue = &blue)
+			fixed (uint* prmask = &rmask)
 			{
-				int ret = SDLGetWindowGammaRampNative(window, red, green, (ushort*)pblue);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort blue)
-		{
-			fixed (ushort* pred = &red)
-			{
-				fixed (ushort* pblue = &blue)
+				fixed (uint* pbmask = &bmask)
 				{
-					int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, green, (ushort*)pblue);
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, (uint*)pbmask, amask);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort blue)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			fixed (ushort* pgreen = &green)
+			fixed (int* pbpp = &bpp)
 			{
-				fixed (ushort* pblue = &blue)
+				fixed (uint* prmask = &rmask)
 				{
-					int ret = SDLGetWindowGammaRampNative(window, red, (ushort*)pgreen, (ushort*)pblue);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort blue)
-		{
-			fixed (ushort* pred = &red)
-			{
-				fixed (ushort* pgreen = &green)
-				{
-					fixed (ushort* pblue = &blue)
+					fixed (uint* pbmask = &bmask)
 					{
-						int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, (ushort*)pblue);
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, (uint*)pbmask, amask);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>
-		/// Provide a callback that decides if a window region has special properties.<br/>
-		/// Normally windows are dragged and resized by decorations provided by the<br/>
-		/// system window manager (a title bar, borders, etc), but for some apps, it<br/>
-		/// makes sense to drag them from somewhere else inside the window itself; for<br/>
-		/// example, one might have a borderless window that wants to be draggable from<br/>
-		/// any part, or simulate its own title bar, etc.<br/>
-		/// This function lets the app provide a callback that designates pieces of a<br/>
-		/// given window as special. This callback is run during event processing if we<br/>
-		/// need to tell the OS to treat a region of the window specially; the use of<br/>
-		/// this callback is known as "hit testing."<br/>
-		/// Mouse input may not be delivered to your application if it is within a<br/>
-		/// special area; the OS will often apply that input to moving the window or<br/>
-		/// resizing the window and not deliver it to the application.<br/>
-		/// Specifying NULL for a callback disables hit-testing. Hit-testing is<br/>
-		/// disabled by default.<br/>
-		/// Platforms that don't support this functionality will return -1<br/>
-		/// unconditionally, even if you're attempting to disable hit-testing.<br/>
-		/// Your callback may fire at any time, and its firing does not indicate any<br/>
-		/// specific behavior (for example, on Windows, this certainly might fire when<br/>
-		/// the OS is deciding whether to drag your window, but it fires for lots of<br/>
-		/// other reasons, too, some unrelated to anything you probably care about _and<br/>
-		/// when the mouse isn't actually at the location it is testing_). Since this<br/>
-		/// can fire at any time, you should try to keep your callback efficient,<br/>
-		/// devoid of allocations, etc.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetWindowHitTest")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowHitTest")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetWindowHitTestNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HitTest")] SdlHittest callback, [NativeName(NativeNameType.Param, "callback_data")] [NativeName(NativeNameType.Type, "void*")] void* callbackData);
-
-		/// <summary>/// Provide a callback that decides if a window region has special properties.<br/>/// Normally windows are dragged and resized by decorations provided by the<br/>/// system window manager (a title bar, borders, etc), but for some apps, it<br/>/// makes sense to drag them from somewhere else inside the window itself; for<br/>/// example, one might have a borderless window that wants to be draggable from<br/>/// any part, or simulate its own title bar, etc.<br/>/// This function lets the app provide a callback that designates pieces of a<br/>/// given window as special. This callback is run during event processing if we<br/>/// need to tell the OS to treat a region of the window specially; the use of<br/>/// this callback is known as "hit testing."<br/>/// Mouse input may not be delivered to your application if it is within a<br/>/// special area; the OS will often apply that input to moving the window or<br/>/// resizing the window and not deliver it to the application.<br/>/// Specifying NULL for a callback disables hit-testing. Hit-testing is<br/>/// disabled by default.<br/>/// Platforms that don't support this functionality will return -1<br/>/// unconditionally, even if you're attempting to disable hit-testing.<br/>/// Your callback may fire at any time, and its firing does not indicate any<br/>/// specific behavior (for example, on Windows, this certainly might fire when<br/>/// the OS is deciding whether to drag your window, but it fires for lots of<br/>/// other reasons, too, some unrelated to anything you probably care about _and<br/>/// when the mouse isn't actually at the location it is testing_). Since this<br/>/// can fire at any time, you should try to keep your callback efficient,<br/>/// devoid of allocations, etc.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowHitTest")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetWindowHitTest([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HitTest")] SdlHittest callback, [NativeName(NativeNameType.Param, "callback_data")] [NativeName(NativeNameType.Type, "void*")] void* callbackData)
-		{
-			int ret = SDLSetWindowHitTestNative(window, callback, callbackData);
-			return ret;
-		}
-
-		/// <summary>
-		/// Request a window to demand attention from the user.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FlashWindow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FlashWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLFlashWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "operation")] [NativeName(NativeNameType.Type, "SDL_FlashOperation")] SDLFlashOperation operation);
-
-		/// <summary>/// Request a window to demand attention from the user.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FlashWindow")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLFlashWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "operation")] [NativeName(NativeNameType.Type, "SDL_FlashOperation")] SDLFlashOperation operation)
-		{
-			int ret = SDLFlashWindowNative(window, operation);
-			return ret;
-		}
-
-		/// <summary>
-		/// Destroy a window.<br/>
-		/// If `window` is NULL, this function will return immediately after setting<br/>
-		/// the SDL error message to "Invalid window". See SDL_GetError().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DestroyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DestroyWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDestroyWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Destroy a window.<br/>/// If `window` is NULL, this function will return immediately after setting<br/>/// the SDL error message to "Invalid window". See SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDestroyWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLDestroyWindowNative(window);
-		}
-
-		/// <summary>
-		/// Check whether the screensaver is currently enabled.<br/>
-		/// The screensaver is disabled by default since SDL 2.0.2. Before SDL 2.0.2<br/>
-		/// the screensaver was enabled by default.<br/>
-		/// The default can also be changed using `SDL_HINT_VIDEO_ALLOW_SCREENSAVER`.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_IsScreenSaverEnabled")]
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_IsScreenSaverEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLIsScreenSaverEnabledNative();
-
-		/// <summary>/// Check whether the screensaver is currently enabled.<br/>/// The screensaver is disabled by default since SDL 2.0.2. Before SDL 2.0.2<br/>/// the screensaver was enabled by default.<br/>/// The default can also be changed using `SDL_HINT_VIDEO_ALLOW_SCREENSAVER`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IsScreenSaverEnabled")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLIsScreenSaverEnabled()
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
 		{
-			SDLBool ret = SDLIsScreenSaverEnabledNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Allow the screen to be blanked by a screen saver.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_EnableScreenSaver")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_EnableScreenSaver")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLEnableScreenSaverNative();
-
-		/// <summary>/// Allow the screen to be blanked by a screen saver.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnableScreenSaver")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLEnableScreenSaver()
-		{
-			SDLEnableScreenSaverNative();
-		}
-
-		/// <summary>
-		/// Prevent the screen from being blanked by a screen saver.<br/>
-		/// If you disable the screensaver, it is automatically re-enabled when SDL<br/>
-		/// quits.<br/>
-		/// The screensaver is disabled by default since SDL 2.0.2. Before SDL 2.0.2<br/>
-		/// the screensaver was enabled by default.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DisableScreenSaver")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DisableScreenSaver")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDisableScreenSaverNative();
-
-		/// <summary>/// Prevent the screen from being blanked by a screen saver.<br/>/// If you disable the screensaver, it is automatically re-enabled when SDL<br/>/// quits.<br/>/// The screensaver is disabled by default since SDL 2.0.2. Before SDL 2.0.2<br/>/// the screensaver was enabled by default.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DisableScreenSaver")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDisableScreenSaver()
-		{
-			SDLDisableScreenSaverNative();
-		}
-
-		/// <summary>
-		/// Dynamically load an OpenGL library.<br/>
-		/// This should be done after initializing the video driver, but before<br/>
-		/// creating any OpenGL windows. If no OpenGL library is loaded, the default<br/>
-		/// library will be loaded upon creation of the first OpenGL window.<br/>
-		/// If you do this, you need to retrieve all of the GL functions used in your<br/>
-		/// program from the dynamic library using SDL_GL_GetProcAddress().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_LoadLibrary")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_LoadLibrary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLLoadLibraryNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path);
-
-		/// <summary>/// Dynamically load an OpenGL library.<br/>/// This should be done after initializing the video driver, but before<br/>/// creating any OpenGL windows. If no OpenGL library is loaded, the default<br/>/// library will be loaded upon creation of the first OpenGL window.<br/>/// If you do this, you need to retrieve all of the GL functions used in your<br/>/// program from the dynamic library using SDL_GL_GetProcAddress().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_LoadLibrary")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLLoadLibrary([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path)
-		{
-			int ret = SDLGLLoadLibraryNative(path);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get an OpenGL function by name.<br/>
-		/// If the GL library is loaded at runtime with SDL_GL_LoadLibrary(), then all<br/>
-		/// GL functions must be retrieved this way. Usually this is used to retrieve<br/>
-		/// function pointers to OpenGL extensions.<br/>
-		/// There are some quirks to looking up OpenGL functions that require some<br/>
-		/// extra care from the application. If you code carefully, you can handle<br/>
-		/// these quirks without any platform-specific code, though:<br/>
-		/// - On Windows, function pointers are specific to the current GL context;<br/>
-		/// this means you need to have created a GL context and made it current<br/>
-		/// before calling SDL_GL_GetProcAddress(). If you recreate your context or<br/>
-		/// create a second context, you should assume that any existing function<br/>
-		/// pointers aren't valid to use with it. This is (currently) a<br/>
-		/// Windows-specific limitation, and in practice lots of drivers don't suffer<br/>
-		/// this limitation, but it is still the way the wgl API is documented to<br/>
-		/// work and you should expect crashes if you don't respect it. Store a copy<br/>
-		/// of the function pointers that comes and goes with context lifespan.<br/>
-		/// - On X11, function pointers returned by this function are valid for any<br/>
-		/// context, and can even be looked up before a context is created at all.<br/>
-		/// This means that, for at least some common OpenGL implementations, if you<br/>
-		/// look up a function that doesn't exist, you'll get a non-NULL result that<br/>
-		/// is _NOT_ safe to call. You must always make sure the function is actually<br/>
-		/// available for a given GL context before calling it, by checking for the<br/>
-		/// existence of the appropriate extension with SDL_GL_ExtensionSupported(),<br/>
-		/// or verifying that the version of OpenGL you're using offers the function<br/>
-		/// as core functionality.<br/>
-		/// - Some OpenGL drivers, on all platforms, *will* return NULL if a function<br/>
-		/// isn't supported, but you can't count on this behavior. Check for<br/>
-		/// extensions you use, and if you get a NULL anyway, act as if that<br/>
-		/// extension wasn't available. This is probably a bug in the driver, but you<br/>
-		/// can code defensively for this scenario anyhow.<br/>
-		/// - Just because you're on Linux/Unix, don't assume you'll be using X11.<br/>
-		/// Next-gen display servers are waiting to replace it, and may or may not<br/>
-		/// make the same promises about function pointers.<br/>
-		/// - OpenGL function pointers must be declared `APIENTRY` as in the example<br/>
-		/// code. This will ensure the proper calling convention is followed on<br/>
-		/// platforms where this matters (Win32) thereby avoiding stack corruption.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetProcAddress")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetProcAddress")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLGLGetProcAddressNative([NativeName(NativeNameType.Param, "proc")] [NativeName(NativeNameType.Type, "const char*")] byte* proc);
-
-		/// <summary>/// Get an OpenGL function by name.<br/>/// If the GL library is loaded at runtime with SDL_GL_LoadLibrary(), then all<br/>/// GL functions must be retrieved this way. Usually this is used to retrieve<br/>/// function pointers to OpenGL extensions.<br/>/// There are some quirks to looking up OpenGL functions that require some<br/>/// extra care from the application. If you code carefully, you can handle<br/>/// these quirks without any platform-specific code, though:<br/>/// - On Windows, function pointers are specific to the current GL context;<br/>/// this means you need to have created a GL context and made it current<br/>/// before calling SDL_GL_GetProcAddress(). If you recreate your context or<br/>/// create a second context, you should assume that any existing function<br/>/// pointers aren't valid to use with it. This is (currently) a<br/>/// Windows-specific limitation, and in practice lots of drivers don't suffer<br/>/// this limitation, but it is still the way the wgl API is documented to<br/>/// work and you should expect crashes if you don't respect it. Store a copy<br/>/// of the function pointers that comes and goes with context lifespan.<br/>/// - On X11, function pointers returned by this function are valid for any<br/>/// context, and can even be looked up before a context is created at all.<br/>/// This means that, for at least some common OpenGL implementations, if you<br/>/// look up a function that doesn't exist, you'll get a non-NULL result that<br/>/// is _NOT_ safe to call. You must always make sure the function is actually<br/>/// available for a given GL context before calling it, by checking for the<br/>/// existence of the appropriate extension with SDL_GL_ExtensionSupported(),<br/>/// or verifying that the version of OpenGL you're using offers the function<br/>/// as core functionality.<br/>/// - Some OpenGL drivers, on all platforms, *will* return NULL if a function<br/>/// isn't supported, but you can't count on this behavior. Check for<br/>/// extensions you use, and if you get a NULL anyway, act as if that<br/>/// extension wasn't available. This is probably a bug in the driver, but you<br/>/// can code defensively for this scenario anyhow.<br/>/// - Just because you're on Linux/Unix, don't assume you'll be using X11.<br/>/// Next-gen display servers are waiting to replace it, and may or may not<br/>/// make the same promises about function pointers.<br/>/// - OpenGL function pointers must be declared `APIENTRY` as in the example<br/>/// code. This will ensure the proper calling convention is followed on<br/>/// platforms where this matters (Win32) thereby avoiding stack corruption.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetProcAddress")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGLGetProcAddress([NativeName(NativeNameType.Param, "proc")] [NativeName(NativeNameType.Type, "const char*")] byte* proc)
-		{
-			void* ret = SDLGLGetProcAddressNative(proc);
-			return ret;
-		}
-
-		/// <summary>
-		/// Unload the OpenGL library previously loaded by SDL_GL_LoadLibrary().<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_UnloadLibrary")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_UnloadLibrary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGLUnloadLibraryNative();
-
-		/// <summary>/// Unload the OpenGL library previously loaded by SDL_GL_LoadLibrary().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_UnloadLibrary")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLUnloadLibrary()
-		{
-			SDLGLUnloadLibraryNative();
-		}
-
-		/// <summary>
-		/// Check if an OpenGL extension is supported for the current context.<br/>
-		/// This function operates on the current GL context; you must have created a<br/>
-		/// context and it must be current before calling this function. Do not assume<br/>
-		/// that all contexts you create will have the same set of extensions<br/>
-		/// available, or that recreating an existing context will offer the same<br/>
-		/// extensions again.<br/>
-		/// While it's probably not a massive overhead, this function is not an O(1)<br/>
-		/// operation. Check the extensions you care about after creating the GL<br/>
-		/// context and save that information somewhere instead of calling the function<br/>
-		/// every time you need to know.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_ExtensionSupported")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_ExtensionSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGLExtensionSupportedNative([NativeName(NativeNameType.Param, "extension")] [NativeName(NativeNameType.Type, "const char*")] byte* extension);
-
-		/// <summary>/// Check if an OpenGL extension is supported for the current context.<br/>/// This function operates on the current GL context; you must have created a<br/>/// context and it must be current before calling this function. Do not assume<br/>/// that all contexts you create will have the same set of extensions<br/>/// available, or that recreating an existing context will offer the same<br/>/// extensions again.<br/>/// While it's probably not a massive overhead, this function is not an O(1)<br/>/// operation. Check the extensions you care about after creating the GL<br/>/// context and save that information somewhere instead of calling the function<br/>/// every time you need to know.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_ExtensionSupported")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGLExtensionSupported([NativeName(NativeNameType.Param, "extension")] [NativeName(NativeNameType.Type, "const char*")] byte* extension)
-		{
-			SDLBool ret = SDLGLExtensionSupportedNative(extension);
-			return ret;
-		}
-
-		/// <summary>
-		/// Reset all previously set OpenGL context attributes to their default values.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_ResetAttributes")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_ResetAttributes")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGLResetAttributesNative();
-
-		/// <summary>/// Reset all previously set OpenGL context attributes to their default values.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_ResetAttributes")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLResetAttributes()
-		{
-			SDLGLResetAttributesNative();
-		}
-
-		/// <summary>
-		/// Set an OpenGL window attribute before window creation.<br/>
-		/// This function sets the OpenGL attribute `attr` to `value`. The requested<br/>
-		/// attributes should be set before creating an OpenGL window. You should use<br/>
-		/// SDL_GL_GetAttribute() to check the values after creating the OpenGL<br/>
-		/// context, since the values obtained can differ from the requested ones.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_SetAttribute")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_SetAttribute")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLSetAttributeNative([NativeName(NativeNameType.Param, "attr")] [NativeName(NativeNameType.Type, "SDL_GLattr")] SDLGLattr attr, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value);
-
-		/// <summary>/// Set an OpenGL window attribute before window creation.<br/>/// This function sets the OpenGL attribute `attr` to `value`. The requested<br/>/// attributes should be set before creating an OpenGL window. You should use<br/>/// SDL_GL_GetAttribute() to check the values after creating the OpenGL<br/>/// context, since the values obtained can differ from the requested ones.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_SetAttribute")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLSetAttribute([NativeName(NativeNameType.Param, "attr")] [NativeName(NativeNameType.Type, "SDL_GLattr")] SDLGLattr attr, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int")] int value)
-		{
-			int ret = SDLGLSetAttributeNative(attr, value);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the actual value for an attribute from the current context.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetAttribute")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetAttribute")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLGetAttributeNative([NativeName(NativeNameType.Param, "attr")] [NativeName(NativeNameType.Type, "SDL_GLattr")] SDLGLattr attr, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int*")] int* value);
-
-		/// <summary>/// Get the actual value for an attribute from the current context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetAttribute")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLGetAttribute([NativeName(NativeNameType.Param, "attr")] [NativeName(NativeNameType.Type, "SDL_GLattr")] SDLGLattr attr, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int*")] int* value)
-		{
-			int ret = SDLGLGetAttributeNative(attr, value);
-			return ret;
-		}
-
-		/// <summary>/// Get the actual value for an attribute from the current context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetAttribute")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLGetAttribute([NativeName(NativeNameType.Param, "attr")] [NativeName(NativeNameType.Type, "SDL_GLattr")] SDLGLattr attr, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "int*")] ref int value)
-		{
-			fixed (int* pvalue = &value)
+			fixed (uint* pgmask = &gmask)
 			{
-				int ret = SDLGLGetAttributeNative(attr, (int*)pvalue);
+				fixed (uint* pbmask = &bmask)
+				{
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, (uint*)pbmask, amask);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pbmask = &bmask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, (uint*)pbmask, amask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pbmask = &bmask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, amask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					fixed (uint* pgmask = &gmask)
+					{
+						fixed (uint* pbmask = &bmask)
+						{
+							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, amask);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* pamask = &amask)
+			{
+				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, bmask, (uint*)pamask);
 				return ret;
 			}
 		}
 
-		/// <summary>
-		/// Create an OpenGL context for an OpenGL window, and make it current.<br/>
-		/// Windows users new to OpenGL should note that, for historical reasons, GL<br/>
-		/// functions added after OpenGL version 1.1 are not available by default.<br/>
-		/// Those functions must be loaded at run-time, either with an OpenGL<br/>
-		/// extension-handling library or with SDL_GL_GetProcAddress() and its related<br/>
-		/// functions.<br/>
-		/// SDL_GLContext is an alias for `void *`. It's opaque to the application.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_CreateContext")]
-		[return: NativeName(NativeNameType.Type, "SDL_GLContext")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_CreateContext")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGLContext SDLGLCreateContextNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Create an OpenGL context for an OpenGL window, and make it current.<br/>/// Windows users new to OpenGL should note that, for historical reasons, GL<br/>/// functions added after OpenGL version 1.1 are not available by default.<br/>/// Those functions must be loaded at run-time, either with an OpenGL<br/>/// extension-handling library or with SDL_GL_GetProcAddress() and its related<br/>/// functions.<br/>/// SDL_GLContext is an alias for `void *`. It's opaque to the application.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_CreateContext")]
-		[return: NativeName(NativeNameType.Type, "SDL_GLContext")]
-		public static SDLGLContext SDLGLCreateContext([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
 		{
-			SDLGLContext ret = SDLGLCreateContextNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set up an OpenGL context for rendering into an OpenGL window.<br/>
-		/// The context must have been created with a compatible window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_MakeCurrent")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_MakeCurrent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLMakeCurrentNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "SDL_GLContext")] SDLGLContext context);
-
-		/// <summary>/// Set up an OpenGL context for rendering into an OpenGL window.<br/>/// The context must have been created with a compatible window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_MakeCurrent")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLMakeCurrent([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "SDL_GLContext")] SDLGLContext context)
-		{
-			int ret = SDLGLMakeCurrentNative(window, context);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the currently active OpenGL window.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetCurrentWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetCurrentWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLGLGetCurrentWindowNative();
-
-		/// <summary>/// Get the currently active OpenGL window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetCurrentWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLGLGetCurrentWindow()
-		{
-			SDLWindow* ret = SDLGLGetCurrentWindowNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the currently active OpenGL context.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetCurrentContext")]
-		[return: NativeName(NativeNameType.Type, "SDL_GLContext")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetCurrentContext")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGLContext SDLGLGetCurrentContextNative();
-
-		/// <summary>/// Get the currently active OpenGL context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetCurrentContext")]
-		[return: NativeName(NativeNameType.Type, "SDL_GLContext")]
-		public static SDLGLContext SDLGLGetCurrentContext()
-		{
-			SDLGLContext ret = SDLGLGetCurrentContextNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the size of a window's underlying drawable in pixels.<br/>
-		/// This returns info useful for calling glViewport().<br/>
-		/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>
-		/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>
-		/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>
-		/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetDrawableSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGLGetDrawableSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels.<br/>/// This returns info useful for calling glViewport().<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			SDLGLGetDrawableSizeNative(window, w, h);
-		}
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels.<br/>/// This returns info useful for calling glViewport().<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
+			fixed (int* pbpp = &bpp)
 			{
-				SDLGLGetDrawableSizeNative(window, (int*)pw, h);
-			}
-		}
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels.<br/>/// This returns info useful for calling glViewport().<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* ph = &h)
-			{
-				SDLGLGetDrawableSizeNative(window, w, (int*)ph);
-			}
-		}
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels.<br/>/// This returns info useful for calling glViewport().<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* pw = &w)
-			{
-				fixed (int* ph = &h)
+				fixed (uint* pamask = &amask)
 				{
-					SDLGLGetDrawableSizeNative(window, (int*)pw, (int*)ph);
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, bmask, (uint*)pamask);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				fixed (uint* pamask = &amask)
+				{
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, bmask, (uint*)pamask);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, bmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* pgmask = &gmask)
+			{
+				fixed (uint* pamask = &amask)
+				{
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, bmask, (uint*)pamask);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, bmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, bmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					fixed (uint* pgmask = &gmask)
+					{
+						fixed (uint* pamask = &amask)
+						{
+							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, bmask, (uint*)pamask);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* pbmask = &bmask)
+			{
+				fixed (uint* pamask = &amask)
+				{
+					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, (uint*)pbmask, (uint*)pamask);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* pbmask = &bmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, (uint*)pbmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				fixed (uint* pbmask = &bmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, (uint*)pbmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					fixed (uint* pbmask = &bmask)
+					{
+						fixed (uint* pamask = &amask)
+						{
+							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, (uint*)pbmask, (uint*)pamask);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* pgmask = &gmask)
+			{
+				fixed (uint* pbmask = &bmask)
+				{
+					fixed (uint* pamask = &amask)
+					{
+						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pbmask = &bmask)
+					{
+						fixed (uint* pamask = &amask)
+						{
+							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (uint* prmask = &rmask)
+			{
+				fixed (uint* pgmask = &gmask)
+				{
+					fixed (uint* pbmask = &bmask)
+					{
+						fixed (uint* pamask = &amask)
+						{
+							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
+		{
+			fixed (int* pbpp = &bpp)
+			{
+				fixed (uint* prmask = &rmask)
+				{
+					fixed (uint* pgmask = &gmask)
+					{
+						fixed (uint* pbmask = &bmask)
+						{
+							fixed (uint* pamask = &amask)
+							{
+								SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
+								return ret;
+							}
+						}
+					}
 				}
 			}
 		}
 
 		/// <summary>
-		/// Set the swap interval for the current OpenGL context.<br/>
-		/// Some systems allow specifying -1 for the interval, to enable adaptive<br/>
-		/// vsync. Adaptive vsync works the same as vsync, but if you've already missed<br/>
-		/// the vertical retrace for a given frame, it swaps buffers immediately, which<br/>
-		/// might be less jarring for the user during occasional framerate drops. If an<br/>
-		/// application requests adaptive vsync and the system does not support it,<br/>
-		/// this function will fail and return -1. In such a case, you should probably<br/>
-		/// retry the call with 1 for the interval.<br/>
-		/// Adaptive vsync is implemented for some glX drivers with<br/>
-		/// GLX_EXT_swap_control_tear, and for some Windows drivers with<br/>
-		/// WGL_EXT_swap_control_tear.<br/>
-		/// Read more on the Khronos wiki:<br/>
-		/// https://www.khronos.org/opengl/wiki/Swap_Interval#Adaptive_Vsync<br/>
+		/// Convert a bpp value and RGBA masks to an enumerated pixel format.<br/>
+		/// This will return `SDL_PIXELFORMAT_UNKNOWN` if the conversion wasn't<br/>
+		/// possible.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_SetSwapInterval")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_SetSwapInterval")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLSetSwapIntervalNative([NativeName(NativeNameType.Param, "interval")] [NativeName(NativeNameType.Type, "int")] int interval);
-
-		/// <summary>/// Set the swap interval for the current OpenGL context.<br/>/// Some systems allow specifying -1 for the interval, to enable adaptive<br/>/// vsync. Adaptive vsync works the same as vsync, but if you've already missed<br/>/// the vertical retrace for a given frame, it swaps buffers immediately, which<br/>/// might be less jarring for the user during occasional framerate drops. If an<br/>/// application requests adaptive vsync and the system does not support it,<br/>/// this function will fail and return -1. In such a case, you should probably<br/>/// retry the call with 1 for the interval.<br/>/// Adaptive vsync is implemented for some glX drivers with<br/>/// GLX_EXT_swap_control_tear, and for some Windows drivers with<br/>/// WGL_EXT_swap_control_tear.<br/>/// Read more on the Khronos wiki:<br/>/// https://www.khronos.org/opengl/wiki/Swap_Interval#Adaptive_Vsync<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_SetSwapInterval")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLSetSwapInterval([NativeName(NativeNameType.Param, "interval")] [NativeName(NativeNameType.Type, "int")] int interval)
-		{
-			int ret = SDLGLSetSwapIntervalNative(interval);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the swap interval for the current OpenGL context.<br/>
-		/// If the system can't determine the swap interval, or there isn't a valid<br/>
-		/// current context, this function will return 0 as a safe default.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_GetSwapInterval")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_GetSwapInterval")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGLGetSwapIntervalNative();
-
-		/// <summary>/// Get the swap interval for the current OpenGL context.<br/>/// If the system can't determine the swap interval, or there isn't a valid<br/>/// current context, this function will return 0 as a safe default.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_GetSwapInterval")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGLGetSwapInterval()
-		{
-			int ret = SDLGLGetSwapIntervalNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Update a window with OpenGL rendering.<br/>
-		/// This is used with double-buffered OpenGL contexts, which are the default.<br/>
-		/// On macOS, make sure you bind 0 to the draw framebuffer before swapping the<br/>
-		/// window, otherwise nothing will happen. If you aren't using<br/>
-		/// glBindFramebuffer(), this is the default and you won't have to do anything<br/>
-		/// extra.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_SwapWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_SwapWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGLSwapWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Update a window with OpenGL rendering.<br/>/// This is used with double-buffered OpenGL contexts, which are the default.<br/>/// On macOS, make sure you bind 0 to the draw framebuffer before swapping the<br/>/// window, otherwise nothing will happen. If you aren't using<br/>/// glBindFramebuffer(), this is the default and you won't have to do anything<br/>/// extra.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_SwapWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLSwapWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLGLSwapWindowNative(window);
-		}
-
-		/// <summary>
-		/// Delete an OpenGL context.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GL_DeleteContext")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GL_DeleteContext")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGLDeleteContextNative([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "SDL_GLContext")] SDLGLContext context);
-
-		/// <summary>/// Delete an OpenGL context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GL_DeleteContext")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGLDeleteContext([NativeName(NativeNameType.Param, "context")] [NativeName(NativeNameType.Type, "SDL_GLContext")] SDLGLContext context)
-		{
-			SDLGLDeleteContextNative(context);
-		}
-
-		/// <summary>
-		/// Query the window which currently has keyboard focus.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetKeyboardFocus")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetKeyboardFocus")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLGetKeyboardFocusNative();
-
-		/// <summary>/// Query the window which currently has keyboard focus.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyboardFocus")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLGetKeyboardFocus()
-		{
-			SDLWindow* ret = SDLGetKeyboardFocusNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a snapshot of the current state of the keyboard.<br/>
-		/// The pointer returned is a pointer to an internal SDL array. It will be<br/>
-		/// valid for the whole lifetime of the application and should not be freed by<br/>
-		/// the caller.<br/>
-		/// A array element with a value of 1 means that the key is pressed and a value<br/>
-		/// of 0 means that it is not. Indexes into this array are obtained by using<br/>
-		/// SDL_Scancode values.<br/>
-		/// Use SDL_PumpEvents() to update the state array.<br/>
-		/// This function gives you the current state after all events have been<br/>
-		/// processed, so if a key or button has been pressed and released before you<br/>
-		/// process events, then the pressed state will never show up in the<br/>
-		/// SDL_GetKeyboardState() calls.<br/>
-		/// Note: This function doesn't take into account whether shift has been<br/>
-		/// pressed or not.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetKeyboardState")]
-		[return: NativeName(NativeNameType.Type, "const Uint8*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetKeyboardState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetKeyboardStateNative([NativeName(NativeNameType.Param, "numkeys")] [NativeName(NativeNameType.Type, "int*")] int* numkeys);
-
-		/// <summary>/// Get a snapshot of the current state of the keyboard.<br/>/// The pointer returned is a pointer to an internal SDL array. It will be<br/>/// valid for the whole lifetime of the application and should not be freed by<br/>/// the caller.<br/>/// A array element with a value of 1 means that the key is pressed and a value<br/>/// of 0 means that it is not. Indexes into this array are obtained by using<br/>/// SDL_Scancode values.<br/>/// Use SDL_PumpEvents() to update the state array.<br/>/// This function gives you the current state after all events have been<br/>/// processed, so if a key or button has been pressed and released before you<br/>/// process events, then the pressed state will never show up in the<br/>/// SDL_GetKeyboardState() calls.<br/>/// Note: This function doesn't take into account whether shift has been<br/>/// pressed or not.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyboardState")]
-		[return: NativeName(NativeNameType.Type, "const Uint8*")]
-		public static byte* SDLGetKeyboardState([NativeName(NativeNameType.Param, "numkeys")] [NativeName(NativeNameType.Type, "int*")] int* numkeys)
-		{
-			byte* ret = SDLGetKeyboardStateNative(numkeys);
-			return ret;
-		}
-
-		/// <summary>
-		/// Clear the state of the keyboard<br/>
-		/// This function will generate key up events for all pressed keys.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ResetKeyboard")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetKeyboard")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLResetKeyboardNative();
-
-		/// <summary>/// Clear the state of the keyboard<br/>/// This function will generate key up events for all pressed keys.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetKeyboard")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLResetKeyboard()
-		{
-			SDLResetKeyboardNative();
-		}
-
-		/// <summary>
-		/// Get the current key modifier state for the keyboard.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetModState")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keymod")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetModState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLKeymod SDLGetModStateNative();
-
-		/// <summary>/// Get the current key modifier state for the keyboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetModState")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keymod")]
-		public static SDLKeymod SDLGetModState()
-		{
-			SDLKeymod ret = SDLGetModStateNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the current key modifier state for the keyboard.<br/>
-		/// The inverse of SDL_GetModState(), SDL_SetModState() allows you to impose<br/>
-		/// modifier key states on your application. Simply pass your desired modifier<br/>
-		/// states into `modstate`. This value may be a bitwise, OR'd combination of<br/>
-		/// SDL_Keymod values.<br/>
-		/// This does not change the keyboard state, only the key modifier flags that<br/>
-		/// SDL reports.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetModState")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetModState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetModStateNative([NativeName(NativeNameType.Param, "modstate")] [NativeName(NativeNameType.Type, "SDL_Keymod")] SDLKeymod modstate);
-
-		/// <summary>/// Set the current key modifier state for the keyboard.<br/>/// The inverse of SDL_GetModState(), SDL_SetModState() allows you to impose<br/>/// modifier key states on your application. Simply pass your desired modifier<br/>/// states into `modstate`. This value may be a bitwise, OR'd combination of<br/>/// SDL_Keymod values.<br/>/// This does not change the keyboard state, only the key modifier flags that<br/>/// SDL reports.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetModState")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetModState([NativeName(NativeNameType.Param, "modstate")] [NativeName(NativeNameType.Type, "SDL_Keymod")] SDLKeymod modstate)
-		{
-			SDLSetModStateNative(modstate);
-		}
-
-		/// <summary>
-		/// Get the key code corresponding to the given scancode according to the<br/>
-		/// current keyboard layout.<br/>
-		/// See SDL_Keycode for details.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetKeyFromScancode")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keycode")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetKeyFromScancode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetKeyFromScancodeNative([NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "SDL_Scancode")] SDLScancode scancode);
-
-		/// <summary>/// Get the key code corresponding to the given scancode according to the<br/>/// current keyboard layout.<br/>/// See SDL_Keycode for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyFromScancode")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keycode")]
-		public static int SDLGetKeyFromScancode([NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "SDL_Scancode")] SDLScancode scancode)
-		{
-			int ret = SDLGetKeyFromScancodeNative(scancode);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the scancode corresponding to the given key code according to the<br/>
-		/// current keyboard layout.<br/>
-		/// See SDL_Scancode for details.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetScancodeFromKey")]
-		[return: NativeName(NativeNameType.Type, "SDL_Scancode")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetScancodeFromKey")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLScancode SDLGetScancodeFromKeyNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "SDL_Keycode")] int key);
-
-		/// <summary>/// Get the scancode corresponding to the given key code according to the<br/>/// current keyboard layout.<br/>/// See SDL_Scancode for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetScancodeFromKey")]
-		[return: NativeName(NativeNameType.Type, "SDL_Scancode")]
-		public static SDLScancode SDLGetScancodeFromKey([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "SDL_Keycode")] int key)
-		{
-			SDLScancode ret = SDLGetScancodeFromKeyNative(key);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a human-readable name for a scancode.<br/>
-		/// See SDL_Scancode for details.<br/>
-		/// **Warning**: The returned name is by design not stable across platforms,<br/>
-		/// e.g. the name for `SDL_SCANCODE_LGUI` is "Left GUI" under Linux but "Left<br/>
-		/// Windows" under Microsoft Windows, and some scancodes like<br/>
-		/// `SDL_SCANCODE_NONUSBACKSLASH` don't have any name at all. There are even<br/>
-		/// scancodes that share names, e.g. `SDL_SCANCODE_RETURN` and<br/>
-		/// `SDL_SCANCODE_RETURN2` (both called "Return"). This function is therefore<br/>
-		/// unsuitable for creating a stable cross-platform two-way mapping between<br/>
-		/// strings and scancodes.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetScancodeName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetScancodeName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetScancodeNameNative([NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "SDL_Scancode")] SDLScancode scancode);
-
-		/// <summary>/// Get a human-readable name for a scancode.<br/>/// See SDL_Scancode for details.<br/>/// **Warning**: The returned name is by design not stable across platforms,<br/>/// e.g. the name for `SDL_SCANCODE_LGUI` is "Left GUI" under Linux but "Left<br/>/// Windows" under Microsoft Windows, and some scancodes like<br/>/// `SDL_SCANCODE_NONUSBACKSLASH` don't have any name at all. There are even<br/>/// scancodes that share names, e.g. `SDL_SCANCODE_RETURN` and<br/>/// `SDL_SCANCODE_RETURN2` (both called "Return"). This function is therefore<br/>/// unsuitable for creating a stable cross-platform two-way mapping between<br/>/// strings and scancodes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetScancodeName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetScancodeName([NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "SDL_Scancode")] SDLScancode scancode)
-		{
-			byte* ret = SDLGetScancodeNameNative(scancode);
-			return ret;
-		}
-
-		/// <summary>/// Get a human-readable name for a scancode.<br/>/// See SDL_Scancode for details.<br/>/// **Warning**: The returned name is by design not stable across platforms,<br/>/// e.g. the name for `SDL_SCANCODE_LGUI` is "Left GUI" under Linux but "Left<br/>/// Windows" under Microsoft Windows, and some scancodes like<br/>/// `SDL_SCANCODE_NONUSBACKSLASH` don't have any name at all. There are even<br/>/// scancodes that share names, e.g. `SDL_SCANCODE_RETURN` and<br/>/// `SDL_SCANCODE_RETURN2` (both called "Return"). This function is therefore<br/>/// unsuitable for creating a stable cross-platform two-way mapping between<br/>/// strings and scancodes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetScancodeName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetScancodeNameS([NativeName(NativeNameType.Param, "scancode")] [NativeName(NativeNameType.Type, "SDL_Scancode")] SDLScancode scancode)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetScancodeNameNative(scancode));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a scancode from a human-readable name.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetScancodeFromName")]
-		[return: NativeName(NativeNameType.Type, "SDL_Scancode")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetScancodeFromName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLScancode SDLGetScancodeFromNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Get a scancode from a human-readable name.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetScancodeFromName")]
-		[return: NativeName(NativeNameType.Type, "SDL_Scancode")]
-		public static SDLScancode SDLGetScancodeFromName([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			SDLScancode ret = SDLGetScancodeFromNameNative(name);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a human-readable name for a key.<br/>
-		/// See SDL_Scancode and SDL_Keycode for details.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetKeyName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetKeyNameNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "SDL_Keycode")] int key);
-
-		/// <summary>/// Get a human-readable name for a key.<br/>/// See SDL_Scancode and SDL_Keycode for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetKeyName([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "SDL_Keycode")] int key)
-		{
-			byte* ret = SDLGetKeyNameNative(key);
-			return ret;
-		}
-
-		/// <summary>/// Get a human-readable name for a key.<br/>/// See SDL_Scancode and SDL_Keycode for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetKeyNameS([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "SDL_Keycode")] int key)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetKeyNameNative(key));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a key code from a human-readable name.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetKeyFromName")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keycode")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetKeyFromName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetKeyFromNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Get a key code from a human-readable name.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetKeyFromName")]
-		[return: NativeName(NativeNameType.Type, "SDL_Keycode")]
-		public static int SDLGetKeyFromName([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			int ret = SDLGetKeyFromNameNative(name);
-			return ret;
-		}
-
-		/// <summary>
-		/// Start accepting Unicode text input events.<br/>
-		/// This function will start accepting Unicode text input events in the focused<br/>
-		/// SDL window, and start emitting SDL_TextInputEvent (SDL_TEXTINPUT) and<br/>
-		/// SDL_TextEditingEvent (SDL_TEXTEDITING) events. Please use this function in<br/>
-		/// pair with SDL_StopTextInput().<br/>
-		/// On some platforms using this function activates the screen keyboard.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_StartTextInput")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_StartTextInput")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLStartTextInputNative();
-
-		/// <summary>/// Start accepting Unicode text input events.<br/>/// This function will start accepting Unicode text input events in the focused<br/>/// SDL window, and start emitting SDL_TextInputEvent (SDL_TEXTINPUT) and<br/>/// SDL_TextEditingEvent (SDL_TEXTEDITING) events. Please use this function in<br/>/// pair with SDL_StopTextInput().<br/>/// On some platforms using this function activates the screen keyboard.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_StartTextInput")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLStartTextInput()
-		{
-			SDLStartTextInputNative();
-		}
-
-		/// <summary>
-		/// Check whether or not Unicode text input events are enabled.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_IsTextInputActive")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_IsTextInputActive")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLIsTextInputActiveNative();
-
-		/// <summary>/// Check whether or not Unicode text input events are enabled.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IsTextInputActive")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLIsTextInputActive()
-		{
-			SDLBool ret = SDLIsTextInputActiveNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Stop receiving any text input events.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_StopTextInput")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_StopTextInput")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLStopTextInputNative();
-
-		/// <summary>/// Stop receiving any text input events.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_StopTextInput")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLStopTextInput()
-		{
-			SDLStopTextInputNative();
-		}
-
-		/// <summary>
-		/// Dismiss the composition window/IME without disabling the subsystem.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ClearComposition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearComposition")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearCompositionNative();
-
-		/// <summary>/// Dismiss the composition window/IME without disabling the subsystem.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearComposition")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLClearComposition()
-		{
-			SDLClearCompositionNative();
-		}
-
-		/// <summary>
-		/// Returns if an IME Composite or Candidate window is currently shown.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_IsTextInputShown")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_IsTextInputShown")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLIsTextInputShownNative();
-
-		/// <summary>/// Returns if an IME Composite or Candidate window is currently shown.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IsTextInputShown")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLIsTextInputShown()
-		{
-			SDLBool ret = SDLIsTextInputShownNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the rectangle used to type Unicode text inputs. Native input methods<br/>
-		/// will place a window with word suggestions near it, without covering the<br/>
-		/// text being inputted.<br/>
-		/// To start text input in a given location, this function is intended to be<br/>
-		/// called before SDL_StartTextInput, although some platforms support moving<br/>
-		/// the rectangle even while text input (and a composition) is active.<br/>
-		/// Note: If you want to use the system native IME window, try setting hint<br/>
-		/// **SDL_HINT_IME_SHOW_UI** to **1**, otherwise this function won't give you<br/>
-		/// any feedback.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextInputRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextInputRect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetTextInputRectNative([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Set the rectangle used to type Unicode text inputs. Native input methods<br/>/// will place a window with word suggestions near it, without covering the<br/>/// text being inputted.<br/>/// To start text input in a given location, this function is intended to be<br/>/// called before SDL_StartTextInput, although some platforms support moving<br/>/// the rectangle even while text input (and a composition) is active.<br/>/// Note: If you want to use the system native IME window, try setting hint<br/>/// **SDL_HINT_IME_SHOW_UI** to **1**, otherwise this function won't give you<br/>/// any feedback.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextInputRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetTextInputRect([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
-		{
-			SDLSetTextInputRectNative(rect);
-		}
-
-		/// <summary>
-		/// Check whether the platform has screen keyboard support.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasScreenKeyboardSupport")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasScreenKeyboardSupport")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasScreenKeyboardSupportNative();
-
-		/// <summary>/// Check whether the platform has screen keyboard support.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasScreenKeyboardSupport")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasScreenKeyboardSupport()
-		{
-			SDLBool ret = SDLHasScreenKeyboardSupportNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Check whether the screen keyboard is shown for given window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_IsScreenKeyboardShown")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_IsScreenKeyboardShown")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLIsScreenKeyboardShownNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Check whether the screen keyboard is shown for given window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IsScreenKeyboardShown")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLIsScreenKeyboardShown([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLBool ret = SDLIsScreenKeyboardShownNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the window which currently has mouse focus.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetMouseFocus")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetMouseFocus")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLGetMouseFocusNative();
-
-		/// <summary>/// Get the window which currently has mouse focus.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetMouseFocus")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLGetMouseFocus()
-		{
-			SDLWindow* ret = SDLGetMouseFocusNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Retrieve the current state of the mouse.<br/>
-		/// The current button state is returned as a button bitmask, which can be<br/>
-		/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>
-		/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>
-		/// mouse cursor position relative to the focus window. You can pass NULL for<br/>
-		/// either `x` or `y`.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetMouseState")]
+		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetMouseState")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MasksToPixelFormatEnum")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetMouseStateNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y);
+		internal static partial uint SDLMasksToPixelFormatEnumNative([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask);
 
-		/// <summary>/// Retrieve the current state of the mouse.<br/>/// The current button state is returned as a button bitmask, which can be<br/>/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>/// mouse cursor position relative to the focus window. You can pass NULL for<br/>/// either `x` or `y`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetMouseState")]
+		/// <summary>/// Convert a bpp value and RGBA masks to an enumerated pixel format.<br/>/// This will return `SDL_PIXELFORMAT_UNKNOWN` if the conversion wasn't<br/>/// possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		public static uint SDLMasksToPixelFormatEnum([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
 		{
-			uint ret = SDLGetMouseStateNative(x, y);
+			uint ret = SDLMasksToPixelFormatEnumNative(bpp, rmask, gmask, bmask, amask);
 			return ret;
 		}
 
-		/// <summary>/// Retrieve the current state of the mouse.<br/>/// The current button state is returned as a button bitmask, which can be<br/>/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>/// mouse cursor position relative to the focus window. You can pass NULL for<br/>/// either `x` or `y`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetMouseState")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		/// <summary>
+		/// Create an SDL_PixelFormat structure corresponding to a pixel format.<br/>
+		/// Returned structure may come from a shared global cache (i.e. not newly<br/>
+		/// allocated), and hence should not be modified, especially the palette. Weird<br/>
+		/// errors such as `Blit combination not supported` may occur.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AllocFormat")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLPixelFormat* SDLAllocFormatNative([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat);
+
+		/// <summary>/// Create an SDL_PixelFormat structure corresponding to a pixel format.<br/>/// Returned structure may come from a shared global cache (i.e. not newly<br/>/// allocated), and hence should not be modified, especially the palette. Weird<br/>/// errors such as `Blit combination not supported` may occur.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
+		public static SDLPixelFormat* SDLAllocFormat([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat)
 		{
-			fixed (int* py = &y)
+			SDLPixelFormat* ret = SDLAllocFormatNative(pixelFormat);
+			return ret;
+		}
+
+		/// <summary>
+		/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FreeFormat")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLFreeFormatNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format);
+
+		/// <summary>/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeFormat([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format)
+		{
+			SDLFreeFormatNative(format);
+		}
+
+		/// <summary>/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeFormat([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] ref SDLPixelFormat format)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				uint ret = SDLGetMouseStateNative(x, (int*)py);
+				SDLFreeFormatNative((SDLPixelFormat*)pformat);
+			}
+		}
+
+		/// <summary>
+		/// Create a palette structure with the specified number of color entries.<br/>
+		/// The palette entries are initialized to white.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
+		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AllocPalette")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLPalette* SDLAllocPaletteNative([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
+
+		/// <summary>/// Create a palette structure with the specified number of color entries.<br/>/// The palette entries are initialized to white.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
+		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
+		public static SDLPalette* SDLAllocPalette([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			SDLPalette* ret = SDLAllocPaletteNative(ncolors);
+			return ret;
+		}
+
+		/// <summary>
+		/// Set the palette for a pixel format structure.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetPixelFormatPalette")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetPixelFormatPaletteNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
+
+		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			int ret = SDLSetPixelFormatPaletteNative(format, palette);
+			return ret;
+		}
+
+		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				int ret = SDLSetPixelFormatPaletteNative((SDLPixelFormat*)pformat, palette);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
+		{
+			fixed (SDLPalette* ppalette = &palette)
+			{
+				int ret = SDLSetPixelFormatPaletteNative(format, (SDLPalette*)ppalette);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (SDLPalette* ppalette = &palette)
+				{
+					int ret = SDLSetPixelFormatPaletteNative((SDLPixelFormat*)pformat, (SDLPalette*)ppalette);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set a range of colors in a palette.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetPaletteColors")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetPaletteColorsNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
+
+		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			int ret = SDLSetPaletteColorsNative(palette, colors, firstcolor, ncolors);
+			return ret;
+		}
+
+		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			fixed (SDLPalette* ppalette = &palette)
+			{
+				int ret = SDLSetPaletteColorsNative((SDLPalette*)ppalette, colors, firstcolor, ncolors);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] ref SDLColor colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			fixed (SDLColor* pcolors = &colors)
+			{
+				int ret = SDLSetPaletteColorsNative(palette, (SDLColor*)pcolors, firstcolor, ncolors);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] ref SDLColor colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			fixed (SDLPalette* ppalette = &palette)
+			{
+				fixed (SDLColor* pcolors = &colors)
+				{
+					int ret = SDLSetPaletteColorsNative((SDLPalette*)ppalette, (SDLColor*)pcolors, firstcolor, ncolors);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Free a palette created with SDL_AllocPalette().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FreePalette")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLFreePaletteNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
+
+		/// <summary>/// Free a palette created with SDL_AllocPalette().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreePalette([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			SDLFreePaletteNative(palette);
+		}
+
+		/// <summary>/// Free a palette created with SDL_AllocPalette().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreePalette([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
+		{
+			fixed (SDLPalette* ppalette = &palette)
+			{
+				SDLFreePaletteNative((SDLPalette*)ppalette);
+			}
+		}
+
+		/// <summary>
+		/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>
+		/// This function maps the RGB color value to the specified pixel format and<br/>
+		/// returns the pixel value best approximating the given RGB color value for<br/>
+		/// the given pixel format.<br/>
+		/// If the format has a palette (8-bit) the index of the closest matching color<br/>
+		/// in the palette will be returned.<br/>
+		/// If the specified pixel format has an alpha component it will be returned as<br/>
+		/// all 1 bits (fully opaque).<br/>
+		/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>
+		/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>
+		/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>
+		/// for an 8-bpp format).<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MapRGB")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial uint SDLMapRGBNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b);
+
+		/// <summary>/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>/// This function maps the RGB color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGB color value for<br/>/// the given pixel format.<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the specified pixel format has an alpha component it will be returned as<br/>/// all 1 bits (fully opaque).<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLMapRGB([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		{
+			uint ret = SDLMapRGBNative(format, r, g, b);
+			return ret;
+		}
+
+		/// <summary>/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>/// This function maps the RGB color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGB color value for<br/>/// the given pixel format.<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the specified pixel format has an alpha component it will be returned as<br/>/// all 1 bits (fully opaque).<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLMapRGB([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				uint ret = SDLMapRGBNative((SDLPixelFormat*)pformat, r, g, b);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Get the current state of the mouse in relation to the desktop.<br/>
-		/// This works similarly to SDL_GetMouseState(), but the coordinates will be<br/>
-		/// reported relative to the top-left of the desktop. This can be useful if you<br/>
-		/// need to track the mouse outside of a specific window and SDL_CaptureMouse()<br/>
-		/// doesn't fit your needs. For example, it could be useful if you need to<br/>
-		/// track the mouse while dragging a window, where coordinates relative to a<br/>
-		/// window might not be in sync at all times.<br/>
-		/// Note: SDL_GetMouseState() returns the mouse position as SDL understands it<br/>
-		/// from the last pump of the event queue. This function, however, queries the<br/>
-		/// OS for the current mouse position, and as such, might be a slightly less<br/>
-		/// efficient function. Unless you know what you're doing and have a good<br/>
-		/// reason to use this function, you probably want SDL_GetMouseState() instead.<br/>
+		/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>
+		/// This function maps the RGBA color value to the specified pixel format and<br/>
+		/// returns the pixel value best approximating the given RGBA color value for<br/>
+		/// the given pixel format.<br/>
+		/// If the specified pixel format has no alpha component the alpha value will<br/>
+		/// be ignored (as it will be in formats with a palette).<br/>
+		/// If the format has a palette (8-bit) the index of the closest matching color<br/>
+		/// in the palette will be returned.<br/>
+		/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>
+		/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>
+		/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>
+		/// for an 8-bpp format).<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetGlobalMouseState")]
+		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetGlobalMouseState")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MapRGBA")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetGlobalMouseStateNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y);
+		internal static partial uint SDLMapRGBANative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a);
 
-		/// <summary>/// Get the current state of the mouse in relation to the desktop.<br/>/// This works similarly to SDL_GetMouseState(), but the coordinates will be<br/>/// reported relative to the top-left of the desktop. This can be useful if you<br/>/// need to track the mouse outside of a specific window and SDL_CaptureMouse()<br/>/// doesn't fit your needs. For example, it could be useful if you need to<br/>/// track the mouse while dragging a window, where coordinates relative to a<br/>/// window might not be in sync at all times.<br/>/// Note: SDL_GetMouseState() returns the mouse position as SDL understands it<br/>/// from the last pump of the event queue. This function, however, queries the<br/>/// OS for the current mouse position, and as such, might be a slightly less<br/>/// efficient function. Unless you know what you're doing and have a good<br/>/// reason to use this function, you probably want SDL_GetMouseState() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetGlobalMouseState")]
+		/// <summary>/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>/// This function maps the RGBA color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGBA color value for<br/>/// the given pixel format.<br/>/// If the specified pixel format has no alpha component the alpha value will<br/>/// be ignored (as it will be in formats with a palette).<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetGlobalMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		public static uint SDLMapRGBA([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
 		{
-			uint ret = SDLGetGlobalMouseStateNative(x, y);
+			uint ret = SDLMapRGBANative(format, r, g, b, a);
 			return ret;
 		}
 
-		/// <summary>/// Get the current state of the mouse in relation to the desktop.<br/>/// This works similarly to SDL_GetMouseState(), but the coordinates will be<br/>/// reported relative to the top-left of the desktop. This can be useful if you<br/>/// need to track the mouse outside of a specific window and SDL_CaptureMouse()<br/>/// doesn't fit your needs. For example, it could be useful if you need to<br/>/// track the mouse while dragging a window, where coordinates relative to a<br/>/// window might not be in sync at all times.<br/>/// Note: SDL_GetMouseState() returns the mouse position as SDL understands it<br/>/// from the last pump of the event queue. This function, however, queries the<br/>/// OS for the current mouse position, and as such, might be a slightly less<br/>/// efficient function. Unless you know what you're doing and have a good<br/>/// reason to use this function, you probably want SDL_GetMouseState() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetGlobalMouseState")]
+		/// <summary>/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>/// This function maps the RGBA color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGBA color value for<br/>/// the given pixel format.<br/>/// If the specified pixel format has no alpha component the alpha value will<br/>/// be ignored (as it will be in formats with a palette).<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetGlobalMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		public static uint SDLMapRGBA([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
 		{
-			fixed (int* py = &y)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				uint ret = SDLGetGlobalMouseStateNative(x, (int*)py);
+				uint ret = SDLMapRGBANative((SDLPixelFormat*)pformat, r, g, b, a);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Retrieve the relative state of the mouse.<br/>
-		/// The current button state is returned as a button bitmask, which can be<br/>
-		/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>
-		/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>
-		/// mouse deltas since the last call to SDL_GetRelativeMouseState() or since<br/>
-		/// event initialization. You can pass NULL for either `x` or `y`.<br/>
+		/// Get RGB values from a pixel in the specified format.<br/>
+		/// This function uses the entire 8-bit [0..255] range when converting color<br/>
+		/// components from pixel formats with less than 8-bits per RGB component<br/>
+		/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>
+		/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRelativeMouseState")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRelativeMouseState")]
+		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetRGB")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetRelativeMouseStateNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y);
+		internal static partial void SDLGetRGBNative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b);
 
-		/// <summary>/// Retrieve the relative state of the mouse.<br/>/// The current button state is returned as a button bitmask, which can be<br/>/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>/// mouse deltas since the last call to SDL_GetRelativeMouseState() or since<br/>/// event initialization. You can pass NULL for either `x` or `y`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRelativeMouseState")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetRelativeMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			uint ret = SDLGetRelativeMouseStateNative(x, y);
-			return ret;
+			SDLGetRGBNative(pixel, format, r, g, b);
 		}
 
-		/// <summary>/// Retrieve the relative state of the mouse.<br/>/// The current button state is returned as a button bitmask, which can be<br/>/// tested using the `SDL_BUTTON(X)` macros (where `X` is generally 1 for the<br/>/// left, 2 for middle, 3 for the right button), and `x` and `y` are set to the<br/>/// mouse deltas since the last call to SDL_GetRelativeMouseState() or since<br/>/// event initialization. You can pass NULL for either `x` or `y`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRelativeMouseState")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetRelativeMouseState([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			fixed (int* py = &y)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				uint ret = SDLGetRelativeMouseStateNative(x, (int*)py);
-				return ret;
+				SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, g, b);
 			}
 		}
 
-		/// <summary>
-		/// Move the mouse cursor to the given position within the window.<br/>
-		/// This function generates a mouse motion event if relative mode is not<br/>
-		/// enabled. If relative mode is enabled, you can force mouse events for the<br/>
-		/// warp by setting the SDL_HINT_MOUSE_RELATIVE_WARP_MOTION hint.<br/>
-		/// Note that this function will appear to succeed, but not actually move the<br/>
-		/// mouse when used over Microsoft Remote Desktop.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_WarpMouseInWindow")]
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WarpMouseInWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLWarpMouseInWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y);
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (byte* pr = &r)
+			{
+				SDLGetRGBNative(pixel, format, (byte*)pr, g, b);
+			}
+		}
 
-		/// <summary>/// Move the mouse cursor to the given position within the window.<br/>/// This function generates a mouse motion event if relative mode is not<br/>/// enabled. If relative mode is enabled, you can force mouse events for the<br/>/// warp by setting the SDL_HINT_MOUSE_RELATIVE_WARP_MOTION hint.<br/>/// Note that this function will appear to succeed, but not actually move the<br/>/// mouse when used over Microsoft Remote Desktop.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WarpMouseInWindow")]
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLWarpMouseInWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y)
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			SDLWarpMouseInWindowNative(window, x, y);
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b);
+				}
+			}
 		}
 
-		/// <summary>
-		/// Move the mouse to the given position in global screen space.<br/>
-		/// This function generates a mouse motion event.<br/>
-		/// A failure of this function usually means that it is unsupported by a<br/>
-		/// platform.<br/>
-		/// Note that this function will appear to succeed, but not actually move the<br/>
-		/// mouse when used over Microsoft Remote Desktop.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_WarpMouseGlobal")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WarpMouseGlobal")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWarpMouseGlobalNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y);
-
-		/// <summary>/// Move the mouse to the given position in global screen space.<br/>/// This function generates a mouse motion event.<br/>/// A failure of this function usually means that it is unsupported by a<br/>/// platform.<br/>/// Note that this function will appear to succeed, but not actually move the<br/>/// mouse when used over Microsoft Remote Desktop.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WarpMouseGlobal")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLWarpMouseGlobal([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y)
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			int ret = SDLWarpMouseGlobalNative(x, y);
-			return ret;
+			fixed (byte* pg = &g)
+			{
+				SDLGetRGBNative(pixel, format, r, (byte*)pg, b);
+			}
 		}
 
-		/// <summary>
-		/// Set relative mouse mode.<br/>
-		/// While the mouse is in relative mode, the cursor is hidden, the mouse<br/>
-		/// position is constrained to the window, and SDL will report continuous<br/>
-		/// relative mouse motion even if the mouse is at the edge of the window.<br/>
-		/// This function will flush any pending mouse motion.<br/>
-		/// <br/>
-		/// If relative mode is not supported, this returns -1.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetRelativeMouseMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetRelativeMouseMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetRelativeMouseModeNative([NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled);
-
-		/// <summary>/// Set relative mouse mode.<br/>/// While the mouse is in relative mode, the cursor is hidden, the mouse<br/>/// position is constrained to the window, and SDL will report continuous<br/>/// relative mouse motion even if the mouse is at the edge of the window.<br/>/// This function will flush any pending mouse motion.<br/>/// <br/>/// If relative mode is not supported, this returns -1.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetRelativeMouseMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetRelativeMouseMode([NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled)
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			int ret = SDLSetRelativeMouseModeNative(enabled);
-			return ret;
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pg = &g)
+				{
+					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b);
+				}
+			}
 		}
 
-		/// <summary>
-		/// Capture the mouse and to track input outside an SDL window.<br/>
-		/// Capturing enables your app to obtain mouse events globally, instead of just<br/>
-		/// within your window. Not all video targets support this function. When<br/>
-		/// capturing is enabled, the current window will get all mouse events, but<br/>
-		/// unlike relative mode, no change is made to the cursor and it is not<br/>
-		/// restrained to your window.<br/>
-		/// This function may also deny mouse input to other windows--both those in<br/>
-		/// your application and others on the system--so you should use this function<br/>
-		/// sparingly, and in small bursts. For example, you might want to track the<br/>
-		/// mouse while the user is dragging something, until the user releases a mouse<br/>
-		/// button. It is not recommended that you capture the mouse for long periods<br/>
-		/// of time, such as the entire time your app is running. For that, you should<br/>
-		/// probably use SDL_SetRelativeMouseMode() or SDL_SetWindowGrab(), depending<br/>
-		/// on your goals.<br/>
-		/// While captured, mouse events still report coordinates relative to the<br/>
-		/// current (foreground) window, but those coordinates may be outside the<br/>
-		/// bounds of the window (including negative values). Capturing is only allowed<br/>
-		/// for the foreground window. If the window loses focus while capturing, the<br/>
-		/// capture will be disabled automatically.<br/>
-		/// While capturing is enabled, the current window will have the<br/>
-		/// `SDL_WINDOW_MOUSE_CAPTURE` flag set.<br/>
-		/// Please note that as of SDL 2.0.22, SDL will attempt to "auto capture" the<br/>
-		/// mouse while the user is pressing a button; this is to try and make mouse<br/>
-		/// behavior more consistent between platforms, and deal with the common case<br/>
-		/// of a user dragging the mouse outside of the window. This means that if you<br/>
-		/// are calling SDL_CaptureMouse() only to deal with this situation, you no<br/>
-		/// longer have to (although it is safe to do so). If this causes problems for<br/>
-		/// your app, you can disable auto capture by setting the<br/>
-		/// `SDL_HINT_MOUSE_AUTO_CAPTURE` hint to zero.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CaptureMouse")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CaptureMouse")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCaptureMouseNative([NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled);
-
-		/// <summary>/// Capture the mouse and to track input outside an SDL window.<br/>/// Capturing enables your app to obtain mouse events globally, instead of just<br/>/// within your window. Not all video targets support this function. When<br/>/// capturing is enabled, the current window will get all mouse events, but<br/>/// unlike relative mode, no change is made to the cursor and it is not<br/>/// restrained to your window.<br/>/// This function may also deny mouse input to other windows--both those in<br/>/// your application and others on the system--so you should use this function<br/>/// sparingly, and in small bursts. For example, you might want to track the<br/>/// mouse while the user is dragging something, until the user releases a mouse<br/>/// button. It is not recommended that you capture the mouse for long periods<br/>/// of time, such as the entire time your app is running. For that, you should<br/>/// probably use SDL_SetRelativeMouseMode() or SDL_SetWindowGrab(), depending<br/>/// on your goals.<br/>/// While captured, mouse events still report coordinates relative to the<br/>/// current (foreground) window, but those coordinates may be outside the<br/>/// bounds of the window (including negative values). Capturing is only allowed<br/>/// for the foreground window. If the window loses focus while capturing, the<br/>/// capture will be disabled automatically.<br/>/// While capturing is enabled, the current window will have the<br/>/// `SDL_WINDOW_MOUSE_CAPTURE` flag set.<br/>/// Please note that as of SDL 2.0.22, SDL will attempt to "auto capture" the<br/>/// mouse while the user is pressing a button; this is to try and make mouse<br/>/// behavior more consistent between platforms, and deal with the common case<br/>/// of a user dragging the mouse outside of the window. This means that if you<br/>/// are calling SDL_CaptureMouse() only to deal with this situation, you no<br/>/// longer have to (although it is safe to do so). If this causes problems for<br/>/// your app, you can disable auto capture by setting the<br/>/// `SDL_HINT_MOUSE_AUTO_CAPTURE` hint to zero.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CaptureMouse")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLCaptureMouse([NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled)
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
 		{
-			int ret = SDLCaptureMouseNative(enabled);
-			return ret;
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					SDLGetRGBNative(pixel, format, (byte*)pr, (byte*)pg, b);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pb = &b)
+			{
+				SDLGetRGBNative(pixel, format, r, g, (byte*)pb);
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pb = &b)
+				{
+					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pb = &b)
+				{
+					SDLGetRGBNative(pixel, format, (byte*)pr, g, (byte*)pb);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pb = &b)
+					{
+						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pg = &g)
+			{
+				fixed (byte* pb = &b)
+				{
+					SDLGetRGBNative(pixel, format, r, (byte*)pg, (byte*)pb);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						SDLGetRGBNative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						fixed (byte* pb = &b)
+						{
+							SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb);
+						}
+					}
+				}
+			}
 		}
 	}
 }

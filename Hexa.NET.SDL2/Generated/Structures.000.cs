@@ -306,7 +306,7 @@ namespace Hexa.NET.SDL2
 		public uint Type;
 		[NativeName(NativeNameType.Field, "hidden")]
 		[NativeName(NativeNameType.Type, "")]
-		public HiddenUnion Hidden;
+		public HiddenUnion Union;
 
 		public unsafe SDLRWops(delegate*<SDLRWops*, long> size = default, delegate*<SDLRWops*, long, int, long> seek = default, delegate*<SDLRWops*, void*, ulong, ulong, ulong> read = default, delegate*<SDLRWops*, void*, ulong, ulong, ulong> write = default, delegate*<SDLRWops*, int> close = default, uint type = default, HiddenUnion union = default)
 		{
@@ -316,7 +316,7 @@ namespace Hexa.NET.SDL2
 			Write = (void*)write;
 			Close = (void*)close;
 			Type = type;
-            Hidden = union;
+			Union = union;
 		}
 
 
@@ -1481,12 +1481,12 @@ namespace Hexa.NET.SDL2
 		public SDLGameControllerBindType BindType;
 		[NativeName(NativeNameType.Field, "value")]
 		[NativeName(NativeNameType.Type, "")]
-		public ValueUnion Value;
+		public ValueUnion Union;
 
-		public unsafe SDLGameControllerButtonBind(SDLGameControllerBindType bindType = default, ValueUnion value = default)
+		public unsafe SDLGameControllerButtonBind(SDLGameControllerBindType bindType = default, ValueUnion union = default)
 		{
 			BindType = bindType;
-            Value = value;
+			Union = union;
 		}
 
 
@@ -3634,103 +3634,6 @@ namespace Hexa.NET.SDL2
 	}
 
 	/// <summary>
-	/// The custom event structure.<br/>
-	/// </summary>
-	[NativeName(NativeNameType.StructOrClass, "SDL_SysWMmsg")]
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct SDLSysWMmsg
-	{
-		[NativeName(NativeNameType.StructOrClass, "SDL_SysWMmsg::")]
-		[StructLayout(LayoutKind.Explicit)]
-		public partial struct MsgUnion
-		{
-			[NativeName(NativeNameType.StructOrClass, "SDL_SysWMmsg::::")]
-			[StructLayout(LayoutKind.Sequential)]
-			public partial struct WinUnion
-			{
-				/// <summary>
-				/// The window for the message <br/>
-				/// </summary>
-				[NativeName(NativeNameType.Field, "hwnd")]
-				[NativeName(NativeNameType.Type, "HWND__*")]
-				public unsafe Hwnd* Hwnd;
-
-				/// <summary>
-				/// The type of message <br/>
-				/// </summary>
-				[NativeName(NativeNameType.Field, "msg")]
-				[NativeName(NativeNameType.Type, "unsigned int")]
-				public uint Msg;
-
-				/// <summary>
-				/// WORD message parameter <br/>
-				/// </summary>
-				[NativeName(NativeNameType.Field, "wParam")]
-				[NativeName(NativeNameType.Type, "unsigned long long")]
-				public ulong WParam;
-
-				/// <summary>
-				/// LONG message parameter <br/>
-				/// </summary>
-				[NativeName(NativeNameType.Field, "lParam")]
-				[NativeName(NativeNameType.Type, "long long")]
-				public long LParam;
-
-
-				public unsafe WinUnion(Hwnd* hwnd = default, uint msg = default, ulong wParam = default, long lParam = default)
-				{
-					Hwnd = hwnd;
-					Msg = msg;
-					WParam = wParam;
-					LParam = lParam;
-				}
-
-
-			}
-
-			[NativeName(NativeNameType.Field, "win")]
-			[NativeName(NativeNameType.Type, "")]
-			[FieldOffset(0)]
-			public WinUnion Win;
-			/// <summary>
-			/// Can't have an empty union <br/>
-			/// </summary>
-			[NativeName(NativeNameType.Field, "dummy")]
-			[NativeName(NativeNameType.Type, "int")]
-			[FieldOffset(0)]
-			public int Dummy;
-
-
-			public unsafe MsgUnion(WinUnion win = default, int dummy = default)
-			{
-				Win = win;
-				Dummy = dummy;
-			}
-
-
-		}
-
-		[NativeName(NativeNameType.Field, "version")]
-		[NativeName(NativeNameType.Type, "SDL_version")]
-		public SDLVersion Version;
-		[NativeName(NativeNameType.Field, "subsystem")]
-		[NativeName(NativeNameType.Type, "SDL_SYSWM_TYPE")]
-		public SdlSyswmType Subsystem;
-		[NativeName(NativeNameType.Field, "msg")]
-		[NativeName(NativeNameType.Type, "")]
-		public MsgUnion Msg;
-
-		public unsafe SDLSysWMmsg(SDLVersion version = default, SdlSyswmType subsystem = default, MsgUnion msg = default)
-		{
-			Version = version;
-			Subsystem = subsystem;
-            Msg = msg;
-		}
-
-
-	}
-
-	/// <summary>
 	/// Information about the version of SDL in use.<br/>
 	/// Represents the library's version as three levels: major revision<br/>
 	/// (increments with massive changes, additions, and enhancements),<br/>
@@ -3818,10 +3721,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Field, "msg")]
 		[NativeName(NativeNameType.Type, "SDL_SysWMmsg*")]
-		public unsafe SDLSysWMmsg* Msg;
+		public unsafe SDLSysWMMsg* Msg;
 
 
-		public unsafe SDLSysWMEvent(uint type = default, uint timestamp = default, SDLSysWMmsg* msg = default)
+		public unsafe SDLSysWMEvent(uint type = default, uint timestamp = default, SDLSysWMMsg* msg = default)
 		{
 			Type = type;
 			Timestamp = timestamp;
@@ -5087,6 +4990,58 @@ namespace Hexa.NET.SDL2
 			AttackLevel = attackLevel;
 			FadeLength = fadeLength;
 			FadeLevel = fadeLevel;
+		}
+
+
+	}
+
+	/// <summary>
+	/// <br/>
+	/// This struct is exclusively for the ::SDL_HAPTIC_LEFTRIGHT effect.<br/>
+	/// The Left/Right effect is used to explicitly control the large and small<br/>
+	/// motors, commonly found in modern game controllers. The small (right) motor<br/>
+	/// is high frequency, and the large (left) motor is low frequency.<br/>
+	/// <br/>
+	/// </summary>
+	[NativeName(NativeNameType.StructOrClass, "SDL_HapticLeftRight")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct SDLHapticLeftRight
+	{
+		/// <summary>
+		/// ::SDL_HAPTIC_LEFTRIGHT <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort Type;
+
+		/// <summary>
+		/// Duration of the effect in milliseconds. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "length")]
+		[NativeName(NativeNameType.Type, "Uint32")]
+		public uint Length;
+
+		/// <summary>
+		/// Control of the large controller motor. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "large_magnitude")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort LargeMagnitude;
+
+		/// <summary>
+		/// Control of the small controller motor. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Field, "small_magnitude")]
+		[NativeName(NativeNameType.Type, "Uint16")]
+		public ushort SmallMagnitude;
+
+
+		public unsafe SDLHapticLeftRight(ushort type = default, uint length = default, ushort largeMagnitude = default, ushort smallMagnitude = default)
+		{
+			Type = type;
+			Length = length;
+			LargeMagnitude = largeMagnitude;
+			SmallMagnitude = smallMagnitude;
 		}
 
 

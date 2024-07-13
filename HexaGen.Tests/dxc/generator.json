@@ -3,6 +3,7 @@
   "ApiName": "DXC",
   "LibName": "dxcompiler",
   "GenerateSizeOfStructs": false,
+  "GenerateMetadata": true,
   "BoolType": 1,
   "KnownConstantNames": {
   },

@@ -171,7 +171,7 @@
 
         protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
         {
-            int offset = flags == WriteFunctionFlags.None && useNames ? 0 : 1;
+            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
             StringBuilder sb = new();
             bool isFirst = true;
 

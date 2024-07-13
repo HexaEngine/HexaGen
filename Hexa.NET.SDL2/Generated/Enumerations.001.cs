@@ -24,7 +24,7 @@ namespace Hexa.NET.SDL2
 		Windows = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_X11")]
 		[NativeName(NativeNameType.Value, "2")]
-		Syswmx11 = unchecked(2),
+		X11 = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_SYSWM_DIRECTFB")]
 		[NativeName(NativeNameType.Value, "3")]
 		Directfb = unchecked(3),
@@ -199,23 +199,23 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// error dialog <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_ERROR")]
 		[NativeName(NativeNameType.Value, "16")]
-		MessageboxError = unchecked(16),
+		Error = unchecked(16),
 
 		/// <summary>/// warning dialog <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_WARNING")]
 		[NativeName(NativeNameType.Value, "32")]
-		MessageboxWarning = unchecked(32),
+		Warning = unchecked(32),
 
 		/// <summary>/// informational dialog <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_INFORMATION")]
 		[NativeName(NativeNameType.Value, "64")]
-		MessageboxInformation = unchecked(64),
+		Information = unchecked(64),
 
 		/// <summary>/// buttons placed left to right <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_LEFT_TO_RIGHT")]
 		[NativeName(NativeNameType.Value, "128")]
-		MessageboxButtonsLeftToRight = unchecked(128),
+		ButtonsLeftToRight = unchecked(128),
 
 		/// <summary>/// buttons placed right to left <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTONS_RIGHT_TO_LEFT")]
 		[NativeName(NativeNameType.Value, "256")]
-		MessageboxButtonsRightToLeft = unchecked(256),
+		ButtonsRightToLeft = unchecked(256),
 
 	}
 
@@ -224,11 +224,11 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// Marks the default button when return is hit <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT")]
 		[NativeName(NativeNameType.Value, "1")]
-		MessageboxButtonReturnkeyDefault = unchecked(1),
+		ReturnkeyDefault = unchecked(1),
 
 		/// <summary>/// Marks the default button when escape is hit <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT")]
 		[NativeName(NativeNameType.Value, "2")]
-		MessageboxButtonEscapekeyDefault = unchecked(2),
+		EscapekeyDefault = unchecked(2),
 
 	}
 
@@ -237,22 +237,22 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BACKGROUND")]
 		[NativeName(NativeNameType.Value, "0")]
-		MessageboxColorBackground = unchecked(0),
+		Background = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_TEXT")]
 		[NativeName(NativeNameType.Value, "1")]
-		MessageboxColorText = unchecked(1),
+		Text = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BORDER")]
 		[NativeName(NativeNameType.Value, "2")]
-		MessageboxColorButtonBorder = unchecked(2),
+		ButtonBorder = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND")]
 		[NativeName(NativeNameType.Value, "3")]
-		MessageboxColorButtonBackground = unchecked(3),
+		ButtonBackground = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED")]
 		[NativeName(NativeNameType.Value, "4")]
-		MessageboxColorButtonSelected = unchecked(4),
+		ButtonSelected = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_MESSAGEBOX_COLOR_MAX")]
 		[NativeName(NativeNameType.Value, "5")]
-		MessageboxColorMax = unchecked(5),
+		Max = unchecked(5),
 	}
 
 	/// <summary>/// The basic state for the system's power supply.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PowerState")]
@@ -260,23 +260,23 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// cannot determine power status <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_UNKNOWN")]
 		[NativeName(NativeNameType.Value, "0")]
-		PowerstateUnknown = unchecked(0),
+		Unknown = unchecked(0),
 
 		/// <summary>/// Not plugged in, running on the battery <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_ON_BATTERY")]
 		[NativeName(NativeNameType.Value, "1")]
-		PowerstateOnBattery = unchecked(1),
+		OnBattery = unchecked(1),
 
 		/// <summary>/// Plugged in, no battery available <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_NO_BATTERY")]
 		[NativeName(NativeNameType.Value, "2")]
-		PowerstateNoBattery = unchecked(2),
+		NoBattery = unchecked(2),
 
 		/// <summary>/// Plugged in, charging battery <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGING")]
 		[NativeName(NativeNameType.Value, "3")]
-		PowerstateCharging = unchecked(3),
+		Charging = unchecked(3),
 
 		/// <summary>/// Plugged in, battery charged <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_POWERSTATE_CHARGED")]
 		[NativeName(NativeNameType.Value, "4")]
-		PowerstateCharged = unchecked(4),
+		Charged = unchecked(4),
 
 	}
 
@@ -323,15 +323,15 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// Changes rarely, not lockable <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STATIC")]
 		[NativeName(NativeNameType.Value, "0")]
-		TextureaccessStatic = unchecked(0),
+		Static = unchecked(0),
 
 		/// <summary>/// Changes frequently, lockable <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_STREAMING")]
 		[NativeName(NativeNameType.Value, "1")]
-		TextureaccessStreaming = unchecked(1),
+		Streaming = unchecked(1),
 
 		/// <summary>/// Texture can be used as a render target <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREACCESS_TARGET")]
 		[NativeName(NativeNameType.Value, "2")]
-		TextureaccessTarget = unchecked(2),
+		Target = unchecked(2),
 
 	}
 
@@ -340,15 +340,15 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// No modulation <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		TexturemodulateNone = unchecked(0),
+		None = unchecked(0),
 
 		/// <summary>/// srcC = srcC * color <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_COLOR")]
 		[NativeName(NativeNameType.Value, "1")]
-		TexturemodulateColor = unchecked(1),
+		Color = unchecked(1),
 
 		/// <summary>/// srcA = srcA * alpha <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_TEXTUREMODULATE_ALPHA")]
 		[NativeName(NativeNameType.Value, "2")]
-		TexturemodulateAlpha = unchecked(2),
+		Alpha = unchecked(2),
 
 	}
 
@@ -388,6 +388,20 @@ namespace Hexa.NET.SDL2
 		[NativeName(NativeNameType.Value, "3")]
 		ColorKey = unchecked(3),
 
+	}
+
+	/// <summary>/// Enumerated boolean type<br/>/// Values other than zero should be considered to be true.  Therefore<br/>/// comparisons should not be made against KHRONOS_TRUE.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "khronos_boolean_enum_t")]
+	public enum KhronosBooleanEnum : int
+	{
+		[NativeName(NativeNameType.EnumItem, "KHRONOS_FALSE")]
+		[NativeName(NativeNameType.Value, "0")]
+		False = unchecked(0),
+		[NativeName(NativeNameType.EnumItem, "KHRONOS_TRUE")]
+		[NativeName(NativeNameType.Value, "1")]
+		True = unchecked(1),
+		[NativeName(NativeNameType.EnumItem, "KHRONOS_BOOLEAN_ENUM_FORCE_SIZE")]
+		[NativeName(NativeNameType.Value, "2147483647")]
+		ForceSize = unchecked(2147483647),
 	}
 
 }

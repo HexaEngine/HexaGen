@@ -35,7 +35,7 @@
             D3DFeatureLevel level = 0;
             D3DFeatureLevel* levels = (D3DFeatureLevel*)Unsafe.AsPointer(ref levelsArr[0]);
 
-            D3D11.D3D11CreateDevice((IDXGIAdapter*)adapter.Adapter.Handle, D3DDriverType.Unknown, IntPtr.Zero, (uint)flags, levels, (uint)levelsArr.Length, D3D11.D3D11_SDK_VERSION, tempDevice.GetAddressOf(), &level, tempContext.GetAddressOf()).ThrowIf();
+            D3D11.D3D11CreateDevice((IDXGIAdapter*)adapter.Adapter.Handle, D3DDriverType.Unknown, IntPtr.Zero, (uint)flags, levels, (uint)levelsArr.Length, D3D11.D3D11_SDK_VERSION, tempDevice.GetAddressOf(), &level, tempContext.GetAddressOf());
             Level = level;
 
             tempDevice.QueryInterface(out device);

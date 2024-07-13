@@ -247,11 +247,16 @@ namespace HexaGen.Tests
         public void SDL2()
         {
             CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("sdl2/generator.json");
+            settings.CustomEnumItemMapper = SDL2EnumMapper;
             CsCodeGenerator generator = new(settings);
-            generator.Generate(new List<string>() { "sdl2/SDL.h", "sdl2/SDL_syswm.h" }, "../../../../Hexa.NET.SDL2/Generated");
+            generator.Generate(new List<string>() { "sdl2/main.h" }, "../../../../Hexa.NET.SDL2/Generated");
             generator.SaveMetadata("sdl2.json");
             EvaluateResult(generator);
             Assert.Pass();
+        }
+
+        private void SDL2EnumMapper(CppEnum cppEnum, CppEnumItem cppEnumItem, CsEnumMetadata csEnum, CsEnumItemMetadata csEnumItem)
+        {
         }
 
         [Test]

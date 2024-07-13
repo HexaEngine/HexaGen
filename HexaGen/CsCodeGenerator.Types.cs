@@ -155,13 +155,13 @@
 
                         var subClass = subClasses.FirstOrDefault(x => x.CppType == cppClass1);
 
-                        string csFieldName = settings.GetFieldName(cppField.Name);
                         if (isUnion)
                         {
                             writer.WriteLine("[FieldOffset(0)]");
                         }
                         if (subClass == null)
                         {
+                            string csFieldName = settings.GetFieldName(cppField.Name);
                             string csFieldType = settings.GetCsCleanName(cppClass1.Name);
                             subClasses.Add(new(cppField.Type, csFieldType, cppField.Name, csFieldName));
 
@@ -174,7 +174,7 @@
                             continue;
                         }
 
-                        writer.WriteLine($"public {subClass.Name} {csFieldName};");
+                        writer.WriteLine($"public {subClass.Name} {subClass.FieldName};");
 
                         if (fieldCommentWritten)
                             writer.WriteLine();
@@ -739,6 +739,7 @@
             if (field.Type is CppArrayType arrayType)
             {
                 string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
+                string spanType = csFieldType;
                 bool canUseFixed = false;
                 if (arrayType.ElementType is CppPrimitiveType)
                 {
@@ -755,20 +756,28 @@
                 }
                 else
                 {
-                    if (csFieldType.Contains('*'))
+                    if (csFieldType.Contains("delegate*"))
                     {
-                        csFieldType = "nint";
+                        if (settings.DelegatesAsVoidPointer)
+                        {
+                            csFieldType = "nint";
+                        }
+                        spanType = "nint";
+                    }
+                    else if (csFieldType.Contains('*'))
+                    {
+                        spanType = $"Pointer<{csFieldType.Replace("*", "")}>";
                     }
 
                     settings.WriteCsSummary(field.Comment, writer);
-                    writer.WriteLine($"public unsafe Span<{csFieldType}> {csFieldName}");
+                    writer.WriteLine($"public unsafe Span<{spanType}> {csFieldName}");
                     using (writer.PushBlock(""))
                     {
                         using (writer.PushBlock("get"))
                         {
                             using (writer.PushBlock($"fixed ({csFieldType}* p = &this.{csFieldName}_0)"))
                             {
-                                writer.WriteLine($"return new Span<{csFieldType}>(p, {arrayType.Size});");
+                                writer.WriteLine($"return new Span<{spanType}>(p, {arrayType.Size});");
                             }
                         }
                     }

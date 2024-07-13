@@ -14,7 +14,7 @@ using Hexa.NET.Vulkan;
 namespace Hexa.NET.VMA
 {
 	/// <summary>/// Flags for created #VmaAllocator.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaAllocatorCreateFlagBits")]
-	public enum VmaAllocatorCreateFlagBits
+	public enum VmaAllocatorCreateFlagBits : int
 	{
 		/// <summary>/// <br/>/// Using this flag may increase performance because internal mutexes are not used.<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_ALLOCATOR_CREATE_EXTERNALLY_SYNCHRONIZED_BIT")]
 		[NativeName(NativeNameType.Value, "1")]
@@ -59,7 +59,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// <br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaMemoryUsage")]
-	public enum VmaMemoryUsage
+	public enum VmaMemoryUsage : int
 	{
 		/// <summary>/// No intended memory usage specified.<br/>/// Use other members of VmaAllocationCreateInfo to specify your requirements.<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_MEMORY_USAGE_UNKNOWN")]
 		[NativeName(NativeNameType.Value, "0")]
@@ -108,7 +108,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Flags to be passed as VmaAllocationCreateInfo::flags.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaAllocationCreateFlagBits")]
-	public enum VmaAllocationCreateFlagBits
+	public enum VmaAllocationCreateFlagBits : int
 	{
 		/// <summary>/// <br/>/// Use it for special, big resources, like fullscreen images used as attachments.<br/>/// If you use this flag while creating a buffer or an image, `VkMemoryDedicatedAllocateInfo`<br/>/// structure is applied if possible.<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_ALLOCATION_CREATE_DEDICATED_MEMORY_BIT")]
 		[NativeName(NativeNameType.Value, "1")]
@@ -185,7 +185,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Flags to be passed as VmaPoolCreateInfo::flags.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaPoolCreateFlagBits")]
-	public enum VmaPoolCreateFlagBits
+	public enum VmaPoolCreateFlagBits : int
 	{
 		/// <summary>/// <br/>/// This is an optional optimization flag.<br/>/// If you always allocate using vmaCreateBuffer(), vmaCreateImage(),<br/>/// vmaAllocateMemoryForBuffer(), then you don't need to use it because allocator<br/>/// knows exact type of your allocations so it can handle Buffer-Image Granularity<br/>/// in the optimal way.<br/>/// If you also allocate using vmaAllocateMemoryForImage() or vmaAllocateMemory(),<br/>/// exact type of such allocations is not known, so allocator must be conservative<br/>/// in handling Buffer-Image Granularity, which can lead to suboptimal allocation<br/>/// (wasted memory). In that case, if you can make sure you always allocate only<br/>/// buffers and linear images or only optimal images out of this pool, use this flag<br/>/// to make allocator disregard Buffer-Image Granularity and so make allocations<br/>/// faster and more optimal.<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_POOL_CREATE_IGNORE_BUFFER_IMAGE_GRANULARITY_BIT")]
 		[NativeName(NativeNameType.Value, "2")]
@@ -206,7 +206,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Flags to be passed as VmaDefragmentationInfo::flags.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaDefragmentationFlagBits")]
-	public enum VmaDefragmentationFlagBits
+	public enum VmaDefragmentationFlagBits : int
 	{
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_DEFRAGMENTATION_FLAG_ALGORITHM_FAST_BIT")]
 		[NativeName(NativeNameType.Value, "1")]
@@ -235,7 +235,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Operation performed on single defragmentation move. See structure #VmaDefragmentationMove.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaDefragmentationMoveOperation")]
-	public enum VmaDefragmentationMoveOperation
+	public enum VmaDefragmentationMoveOperation : int
 	{
 		/// <summary>/// Buffer/image has been recreated at `dstTmpAllocation`, data has been copied, old buffer/image has been destroyed. `srcAllocation` should be changed to point to the new place. This is the default value set by vmaBeginDefragmentationPass().<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_DEFRAGMENTATION_MOVE_OPERATION_COPY")]
 		[NativeName(NativeNameType.Value, "0")]
@@ -252,7 +252,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Flags to be passed as VmaVirtualBlockCreateInfo::flags.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaVirtualBlockCreateFlagBits")]
-	public enum VmaVirtualBlockCreateFlagBits
+	public enum VmaVirtualBlockCreateFlagBits : int
 	{
 		/// <summary>/// <br/>/// Specify this flag to enable linear allocation algorithm, which always creates<br/>/// new allocations after last one and doesn't reuse space from allocations freed in<br/>/// between. It trades memory consumption for simplified algorithm and data<br/>/// structure, which has better performance and uses less memory for metadata.<br/>/// By using this flag, you can achieve behavior of free-at-once, stack,<br/>/// ring buffer, and double stack.<br/>/// For details, see documentation chapter <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_VIRTUAL_BLOCK_CREATE_LINEAR_ALGORITHM_BIT")]
 		[NativeName(NativeNameType.Value, "1")]
@@ -269,7 +269,7 @@ namespace Hexa.NET.VMA
 	}
 
 	/// <summary>/// Flags to be passed as VmaVirtualAllocationCreateInfo::flags.<br/>/// </summary>	[NativeName(NativeNameType.Enum, "VmaVirtualAllocationCreateFlagBits")]
-	public enum VmaVirtualAllocationCreateFlagBits
+	public enum VmaVirtualAllocationCreateFlagBits : int
 	{
 		/// <summary>/// <br/>/// This flag is only allowed for virtual blocks created with #VMA_VIRTUAL_BLOCK_CREATE_LINEAR_ALGORITHM_BIT flag.<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "VMA_VIRTUAL_ALLOCATION_CREATE_UPPER_ADDRESS_BIT")]
 		[NativeName(NativeNameType.Value, "VMA_ALLOCATION_CREATE_UPPER_ADDRESS_BIT")]
@@ -298,7 +298,7 @@ namespace Hexa.NET.VMA
 	}
 
 	[NativeName(NativeNameType.Enum, "VmaSuballocationType")]
-	public enum VmaSuballocationType
+	public enum VmaSuballocationType : int
 	{
 		[NativeName(NativeNameType.EnumItem, "VMA_SUBALLOCATION_TYPE_FREE")]
 		[NativeName(NativeNameType.Value, "0")]
@@ -324,7 +324,7 @@ namespace Hexa.NET.VMA
 	}
 
 	[NativeName(NativeNameType.Enum, "VmaAllocationRequestType")]
-	public enum VmaAllocationRequestType
+	public enum VmaAllocationRequestType : int
 	{
 		[NativeName(NativeNameType.EnumItem, "Normal")]
 		[NativeName(NativeNameType.Value, "0")]
@@ -347,7 +347,7 @@ namespace Hexa.NET.VMA
 	}
 
 	[NativeName(NativeNameType.Enum, "VMA_CACHE_OPERATION")]
-	public enum VmaCacheOperation
+	public enum VmaCacheOperation : int
 	{
 		[NativeName(NativeNameType.EnumItem, "VMA_CACHE_FLUSH")]
 		[NativeName(NativeNameType.Value, "0")]

@@ -36,11 +36,11 @@
                 filter.DenyList.NumIDs = 1;
                 filter.DenyList.PIDList = (int*)AllocT(D3D11MessageId.SetprivatedataChangingparams);
                 infoQueue.AddStorageFilterEntries(DXGI_DEBUG_ALL, &filter);
-                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Message, false);
-                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Info, false);
-                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Warning, true);
-                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Error, true);
-                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Corruption, true);
+                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Message, 0);
+                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Info, 0);
+                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Warning, 1);
+                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Error, 1);
+                infoQueue.SetBreakOnSeverity(DXGI_DEBUG_ALL, DxgiInfoQueueMessageSeverity.Corruption, 1);
                 Free(filter.DenyList.PIDList);
             }
             DXGI.CreateDXGIFactory2(debug ? DXGI.DXGI_CREATE_FACTORY_DEBUG : 0u, out factory);
@@ -139,7 +139,7 @@
                 Scaling = DxgiScaling.Stretch,
                 SwapEffect = DxgiSwapEffect.FlipSequential,
                 Flags = (uint)(DxgiSwapChainFlag.AllowModeSwitch | DxgiSwapChainFlag.AllowTearing),
-                Stereo = false,
+                Stereo = 0,
             };
 
             DxgiSwapChainFullscreenDesc fullscreenDesc = new()

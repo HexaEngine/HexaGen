@@ -8,6 +8,9 @@
   "DelegatesAsVoidPointer": true,
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": true,
+  "IncludeFolders": [
+    "C:\\VulkanSDK\\1.3.250.0\\Include\\"
+  ],
   "ConstantNamingConvention": "Unknown",
   "KnownConstantNames": {
   },
@@ -23,7 +26,13 @@
   "KnownStructMethods": {
   },
   "IgnoredParts": [
-    "bit"
+    "bit",
+    "PIXELTYPE",
+    "BITMAPORDER",
+    "PACKEDORDER",
+    "ARRAYORDER",
+    "SDLK",
+    "KMOD"
   ],
   "PreserveCaps": [
     ""
@@ -33,7 +42,10 @@
     "event",
     "lock"
   ],
+  "IgnoredTypes": [ "SDL_SysWMinfo", "SDL_SysWMmsg" ],
   "TypeMappings": {
+    "SDL_SysWMinfo": "SDLSysWMInfo",
+    "SDL_SysWMmsg": "SDLSysWMMsg",
     "uint8_t": "byte",
     "uint16_t": "ushort",
     "uint32_t": "uint",
@@ -71,7 +83,30 @@
     "SDL_JoystickGUID": "Guid",
     "SDL_SensorID": "int",
     "va_list": "nint",
-    "uintptr_t": "nuint"
+    "uintptr_t": "nuint",
+    "GLfixed": "int",
+    "GLint64": "long",
+    "GLuint64": "ulong",
+    "GLintptr": "nint",
+    "GLsizeiptr": "nint",
+    "GLuint64EXT": "ulong",
+    "GLvdpauSurfaceNV": "nint",
+    "GLsizeiptrARB": "nint",
+    "GLint64EXT": "long",
+    "GLintptrARB": "nint",
+    "EGLint": "int",
+    "EGLNativePixmapType": "nint",
+    "EGLNativeWindowType": "nint",
+    "EGLAttrib": "nint",
+    "EGLTime": "ulong",
+    "EGLNativeDisplayType": "nint",
+    "EGLuint64KHR": "ulong",
+    "EGLAttribKHR": "nint",
+    "EGLnsecsANDROID": "long",
+    "EGLTimeKHR": "ulong",
+    "EGLTimeNV": "ulong",
+    "EGLuint64NV": "ulong",
+    "EGLsizeiANDROID": "int"
   },
   "IgnoredFunctions": [
     "SDL_ReportAssertion"

@@ -15,29 +15,29 @@ using Hexa.NET.Vulkan;
 
 namespace Hexa.NET.VMA
 {
-	public static unsafe class Extensions
+	public static unsafe partial class Extensions
 	{
 
 		/// <summary>/// <br/>/// This function automatically:<br/>/// -# Creates buffer.<br/>/// -# Binds the buffer with the supplied memory.<br/>/// If any of these operations fail, buffer is not created,<br/>/// returned value is negative error code and `*pBuffer` is null.<br/>/// If the function succeeded, you must destroy the buffer when you<br/>/// no longer need it using `vkDestroyBuffer()`. If you want to also destroy the corresponding<br/>/// allocation you can use convenience function vmaDestroyBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingBuffer2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingBuffer2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pBufferCreateInfo")] [NativeName(NativeNameType.Type, "const VkBufferCreateInfo*")] VkBufferCreateInfo* pBufferCreateInfo, [NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "VkBuffer*")] ref VkBuffer pBuffer)
+		public static VkResult CreateAliasingBuffer2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pBufferCreateInfo")] [NativeName(NativeNameType.Type, "const VkBufferCreateInfo*")] VkBufferCreateInfo* pBufferCreateInfo, [NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "VkBuffer*")] ref VkBuffer pBuffer)
 		{
 			fixed (VkBuffer* ppBuffer = &pBuffer)
 			{
-				int ret = VMA.VmaCreateAliasingBuffer2Native(allocator, allocation, allocationLocalOffset, pBufferCreateInfo, (VkBuffer*)ppBuffer);
+				VkResult ret = VMA.VmaCreateAliasingBuffer2Native(allocator, allocation, allocationLocalOffset, pBufferCreateInfo, (VkBuffer*)ppBuffer);
 				return ret;
 			}
 		}
 
 		/// <summary>/// <br/>/// This function automatically:<br/>/// -# Creates buffer.<br/>/// -# Binds the buffer with the supplied memory.<br/>/// If any of these operations fail, buffer is not created,<br/>/// returned value is negative error code and `*pBuffer` is null.<br/>/// If the function succeeded, you must destroy the buffer when you<br/>/// no longer need it using `vkDestroyBuffer()`. If you want to also destroy the corresponding<br/>/// allocation you can use convenience function vmaDestroyBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingBuffer2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingBuffer2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pBufferCreateInfo")] [NativeName(NativeNameType.Type, "const VkBufferCreateInfo*")] ref VkBufferCreateInfo pBufferCreateInfo, [NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "VkBuffer*")] ref VkBuffer pBuffer)
+		public static VkResult CreateAliasingBuffer2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pBufferCreateInfo")] [NativeName(NativeNameType.Type, "const VkBufferCreateInfo*")] ref VkBufferCreateInfo pBufferCreateInfo, [NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "VkBuffer*")] ref VkBuffer pBuffer)
 		{
 			fixed (VkBufferCreateInfo* ppBufferCreateInfo = &pBufferCreateInfo)
 			{
 				fixed (VkBuffer* ppBuffer = &pBuffer)
 				{
-					int ret = VMA.VmaCreateAliasingBuffer2Native(allocator, allocation, allocationLocalOffset, (VkBufferCreateInfo*)ppBufferCreateInfo, (VkBuffer*)ppBuffer);
+					VkResult ret = VMA.VmaCreateAliasingBuffer2Native(allocator, allocation, allocationLocalOffset, (VkBufferCreateInfo*)ppBufferCreateInfo, (VkBuffer*)ppBuffer);
 					return ret;
 				}
 			}
@@ -52,43 +52,43 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
-			int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
+			VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
 			return ret;
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
-				int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
+				VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
-				int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
+				VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -96,24 +96,24 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
-				int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
+				VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VkImage* ppImage = &pImage)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -121,13 +121,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
 				fixed (VkImage* ppImage = &pImage)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -135,7 +135,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -143,7 +143,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VkImage* ppImage = &pImage)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, pAllocationInfo);
 						return ret;
 					}
 				}
@@ -152,24 +152,24 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VmaAllocation* ppAllocation = &pAllocation)
 			{
-				int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+				VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VmaAllocation* ppAllocation = &pAllocation)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -177,13 +177,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
 				fixed (VmaAllocation* ppAllocation = &pAllocation)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -191,7 +191,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -199,7 +199,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocation* ppAllocation = &pAllocation)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 						return ret;
 					}
 				}
@@ -208,13 +208,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
 				fixed (VmaAllocation* ppAllocation = &pAllocation)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 					return ret;
 				}
 			}
@@ -222,7 +222,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -230,7 +230,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocation* ppAllocation = &pAllocation)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 						return ret;
 					}
 				}
@@ -239,7 +239,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
@@ -247,7 +247,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocation* ppAllocation = &pAllocation)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 						return ret;
 					}
 				}
@@ -256,7 +256,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] VmaAllocationInfo* pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -266,7 +266,7 @@ namespace Hexa.NET.VMA
 					{
 						fixed (VmaAllocation* ppAllocation = &pAllocation)
 						{
-							int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
+							VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, pAllocationInfo);
 							return ret;
 						}
 					}
@@ -276,24 +276,24 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 			{
-				int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+				VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 					return ret;
 				}
 			}
@@ -301,13 +301,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
 				fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 					return ret;
 				}
 			}
@@ -315,7 +315,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -323,7 +323,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -332,13 +332,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
 				fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 					return ret;
 				}
 			}
@@ -346,7 +346,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -354,7 +354,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -363,7 +363,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
@@ -371,7 +371,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -380,7 +380,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] VmaAllocation* pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -390,7 +390,7 @@ namespace Hexa.NET.VMA
 					{
 						fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 						{
-							int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+							VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, pAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 							return ret;
 						}
 					}
@@ -400,13 +400,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocation* ppAllocation = &pAllocation)
 			{
 				fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 				{
-					int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+					VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 					return ret;
 				}
 			}
@@ -414,7 +414,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -422,7 +422,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -431,7 +431,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
@@ -439,7 +439,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -448,7 +448,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -458,7 +458,7 @@ namespace Hexa.NET.VMA
 					{
 						fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 						{
-							int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+							VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, pImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 							return ret;
 						}
 					}
@@ -468,7 +468,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
@@ -476,7 +476,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 					{
-						int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 						return ret;
 					}
 				}
@@ -485,7 +485,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -495,7 +495,7 @@ namespace Hexa.NET.VMA
 					{
 						fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 						{
-							int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+							VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, pAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 							return ret;
 						}
 					}
@@ -505,7 +505,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VmaAllocationCreateInfo* ppAllocationCreateInfo = &pAllocationCreateInfo)
 			{
@@ -515,7 +515,7 @@ namespace Hexa.NET.VMA
 					{
 						fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 						{
-							int ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+							VkResult ret = VMA.VmaCreateImageNative(allocator, pImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 							return ret;
 						}
 					}
@@ -525,7 +525,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateBuffer().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		public static VkResult CreateImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] ref VmaAllocationCreateInfo pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
@@ -537,7 +537,7 @@ namespace Hexa.NET.VMA
 						{
 							fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
 							{
-								int ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+								VkResult ret = VMA.VmaCreateImageNative(allocator, (VkImageCreateInfo*)ppImageCreateInfo, (VmaAllocationCreateInfo*)ppAllocationCreateInfo, (VkImage*)ppImage, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
 								return ret;
 							}
 						}
@@ -548,43 +548,43 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
+		public static VkResult CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
 		{
-			int ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, pImageCreateInfo, pImage);
+			VkResult ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, pImageCreateInfo, pImage);
 			return ret;
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
+		public static VkResult CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
-				int ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, (VkImageCreateInfo*)ppImageCreateInfo, pImage);
+				VkResult ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, (VkImageCreateInfo*)ppImageCreateInfo, pImage);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
+		public static VkResult CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
-				int ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, pImageCreateInfo, (VkImage*)ppImage);
+				VkResult ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, pImageCreateInfo, (VkImage*)ppImage);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
+		public static VkResult CreateAliasingImage(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VkImage* ppImage = &pImage)
 				{
-					int ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, (VkImageCreateInfo*)ppImageCreateInfo, (VkImage*)ppImage);
+					VkResult ret = VMA.VmaCreateAliasingImageNative(allocator, allocation, (VkImageCreateInfo*)ppImageCreateInfo, (VkImage*)ppImage);
 					return ret;
 				}
 			}
@@ -592,43 +592,43 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer2() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
+		public static VkResult CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
 		{
-			int ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, pImageCreateInfo, pImage);
+			VkResult ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, pImageCreateInfo, pImage);
 			return ret;
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer2() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
+		public static VkResult CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] VkImage* pImage)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
-				int ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, (VkImageCreateInfo*)ppImageCreateInfo, pImage);
+				VkResult ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, (VkImageCreateInfo*)ppImageCreateInfo, pImage);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer2() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
+		public static VkResult CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] VkImageCreateInfo* pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
 		{
 			fixed (VkImage* ppImage = &pImage)
 			{
-				int ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, pImageCreateInfo, (VkImage*)ppImage);
+				VkResult ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, pImageCreateInfo, (VkImage*)ppImage);
 				return ret;
 			}
 		}
 
 		/// <summary>/// Function similar to vmaCreateAliasingBuffer2() but for images.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateAliasingImage2")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
+		public static VkResult CreateAliasingImage2(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "allocation")] [NativeName(NativeNameType.Type, "VmaAllocation")] VmaAllocation allocation, [NativeName(NativeNameType.Param, "allocationLocalOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong allocationLocalOffset, [NativeName(NativeNameType.Param, "pImageCreateInfo")] [NativeName(NativeNameType.Type, "const VkImageCreateInfo*")] ref VkImageCreateInfo pImageCreateInfo, [NativeName(NativeNameType.Param, "pImage")] [NativeName(NativeNameType.Type, "VkImage*")] ref VkImage pImage)
 		{
 			fixed (VkImageCreateInfo* ppImageCreateInfo = &pImageCreateInfo)
 			{
 				fixed (VkImage* ppImage = &pImage)
 				{
-					int ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, (VkImageCreateInfo*)ppImageCreateInfo, (VkImage*)ppImage);
+					VkResult ret = VMA.VmaCreateAliasingImage2Native(allocator, allocation, allocationLocalOffset, (VkImageCreateInfo*)ppImageCreateInfo, (VkImage*)ppImage);
 					return ret;
 				}
 			}
@@ -643,14 +643,14 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildStatsString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] VkBool32 detailedMap)
+		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
 		{
 			VMA.VmaBuildStatsStringNative(allocator, ppStatsString, detailedMap);
 		}
 
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildStatsString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] VkBool32 detailedMap)
+		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
 		{
 			fixed (byte** pppStatsString = &ppStatsString)
 			{
@@ -752,9 +752,9 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaIsVirtualBlockEmpty")]
 		[return: NativeName(NativeNameType.Type, "VkBool32")]
-		public static VkBool32 IsVirtualBlockEmpty(this VmaVirtualBlock virtualBlock)
+		public static uint IsVirtualBlockEmpty(this VmaVirtualBlock virtualBlock)
 		{
-			VkBool32 ret = VMA.VmaIsVirtualBlockEmptyNative(virtualBlock);
+			uint ret = VMA.VmaIsVirtualBlockEmptyNative(virtualBlock);
 			return ret;
 		}
 
@@ -777,43 +777,43 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
 		{
-			int ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, pAllocation, pOffset);
+			VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, pAllocation, pOffset);
 			return ret;
 		}
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
 		{
 			fixed (VmaVirtualAllocationCreateInfo* ppCreateInfo = &pCreateInfo)
 			{
-				int ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, pAllocation, pOffset);
+				VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, pAllocation, pOffset);
 				return ret;
 			}
 		}
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
 		{
 			fixed (VmaVirtualAllocation* ppAllocation = &pAllocation)
 			{
-				int ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, (VmaVirtualAllocation*)ppAllocation, pOffset);
+				VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, (VmaVirtualAllocation*)ppAllocation, pOffset);
 				return ret;
 			}
 		}
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
 		{
 			fixed (VmaVirtualAllocationCreateInfo* ppCreateInfo = &pCreateInfo)
 			{
 				fixed (VmaVirtualAllocation* ppAllocation = &pAllocation)
 				{
-					int ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, (VmaVirtualAllocation*)ppAllocation, pOffset);
+					VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, (VmaVirtualAllocation*)ppAllocation, pOffset);
 					return ret;
 				}
 			}
@@ -821,24 +821,24 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
 		{
 			fixed (ulong* ppOffset = &pOffset)
 			{
-				int ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, pAllocation, (ulong*)ppOffset);
+				VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, pAllocation, (ulong*)ppOffset);
 				return ret;
 			}
 		}
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] VmaVirtualAllocation* pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
 		{
 			fixed (VmaVirtualAllocationCreateInfo* ppCreateInfo = &pCreateInfo)
 			{
 				fixed (ulong* ppOffset = &pOffset)
 				{
-					int ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, pAllocation, (ulong*)ppOffset);
+					VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, pAllocation, (ulong*)ppOffset);
 					return ret;
 				}
 			}
@@ -846,13 +846,13 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] VmaVirtualAllocationCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
 		{
 			fixed (VmaVirtualAllocation* ppAllocation = &pAllocation)
 			{
 				fixed (ulong* ppOffset = &pOffset)
 				{
-					int ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, (VmaVirtualAllocation*)ppAllocation, (ulong*)ppOffset);
+					VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, pCreateInfo, (VmaVirtualAllocation*)ppAllocation, (ulong*)ppOffset);
 					return ret;
 				}
 			}
@@ -860,7 +860,7 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// If the allocation fails due to not enough free space available, `VK_ERROR_OUT_OF_DEVICE_MEMORY` is returned<br/>/// (despite the function doesn't ever allocate actual GPU memory).<br/>/// `pAllocation` is then set to `VK_NULL_HANDLE` and `pOffset`, if not null, it set to `UINT64_MAX`.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaVirtualAllocate")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static int Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
+		public static VkResult Allocate(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VmaVirtualAllocationCreateInfo*")] ref VmaVirtualAllocationCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaVirtualAllocation*")] ref VmaVirtualAllocation pAllocation, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ref ulong pOffset)
 		{
 			fixed (VmaVirtualAllocationCreateInfo* ppCreateInfo = &pCreateInfo)
 			{
@@ -868,7 +868,7 @@ namespace Hexa.NET.VMA
 				{
 					fixed (ulong* ppOffset = &pOffset)
 					{
-						int ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, (VmaVirtualAllocation*)ppAllocation, (ulong*)ppOffset);
+						VkResult ret = VMA.VmaVirtualAllocateNative(virtualBlock, (VmaVirtualAllocationCreateInfo*)ppCreateInfo, (VmaVirtualAllocation*)ppAllocation, (ulong*)ppOffset);
 						return ret;
 					}
 				}
@@ -932,14 +932,14 @@ namespace Hexa.NET.VMA
 
 		/// <summary>/// <br/>/// Returned string must be freed using vmaFreeVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildVirtualBlockStatsString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] VkBool32 detailedMap)
+		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
 		{
 			VMA.VmaBuildVirtualBlockStatsStringNative(virtualBlock, ppStatsString, detailedMap);
 		}
 
 		/// <summary>/// <br/>/// Returned string must be freed using vmaFreeVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildVirtualBlockStatsString")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] VkBool32 detailedMap)
+		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
 		{
 			fixed (byte** pppStatsString = &ppStatsString)
 			{

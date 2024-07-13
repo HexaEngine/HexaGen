@@ -18,541 +18,79 @@ namespace Hexa.NET.SDL2
 	{
 
 		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_DEBUG.<br/>
+		/// Get the window flags.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogDebug")]
+		[NativeName(NativeNameType.Func, "SDL_GetWindowFlags")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowFlags")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogDebugNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
+		internal static partial uint SDLGetWindowFlagsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
 
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_DEBUG.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogDebug([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		/// <summary>/// Get the window flags.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowFlags")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLGetWindowFlags([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
 		{
-			SDLLogDebugNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_DEBUG.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogDebug([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogDebugNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_DEBUG.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogDebug([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogDebugNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_INFO.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogInfoNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_INFO.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogInfo([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogInfoNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_INFO.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogInfo([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogInfoNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_INFO.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogInfo([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogInfoNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_WARN.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogWarn")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogWarnNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_WARN.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogWarn([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogWarnNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_WARN.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogWarn([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogWarnNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_WARN.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogWarn([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogWarnNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_ERROR.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogError")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogErrorNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_ERROR.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogError")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogError([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogErrorNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_ERROR.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogError")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogError([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogErrorNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_ERROR.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogError")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogError([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogErrorNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_CRITICAL.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogCritical")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogCriticalNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_CRITICAL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogCritical([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogCriticalNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_CRITICAL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogCritical([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogCriticalNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_CRITICAL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogCritical([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogCriticalNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with the specified category and priority.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogMessage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogMessageNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessage([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogMessageNative(category, priority, fmt);
-		}
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessage([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogMessageNative(category, priority, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessage([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogMessageNative(category, priority, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Log a message with the specified category and priority.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogMessageV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogMessageVNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap);
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessageV([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap)
-		{
-			SDLLogMessageVNative(category, priority, fmt, ap);
-		}
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessageV([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogMessageVNative(category, priority, (byte*)pfmt, ap);
-			}
-		}
-
-		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogMessageV([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogMessageVNative(category, priority, pStr0, ap);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Get the current log output function.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogGetOutputFunction")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogGetOutputFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogGetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata);
-
-		/// <summary>/// Get the current log output function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogGetOutputFunction")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogGetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
-		{
-			SDLLogGetOutputFunctionNative(callback, userdata);
-		}
-
-		/// <summary>
-		/// Replace the default log output function with one of your own.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogSetOutputFunction")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetOutputFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
-		/// <summary>/// Replace the default log output function with one of your own.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetOutputFunction")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogSetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			SDLLogSetOutputFunctionNative(callback, userdata);
-		}
-
-		/// <summary>
-		/// Create a modal message box.<br/>
-		/// If your needs aren't complex, it might be easier to use<br/>
-		/// SDL_ShowSimpleMessageBox.<br/>
-		/// This function should be called on the thread that created the parent<br/>
-		/// window, or on the main thread if the messagebox has no parent. It will<br/>
-		/// block execution of that thread until the user clicks a button or closes the<br/>
-		/// messagebox.<br/>
-		/// This function may be called at any time, even before SDL_Init(). This makes<br/>
-		/// it useful for reporting errors like a failure to create a renderer or<br/>
-		/// OpenGL context.<br/>
-		/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>
-		/// formal toolkit like GTK+ or Qt.<br/>
-		/// Note that if SDL_Init() would fail because there isn't any available video<br/>
-		/// target, this function is likely to fail for the same reasons. If this is a<br/>
-		/// concern, check the return value from this function and fall back to writing<br/>
-		/// to stderr if you can.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ShowMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowMessageBox")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLShowMessageBoxNative([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] int* buttonid);
-
-		/// <summary>/// Create a modal message box.<br/>/// If your needs aren't complex, it might be easier to use<br/>/// SDL_ShowSimpleMessageBox.<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowMessageBox([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] int* buttonid)
-		{
-			int ret = SDLShowMessageBoxNative(messageboxdata, buttonid);
+			uint ret = SDLGetWindowFlagsNative(window);
 			return ret;
 		}
 
-		/// <summary>/// Create a modal message box.<br/>/// If your needs aren't complex, it might be easier to use<br/>/// SDL_ShowSimpleMessageBox.<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowMessageBox([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] ref int buttonid)
+		/// <summary>/// Get the window flags.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowFlags")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLGetWindowFlags([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
 		{
-			fixed (int* pbuttonid = &buttonid)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				int ret = SDLShowMessageBoxNative(messageboxdata, (int*)pbuttonid);
+				uint ret = SDLGetWindowFlagsNative((SDLWindow*)pwindow);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Display a simple modal message box.<br/>
-		/// If your needs aren't complex, this function is preferred over<br/>
-		/// SDL_ShowMessageBox.<br/>
-		/// `flags` may be any of the following:<br/>
-		/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>
-		/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>
-		/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>
-		/// This function should be called on the thread that created the parent<br/>
-		/// window, or on the main thread if the messagebox has no parent. It will<br/>
-		/// block execution of that thread until the user clicks a button or closes the<br/>
-		/// messagebox.<br/>
-		/// This function may be called at any time, even before SDL_Init(). This makes<br/>
-		/// it useful for reporting errors like a failure to create a renderer or<br/>
-		/// OpenGL context.<br/>
-		/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>
-		/// formal toolkit like GTK+ or Qt.<br/>
-		/// Note that if SDL_Init() would fail because there isn't any available video<br/>
-		/// target, this function is likely to fail for the same reasons. If this is a<br/>
-		/// concern, check the return value from this function and fall back to writing<br/>
-		/// to stderr if you can.<br/>
+		/// Set the title of a window.<br/>
+		/// This string is expected to be in UTF-8 encoding.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowSimpleMessageBox")]
+		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowTitle")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLShowSimpleMessageBoxNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+		internal static partial void SDLSetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title);
 
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
 		{
-			int ret = SDLShowSimpleMessageBoxNative(flags, title, message, window);
-			return ret;
+			SDLSetWindowTitleNative(window, title);
 		}
 
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowTitleNative((SDLWindow*)pwindow, title);
+			}
+		}
+
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title)
 		{
 			fixed (byte* ptitle = &title)
 			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, (byte*)ptitle, message, window);
-				return ret;
+				SDLSetWindowTitleNative(window, (byte*)ptitle);
 			}
 		}
 
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -571,1021 +109,2871 @@ namespace Hexa.NET.SDL2
 				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			int ret = SDLShowSimpleMessageBoxNative(flags, pStr0, message, window);
+			SDLSetWindowTitleNative(window, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
-			return ret;
 		}
 
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] ref byte message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			fixed (byte* pmessage = &message)
-			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, title, (byte*)pmessage, window);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] string message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (message != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(message);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(message, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = SDLShowSimpleMessageBoxNative(flags, title, pStr0, window);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] ref byte message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			fixed (byte* ptitle = &title)
-			{
-				fixed (byte* pmessage = &message)
-				{
-					int ret = SDLShowSimpleMessageBoxNative(flags, (byte*)ptitle, (byte*)pmessage, window);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] string message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (message != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(message);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(message, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			int ret = SDLShowSimpleMessageBoxNative(flags, pStr0, pStr1, window);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title)
 		{
 			fixed (SDLWindow* pwindow = &window)
 			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, title, message, (SDLWindow*)pwindow);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			fixed (byte* ptitle = &title)
-			{
-				fixed (SDLWindow* pwindow = &window)
+				fixed (byte* ptitle = &title)
 				{
-					int ret = SDLShowSimpleMessageBoxNative(flags, (byte*)ptitle, message, (SDLWindow*)pwindow);
-					return ret;
+					SDLSetWindowTitleNative((SDLWindow*)pwindow, (byte*)ptitle);
 				}
 			}
 		}
 
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		/// <summary>/// Set the title of a window.<br/>/// This string is expected to be in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title)
 		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
 			fixed (SDLWindow* pwindow = &window)
 			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, pStr0, message, (SDLWindow*)pwindow);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (title != null)
 				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] ref byte message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			fixed (byte* pmessage = &message)
-			{
-				fixed (SDLWindow* pwindow = &window)
-				{
-					int ret = SDLShowSimpleMessageBoxNative(flags, title, (byte*)pmessage, (SDLWindow*)pwindow);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] string message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (message != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(message);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(message, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (SDLWindow* pwindow = &window)
-			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, title, pStr0, (SDLWindow*)pwindow);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] ref byte message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			fixed (byte* ptitle = &title)
-			{
-				fixed (byte* pmessage = &message)
-				{
-					fixed (SDLWindow* pwindow = &window)
+					pStrSize0 = Utils.GetByteCountUTF8(title);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
 					{
-						int ret = SDLShowSimpleMessageBoxNative(flags, (byte*)ptitle, (byte*)pmessage, (SDLWindow*)pwindow);
-						return ret;
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
 					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
 				}
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] string message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (message != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(message);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(message, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			fixed (SDLWindow* pwindow = &window)
-			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, pStr0, pStr1, (SDLWindow*)pwindow);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
+				SDLSetWindowTitleNative((SDLWindow*)pwindow, pStr0);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+			}
+		}
+
+		/// <summary>
+		/// Get the title of a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowTitle")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetWindowTitleNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			byte* ret = SDLGetWindowTitleNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetWindowTitleS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetWindowTitleNative(window));
+			return ret;
+		}
+
+		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetWindowTitle([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				byte* ret = SDLGetWindowTitleNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the title of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowTitle")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetWindowTitleS([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLGetWindowTitleNative((SDLWindow*)pwindow));
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Create a CAMetalLayer-backed NSView/UIView and attach it to the specified<br/>
-		/// window.<br/>
-		/// On macOS, this does *not* associate a MTLDevice with the CAMetalLayer on<br/>
-		/// its own. It is up to user code to do that.<br/>
-		/// The returned handle can be casted directly to a NSView or UIView. To access<br/>
-		/// the backing CAMetalLayer, call SDL_Metal_GetLayer().<br/>
+		/// Set the icon for a window.<br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Metal_CreateView")]
-		[return: NativeName(NativeNameType.Type, "SDL_MetalView")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Metal_CreateView")]
+		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowIcon")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLMetalView SDLMetalCreateViewNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+		internal static partial void SDLSetWindowIconNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* icon);
 
-		/// <summary>/// Create a CAMetalLayer-backed NSView/UIView and attach it to the specified<br/>/// window.<br/>/// On macOS, this does *not* associate a MTLDevice with the CAMetalLayer on<br/>/// its own. It is up to user code to do that.<br/>/// The returned handle can be casted directly to a NSView or UIView. To access<br/>/// the backing CAMetalLayer, call SDL_Metal_GetLayer().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_CreateView")]
-		[return: NativeName(NativeNameType.Type, "SDL_MetalView")]
-		public static SDLMetalView SDLMetalCreateView([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* icon)
 		{
-			SDLMetalView ret = SDLMetalCreateViewNative(window);
-			return ret;
+			SDLSetWindowIconNative(window, icon);
+		}
+
+		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* icon)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowIconNative((SDLWindow*)pwindow, icon);
+			}
+		}
+
+		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface icon)
+		{
+			fixed (SDLSurface* picon = &icon)
+			{
+				SDLSetWindowIconNative(window, (SDLSurface*)picon);
+			}
+		}
+
+		/// <summary>/// Set the icon for a window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowIcon")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowIcon([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "icon")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface icon)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (SDLSurface* picon = &icon)
+				{
+					SDLSetWindowIconNative((SDLWindow*)pwindow, (SDLSurface*)picon);
+				}
+			}
 		}
 
 		/// <summary>
-		/// Destroy an existing SDL_MetalView object.<br/>
-		/// This should be called before SDL_DestroyWindow, if SDL_Metal_CreateView was<br/>
-		/// called after SDL_CreateWindow.<br/>
+		/// Associate an arbitrary named pointer with a window.<br/>
+		/// `name` is case-sensitive.<br/>
 		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Metal_DestroyView")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Metal_DestroyView")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMetalDestroyViewNative([NativeName(NativeNameType.Param, "view")] [NativeName(NativeNameType.Type, "SDL_MetalView")] SDLMetalView view);
-
-		/// <summary>/// Destroy an existing SDL_MetalView object.<br/>/// This should be called before SDL_DestroyWindow, if SDL_Metal_CreateView was<br/>/// called after SDL_CreateWindow.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_DestroyView")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMetalDestroyView([NativeName(NativeNameType.Param, "view")] [NativeName(NativeNameType.Type, "SDL_MetalView")] SDLMetalView view)
-		{
-			SDLMetalDestroyViewNative(view);
-		}
-
-		/// <summary>
-		/// Get a pointer to the backing CAMetalLayer for the given view.<br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Metal_GetLayer")]
+		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Metal_GetLayer")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowData")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLMetalGetLayerNative([NativeName(NativeNameType.Param, "view")] [NativeName(NativeNameType.Type, "SDL_MetalView")] SDLMetalView view);
+		internal static partial void* SDLSetWindowDataNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
 
-		/// <summary>/// Get a pointer to the backing CAMetalLayer for the given view.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetLayer")]
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLMetalGetLayer([NativeName(NativeNameType.Param, "view")] [NativeName(NativeNameType.Type, "SDL_MetalView")] SDLMetalView view)
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
-			void* ret = SDLMetalGetLayerNative(view);
+			void* ret = SDLSetWindowDataNative(window, name, userdata);
 			return ret;
 		}
 
-		/// <summary>
-		/// Get the size of a window's underlying drawable in pixels (for use with<br/>
-		/// setting viewport, scissor <br/>
-		/// &<br/>
-		/// etc).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Metal_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Metal_GetDrawableSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMetalGetDrawableSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels (for use with<br/>/// setting viewport, scissor <br/>/// &<br/>/// etc).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMetalGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
-			SDLMetalGetDrawableSizeNative(window, w, h);
-		}
-
-		/// <summary>/// Get the size of a window's underlying drawable in pixels (for use with<br/>/// setting viewport, scissor <br/>/// &<br/>/// etc).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMetalGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				SDLMetalGetDrawableSizeNative(window, (int*)pw, h);
+				void* ret = SDLSetWindowDataNative((SDLWindow*)pwindow, name, userdata);
+				return ret;
 			}
 		}
 
-		/// <summary>/// Get the size of a window's underlying drawable in pixels (for use with<br/>/// setting viewport, scissor <br/>/// &<br/>/// etc).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMetalGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
-			fixed (int* ph = &h)
+			fixed (byte* pname = &name)
 			{
-				SDLMetalGetDrawableSizeNative(window, w, (int*)ph);
+				void* ret = SDLSetWindowDataNative(window, (byte*)pname, userdata);
+				return ret;
 			}
 		}
 
-		/// <summary>/// Get the size of a window's underlying drawable in pixels (for use with<br/>/// setting viewport, scissor <br/>/// &<br/>/// etc).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Metal_GetDrawableSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMetalGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
-			fixed (int* pw = &w)
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
 			{
-				fixed (int* ph = &h)
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
-					SDLMetalGetDrawableSizeNative(window, (int*)pw, (int*)ph);
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
 				}
-			}
-		}
-
-		/// <summary>
-		/// Get the current power supply details.<br/>
-		/// You should never take a battery status as absolute truth. Batteries<br/>
-		/// (especially failing batteries) are delicate hardware, and the values<br/>
-		/// reported here are best estimates based on what that hardware reports. It's<br/>
-		/// not uncommon for older batteries to lose stored power much faster than it<br/>
-		/// reports, or completely drain when reporting it has 20 percent left, etc.<br/>
-		/// Battery status can change at any time; if you are concerned with power<br/>
-		/// state, you should call this function frequently, and perhaps ignore changes<br/>
-		/// until they seem to be stable for a few seconds.<br/>
-		/// It's possible a platform can only report battery percentage or time left<br/>
-		/// but not both.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetPowerInfo")]
-		[return: NativeName(NativeNameType.Type, "SDL_PowerState")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPowerInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLPowerState SDLGetPowerInfoNative([NativeName(NativeNameType.Param, "seconds")] [NativeName(NativeNameType.Type, "int*")] int* seconds, [NativeName(NativeNameType.Param, "percent")] [NativeName(NativeNameType.Type, "int*")] int* percent);
-
-		/// <summary>/// Get the current power supply details.<br/>/// You should never take a battery status as absolute truth. Batteries<br/>/// (especially failing batteries) are delicate hardware, and the values<br/>/// reported here are best estimates based on what that hardware reports. It's<br/>/// not uncommon for older batteries to lose stored power much faster than it<br/>/// reports, or completely drain when reporting it has 20 percent left, etc.<br/>/// Battery status can change at any time; if you are concerned with power<br/>/// state, you should call this function frequently, and perhaps ignore changes<br/>/// until they seem to be stable for a few seconds.<br/>/// It's possible a platform can only report battery percentage or time left<br/>/// but not both.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPowerInfo")]
-		[return: NativeName(NativeNameType.Type, "SDL_PowerState")]
-		public static SDLPowerState SDLGetPowerInfo([NativeName(NativeNameType.Param, "seconds")] [NativeName(NativeNameType.Type, "int*")] int* seconds, [NativeName(NativeNameType.Param, "percent")] [NativeName(NativeNameType.Type, "int*")] int* percent)
-		{
-			SDLPowerState ret = SDLGetPowerInfoNative(seconds, percent);
-			return ret;
-		}
-
-		/// <summary>/// Get the current power supply details.<br/>/// You should never take a battery status as absolute truth. Batteries<br/>/// (especially failing batteries) are delicate hardware, and the values<br/>/// reported here are best estimates based on what that hardware reports. It's<br/>/// not uncommon for older batteries to lose stored power much faster than it<br/>/// reports, or completely drain when reporting it has 20 percent left, etc.<br/>/// Battery status can change at any time; if you are concerned with power<br/>/// state, you should call this function frequently, and perhaps ignore changes<br/>/// until they seem to be stable for a few seconds.<br/>/// It's possible a platform can only report battery percentage or time left<br/>/// but not both.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPowerInfo")]
-		[return: NativeName(NativeNameType.Type, "SDL_PowerState")]
-		public static SDLPowerState SDLGetPowerInfo([NativeName(NativeNameType.Param, "seconds")] [NativeName(NativeNameType.Type, "int*")] int* seconds, [NativeName(NativeNameType.Param, "percent")] [NativeName(NativeNameType.Type, "int*")] ref int percent)
-		{
-			fixed (int* ppercent = &percent)
-			{
-				SDLPowerState ret = SDLGetPowerInfoNative(seconds, (int*)ppercent);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the number of 2D rendering drivers available for the current display.<br/>
-		/// A render driver is a set of code that handles rendering and texture<br/>
-		/// management on a particular display. Normally there is only one, but some<br/>
-		/// drivers may have several available with different capabilities.<br/>
-		/// There may be none if SDL was compiled without render support.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetNumRenderDrivers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumRenderDrivers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumRenderDriversNative();
-
-		/// <summary>/// Get the number of 2D rendering drivers available for the current display.<br/>/// A render driver is a set of code that handles rendering and texture<br/>/// management on a particular display. Normally there is only one, but some<br/>/// drivers may have several available with different capabilities.<br/>/// There may be none if SDL was compiled without render support.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumRenderDrivers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetNumRenderDrivers()
-		{
-			int ret = SDLGetNumRenderDriversNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get info about a specific 2D rendering driver for the current display.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRenderDriverInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRenderDriverInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetRenderDriverInfoNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] SDLRendererInfo* info);
-
-		/// <summary>/// Get info about a specific 2D rendering driver for the current display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDriverInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDriverInfo([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] SDLRendererInfo* info)
-		{
-			int ret = SDLGetRenderDriverInfoNative(index, info);
-			return ret;
-		}
-
-		/// <summary>/// Get info about a specific 2D rendering driver for the current display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDriverInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDriverInfo([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] ref SDLRendererInfo info)
-		{
-			fixed (SDLRendererInfo* pinfo = &info)
-			{
-				int ret = SDLGetRenderDriverInfoNative(index, (SDLRendererInfo*)pinfo);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Create a window and default renderer.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateWindowAndRenderer")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateWindowAndRenderer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCreateWindowAndRendererNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "window_flags")] [NativeName(NativeNameType.Type, "Uint32")] uint windowFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window**")] SDLWindow** window, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer**")] SDLRenderer** renderer);
-
-		/// <summary>/// Create a window and default renderer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowAndRenderer")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLCreateWindowAndRenderer([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "window_flags")] [NativeName(NativeNameType.Type, "Uint32")] uint windowFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window**")] SDLWindow** window, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer**")] SDLRenderer** renderer)
-		{
-			int ret = SDLCreateWindowAndRendererNative(width, height, windowFlags, window, renderer);
-			return ret;
-		}
-
-		/// <summary>/// Create a window and default renderer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowAndRenderer")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLCreateWindowAndRenderer([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "window_flags")] [NativeName(NativeNameType.Type, "Uint32")] uint windowFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window**")] ref SDLWindow* window, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer**")] SDLRenderer** renderer)
-		{
-			fixed (SDLWindow** pwindow = &window)
-			{
-				int ret = SDLCreateWindowAndRendererNative(width, height, windowFlags, (SDLWindow**)pwindow, renderer);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Create a window and default renderer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowAndRenderer")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLCreateWindowAndRenderer([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "window_flags")] [NativeName(NativeNameType.Type, "Uint32")] uint windowFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window**")] SDLWindow** window, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer**")] ref SDLRenderer* renderer)
-		{
-			fixed (SDLRenderer** prenderer = &renderer)
-			{
-				int ret = SDLCreateWindowAndRendererNative(width, height, windowFlags, window, (SDLRenderer**)prenderer);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Create a window and default renderer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowAndRenderer")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLCreateWindowAndRenderer([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "window_flags")] [NativeName(NativeNameType.Type, "Uint32")] uint windowFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window**")] ref SDLWindow* window, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer**")] ref SDLRenderer* renderer)
-		{
-			fixed (SDLWindow** pwindow = &window)
-			{
-				fixed (SDLRenderer** prenderer = &renderer)
+				else
 				{
-					int ret = SDLCreateWindowAndRendererNative(width, height, windowFlags, (SDLWindow**)pwindow, (SDLRenderer**)prenderer);
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			void* ret = SDLSetWindowDataNative(window, pStr0, userdata);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (byte* pname = &name)
+				{
+					void* ret = SDLSetWindowDataNative((SDLWindow*)pwindow, (byte*)pname, userdata);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>
-		/// Create a 2D rendering context for a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateRenderer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLRenderer* SDLCreateRendererNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
-
-		/// <summary>/// Create a 2D rendering context for a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		public static SDLRenderer* SDLCreateRenderer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		/// <summary>/// Associate an arbitrary named pointer with a window.<br/>/// `name` is case-sensitive.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLSetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
-			SDLRenderer* ret = SDLCreateRendererNative(window, index, flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a 2D software rendering context for a surface.<br/>
-		/// Two other API which can be used to create SDL_Renderer:<br/>
-		/// SDL_CreateRenderer() and SDL_CreateWindowAndRenderer(). These can _also_<br/>
-		/// create a software renderer, but they are intended to be used with an<br/>
-		/// SDL_Window as the final destination and not an SDL_Surface.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateSoftwareRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateSoftwareRenderer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLRenderer* SDLCreateSoftwareRendererNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
-
-		/// <summary>/// Create a 2D software rendering context for a surface.<br/>/// Two other API which can be used to create SDL_Renderer:<br/>/// SDL_CreateRenderer() and SDL_CreateWindowAndRenderer(). These can _also_<br/>/// create a software renderer, but they are intended to be used with an<br/>/// SDL_Window as the final destination and not an SDL_Surface.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateSoftwareRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		public static SDLRenderer* SDLCreateSoftwareRenderer([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
-		{
-			SDLRenderer* ret = SDLCreateSoftwareRendererNative(surface);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the renderer associated with a window.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRenderer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLRenderer* SDLGetRendererNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
-		/// <summary>/// Get the renderer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderer")]
-		[return: NativeName(NativeNameType.Type, "SDL_Renderer*")]
-		public static SDLRenderer* SDLGetRenderer([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
-		{
-			SDLRenderer* ret = SDLGetRendererNative(window);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the window associated with a renderer.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLWindow* SDLRenderGetWindowNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
-		/// <summary>/// Get the window associated with a renderer.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetWindow")]
-		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
-		public static SDLWindow* SDLRenderGetWindow([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
-		{
-			SDLWindow* ret = SDLRenderGetWindowNative(renderer);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get information about a rendering context.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRendererInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRendererInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetRendererInfoNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] SDLRendererInfo* info);
-
-		/// <summary>/// Get information about a rendering context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererInfo([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] SDLRendererInfo* info)
-		{
-			int ret = SDLGetRendererInfoNative(renderer, info);
-			return ret;
-		}
-
-		/// <summary>/// Get information about a rendering context.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererInfo")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererInfo([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_RendererInfo*")] ref SDLRendererInfo info)
-		{
-			fixed (SDLRendererInfo* pinfo = &info)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				int ret = SDLGetRendererInfoNative(renderer, (SDLRendererInfo*)pinfo);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the output size in pixels of a rendering context.<br/>
-		/// Due to high-dpi displays, you might end up with a rendering context that<br/>
-		/// has more pixels than the window that contains it, so use this instead of<br/>
-		/// SDL_GetWindowSize() to decide how much drawing area you have.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRendererOutputSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRendererOutputSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetRendererOutputSizeNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Get the output size in pixels of a rendering context.<br/>/// Due to high-dpi displays, you might end up with a rendering context that<br/>/// has more pixels than the window that contains it, so use this instead of<br/>/// SDL_GetWindowSize() to decide how much drawing area you have.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererOutputSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererOutputSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			int ret = SDLGetRendererOutputSizeNative(renderer, w, h);
-			return ret;
-		}
-
-		/// <summary>/// Get the output size in pixels of a rendering context.<br/>/// Due to high-dpi displays, you might end up with a rendering context that<br/>/// has more pixels than the window that contains it, so use this instead of<br/>/// SDL_GetWindowSize() to decide how much drawing area you have.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererOutputSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererOutputSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
-			{
-				int ret = SDLGetRendererOutputSizeNative(renderer, (int*)pw, h);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the output size in pixels of a rendering context.<br/>/// Due to high-dpi displays, you might end up with a rendering context that<br/>/// has more pixels than the window that contains it, so use this instead of<br/>/// SDL_GetWindowSize() to decide how much drawing area you have.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererOutputSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererOutputSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* ph = &h)
-			{
-				int ret = SDLGetRendererOutputSizeNative(renderer, w, (int*)ph);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the output size in pixels of a rendering context.<br/>/// Due to high-dpi displays, you might end up with a rendering context that<br/>/// has more pixels than the window that contains it, so use this instead of<br/>/// SDL_GetWindowSize() to decide how much drawing area you have.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRendererOutputSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRendererOutputSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* pw = &w)
-			{
-				fixed (int* ph = &h)
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (name != null)
 				{
-					int ret = SDLGetRendererOutputSizeNative(renderer, (int*)pw, (int*)ph);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Create a texture for a rendering context.<br/>
-		/// You can set the texture scaling method by setting<br/>
-		/// `SDL_HINT_RENDER_SCALE_QUALITY` before creating the texture.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateTexture")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTexture* SDLCreateTextureNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int")] int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h);
-
-		/// <summary>/// Create a texture for a rendering context.<br/>/// You can set the texture scaling method by setting<br/>/// `SDL_HINT_RENDER_SCALE_QUALITY` before creating the texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateTexture")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		public static SDLTexture* SDLCreateTexture([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int")] int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
-		{
-			SDLTexture* ret = SDLCreateTextureNative(renderer, format, access, w, h);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a texture from an existing surface.<br/>
-		/// The surface is not modified or freed by this function.<br/>
-		/// The SDL_TextureAccess hint for the created texture is<br/>
-		/// `SDL_TEXTUREACCESS_STATIC`.<br/>
-		/// The pixel format of the created texture may be different from the pixel<br/>
-		/// format of the surface. Use SDL_QueryTexture() to query the pixel format of<br/>
-		/// the texture.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateTextureFromSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateTextureFromSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTexture* SDLCreateTextureFromSurfaceNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
-
-		/// <summary>/// Create a texture from an existing surface.<br/>/// The surface is not modified or freed by this function.<br/>/// The SDL_TextureAccess hint for the created texture is<br/>/// `SDL_TEXTUREACCESS_STATIC`.<br/>/// The pixel format of the created texture may be different from the pixel<br/>/// format of the surface. Use SDL_QueryTexture() to query the pixel format of<br/>/// the texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateTextureFromSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		public static SDLTexture* SDLCreateTextureFromSurface([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
-		{
-			SDLTexture* ret = SDLCreateTextureFromSurfaceNative(renderer, surface);
-			return ret;
-		}
-
-		/// <summary>/// Create a texture from an existing surface.<br/>/// The surface is not modified or freed by this function.<br/>/// The SDL_TextureAccess hint for the created texture is<br/>/// `SDL_TEXTUREACCESS_STATIC`.<br/>/// The pixel format of the created texture may be different from the pixel<br/>/// format of the surface. Use SDL_QueryTexture() to query the pixel format of<br/>/// the texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateTextureFromSurface")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		public static SDLTexture* SDLCreateTextureFromSurface([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
-		{
-			fixed (SDLSurface* psurface = &surface)
-			{
-				SDLTexture* ret = SDLCreateTextureFromSurfaceNative(renderer, (SDLSurface*)psurface);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Query the attributes of a texture.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_QueryTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLQueryTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			int ret = SDLQueryTextureNative(texture, format, access, w, h);
-			return ret;
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (uint* pformat = &format)
-			{
-				int ret = SDLQueryTextureNative(texture, (uint*)pformat, access, w, h);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* paccess = &access)
-			{
-				int ret = SDLQueryTextureNative(texture, format, (int*)paccess, w, h);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (uint* pformat = &format)
-			{
-				fixed (int* paccess = &access)
-				{
-					int ret = SDLQueryTextureNative(texture, (uint*)pformat, (int*)paccess, w, h);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
-			{
-				int ret = SDLQueryTextureNative(texture, format, access, (int*)pw, h);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (uint* pformat = &format)
-			{
-				fixed (int* pw = &w)
-				{
-					int ret = SDLQueryTextureNative(texture, (uint*)pformat, access, (int*)pw, h);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* paccess = &access)
-			{
-				fixed (int* pw = &w)
-				{
-					int ret = SDLQueryTextureNative(texture, format, (int*)paccess, (int*)pw, h);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (uint* pformat = &format)
-			{
-				fixed (int* paccess = &access)
-				{
-					fixed (int* pw = &w)
+					pStrSize0 = Utils.GetByteCountUTF8(name);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
 					{
-						int ret = SDLQueryTextureNative(texture, (uint*)pformat, (int*)paccess, (int*)pw, h);
-						return ret;
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				void* ret = SDLSetWindowDataNative((SDLWindow*)pwindow, pStr0, userdata);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Retrieve the data pointer associated with a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowData")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLGetWindowDataNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			void* ret = SDLGetWindowDataNative(window, name);
+			return ret;
+		}
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				void* ret = SDLGetWindowDataNative((SDLWindow*)pwindow, name);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name)
+		{
+			fixed (byte* pname = &name)
+			{
+				void* ret = SDLGetWindowDataNative(window, (byte*)pname);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			void* ret = SDLGetWindowDataNative(window, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (byte* pname = &name)
+				{
+					void* ret = SDLGetWindowDataNative((SDLWindow*)pwindow, (byte*)pname);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Retrieve the data pointer associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowData")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowData([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (name != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(name);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				void* ret = SDLGetWindowDataNative((SDLWindow*)pwindow, pStr0);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the position of a window.<br/>
+		/// The window coordinate origin is the upper left of the display.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowPosition")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowPositionNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y);
+
+		/// <summary>/// Set the position of a window.<br/>/// The window coordinate origin is the upper left of the display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y)
+		{
+			SDLSetWindowPositionNative(window, x, y);
+		}
+
+		/// <summary>/// Set the position of a window.<br/>/// The window coordinate origin is the upper left of the display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowPositionNative((SDLWindow*)pwindow, x, y);
+			}
+		}
+
+		/// <summary>
+		/// Get the position of a window.<br/>
+		/// If you do not need the value for one of the positions a NULL may be passed<br/>
+		/// in the `x` or `y` parameter.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowPosition")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetWindowPositionNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y);
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		{
+			SDLGetWindowPositionNative(window, x, y);
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLGetWindowPositionNative((SDLWindow*)pwindow, x, y);
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		{
+			fixed (int* px = &x)
+			{
+				SDLGetWindowPositionNative(window, (int*)px, y);
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] int* y)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* px = &x)
+				{
+					SDLGetWindowPositionNative((SDLWindow*)pwindow, (int*)px, y);
+				}
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		{
+			fixed (int* py = &y)
+			{
+				SDLGetWindowPositionNative(window, x, (int*)py);
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] int* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* py = &y)
+				{
+					SDLGetWindowPositionNative((SDLWindow*)pwindow, x, (int*)py);
+				}
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		{
+			fixed (int* px = &x)
+			{
+				fixed (int* py = &y)
+				{
+					SDLGetWindowPositionNative(window, (int*)px, (int*)py);
+				}
+			}
+		}
+
+		/// <summary>/// Get the position of a window.<br/>/// If you do not need the value for one of the positions a NULL may be passed<br/>/// in the `x` or `y` parameter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPosition")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowPosition([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int*")] ref int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int*")] ref int y)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* px = &x)
+				{
+					fixed (int* py = &y)
+					{
+						SDLGetWindowPositionNative((SDLWindow*)pwindow, (int*)px, (int*)py);
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>
+		/// Set the size of a window's client area.<br/>
+		/// The window size in screen coordinates may differ from the size in pixels,<br/>
+		/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>
+		/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize() or<br/>
+		/// SDL_GetRendererOutputSize() to get the real client area size in pixels.<br/>
+		/// Fullscreen windows automatically match the size of the display mode, and<br/>
+		/// you should use SDL_SetWindowDisplayMode() to change their size.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h);
+
+		/// <summary>/// Set the size of a window's client area.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to get the real client area size in pixels.<br/>/// Fullscreen windows automatically match the size of the display mode, and<br/>/// you should use SDL_SetWindowDisplayMode() to change their size.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
+		{
+			SDLSetWindowSizeNative(window, w, h);
+		}
+
+		/// <summary>/// Set the size of a window's client area.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to get the real client area size in pixels.<br/>/// Fullscreen windows automatically match the size of the display mode, and<br/>/// you should use SDL_SetWindowDisplayMode() to change their size.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowSizeNative((SDLWindow*)pwindow, w, h);
+			}
+		}
+
+		/// <summary>
+		/// Get the size of a window's client area.<br/>
+		/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>
+		/// height value is not desired.<br/>
+		/// The window size in screen coordinates may differ from the size in pixels,<br/>
+		/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>
+		/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>
+		/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>
+		/// real client area size in pixels.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetWindowSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			SDLGetWindowSizeNative(window, w, h);
+		}
+
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLGetWindowSizeNative((SDLWindow*)pwindow, w, h);
+			}
+		}
+
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (int* pw = &w)
+			{
+				SDLGetWindowSizeNative(window, (int*)pw, h);
+			}
+		}
+
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					SDLGetWindowSizeNative((SDLWindow*)pwindow, (int*)pw, h);
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
 		{
 			fixed (int* ph = &h)
 			{
-				int ret = SDLQueryTextureNative(texture, format, access, w, (int*)ph);
-				return ret;
+				SDLGetWindowSizeNative(window, w, (int*)ph);
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
 		{
-			fixed (uint* pformat = &format)
+			fixed (SDLWindow* pwindow = &window)
 			{
 				fixed (int* ph = &h)
 				{
-					int ret = SDLQueryTextureNative(texture, (uint*)pformat, access, w, (int*)ph);
-					return ret;
+					SDLGetWindowSizeNative((SDLWindow*)pwindow, w, (int*)ph);
 				}
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* paccess = &access)
-			{
-				fixed (int* ph = &h)
-				{
-					int ret = SDLQueryTextureNative(texture, format, (int*)paccess, w, (int*)ph);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (uint* pformat = &format)
-			{
-				fixed (int* paccess = &access)
-				{
-					fixed (int* ph = &h)
-					{
-						int ret = SDLQueryTextureNative(texture, (uint*)pformat, (int*)paccess, w, (int*)ph);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
 		{
 			fixed (int* pw = &w)
 			{
 				fixed (int* ph = &h)
 				{
-					int ret = SDLQueryTextureNative(texture, format, access, (int*)pw, (int*)ph);
-					return ret;
+					SDLGetWindowSizeNative(window, (int*)pw, (int*)ph);
 				}
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] int* access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		/// <summary>/// Get the size of a window's client area.<br/>/// NULL can safely be passed as the `w` or `h` parameter if the width or<br/>/// height value is not desired.<br/>/// The window size in screen coordinates may differ from the size in pixels,<br/>/// if the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a platform<br/>/// with high-dpi support (e.g. iOS or macOS). Use SDL_GL_GetDrawableSize(),<br/>/// SDL_Vulkan_GetDrawableSize(), or SDL_GetRendererOutputSize() to get the<br/>/// real client area size in pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
 		{
-			fixed (uint* pformat = &format)
+			fixed (SDLWindow* pwindow = &window)
 			{
 				fixed (int* pw = &w)
 				{
 					fixed (int* ph = &h)
 					{
-						int ret = SDLQueryTextureNative(texture, (uint*)pformat, access, (int*)pw, (int*)ph);
+						SDLGetWindowSizeNative((SDLWindow*)pwindow, (int*)pw, (int*)ph);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the size of a window's borders (decorations) around the client area.<br/>
+		/// Note: If this function fails (returns -1), the size values will be<br/>
+		/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>
+		/// window in question was borderless.<br/>
+		/// Note: This function may fail on systems where the window has not yet been<br/>
+		/// decorated by the display server (for example, immediately after calling<br/>
+		/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>
+		/// window has been presented and composited, so that the window system has a<br/>
+		/// chance to decorate the window and provide the border dimensions to SDL.<br/>
+		/// This function also returns -1 if getting the information is not supported.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowBordersSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetWindowBordersSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right);
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			int ret = SDLGetWindowBordersSizeNative(window, top, left, bottom, right);
+			return ret;
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, left, bottom, right);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (int* ptop = &top)
+			{
+				int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, bottom, right);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, left, bottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (int* pleft = &left)
+			{
+				int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, bottom, right);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pleft = &left)
+				{
+					int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, (int*)pleft, bottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pleft = &left)
+				{
+					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, bottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pleft = &left)
+					{
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, (int*)pleft, bottom, right);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] uint* format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
 		{
-			fixed (int* paccess = &access)
+			fixed (int* pbottom = &bottom)
 			{
-				fixed (int* pw = &w)
+				int ret = SDLGetWindowBordersSizeNative(window, top, left, (int*)pbottom, right);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pbottom = &bottom)
 				{
-					fixed (int* ph = &h)
+					int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, left, (int*)pbottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pbottom = &bottom)
+				{
+					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, (int*)pbottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pbottom = &bottom)
 					{
-						int ret = SDLQueryTextureNative(texture, format, (int*)paccess, (int*)pw, (int*)ph);
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, left, (int*)pbottom, right);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Query the attributes of a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueryTexture")]
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueryTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint format, [NativeName(NativeNameType.Param, "access")] [NativeName(NativeNameType.Type, "int*")] ref int access, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
 		{
-			fixed (uint* pformat = &format)
+			fixed (int* pleft = &left)
 			{
-				fixed (int* paccess = &access)
+				fixed (int* pbottom = &bottom)
 				{
-					fixed (int* pw = &w)
+					int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, (int*)pbottom, right);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pbottom = &bottom)
 					{
-						fixed (int* ph = &h)
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, (int*)pleft, (int*)pbottom, right);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pbottom = &bottom)
+					{
+						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, (int*)pbottom, right);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] int* right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pleft = &left)
+					{
+						fixed (int* pbottom = &bottom)
 						{
-							int ret = SDLQueryTextureNative(texture, (uint*)pformat, (int*)paccess, (int*)pw, (int*)ph);
+							int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, (int*)pleft, (int*)pbottom, right);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* pright = &right)
+			{
+				int ret = SDLGetWindowBordersSizeNative(window, top, left, bottom, (int*)pright);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pright = &right)
+				{
+					int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, left, bottom, (int*)pright);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pright = &right)
+				{
+					int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, bottom, (int*)pright);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, left, bottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* pleft = &left)
+			{
+				fixed (int* pright = &right)
+				{
+					int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, bottom, (int*)pright);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, (int*)pleft, bottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, bottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] int* bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pleft = &left)
+					{
+						fixed (int* pright = &right)
+						{
+							int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, (int*)pleft, bottom, (int*)pright);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* pbottom = &bottom)
+			{
+				fixed (int* pright = &right)
+				{
+					int ret = SDLGetWindowBordersSizeNative(window, top, left, (int*)pbottom, (int*)pright);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pbottom = &bottom)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, left, (int*)pbottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pbottom = &bottom)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, left, (int*)pbottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] int* left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pbottom = &bottom)
+					{
+						fixed (int* pright = &right)
+						{
+							int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, left, (int*)pbottom, (int*)pright);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* pleft = &left)
+			{
+				fixed (int* pbottom = &bottom)
+				{
+					fixed (int* pright = &right)
+					{
+						int ret = SDLGetWindowBordersSizeNative(window, top, (int*)pleft, (int*)pbottom, (int*)pright);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] int* top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pbottom = &bottom)
+					{
+						fixed (int* pright = &right)
+						{
+							int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, top, (int*)pleft, (int*)pbottom, (int*)pright);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (int* ptop = &top)
+			{
+				fixed (int* pleft = &left)
+				{
+					fixed (int* pbottom = &bottom)
+					{
+						fixed (int* pright = &right)
+						{
+							int ret = SDLGetWindowBordersSizeNative(window, (int*)ptop, (int*)pleft, (int*)pbottom, (int*)pright);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window's borders (decorations) around the client area.<br/>/// Note: If this function fails (returns -1), the size values will be<br/>/// initialized to 0, 0, 0, 0 (if a non-NULL pointer is provided), as if the<br/>/// window in question was borderless.<br/>/// Note: This function may fail on systems where the window has not yet been<br/>/// decorated by the display server (for example, immediately after calling<br/>/// SDL_CreateWindow). It is recommended that you wait at least until the<br/>/// window has been presented and composited, so that the window system has a<br/>/// chance to decorate the window and provide the border dimensions to SDL.<br/>/// This function also returns -1 if getting the information is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBordersSize")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowBordersSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "top")] [NativeName(NativeNameType.Type, "int*")] ref int top, [NativeName(NativeNameType.Param, "left")] [NativeName(NativeNameType.Type, "int*")] ref int left, [NativeName(NativeNameType.Param, "bottom")] [NativeName(NativeNameType.Type, "int*")] ref int bottom, [NativeName(NativeNameType.Param, "right")] [NativeName(NativeNameType.Type, "int*")] ref int right)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ptop = &top)
+				{
+					fixed (int* pleft = &left)
+					{
+						fixed (int* pbottom = &bottom)
+						{
+							fixed (int* pright = &right)
+							{
+								int ret = SDLGetWindowBordersSizeNative((SDLWindow*)pwindow, (int*)ptop, (int*)pleft, (int*)pbottom, (int*)pright);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the size of a window in pixels.<br/>
+		/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>
+		/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>
+		/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>
+		/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSizeInPixels")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetWindowSizeInPixelsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			SDLGetWindowSizeInPixelsNative(window, w, h);
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLGetWindowSizeInPixelsNative((SDLWindow*)pwindow, w, h);
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (int* pw = &w)
+			{
+				SDLGetWindowSizeInPixelsNative(window, (int*)pw, h);
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					SDLGetWindowSizeInPixelsNative((SDLWindow*)pwindow, (int*)pw, h);
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* ph = &h)
+			{
+				SDLGetWindowSizeInPixelsNative(window, w, (int*)ph);
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowSizeInPixelsNative((SDLWindow*)pwindow, w, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* pw = &w)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowSizeInPixelsNative(window, (int*)pw, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the size of a window in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSizeInPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowSizeInPixels([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					fixed (int* ph = &h)
+					{
+						SDLGetWindowSizeInPixelsNative((SDLWindow*)pwindow, (int*)pw, (int*)ph);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the minimum size of a window's client area.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMinimumSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowMinimumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "min_w")] [NativeName(NativeNameType.Type, "int")] int minW, [NativeName(NativeNameType.Param, "min_h")] [NativeName(NativeNameType.Type, "int")] int minH);
+
+		/// <summary>/// Set the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "min_w")] [NativeName(NativeNameType.Type, "int")] int minW, [NativeName(NativeNameType.Param, "min_h")] [NativeName(NativeNameType.Type, "int")] int minH)
+		{
+			SDLSetWindowMinimumSizeNative(window, minW, minH);
+		}
+
+		/// <summary>/// Set the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "min_w")] [NativeName(NativeNameType.Type, "int")] int minW, [NativeName(NativeNameType.Param, "min_h")] [NativeName(NativeNameType.Type, "int")] int minH)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowMinimumSizeNative((SDLWindow*)pwindow, minW, minH);
+			}
+		}
+
+		/// <summary>
+		/// Get the minimum size of a window's client area.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMinimumSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetWindowMinimumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			SDLGetWindowMinimumSizeNative(window, w, h);
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLGetWindowMinimumSizeNative((SDLWindow*)pwindow, w, h);
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (int* pw = &w)
+			{
+				SDLGetWindowMinimumSizeNative(window, (int*)pw, h);
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					SDLGetWindowMinimumSizeNative((SDLWindow*)pwindow, (int*)pw, h);
+				}
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* ph = &h)
+			{
+				SDLGetWindowMinimumSizeNative(window, w, (int*)ph);
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowMinimumSizeNative((SDLWindow*)pwindow, w, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* pw = &w)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowMinimumSizeNative(window, (int*)pw, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the minimum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMinimumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMinimumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					fixed (int* ph = &h)
+					{
+						SDLGetWindowMinimumSizeNative((SDLWindow*)pwindow, (int*)pw, (int*)ph);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the maximum size of a window's client area.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMaximumSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowMaximumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "max_w")] [NativeName(NativeNameType.Type, "int")] int maxW, [NativeName(NativeNameType.Param, "max_h")] [NativeName(NativeNameType.Type, "int")] int maxH);
+
+		/// <summary>/// Set the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "max_w")] [NativeName(NativeNameType.Type, "int")] int maxW, [NativeName(NativeNameType.Param, "max_h")] [NativeName(NativeNameType.Type, "int")] int maxH)
+		{
+			SDLSetWindowMaximumSizeNative(window, maxW, maxH);
+		}
+
+		/// <summary>/// Set the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "max_w")] [NativeName(NativeNameType.Type, "int")] int maxW, [NativeName(NativeNameType.Param, "max_h")] [NativeName(NativeNameType.Type, "int")] int maxH)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowMaximumSizeNative((SDLWindow*)pwindow, maxW, maxH);
+			}
+		}
+
+		/// <summary>
+		/// Get the maximum size of a window's client area.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMaximumSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetWindowMaximumSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			SDLGetWindowMaximumSizeNative(window, w, h);
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLGetWindowMaximumSizeNative((SDLWindow*)pwindow, w, h);
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (int* pw = &w)
+			{
+				SDLGetWindowMaximumSizeNative(window, (int*)pw, h);
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					SDLGetWindowMaximumSizeNative((SDLWindow*)pwindow, (int*)pw, h);
+				}
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* ph = &h)
+			{
+				SDLGetWindowMaximumSizeNative(window, w, (int*)ph);
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowMaximumSizeNative((SDLWindow*)pwindow, w, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (int* pw = &w)
+			{
+				fixed (int* ph = &h)
+				{
+					SDLGetWindowMaximumSizeNative(window, (int*)pw, (int*)ph);
+				}
+			}
+		}
+
+		/// <summary>/// Get the maximum size of a window's client area.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMaximumSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetWindowMaximumSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (int* pw = &w)
+				{
+					fixed (int* ph = &h)
+					{
+						SDLGetWindowMaximumSizeNative((SDLWindow*)pwindow, (int*)pw, (int*)ph);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the border state of a window.<br/>
+		/// This will add or remove the window's `SDL_WINDOW_BORDERLESS` flag and add<br/>
+		/// or remove the border from the actual window. This is a no-op if the<br/>
+		/// window's border already matches the requested state.<br/>
+		/// You can't change the border state of a fullscreen window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowBordered")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowBordered")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowBorderedNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "bordered")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool bordered);
+
+		/// <summary>/// Set the border state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_BORDERLESS` flag and add<br/>/// or remove the border from the actual window. This is a no-op if the<br/>/// window's border already matches the requested state.<br/>/// You can't change the border state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBordered")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowBordered([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "bordered")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool bordered)
+		{
+			SDLSetWindowBorderedNative(window, bordered);
+		}
+
+		/// <summary>/// Set the border state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_BORDERLESS` flag and add<br/>/// or remove the border from the actual window. This is a no-op if the<br/>/// window's border already matches the requested state.<br/>/// You can't change the border state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBordered")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowBordered([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "bordered")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool bordered)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowBorderedNative((SDLWindow*)pwindow, bordered);
+			}
+		}
+
+		/// <summary>
+		/// Set the user-resizable state of a window.<br/>
+		/// This will add or remove the window's `SDL_WINDOW_RESIZABLE` flag and<br/>
+		/// allow/disallow user resizing of the window. This is a no-op if the window's<br/>
+		/// resizable state already matches the requested state.<br/>
+		/// You can't change the resizable state of a fullscreen window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowResizable")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowResizable")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowResizableNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "resizable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool resizable);
+
+		/// <summary>/// Set the user-resizable state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_RESIZABLE` flag and<br/>/// allow/disallow user resizing of the window. This is a no-op if the window's<br/>/// resizable state already matches the requested state.<br/>/// You can't change the resizable state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowResizable")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowResizable([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "resizable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool resizable)
+		{
+			SDLSetWindowResizableNative(window, resizable);
+		}
+
+		/// <summary>/// Set the user-resizable state of a window.<br/>/// This will add or remove the window's `SDL_WINDOW_RESIZABLE` flag and<br/>/// allow/disallow user resizing of the window. This is a no-op if the window's<br/>/// resizable state already matches the requested state.<br/>/// You can't change the resizable state of a fullscreen window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowResizable")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowResizable([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "resizable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool resizable)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowResizableNative((SDLWindow*)pwindow, resizable);
+			}
+		}
+
+		/// <summary>
+		/// Set the window to always be above the others.<br/>
+		/// This will add or remove the window's `SDL_WINDOW_ALWAYS_ON_TOP` flag. This<br/>
+		/// will bring the window to the front and keep the window above the rest.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowAlwaysOnTop")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowAlwaysOnTop")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowAlwaysOnTopNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "on_top")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool onTop);
+
+		/// <summary>/// Set the window to always be above the others.<br/>/// This will add or remove the window's `SDL_WINDOW_ALWAYS_ON_TOP` flag. This<br/>/// will bring the window to the front and keep the window above the rest.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowAlwaysOnTop")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowAlwaysOnTop([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "on_top")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool onTop)
+		{
+			SDLSetWindowAlwaysOnTopNative(window, onTop);
+		}
+
+		/// <summary>/// Set the window to always be above the others.<br/>/// This will add or remove the window's `SDL_WINDOW_ALWAYS_ON_TOP` flag. This<br/>/// will bring the window to the front and keep the window above the rest.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowAlwaysOnTop")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowAlwaysOnTop([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "on_top")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool onTop)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowAlwaysOnTopNative((SDLWindow*)pwindow, onTop);
+			}
+		}
+
+		/// <summary>
+		/// Show a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ShowWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ShowWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLShowWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Show a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLShowWindowNative(window);
+		}
+
+		/// <summary>/// Show a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLShowWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLShowWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Hide a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HideWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HideWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLHideWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Hide a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HideWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLHideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLHideWindowNative(window);
+		}
+
+		/// <summary>/// Hide a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HideWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLHideWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLHideWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Raise a window above other windows and set the input focus.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_RaiseWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_RaiseWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLRaiseWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Raise a window above other windows and set the input focus.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RaiseWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLRaiseWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLRaiseWindowNative(window);
+		}
+
+		/// <summary>/// Raise a window above other windows and set the input focus.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RaiseWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLRaiseWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLRaiseWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Make a window as large as possible.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_MaximizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MaximizeWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLMaximizeWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Make a window as large as possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MaximizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLMaximizeWindowNative(window);
+		}
+
+		/// <summary>/// Make a window as large as possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MaximizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMaximizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLMaximizeWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Minimize a window to an iconic representation.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_MinimizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MinimizeWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLMinimizeWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Minimize a window to an iconic representation.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MinimizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMinimizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLMinimizeWindowNative(window);
+		}
+
+		/// <summary>/// Minimize a window to an iconic representation.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MinimizeWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMinimizeWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLMinimizeWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Restore the size and position of a minimized or maximized window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_RestoreWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_RestoreWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLRestoreWindowNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Restore the size and position of a minimized or maximized window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RestoreWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLRestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLRestoreWindowNative(window);
+		}
+
+		/// <summary>/// Restore the size and position of a minimized or maximized window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RestoreWindow")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLRestoreWindow([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLRestoreWindowNative((SDLWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// Set a window's fullscreen state.<br/>
+		/// `flags` may be `SDL_WINDOW_FULLSCREEN`, for "real" fullscreen with a<br/>
+		/// videomode change; `SDL_WINDOW_FULLSCREEN_DESKTOP` for "fake" fullscreen<br/>
+		/// that takes the size of the desktop; and 0 for windowed mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowFullscreen")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowFullscreen")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowFullscreenNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
+
+		/// <summary>/// Set a window's fullscreen state.<br/>/// `flags` may be `SDL_WINDOW_FULLSCREEN`, for "real" fullscreen with a<br/>/// videomode change; `SDL_WINDOW_FULLSCREEN_DESKTOP` for "fake" fullscreen<br/>/// that takes the size of the desktop; and 0 for windowed mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowFullscreen")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowFullscreen([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			int ret = SDLSetWindowFullscreenNative(window, flags);
+			return ret;
+		}
+
+		/// <summary>/// Set a window's fullscreen state.<br/>/// `flags` may be `SDL_WINDOW_FULLSCREEN`, for "real" fullscreen with a<br/>/// videomode change; `SDL_WINDOW_FULLSCREEN_DESKTOP` for "fake" fullscreen<br/>/// that takes the size of the desktop; and 0 for windowed mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowFullscreen")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowFullscreen([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowFullscreenNative((SDLWindow*)pwindow, flags);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Return whether the window has a surface associated with it.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasWindowSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Return whether the window has a surface associated with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLBool ret = SDLHasWindowSurfaceNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Return whether the window has a surface associated with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLBool ret = SDLHasWindowSurfaceNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the SDL surface associated with the window.<br/>
+		/// A new surface will be created with the optimal format for the window, if<br/>
+		/// necessary. This surface will be freed when the window is destroyed. Do not<br/>
+		/// free this surface.<br/>
+		/// This surface will be invalidated if the window is resized. After resizing a<br/>
+		/// window this function must be called again to return a valid surface.<br/>
+		/// You may not combine this with 3D or the rendering API on this window.<br/>
+		/// This function is affected by `SDL_HINT_FRAMEBUFFER_ACCELERATION`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLGetWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get the SDL surface associated with the window.<br/>/// A new surface will be created with the optimal format for the window, if<br/>/// necessary. This surface will be freed when the window is destroyed. Do not<br/>/// free this surface.<br/>/// This surface will be invalidated if the window is resized. After resizing a<br/>/// window this function must be called again to return a valid surface.<br/>/// You may not combine this with 3D or the rendering API on this window.<br/>/// This function is affected by `SDL_HINT_FRAMEBUFFER_ACCELERATION`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLGetWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLSurface* ret = SDLGetWindowSurfaceNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get the SDL surface associated with the window.<br/>/// A new surface will be created with the optimal format for the window, if<br/>/// necessary. This surface will be freed when the window is destroyed. Do not<br/>/// free this surface.<br/>/// This surface will be invalidated if the window is resized. After resizing a<br/>/// window this function must be called again to return a valid surface.<br/>/// You may not combine this with 3D or the rendering API on this window.<br/>/// This function is affected by `SDL_HINT_FRAMEBUFFER_ACCELERATION`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLGetWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSurface* ret = SDLGetWindowSurfaceNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Copy the window surface to the screen.<br/>
+		/// This is the function you use to reflect any changes to the surface on the<br/>
+		/// screen.<br/>
+		/// This function is equivalent to the SDL 1.2 API SDL_Flip().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UpdateWindowSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLUpdateWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Copy the window surface to the screen.<br/>/// This is the function you use to reflect any changes to the surface on the<br/>/// screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_Flip().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			int ret = SDLUpdateWindowSurfaceNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Copy the window surface to the screen.<br/>/// This is the function you use to reflect any changes to the surface on the<br/>/// screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_Flip().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLUpdateWindowSurfaceNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Copy areas of the window surface to the screen.<br/>
+		/// This is the function you use to reflect changes to portions of the surface<br/>
+		/// on the screen.<br/>
+		/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>
+		/// Note that this function will update _at least_ the rectangles specified,<br/>
+		/// but this is only intended as an optimization; in practice, this might<br/>
+		/// update more of the screen (or all of the screen!), depending on what<br/>
+		/// method SDL uses to send pixels to the system.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UpdateWindowSurfaceRects")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLUpdateWindowSurfaceRectsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects);
+
+		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
+		{
+			int ret = SDLUpdateWindowSurfaceRectsNative(window, rects, numrects);
+			return ret;
+		}
+
+		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLUpdateWindowSurfaceRectsNative((SDLWindow*)pwindow, rects, numrects);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
+		{
+			fixed (SDLRect* prects = &rects)
+			{
+				int ret = SDLUpdateWindowSurfaceRectsNative(window, (SDLRect*)prects, numrects);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Copy areas of the window surface to the screen.<br/>/// This is the function you use to reflect changes to portions of the surface<br/>/// on the screen.<br/>/// This function is equivalent to the SDL 1.2 API SDL_UpdateRects().<br/>/// Note that this function will update _at least_ the rectangles specified,<br/>/// but this is only intended as an optimization; in practice, this might<br/>/// update more of the screen (or all of the screen!), depending on what<br/>/// method SDL uses to send pixels to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateWindowSurfaceRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpdateWindowSurfaceRects([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rects, [NativeName(NativeNameType.Param, "numrects")] [NativeName(NativeNameType.Type, "int")] int numrects)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (SDLRect* prects = &rects)
+				{
+					int ret = SDLUpdateWindowSurfaceRectsNative((SDLWindow*)pwindow, (SDLRect*)prects, numrects);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Destroy the surface associated with the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_DestroyWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DestroyWindowSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLDestroyWindowSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Destroy the surface associated with the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLDestroyWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			int ret = SDLDestroyWindowSurfaceNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Destroy the surface associated with the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyWindowSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLDestroyWindowSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLDestroyWindowSurfaceNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set a window's input grab mode.<br/>
+		/// When input is grabbed, the mouse is confined to the window. This function<br/>
+		/// will also grab the keyboard if `SDL_HINT_GRAB_KEYBOARD` is set. To grab the<br/>
+		/// keyboard without also grabbing the mouse, use SDL_SetWindowKeyboardGrab().<br/>
+		/// If the caller enables a grab while another window is currently grabbed, the<br/>
+		/// other window loses its grab in favor of the caller's window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
+
+		/// <summary>/// Set a window's input grab mode.<br/>/// When input is grabbed, the mouse is confined to the window. This function<br/>/// will also grab the keyboard if `SDL_HINT_GRAB_KEYBOARD` is set. To grab the<br/>/// keyboard without also grabbing the mouse, use SDL_SetWindowKeyboardGrab().<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			SDLSetWindowGrabNative(window, grabbed);
+		}
+
+		/// <summary>/// Set a window's input grab mode.<br/>/// When input is grabbed, the mouse is confined to the window. This function<br/>/// will also grab the keyboard if `SDL_HINT_GRAB_KEYBOARD` is set. To grab the<br/>/// keyboard without also grabbing the mouse, use SDL_SetWindowKeyboardGrab().<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowGrabNative((SDLWindow*)pwindow, grabbed);
+			}
+		}
+
+		/// <summary>
+		/// Set a window's keyboard grab mode.<br/>
+		/// Keyboard grab enables capture of system keyboard shortcuts like Alt+Tab or<br/>
+		/// the Meta/Super key. Note that not all system keyboard shortcuts can be<br/>
+		/// captured by applications (one example is Ctrl+Alt+Del on Windows).<br/>
+		/// This is primarily intended for specialized applications such as VNC clients<br/>
+		/// or VM frontends. Normal games should not use keyboard grab.<br/>
+		/// When keyboard grab is enabled, SDL will continue to handle Alt+Tab when the<br/>
+		/// window is full-screen to ensure the user is not trapped in your<br/>
+		/// application. If you have a custom keyboard shortcut to exit fullscreen<br/>
+		/// mode, you may suppress this behavior with<br/>
+		/// `SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED`.<br/>
+		/// If the caller enables a grab while another window is currently grabbed, the<br/>
+		/// other window loses its grab in favor of the caller's window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowKeyboardGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowKeyboardGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
+
+		/// <summary>/// Set a window's keyboard grab mode.<br/>/// Keyboard grab enables capture of system keyboard shortcuts like Alt+Tab or<br/>/// the Meta/Super key. Note that not all system keyboard shortcuts can be<br/>/// captured by applications (one example is Ctrl+Alt+Del on Windows).<br/>/// This is primarily intended for specialized applications such as VNC clients<br/>/// or VM frontends. Normal games should not use keyboard grab.<br/>/// When keyboard grab is enabled, SDL will continue to handle Alt+Tab when the<br/>/// window is full-screen to ensure the user is not trapped in your<br/>/// application. If you have a custom keyboard shortcut to exit fullscreen<br/>/// mode, you may suppress this behavior with<br/>/// `SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED`.<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			SDLSetWindowKeyboardGrabNative(window, grabbed);
+		}
+
+		/// <summary>/// Set a window's keyboard grab mode.<br/>/// Keyboard grab enables capture of system keyboard shortcuts like Alt+Tab or<br/>/// the Meta/Super key. Note that not all system keyboard shortcuts can be<br/>/// captured by applications (one example is Ctrl+Alt+Del on Windows).<br/>/// This is primarily intended for specialized applications such as VNC clients<br/>/// or VM frontends. Normal games should not use keyboard grab.<br/>/// When keyboard grab is enabled, SDL will continue to handle Alt+Tab when the<br/>/// window is full-screen to ensure the user is not trapped in your<br/>/// application. If you have a custom keyboard shortcut to exit fullscreen<br/>/// mode, you may suppress this behavior with<br/>/// `SDL_HINT_ALLOW_ALT_TAB_WHILE_GRABBED`.<br/>/// If the caller enables a grab while another window is currently grabbed, the<br/>/// other window loses its grab in favor of the caller's window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowKeyboardGrabNative((SDLWindow*)pwindow, grabbed);
+			}
+		}
+
+		/// <summary>
+		/// Set a window's mouse grab mode.<br/>
+		/// Mouse grab confines the mouse cursor to the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMouseGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetWindowMouseGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed);
+
+		/// <summary>/// Set a window's mouse grab mode.<br/>/// Mouse grab confines the mouse cursor to the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			SDLSetWindowMouseGrabNative(window, grabbed);
+		}
+
+		/// <summary>/// Set a window's mouse grab mode.<br/>/// Mouse grab confines the mouse cursor to the window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "grabbed")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool grabbed)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLSetWindowMouseGrabNative((SDLWindow*)pwindow, grabbed);
+			}
+		}
+
+		/// <summary>
+		/// Get a window's input grab mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLGetWindowGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get a window's input grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLBool ret = SDLGetWindowGrabNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get a window's input grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLBool ret = SDLGetWindowGrabNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get a window's keyboard grab mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowKeyboardGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLGetWindowKeyboardGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get a window's keyboard grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLBool ret = SDLGetWindowKeyboardGrabNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get a window's keyboard grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowKeyboardGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowKeyboardGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLBool ret = SDLGetWindowKeyboardGrabNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get a window's mouse grab mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMouseGrab")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLGetWindowMouseGrabNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get a window's mouse grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLBool ret = SDLGetWindowMouseGrabNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get a window's mouse grab mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseGrab")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGetWindowMouseGrab([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLBool ret = SDLGetWindowMouseGrabNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the window that currently has an input grab enabled.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetGrabbedWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetGrabbedWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLWindow* SDLGetGrabbedWindowNative();
+
+		/// <summary>/// Get the window that currently has an input grab enabled.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetGrabbedWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLGetGrabbedWindow()
+		{
+			SDLWindow* ret = SDLGetGrabbedWindowNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Confines the cursor to the specified area of a window.<br/>
+		/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>
+		/// is restricted to when the window has mouse focus.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowMouseRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowMouseRectNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
+
+		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
+		{
+			int ret = SDLSetWindowMouseRectNative(window, rect);
+			return ret;
+		}
+
+		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowMouseRectNative((SDLWindow*)pwindow, rect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				int ret = SDLSetWindowMouseRectNative(window, (SDLRect*)prect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Confines the cursor to the specified area of a window.<br/>/// Note that this does NOT grab the cursor, it only defines the area a cursor<br/>/// is restricted to when the window has mouse focus.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (SDLRect* prect = &rect)
+				{
+					int ret = SDLSetWindowMouseRectNative((SDLWindow*)pwindow, (SDLRect*)prect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the mouse confinement rectangle of a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "const SDL_Rect*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowMouseRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLRect* SDLGetWindowMouseRectNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get the mouse confinement rectangle of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "const SDL_Rect*")]
+		public static SDLRect* SDLGetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			SDLRect* ret = SDLGetWindowMouseRectNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get the mouse confinement rectangle of a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowMouseRect")]
+		[return: NativeName(NativeNameType.Type, "const SDL_Rect*")]
+		public static SDLRect* SDLGetWindowMouseRect([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				SDLRect* ret = SDLGetWindowMouseRectNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the brightness (gamma multiplier) for a given window's display.<br/>
+		/// Despite the name and signature, this method sets the brightness of the<br/>
+		/// entire display, not an individual window. A window is considered to be<br/>
+		/// owned by the display that contains the window's center pixel. (The index of<br/>
+		/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The<br/>
+		/// brightness set will not follow the window if it is moved to another<br/>
+		/// display.<br/>
+		/// Many platforms will refuse to set the display brightness in modern times.<br/>
+		/// You are better off using a shader to adjust gamma during rendering, or<br/>
+		/// something similar.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowBrightness")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowBrightnessNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "brightness")] [NativeName(NativeNameType.Type, "float")] float brightness);
+
+		/// <summary>/// Set the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method sets the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The<br/>/// brightness set will not follow the window if it is moved to another<br/>/// display.<br/>/// Many platforms will refuse to set the display brightness in modern times.<br/>/// You are better off using a shader to adjust gamma during rendering, or<br/>/// something similar.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "brightness")] [NativeName(NativeNameType.Type, "float")] float brightness)
+		{
+			int ret = SDLSetWindowBrightnessNative(window, brightness);
+			return ret;
+		}
+
+		/// <summary>/// Set the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method sets the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The<br/>/// brightness set will not follow the window if it is moved to another<br/>/// display.<br/>/// Many platforms will refuse to set the display brightness in modern times.<br/>/// You are better off using a shader to adjust gamma during rendering, or<br/>/// something similar.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "brightness")] [NativeName(NativeNameType.Type, "float")] float brightness)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowBrightnessNative((SDLWindow*)pwindow, brightness);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the brightness (gamma multiplier) for a given window's display.<br/>
+		/// Despite the name and signature, this method retrieves the brightness of the<br/>
+		/// entire display, not an individual window. A window is considered to be<br/>
+		/// owned by the display that contains the window's center pixel. (The index of<br/>
+		/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowBrightness")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial float SDLGetWindowBrightnessNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method retrieves the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float SDLGetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			float ret = SDLGetWindowBrightnessNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get the brightness (gamma multiplier) for a given window's display.<br/>/// Despite the name and signature, this method retrieves the brightness of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowBrightness")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float SDLGetWindowBrightness([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				float ret = SDLGetWindowBrightnessNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the opacity for a window.<br/>
+		/// The parameter `opacity` will be clamped internally between 0.0f<br/>
+		/// (transparent) and 1.0f (opaque).<br/>
+		/// This function also returns -1 if setting the opacity isn't supported.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowOpacity")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity);
+
+		/// <summary>/// Set the opacity for a window.<br/>/// The parameter `opacity` will be clamped internally between 0.0f<br/>/// (transparent) and 1.0f (opaque).<br/>/// This function also returns -1 if setting the opacity isn't supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
+		{
+			int ret = SDLSetWindowOpacityNative(window, opacity);
+			return ret;
+		}
+
+		/// <summary>/// Set the opacity for a window.<br/>/// The parameter `opacity` will be clamped internally between 0.0f<br/>/// (transparent) and 1.0f (opaque).<br/>/// This function also returns -1 if setting the opacity isn't supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "opacity")] [NativeName(NativeNameType.Type, "float")] float opacity)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowOpacityNative((SDLWindow*)pwindow, opacity);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the opacity of a window.<br/>
+		/// If transparency isn't supported on this platform, opacity will be reported<br/>
+		/// as 1.0f without error.<br/>
+		/// The parameter `opacity` is ignored if it is NULL.<br/>
+		/// This function also returns -1 if an invalid window was provided.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowOpacity")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetWindowOpacityNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] float* outOpacity);
+
+		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] float* outOpacity)
+		{
+			int ret = SDLGetWindowOpacityNative(window, outOpacity);
+			return ret;
+		}
+
+		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] float* outOpacity)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLGetWindowOpacityNative((SDLWindow*)pwindow, outOpacity);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] ref float outOpacity)
+		{
+			fixed (float* poutOpacity = &outOpacity)
+			{
+				int ret = SDLGetWindowOpacityNative(window, (float*)poutOpacity);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the opacity of a window.<br/>/// If transparency isn't supported on this platform, opacity will be reported<br/>/// as 1.0f without error.<br/>/// The parameter `opacity` is ignored if it is NULL.<br/>/// This function also returns -1 if an invalid window was provided.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowOpacity")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowOpacity([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "out_opacity")] [NativeName(NativeNameType.Type, "float*")] ref float outOpacity)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (float* poutOpacity = &outOpacity)
+				{
+					int ret = SDLGetWindowOpacityNative((SDLWindow*)pwindow, (float*)poutOpacity);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the window as a modal for another window.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowModalFor")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowModalForNative([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* parentWindow);
+
+		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* parentWindow)
+		{
+			int ret = SDLSetWindowModalForNative(modalWindow, parentWindow);
+			return ret;
+		}
+
+		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* parentWindow)
+		{
+			fixed (SDLWindow* pmodalWindow = &modalWindow)
+			{
+				int ret = SDLSetWindowModalForNative((SDLWindow*)pmodalWindow, parentWindow);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow parentWindow)
+		{
+			fixed (SDLWindow* pparentWindow = &parentWindow)
+			{
+				int ret = SDLSetWindowModalForNative(modalWindow, (SDLWindow*)pparentWindow);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the window as a modal for another window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowModalFor")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowModalFor([NativeName(NativeNameType.Param, "modal_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow modalWindow, [NativeName(NativeNameType.Param, "parent_window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow parentWindow)
+		{
+			fixed (SDLWindow* pmodalWindow = &modalWindow)
+			{
+				fixed (SDLWindow* pparentWindow = &parentWindow)
+				{
+					int ret = SDLSetWindowModalForNative((SDLWindow*)pmodalWindow, (SDLWindow*)pparentWindow);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Explicitly set input focus to the window.<br/>
+		/// You almost certainly want SDL_RaiseWindow() instead of this function. Use<br/>
+		/// this with caution, as you might give focus to a window that is completely<br/>
+		/// obscured by other windows.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowInputFocus")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowInputFocus")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowInputFocusNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Explicitly set input focus to the window.<br/>/// You almost certainly want SDL_RaiseWindow() instead of this function. Use<br/>/// this with caution, as you might give focus to a window that is completely<br/>/// obscured by other windows.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowInputFocus")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowInputFocus([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			int ret = SDLSetWindowInputFocusNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Explicitly set input focus to the window.<br/>/// You almost certainly want SDL_RaiseWindow() instead of this function. Use<br/>/// this with caution, as you might give focus to a window that is completely<br/>/// obscured by other windows.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowInputFocus")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowInputFocus([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowInputFocusNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the gamma ramp for the display that owns a given window.<br/>
+		/// Set the gamma translation table for the red, green, and blue channels of<br/>
+		/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>
+		/// representing a mapping between the input and output for that channel. The<br/>
+		/// input is the index into the array, and the output is the 16-bit gamma value<br/>
+		/// at that index, scaled to the output color precision.<br/>
+		/// Despite the name and signature, this method sets the gamma ramp of the<br/>
+		/// entire display, not an individual window. A window is considered to be<br/>
+		/// owned by the display that contains the window's center pixel. (The index of<br/>
+		/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>
+		/// ramp set will not follow the window if it is moved to another display.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowGammaRamp")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowGammaRampNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue);
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			int ret = SDLSetWindowGammaRampNative(window, red, green, blue);
+			return ret;
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, red, green, blue);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (ushort* pred = &red)
+			{
+				int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, green, blue);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pred = &red)
+				{
+					int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, (ushort*)pred, green, blue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (ushort* pgreen = &green)
+			{
+				int ret = SDLSetWindowGammaRampNative(window, red, (ushort*)pgreen, blue);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pgreen = &green)
+				{
+					int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, red, (ushort*)pgreen, blue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (ushort* pred = &red)
+			{
+				fixed (ushort* pgreen = &green)
+				{
+					int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, blue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pred = &red)
+				{
+					fixed (ushort* pgreen = &green)
+					{
+						int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, (ushort*)pred, (ushort*)pgreen, blue);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (ushort* pblue = &blue)
+			{
+				int ret = SDLSetWindowGammaRampNative(window, red, green, (ushort*)pblue);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pblue = &blue)
+				{
+					int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, red, green, (ushort*)pblue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (ushort* pred = &red)
+			{
+				fixed (ushort* pblue = &blue)
+				{
+					int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, green, (ushort*)pblue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pred = &red)
+				{
+					fixed (ushort* pblue = &blue)
+					{
+						int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, (ushort*)pred, green, (ushort*)pblue);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (ushort* pgreen = &green)
+			{
+				fixed (ushort* pblue = &blue)
+				{
+					int ret = SDLSetWindowGammaRampNative(window, red, (ushort*)pgreen, (ushort*)pblue);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pgreen = &green)
+				{
+					fixed (ushort* pblue = &blue)
+					{
+						int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, red, (ushort*)pgreen, (ushort*)pblue);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (ushort* pred = &red)
+			{
+				fixed (ushort* pgreen = &green)
+				{
+					fixed (ushort* pblue = &blue)
+					{
+						int ret = SDLSetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, (ushort*)pblue);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Set the gamma ramp for the display that owns a given window.<br/>/// Set the gamma translation table for the red, green, and blue channels of<br/>/// the video hardware. Each table is an array of 256 16-bit quantities,<br/>/// representing a mapping between the input and output for that channel. The<br/>/// input is the index into the array, and the output is the 16-bit gamma value<br/>/// at that index, scaled to the output color precision.<br/>/// Despite the name and signature, this method sets the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().) The gamma<br/>/// ramp set will not follow the window if it is moved to another display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "const Uint16*")] ref ushort blue)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (ushort* pred = &red)
+				{
+					fixed (ushort* pgreen = &green)
+					{
+						fixed (ushort* pblue = &blue)
+						{
+							int ret = SDLSetWindowGammaRampNative((SDLWindow*)pwindow, (ushort*)pred, (ushort*)pgreen, (ushort*)pblue);
 							return ret;
 						}
 					}
@@ -1594,1665 +2982,100 @@ namespace Hexa.NET.SDL2
 		}
 
 		/// <summary>
-		/// Set an additional color value multiplied into render copy operations.<br/>
-		/// When this texture is rendered, during the copy operation each source color<br/>
-		/// channel is modulated by the appropriate color value according to the<br/>
-		/// following formula:<br/>
-		/// `srcC = srcC * (color / 255)`<br/>
-		/// Color modulation is not always supported by the renderer; it will return -1<br/>
-		/// if color modulation is not supported.<br/>
+		/// Get the gamma ramp for a given window's display.<br/>
+		/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>
+		/// entire display, not an individual window. A window is considered to be<br/>
+		/// owned by the display that contains the window's center pixel. (The index of<br/>
+		/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextureColorMod")]
+		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextureColorMod")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowGammaRamp")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetTextureColorModNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b);
+		internal static partial int SDLGetWindowGammaRampNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue);
 
-		/// <summary>/// Set an additional color value multiplied into render copy operations.<br/>/// When this texture is rendered, during the copy operation each source color<br/>/// channel is modulated by the appropriate color value according to the<br/>/// following formula:<br/>/// `srcC = srcC * (color / 255)`<br/>/// Color modulation is not always supported by the renderer; it will return -1<br/>/// if color modulation is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			int ret = SDLSetTextureColorModNative(texture, r, g, b);
+			int ret = SDLGetWindowGammaRampNative(window, red, green, blue);
 			return ret;
 		}
 
-		/// <summary>
-		/// Get the additional color value multiplied into render copy operations.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTextureColorMod")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetTextureColorModNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b);
-
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			int ret = SDLGetTextureColorModNative(texture, r, g, b);
-			return ret;
-		}
-
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (byte* pr = &r)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				int ret = SDLGetTextureColorModNative(texture, (byte*)pr, g, b);
+				int ret = SDLGetWindowGammaRampNative((SDLWindow*)pwindow, red, green, blue);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			fixed (byte* pg = &g)
+			fixed (ushort* pred = &red)
 			{
-				int ret = SDLGetTextureColorModNative(texture, r, (byte*)pg, b);
+				int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, green, blue);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			fixed (byte* pr = &r)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				fixed (byte* pg = &g)
+				fixed (ushort* pred = &red)
 				{
-					int ret = SDLGetTextureColorModNative(texture, (byte*)pr, (byte*)pg, b);
+					int ret = SDLGetWindowGammaRampNative((SDLWindow*)pwindow, (ushort*)pred, green, blue);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			fixed (byte* pb = &b)
+			fixed (ushort* pgreen = &green)
 			{
-				int ret = SDLGetTextureColorModNative(texture, r, g, (byte*)pb);
+				int ret = SDLGetWindowGammaRampNative(window, red, (ushort*)pgreen, blue);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			fixed (byte* pr = &r)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				fixed (byte* pb = &b)
+				fixed (ushort* pgreen = &green)
 				{
-					int ret = SDLGetTextureColorModNative(texture, (byte*)pr, g, (byte*)pb);
+					int ret = SDLGetWindowGammaRampNative((SDLWindow*)pwindow, red, (ushort*)pgreen, blue);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
+		/// <summary>/// Get the gamma ramp for a given window's display.<br/>/// Despite the name and signature, this method retrieves the gamma ramp of the<br/>/// entire display, not an individual window. A window is considered to be<br/>/// owned by the display that contains the window's center pixel. (The index of<br/>/// this display can be retrieved using SDL_GetWindowDisplayIndex().)<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		public static int SDLGetWindowGammaRamp([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* blue)
 		{
-			fixed (byte* pg = &g)
+			fixed (ushort* pred = &red)
 			{
-				fixed (byte* pb = &b)
+				fixed (ushort* pgreen = &green)
 				{
-					int ret = SDLGetTextureColorModNative(texture, r, (byte*)pg, (byte*)pb);
+					int ret = SDLGetWindowGammaRampNative(window, (ushort*)pred, (ushort*)pgreen, blue);
 					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the additional color value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureColorMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureColorMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						int ret = SDLGetTextureColorModNative(texture, (byte*)pr, (byte*)pg, (byte*)pb);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Set an additional alpha value multiplied into render copy operations.<br/>
-		/// When this texture is rendered, during the copy operation the source alpha<br/>
-		/// value is modulated by this alpha value according to the following formula:<br/>
-		/// `srcA = srcA * (alpha / 255)`<br/>
-		/// Alpha modulation is not always supported by the renderer; it will return -1<br/>
-		/// if alpha modulation is not supported.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextureAlphaMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextureAlphaMod")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetTextureAlphaModNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8")] byte alpha);
-
-		/// <summary>/// Set an additional alpha value multiplied into render copy operations.<br/>/// When this texture is rendered, during the copy operation the source alpha<br/>/// value is modulated by this alpha value according to the following formula:<br/>/// `srcA = srcA * (alpha / 255)`<br/>/// Alpha modulation is not always supported by the renderer; it will return -1<br/>/// if alpha modulation is not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextureAlphaMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetTextureAlphaMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8")] byte alpha)
-		{
-			int ret = SDLSetTextureAlphaModNative(texture, alpha);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the additional alpha value multiplied into render copy operations.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTextureAlphaMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTextureAlphaMod")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetTextureAlphaModNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] byte* alpha);
-
-		/// <summary>/// Get the additional alpha value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureAlphaMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureAlphaMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] byte* alpha)
-		{
-			int ret = SDLGetTextureAlphaModNative(texture, alpha);
-			return ret;
-		}
-
-		/// <summary>/// Get the additional alpha value multiplied into render copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureAlphaMod")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureAlphaMod([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte alpha)
-		{
-			fixed (byte* palpha = &alpha)
-			{
-				int ret = SDLGetTextureAlphaModNative(texture, (byte*)palpha);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Set the blend mode for a texture, used by SDL_RenderCopy().<br/>
-		/// If the blend mode is not supported, the closest supported mode is chosen<br/>
-		/// and this function returns -1.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextureBlendMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextureBlendMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetTextureBlendModeNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode")] SDLBlendMode blendMode);
-
-		/// <summary>/// Set the blend mode for a texture, used by SDL_RenderCopy().<br/>/// If the blend mode is not supported, the closest supported mode is chosen<br/>/// and this function returns -1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextureBlendMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetTextureBlendMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode")] SDLBlendMode blendMode)
-		{
-			int ret = SDLSetTextureBlendModeNative(texture, blendMode);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the blend mode used for texture copy operations.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTextureBlendMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTextureBlendMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetTextureBlendModeNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] SDLBlendMode* blendMode);
-
-		/// <summary>/// Get the blend mode used for texture copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureBlendMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureBlendMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] SDLBlendMode* blendMode)
-		{
-			int ret = SDLGetTextureBlendModeNative(texture, blendMode);
-			return ret;
-		}
-
-		/// <summary>/// Get the blend mode used for texture copy operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureBlendMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureBlendMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] ref SDLBlendMode blendMode)
-		{
-			fixed (SDLBlendMode* pblendMode = &blendMode)
-			{
-				int ret = SDLGetTextureBlendModeNative(texture, (SDLBlendMode*)pblendMode);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Set the scale mode used for texture scale operations.<br/>
-		/// If the scale mode is not supported, the closest supported mode is chosen.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextureScaleMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextureScaleMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetTextureScaleModeNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "scaleMode")] [NativeName(NativeNameType.Type, "SDL_ScaleMode")] SDLScaleMode scaleMode);
-
-		/// <summary>/// Set the scale mode used for texture scale operations.<br/>/// If the scale mode is not supported, the closest supported mode is chosen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextureScaleMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetTextureScaleMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "scaleMode")] [NativeName(NativeNameType.Type, "SDL_ScaleMode")] SDLScaleMode scaleMode)
-		{
-			int ret = SDLSetTextureScaleModeNative(texture, scaleMode);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the scale mode used for texture scale operations.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTextureScaleMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTextureScaleMode")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetTextureScaleModeNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "scaleMode")] [NativeName(NativeNameType.Type, "SDL_ScaleMode*")] SDLScaleMode* scaleMode);
-
-		/// <summary>/// Get the scale mode used for texture scale operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureScaleMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureScaleMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "scaleMode")] [NativeName(NativeNameType.Type, "SDL_ScaleMode*")] SDLScaleMode* scaleMode)
-		{
-			int ret = SDLGetTextureScaleModeNative(texture, scaleMode);
-			return ret;
-		}
-
-		/// <summary>/// Get the scale mode used for texture scale operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureScaleMode")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetTextureScaleMode([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "scaleMode")] [NativeName(NativeNameType.Type, "SDL_ScaleMode*")] ref SDLScaleMode scaleMode)
-		{
-			fixed (SDLScaleMode* pscaleMode = &scaleMode)
-			{
-				int ret = SDLGetTextureScaleModeNative(texture, (SDLScaleMode*)pscaleMode);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Associate a user-specified pointer with a texture.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetTextureUserData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetTextureUserData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetTextureUserDataNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
-		/// <summary>/// Associate a user-specified pointer with a texture.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetTextureUserData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetTextureUserData([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			int ret = SDLSetTextureUserDataNative(texture, userdata);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the user-specified pointer associated with a texture<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTextureUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTextureUserData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLGetTextureUserDataNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture);
-
-		/// <summary>/// Get the user-specified pointer associated with a texture<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTextureUserData")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLGetTextureUserData([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture)
-		{
-			void* ret = SDLGetTextureUserDataNative(texture);
-			return ret;
-		}
-
-		/// <summary>
-		/// Update the given texture rectangle with new pixel data.<br/>
-		/// The pixel data must be in the pixel format of the texture. Use<br/>
-		/// SDL_QueryTexture() to query the pixel format of the texture.<br/>
-		/// This is a fairly slow function, intended for use with static textures that<br/>
-		/// do not change often.<br/>
-		/// If the texture is intended to be updated often, it is preferred to create<br/>
-		/// the texture as streaming and use the locking functions referenced below.<br/>
-		/// While this function will work with streaming textures, for optimization<br/>
-		/// reasons you may not get the pixels back if you lock the texture afterward.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UpdateTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UpdateTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUpdateTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const void*")] void* pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch);
-
-		/// <summary>/// Update the given texture rectangle with new pixel data.<br/>/// The pixel data must be in the pixel format of the texture. Use<br/>/// SDL_QueryTexture() to query the pixel format of the texture.<br/>/// This is a fairly slow function, intended for use with static textures that<br/>/// do not change often.<br/>/// If the texture is intended to be updated often, it is preferred to create<br/>/// the texture as streaming and use the locking functions referenced below.<br/>/// While this function will work with streaming textures, for optimization<br/>/// reasons you may not get the pixels back if you lock the texture afterward.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const void*")] void* pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch)
-		{
-			int ret = SDLUpdateTextureNative(texture, rect, pixels, pitch);
-			return ret;
-		}
-
-		/// <summary>/// Update the given texture rectangle with new pixel data.<br/>/// The pixel data must be in the pixel format of the texture. Use<br/>/// SDL_QueryTexture() to query the pixel format of the texture.<br/>/// This is a fairly slow function, intended for use with static textures that<br/>/// do not change often.<br/>/// If the texture is intended to be updated often, it is preferred to create<br/>/// the texture as streaming and use the locking functions referenced below.<br/>/// While this function will work with streaming textures, for optimization<br/>/// reasons you may not get the pixels back if you lock the texture afterward.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const void*")] void* pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLUpdateTextureNative(texture, (SDLRect*)prect, pixels, pitch);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>
-		/// data.<br/>
-		/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>
-		/// block of Y and U/V planes in the proper order, but this function is<br/>
-		/// available if your pixel data is not contiguous.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UpdateYUVTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUpdateYUVTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch);
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			int ret = SDLUpdateYUVTextureNative(texture, rect, yplane, ypitch, uplane, upitch, vplane, vpitch);
-			return ret;
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, uplane, upitch, vplane, vpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				int ret = SDLUpdateYUVTextureNative(texture, rect, (byte*)pyplane, ypitch, uplane, upitch, vplane, vpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, uplane, upitch, vplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* puplane = &uplane)
-			{
-				int ret = SDLUpdateYUVTextureNative(texture, rect, yplane, ypitch, (byte*)puplane, upitch, vplane, vpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* puplane = &uplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, (byte*)puplane, upitch, vplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				fixed (byte* puplane = &uplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, rect, (byte*)pyplane, ypitch, (byte*)puplane, upitch, vplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					fixed (byte* puplane = &uplane)
-					{
-						int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, (byte*)puplane, upitch, vplane, vpitch);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* pvplane = &vplane)
-			{
-				int ret = SDLUpdateYUVTextureNative(texture, rect, yplane, ypitch, uplane, upitch, (byte*)pvplane, vpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pvplane = &vplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, uplane, upitch, (byte*)pvplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				fixed (byte* pvplane = &vplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, rect, (byte*)pyplane, ypitch, uplane, upitch, (byte*)pvplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					fixed (byte* pvplane = &vplane)
-					{
-						int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, uplane, upitch, (byte*)pvplane, vpitch);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* puplane = &uplane)
-			{
-				fixed (byte* pvplane = &vplane)
-				{
-					int ret = SDLUpdateYUVTextureNative(texture, rect, yplane, ypitch, (byte*)puplane, upitch, (byte*)pvplane, vpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* puplane = &uplane)
-				{
-					fixed (byte* pvplane = &vplane)
-					{
-						int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, (byte*)puplane, upitch, (byte*)pvplane, vpitch);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				fixed (byte* puplane = &uplane)
-				{
-					fixed (byte* pvplane = &vplane)
-					{
-						int ret = SDLUpdateYUVTextureNative(texture, rect, (byte*)pyplane, ypitch, (byte*)puplane, upitch, (byte*)pvplane, vpitch);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar YV12 or IYUV texture with new pixel<br/>/// data.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of Y and U/V planes in the proper order, but this function is<br/>/// available if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateYUVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateYUVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "Uplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uplane, [NativeName(NativeNameType.Param, "Upitch")] [NativeName(NativeNameType.Type, "int")] int upitch, [NativeName(NativeNameType.Param, "Vplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte vplane, [NativeName(NativeNameType.Param, "Vpitch")] [NativeName(NativeNameType.Type, "int")] int vpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					fixed (byte* puplane = &uplane)
-					{
-						fixed (byte* pvplane = &vplane)
-						{
-							int ret = SDLUpdateYUVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, (byte*)puplane, upitch, (byte*)pvplane, vpitch);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>
-		/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>
-		/// block of NV12/21 planes in the proper order, but this function is available<br/>
-		/// if your pixel data is not contiguous.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UpdateNVTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUpdateNVTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch);
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			int ret = SDLUpdateNVTextureNative(texture, rect, yplane, ypitch, uVplane, uVpitch);
-			return ret;
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLUpdateNVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, uVplane, uVpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				int ret = SDLUpdateNVTextureNative(texture, rect, (byte*)pyplane, ypitch, uVplane, uVpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					int ret = SDLUpdateNVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, uVplane, uVpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (byte* puVplane = &uVplane)
-			{
-				int ret = SDLUpdateNVTextureNative(texture, rect, yplane, ypitch, (byte*)puVplane, uVpitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* puVplane = &uVplane)
-				{
-					int ret = SDLUpdateNVTextureNative(texture, (SDLRect*)prect, yplane, ypitch, (byte*)puVplane, uVpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (byte* pyplane = &yplane)
-			{
-				fixed (byte* puVplane = &uVplane)
-				{
-					int ret = SDLUpdateNVTextureNative(texture, rect, (byte*)pyplane, ypitch, (byte*)puVplane, uVpitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.<br/>/// You can use SDL_UpdateTexture() as long as your pixel data is a contiguous<br/>/// block of NV12/21 planes in the proper order, but this function is available<br/>/// if your pixel data is not contiguous.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpdateNVTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLUpdateNVTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "Yplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte yplane, [NativeName(NativeNameType.Param, "Ypitch")] [NativeName(NativeNameType.Type, "int")] int ypitch, [NativeName(NativeNameType.Param, "UVplane")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte uVplane, [NativeName(NativeNameType.Param, "UVpitch")] [NativeName(NativeNameType.Type, "int")] int uVpitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (byte* pyplane = &yplane)
-				{
-					fixed (byte* puVplane = &uVplane)
-					{
-						int ret = SDLUpdateNVTextureNative(texture, (SDLRect*)prect, (byte*)pyplane, ypitch, (byte*)puVplane, uVpitch);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Lock a portion of the texture for **write-only** pixel access.<br/>
-		/// As an optimization, the pixels made available for editing don't necessarily<br/>
-		/// contain the old texture data. This is a write-only operation, and if you<br/>
-		/// need to keep a copy of the texture data you should do that at the<br/>
-		/// application level.<br/>
-		/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>
-		/// changes.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLLockTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void**")] void** pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int*")] int* pitch);
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void**")] void** pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int*")] int* pitch)
-		{
-			int ret = SDLLockTextureNative(texture, rect, pixels, pitch);
-			return ret;
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void**")] void** pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int*")] int* pitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLLockTextureNative(texture, (SDLRect*)prect, pixels, pitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void**")] void** pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int*")] ref int pitch)
-		{
-			fixed (int* ppitch = &pitch)
-			{
-				int ret = SDLLockTextureNative(texture, rect, pixels, (int*)ppitch);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTexture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void**")] void** pixels, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int*")] ref int pitch)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (int* ppitch = &pitch)
-				{
-					int ret = SDLLockTextureNative(texture, (SDLRect*)prect, pixels, (int*)ppitch);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Lock a portion of the texture for **write-only** pixel access, and expose<br/>
-		/// it as a SDL surface.<br/>
-		/// Besides providing an SDL_Surface instead of raw pixel data, this function<br/>
-		/// operates like SDL_LockTexture.<br/>
-		/// As an optimization, the pixels made available for editing don't necessarily<br/>
-		/// contain the old texture data. This is a write-only operation, and if you<br/>
-		/// need to keep a copy of the texture data you should do that at the<br/>
-		/// application level.<br/>
-		/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>
-		/// changes.<br/>
-		/// The returned surface is freed internally after calling SDL_UnlockTexture()<br/>
-		/// or SDL_DestroyTexture(). The caller should not free it.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockTextureToSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockTextureToSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLLockTextureToSurfaceNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface**")] SDLSurface** surface);
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access, and expose<br/>/// it as a SDL surface.<br/>/// Besides providing an SDL_Surface instead of raw pixel data, this function<br/>/// operates like SDL_LockTexture.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// The returned surface is freed internally after calling SDL_UnlockTexture()<br/>/// or SDL_DestroyTexture(). The caller should not free it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTextureToSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTextureToSurface([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface**")] SDLSurface** surface)
-		{
-			int ret = SDLLockTextureToSurfaceNative(texture, rect, surface);
-			return ret;
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access, and expose<br/>/// it as a SDL surface.<br/>/// Besides providing an SDL_Surface instead of raw pixel data, this function<br/>/// operates like SDL_LockTexture.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// The returned surface is freed internally after calling SDL_UnlockTexture()<br/>/// or SDL_DestroyTexture(). The caller should not free it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTextureToSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTextureToSurface([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface**")] SDLSurface** surface)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLLockTextureToSurfaceNative(texture, (SDLRect*)prect, surface);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access, and expose<br/>/// it as a SDL surface.<br/>/// Besides providing an SDL_Surface instead of raw pixel data, this function<br/>/// operates like SDL_LockTexture.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// The returned surface is freed internally after calling SDL_UnlockTexture()<br/>/// or SDL_DestroyTexture(). The caller should not free it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTextureToSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTextureToSurface([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface**")] ref SDLSurface* surface)
-		{
-			fixed (SDLSurface** psurface = &surface)
-			{
-				int ret = SDLLockTextureToSurfaceNative(texture, rect, (SDLSurface**)psurface);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Lock a portion of the texture for **write-only** pixel access, and expose<br/>/// it as a SDL surface.<br/>/// Besides providing an SDL_Surface instead of raw pixel data, this function<br/>/// operates like SDL_LockTexture.<br/>/// As an optimization, the pixels made available for editing don't necessarily<br/>/// contain the old texture data. This is a write-only operation, and if you<br/>/// need to keep a copy of the texture data you should do that at the<br/>/// application level.<br/>/// You must use SDL_UnlockTexture() to unlock the pixels and apply any<br/>/// changes.<br/>/// The returned surface is freed internally after calling SDL_UnlockTexture()<br/>/// or SDL_DestroyTexture(). The caller should not free it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockTextureToSurface")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLockTextureToSurface([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface**")] ref SDLSurface* surface)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				fixed (SDLSurface** psurface = &surface)
-				{
-					int ret = SDLLockTextureToSurfaceNative(texture, (SDLRect*)prect, (SDLSurface**)psurface);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Unlock a texture, uploading the changes to video memory, if needed.<br/>
-		/// **Warning**: Please note that SDL_LockTexture() is intended to be<br/>
-		/// write-only; it will not guarantee the previous contents of the texture will<br/>
-		/// be provided. You must fully initialize any area of a texture that you lock<br/>
-		/// before unlocking it, as the pixels might otherwise be uninitialized memory.<br/>
-		/// Which is to say: locking and immediately unlocking a texture can result in<br/>
-		/// corrupted textures, depending on the renderer in use.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UnlockTexture")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture);
-
-		/// <summary>/// Unlock a texture, uploading the changes to video memory, if needed.<br/>/// **Warning**: Please note that SDL_LockTexture() is intended to be<br/>/// write-only; it will not guarantee the previous contents of the texture will<br/>/// be provided. You must fully initialize any area of a texture that you lock<br/>/// before unlocking it, as the pixels might otherwise be uninitialized memory.<br/>/// Which is to say: locking and immediately unlocking a texture can result in<br/>/// corrupted textures, depending on the renderer in use.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockTexture")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnlockTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture)
-		{
-			SDLUnlockTextureNative(texture);
-		}
-
-		/// <summary>
-		/// Determine whether a renderer supports the use of render targets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderTargetSupported")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderTargetSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLRenderTargetSupportedNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
-		/// <summary>/// Determine whether a renderer supports the use of render targets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderTargetSupported")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRenderTargetSupported([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
-		{
-			SDLBool ret = SDLRenderTargetSupportedNative(renderer);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set a texture as the current rendering target.<br/>
-		/// Before using this function, you should check the<br/>
-		/// `SDL_RENDERER_TARGETTEXTURE` bit in the flags of SDL_RendererInfo to see if<br/>
-		/// render targets are supported.<br/>
-		/// The default render target is the window for which the renderer was created.<br/>
-		/// To stop rendering to a texture and render to the window again, call this<br/>
-		/// function with a NULL `texture`.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetRenderTarget")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetRenderTarget")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetRenderTargetNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture);
-
-		/// <summary>/// Set a texture as the current rendering target.<br/>/// Before using this function, you should check the<br/>/// `SDL_RENDERER_TARGETTEXTURE` bit in the flags of SDL_RendererInfo to see if<br/>/// render targets are supported.<br/>/// The default render target is the window for which the renderer was created.<br/>/// To stop rendering to a texture and render to the window again, call this<br/>/// function with a NULL `texture`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetRenderTarget")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetRenderTarget([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] SDLTexture* texture)
-		{
-			int ret = SDLSetRenderTargetNative(renderer, texture);
-			return ret;
-		}
-
-		/// <summary>/// Set a texture as the current rendering target.<br/>/// Before using this function, you should check the<br/>/// `SDL_RENDERER_TARGETTEXTURE` bit in the flags of SDL_RendererInfo to see if<br/>/// render targets are supported.<br/>/// The default render target is the window for which the renderer was created.<br/>/// To stop rendering to a texture and render to the window again, call this<br/>/// function with a NULL `texture`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetRenderTarget")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetRenderTarget([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "SDL_Texture*")] ref SDLTexture texture)
-		{
-			fixed (SDLTexture* ptexture = &texture)
-			{
-				int ret = SDLSetRenderTargetNative(renderer, (SDLTexture*)ptexture);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the current render target.<br/>
-		/// The default render target is the window for which the renderer was created,<br/>
-		/// and is reported a NULL here.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRenderTarget")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRenderTarget")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTexture* SDLGetRenderTargetNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
-		/// <summary>/// Get the current render target.<br/>/// The default render target is the window for which the renderer was created,<br/>/// and is reported a NULL here.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderTarget")]
-		[return: NativeName(NativeNameType.Type, "SDL_Texture*")]
-		public static SDLTexture* SDLGetRenderTarget([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
-		{
-			SDLTexture* ret = SDLGetRenderTargetNative(renderer);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set a device independent resolution for rendering.<br/>
-		/// This function uses the viewport and scaling functionality to allow a fixed<br/>
-		/// logical resolution for rendering, regardless of the actual output<br/>
-		/// resolution. If the actual output resolution doesn't have the same aspect<br/>
-		/// ratio the output rendering will be centered within the output display.<br/>
-		/// If the output display is a window, mouse and touch events in the window<br/>
-		/// will be filtered and scaled so they seem to arrive within the logical<br/>
-		/// resolution. The SDL_HINT_MOUSE_RELATIVE_SCALING hint controls whether<br/>
-		/// relative motion events are also scaled.<br/>
-		/// If this function results in scaling or subpixel drawing by the rendering<br/>
-		/// backend, it will be handled using the appropriate quality hints.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderSetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderSetLogicalSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRenderSetLogicalSizeNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h);
-
-		/// <summary>/// Set a device independent resolution for rendering.<br/>/// This function uses the viewport and scaling functionality to allow a fixed<br/>/// logical resolution for rendering, regardless of the actual output<br/>/// resolution. If the actual output resolution doesn't have the same aspect<br/>/// ratio the output rendering will be centered within the output display.<br/>/// If the output display is a window, mouse and touch events in the window<br/>/// will be filtered and scaled so they seem to arrive within the logical<br/>/// resolution. The SDL_HINT_MOUSE_RELATIVE_SCALING hint controls whether<br/>/// relative motion events are also scaled.<br/>/// If this function results in scaling or subpixel drawing by the rendering<br/>/// backend, it will be handled using the appropriate quality hints.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetLogicalSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
-		{
-			int ret = SDLRenderSetLogicalSizeNative(renderer, w, h);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get device independent resolution for rendering.<br/>
-		/// When using the main rendering target (eg no target texture is set): this<br/>
-		/// may return 0 for `w` and `h` if the SDL_Renderer has never had its logical<br/>
-		/// size set by SDL_RenderSetLogicalSize(). Otherwise it returns the logical<br/>
-		/// width and height.<br/>
-		/// When using a target texture: Never return 0 for `w` and `h` at first. Then<br/>
-		/// it returns the logical width and height that are set.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetLogicalSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderGetLogicalSizeNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
-		/// <summary>/// Get device independent resolution for rendering.<br/>/// When using the main rendering target (eg no target texture is set): this<br/>/// may return 0 for `w` and `h` if the SDL_Renderer has never had its logical<br/>/// size set by SDL_RenderSetLogicalSize(). Otherwise it returns the logical<br/>/// width and height.<br/>/// When using a target texture: Never return 0 for `w` and `h` at first. Then<br/>/// it returns the logical width and height that are set.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetLogicalSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			SDLRenderGetLogicalSizeNative(renderer, w, h);
-		}
-
-		/// <summary>/// Get device independent resolution for rendering.<br/>/// When using the main rendering target (eg no target texture is set): this<br/>/// may return 0 for `w` and `h` if the SDL_Renderer has never had its logical<br/>/// size set by SDL_RenderSetLogicalSize(). Otherwise it returns the logical<br/>/// width and height.<br/>/// When using a target texture: Never return 0 for `w` and `h` at first. Then<br/>/// it returns the logical width and height that are set.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetLogicalSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
-		{
-			fixed (int* pw = &w)
-			{
-				SDLRenderGetLogicalSizeNative(renderer, (int*)pw, h);
-			}
-		}
-
-		/// <summary>/// Get device independent resolution for rendering.<br/>/// When using the main rendering target (eg no target texture is set): this<br/>/// may return 0 for `w` and `h` if the SDL_Renderer has never had its logical<br/>/// size set by SDL_RenderSetLogicalSize(). Otherwise it returns the logical<br/>/// width and height.<br/>/// When using a target texture: Never return 0 for `w` and `h` at first. Then<br/>/// it returns the logical width and height that are set.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetLogicalSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* ph = &h)
-			{
-				SDLRenderGetLogicalSizeNative(renderer, w, (int*)ph);
-			}
-		}
-
-		/// <summary>/// Get device independent resolution for rendering.<br/>/// When using the main rendering target (eg no target texture is set): this<br/>/// may return 0 for `w` and `h` if the SDL_Renderer has never had its logical<br/>/// size set by SDL_RenderSetLogicalSize(). Otherwise it returns the logical<br/>/// width and height.<br/>/// When using a target texture: Never return 0 for `w` and `h` at first. Then<br/>/// it returns the logical width and height that are set.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetLogicalSize")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetLogicalSize([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] ref int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] ref int h)
-		{
-			fixed (int* pw = &w)
-			{
-				fixed (int* ph = &h)
-				{
-					SDLRenderGetLogicalSizeNative(renderer, (int*)pw, (int*)ph);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Set whether to force integer scales for resolution-independent rendering.<br/>
-		/// This function restricts the logical viewport to integer values - that is,<br/>
-		/// when a resolution is between two multiples of a logical size, the viewport<br/>
-		/// size is rounded down to the lower multiple.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderSetIntegerScale")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderSetIntegerScale")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRenderSetIntegerScaleNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enable);
-
-		/// <summary>/// Set whether to force integer scales for resolution-independent rendering.<br/>/// This function restricts the logical viewport to integer values - that is,<br/>/// when a resolution is between two multiples of a logical size, the viewport<br/>/// size is rounded down to the lower multiple.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetIntegerScale")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetIntegerScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "enable")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enable)
-		{
-			int ret = SDLRenderSetIntegerScaleNative(renderer, enable);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get whether integer scales are forced for resolution-independent rendering.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetIntegerScale")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetIntegerScale")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLRenderGetIntegerScaleNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
-		/// <summary>/// Get whether integer scales are forced for resolution-independent rendering.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetIntegerScale")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRenderGetIntegerScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
-		{
-			SDLBool ret = SDLRenderGetIntegerScaleNative(renderer);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the drawing area for rendering on the current target.<br/>
-		/// When the window is resized, the viewport is reset to fill the entire new<br/>
-		/// window size.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderSetViewport")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderSetViewport")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRenderSetViewportNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Set the drawing area for rendering on the current target.<br/>/// When the window is resized, the viewport is reset to fill the entire new<br/>/// window size.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetViewport")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetViewport([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
-		{
-			int ret = SDLRenderSetViewportNative(renderer, rect);
-			return ret;
-		}
-
-		/// <summary>/// Set the drawing area for rendering on the current target.<br/>/// When the window is resized, the viewport is reset to fill the entire new<br/>/// window size.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetViewport")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetViewport([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLRenderSetViewportNative(renderer, (SDLRect*)prect);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the drawing area for the current target.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetViewport")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetViewport")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderGetViewportNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Get the drawing area for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetViewport")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetViewport([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
-		{
-			SDLRenderGetViewportNative(renderer, rect);
-		}
-
-		/// <summary>/// Get the drawing area for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetViewport")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetViewport([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				SDLRenderGetViewportNative(renderer, (SDLRect*)prect);
-			}
-		}
-
-		/// <summary>
-		/// Set the clip rectangle for rendering on the specified target.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderSetClipRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderSetClipRect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRenderSetClipRectNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Set the clip rectangle for rendering on the specified target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetClipRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetClipRect([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
-		{
-			int ret = SDLRenderSetClipRectNative(renderer, rect);
-			return ret;
-		}
-
-		/// <summary>/// Set the clip rectangle for rendering on the specified target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetClipRect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetClipRect([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				int ret = SDLRenderSetClipRectNative(renderer, (SDLRect*)prect);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get the clip rectangle for the current target.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetClipRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetClipRect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderGetClipRectNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect);
-
-		/// <summary>/// Get the clip rectangle for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetClipRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetClipRect([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
-		{
-			SDLRenderGetClipRectNative(renderer, rect);
-		}
-
-		/// <summary>/// Get the clip rectangle for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetClipRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetClipRect([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
-		{
-			fixed (SDLRect* prect = &rect)
-			{
-				SDLRenderGetClipRectNative(renderer, (SDLRect*)prect);
-			}
-		}
-
-		/// <summary>
-		/// Get whether clipping is enabled on the given renderer.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderIsClipEnabled")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderIsClipEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLRenderIsClipEnabledNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
-		/// <summary>/// Get whether clipping is enabled on the given renderer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderIsClipEnabled")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLRenderIsClipEnabled([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
-		{
-			SDLBool ret = SDLRenderIsClipEnabledNative(renderer);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the drawing scale for rendering on the current target.<br/>
-		/// The drawing coordinates are scaled by the x/y scaling factors before they<br/>
-		/// are used by the renderer. This allows resolution independent drawing with a<br/>
-		/// single coordinate system.<br/>
-		/// If this results in scaling or subpixel drawing by the rendering backend, it<br/>
-		/// will be handled using the appropriate quality hints. For best results use<br/>
-		/// integer scaling factors.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderSetScale")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderSetScale")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRenderSetScaleNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float")] float scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float")] float scaleY);
-
-		/// <summary>/// Set the drawing scale for rendering on the current target.<br/>/// The drawing coordinates are scaled by the x/y scaling factors before they<br/>/// are used by the renderer. This allows resolution independent drawing with a<br/>/// single coordinate system.<br/>/// If this results in scaling or subpixel drawing by the rendering backend, it<br/>/// will be handled using the appropriate quality hints. For best results use<br/>/// integer scaling factors.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderSetScale")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRenderSetScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float")] float scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float")] float scaleY)
-		{
-			int ret = SDLRenderSetScaleNative(renderer, scaleX, scaleY);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the drawing scale for the current target.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderGetScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderGetScale")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderGetScaleNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float*")] float* scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float*")] float* scaleY);
-
-		/// <summary>/// Get the drawing scale for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float*")] float* scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float*")] float* scaleY)
-		{
-			SDLRenderGetScaleNative(renderer, scaleX, scaleY);
-		}
-
-		/// <summary>/// Get the drawing scale for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float*")] ref float scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float*")] float* scaleY)
-		{
-			fixed (float* pscaleX = &scaleX)
-			{
-				SDLRenderGetScaleNative(renderer, (float*)pscaleX, scaleY);
-			}
-		}
-
-		/// <summary>/// Get the drawing scale for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float*")] float* scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float*")] ref float scaleY)
-		{
-			fixed (float* pscaleY = &scaleY)
-			{
-				SDLRenderGetScaleNative(renderer, scaleX, (float*)pscaleY);
-			}
-		}
-
-		/// <summary>/// Get the drawing scale for the current target.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderGetScale")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderGetScale([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "scaleX")] [NativeName(NativeNameType.Type, "float*")] ref float scaleX, [NativeName(NativeNameType.Param, "scaleY")] [NativeName(NativeNameType.Type, "float*")] ref float scaleY)
-		{
-			fixed (float* pscaleX = &scaleX)
-			{
-				fixed (float* pscaleY = &scaleY)
-				{
-					SDLRenderGetScaleNative(renderer, (float*)pscaleX, (float*)pscaleY);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Get logical coordinates of point in renderer when given real coordinates of<br/>
-		/// point in window.<br/>
-		/// Logical coordinates will differ from real coordinates when render is scaled<br/>
-		/// and logical renderer size set<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderWindowToLogical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderWindowToLogical")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderWindowToLogicalNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int")] int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int")] int windowY, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float*")] float* logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float*")] float* logicalY);
-
-		/// <summary>/// Get logical coordinates of point in renderer when given real coordinates of<br/>/// point in window.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderWindowToLogical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderWindowToLogical([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int")] int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int")] int windowY, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float*")] float* logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float*")] float* logicalY)
-		{
-			SDLRenderWindowToLogicalNative(renderer, windowX, windowY, logicalX, logicalY);
-		}
-
-		/// <summary>/// Get logical coordinates of point in renderer when given real coordinates of<br/>/// point in window.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderWindowToLogical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderWindowToLogical([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int")] int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int")] int windowY, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float*")] ref float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float*")] float* logicalY)
-		{
-			fixed (float* plogicalX = &logicalX)
-			{
-				SDLRenderWindowToLogicalNative(renderer, windowX, windowY, (float*)plogicalX, logicalY);
-			}
-		}
-
-		/// <summary>/// Get logical coordinates of point in renderer when given real coordinates of<br/>/// point in window.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderWindowToLogical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderWindowToLogical([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int")] int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int")] int windowY, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float*")] float* logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float*")] ref float logicalY)
-		{
-			fixed (float* plogicalY = &logicalY)
-			{
-				SDLRenderWindowToLogicalNative(renderer, windowX, windowY, logicalX, (float*)plogicalY);
-			}
-		}
-
-		/// <summary>/// Get logical coordinates of point in renderer when given real coordinates of<br/>/// point in window.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderWindowToLogical")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderWindowToLogical([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int")] int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int")] int windowY, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float*")] ref float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float*")] ref float logicalY)
-		{
-			fixed (float* plogicalX = &logicalX)
-			{
-				fixed (float* plogicalY = &logicalY)
-				{
-					SDLRenderWindowToLogicalNative(renderer, windowX, windowY, (float*)plogicalX, (float*)plogicalY);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Get real coordinates of point in window when given logical coordinates of<br/>
-		/// point in renderer.<br/>
-		/// Logical coordinates will differ from real coordinates when render is scaled<br/>
-		/// and logical renderer size set<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RenderLogicalToWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RenderLogicalToWindow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLRenderLogicalToWindowNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float")] float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float")] float logicalY, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int*")] int* windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int*")] int* windowY);
-
-		/// <summary>/// Get real coordinates of point in window when given logical coordinates of<br/>/// point in renderer.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderLogicalToWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderLogicalToWindow([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float")] float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float")] float logicalY, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int*")] int* windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int*")] int* windowY)
-		{
-			SDLRenderLogicalToWindowNative(renderer, logicalX, logicalY, windowX, windowY);
-		}
-
-		/// <summary>/// Get real coordinates of point in window when given logical coordinates of<br/>/// point in renderer.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderLogicalToWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderLogicalToWindow([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float")] float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float")] float logicalY, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int*")] ref int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int*")] int* windowY)
-		{
-			fixed (int* pwindowX = &windowX)
-			{
-				SDLRenderLogicalToWindowNative(renderer, logicalX, logicalY, (int*)pwindowX, windowY);
-			}
-		}
-
-		/// <summary>/// Get real coordinates of point in window when given logical coordinates of<br/>/// point in renderer.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderLogicalToWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderLogicalToWindow([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float")] float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float")] float logicalY, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int*")] int* windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int*")] ref int windowY)
-		{
-			fixed (int* pwindowY = &windowY)
-			{
-				SDLRenderLogicalToWindowNative(renderer, logicalX, logicalY, windowX, (int*)pwindowY);
-			}
-		}
-
-		/// <summary>/// Get real coordinates of point in window when given logical coordinates of<br/>/// point in renderer.<br/>/// Logical coordinates will differ from real coordinates when render is scaled<br/>/// and logical renderer size set<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RenderLogicalToWindow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLRenderLogicalToWindow([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "logicalX")] [NativeName(NativeNameType.Type, "float")] float logicalX, [NativeName(NativeNameType.Param, "logicalY")] [NativeName(NativeNameType.Type, "float")] float logicalY, [NativeName(NativeNameType.Param, "windowX")] [NativeName(NativeNameType.Type, "int*")] ref int windowX, [NativeName(NativeNameType.Param, "windowY")] [NativeName(NativeNameType.Type, "int*")] ref int windowY)
-		{
-			fixed (int* pwindowX = &windowX)
-			{
-				fixed (int* pwindowY = &windowY)
-				{
-					SDLRenderLogicalToWindowNative(renderer, logicalX, logicalY, (int*)pwindowX, (int*)pwindowY);
-				}
-			}
-		}
-
-		/// <summary>
-		/// Set the color used for drawing operations (Rect, Line and Clear).<br/>
-		/// Set the color for drawing or filling rectangles, lines, and points, and for<br/>
-		/// SDL_RenderClear().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetRenderDrawColor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetRenderDrawColorNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a);
-
-		/// <summary>/// Set the color used for drawing operations (Rect, Line and Clear).<br/>/// Set the color for drawing or filling rectangles, lines, and points, and for<br/>/// SDL_RenderClear().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
-		{
-			int ret = SDLSetRenderDrawColorNative(renderer, r, g, b, a);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the color used for drawing operations (Rect, Line and Clear).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRenderDrawColor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetRenderDrawColorNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a);
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			int ret = SDLGetRenderDrawColorNative(renderer, r, g, b, a);
-			return ret;
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, g, b, a);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pg = &g)
-			{
-				int ret = SDLGetRenderDrawColorNative(renderer, r, (byte*)pg, b, a);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, (byte*)pg, b, a);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pb = &b)
-			{
-				int ret = SDLGetRenderDrawColorNative(renderer, r, g, (byte*)pb, a);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pb = &b)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, g, (byte*)pb, a);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pb = &b)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, r, (byte*)pg, (byte*)pb, a);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, (byte*)pg, (byte*)pb, a);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pa = &a)
-			{
-				int ret = SDLGetRenderDrawColorNative(renderer, r, g, b, (byte*)pa);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pa = &a)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, g, b, (byte*)pa);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pa = &a)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, r, (byte*)pg, b, (byte*)pa);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pa = &a)
-					{
-						int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, (byte*)pg, b, (byte*)pa);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pb = &b)
-			{
-				fixed (byte* pa = &a)
-				{
-					int ret = SDLGetRenderDrawColorNative(renderer, r, g, (byte*)pb, (byte*)pa);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pb = &b)
-				{
-					fixed (byte* pa = &a)
-					{
-						int ret = SDLGetRenderDrawColorNative(renderer, (byte*)pr, g, (byte*)pb, (byte*)pa);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get the color used for drawing operations (Rect, Line and Clear).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRenderDrawColor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetRenderDrawColor([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pb = &b)
-				{
-					fixed (byte* pa = &a)
-					{
-						int ret = SDLGetRenderDrawColorNative(renderer, r, (byte*)pg, (byte*)pb, (byte*)pa);
-						return ret;
-					}
 				}
 			}
 		}

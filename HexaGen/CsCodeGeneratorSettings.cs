@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.Logging;
@@ -57,6 +58,7 @@
                 {"UINT16", "ushort"},
                 {"UINT", "uint"},
                 {"UINT32", "uint"},
+                {"LONG", "int"},
                 {"ULONG", "uint"},
                 {"DWORD", "uint"},
                 {"WORD", "short"},
@@ -769,7 +771,7 @@
             return name;
         }
 
-        private string GetCsTypeNameInternal(CppType? type, bool isPointer = false)
+        internal string GetCsTypeNameInternal(CppType? type, bool isPointer = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
@@ -972,6 +974,10 @@
                 return typeName;
 
             var name = GetCsWrapperTypeNameInternal(type, isPointer);
+            if (name == "ref void") // exception for void type
+            {
+                name = "void*";
+            }
             wrapperTypeNameCache.TryAdd(type, name);
             return name;
         }
@@ -1219,6 +1225,10 @@
                 return typeName;
 
             var name = GetCsWrappedPointerTypeNameInternal(type, isPointer);
+            if (type is CppPointerType pointerType && pointerType.ElementType is CppFunctionType)
+            {
+                name = "nint";
+            }
             wrappedPointerTypeNameCache.TryAdd(type, name);
             return name;
         }
@@ -1450,7 +1460,7 @@
             return GetCsWrappedPointerTypeNameInternal(pointerType.ElementType, true);
         }
 
-        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true)
+        public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false)
         {
             StringBuilder argumentBuilder = new();
             int index = 0;
@@ -1460,6 +1470,18 @@
                 CppParameter cppParameter = parameters[i];
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(i, cppParameter.Name);
+
+                if (delegateType && cppParameter.Type is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !paramCsTypeName.Contains('*'))
+                {
+                    if (cppFunction.Parameters.Count == 0)
+                    {
+                        paramCsTypeName = $"delegate*<{GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    }
+                    else
+                    {
+                        paramCsTypeName = $"delegate*<{GetNamelessParameterSignature(cppFunction.Parameters, false)}, {GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    }
+                }
 
                 if (attributes)
                 {
@@ -1737,7 +1759,7 @@
             for (int i = 0; i < parts.Length; i++)
             {
                 var part = parts[i];
-                if ((part.Length == 1 || part.IsNumeric()) && !mergeWithLast)
+                if ((part.IsNumeric()) && !mergeWithLast)
                 {
                     if (i == 0 && parts.Length > 1)
                     {
@@ -1767,6 +1789,57 @@
             }
 
             return new(partList.ToArray());
+        }
+
+        public EnumPrefix GetEnumNamePrefixEx(string typeName)
+        {
+            if (KnownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
+            {
+                return new(knownValue.Split('_'));
+            }
+
+            string[] parts = typeName.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();
+            List<string> partList = new();
+
+            string compositeA = "";
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var part = parts[i];
+                partList.Add(part);
+                compositeA += part;
+
+                if (!partList.Contains(compositeA))
+                {
+                    partList.Add(compositeA);
+                }
+
+                string compositeB = "";
+                for (int j = i; j < parts.Length; j++)
+                {
+                    compositeB += parts[j];
+                    if (!partList.Contains(compositeB))
+                    {
+                        partList.Add(compositeB);
+                    }
+                }
+
+                var subParts = part.SplitByCase();
+                if (subParts.Length > 1)
+                {
+                    partList.AddRange(subParts);
+                    string composite = "";
+                    for (int j = 0; j < subParts.Length - 1; j++)
+                    {
+                        composite += subParts[j];
+                        if (!partList.Contains(composite))
+                        {
+                            partList.Add(composite);
+                        }
+                    }
+                }
+            }
+
+            return new([.. partList]);
         }
 
         public string GetEnumNameEx(string value, EnumPrefix enumPrefix)

@@ -340,7 +340,7 @@ namespace Hexa.NET.VMA
 		/// </summary>
 		[NativeName(NativeNameType.Field, "requiredFlags")]
 		[NativeName(NativeNameType.Type, "VkMemoryPropertyFlags")]
-		public VkMemoryPropertyFlags RequiredFlags;
+		public uint RequiredFlags;
 
 		/// <summary>
 		/// <br/>
@@ -349,7 +349,7 @@ namespace Hexa.NET.VMA
 		/// </summary>
 		[NativeName(NativeNameType.Field, "preferredFlags")]
 		[NativeName(NativeNameType.Type, "VkMemoryPropertyFlags")]
-		public VkMemoryPropertyFlags PreferredFlags;
+		public uint PreferredFlags;
 
 		/// <summary>
 		/// <br/>
@@ -392,7 +392,7 @@ namespace Hexa.NET.VMA
 		public float Priority;
 
 
-		public unsafe VmaAllocationCreateInfo(VmaAllocationCreateFlags flags = default, VmaMemoryUsage usage = default, VkMemoryPropertyFlags requiredFlags = default, VkMemoryPropertyFlags preferredFlags = default, uint memoryTypeBits = default, VmaPool* pool = default, void* pUserData = default, float priority = default)
+		public unsafe VmaAllocationCreateInfo(VmaAllocationCreateFlags flags = default, VmaMemoryUsage usage = default, uint requiredFlags = default, uint preferredFlags = default, uint memoryTypeBits = default, VmaPool* pool = default, void* pUserData = default, float priority = default)
 		{
 			Flags = flags;
 			Usage = usage;
@@ -550,7 +550,7 @@ namespace Hexa.NET.VMA
 		public int Type;
 		[NativeName(NativeNameType.Field, "")]
 		[NativeName(NativeNameType.Type, "")]
-		public  ;
+		public MtxInternalImpUnion Union;
 		[NativeName(NativeNameType.Field, "_Thread_id")]
 		[NativeName(NativeNameType.Type, "int")]
 		public int ThreadId;
@@ -558,12 +558,12 @@ namespace Hexa.NET.VMA
 		[NativeName(NativeNameType.Type, "int")]
 		public int Count;
 
-		public unsafe MtxInternalImp(ulong criticalSectionSize = default, ulong criticalSectionAlign = default, int type = default,   = default, int threadId = default, int count = default)
+		public unsafe MtxInternalImp(ulong criticalSectionSize = default, ulong criticalSectionAlign = default, int type = default, MtxInternalImpUnion union = default, int threadId = default, int count = default)
 		{
 			CriticalSectionSize = criticalSectionSize;
 			CriticalSectionAlign = criticalSectionAlign;
 			Type = type;
-			MtxInternalImpUnion = ;
+			Union = union;
 			ThreadId = threadId;
 			Count = count;
 		}
@@ -1330,7 +1330,7 @@ namespace Hexa.NET.VMA
 		[NativeName(NativeNameType.Type, "PFN_vkGetDeviceImageMemoryRequirementsKHR")]
 		public unsafe void* VkGetDeviceImageMemoryRequirements;
 
-		public unsafe VmaVulkanFunctions(PFNVkGetInstanceProcAddr vkGetInstanceProcAddr = default, PFNVkGetDeviceProcAddr vkGetDeviceProcAddr = default, PFNVkGetPhysicalDeviceProperties vkGetPhysicalDeviceProperties = default, PFNVkGetPhysicalDeviceMemoryProperties vkGetPhysicalDeviceMemoryProperties = default, PFNVkAllocateMemory vkAllocateMemory = default, PFNVkFreeMemory vkFreeMemory = default, PFNVkMapMemory vkMapMemory = default, PFNVkUnmapMemory vkUnmapMemory = default, PFNVkFlushMappedMemoryRanges vkFlushMappedMemoryRanges = default, PFNVkInvalidateMappedMemoryRanges vkInvalidateMappedMemoryRanges = default, PFNVkBindBufferMemory vkBindBufferMemory = default, PFNVkBindImageMemory vkBindImageMemory = default, PFNVkGetBufferMemoryRequirements vkGetBufferMemoryRequirements = default, PFNVkGetImageMemoryRequirements vkGetImageMemoryRequirements = default, PFNVkCreateBuffer vkCreateBuffer = default, PFNVkDestroyBuffer vkDestroyBuffer = default, PFNVkCreateImage vkCreateImage = default, PFNVkDestroyImage vkDestroyImage = default, PFNVkCmdCopyBuffer vkCmdCopyBuffer = default, PFNVkGetBufferMemoryRequirements2KHR vkGetBufferMemoryRequirements2KHR = default, PFNVkGetImageMemoryRequirements2KHR vkGetImageMemoryRequirements2KHR = default, PFNVkBindBufferMemory2KHR vkBindBufferMemory2KHR = default, PFNVkBindImageMemory2KHR vkBindImageMemory2KHR = default, PFNVkGetPhysicalDeviceMemoryProperties2KHR vkGetPhysicalDeviceMemoryProperties2KHR = default, PFNVkGetDeviceBufferMemoryRequirementsKHR vkGetDeviceBufferMemoryRequirements = default, PFNVkGetDeviceImageMemoryRequirementsKHR vkGetDeviceImageMemoryRequirements = default)
+		public unsafe VmaVulkanFunctions(PfnGetInstanceProcAddr vkGetInstanceProcAddr = default, PfnGetDeviceProcAddr vkGetDeviceProcAddr = default, PFNVkGetPhysicalDeviceProperties vkGetPhysicalDeviceProperties = default, PFNVkGetPhysicalDeviceMemoryProperties vkGetPhysicalDeviceMemoryProperties = default, PFNVkAllocateMemory vkAllocateMemory = default, PFNVkFreeMemory vkFreeMemory = default, PFNVkMapMemory vkMapMemory = default, PFNVkUnmapMemory vkUnmapMemory = default, PFNVkFlushMappedMemoryRanges vkFlushMappedMemoryRanges = default, PFNVkInvalidateMappedMemoryRanges vkInvalidateMappedMemoryRanges = default, PFNVkBindBufferMemory vkBindBufferMemory = default, PFNVkBindImageMemory vkBindImageMemory = default, PFNVkGetBufferMemoryRequirements vkGetBufferMemoryRequirements = default, PFNVkGetImageMemoryRequirements vkGetImageMemoryRequirements = default, PFNVkCreateBuffer vkCreateBuffer = default, PFNVkDestroyBuffer vkDestroyBuffer = default, PFNVkCreateImage vkCreateImage = default, PFNVkDestroyImage vkDestroyImage = default, PFNVkCmdCopyBuffer vkCmdCopyBuffer = default, PFNVkGetBufferMemoryRequirements2KHR vkGetBufferMemoryRequirements2KHR = default, PFNVkGetImageMemoryRequirements2KHR vkGetImageMemoryRequirements2KHR = default, PFNVkBindBufferMemory2KHR vkBindBufferMemory2KHR = default, PFNVkBindImageMemory2KHR vkBindImageMemory2KHR = default, PFNVkGetPhysicalDeviceMemoryProperties2KHR vkGetPhysicalDeviceMemoryProperties2KHR = default, PFNVkGetDeviceBufferMemoryRequirementsKHR vkGetDeviceBufferMemoryRequirements = default, PFNVkGetDeviceImageMemoryRequirementsKHR vkGetDeviceImageMemoryRequirements = default)
 		{
 			VkGetInstanceProcAddr = (void*)Marshal.GetFunctionPointerForDelegate(vkGetInstanceProcAddr);
 			VkGetDeviceProcAddr = (void*)Marshal.GetFunctionPointerForDelegate(vkGetDeviceProcAddr);
@@ -1744,10 +1744,10 @@ namespace Hexa.NET.VMA
 		/// </summary>
 		[NativeName(NativeNameType.Field, "dedicatedMemory")]
 		[NativeName(NativeNameType.Type, "VkBool32")]
-		public VkBool32 DedicatedMemory;
+		public uint DedicatedMemory;
 
 
-		public unsafe VmaAllocationInfo2(VmaAllocationInfo allocationInfo = default, ulong blockSize = default, VkBool32 dedicatedMemory = default)
+		public unsafe VmaAllocationInfo2(VmaAllocationInfo allocationInfo = default, ulong blockSize = default, uint dedicatedMemory = default)
 		{
 			AllocationInfo = allocationInfo;
 			BlockSize = blockSize;

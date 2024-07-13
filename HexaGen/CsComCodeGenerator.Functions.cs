@@ -20,7 +20,7 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))

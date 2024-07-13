@@ -104,7 +104,7 @@
                 csName = $"UnknownEnum{unknownEnumCounter++}";
             }
 
-            EnumPrefix enumNamePrefix = settings.GetEnumNamePrefix(cppMember.Name);
+            EnumPrefix enumNamePrefix = settings.GetEnumNamePrefixEx(cppMember.Name);
 
             if (csName.EndsWith("_"))
             {

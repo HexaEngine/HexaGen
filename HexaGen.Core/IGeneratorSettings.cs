@@ -106,7 +106,7 @@
 
         string GetParameterName(int paramIdx, string name);
 
-        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true);
+        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false);
 
         string GetConstantName(string value);
 

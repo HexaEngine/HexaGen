@@ -2,6 +2,7 @@
 {
     using CppAst;
     using System.IO;
+    using System.Security.Cryptography;
 
     public partial class CsCodeGenerator
     {
@@ -66,6 +67,8 @@
                     continue;
 
                 WriteClassDelegates(context, cppClass);
+
+                writer.TrySplit();
             }
 
             for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -76,6 +79,8 @@
                 {
                     WriteDelegate(context, typedef, functionType);
                 }
+
+                writer.TrySplit();
             }
         }
 
@@ -128,9 +133,21 @@
             var writer = context.Writer;
             string csFieldName = settings.GetDelegateName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-            string signature = settings.GetParameterSignature(functionType.Parameters, false, settings.GenerateMetadata);
+            string signature = settings.GetParameterSignature(functionType.Parameters, false, settings.GenerateMetadata, delegateType: true);
             string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
             returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
+
+            if (functionType.ReturnType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !returnCsName.Contains('*'))
+            {
+                if (cppFunction.Parameters.Count == 0)
+                {
+                    returnCsName = $"delegate*<{settings.GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                }
+                else
+                {
+                    returnCsName = $"delegate*<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false)}, {settings.GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                }
+            }
 
             if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
             {

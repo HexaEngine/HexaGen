@@ -115,43 +115,43 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_UNKNOWN")]
 		[NativeName(NativeNameType.Value, "0")]
-		PixeltypeUnknown = unchecked(0),
+		Unknown = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX1")]
 		[NativeName(NativeNameType.Value, "1")]
-		PixeltypeIndex1 = unchecked(1),
+		Index1 = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX4")]
 		[NativeName(NativeNameType.Value, "2")]
-		PixeltypeIndex4 = unchecked(2),
+		Index4 = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX8")]
 		[NativeName(NativeNameType.Value, "3")]
-		PixeltypeIndex8 = unchecked(3),
+		Index8 = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED8")]
 		[NativeName(NativeNameType.Value, "4")]
-		PixeltypePacked8 = unchecked(4),
+		Packed8 = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED16")]
 		[NativeName(NativeNameType.Value, "5")]
-		PixeltypePacked16 = unchecked(5),
+		Packed16 = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_PACKED32")]
 		[NativeName(NativeNameType.Value, "6")]
-		PixeltypePacked32 = unchecked(6),
+		Packed32 = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU8")]
 		[NativeName(NativeNameType.Value, "7")]
-		PixeltypeArrayu8 = unchecked(7),
+		Arrayu8 = unchecked(7),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU16")]
 		[NativeName(NativeNameType.Value, "8")]
-		PixeltypeArrayu16 = unchecked(8),
+		Arrayu16 = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYU32")]
 		[NativeName(NativeNameType.Value, "9")]
-		PixeltypeArrayu32 = unchecked(9),
+		Arrayu32 = unchecked(9),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF16")]
 		[NativeName(NativeNameType.Value, "10")]
-		PixeltypeArrayf16 = unchecked(10),
+		Arrayf16 = unchecked(10),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_ARRAYF32")]
 		[NativeName(NativeNameType.Value, "11")]
-		PixeltypeArrayf32 = unchecked(11),
+		Arrayf32 = unchecked(11),
 		/// <summary>/// This must be at the end of the list to avoid breaking the existing ABI <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELTYPE_INDEX2")]
 		[NativeName(NativeNameType.Value, "12")]
-		PixeltypeIndex2 = unchecked(12),
+		Index2 = unchecked(12),
 
 	}
 
@@ -160,7 +160,7 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		BitmaporderNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_BITMAPORDER_4321")]
 		[NativeName(NativeNameType.Value, "1")]
 		Bitmaporder4321 = unchecked(1),
@@ -174,31 +174,31 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		PackedorderNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XRGB")]
 		[NativeName(NativeNameType.Value, "1")]
-		PackedorderXrgb = unchecked(1),
+		Xrgb = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBX")]
 		[NativeName(NativeNameType.Value, "2")]
-		PackedorderRgbx = unchecked(2),
+		Rgbx = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ARGB")]
 		[NativeName(NativeNameType.Value, "3")]
-		PackedorderArgb = unchecked(3),
+		Argb = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_RGBA")]
 		[NativeName(NativeNameType.Value, "4")]
-		PackedorderRgba = unchecked(4),
+		Rgba = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_XBGR")]
 		[NativeName(NativeNameType.Value, "5")]
-		PackedorderXbgr = unchecked(5),
+		Xbgr = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRX")]
 		[NativeName(NativeNameType.Value, "6")]
-		PackedorderBgrx = unchecked(6),
+		Bgrx = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_ABGR")]
 		[NativeName(NativeNameType.Value, "7")]
-		PackedorderAbgr = unchecked(7),
+		Abgr = unchecked(7),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDORDER_BGRA")]
 		[NativeName(NativeNameType.Value, "8")]
-		PackedorderBgra = unchecked(8),
+		Bgra = unchecked(8),
 	}
 
 	/// <summary>/// Array component order, low byte -> high byte. <br/>/// !!! FIXME: in 2.1, make these not overlap differently with<br/>/// !!! FIXME:  SDL_PACKEDORDER_*, so we can simplify SDL_ISPIXELFORMAT_ALPHA <br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_ArrayOrder")]
@@ -206,25 +206,25 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		ArrayorderNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGB")]
 		[NativeName(NativeNameType.Value, "1")]
-		ArrayorderRgb = unchecked(1),
+		Rgb = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_RGBA")]
 		[NativeName(NativeNameType.Value, "2")]
-		ArrayorderRgba = unchecked(2),
+		Rgba = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ARGB")]
 		[NativeName(NativeNameType.Value, "3")]
-		ArrayorderArgb = unchecked(3),
+		Argb = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGR")]
 		[NativeName(NativeNameType.Value, "4")]
-		ArrayorderBgr = unchecked(4),
+		Bgr = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_BGRA")]
 		[NativeName(NativeNameType.Value, "5")]
-		ArrayorderBgra = unchecked(5),
+		Bgra = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "SDL_ARRAYORDER_ABGR")]
 		[NativeName(NativeNameType.Value, "6")]
-		ArrayorderAbgr = unchecked(6),
+		Abgr = unchecked(6),
 	}
 
 	/// <summary>/// Packed component layout. <br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_PackedLayout")]
@@ -232,7 +232,7 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		PackedlayoutNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_PACKEDLAYOUT_332")]
 		[NativeName(NativeNameType.Value, "1")]
 		Packedlayout332 = unchecked(1),
@@ -264,179 +264,179 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UNKNOWN")]
 		[NativeName(NativeNameType.Value, "0")]
-		PixelformatUnknown = unchecked(0),
+		Unknown = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1LSB")]
 		[NativeName(NativeNameType.Value, "286261504")]
-		PixelformatIndex1Lsb = unchecked(286261504),
+		Index1Lsb = unchecked(286261504),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX1MSB")]
 		[NativeName(NativeNameType.Value, "287310080")]
-		PixelformatIndex1Msb = unchecked(287310080),
+		Index1Msb = unchecked(287310080),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX2LSB")]
 		[NativeName(NativeNameType.Value, "470811136")]
-		PixelformatIndex2Lsb = unchecked(470811136),
+		Index2Lsb = unchecked(470811136),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX2MSB")]
 		[NativeName(NativeNameType.Value, "471859712")]
-		PixelformatIndex2Msb = unchecked(471859712),
+		Index2Msb = unchecked(471859712),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4LSB")]
 		[NativeName(NativeNameType.Value, "303039488")]
-		PixelformatIndex4Lsb = unchecked(303039488),
+		Index4Lsb = unchecked(303039488),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX4MSB")]
 		[NativeName(NativeNameType.Value, "304088064")]
-		PixelformatIndex4Msb = unchecked(304088064),
+		Index4Msb = unchecked(304088064),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_INDEX8")]
 		[NativeName(NativeNameType.Value, "318769153")]
-		PixelformatIndex8 = unchecked(318769153),
+		Index8 = unchecked(318769153),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB332")]
 		[NativeName(NativeNameType.Value, "336660481")]
-		PixelformatRgb332 = unchecked(336660481),
+		Rgb332 = unchecked(336660481),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB4444")]
 		[NativeName(NativeNameType.Value, "353504258")]
-		PixelformatXrgb4444 = unchecked(353504258),
+		Xrgb4444 = unchecked(353504258),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB444")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB4444")]
-		PixelformatRgb444 = PixelformatXrgb4444,
+		Rgb444 = Xrgb4444,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR4444")]
 		[NativeName(NativeNameType.Value, "357698562")]
-		PixelformatXbgr4444 = unchecked(357698562),
+		Xbgr4444 = unchecked(357698562),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR444")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR4444")]
-		PixelformatBgr444 = PixelformatXbgr4444,
+		Bgr444 = Xbgr4444,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB1555")]
 		[NativeName(NativeNameType.Value, "353570562")]
-		PixelformatXrgb1555 = unchecked(353570562),
+		Xrgb1555 = unchecked(353570562),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB555")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB1555")]
-		PixelformatRgb555 = PixelformatXrgb1555,
+		Rgb555 = Xrgb1555,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR1555")]
 		[NativeName(NativeNameType.Value, "357764866")]
-		PixelformatXbgr1555 = unchecked(357764866),
+		Xbgr1555 = unchecked(357764866),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR555")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR1555")]
-		PixelformatBgr555 = PixelformatXbgr1555,
+		Bgr555 = Xbgr1555,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB4444")]
 		[NativeName(NativeNameType.Value, "355602434")]
-		PixelformatArgb4444 = unchecked(355602434),
+		Argb4444 = unchecked(355602434),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA4444")]
 		[NativeName(NativeNameType.Value, "356651010")]
-		PixelformatRgba4444 = unchecked(356651010),
+		Rgba4444 = unchecked(356651010),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR4444")]
 		[NativeName(NativeNameType.Value, "359796738")]
-		PixelformatAbgr4444 = unchecked(359796738),
+		Abgr4444 = unchecked(359796738),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA4444")]
 		[NativeName(NativeNameType.Value, "360845314")]
-		PixelformatBgra4444 = unchecked(360845314),
+		Bgra4444 = unchecked(360845314),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB1555")]
 		[NativeName(NativeNameType.Value, "355667970")]
-		PixelformatArgb1555 = unchecked(355667970),
+		Argb1555 = unchecked(355667970),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA5551")]
 		[NativeName(NativeNameType.Value, "356782082")]
-		PixelformatRgba5551 = unchecked(356782082),
+		Rgba5551 = unchecked(356782082),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR1555")]
 		[NativeName(NativeNameType.Value, "359862274")]
-		PixelformatAbgr1555 = unchecked(359862274),
+		Abgr1555 = unchecked(359862274),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA5551")]
 		[NativeName(NativeNameType.Value, "360976386")]
-		PixelformatBgra5551 = unchecked(360976386),
+		Bgra5551 = unchecked(360976386),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB565")]
 		[NativeName(NativeNameType.Value, "353701890")]
-		PixelformatRgb565 = unchecked(353701890),
+		Rgb565 = unchecked(353701890),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR565")]
 		[NativeName(NativeNameType.Value, "357896194")]
-		PixelformatBgr565 = unchecked(357896194),
+		Bgr565 = unchecked(357896194),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB24")]
 		[NativeName(NativeNameType.Value, "386930691")]
-		PixelformatRgb24 = unchecked(386930691),
+		Rgb24 = unchecked(386930691),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR24")]
 		[NativeName(NativeNameType.Value, "390076419")]
-		PixelformatBgr24 = unchecked(390076419),
+		Bgr24 = unchecked(390076419),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB8888")]
 		[NativeName(NativeNameType.Value, "370546692")]
-		PixelformatXrgb8888 = unchecked(370546692),
+		Xrgb8888 = unchecked(370546692),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGB888")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB8888")]
-		PixelformatRgb888 = PixelformatXrgb8888,
+		Rgb888 = Xrgb8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBX8888")]
 		[NativeName(NativeNameType.Value, "371595268")]
-		PixelformatRgbx8888 = unchecked(371595268),
+		Rgbx8888 = unchecked(371595268),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR8888")]
 		[NativeName(NativeNameType.Value, "374740996")]
-		PixelformatXbgr8888 = unchecked(374740996),
+		Xbgr8888 = unchecked(374740996),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGR888")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR8888")]
-		PixelformatBgr888 = PixelformatXbgr8888,
+		Bgr888 = Xbgr8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRX8888")]
 		[NativeName(NativeNameType.Value, "375789572")]
-		PixelformatBgrx8888 = unchecked(375789572),
+		Bgrx8888 = unchecked(375789572),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB8888")]
 		[NativeName(NativeNameType.Value, "372645892")]
-		PixelformatArgb8888 = unchecked(372645892),
+		Argb8888 = unchecked(372645892),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA8888")]
 		[NativeName(NativeNameType.Value, "373694468")]
-		PixelformatRgba8888 = unchecked(373694468),
+		Rgba8888 = unchecked(373694468),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR8888")]
 		[NativeName(NativeNameType.Value, "376840196")]
-		PixelformatAbgr8888 = unchecked(376840196),
+		Abgr8888 = unchecked(376840196),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA8888")]
 		[NativeName(NativeNameType.Value, "377888772")]
-		PixelformatBgra8888 = unchecked(377888772),
+		Bgra8888 = unchecked(377888772),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB2101010")]
 		[NativeName(NativeNameType.Value, "372711428")]
-		PixelformatArgb2101010 = unchecked(372711428),
+		Argb2101010 = unchecked(372711428),
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBA32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_ABGR8888")]
-		PixelformatRgba32 = PixelformatAbgr8888,
+		Rgba32 = Abgr8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ARGB32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_BGRA8888")]
-		PixelformatArgb32 = PixelformatBgra8888,
+		Argb32 = Bgra8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRA32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_ARGB8888")]
-		PixelformatBgra32 = PixelformatArgb8888,
+		Bgra32 = Argb8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_ABGR32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_RGBA8888")]
-		PixelformatAbgr32 = PixelformatRgba8888,
+		Abgr32 = Rgba8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_RGBX32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XBGR8888")]
-		PixelformatRgbx32 = PixelformatXbgr8888,
+		Rgbx32 = Xbgr8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XRGB32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_BGRX8888")]
-		PixelformatXrgb32 = PixelformatBgrx8888,
+		Xrgb32 = Bgrx8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_BGRX32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_XRGB8888")]
-		PixelformatBgrx32 = PixelformatXrgb8888,
+		Bgrx32 = Xrgb8888,
 		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_XBGR32")]
 		[NativeName(NativeNameType.Value, "SDL_PIXELFORMAT_RGBX8888")]
-		PixelformatXbgr32 = PixelformatRgbx8888,
+		Xbgr32 = Rgbx8888,
 		/// <summary>/// Planar mode: Y + V + U  (3 planes) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YV12")]
 		[NativeName(NativeNameType.Value, "842094169")]
-		PixelformatYv12 = unchecked(842094169),
+		Yv12 = unchecked(842094169),
 
 		/// <summary>/// Planar mode: Y + U + V  (3 planes) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_IYUV")]
 		[NativeName(NativeNameType.Value, "1448433993")]
-		PixelformatIyuv = unchecked(1448433993),
+		Iyuv = unchecked(1448433993),
 
 		/// <summary>/// Packed mode: Y0+U0+Y1+V0 (1 plane) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YUY2")]
 		[NativeName(NativeNameType.Value, "844715353")]
-		PixelformatYuy2 = unchecked(844715353),
+		Yuy2 = unchecked(844715353),
 
 		/// <summary>/// Packed mode: U0+Y0+V0+Y1 (1 plane) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_UYVY")]
 		[NativeName(NativeNameType.Value, "1498831189")]
-		PixelformatUyvy = unchecked(1498831189),
+		Uyvy = unchecked(1498831189),
 
 		/// <summary>/// Packed mode: Y0+V0+Y1+U0 (1 plane) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_YVYU")]
 		[NativeName(NativeNameType.Value, "1431918169")]
-		PixelformatYvyu = unchecked(1431918169),
+		Yvyu = unchecked(1431918169),
 
 		/// <summary>/// Planar mode: Y + U/V interleaved  (2 planes) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV12")]
 		[NativeName(NativeNameType.Value, "842094158")]
-		PixelformatNv12 = unchecked(842094158),
+		Nv12 = unchecked(842094158),
 
 		/// <summary>/// Planar mode: Y + V/U interleaved  (2 planes) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_NV21")]
 		[NativeName(NativeNameType.Value, "825382478")]
-		PixelformatNv21 = unchecked(825382478),
+		Nv21 = unchecked(825382478),
 
 		/// <summary>/// Android video texture format <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_PIXELFORMAT_EXTERNAL_OES")]
 		[NativeName(NativeNameType.Value, "542328143")]
-		PixelformatExternalOes = unchecked(542328143),
+		ExternalOes = unchecked(542328143),
 
 	}
 
@@ -445,27 +445,27 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// no blending<br/>/// dstRGBA = srcRGBA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		BlendmodeNone = unchecked(0),
+		None = unchecked(0),
 
 		/// <summary>/// alpha blending<br/>/// dstRGB = (srcRGB * srcA) + (dstRGB * (1-srcA))<br/>/// dstA = srcA + (dstA * (1-srcA)) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_BLEND")]
 		[NativeName(NativeNameType.Value, "1")]
-		BlendmodeBlend = unchecked(1),
+		Blend = unchecked(1),
 
 		/// <summary>/// additive blending<br/>/// dstRGB = (srcRGB * srcA) + dstRGB<br/>/// dstA = dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_ADD")]
 		[NativeName(NativeNameType.Value, "2")]
-		BlendmodeAdd = unchecked(2),
+		Add = unchecked(2),
 
 		/// <summary>/// color modulate<br/>/// dstRGB = srcRGB * dstRGB<br/>/// dstA = dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MOD")]
 		[NativeName(NativeNameType.Value, "4")]
-		BlendmodeMod = unchecked(4),
+		Mod = unchecked(4),
 
 		/// <summary>/// color multiply<br/>/// dstRGB = (srcRGB * dstRGB) + (dstRGB * (1-srcA))<br/>/// dstA = dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_MUL")]
 		[NativeName(NativeNameType.Value, "8")]
-		BlendmodeMul = unchecked(8),
+		Mul = unchecked(8),
 
 		[NativeName(NativeNameType.EnumItem, "SDL_BLENDMODE_INVALID")]
 		[NativeName(NativeNameType.Value, "2147483647")]
-		BlendmodeInvalid = unchecked(2147483647),
+		Invalid = unchecked(2147483647),
 	}
 
 	/// <summary>/// <br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_BlendOperation")]
@@ -473,23 +473,23 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// dst + src: supported by all renderers <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_ADD")]
 		[NativeName(NativeNameType.Value, "1")]
-		BlendoperationAdd = unchecked(1),
+		Add = unchecked(1),
 
 		/// <summary>/// src - dst : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_SUBTRACT")]
 		[NativeName(NativeNameType.Value, "2")]
-		BlendoperationSubtract = unchecked(2),
+		Subtract = unchecked(2),
 
 		/// <summary>/// dst - src : supported by D3D9, D3D11, OpenGL, OpenGLES <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_REV_SUBTRACT")]
 		[NativeName(NativeNameType.Value, "3")]
-		BlendoperationRevSubtract = unchecked(3),
+		RevSubtract = unchecked(3),
 
 		/// <summary>/// min(dst, src) : supported by D3D9, D3D11 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MINIMUM")]
 		[NativeName(NativeNameType.Value, "4")]
-		BlendoperationMinimum = unchecked(4),
+		Minimum = unchecked(4),
 
 		/// <summary>/// max(dst, src) : supported by D3D9, D3D11 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDOPERATION_MAXIMUM")]
 		[NativeName(NativeNameType.Value, "5")]
-		BlendoperationMaximum = unchecked(5),
+		Maximum = unchecked(5),
 
 	}
 
@@ -498,43 +498,43 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// 0, 0, 0, 0 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ZERO")]
 		[NativeName(NativeNameType.Value, "1")]
-		BlendfactorZero = unchecked(1),
+		Zero = unchecked(1),
 
 		/// <summary>/// 1, 1, 1, 1 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE")]
 		[NativeName(NativeNameType.Value, "2")]
-		BlendfactorOne = unchecked(2),
+		One = unchecked(2),
 
 		/// <summary>/// srcR, srcG, srcB, srcA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_COLOR")]
 		[NativeName(NativeNameType.Value, "3")]
-		BlendfactorSrcColor = unchecked(3),
+		SrcColor = unchecked(3),
 
 		/// <summary>/// 1-srcR, 1-srcG, 1-srcB, 1-srcA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_COLOR")]
 		[NativeName(NativeNameType.Value, "4")]
-		BlendfactorOneMinusSrcColor = unchecked(4),
+		OneMinusSrcColor = unchecked(4),
 
 		/// <summary>/// srcA, srcA, srcA, srcA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_SRC_ALPHA")]
 		[NativeName(NativeNameType.Value, "5")]
-		BlendfactorSrcAlpha = unchecked(5),
+		SrcAlpha = unchecked(5),
 
 		/// <summary>/// 1-srcA, 1-srcA, 1-srcA, 1-srcA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_SRC_ALPHA")]
 		[NativeName(NativeNameType.Value, "6")]
-		BlendfactorOneMinusSrcAlpha = unchecked(6),
+		OneMinusSrcAlpha = unchecked(6),
 
 		/// <summary>/// dstR, dstG, dstB, dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_COLOR")]
 		[NativeName(NativeNameType.Value, "7")]
-		BlendfactorDstColor = unchecked(7),
+		DstColor = unchecked(7),
 
 		/// <summary>/// 1-dstR, 1-dstG, 1-dstB, 1-dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_COLOR")]
 		[NativeName(NativeNameType.Value, "8")]
-		BlendfactorOneMinusDstColor = unchecked(8),
+		OneMinusDstColor = unchecked(8),
 
 		/// <summary>/// dstA, dstA, dstA, dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_DST_ALPHA")]
 		[NativeName(NativeNameType.Value, "9")]
-		BlendfactorDstAlpha = unchecked(9),
+		DstAlpha = unchecked(9),
 
 		/// <summary>/// 1-dstA, 1-dstA, 1-dstA, 1-dstA <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA")]
 		[NativeName(NativeNameType.Value, "10")]
-		BlendfactorOneMinusDstAlpha = unchecked(10),
+		OneMinusDstAlpha = unchecked(10),
 
 	}
 
@@ -664,79 +664,79 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// Never used <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		WindoweventNone = unchecked(0),
+		None = unchecked(0),
 
 		/// <summary>/// Window has been shown <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SHOWN")]
 		[NativeName(NativeNameType.Value, "1")]
-		WindoweventShown = unchecked(1),
+		Shown = unchecked(1),
 
 		/// <summary>/// Window has been hidden <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIDDEN")]
 		[NativeName(NativeNameType.Value, "2")]
-		WindoweventHidden = unchecked(2),
+		Hidden = unchecked(2),
 
 		/// <summary>/// Window has been exposed and should be<br/>/// redrawn <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_EXPOSED")]
 		[NativeName(NativeNameType.Value, "3")]
-		WindoweventExposed = unchecked(3),
+		Exposed = unchecked(3),
 
 		/// <summary>/// Window has been moved to data1, data2<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MOVED")]
 		[NativeName(NativeNameType.Value, "4")]
-		WindoweventMoved = unchecked(4),
+		Moved = unchecked(4),
 
 		/// <summary>/// Window has been resized to data1xdata2 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESIZED")]
 		[NativeName(NativeNameType.Value, "5")]
-		WindoweventResized = unchecked(5),
+		Resized = unchecked(5),
 
 		/// <summary>/// The window size has changed, either as<br/>/// a result of an API call or through the<br/>/// system or user changing the window size. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_SIZE_CHANGED")]
 		[NativeName(NativeNameType.Value, "6")]
-		WindoweventSizeChanged = unchecked(6),
+		SizeChanged = unchecked(6),
 
 		/// <summary>/// Window has been minimized <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MINIMIZED")]
 		[NativeName(NativeNameType.Value, "7")]
-		WindoweventMinimized = unchecked(7),
+		Minimized = unchecked(7),
 
 		/// <summary>/// Window has been maximized <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_MAXIMIZED")]
 		[NativeName(NativeNameType.Value, "8")]
-		WindoweventMaximized = unchecked(8),
+		Maximized = unchecked(8),
 
 		/// <summary>/// Window has been restored to normal size<br/>/// and position <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_RESTORED")]
 		[NativeName(NativeNameType.Value, "9")]
-		WindoweventRestored = unchecked(9),
+		Restored = unchecked(9),
 
 		/// <summary>/// Window has gained mouse focus <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ENTER")]
 		[NativeName(NativeNameType.Value, "10")]
-		WindoweventEnter = unchecked(10),
+		Enter = unchecked(10),
 
 		/// <summary>/// Window has lost mouse focus <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_LEAVE")]
 		[NativeName(NativeNameType.Value, "11")]
-		WindoweventLeave = unchecked(11),
+		Leave = unchecked(11),
 
 		/// <summary>/// Window has gained keyboard focus <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_GAINED")]
 		[NativeName(NativeNameType.Value, "12")]
-		WindoweventFocusGained = unchecked(12),
+		FocusGained = unchecked(12),
 
 		/// <summary>/// Window has lost keyboard focus <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_FOCUS_LOST")]
 		[NativeName(NativeNameType.Value, "13")]
-		WindoweventFocusLost = unchecked(13),
+		FocusLost = unchecked(13),
 
 		/// <summary>/// The window manager requests that the window be closed <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_CLOSE")]
 		[NativeName(NativeNameType.Value, "14")]
-		WindoweventClose = unchecked(14),
+		Close = unchecked(14),
 
 		/// <summary>/// Window is being offered a focus (should SetWindowInputFocus() on itself or a subwindow, or ignore) <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_TAKE_FOCUS")]
 		[NativeName(NativeNameType.Value, "15")]
-		WindoweventTakeFocus = unchecked(15),
+		TakeFocus = unchecked(15),
 
 		/// <summary>/// Window had a hit test that wasn't SDL_HITTEST_NORMAL. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_HIT_TEST")]
 		[NativeName(NativeNameType.Value, "16")]
-		WindoweventHitTest = unchecked(16),
+		HitTest = unchecked(16),
 
 		/// <summary>/// The ICC profile of the window's display has changed. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_ICCPROF_CHANGED")]
 		[NativeName(NativeNameType.Value, "17")]
-		WindoweventIccprofChanged = unchecked(17),
+		IccprofChanged = unchecked(17),
 
 		/// <summary>/// Window has been moved to display data1. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_WINDOWEVENT_DISPLAY_CHANGED")]
 		[NativeName(NativeNameType.Value, "18")]
-		WindoweventDisplayChanged = unchecked(18),
+		DisplayChanged = unchecked(18),
 
 	}
 
@@ -745,23 +745,23 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// Never used <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		DisplayeventNone = unchecked(0),
+		None = unchecked(0),
 
 		/// <summary>/// Display orientation has changed to data1 <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_ORIENTATION")]
 		[NativeName(NativeNameType.Value, "1")]
-		DisplayeventOrientation = unchecked(1),
+		Orientation = unchecked(1),
 
 		/// <summary>/// Display has been added to the system <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_CONNECTED")]
 		[NativeName(NativeNameType.Value, "2")]
-		DisplayeventConnected = unchecked(2),
+		Connected = unchecked(2),
 
 		/// <summary>/// Display has been removed from the system <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_DISCONNECTED")]
 		[NativeName(NativeNameType.Value, "3")]
-		DisplayeventDisconnected = unchecked(3),
+		Disconnected = unchecked(3),
 
 		/// <summary>/// Display has changed position <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_DISPLAYEVENT_MOVED")]
 		[NativeName(NativeNameType.Value, "4")]
-		DisplayeventMoved = unchecked(4),
+		Moved = unchecked(4),
 
 	}
 
@@ -812,88 +812,88 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_RED_SIZE")]
 		[NativeName(NativeNameType.Value, "0")]
-		SdlGlRedSize = unchecked(0),
+		GlRedSize = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_GREEN_SIZE")]
 		[NativeName(NativeNameType.Value, "1")]
-		SdlGlGreenSize = unchecked(1),
+		GlGreenSize = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_BLUE_SIZE")]
 		[NativeName(NativeNameType.Value, "2")]
-		SdlGlBlueSize = unchecked(2),
+		GlBlueSize = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ALPHA_SIZE")]
 		[NativeName(NativeNameType.Value, "3")]
-		SdlGlAlphaSize = unchecked(3),
+		GlAlphaSize = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_BUFFER_SIZE")]
 		[NativeName(NativeNameType.Value, "4")]
-		SdlGlBufferSize = unchecked(4),
+		GlBufferSize = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_DOUBLEBUFFER")]
 		[NativeName(NativeNameType.Value, "5")]
-		SdlGlDoublebuffer = unchecked(5),
+		GlDoublebuffer = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_DEPTH_SIZE")]
 		[NativeName(NativeNameType.Value, "6")]
-		SdlGlDepthSize = unchecked(6),
+		GlDepthSize = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_STENCIL_SIZE")]
 		[NativeName(NativeNameType.Value, "7")]
-		SdlGlStencilSize = unchecked(7),
+		GlStencilSize = unchecked(7),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_RED_SIZE")]
 		[NativeName(NativeNameType.Value, "8")]
-		SdlGlAccumRedSize = unchecked(8),
+		GlAccumRedSize = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_GREEN_SIZE")]
 		[NativeName(NativeNameType.Value, "9")]
-		SdlGlAccumGreenSize = unchecked(9),
+		GlAccumGreenSize = unchecked(9),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_BLUE_SIZE")]
 		[NativeName(NativeNameType.Value, "10")]
-		SdlGlAccumBlueSize = unchecked(10),
+		GlAccumBlueSize = unchecked(10),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCUM_ALPHA_SIZE")]
 		[NativeName(NativeNameType.Value, "11")]
-		SdlGlAccumAlphaSize = unchecked(11),
+		GlAccumAlphaSize = unchecked(11),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_STEREO")]
 		[NativeName(NativeNameType.Value, "12")]
-		SdlGlStereo = unchecked(12),
+		GlStereo = unchecked(12),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLEBUFFERS")]
 		[NativeName(NativeNameType.Value, "13")]
-		SdlGlMultisamplebuffers = unchecked(13),
+		GlMultisamplebuffers = unchecked(13),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_MULTISAMPLESAMPLES")]
 		[NativeName(NativeNameType.Value, "14")]
-		SdlGlMultisamplesamples = unchecked(14),
+		GlMultisamplesamples = unchecked(14),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_ACCELERATED_VISUAL")]
 		[NativeName(NativeNameType.Value, "15")]
-		SdlGlAcceleratedVisual = unchecked(15),
+		GlAcceleratedVisual = unchecked(15),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_RETAINED_BACKING")]
 		[NativeName(NativeNameType.Value, "16")]
-		SdlGlRetainedBacking = unchecked(16),
+		GlRetainedBacking = unchecked(16),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MAJOR_VERSION")]
 		[NativeName(NativeNameType.Value, "17")]
-		SdlGlContextMajorVersion = unchecked(17),
+		GlContextMajorVersion = unchecked(17),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_MINOR_VERSION")]
 		[NativeName(NativeNameType.Value, "18")]
-		SdlGlContextMinorVersion = unchecked(18),
+		GlContextMinorVersion = unchecked(18),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_EGL")]
 		[NativeName(NativeNameType.Value, "19")]
-		SdlGlContextEgl = unchecked(19),
+		GlContextEgl = unchecked(19),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FLAGS")]
 		[NativeName(NativeNameType.Value, "20")]
-		SdlGlContextFlags = unchecked(20),
+		GlContextFlags = unchecked(20),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_MASK")]
 		[NativeName(NativeNameType.Value, "21")]
-		SdlGlContextProfileMask = unchecked(21),
+		GlContextProfileMask = unchecked(21),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_SHARE_WITH_CURRENT_CONTEXT")]
 		[NativeName(NativeNameType.Value, "22")]
-		SdlGlShareWithCurrentContext = unchecked(22),
+		GlShareWithCurrentContext = unchecked(22),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_FRAMEBUFFER_SRGB_CAPABLE")]
 		[NativeName(NativeNameType.Value, "23")]
-		SdlGlFramebufferSrgbCapable = unchecked(23),
+		GlFramebufferSrgbCapable = unchecked(23),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR")]
 		[NativeName(NativeNameType.Value, "24")]
-		SdlGlContextReleaseBehavior = unchecked(24),
+		GlContextReleaseBehavior = unchecked(24),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_NOTIFICATION")]
 		[NativeName(NativeNameType.Value, "25")]
-		SdlGlContextResetNotification = unchecked(25),
+		GlContextResetNotification = unchecked(25),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_NO_ERROR")]
 		[NativeName(NativeNameType.Value, "26")]
-		SdlGlContextNoError = unchecked(26),
+		GlContextNoError = unchecked(26),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_FLOATBUFFERS")]
 		[NativeName(NativeNameType.Value, "27")]
-		SdlGlFloatbuffers = unchecked(27),
+		GlFloatbuffers = unchecked(27),
 	}
 
 	[NativeName(NativeNameType.Enum, "SDL_GLprofile")]
@@ -901,13 +901,13 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_CORE")]
 		[NativeName(NativeNameType.Value, "1")]
-		SdlGlContextProfileCore = unchecked(1),
+		GlContextProfileCore = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_COMPATIBILITY")]
 		[NativeName(NativeNameType.Value, "2")]
-		SdlGlContextProfileCompatibility = unchecked(2),
+		GlContextProfileCompatibility = unchecked(2),
 		/// <summary>/// GLX_CONTEXT_ES2_PROFILE_BIT_EXT <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_PROFILE_ES")]
 		[NativeName(NativeNameType.Value, "4")]
-		SdlGlContextProfileEs = unchecked(4),
+		GlContextProfileEs = unchecked(4),
 
 	}
 
@@ -916,16 +916,16 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_DEBUG_FLAG")]
 		[NativeName(NativeNameType.Value, "1")]
-		SdlGlContextDebugFlag = unchecked(1),
+		GlContextDebugFlag = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG")]
 		[NativeName(NativeNameType.Value, "2")]
-		SdlGlContextForwardCompatibleFlag = unchecked(2),
+		GlContextForwardCompatibleFlag = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG")]
 		[NativeName(NativeNameType.Value, "4")]
-		SdlGlContextRobustAccessFlag = unchecked(4),
+		GlContextRobustAccessFlag = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RESET_ISOLATION_FLAG")]
 		[NativeName(NativeNameType.Value, "8")]
-		SdlGlContextResetIsolationFlag = unchecked(8),
+		GlContextResetIsolationFlag = unchecked(8),
 	}
 
 	[NativeName(NativeNameType.Enum, "SDL_GLcontextReleaseFlag")]
@@ -933,10 +933,10 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		SdlGlContextReleaseBehaviorNone = unchecked(0),
+		GlContextReleaseBehaviorNone = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_GL_CONTEXT_RELEASE_BEHAVIOR_FLUSH")]
 		[NativeName(NativeNameType.Value, "1")]
-		SdlGlContextReleaseBehaviorFlush = unchecked(1),
+		GlContextReleaseBehaviorFlush = unchecked(1),
 	}
 
 	[NativeName(NativeNameType.Enum, "SDL_GLContextResetNotification")]
@@ -955,36 +955,36 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// Region is normal. No special properties. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_NORMAL")]
 		[NativeName(NativeNameType.Value, "0")]
-		HittestNormal = unchecked(0),
+		Normal = unchecked(0),
 
 		/// <summary>/// Region can drag entire window. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_DRAGGABLE")]
 		[NativeName(NativeNameType.Value, "1")]
-		HittestDraggable = unchecked(1),
+		Draggable = unchecked(1),
 
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPLEFT")]
 		[NativeName(NativeNameType.Value, "2")]
-		HittestResizeTopleft = unchecked(2),
+		ResizeTopleft = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOP")]
 		[NativeName(NativeNameType.Value, "3")]
-		HittestResizeTop = unchecked(3),
+		ResizeTop = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_TOPRIGHT")]
 		[NativeName(NativeNameType.Value, "4")]
-		HittestResizeTopright = unchecked(4),
+		ResizeTopright = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_RIGHT")]
 		[NativeName(NativeNameType.Value, "5")]
-		HittestResizeRight = unchecked(5),
+		ResizeRight = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMRIGHT")]
 		[NativeName(NativeNameType.Value, "6")]
-		HittestResizeBottomright = unchecked(6),
+		ResizeBottomright = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOM")]
 		[NativeName(NativeNameType.Value, "7")]
-		HittestResizeBottom = unchecked(7),
+		ResizeBottom = unchecked(7),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_BOTTOMLEFT")]
 		[NativeName(NativeNameType.Value, "8")]
-		HittestResizeBottomleft = unchecked(8),
+		ResizeBottomleft = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "SDL_HITTEST_RESIZE_LEFT")]
 		[NativeName(NativeNameType.Value, "9")]
-		HittestResizeLeft = unchecked(9),
+		ResizeLeft = unchecked(9),
 	}
 
 	/// <summary>/// <br/>/// Values of this type are used to represent keyboard keys, among other places<br/>/// in the <br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_Scancode")]
@@ -995,107 +995,107 @@ namespace Hexa.NET.SDL2
 		Unknown = unchecked(0),
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_A")]
 		[NativeName(NativeNameType.Value, "4")]
-		Scancodea = unchecked(4),
+		A = unchecked(4),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_B")]
 		[NativeName(NativeNameType.Value, "5")]
-		Scancodeb = unchecked(5),
+		B = unchecked(5),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_C")]
 		[NativeName(NativeNameType.Value, "6")]
-		Scancodec = unchecked(6),
+		C = unchecked(6),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_D")]
 		[NativeName(NativeNameType.Value, "7")]
-		Scancoded = unchecked(7),
+		D = unchecked(7),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_E")]
 		[NativeName(NativeNameType.Value, "8")]
-		Scancodee = unchecked(8),
+		E = unchecked(8),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F")]
 		[NativeName(NativeNameType.Value, "9")]
-		Scancodef = unchecked(9),
+		F = unchecked(9),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_G")]
 		[NativeName(NativeNameType.Value, "10")]
-		Scancodeg = unchecked(10),
+		G = unchecked(10),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_H")]
 		[NativeName(NativeNameType.Value, "11")]
-		Scancodeh = unchecked(11),
+		H = unchecked(11),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_I")]
 		[NativeName(NativeNameType.Value, "12")]
-		Scancodei = unchecked(12),
+		I = unchecked(12),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_J")]
 		[NativeName(NativeNameType.Value, "13")]
-		Scancodej = unchecked(13),
+		J = unchecked(13),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_K")]
 		[NativeName(NativeNameType.Value, "14")]
-		Scancodek = unchecked(14),
+		K = unchecked(14),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_L")]
 		[NativeName(NativeNameType.Value, "15")]
-		Scancodel = unchecked(15),
+		L = unchecked(15),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_M")]
 		[NativeName(NativeNameType.Value, "16")]
-		Scancodem = unchecked(16),
+		M = unchecked(16),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_N")]
 		[NativeName(NativeNameType.Value, "17")]
-		Scancoden = unchecked(17),
+		N = unchecked(17),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_O")]
 		[NativeName(NativeNameType.Value, "18")]
-		Scancodeo = unchecked(18),
+		O = unchecked(18),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_P")]
 		[NativeName(NativeNameType.Value, "19")]
-		Scancodep = unchecked(19),
+		P = unchecked(19),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Q")]
 		[NativeName(NativeNameType.Value, "20")]
-		Scancodeq = unchecked(20),
+		Q = unchecked(20),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_R")]
 		[NativeName(NativeNameType.Value, "21")]
-		Scancoder = unchecked(21),
+		R = unchecked(21),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_S")]
 		[NativeName(NativeNameType.Value, "22")]
-		Scancodes = unchecked(22),
+		S = unchecked(22),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_T")]
 		[NativeName(NativeNameType.Value, "23")]
-		Scancodet = unchecked(23),
+		T = unchecked(23),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_U")]
 		[NativeName(NativeNameType.Value, "24")]
-		Scancodeu = unchecked(24),
+		U = unchecked(24),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_V")]
 		[NativeName(NativeNameType.Value, "25")]
-		Scancodev = unchecked(25),
+		V = unchecked(25),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_W")]
 		[NativeName(NativeNameType.Value, "26")]
-		Scancodew = unchecked(26),
+		W = unchecked(26),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_X")]
 		[NativeName(NativeNameType.Value, "27")]
-		Scancodex = unchecked(27),
+		X = unchecked(27),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Y")]
 		[NativeName(NativeNameType.Value, "28")]
-		Scancodey = unchecked(28),
+		Y = unchecked(28),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_Z")]
 		[NativeName(NativeNameType.Value, "29")]
-		Scancodez = unchecked(29),
+		Z = unchecked(29),
 
 		/// <summary>/// <br/>/// These values are from usage page 0x07 (USB keyboard page).<br/>/// <br/>/// @<br/>/// { <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_1")]
 		[NativeName(NativeNameType.Value, "30")]
@@ -1205,40 +1205,40 @@ namespace Hexa.NET.SDL2
 		Capslock = unchecked(57),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F1")]
 		[NativeName(NativeNameType.Value, "58")]
-		Scancodef1 = unchecked(58),
+		F1 = unchecked(58),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F2")]
 		[NativeName(NativeNameType.Value, "59")]
-		Scancodef2 = unchecked(59),
+		F2 = unchecked(59),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F3")]
 		[NativeName(NativeNameType.Value, "60")]
-		Scancodef3 = unchecked(60),
+		F3 = unchecked(60),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F4")]
 		[NativeName(NativeNameType.Value, "61")]
-		Scancodef4 = unchecked(61),
+		F4 = unchecked(61),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F5")]
 		[NativeName(NativeNameType.Value, "62")]
-		Scancodef5 = unchecked(62),
+		F5 = unchecked(62),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F6")]
 		[NativeName(NativeNameType.Value, "63")]
-		Scancodef6 = unchecked(63),
+		F6 = unchecked(63),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F7")]
 		[NativeName(NativeNameType.Value, "64")]
-		Scancodef7 = unchecked(64),
+		F7 = unchecked(64),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F8")]
 		[NativeName(NativeNameType.Value, "65")]
-		Scancodef8 = unchecked(65),
+		F8 = unchecked(65),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F9")]
 		[NativeName(NativeNameType.Value, "66")]
-		Scancodef9 = unchecked(66),
+		F9 = unchecked(66),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F10")]
 		[NativeName(NativeNameType.Value, "67")]
-		Scancodef10 = unchecked(67),
+		F10 = unchecked(67),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F11")]
 		[NativeName(NativeNameType.Value, "68")]
-		Scancodef11 = unchecked(68),
+		F11 = unchecked(68),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F12")]
 		[NativeName(NativeNameType.Value, "69")]
-		Scancodef12 = unchecked(69),
+		F12 = unchecked(69),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_PRINTSCREEN")]
 		[NativeName(NativeNameType.Value, "70")]
 		Printscreen = unchecked(70),
@@ -1348,40 +1348,40 @@ namespace Hexa.NET.SDL2
 		KpEquals = unchecked(103),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F13")]
 		[NativeName(NativeNameType.Value, "104")]
-		Scancodef13 = unchecked(104),
+		F13 = unchecked(104),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F14")]
 		[NativeName(NativeNameType.Value, "105")]
-		Scancodef14 = unchecked(105),
+		F14 = unchecked(105),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F15")]
 		[NativeName(NativeNameType.Value, "106")]
-		Scancodef15 = unchecked(106),
+		F15 = unchecked(106),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F16")]
 		[NativeName(NativeNameType.Value, "107")]
-		Scancodef16 = unchecked(107),
+		F16 = unchecked(107),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F17")]
 		[NativeName(NativeNameType.Value, "108")]
-		Scancodef17 = unchecked(108),
+		F17 = unchecked(108),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F18")]
 		[NativeName(NativeNameType.Value, "109")]
-		Scancodef18 = unchecked(109),
+		F18 = unchecked(109),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F19")]
 		[NativeName(NativeNameType.Value, "110")]
-		Scancodef19 = unchecked(110),
+		F19 = unchecked(110),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F20")]
 		[NativeName(NativeNameType.Value, "111")]
-		Scancodef20 = unchecked(111),
+		F20 = unchecked(111),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F21")]
 		[NativeName(NativeNameType.Value, "112")]
-		Scancodef21 = unchecked(112),
+		F21 = unchecked(112),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F22")]
 		[NativeName(NativeNameType.Value, "113")]
-		Scancodef22 = unchecked(113),
+		F22 = unchecked(113),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F23")]
 		[NativeName(NativeNameType.Value, "114")]
-		Scancodef23 = unchecked(114),
+		F23 = unchecked(114),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_F24")]
 		[NativeName(NativeNameType.Value, "115")]
-		Scancodef24 = unchecked(115),
+		F24 = unchecked(115),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_EXECUTE")]
 		[NativeName(NativeNameType.Value, "116")]
 		Execute = unchecked(116),
@@ -1582,22 +1582,22 @@ namespace Hexa.NET.SDL2
 		KpBackspace = unchecked(187),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_A")]
 		[NativeName(NativeNameType.Value, "188")]
-		Kpa = unchecked(188),
+		KpA = unchecked(188),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_B")]
 		[NativeName(NativeNameType.Value, "189")]
-		Kpb = unchecked(189),
+		KpB = unchecked(189),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_C")]
 		[NativeName(NativeNameType.Value, "190")]
-		Kpc = unchecked(190),
+		KpC = unchecked(190),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_D")]
 		[NativeName(NativeNameType.Value, "191")]
-		Kpd = unchecked(191),
+		KpD = unchecked(191),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_E")]
 		[NativeName(NativeNameType.Value, "192")]
-		Kpe = unchecked(192),
+		KpE = unchecked(192),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_F")]
 		[NativeName(NativeNameType.Value, "193")]
-		Kpf = unchecked(193),
+		KpF = unchecked(193),
 		[NativeName(NativeNameType.EnumItem, "SDL_SCANCODE_KP_XOR")]
 		[NativeName(NativeNameType.Value, "194")]
 		KpXor = unchecked(194),
@@ -1849,67 +1849,67 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDLK_UNKNOWN")]
 		[NativeName(NativeNameType.Value, "0")]
-		SdlkUnknown = unchecked(0),
+		Unknown = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN")]
 		[NativeName(NativeNameType.Value, "'\\r'")]
-		SdlkReturn = unchecked((int)'\r'),
+		Return = unchecked((int)'\r'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_ESCAPE")]
 		[NativeName(NativeNameType.Value, "'\\x1B'")]
-		SdlkEscape = unchecked((int)'\x1B'),
+		Escape = unchecked((int)'\x1B'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSPACE")]
 		[NativeName(NativeNameType.Value, "'\\b'")]
-		SdlkBackspace = unchecked((int)'\b'),
+		Backspace = unchecked((int)'\b'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_TAB")]
 		[NativeName(NativeNameType.Value, "'\\t'")]
-		SdlkTab = unchecked((int)'\t'),
+		Tab = unchecked((int)'\t'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_SPACE")]
 		[NativeName(NativeNameType.Value, "' '")]
-		SdlkSpace = unchecked((int)' '),
+		Space = unchecked((int)' '),
 		[NativeName(NativeNameType.EnumItem, "SDLK_EXCLAIM")]
 		[NativeName(NativeNameType.Value, "'!'")]
-		SdlkExclaim = unchecked((int)'!'),
+		Exclaim = unchecked((int)'!'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTEDBL")]
 		[NativeName(NativeNameType.Value, "'\"'")]
-		SdlkQuotedbl = unchecked((int)'"'),
+		Quotedbl = unchecked((int)'"'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_HASH")]
 		[NativeName(NativeNameType.Value, "'#'")]
-		SdlkHash = unchecked((int)'#'),
+		Hash = unchecked((int)'#'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_PERCENT")]
 		[NativeName(NativeNameType.Value, "'%'")]
-		SdlkPercent = unchecked((int)'%'),
+		Percent = unchecked((int)'%'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_DOLLAR")]
 		[NativeName(NativeNameType.Value, "'$'")]
-		SdlkDollar = unchecked((int)'$'),
+		Dollar = unchecked((int)'$'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_AMPERSAND")]
 		[NativeName(NativeNameType.Value, "'&'")]
-		SdlkAmpersand = unchecked((int)'&'),
+		Ampersand = unchecked((int)'&'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_QUOTE")]
 		[NativeName(NativeNameType.Value, "'\\''")]
-		SdlkQuote = unchecked((int)'\''),
+		Quote = unchecked((int)'\''),
 		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTPAREN")]
 		[NativeName(NativeNameType.Value, "'('")]
-		SdlkLeftparen = unchecked((int)'('),
+		Leftparen = unchecked((int)'('),
 		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTPAREN")]
 		[NativeName(NativeNameType.Value, "')'")]
-		SdlkRightparen = unchecked((int)')'),
+		Rightparen = unchecked((int)')'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_ASTERISK")]
 		[NativeName(NativeNameType.Value, "'*'")]
-		SdlkAsterisk = unchecked((int)'*'),
+		Asterisk = unchecked((int)'*'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_PLUS")]
 		[NativeName(NativeNameType.Value, "'+'")]
-		SdlkPlus = unchecked((int)'+'),
+		Plus = unchecked((int)'+'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_COMMA")]
 		[NativeName(NativeNameType.Value, "','")]
-		SdlkComma = unchecked((int)','),
+		Comma = unchecked((int)','),
 		[NativeName(NativeNameType.EnumItem, "SDLK_MINUS")]
 		[NativeName(NativeNameType.Value, "'-'")]
-		SdlkMinus = unchecked((int)'-'),
+		Minus = unchecked((int)'-'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_PERIOD")]
 		[NativeName(NativeNameType.Value, "'.'")]
-		SdlkPeriod = unchecked((int)'.'),
+		Period = unchecked((int)'.'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_SLASH")]
 		[NativeName(NativeNameType.Value, "'/'")]
-		SdlkSlash = unchecked((int)'/'),
+		Slash = unchecked((int)'/'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_0")]
 		[NativeName(NativeNameType.Value, "'0'")]
 		Sdlk0 = unchecked((int)'0'),
@@ -1942,848 +1942,848 @@ namespace Hexa.NET.SDL2
 		Sdlk9 = unchecked((int)'9'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_COLON")]
 		[NativeName(NativeNameType.Value, "':'")]
-		SdlkColon = unchecked((int)':'),
+		Colon = unchecked((int)':'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_SEMICOLON")]
 		[NativeName(NativeNameType.Value, "';'")]
-		SdlkSemicolon = unchecked((int)';'),
+		Semicolon = unchecked((int)';'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_LESS")]
 		[NativeName(NativeNameType.Value, "'<'")]
-		SdlkLess = unchecked((int)'<'),
+		Less = unchecked((int)'<'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_EQUALS")]
 		[NativeName(NativeNameType.Value, "'='")]
-		SdlkEquals = unchecked((int)'='),
+		Equals = unchecked((int)'='),
 		[NativeName(NativeNameType.EnumItem, "SDLK_GREATER")]
 		[NativeName(NativeNameType.Value, "'>'")]
-		SdlkGreater = unchecked((int)'>'),
+		Greater = unchecked((int)'>'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_QUESTION")]
 		[NativeName(NativeNameType.Value, "'?'")]
-		SdlkQuestion = unchecked((int)'?'),
+		Question = unchecked((int)'?'),
 		[NativeName(NativeNameType.EnumItem, "SDLK_AT")]
 		[NativeName(NativeNameType.Value, "'@'")]
-		SdlkAt = unchecked((int)'@'),
+		At = unchecked((int)'@'),
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LEFTBRACKET")]
 		[NativeName(NativeNameType.Value, "'['")]
-		SdlkLeftbracket = unchecked((int)'['),
+		Leftbracket = unchecked((int)'['),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BACKSLASH")]
 		[NativeName(NativeNameType.Value, "'\\\\'")]
-		SdlkBackslash = unchecked((int)'\\'),
+		Backslash = unchecked((int)'\\'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHTBRACKET")]
 		[NativeName(NativeNameType.Value, "']'")]
-		SdlkRightbracket = unchecked((int)']'),
+		Rightbracket = unchecked((int)']'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CARET")]
 		[NativeName(NativeNameType.Value, "'^'")]
-		SdlkCaret = unchecked((int)'^'),
+		Caret = unchecked((int)'^'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UNDERSCORE")]
 		[NativeName(NativeNameType.Value, "'_'")]
-		SdlkUnderscore = unchecked((int)'_'),
+		Underscore = unchecked((int)'_'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BACKQUOTE")]
 		[NativeName(NativeNameType.Value, "'`'")]
-		SdlkBackquote = unchecked((int)'`'),
+		Backquote = unchecked((int)'`'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_a")]
 		[NativeName(NativeNameType.Value, "'a'")]
-		Sdlka = unchecked((int)'a'),
+		A = unchecked((int)'a'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_b")]
 		[NativeName(NativeNameType.Value, "'b'")]
-		Sdlkb = unchecked((int)'b'),
+		B = unchecked((int)'b'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_c")]
 		[NativeName(NativeNameType.Value, "'c'")]
-		Sdlkc = unchecked((int)'c'),
+		C = unchecked((int)'c'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_d")]
 		[NativeName(NativeNameType.Value, "'d'")]
-		Sdlkd = unchecked((int)'d'),
+		D = unchecked((int)'d'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_e")]
 		[NativeName(NativeNameType.Value, "'e'")]
-		Sdlke = unchecked((int)'e'),
+		E = unchecked((int)'e'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_f")]
 		[NativeName(NativeNameType.Value, "'f'")]
-		Sdlkf = unchecked((int)'f'),
+		F = unchecked((int)'f'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_g")]
 		[NativeName(NativeNameType.Value, "'g'")]
-		Sdlkg = unchecked((int)'g'),
+		G = unchecked((int)'g'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_h")]
 		[NativeName(NativeNameType.Value, "'h'")]
-		Sdlkh = unchecked((int)'h'),
+		H = unchecked((int)'h'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_i")]
 		[NativeName(NativeNameType.Value, "'i'")]
-		Sdlki = unchecked((int)'i'),
+		I = unchecked((int)'i'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_j")]
 		[NativeName(NativeNameType.Value, "'j'")]
-		Sdlkj = unchecked((int)'j'),
+		J = unchecked((int)'j'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_k")]
 		[NativeName(NativeNameType.Value, "'k'")]
-		Sdlkk = unchecked((int)'k'),
+		K = unchecked((int)'k'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_l")]
 		[NativeName(NativeNameType.Value, "'l'")]
-		Sdlkl = unchecked((int)'l'),
+		L = unchecked((int)'l'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_m")]
 		[NativeName(NativeNameType.Value, "'m'")]
-		Sdlkm = unchecked((int)'m'),
+		M = unchecked((int)'m'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_n")]
 		[NativeName(NativeNameType.Value, "'n'")]
-		Sdlkn = unchecked((int)'n'),
+		N = unchecked((int)'n'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_o")]
 		[NativeName(NativeNameType.Value, "'o'")]
-		Sdlko = unchecked((int)'o'),
+		O = unchecked((int)'o'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_p")]
 		[NativeName(NativeNameType.Value, "'p'")]
-		Sdlkp = unchecked((int)'p'),
+		P = unchecked((int)'p'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_q")]
 		[NativeName(NativeNameType.Value, "'q'")]
-		Sdlkq = unchecked((int)'q'),
+		Q = unchecked((int)'q'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_r")]
 		[NativeName(NativeNameType.Value, "'r'")]
-		Sdlkr = unchecked((int)'r'),
+		R = unchecked((int)'r'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_s")]
 		[NativeName(NativeNameType.Value, "'s'")]
-		Sdlks = unchecked((int)'s'),
+		S = unchecked((int)'s'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_t")]
 		[NativeName(NativeNameType.Value, "'t'")]
-		Sdlkt = unchecked((int)'t'),
+		T = unchecked((int)'t'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_u")]
 		[NativeName(NativeNameType.Value, "'u'")]
-		Sdlku = unchecked((int)'u'),
+		U = unchecked((int)'u'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_v")]
 		[NativeName(NativeNameType.Value, "'v'")]
-		Sdlkv = unchecked((int)'v'),
+		V = unchecked((int)'v'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_w")]
 		[NativeName(NativeNameType.Value, "'w'")]
-		Sdlkw = unchecked((int)'w'),
+		W = unchecked((int)'w'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_x")]
 		[NativeName(NativeNameType.Value, "'x'")]
-		Sdlkx = unchecked((int)'x'),
+		X = unchecked((int)'x'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_y")]
 		[NativeName(NativeNameType.Value, "'y'")]
-		Sdlky = unchecked((int)'y'),
+		Y = unchecked((int)'y'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_z")]
 		[NativeName(NativeNameType.Value, "'z'")]
-		Sdlkz = unchecked((int)'z'),
+		Z = unchecked((int)'z'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CAPSLOCK")]
 		[NativeName(NativeNameType.Value, "1073741881")]
-		SdlkCapslock = unchecked(1073741881),
+		Capslock = unchecked(1073741881),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F1")]
 		[NativeName(NativeNameType.Value, "1073741882")]
-		Sdlkf1 = unchecked(1073741882),
+		F1 = unchecked(1073741882),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F2")]
 		[NativeName(NativeNameType.Value, "1073741883")]
-		Sdlkf2 = unchecked(1073741883),
+		F2 = unchecked(1073741883),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F3")]
 		[NativeName(NativeNameType.Value, "1073741884")]
-		Sdlkf3 = unchecked(1073741884),
+		F3 = unchecked(1073741884),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F4")]
 		[NativeName(NativeNameType.Value, "1073741885")]
-		Sdlkf4 = unchecked(1073741885),
+		F4 = unchecked(1073741885),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F5")]
 		[NativeName(NativeNameType.Value, "1073741886")]
-		Sdlkf5 = unchecked(1073741886),
+		F5 = unchecked(1073741886),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F6")]
 		[NativeName(NativeNameType.Value, "1073741887")]
-		Sdlkf6 = unchecked(1073741887),
+		F6 = unchecked(1073741887),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F7")]
 		[NativeName(NativeNameType.Value, "1073741888")]
-		Sdlkf7 = unchecked(1073741888),
+		F7 = unchecked(1073741888),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F8")]
 		[NativeName(NativeNameType.Value, "1073741889")]
-		Sdlkf8 = unchecked(1073741889),
+		F8 = unchecked(1073741889),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F9")]
 		[NativeName(NativeNameType.Value, "1073741890")]
-		Sdlkf9 = unchecked(1073741890),
+		F9 = unchecked(1073741890),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F10")]
 		[NativeName(NativeNameType.Value, "1073741891")]
-		Sdlkf10 = unchecked(1073741891),
+		F10 = unchecked(1073741891),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F11")]
 		[NativeName(NativeNameType.Value, "1073741892")]
-		Sdlkf11 = unchecked(1073741892),
+		F11 = unchecked(1073741892),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F12")]
 		[NativeName(NativeNameType.Value, "1073741893")]
-		Sdlkf12 = unchecked(1073741893),
+		F12 = unchecked(1073741893),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PRINTSCREEN")]
 		[NativeName(NativeNameType.Value, "1073741894")]
-		SdlkPrintscreen = unchecked(1073741894),
+		Printscreen = unchecked(1073741894),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SCROLLLOCK")]
 		[NativeName(NativeNameType.Value, "1073741895")]
-		SdlkScrolllock = unchecked(1073741895),
+		Scrolllock = unchecked(1073741895),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAUSE")]
 		[NativeName(NativeNameType.Value, "1073741896")]
-		SdlkPause = unchecked(1073741896),
+		Pause = unchecked(1073741896),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_INSERT")]
 		[NativeName(NativeNameType.Value, "1073741897")]
-		SdlkInsert = unchecked(1073741897),
+		Insert = unchecked(1073741897),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_HOME")]
 		[NativeName(NativeNameType.Value, "1073741898")]
-		SdlkHome = unchecked(1073741898),
+		Home = unchecked(1073741898),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEUP")]
 		[NativeName(NativeNameType.Value, "1073741899")]
-		SdlkPageup = unchecked(1073741899),
+		Pageup = unchecked(1073741899),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DELETE")]
 		[NativeName(NativeNameType.Value, "'\\x7F'")]
-		SdlkDelete = unchecked((int)'\x7F'),
+		Delete = unchecked((int)'\x7F'),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_END")]
 		[NativeName(NativeNameType.Value, "1073741901")]
-		SdlkEnd = unchecked(1073741901),
+		End = unchecked(1073741901),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PAGEDOWN")]
 		[NativeName(NativeNameType.Value, "1073741902")]
-		SdlkPagedown = unchecked(1073741902),
+		Pagedown = unchecked(1073741902),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RIGHT")]
 		[NativeName(NativeNameType.Value, "1073741903")]
-		SdlkRight = unchecked(1073741903),
+		Right = unchecked(1073741903),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LEFT")]
 		[NativeName(NativeNameType.Value, "1073741904")]
-		SdlkLeft = unchecked(1073741904),
+		Left = unchecked(1073741904),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DOWN")]
 		[NativeName(NativeNameType.Value, "1073741905")]
-		SdlkDown = unchecked(1073741905),
+		Down = unchecked(1073741905),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UP")]
 		[NativeName(NativeNameType.Value, "1073741906")]
-		SdlkUp = unchecked(1073741906),
+		Up = unchecked(1073741906),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_NUMLOCKCLEAR")]
 		[NativeName(NativeNameType.Value, "1073741907")]
-		SdlkNumlockclear = unchecked(1073741907),
+		Numlockclear = unchecked(1073741907),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DIVIDE")]
 		[NativeName(NativeNameType.Value, "1073741908")]
-		SdlkKpDivide = unchecked(1073741908),
+		KpDivide = unchecked(1073741908),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MULTIPLY")]
 		[NativeName(NativeNameType.Value, "1073741909")]
-		SdlkKpMultiply = unchecked(1073741909),
+		KpMultiply = unchecked(1073741909),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MINUS")]
 		[NativeName(NativeNameType.Value, "1073741910")]
-		SdlkKpMinus = unchecked(1073741910),
+		KpMinus = unchecked(1073741910),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUS")]
 		[NativeName(NativeNameType.Value, "1073741911")]
-		SdlkKpPlus = unchecked(1073741911),
+		KpPlus = unchecked(1073741911),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_ENTER")]
 		[NativeName(NativeNameType.Value, "1073741912")]
-		SdlkKpEnter = unchecked(1073741912),
+		KpEnter = unchecked(1073741912),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_1")]
 		[NativeName(NativeNameType.Value, "1073741913")]
-		SdlkKp1 = unchecked(1073741913),
+		Kp1 = unchecked(1073741913),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_2")]
 		[NativeName(NativeNameType.Value, "1073741914")]
-		SdlkKp2 = unchecked(1073741914),
+		Kp2 = unchecked(1073741914),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_3")]
 		[NativeName(NativeNameType.Value, "1073741915")]
-		SdlkKp3 = unchecked(1073741915),
+		Kp3 = unchecked(1073741915),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_4")]
 		[NativeName(NativeNameType.Value, "1073741916")]
-		SdlkKp4 = unchecked(1073741916),
+		Kp4 = unchecked(1073741916),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_5")]
 		[NativeName(NativeNameType.Value, "1073741917")]
-		SdlkKp5 = unchecked(1073741917),
+		Kp5 = unchecked(1073741917),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_6")]
 		[NativeName(NativeNameType.Value, "1073741918")]
-		SdlkKp6 = unchecked(1073741918),
+		Kp6 = unchecked(1073741918),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_7")]
 		[NativeName(NativeNameType.Value, "1073741919")]
-		SdlkKp7 = unchecked(1073741919),
+		Kp7 = unchecked(1073741919),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_8")]
 		[NativeName(NativeNameType.Value, "1073741920")]
-		SdlkKp8 = unchecked(1073741920),
+		Kp8 = unchecked(1073741920),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_9")]
 		[NativeName(NativeNameType.Value, "1073741921")]
-		SdlkKp9 = unchecked(1073741921),
+		Kp9 = unchecked(1073741921),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_0")]
 		[NativeName(NativeNameType.Value, "1073741922")]
-		SdlkKp0 = unchecked(1073741922),
+		Kp0 = unchecked(1073741922),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERIOD")]
 		[NativeName(NativeNameType.Value, "1073741923")]
-		SdlkKpPeriod = unchecked(1073741923),
+		KpPeriod = unchecked(1073741923),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APPLICATION")]
 		[NativeName(NativeNameType.Value, "1073741925")]
-		SdlkApplication = unchecked(1073741925),
+		Application = unchecked(1073741925),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_POWER")]
 		[NativeName(NativeNameType.Value, "1073741926")]
-		SdlkPower = unchecked(1073741926),
+		Power = unchecked(1073741926),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALS")]
 		[NativeName(NativeNameType.Value, "1073741927")]
-		SdlkKpEquals = unchecked(1073741927),
+		KpEquals = unchecked(1073741927),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F13")]
 		[NativeName(NativeNameType.Value, "1073741928")]
-		Sdlkf13 = unchecked(1073741928),
+		F13 = unchecked(1073741928),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F14")]
 		[NativeName(NativeNameType.Value, "1073741929")]
-		Sdlkf14 = unchecked(1073741929),
+		F14 = unchecked(1073741929),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F15")]
 		[NativeName(NativeNameType.Value, "1073741930")]
-		Sdlkf15 = unchecked(1073741930),
+		F15 = unchecked(1073741930),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F16")]
 		[NativeName(NativeNameType.Value, "1073741931")]
-		Sdlkf16 = unchecked(1073741931),
+		F16 = unchecked(1073741931),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F17")]
 		[NativeName(NativeNameType.Value, "1073741932")]
-		Sdlkf17 = unchecked(1073741932),
+		F17 = unchecked(1073741932),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F18")]
 		[NativeName(NativeNameType.Value, "1073741933")]
-		Sdlkf18 = unchecked(1073741933),
+		F18 = unchecked(1073741933),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F19")]
 		[NativeName(NativeNameType.Value, "1073741934")]
-		Sdlkf19 = unchecked(1073741934),
+		F19 = unchecked(1073741934),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F20")]
 		[NativeName(NativeNameType.Value, "1073741935")]
-		Sdlkf20 = unchecked(1073741935),
+		F20 = unchecked(1073741935),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F21")]
 		[NativeName(NativeNameType.Value, "1073741936")]
-		Sdlkf21 = unchecked(1073741936),
+		F21 = unchecked(1073741936),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F22")]
 		[NativeName(NativeNameType.Value, "1073741937")]
-		Sdlkf22 = unchecked(1073741937),
+		F22 = unchecked(1073741937),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F23")]
 		[NativeName(NativeNameType.Value, "1073741938")]
-		Sdlkf23 = unchecked(1073741938),
+		F23 = unchecked(1073741938),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_F24")]
 		[NativeName(NativeNameType.Value, "1073741939")]
-		Sdlkf24 = unchecked(1073741939),
+		F24 = unchecked(1073741939),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EXECUTE")]
 		[NativeName(NativeNameType.Value, "1073741940")]
-		SdlkExecute = unchecked(1073741940),
+		Execute = unchecked(1073741940),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_HELP")]
 		[NativeName(NativeNameType.Value, "1073741941")]
-		SdlkHelp = unchecked(1073741941),
+		Help = unchecked(1073741941),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MENU")]
 		[NativeName(NativeNameType.Value, "1073741942")]
-		SdlkMenu = unchecked(1073741942),
+		Menu = unchecked(1073741942),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SELECT")]
 		[NativeName(NativeNameType.Value, "1073741943")]
-		SdlkSelect = unchecked(1073741943),
+		Select = unchecked(1073741943),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_STOP")]
 		[NativeName(NativeNameType.Value, "1073741944")]
-		SdlkStop = unchecked(1073741944),
+		Stop = unchecked(1073741944),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AGAIN")]
 		[NativeName(NativeNameType.Value, "1073741945")]
-		SdlkAgain = unchecked(1073741945),
+		Again = unchecked(1073741945),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_UNDO")]
 		[NativeName(NativeNameType.Value, "1073741946")]
-		SdlkUndo = unchecked(1073741946),
+		Undo = unchecked(1073741946),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CUT")]
 		[NativeName(NativeNameType.Value, "1073741947")]
-		SdlkCut = unchecked(1073741947),
+		Cut = unchecked(1073741947),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COPY")]
 		[NativeName(NativeNameType.Value, "1073741948")]
-		SdlkCopy = unchecked(1073741948),
+		Copy = unchecked(1073741948),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PASTE")]
 		[NativeName(NativeNameType.Value, "1073741949")]
-		SdlkPaste = unchecked(1073741949),
+		Paste = unchecked(1073741949),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_FIND")]
 		[NativeName(NativeNameType.Value, "1073741950")]
-		SdlkFind = unchecked(1073741950),
+		Find = unchecked(1073741950),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MUTE")]
 		[NativeName(NativeNameType.Value, "1073741951")]
-		SdlkMute = unchecked(1073741951),
+		Mute = unchecked(1073741951),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEUP")]
 		[NativeName(NativeNameType.Value, "1073741952")]
-		SdlkVolumeup = unchecked(1073741952),
+		Volumeup = unchecked(1073741952),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_VOLUMEDOWN")]
 		[NativeName(NativeNameType.Value, "1073741953")]
-		SdlkVolumedown = unchecked(1073741953),
+		Volumedown = unchecked(1073741953),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COMMA")]
 		[NativeName(NativeNameType.Value, "1073741957")]
-		SdlkKpComma = unchecked(1073741957),
+		KpComma = unchecked(1073741957),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EQUALSAS400")]
 		[NativeName(NativeNameType.Value, "1073741958")]
-		SdlkKpEqualsas400 = unchecked(1073741958),
+		KpEqualsas400 = unchecked(1073741958),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ALTERASE")]
 		[NativeName(NativeNameType.Value, "1073741977")]
-		SdlkAlterase = unchecked(1073741977),
+		Alterase = unchecked(1073741977),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SYSREQ")]
 		[NativeName(NativeNameType.Value, "1073741978")]
-		SdlkSysreq = unchecked(1073741978),
+		Sysreq = unchecked(1073741978),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CANCEL")]
 		[NativeName(NativeNameType.Value, "1073741979")]
-		SdlkCancel = unchecked(1073741979),
+		Cancel = unchecked(1073741979),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CLEAR")]
 		[NativeName(NativeNameType.Value, "1073741980")]
-		SdlkClear = unchecked(1073741980),
+		Clear = unchecked(1073741980),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_PRIOR")]
 		[NativeName(NativeNameType.Value, "1073741981")]
-		SdlkPrior = unchecked(1073741981),
+		Prior = unchecked(1073741981),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RETURN2")]
 		[NativeName(NativeNameType.Value, "1073741982")]
-		SdlkReturn2 = unchecked(1073741982),
+		Return2 = unchecked(1073741982),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SEPARATOR")]
 		[NativeName(NativeNameType.Value, "1073741983")]
-		SdlkSeparator = unchecked(1073741983),
+		Separator = unchecked(1073741983),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_OUT")]
 		[NativeName(NativeNameType.Value, "1073741984")]
-		SdlkOut = unchecked(1073741984),
+		Out = unchecked(1073741984),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_OPER")]
 		[NativeName(NativeNameType.Value, "1073741985")]
-		SdlkOper = unchecked(1073741985),
+		Oper = unchecked(1073741985),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CLEARAGAIN")]
 		[NativeName(NativeNameType.Value, "1073741986")]
-		SdlkClearagain = unchecked(1073741986),
+		Clearagain = unchecked(1073741986),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CRSEL")]
 		[NativeName(NativeNameType.Value, "1073741987")]
-		SdlkCrsel = unchecked(1073741987),
+		Crsel = unchecked(1073741987),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EXSEL")]
 		[NativeName(NativeNameType.Value, "1073741988")]
-		SdlkExsel = unchecked(1073741988),
+		Exsel = unchecked(1073741988),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_00")]
 		[NativeName(NativeNameType.Value, "1073742000")]
-		SdlkKp00 = unchecked(1073742000),
+		Kp00 = unchecked(1073742000),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_000")]
 		[NativeName(NativeNameType.Value, "1073742001")]
-		SdlkKp000 = unchecked(1073742001),
+		Kp000 = unchecked(1073742001),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_THOUSANDSSEPARATOR")]
 		[NativeName(NativeNameType.Value, "1073742002")]
-		SdlkThousandsseparator = unchecked(1073742002),
+		Thousandsseparator = unchecked(1073742002),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DECIMALSEPARATOR")]
 		[NativeName(NativeNameType.Value, "1073742003")]
-		SdlkDecimalseparator = unchecked(1073742003),
+		Decimalseparator = unchecked(1073742003),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYUNIT")]
 		[NativeName(NativeNameType.Value, "1073742004")]
-		SdlkCurrencyunit = unchecked(1073742004),
+		Currencyunit = unchecked(1073742004),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CURRENCYSUBUNIT")]
 		[NativeName(NativeNameType.Value, "1073742005")]
-		SdlkCurrencysubunit = unchecked(1073742005),
+		Currencysubunit = unchecked(1073742005),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTPAREN")]
 		[NativeName(NativeNameType.Value, "1073742006")]
-		SdlkKpLeftparen = unchecked(1073742006),
+		KpLeftparen = unchecked(1073742006),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTPAREN")]
 		[NativeName(NativeNameType.Value, "1073742007")]
-		SdlkKpRightparen = unchecked(1073742007),
+		KpRightparen = unchecked(1073742007),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LEFTBRACE")]
 		[NativeName(NativeNameType.Value, "1073742008")]
-		SdlkKpLeftbrace = unchecked(1073742008),
+		KpLeftbrace = unchecked(1073742008),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_RIGHTBRACE")]
 		[NativeName(NativeNameType.Value, "1073742009")]
-		SdlkKpRightbrace = unchecked(1073742009),
+		KpRightbrace = unchecked(1073742009),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_TAB")]
 		[NativeName(NativeNameType.Value, "1073742010")]
-		SdlkKpTab = unchecked(1073742010),
+		KpTab = unchecked(1073742010),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BACKSPACE")]
 		[NativeName(NativeNameType.Value, "1073742011")]
-		SdlkKpBackspace = unchecked(1073742011),
+		KpBackspace = unchecked(1073742011),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_A")]
 		[NativeName(NativeNameType.Value, "1073742012")]
-		SdlkKpa = unchecked(1073742012),
+		KpA = unchecked(1073742012),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_B")]
 		[NativeName(NativeNameType.Value, "1073742013")]
-		SdlkKpb = unchecked(1073742013),
+		KpB = unchecked(1073742013),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_C")]
 		[NativeName(NativeNameType.Value, "1073742014")]
-		SdlkKpc = unchecked(1073742014),
+		KpC = unchecked(1073742014),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_D")]
 		[NativeName(NativeNameType.Value, "1073742015")]
-		SdlkKpd = unchecked(1073742015),
+		KpD = unchecked(1073742015),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_E")]
 		[NativeName(NativeNameType.Value, "1073742016")]
-		SdlkKpe = unchecked(1073742016),
+		KpE = unchecked(1073742016),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_F")]
 		[NativeName(NativeNameType.Value, "1073742017")]
-		SdlkKpf = unchecked(1073742017),
+		KpF = unchecked(1073742017),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_XOR")]
 		[NativeName(NativeNameType.Value, "1073742018")]
-		SdlkKpXor = unchecked(1073742018),
+		KpXor = unchecked(1073742018),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_POWER")]
 		[NativeName(NativeNameType.Value, "1073742019")]
-		SdlkKpPower = unchecked(1073742019),
+		KpPower = unchecked(1073742019),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PERCENT")]
 		[NativeName(NativeNameType.Value, "1073742020")]
-		SdlkKpPercent = unchecked(1073742020),
+		KpPercent = unchecked(1073742020),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_LESS")]
 		[NativeName(NativeNameType.Value, "1073742021")]
-		SdlkKpLess = unchecked(1073742021),
+		KpLess = unchecked(1073742021),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_GREATER")]
 		[NativeName(NativeNameType.Value, "1073742022")]
-		SdlkKpGreater = unchecked(1073742022),
+		KpGreater = unchecked(1073742022),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AMPERSAND")]
 		[NativeName(NativeNameType.Value, "1073742023")]
-		SdlkKpAmpersand = unchecked(1073742023),
+		KpAmpersand = unchecked(1073742023),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLAMPERSAND")]
 		[NativeName(NativeNameType.Value, "1073742024")]
-		SdlkKpDblampersand = unchecked(1073742024),
+		KpDblampersand = unchecked(1073742024),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_VERTICALBAR")]
 		[NativeName(NativeNameType.Value, "1073742025")]
-		SdlkKpVerticalbar = unchecked(1073742025),
+		KpVerticalbar = unchecked(1073742025),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DBLVERTICALBAR")]
 		[NativeName(NativeNameType.Value, "1073742026")]
-		SdlkKpDblverticalbar = unchecked(1073742026),
+		KpDblverticalbar = unchecked(1073742026),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_COLON")]
 		[NativeName(NativeNameType.Value, "1073742027")]
-		SdlkKpColon = unchecked(1073742027),
+		KpColon = unchecked(1073742027),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HASH")]
 		[NativeName(NativeNameType.Value, "1073742028")]
-		SdlkKpHash = unchecked(1073742028),
+		KpHash = unchecked(1073742028),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_SPACE")]
 		[NativeName(NativeNameType.Value, "1073742029")]
-		SdlkKpSpace = unchecked(1073742029),
+		KpSpace = unchecked(1073742029),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_AT")]
 		[NativeName(NativeNameType.Value, "1073742030")]
-		SdlkKpAt = unchecked(1073742030),
+		KpAt = unchecked(1073742030),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_EXCLAM")]
 		[NativeName(NativeNameType.Value, "1073742031")]
-		SdlkKpExclam = unchecked(1073742031),
+		KpExclam = unchecked(1073742031),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSTORE")]
 		[NativeName(NativeNameType.Value, "1073742032")]
-		SdlkKpMemstore = unchecked(1073742032),
+		KpMemstore = unchecked(1073742032),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMRECALL")]
 		[NativeName(NativeNameType.Value, "1073742033")]
-		SdlkKpMemrecall = unchecked(1073742033),
+		KpMemrecall = unchecked(1073742033),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMCLEAR")]
 		[NativeName(NativeNameType.Value, "1073742034")]
-		SdlkKpMemclear = unchecked(1073742034),
+		KpMemclear = unchecked(1073742034),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMADD")]
 		[NativeName(NativeNameType.Value, "1073742035")]
-		SdlkKpMemadd = unchecked(1073742035),
+		KpMemadd = unchecked(1073742035),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMSUBTRACT")]
 		[NativeName(NativeNameType.Value, "1073742036")]
-		SdlkKpMemsubtract = unchecked(1073742036),
+		KpMemsubtract = unchecked(1073742036),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMMULTIPLY")]
 		[NativeName(NativeNameType.Value, "1073742037")]
-		SdlkKpMemmultiply = unchecked(1073742037),
+		KpMemmultiply = unchecked(1073742037),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_MEMDIVIDE")]
 		[NativeName(NativeNameType.Value, "1073742038")]
-		SdlkKpMemdivide = unchecked(1073742038),
+		KpMemdivide = unchecked(1073742038),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_PLUSMINUS")]
 		[NativeName(NativeNameType.Value, "1073742039")]
-		SdlkKpPlusminus = unchecked(1073742039),
+		KpPlusminus = unchecked(1073742039),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEAR")]
 		[NativeName(NativeNameType.Value, "1073742040")]
-		SdlkKpClear = unchecked(1073742040),
+		KpClear = unchecked(1073742040),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_CLEARENTRY")]
 		[NativeName(NativeNameType.Value, "1073742041")]
-		SdlkKpClearentry = unchecked(1073742041),
+		KpClearentry = unchecked(1073742041),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_BINARY")]
 		[NativeName(NativeNameType.Value, "1073742042")]
-		SdlkKpBinary = unchecked(1073742042),
+		KpBinary = unchecked(1073742042),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_OCTAL")]
 		[NativeName(NativeNameType.Value, "1073742043")]
-		SdlkKpOctal = unchecked(1073742043),
+		KpOctal = unchecked(1073742043),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_DECIMAL")]
 		[NativeName(NativeNameType.Value, "1073742044")]
-		SdlkKpDecimal = unchecked(1073742044),
+		KpDecimal = unchecked(1073742044),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KP_HEXADECIMAL")]
 		[NativeName(NativeNameType.Value, "1073742045")]
-		SdlkKpHexadecimal = unchecked(1073742045),
+		KpHexadecimal = unchecked(1073742045),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LCTRL")]
 		[NativeName(NativeNameType.Value, "1073742048")]
-		SdlkLctrl = unchecked(1073742048),
+		Lctrl = unchecked(1073742048),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LSHIFT")]
 		[NativeName(NativeNameType.Value, "1073742049")]
-		SdlkLshift = unchecked(1073742049),
+		Lshift = unchecked(1073742049),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LALT")]
 		[NativeName(NativeNameType.Value, "1073742050")]
-		SdlkLalt = unchecked(1073742050),
+		Lalt = unchecked(1073742050),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_LGUI")]
 		[NativeName(NativeNameType.Value, "1073742051")]
-		SdlkLgui = unchecked(1073742051),
+		Lgui = unchecked(1073742051),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RCTRL")]
 		[NativeName(NativeNameType.Value, "1073742052")]
-		SdlkRctrl = unchecked(1073742052),
+		Rctrl = unchecked(1073742052),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RSHIFT")]
 		[NativeName(NativeNameType.Value, "1073742053")]
-		SdlkRshift = unchecked(1073742053),
+		Rshift = unchecked(1073742053),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RALT")]
 		[NativeName(NativeNameType.Value, "1073742054")]
-		SdlkRalt = unchecked(1073742054),
+		Ralt = unchecked(1073742054),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_RGUI")]
 		[NativeName(NativeNameType.Value, "1073742055")]
-		SdlkRgui = unchecked(1073742055),
+		Rgui = unchecked(1073742055),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MODE")]
 		[NativeName(NativeNameType.Value, "1073742081")]
-		SdlkMode = unchecked(1073742081),
+		Mode = unchecked(1073742081),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIONEXT")]
 		[NativeName(NativeNameType.Value, "1073742082")]
-		SdlkAudionext = unchecked(1073742082),
+		Audionext = unchecked(1073742082),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPREV")]
 		[NativeName(NativeNameType.Value, "1073742083")]
-		SdlkAudioprev = unchecked(1073742083),
+		Audioprev = unchecked(1073742083),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOSTOP")]
 		[NativeName(NativeNameType.Value, "1073742084")]
-		SdlkAudiostop = unchecked(1073742084),
+		Audiostop = unchecked(1073742084),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOPLAY")]
 		[NativeName(NativeNameType.Value, "1073742085")]
-		SdlkAudioplay = unchecked(1073742085),
+		Audioplay = unchecked(1073742085),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOMUTE")]
 		[NativeName(NativeNameType.Value, "1073742086")]
-		SdlkAudiomute = unchecked(1073742086),
+		Audiomute = unchecked(1073742086),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MEDIASELECT")]
 		[NativeName(NativeNameType.Value, "1073742087")]
-		SdlkMediaselect = unchecked(1073742087),
+		Mediaselect = unchecked(1073742087),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_WWW")]
 		[NativeName(NativeNameType.Value, "1073742088")]
-		SdlkWww = unchecked(1073742088),
+		Www = unchecked(1073742088),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_MAIL")]
 		[NativeName(NativeNameType.Value, "1073742089")]
-		SdlkMail = unchecked(1073742089),
+		Mail = unchecked(1073742089),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CALCULATOR")]
 		[NativeName(NativeNameType.Value, "1073742090")]
-		SdlkCalculator = unchecked(1073742090),
+		Calculator = unchecked(1073742090),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_COMPUTER")]
 		[NativeName(NativeNameType.Value, "1073742091")]
-		SdlkComputer = unchecked(1073742091),
+		Computer = unchecked(1073742091),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_SEARCH")]
 		[NativeName(NativeNameType.Value, "1073742092")]
-		SdlkAcSearch = unchecked(1073742092),
+		AcSearch = unchecked(1073742092),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_HOME")]
 		[NativeName(NativeNameType.Value, "1073742093")]
-		SdlkAcHome = unchecked(1073742093),
+		AcHome = unchecked(1073742093),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BACK")]
 		[NativeName(NativeNameType.Value, "1073742094")]
-		SdlkAcBack = unchecked(1073742094),
+		AcBack = unchecked(1073742094),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_FORWARD")]
 		[NativeName(NativeNameType.Value, "1073742095")]
-		SdlkAcForward = unchecked(1073742095),
+		AcForward = unchecked(1073742095),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_STOP")]
 		[NativeName(NativeNameType.Value, "1073742096")]
-		SdlkAcStop = unchecked(1073742096),
+		AcStop = unchecked(1073742096),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_REFRESH")]
 		[NativeName(NativeNameType.Value, "1073742097")]
-		SdlkAcRefresh = unchecked(1073742097),
+		AcRefresh = unchecked(1073742097),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AC_BOOKMARKS")]
 		[NativeName(NativeNameType.Value, "1073742098")]
-		SdlkAcBookmarks = unchecked(1073742098),
+		AcBookmarks = unchecked(1073742098),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSDOWN")]
 		[NativeName(NativeNameType.Value, "1073742099")]
-		SdlkBrightnessdown = unchecked(1073742099),
+		Brightnessdown = unchecked(1073742099),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_BRIGHTNESSUP")]
 		[NativeName(NativeNameType.Value, "1073742100")]
-		SdlkBrightnessup = unchecked(1073742100),
+		Brightnessup = unchecked(1073742100),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_DISPLAYSWITCH")]
 		[NativeName(NativeNameType.Value, "1073742101")]
-		SdlkDisplayswitch = unchecked(1073742101),
+		Displayswitch = unchecked(1073742101),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMTOGGLE")]
 		[NativeName(NativeNameType.Value, "1073742102")]
-		SdlkKbdillumtoggle = unchecked(1073742102),
+		Kbdillumtoggle = unchecked(1073742102),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMDOWN")]
 		[NativeName(NativeNameType.Value, "1073742103")]
-		SdlkKbdillumdown = unchecked(1073742103),
+		Kbdillumdown = unchecked(1073742103),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_KBDILLUMUP")]
 		[NativeName(NativeNameType.Value, "1073742104")]
-		SdlkKbdillumup = unchecked(1073742104),
+		Kbdillumup = unchecked(1073742104),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_EJECT")]
 		[NativeName(NativeNameType.Value, "1073742105")]
-		SdlkEject = unchecked(1073742105),
+		Eject = unchecked(1073742105),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SLEEP")]
 		[NativeName(NativeNameType.Value, "1073742106")]
-		SdlkSleep = unchecked(1073742106),
+		Sleep = unchecked(1073742106),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APP1")]
 		[NativeName(NativeNameType.Value, "1073742107")]
-		SdlkApp1 = unchecked(1073742107),
+		App1 = unchecked(1073742107),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_APP2")]
 		[NativeName(NativeNameType.Value, "1073742108")]
-		SdlkApp2 = unchecked(1073742108),
+		App2 = unchecked(1073742108),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOREWIND")]
 		[NativeName(NativeNameType.Value, "1073742109")]
-		SdlkAudiorewind = unchecked(1073742109),
+		Audiorewind = unchecked(1073742109),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_AUDIOFASTFORWARD")]
 		[NativeName(NativeNameType.Value, "1073742110")]
-		SdlkAudiofastforward = unchecked(1073742110),
+		Audiofastforward = unchecked(1073742110),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTLEFT")]
 		[NativeName(NativeNameType.Value, "1073742111")]
-		SdlkSoftleft = unchecked(1073742111),
+		Softleft = unchecked(1073742111),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_SOFTRIGHT")]
 		[NativeName(NativeNameType.Value, "1073742112")]
-		SdlkSoftright = unchecked(1073742112),
+		Softright = unchecked(1073742112),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_CALL")]
 		[NativeName(NativeNameType.Value, "1073742113")]
-		SdlkCall = unchecked(1073742113),
+		Call = unchecked(1073742113),
 
 		/// <summary>/// Skip uppercase letters<br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDLK_ENDCALL")]
 		[NativeName(NativeNameType.Value, "1073742114")]
-		SdlkEndcall = unchecked(1073742114),
+		Endcall = unchecked(1073742114),
 
 	}
 
@@ -2792,58 +2792,58 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "KMOD_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		KmodNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "KMOD_LSHIFT")]
 		[NativeName(NativeNameType.Value, "1")]
-		KmodLshift = unchecked(1),
+		Lshift = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "KMOD_RSHIFT")]
 		[NativeName(NativeNameType.Value, "2")]
-		KmodRshift = unchecked(2),
+		Rshift = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "KMOD_LCTRL")]
 		[NativeName(NativeNameType.Value, "64")]
-		KmodLctrl = unchecked(64),
+		Lctrl = unchecked(64),
 		[NativeName(NativeNameType.EnumItem, "KMOD_RCTRL")]
 		[NativeName(NativeNameType.Value, "128")]
-		KmodRctrl = unchecked(128),
+		Rctrl = unchecked(128),
 		[NativeName(NativeNameType.EnumItem, "KMOD_LALT")]
 		[NativeName(NativeNameType.Value, "256")]
-		KmodLalt = unchecked(256),
+		Lalt = unchecked(256),
 		[NativeName(NativeNameType.EnumItem, "KMOD_RALT")]
 		[NativeName(NativeNameType.Value, "512")]
-		KmodRalt = unchecked(512),
+		Ralt = unchecked(512),
 		[NativeName(NativeNameType.EnumItem, "KMOD_LGUI")]
 		[NativeName(NativeNameType.Value, "1024")]
-		KmodLgui = unchecked(1024),
+		Lgui = unchecked(1024),
 		[NativeName(NativeNameType.EnumItem, "KMOD_RGUI")]
 		[NativeName(NativeNameType.Value, "2048")]
-		KmodRgui = unchecked(2048),
+		Rgui = unchecked(2048),
 		[NativeName(NativeNameType.EnumItem, "KMOD_NUM")]
 		[NativeName(NativeNameType.Value, "4096")]
-		KmodNum = unchecked(4096),
+		Num = unchecked(4096),
 		[NativeName(NativeNameType.EnumItem, "KMOD_CAPS")]
 		[NativeName(NativeNameType.Value, "8192")]
-		KmodCaps = unchecked(8192),
+		Caps = unchecked(8192),
 		[NativeName(NativeNameType.EnumItem, "KMOD_MODE")]
 		[NativeName(NativeNameType.Value, "16384")]
-		KmodMode = unchecked(16384),
+		Mode = unchecked(16384),
 		[NativeName(NativeNameType.EnumItem, "KMOD_SCROLL")]
 		[NativeName(NativeNameType.Value, "32768")]
-		KmodScroll = unchecked(32768),
+		Scroll = unchecked(32768),
 		[NativeName(NativeNameType.EnumItem, "KMOD_CTRL")]
 		[NativeName(NativeNameType.Value, "192")]
-		KmodCtrl = unchecked(192),
+		Ctrl = unchecked(192),
 		[NativeName(NativeNameType.EnumItem, "KMOD_SHIFT")]
 		[NativeName(NativeNameType.Value, "3")]
-		KmodShift = unchecked(3),
+		Shift = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "KMOD_ALT")]
 		[NativeName(NativeNameType.Value, "768")]
-		KmodAlt = unchecked(768),
+		Alt = unchecked(768),
 		[NativeName(NativeNameType.EnumItem, "KMOD_GUI")]
 		[NativeName(NativeNameType.Value, "3072")]
-		KmodGui = unchecked(3072),
+		Gui = unchecked(3072),
 		/// <summary>/// This is for source-level compatibility with SDL 2.0.0. <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "KMOD_RESERVED")]
 		[NativeName(NativeNameType.Value, "KMOD_SCROLL")]
-		KmodReserved = KmodScroll,
+		Reserved = Scroll,
 
 	}
 
@@ -2908,11 +2908,11 @@ namespace Hexa.NET.SDL2
 	{
 		/// <summary>/// The scroll direction is normal <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_NORMAL")]
 		[NativeName(NativeNameType.Value, "0")]
-		MousewheelNormal = unchecked(0),
+		Normal = unchecked(0),
 
 		/// <summary>/// The scroll direction is flipped / natural <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_MOUSEWHEEL_FLIPPED")]
 		[NativeName(NativeNameType.Value, "1")]
-		MousewheelFlipped = unchecked(1),
+		Flipped = unchecked(1),
 
 	}
 
@@ -3002,19 +3002,19 @@ namespace Hexa.NET.SDL2
 
 		/// <summary>/// Accelerometer for left Joy-Con controller and Wii nunchuk <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_L")]
 		[NativeName(NativeNameType.Value, "3")]
-		Accell = unchecked(3),
+		AccelL = unchecked(3),
 
 		/// <summary>/// Gyroscope for left Joy-Con controller <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_L")]
 		[NativeName(NativeNameType.Value, "4")]
-		Gyrol = unchecked(4),
+		GyroL = unchecked(4),
 
 		/// <summary>/// Accelerometer for right Joy-Con controller <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_ACCEL_R")]
 		[NativeName(NativeNameType.Value, "5")]
-		Accelr = unchecked(5),
+		AccelR = unchecked(5),
 
 		/// <summary>/// Gyroscope for right Joy-Con controller <br/>/// </summary>		[NativeName(NativeNameType.EnumItem, "SDL_SENSOR_GYRO_R")]
 		[NativeName(NativeNameType.Value, "6")]
-		Gyror = unchecked(6),
+		GyroR = unchecked(6),
 
 	}
 
@@ -3073,16 +3073,16 @@ namespace Hexa.NET.SDL2
 	{
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_NONE")]
 		[NativeName(NativeNameType.Value, "0")]
-		BindtypeNone = unchecked(0),
+		None = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_BUTTON")]
 		[NativeName(NativeNameType.Value, "1")]
-		BindtypeButton = unchecked(1),
+		Button = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_AXIS")]
 		[NativeName(NativeNameType.Value, "2")]
-		BindtypeAxis = unchecked(2),
+		Axis = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BINDTYPE_HAT")]
 		[NativeName(NativeNameType.Value, "3")]
-		BindtypeHat = unchecked(3),
+		Hat = unchecked(3),
 	}
 
 	/// <summary>/// The list of axes available from a controller<br/>/// Thumbstick axis values range from SDL_JOYSTICK_AXIS_MIN to SDL_JOYSTICK_AXIS_MAX,<br/>/// and are centered within ~8000 of zero, though advanced UI will allow users to set<br/>/// or autodetect the dead zone, which varies between controllers.<br/>/// Trigger axis values range from 0 (released) to SDL_JOYSTICK_AXIS_MAX<br/>/// (fully pressed) when reported by SDL_GameControllerGetAxis(). Note that this is not the<br/>/// same range that will be reported by the lower-level SDL_GetJoystickAxis().<br/>/// </summary>	[NativeName(NativeNameType.Enum, "SDL_GameControllerAxis")]
@@ -3122,16 +3122,16 @@ namespace Hexa.NET.SDL2
 		Invalid = unchecked(-1),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_A")]
 		[NativeName(NativeNameType.Value, "0")]
-		Buttona = unchecked(0),
+		A = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_B")]
 		[NativeName(NativeNameType.Value, "1")]
-		Buttonb = unchecked(1),
+		B = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_X")]
 		[NativeName(NativeNameType.Value, "2")]
-		Buttonx = unchecked(2),
+		X = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_Y")]
 		[NativeName(NativeNameType.Value, "3")]
-		Buttony = unchecked(3),
+		Y = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "SDL_CONTROLLER_BUTTON_BACK")]
 		[NativeName(NativeNameType.Value, "4")]
 		Back = unchecked(4),

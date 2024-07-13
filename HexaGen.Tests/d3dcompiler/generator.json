@@ -4,6 +4,7 @@
   "LibName": "d3dcompiler_47",
   "Usings": [ "Hexa.NET.D3DCommon", "Hexa.NET.D3D11" ],
   "GenerateSizeOfStructs": false,
+  "GenerateMetadata": true,
   "BoolType": 1,
   "KnownConstantNames": {
   },

@@ -59,10 +59,10 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
             GenContext context = new(compilation, filePath, writer);
 
-            using (writer.PushBlock($"public static unsafe class Extensions"))
+            using (writer.PushBlock($"public static unsafe partial class Extensions"))
             {
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {

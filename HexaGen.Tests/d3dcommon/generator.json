@@ -3,6 +3,7 @@
   "ApiName": "D3DCommon",
   "LibName": "",
   "GenerateSizeOfStructs": false,
+  "GenerateMetadata": true,
   "BoolType": 1,
   "KnownConstantNames": {
   },

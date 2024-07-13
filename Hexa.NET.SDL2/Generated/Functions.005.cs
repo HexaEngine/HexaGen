@@ -18,1328 +18,481 @@ namespace Hexa.NET.SDL2
 	{
 
 		/// <summary>
-		/// Query whether relative mouse mode is enabled.<br/>
+		/// Get RGBA values from a pixel in the specified format.<br/>
+		/// This function uses the entire 8-bit [0..255] range when converting color<br/>
+		/// components from pixel formats with less than 8-bits per RGB component<br/>
+		/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>
+		/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>
+		/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>
+		/// (100% opaque).<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRelativeMouseMode")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRelativeMouseMode")]
+		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetRGBA")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetRelativeMouseModeNative();
+		internal static partial void SDLGetRGBANative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a);
 
-		/// <summary>/// Query whether relative mouse mode is enabled.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRelativeMouseMode")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetRelativeMouseMode()
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			SDLBool ret = SDLGetRelativeMouseModeNative();
-			return ret;
+			SDLGetRGBANative(pixel, format, r, g, b, a);
 		}
 
-		/// <summary>
-		/// Create a cursor using the specified bitmap data and mask (in MSB format).<br/>
-		/// `mask` has to be in MSB (Most Significant Bit) format.<br/>
-		/// The cursor width (`w`) must be a multiple of 8 bits.<br/>
-		/// The cursor is created in black and white according to the following:<br/>
-		/// - data=0, mask=1: white<br/>
-		/// - data=1, mask=1: black<br/>
-		/// - data=0, mask=0: transparent<br/>
-		/// - data=1, mask=0: inverted color if possible, black if not.<br/>
-		/// Cursors created with this function must be freed with SDL_FreeCursor().<br/>
-		/// If you want to have a color cursor, or create your cursor from an<br/>
-		/// SDL_Surface, you should use SDL_CreateColorCursor(). Alternately, you can<br/>
-		/// hide the cursor and draw your own as part of your game's rendering, but it<br/>
-		/// will be bound to the framerate.<br/>
-		/// Also, since SDL 2.0.0, SDL_CreateSystemCursor() is available, which<br/>
-		/// provides twelve readily available system cursors to pick from.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCursor* SDLCreateCursorNative([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* data, [NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* mask, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "hot_x")] [NativeName(NativeNameType.Type, "int")] int hotX, [NativeName(NativeNameType.Param, "hot_y")] [NativeName(NativeNameType.Type, "int")] int hotY);
-
-		/// <summary>/// Create a cursor using the specified bitmap data and mask (in MSB format).<br/>/// `mask` has to be in MSB (Most Significant Bit) format.<br/>/// The cursor width (`w`) must be a multiple of 8 bits.<br/>/// The cursor is created in black and white according to the following:<br/>/// - data=0, mask=1: white<br/>/// - data=1, mask=1: black<br/>/// - data=0, mask=0: transparent<br/>/// - data=1, mask=0: inverted color if possible, black if not.<br/>/// Cursors created with this function must be freed with SDL_FreeCursor().<br/>/// If you want to have a color cursor, or create your cursor from an<br/>/// SDL_Surface, you should use SDL_CreateColorCursor(). Alternately, you can<br/>/// hide the cursor and draw your own as part of your game's rendering, but it<br/>/// will be bound to the framerate.<br/>/// Also, since SDL 2.0.0, SDL_CreateSystemCursor() is available, which<br/>/// provides twelve readily available system cursors to pick from.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLCreateCursor([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* data, [NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* mask, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "hot_x")] [NativeName(NativeNameType.Type, "int")] int hotX, [NativeName(NativeNameType.Param, "hot_y")] [NativeName(NativeNameType.Type, "int")] int hotY)
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			SDLCursor* ret = SDLCreateCursorNative(data, mask, w, h, hotX, hotY);
-			return ret;
-		}
-
-		/// <summary>/// Create a cursor using the specified bitmap data and mask (in MSB format).<br/>/// `mask` has to be in MSB (Most Significant Bit) format.<br/>/// The cursor width (`w`) must be a multiple of 8 bits.<br/>/// The cursor is created in black and white according to the following:<br/>/// - data=0, mask=1: white<br/>/// - data=1, mask=1: black<br/>/// - data=0, mask=0: transparent<br/>/// - data=1, mask=0: inverted color if possible, black if not.<br/>/// Cursors created with this function must be freed with SDL_FreeCursor().<br/>/// If you want to have a color cursor, or create your cursor from an<br/>/// SDL_Surface, you should use SDL_CreateColorCursor(). Alternately, you can<br/>/// hide the cursor and draw your own as part of your game's rendering, but it<br/>/// will be bound to the framerate.<br/>/// Also, since SDL 2.0.0, SDL_CreateSystemCursor() is available, which<br/>/// provides twelve readily available system cursors to pick from.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLCreateCursor([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* data, [NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte mask, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "hot_x")] [NativeName(NativeNameType.Type, "int")] int hotX, [NativeName(NativeNameType.Param, "hot_y")] [NativeName(NativeNameType.Type, "int")] int hotY)
-		{
-			fixed (byte* pmask = &mask)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				SDLCursor* ret = SDLCreateCursorNative(data, (byte*)pmask, w, h, hotX, hotY);
-				return ret;
+				SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, b, a);
 			}
 		}
 
-		/// <summary>
-		/// Create a color cursor.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateColorCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateColorCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCursor* SDLCreateColorCursorNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "hot_x")] [NativeName(NativeNameType.Type, "int")] int hotX, [NativeName(NativeNameType.Param, "hot_y")] [NativeName(NativeNameType.Type, "int")] int hotY);
-
-		/// <summary>/// Create a color cursor.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateColorCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLCreateColorCursor([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "hot_x")] [NativeName(NativeNameType.Type, "int")] int hotX, [NativeName(NativeNameType.Param, "hot_y")] [NativeName(NativeNameType.Type, "int")] int hotY)
-		{
-			SDLCursor* ret = SDLCreateColorCursorNative(surface, hotX, hotY);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a system cursor.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CreateSystemCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateSystemCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCursor* SDLCreateSystemCursorNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SDL_SystemCursor")] SDLSystemCursor id);
-
-		/// <summary>/// Create a system cursor.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateSystemCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLCreateSystemCursor([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "SDL_SystemCursor")] SDLSystemCursor id)
-		{
-			SDLCursor* ret = SDLCreateSystemCursorNative(id);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the active cursor.<br/>
-		/// This function sets the currently active cursor to the specified one. If the<br/>
-		/// cursor is currently visible, the change will be immediately represented on<br/>
-		/// the display. SDL_SetCursor(NULL) can be used to force cursor redraw, if<br/>
-		/// this is desired for any reason.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetCursor")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetCursorNative([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "SDL_Cursor*")] SDLCursor* cursor);
-
-		/// <summary>/// Set the active cursor.<br/>/// This function sets the currently active cursor to the specified one. If the<br/>/// cursor is currently visible, the change will be immediately represented on<br/>/// the display. SDL_SetCursor(NULL) can be used to force cursor redraw, if<br/>/// this is desired for any reason.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "SDL_Cursor*")] SDLCursor* cursor)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			SDLSetCursorNative(cursor);
-		}
-
-		/// <summary>
-		/// Get the active cursor.<br/>
-		/// This function returns a pointer to the current cursor which is owned by the<br/>
-		/// library. It is not necessary to free the cursor with SDL_FreeCursor().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCursor* SDLGetCursorNative();
-
-		/// <summary>/// Get the active cursor.<br/>/// This function returns a pointer to the current cursor which is owned by the<br/>/// library. It is not necessary to free the cursor with SDL_FreeCursor().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLGetCursor()
-		{
-			SDLCursor* ret = SDLGetCursorNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the default cursor.<br/>
-		/// You do not have to call SDL_FreeCursor() on the return value, but it is<br/>
-		/// safe to do so.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetDefaultCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetDefaultCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCursor* SDLGetDefaultCursorNative();
-
-		/// <summary>/// Get the default cursor.<br/>/// You do not have to call SDL_FreeCursor() on the return value, but it is<br/>/// safe to do so.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDefaultCursor")]
-		[return: NativeName(NativeNameType.Type, "SDL_Cursor*")]
-		public static SDLCursor* SDLGetDefaultCursor()
-		{
-			SDLCursor* ret = SDLGetDefaultCursorNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Free a previously-created cursor.<br/>
-		/// Use this function to free cursor resources created with SDL_CreateCursor(),<br/>
-		/// SDL_CreateColorCursor() or SDL_CreateSystemCursor().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FreeCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeCursorNative([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "SDL_Cursor*")] SDLCursor* cursor);
-
-		/// <summary>/// Free a previously-created cursor.<br/>/// Use this function to free cursor resources created with SDL_CreateCursor(),<br/>/// SDL_CreateColorCursor() or SDL_CreateSystemCursor().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFreeCursor([NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "SDL_Cursor*")] SDLCursor* cursor)
-		{
-			SDLFreeCursorNative(cursor);
-		}
-
-		/// <summary>
-		/// Toggle whether or not the cursor is shown.<br/>
-		/// The cursor starts off displayed but can be turned off. Passing `SDL_ENABLE`<br/>
-		/// displays the cursor and passing `SDL_DISABLE` hides it.<br/>
-		/// The current state of the mouse cursor can be queried by passing<br/>
-		/// `SDL_QUERY`; either `SDL_DISABLE` or `SDL_ENABLE` will be returned.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ShowCursor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowCursor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLShowCursorNative([NativeName(NativeNameType.Param, "toggle")] [NativeName(NativeNameType.Type, "int")] int toggle);
-
-		/// <summary>/// Toggle whether or not the cursor is shown.<br/>/// The cursor starts off displayed but can be turned off. Passing `SDL_ENABLE`<br/>/// displays the cursor and passing `SDL_DISABLE` hides it.<br/>/// The current state of the mouse cursor can be queried by passing<br/>/// `SDL_QUERY`; either `SDL_DISABLE` or `SDL_ENABLE` will be returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowCursor")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowCursor([NativeName(NativeNameType.Param, "toggle")] [NativeName(NativeNameType.Type, "int")] int toggle)
-		{
-			int ret = SDLShowCursorNative(toggle);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get an ASCII string representation for a given ::SDL_GUID.<br/>
-		/// You should supply at least 33 bytes for pszGUID.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GUIDToString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GUIDToString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGUIDToStringNative([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_GUID")] SdlGuid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] byte* pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID);
-
-		/// <summary>/// Get an ASCII string representation for a given ::SDL_GUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GUIDToString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGUIDToString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_GUID")] SdlGuid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] byte* pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
-		{
-			SDLGUIDToStringNative(guid, pszGUID, cbGUID);
-		}
-
-		/// <summary>/// Get an ASCII string representation for a given ::SDL_GUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GUIDToString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGUIDToString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_GUID")] SdlGuid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] ref byte pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
-		{
-			fixed (byte* ppszGUID = &pszGUID)
+			fixed (byte* pr = &r)
 			{
-				SDLGUIDToStringNative(guid, (byte*)ppszGUID, cbGUID);
+				SDLGetRGBANative(pixel, format, (byte*)pr, g, b, a);
 			}
 		}
 
-		/// <summary>/// Get an ASCII string representation for a given ::SDL_GUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GUIDToString")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGUIDToString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_GUID")] SdlGuid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] ref string pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (pszGUID != null)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				pStrSize0 = Utils.GetByteCountUTF8(pszGUID);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
+				fixed (byte* pr = &r)
 				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(pszGUID, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLGUIDToStringNative(guid, pStr0, cbGUID);
-			pszGUID = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Convert a GUID string into a ::SDL_GUID structure.<br/>
-		/// Performs no error checking. If this function is given a string containing<br/>
-		/// an invalid GUID, the function will silently succeed, but the GUID generated<br/>
-		/// will not be useful.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GUIDFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GUID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GUIDFromString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SdlGuid SDLGUIDFromStringNative([NativeName(NativeNameType.Param, "pchGUID")] [NativeName(NativeNameType.Type, "const char*")] byte* pchGUID);
-
-		/// <summary>/// Convert a GUID string into a ::SDL_GUID structure.<br/>/// Performs no error checking. If this function is given a string containing<br/>/// an invalid GUID, the function will silently succeed, but the GUID generated<br/>/// will not be useful.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GUIDFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GUID")]
-		public static SdlGuid SDLGUIDFromString([NativeName(NativeNameType.Param, "pchGUID")] [NativeName(NativeNameType.Type, "const char*")] byte* pchGUID)
-		{
-			SdlGuid ret = SDLGUIDFromStringNative(pchGUID);
-			return ret;
-		}
-
-		/// <summary>
-		/// Locking for multi-threaded access to the joystick API<br/>
-		/// If you are using the joystick API or handling events from multiple threads<br/>
-		/// you should use these locking functions to protect access to the joysticks.<br/>
-		/// In particular, you are guaranteed that the joystick list won't change, so<br/>
-		/// the API functions that take a joystick index will be valid, and joystick<br/>
-		/// and game controller events will not be delivered.<br/>
-		/// As of SDL 2.26.0, you can take the joystick lock around reinitializing the<br/>
-		/// joystick subsystem, to prevent other threads from seeing joysticks in an<br/>
-		/// uninitialized state. However, all open joysticks will be closed and SDL<br/>
-		/// functions called with them will fail.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockJoysticks")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockJoysticks")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockJoysticksNative();
-
-		/// <summary>/// Locking for multi-threaded access to the joystick API<br/>/// If you are using the joystick API or handling events from multiple threads<br/>/// you should use these locking functions to protect access to the joysticks.<br/>/// In particular, you are guaranteed that the joystick list won't change, so<br/>/// the API functions that take a joystick index will be valid, and joystick<br/>/// and game controller events will not be delivered.<br/>/// As of SDL 2.26.0, you can take the joystick lock around reinitializing the<br/>/// joystick subsystem, to prevent other threads from seeing joysticks in an<br/>/// uninitialized state. However, all open joysticks will be closed and SDL<br/>/// functions called with them will fail.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockJoysticks")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLockJoysticks()
-		{
-			SDLLockJoysticksNative();
-		}
-
-		/// <summary>
-		/// Unlocking for multi-threaded access to the joystick API<br/>
-		/// If you are using the joystick API or handling events from multiple threads<br/>
-		/// you should use these locking functions to protect access to the joysticks.<br/>
-		/// In particular, you are guaranteed that the joystick list won't change, so<br/>
-		/// the API functions that take a joystick index will be valid, and joystick<br/>
-		/// and game controller events will not be delivered.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UnlockJoysticks")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockJoysticks")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockJoysticksNative();
-
-		/// <summary>/// Unlocking for multi-threaded access to the joystick API<br/>/// If you are using the joystick API or handling events from multiple threads<br/>/// you should use these locking functions to protect access to the joysticks.<br/>/// In particular, you are guaranteed that the joystick list won't change, so<br/>/// the API functions that take a joystick index will be valid, and joystick<br/>/// and game controller events will not be delivered.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockJoysticks")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnlockJoysticks()
-		{
-			SDLUnlockJoysticksNative();
-		}
-
-		/// <summary>
-		/// Count the number of joysticks attached to the system.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_NumJoysticks")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NumJoysticks")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLNumJoysticksNative();
-
-		/// <summary>/// Count the number of joysticks attached to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NumJoysticks")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLNumJoysticks()
-		{
-			int ret = SDLNumJoysticksNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name of a joystick.<br/>
-		/// This can be called before any joysticks are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickNameForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLJoystickNameForIndexNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the implementation dependent name of a joystick.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLJoystickNameForIndex([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			byte* ret = SDLJoystickNameForIndexNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name of a joystick.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLJoystickNameForIndexS([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLJoystickNameForIndexNative(deviceIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent path of a joystick.<br/>
-		/// This can be called before any joysticks are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickPathForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLJoystickPathForIndexNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the implementation dependent path of a joystick.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLJoystickPathForIndex([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			byte* ret = SDLJoystickPathForIndexNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent path of a joystick.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLJoystickPathForIndexS([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLJoystickPathForIndexNative(deviceIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the player index of a joystick, or -1 if it's not available This can be<br/>
-		/// called before any joysticks are opened.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDevicePlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDevicePlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickGetDevicePlayerIndexNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the player index of a joystick, or -1 if it's not available This can be<br/>/// called before any joysticks are opened.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDevicePlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetDevicePlayerIndex([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLJoystickGetDevicePlayerIndexNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation-dependent GUID for the joystick at a given device<br/>
-		/// index.<br/>
-		/// This function can be called before any joysticks are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceGUID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceGUID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial Guid SDLJoystickGetDeviceGUIDNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the implementation-dependent GUID for the joystick at a given device<br/>/// index.<br/>/// This function can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceGUID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		public static Guid SDLJoystickGetDeviceGUID([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			Guid ret = SDLJoystickGetDeviceGUIDNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the USB vendor ID of a joystick, if available.<br/>
-		/// This can be called before any joysticks are opened. If the vendor ID isn't<br/>
-		/// available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceVendor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetDeviceVendorNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the USB vendor ID of a joystick, if available.<br/>/// This can be called before any joysticks are opened. If the vendor ID isn't<br/>/// available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetDeviceVendor([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			ushort ret = SDLJoystickGetDeviceVendorNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the USB product ID of a joystick, if available.<br/>
-		/// This can be called before any joysticks are opened. If the product ID isn't<br/>
-		/// available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceProduct")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetDeviceProductNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the USB product ID of a joystick, if available.<br/>/// This can be called before any joysticks are opened. If the product ID isn't<br/>/// available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetDeviceProduct([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			ushort ret = SDLJoystickGetDeviceProductNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the product version of a joystick, if available.<br/>
-		/// This can be called before any joysticks are opened. If the product version<br/>
-		/// isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceProductVersion")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetDeviceProductVersionNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the product version of a joystick, if available.<br/>/// This can be called before any joysticks are opened. If the product version<br/>/// isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetDeviceProductVersion([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			ushort ret = SDLJoystickGetDeviceProductVersionNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of a joystick, if available.<br/>
-		/// This can be called before any joysticks are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystickType SDLJoystickGetDeviceTypeNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the type of a joystick, if available.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickType")]
-		public static SDLJoystickType SDLJoystickGetDeviceType([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLJoystickType ret = SDLJoystickGetDeviceTypeNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the instance ID of a joystick.<br/>
-		/// This can be called before any joysticks are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetDeviceInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickGetDeviceInstanceIDNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the instance ID of a joystick.<br/>/// This can be called before any joysticks are opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetDeviceInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickID")]
-		public static int SDLJoystickGetDeviceInstanceID([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLJoystickGetDeviceInstanceIDNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a joystick for use.<br/>
-		/// The `device_index` argument refers to the N'th joystick presently<br/>
-		/// recognized by SDL on the system. It is **NOT** the same as the instance ID<br/>
-		/// used to identify the joystick in future events. See<br/>
-		/// SDL_JoystickInstanceID() for more details about instance IDs.<br/>
-		/// The joystick subsystem must be initialized before a joystick can be opened<br/>
-		/// for use.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickOpen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystick* SDLJoystickOpenNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Open a joystick for use.<br/>/// The `device_index` argument refers to the N'th joystick presently<br/>/// recognized by SDL on the system. It is **NOT** the same as the instance ID<br/>/// used to identify the joystick in future events. See<br/>/// SDL_JoystickInstanceID() for more details about instance IDs.<br/>/// The joystick subsystem must be initialized before a joystick can be opened<br/>/// for use.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		public static SDLJoystick* SDLJoystickOpen([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLJoystick* ret = SDLJoystickOpenNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL_Joystick associated with an instance id.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickFromInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystick* SDLJoystickFromInstanceIDNative([NativeName(NativeNameType.Param, "instance_id")] [NativeName(NativeNameType.Type, "SDL_JoystickID")] int instanceId);
-
-		/// <summary>/// Get the SDL_Joystick associated with an instance id.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		public static SDLJoystick* SDLJoystickFromInstanceID([NativeName(NativeNameType.Param, "instance_id")] [NativeName(NativeNameType.Type, "SDL_JoystickID")] int instanceId)
-		{
-			SDLJoystick* ret = SDLJoystickFromInstanceIDNative(instanceId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL_Joystick associated with a player index.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickFromPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickFromPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystick* SDLJoystickFromPlayerIndexNative([NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex);
-
-		/// <summary>/// Get the SDL_Joystick associated with a player index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickFromPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		public static SDLJoystick* SDLJoystickFromPlayerIndex([NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex)
-		{
-			SDLJoystick* ret = SDLJoystickFromPlayerIndexNative(playerIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Attach a new virtual joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickAttachVirtual")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickAttachVirtual")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickAttachVirtualNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_JoystickType")] SDLJoystickType type, [NativeName(NativeNameType.Param, "naxes")] [NativeName(NativeNameType.Type, "int")] int naxes, [NativeName(NativeNameType.Param, "nbuttons")] [NativeName(NativeNameType.Type, "int")] int nbuttons, [NativeName(NativeNameType.Param, "nhats")] [NativeName(NativeNameType.Type, "int")] int nhats);
-
-		/// <summary>/// Attach a new virtual joystick.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickAttachVirtual")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickAttachVirtual([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_JoystickType")] SDLJoystickType type, [NativeName(NativeNameType.Param, "naxes")] [NativeName(NativeNameType.Type, "int")] int naxes, [NativeName(NativeNameType.Param, "nbuttons")] [NativeName(NativeNameType.Type, "int")] int nbuttons, [NativeName(NativeNameType.Param, "nhats")] [NativeName(NativeNameType.Type, "int")] int nhats)
-		{
-			int ret = SDLJoystickAttachVirtualNative(type, naxes, nbuttons, nhats);
-			return ret;
-		}
-
-		/// <summary>
-		/// Attach a new virtual joystick with extended properties.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickAttachVirtualEx")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickAttachVirtualEx")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickAttachVirtualExNative([NativeName(NativeNameType.Param, "desc")] [NativeName(NativeNameType.Type, "const SDL_VirtualJoystickDesc*")] SDLVirtualJoystickDesc* desc);
-
-		/// <summary>/// Attach a new virtual joystick with extended properties.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickAttachVirtualEx")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickAttachVirtualEx([NativeName(NativeNameType.Param, "desc")] [NativeName(NativeNameType.Type, "const SDL_VirtualJoystickDesc*")] SDLVirtualJoystickDesc* desc)
-		{
-			int ret = SDLJoystickAttachVirtualExNative(desc);
-			return ret;
-		}
-
-		/// <summary>
-		/// Detach a virtual joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickDetachVirtual")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickDetachVirtual")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickDetachVirtualNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Detach a virtual joystick.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickDetachVirtual")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickDetachVirtual([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLJoystickDetachVirtualNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether or not the joystick at a given device index is virtual.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickIsVirtual")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickIsVirtual")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickIsVirtualNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Query whether or not the joystick at a given device index is virtual.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickIsVirtual")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickIsVirtual([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLBool ret = SDLJoystickIsVirtualNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set values on an opened, virtual-joystick's axis.<br/>
-		/// Please note that values set here will not be applied until the next call to<br/>
-		/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>
-		/// indirectly through various other SDL APIs, including, but not limited to<br/>
-		/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>
-		/// SDL_WaitEvent.<br/>
-		/// Note that when sending trigger axes, you should scale the value to the full<br/>
-		/// range of Sint16. For example, a trigger at rest would have the value of<br/>
-		/// `SDL_JOYSTICK_AXIS_MIN`.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualAxis")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSetVirtualAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickSetVirtualAxisNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Sint16")] short value);
-
-		/// <summary>/// Set values on an opened, virtual-joystick's axis.<br/>/// Please note that values set here will not be applied until the next call to<br/>/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>/// indirectly through various other SDL APIs, including, but not limited to<br/>/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>/// SDL_WaitEvent.<br/>/// Note that when sending trigger axes, you should scale the value to the full<br/>/// range of Sint16. For example, a trigger at rest would have the value of<br/>/// `SDL_JOYSTICK_AXIS_MIN`.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualAxis")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickSetVirtualAxis([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Sint16")] short value)
-		{
-			int ret = SDLJoystickSetVirtualAxisNative(joystick, axis, value);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set values on an opened, virtual-joystick's button.<br/>
-		/// Please note that values set here will not be applied until the next call to<br/>
-		/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>
-		/// indirectly through various other SDL APIs, including, but not limited to<br/>
-		/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>
-		/// SDL_WaitEvent.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualButton")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSetVirtualButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickSetVirtualButtonNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Uint8")] byte value);
-
-		/// <summary>/// Set values on an opened, virtual-joystick's button.<br/>/// Please note that values set here will not be applied until the next call to<br/>/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>/// indirectly through various other SDL APIs, including, but not limited to<br/>/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>/// SDL_WaitEvent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualButton")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickSetVirtualButton([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Uint8")] byte value)
-		{
-			int ret = SDLJoystickSetVirtualButtonNative(joystick, button, value);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set values on an opened, virtual-joystick's hat.<br/>
-		/// Please note that values set here will not be applied until the next call to<br/>
-		/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>
-		/// indirectly through various other SDL APIs, including, but not limited to<br/>
-		/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>
-		/// SDL_WaitEvent.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualHat")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSetVirtualHat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickSetVirtualHatNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "hat")] [NativeName(NativeNameType.Type, "int")] int hat, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Uint8")] byte value);
-
-		/// <summary>/// Set values on an opened, virtual-joystick's hat.<br/>/// Please note that values set here will not be applied until the next call to<br/>/// SDL_JoystickUpdate, which can either be called directly, or can be called<br/>/// indirectly through various other SDL APIs, including, but not limited to<br/>/// the following: SDL_PollEvent, SDL_PumpEvents, SDL_WaitEventTimeout,<br/>/// SDL_WaitEvent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSetVirtualHat")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickSetVirtualHat([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "hat")] [NativeName(NativeNameType.Type, "int")] int hat, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "Uint8")] byte value)
-		{
-			int ret = SDLJoystickSetVirtualHatNative(joystick, hat, value);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name of a joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLJoystickNameNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the implementation dependent name of a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLJoystickName([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			byte* ret = SDLJoystickNameNative(joystick);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name of a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLJoystickNameS([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLJoystickNameNative(joystick));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent path of a joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickPath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLJoystickPathNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the implementation dependent path of a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLJoystickPath([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			byte* ret = SDLJoystickPathNative(joystick);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent path of a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLJoystickPathS([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLJoystickPathNative(joystick));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the player index of an opened joystick.<br/>
-		/// For XInput controllers this returns the XInput user index. Many joysticks<br/>
-		/// will not be able to supply this information.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickGetPlayerIndexNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the player index of an opened joystick.<br/>/// For XInput controllers this returns the XInput user index. Many joysticks<br/>/// will not be able to supply this information.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetPlayerIndex([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickGetPlayerIndexNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the player index of an opened joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSetPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLJoystickSetPlayerIndexNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex);
-
-		/// <summary>/// Set the player index of an opened joystick.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickSetPlayerIndex([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex)
-		{
-			SDLJoystickSetPlayerIndexNative(joystick, playerIndex);
-		}
-
-		/// <summary>
-		/// Get the implementation-dependent GUID for the joystick.<br/>
-		/// This function requires an open joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetGUID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial Guid SDLJoystickGetGUIDNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the implementation-dependent GUID for the joystick.<br/>/// This function requires an open joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		public static Guid SDLJoystickGetGUID([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			Guid ret = SDLJoystickGetGUIDNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the USB vendor ID of an opened joystick, if available.<br/>
-		/// If the vendor ID isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetVendor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetVendorNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the USB vendor ID of an opened joystick, if available.<br/>/// If the vendor ID isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetVendor([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			ushort ret = SDLJoystickGetVendorNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the USB product ID of an opened joystick, if available.<br/>
-		/// If the product ID isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetProduct")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetProductNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the USB product ID of an opened joystick, if available.<br/>/// If the product ID isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetProduct([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			ushort ret = SDLJoystickGetProductNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the product version of an opened joystick, if available.<br/>
-		/// If the product version isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetProductVersion")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetProductVersionNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the product version of an opened joystick, if available.<br/>/// If the product version isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetProductVersion([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			ushort ret = SDLJoystickGetProductVersionNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the firmware version of an opened joystick, if available.<br/>
-		/// If the firmware version isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetFirmwareVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetFirmwareVersion")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLJoystickGetFirmwareVersionNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the firmware version of an opened joystick, if available.<br/>/// If the firmware version isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetFirmwareVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLJoystickGetFirmwareVersion([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			ushort ret = SDLJoystickGetFirmwareVersionNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the serial number of an opened joystick, if available.<br/>
-		/// Returns the serial number of the joystick, or NULL if it is not available.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetSerial")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLJoystickGetSerialNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the serial number of an opened joystick, if available.<br/>/// Returns the serial number of the joystick, or NULL if it is not available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLJoystickGetSerial([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			byte* ret = SDLJoystickGetSerialNative(joystick);
-			return ret;
-		}
-
-		/// <summary>/// Get the serial number of an opened joystick, if available.<br/>/// Returns the serial number of the joystick, or NULL if it is not available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLJoystickGetSerialS([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLJoystickGetSerialNative(joystick));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of an opened joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystickType SDLJoystickGetTypeNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the type of an opened joystick.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickType")]
-		public static SDLJoystickType SDLJoystickGetType([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLJoystickType ret = SDLJoystickGetTypeNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get an ASCII string representation for a given SDL_JoystickGUID.<br/>
-		/// You should supply at least 33 bytes for pszGUID.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetGUIDString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLJoystickGetGUIDStringNative([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] byte* pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID);
-
-		/// <summary>/// Get an ASCII string representation for a given SDL_JoystickGUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickGetGUIDString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] byte* pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
-		{
-			SDLJoystickGetGUIDStringNative(guid, pszGUID, cbGUID);
-		}
-
-		/// <summary>/// Get an ASCII string representation for a given SDL_JoystickGUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickGetGUIDString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] ref byte pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
-		{
-			fixed (byte* ppszGUID = &pszGUID)
-			{
-				SDLJoystickGetGUIDStringNative(guid, (byte*)ppszGUID, cbGUID);
-			}
-		}
-
-		/// <summary>/// Get an ASCII string representation for a given SDL_JoystickGUID.<br/>/// You should supply at least 33 bytes for pszGUID.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickGetGUIDString([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "pszGUID")] [NativeName(NativeNameType.Type, "char*")] ref string pszGUID, [NativeName(NativeNameType.Param, "cbGUID")] [NativeName(NativeNameType.Type, "int")] int cbGUID)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (pszGUID != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(pszGUID);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(pszGUID, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLJoystickGetGUIDStringNative(guid, pStr0, cbGUID);
-			pszGUID = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// Convert a GUID string into a SDL_JoystickGUID structure.<br/>
-		/// Performs no error checking. If this function is given a string containing<br/>
-		/// an invalid GUID, the function will silently succeed, but the GUID generated<br/>
-		/// will not be useful.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetGUIDFromString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial Guid SDLJoystickGetGUIDFromStringNative([NativeName(NativeNameType.Param, "pchGUID")] [NativeName(NativeNameType.Type, "const char*")] byte* pchGUID);
-
-		/// <summary>/// Convert a GUID string into a SDL_JoystickGUID structure.<br/>/// Performs no error checking. If this function is given a string containing<br/>/// an invalid GUID, the function will silently succeed, but the GUID generated<br/>/// will not be useful.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetGUIDFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickGUID")]
-		public static Guid SDLJoystickGetGUIDFromString([NativeName(NativeNameType.Param, "pchGUID")] [NativeName(NativeNameType.Type, "const char*")] byte* pchGUID)
-		{
-			Guid ret = SDLJoystickGetGUIDFromStringNative(pchGUID);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the device information encoded in a SDL_JoystickGUID structure<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetJoystickGUIDInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetJoystickGUIDInfoNative([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16);
-
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
-		{
-			SDLGetJoystickGUIDInfoNative(guid, vendor, product, version, crc16);
-		}
-
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
-		{
-			fixed (ushort* pvendor = &vendor)
-			{
-				SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, product, version, crc16);
-			}
-		}
-
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
-		{
-			fixed (ushort* pproduct = &product)
-			{
-				SDLGetJoystickGUIDInfoNative(guid, vendor, (ushort*)pproduct, version, crc16);
-			}
-		}
-
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
-		{
-			fixed (ushort* pvendor = &vendor)
-			{
-				fixed (ushort* pproduct = &product)
-				{
-					SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, (ushort*)pproduct, version, crc16);
+					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pversion = &version)
+			fixed (byte* pg = &g)
 			{
-				SDLGetJoystickGUIDInfoNative(guid, vendor, product, (ushort*)pversion, crc16);
+				SDLGetRGBANative(pixel, format, r, (byte*)pg, b, a);
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pversion = &version)
+				fixed (byte* pg = &g)
 				{
-					SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, product, (ushort*)pversion, crc16);
+					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pproduct = &product)
+			fixed (byte* pr = &r)
 			{
-				fixed (ushort* pversion = &version)
+				fixed (byte* pg = &g)
 				{
-					SDLGetJoystickGUIDInfoNative(guid, vendor, (ushort*)pproduct, (ushort*)pversion, crc16);
+					SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, b, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pproduct = &product)
+				fixed (byte* pr = &r)
 				{
-					fixed (ushort* pversion = &version)
+					fixed (byte* pg = &g)
 					{
-						SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, (ushort*)pproduct, (ushort*)pversion, crc16);
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b, a);
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pcrc16 = &crc16)
+			fixed (byte* pb = &b)
 			{
-				SDLGetJoystickGUIDInfoNative(guid, vendor, product, version, (ushort*)pcrc16);
+				SDLGetRGBANative(pixel, format, r, g, (byte*)pb, a);
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pcrc16 = &crc16)
+				fixed (byte* pb = &b)
 				{
-					SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, product, version, (ushort*)pcrc16);
+					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pproduct = &product)
+			fixed (byte* pr = &r)
 			{
-				fixed (ushort* pcrc16 = &crc16)
+				fixed (byte* pb = &b)
 				{
-					SDLGetJoystickGUIDInfoNative(guid, vendor, (ushort*)pproduct, version, (ushort*)pcrc16);
+					SDLGetRGBANative(pixel, format, (byte*)pr, g, (byte*)pb, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pproduct = &product)
+				fixed (byte* pr = &r)
 				{
-					fixed (ushort* pcrc16 = &crc16)
+					fixed (byte* pb = &b)
 					{
-						SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, (ushort*)pproduct, version, (ushort*)pcrc16);
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb, a);
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pversion = &version)
+			fixed (byte* pg = &g)
 			{
-				fixed (ushort* pcrc16 = &crc16)
+				fixed (byte* pb = &b)
 				{
-					SDLGetJoystickGUIDInfoNative(guid, vendor, product, (ushort*)pversion, (ushort*)pcrc16);
+					SDLGetRGBANative(pixel, format, r, (byte*)pg, (byte*)pb, a);
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pversion = &version)
+				fixed (byte* pg = &g)
 				{
-					fixed (ushort* pcrc16 = &crc16)
+					fixed (byte* pb = &b)
 					{
-						SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, product, (ushort*)pversion, (ushort*)pcrc16);
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb, a);
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pproduct = &product)
+			fixed (byte* pr = &r)
 			{
-				fixed (ushort* pversion = &version)
+				fixed (byte* pg = &g)
 				{
-					fixed (ushort* pcrc16 = &crc16)
+					fixed (byte* pb = &b)
 					{
-						SDLGetJoystickGUIDInfoNative(guid, vendor, (ushort*)pproduct, (ushort*)pversion, (ushort*)pcrc16);
+						SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb, a);
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the device information encoded in a SDL_JoystickGUID structure<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetJoystickGUIDInfo")]
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetJoystickGUIDInfo([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid, [NativeName(NativeNameType.Param, "vendor")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort vendor, [NativeName(NativeNameType.Param, "product")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort product, [NativeName(NativeNameType.Param, "version")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort version, [NativeName(NativeNameType.Param, "crc16")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort crc16)
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
 		{
-			fixed (ushort* pvendor = &vendor)
+			fixed (SDLPixelFormat* pformat = &format)
 			{
-				fixed (ushort* pproduct = &product)
+				fixed (byte* pr = &r)
 				{
-					fixed (ushort* pversion = &version)
+					fixed (byte* pg = &g)
 					{
-						fixed (ushort* pcrc16 = &crc16)
+						fixed (byte* pb = &b)
 						{
-							SDLGetJoystickGUIDInfoNative(guid, (ushort*)pvendor, (ushort*)pproduct, (ushort*)pversion, (ushort*)pcrc16);
+							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb, a);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pa = &a)
+			{
+				SDLGetRGBANative(pixel, format, r, g, b, (byte*)pa);
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pa = &a)
+				{
+					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, b, (byte*)pa);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pa = &a)
+				{
+					SDLGetRGBANative(pixel, format, (byte*)pr, g, b, (byte*)pa);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pg = &g)
+			{
+				fixed (byte* pa = &a)
+				{
+					SDLGetRGBANative(pixel, format, r, (byte*)pg, b, (byte*)pa);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, b, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						fixed (byte* pa = &a)
+						{
+							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b, (byte*)pa);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pb = &b)
+			{
+				fixed (byte* pa = &a)
+				{
+					SDLGetRGBANative(pixel, format, r, g, (byte*)pb, (byte*)pa);
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pb = &b)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pb = &b)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, format, (byte*)pr, g, (byte*)pb, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pb = &b)
+					{
+						fixed (byte* pa = &a)
+						{
+							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb, (byte*)pa);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pg = &g)
+			{
+				fixed (byte* pb = &b)
+				{
+					fixed (byte* pa = &a)
+					{
+						SDLGetRGBANative(pixel, format, r, (byte*)pg, (byte*)pb, (byte*)pa);
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						fixed (byte* pa = &a)
+						{
+							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb, (byte*)pa);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						fixed (byte* pa = &a)
+						{
+							SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb, (byte*)pa);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
+		{
+			fixed (SDLPixelFormat* pformat = &format)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						fixed (byte* pb = &b)
+						{
+							fixed (byte* pa = &a)
+							{
+								SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb, (byte*)pa);
+							}
 						}
 					}
 				}
@@ -1347,2133 +500,653 @@ namespace Hexa.NET.SDL2
 		}
 
 		/// <summary>
-		/// Get the status of a specified joystick.<br/>
+		/// Calculate a 256 entry gamma ramp for a gamma value.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetAttached")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetAttached")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickGetAttachedNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the status of a specified joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetAttached")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickGetAttached([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLBool ret = SDLJoystickGetAttachedNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the instance ID of an opened joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickInstanceIDNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the instance ID of an opened joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickID")]
-		public static int SDLJoystickInstanceID([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickInstanceIDNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of general axis controls on a joystick.<br/>
-		/// Often, the directional pad on a game controller will either look like 4<br/>
-		/// separate buttons or a POV hat, and not axes, but all of this is up to the<br/>
-		/// device and platform.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickNumAxes")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickNumAxes")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickNumAxesNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the number of general axis controls on a joystick.<br/>/// Often, the directional pad on a game controller will either look like 4<br/>/// separate buttons or a POV hat, and not axes, but all of this is up to the<br/>/// device and platform.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNumAxes")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickNumAxes([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickNumAxesNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of trackballs on a joystick.<br/>
-		/// Joystick trackballs have only relative motion events associated with them<br/>
-		/// and their state cannot be polled.<br/>
-		/// Most joysticks do not have trackballs.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickNumBalls")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickNumBalls")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickNumBallsNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the number of trackballs on a joystick.<br/>/// Joystick trackballs have only relative motion events associated with them<br/>/// and their state cannot be polled.<br/>/// Most joysticks do not have trackballs.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNumBalls")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickNumBalls([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickNumBallsNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of POV hats on a joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickNumHats")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickNumHats")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickNumHatsNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the number of POV hats on a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNumHats")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickNumHats([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickNumHatsNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of buttons on a joystick.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickNumButtons")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickNumButtons")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickNumButtonsNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the number of buttons on a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickNumButtons")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickNumButtons([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickNumButtonsNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Update the current state of the open joysticks.<br/>
-		/// This is called automatically by the event loop if any joystick events are<br/>
-		/// enabled.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickUpdate")]
+		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickUpdate")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CalculateGammaRamp")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLJoystickUpdateNative();
+		internal static partial void SDLCalculateGammaRampNative([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* ramp);
 
-		/// <summary>/// Update the current state of the open joysticks.<br/>/// This is called automatically by the event loop if any joystick events are<br/>/// enabled.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickUpdate")]
+		/// <summary>/// Calculate a 256 entry gamma ramp for a gamma value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickUpdate()
+		public static void SDLCalculateGammaRamp([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* ramp)
 		{
-			SDLJoystickUpdateNative();
+			SDLCalculateGammaRampNative(gamma, ramp);
 		}
 
-		/// <summary>
-		/// Enable/disable joystick event polling.<br/>
-		/// If joystick events are disabled, you must call SDL_JoystickUpdate()<br/>
-		/// yourself and manually check the state of the joystick when you want<br/>
-		/// joystick information.<br/>
-		/// It is recommended that you leave joystick event handling enabled.<br/>
-		/// **WARNING**: Calling this function may delete all events currently in SDL's<br/>
-		/// event queue.<br/>
-		/// While `param` is meant to be one of `SDL_QUERY`, `SDL_IGNORE`, or<br/>
-		/// `SDL_ENABLE`, this function accepts any value, with any non-zero value that<br/>
-		/// isn't `SDL_QUERY` being treated as `SDL_ENABLE`.<br/>
-		/// If SDL was built with events disabled (extremely uncommon!), this will<br/>
-		/// do nothing and always return `SDL_IGNORE`.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickEventState")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickEventState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickEventStateNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state);
-
-		/// <summary>/// Enable/disable joystick event polling.<br/>/// If joystick events are disabled, you must call SDL_JoystickUpdate()<br/>/// yourself and manually check the state of the joystick when you want<br/>/// joystick information.<br/>/// It is recommended that you leave joystick event handling enabled.<br/>/// **WARNING**: Calling this function may delete all events currently in SDL's<br/>/// event queue.<br/>/// While `param` is meant to be one of `SDL_QUERY`, `SDL_IGNORE`, or<br/>/// `SDL_ENABLE`, this function accepts any value, with any non-zero value that<br/>/// isn't `SDL_QUERY` being treated as `SDL_ENABLE`.<br/>/// If SDL was built with events disabled (extremely uncommon!), this will<br/>/// do nothing and always return `SDL_IGNORE`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickEventState")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickEventState([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state)
+		/// <summary>/// Calculate a 256 entry gamma ramp for a gamma value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLCalculateGammaRamp([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort ramp)
 		{
-			int ret = SDLJoystickEventStateNative(state);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of an axis control on a joystick.<br/>
-		/// SDL makes no promises about what part of the joystick any given axis refers<br/>
-		/// to. Your game should have some sort of configuration UI to let users<br/>
-		/// specify what each axis should be bound to. Alternately, SDL's higher-level<br/>
-		/// Game Controller API makes a great effort to apply order to this lower-level<br/>
-		/// interface, so you know that a specific axis is the "left thumb stick," etc.<br/>
-		/// The value returned by SDL_JoystickGetAxis() is a signed integer (-32768 to<br/>
-		/// 32767) representing the current position of the axis. It may be necessary<br/>
-		/// to impose certain tolerances on these values to account for jitter.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetAxis")]
-		[return: NativeName(NativeNameType.Type, "Sint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial short SDLJoystickGetAxisNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis);
-
-		/// <summary>/// Get the current state of an axis control on a joystick.<br/>/// SDL makes no promises about what part of the joystick any given axis refers<br/>/// to. Your game should have some sort of configuration UI to let users<br/>/// specify what each axis should be bound to. Alternately, SDL's higher-level<br/>/// Game Controller API makes a great effort to apply order to this lower-level<br/>/// interface, so you know that a specific axis is the "left thumb stick," etc.<br/>/// The value returned by SDL_JoystickGetAxis() is a signed integer (-32768 to<br/>/// 32767) representing the current position of the axis. It may be necessary<br/>/// to impose certain tolerances on these values to account for jitter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetAxis")]
-		[return: NativeName(NativeNameType.Type, "Sint16")]
-		public static short SDLJoystickGetAxis([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis)
-		{
-			short ret = SDLJoystickGetAxisNative(joystick, axis);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the initial state of an axis control on a joystick.<br/>
-		/// The state is a value ranging from -32768 to 32767.<br/>
-		/// The axis indices start at index 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetAxisInitialState")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetAxisInitialState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickGetAxisInitialStateNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Sint16*")] short* state);
-
-		/// <summary>/// Get the initial state of an axis control on a joystick.<br/>/// The state is a value ranging from -32768 to 32767.<br/>/// The axis indices start at index 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetAxisInitialState")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickGetAxisInitialState([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Sint16*")] short* state)
-		{
-			SDLBool ret = SDLJoystickGetAxisInitialStateNative(joystick, axis, state);
-			return ret;
-		}
-
-		/// <summary>/// Get the initial state of an axis control on a joystick.<br/>/// The state is a value ranging from -32768 to 32767.<br/>/// The axis indices start at index 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetAxisInitialState")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickGetAxisInitialState([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "int")] int axis, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Sint16*")] ref short state)
-		{
-			fixed (short* pstate = &state)
+			fixed (ushort* pramp = &ramp)
 			{
-				SDLBool ret = SDLJoystickGetAxisInitialStateNative(joystick, axis, (short*)pstate);
-				return ret;
+				SDLCalculateGammaRampNative(gamma, (ushort*)pramp);
 			}
 		}
 
 		/// <summary>
-		/// Get the current state of a POV hat on a joystick.<br/>
-		/// The returned value will be one of the following positions:<br/>
-		/// - `SDL_HAT_CENTERED`<br/>
-		/// - `SDL_HAT_UP`<br/>
-		/// - `SDL_HAT_RIGHT`<br/>
-		/// - `SDL_HAT_DOWN`<br/>
-		/// - `SDL_HAT_LEFT`<br/>
-		/// - `SDL_HAT_RIGHTUP`<br/>
-		/// - `SDL_HAT_RIGHTDOWN`<br/>
-		/// - `SDL_HAT_LEFTUP`<br/>
-		/// - `SDL_HAT_LEFTDOWN`<br/>
+		/// Determine whether two rectangles intersect.<br/>
+		/// If either pointer is NULL the function will return SDL_FALSE.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetHat")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetHat")]
+		[NativeName(NativeNameType.Func, "SDL_HasIntersection")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasIntersection")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLJoystickGetHatNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "hat")] [NativeName(NativeNameType.Type, "int")] int hat);
+		internal static partial SDLBool SDLHasIntersectionNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b);
 
-		/// <summary>/// Get the current state of a POV hat on a joystick.<br/>/// The returned value will be one of the following positions:<br/>/// - `SDL_HAT_CENTERED`<br/>/// - `SDL_HAT_UP`<br/>/// - `SDL_HAT_RIGHT`<br/>/// - `SDL_HAT_DOWN`<br/>/// - `SDL_HAT_LEFT`<br/>/// - `SDL_HAT_RIGHTUP`<br/>/// - `SDL_HAT_RIGHTDOWN`<br/>/// - `SDL_HAT_LEFTUP`<br/>/// - `SDL_HAT_LEFTDOWN`<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetHat")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		public static byte SDLJoystickGetHat([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "hat")] [NativeName(NativeNameType.Type, "int")] int hat)
+		/// <summary>/// Determine whether two rectangles intersect.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersection")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersection([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b)
 		{
-			byte ret = SDLJoystickGetHatNative(joystick, hat);
+			SDLBool ret = SDLHasIntersectionNative(a, b);
 			return ret;
 		}
 
-		/// <summary>
-		/// Get the ball axis change since the last poll.<br/>
-		/// Trackballs can only return relative motion since the last call to<br/>
-		/// SDL_JoystickGetBall(), these motion deltas are placed into `dx` and `dy`.<br/>
-		/// Most joysticks do not have trackballs.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetBall")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetBall")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickGetBallNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "ball")] [NativeName(NativeNameType.Type, "int")] int ball, [NativeName(NativeNameType.Param, "dx")] [NativeName(NativeNameType.Type, "int*")] int* dx, [NativeName(NativeNameType.Param, "dy")] [NativeName(NativeNameType.Type, "int*")] int* dy);
-
-		/// <summary>/// Get the ball axis change since the last poll.<br/>/// Trackballs can only return relative motion since the last call to<br/>/// SDL_JoystickGetBall(), these motion deltas are placed into `dx` and `dy`.<br/>/// Most joysticks do not have trackballs.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetBall")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetBall([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "ball")] [NativeName(NativeNameType.Type, "int")] int ball, [NativeName(NativeNameType.Param, "dx")] [NativeName(NativeNameType.Type, "int*")] int* dx, [NativeName(NativeNameType.Param, "dy")] [NativeName(NativeNameType.Type, "int*")] int* dy)
+		/// <summary>/// Determine whether two rectangles intersect.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersection")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersection([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b)
 		{
-			int ret = SDLJoystickGetBallNative(joystick, ball, dx, dy);
-			return ret;
-		}
-
-		/// <summary>/// Get the ball axis change since the last poll.<br/>/// Trackballs can only return relative motion since the last call to<br/>/// SDL_JoystickGetBall(), these motion deltas are placed into `dx` and `dy`.<br/>/// Most joysticks do not have trackballs.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetBall")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetBall([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "ball")] [NativeName(NativeNameType.Type, "int")] int ball, [NativeName(NativeNameType.Param, "dx")] [NativeName(NativeNameType.Type, "int*")] ref int dx, [NativeName(NativeNameType.Param, "dy")] [NativeName(NativeNameType.Type, "int*")] int* dy)
-		{
-			fixed (int* pdx = &dx)
+			fixed (SDLRect* pa = &a)
 			{
-				int ret = SDLJoystickGetBallNative(joystick, ball, (int*)pdx, dy);
+				SDLBool ret = SDLHasIntersectionNative((SDLRect*)pa, b);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the ball axis change since the last poll.<br/>/// Trackballs can only return relative motion since the last call to<br/>/// SDL_JoystickGetBall(), these motion deltas are placed into `dx` and `dy`.<br/>/// Most joysticks do not have trackballs.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetBall")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetBall([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "ball")] [NativeName(NativeNameType.Type, "int")] int ball, [NativeName(NativeNameType.Param, "dx")] [NativeName(NativeNameType.Type, "int*")] int* dx, [NativeName(NativeNameType.Param, "dy")] [NativeName(NativeNameType.Type, "int*")] ref int dy)
+		/// <summary>/// Determine whether two rectangles intersect.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersection")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersection([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b)
 		{
-			fixed (int* pdy = &dy)
+			fixed (SDLRect* pb = &b)
 			{
-				int ret = SDLJoystickGetBallNative(joystick, ball, dx, (int*)pdy);
+				SDLBool ret = SDLHasIntersectionNative(a, (SDLRect*)pb);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the ball axis change since the last poll.<br/>/// Trackballs can only return relative motion since the last call to<br/>/// SDL_JoystickGetBall(), these motion deltas are placed into `dx` and `dy`.<br/>/// Most joysticks do not have trackballs.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetBall")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickGetBall([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "ball")] [NativeName(NativeNameType.Type, "int")] int ball, [NativeName(NativeNameType.Param, "dx")] [NativeName(NativeNameType.Type, "int*")] ref int dx, [NativeName(NativeNameType.Param, "dy")] [NativeName(NativeNameType.Type, "int*")] ref int dy)
+		/// <summary>/// Determine whether two rectangles intersect.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersection")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersection([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b)
 		{
-			fixed (int* pdx = &dx)
+			fixed (SDLRect* pa = &a)
 			{
-				fixed (int* pdy = &dy)
+				fixed (SDLRect* pb = &b)
 				{
-					int ret = SDLJoystickGetBallNative(joystick, ball, (int*)pdx, (int*)pdy);
+					SDLBool ret = SDLHasIntersectionNative((SDLRect*)pa, (SDLRect*)pb);
 					return ret;
 				}
 			}
 		}
 
 		/// <summary>
-		/// Get the current state of a button on a joystick.<br/>
+		/// Calculate the intersection of two rectangles.<br/>
+		/// If `result` is NULL then this function will return SDL_FALSE.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickGetButton")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickGetButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLJoystickGetButtonNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button);
-
-		/// <summary>/// Get the current state of a button on a joystick.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickGetButton")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		public static byte SDLJoystickGetButton([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "int")] int button)
-		{
-			byte ret = SDLJoystickGetButtonNative(joystick, button);
-			return ret;
-		}
-
-		/// <summary>
-		/// Start a rumble effect.<br/>
-		/// Each call to this function cancels any previous rumble effect, and calling<br/>
-		/// it with 0 intensity stops any rumbling.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickRumble")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickRumble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickRumbleNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
-
-		/// <summary>/// Start a rumble effect.<br/>/// Each call to this function cancels any previous rumble effect, and calling<br/>/// it with 0 intensity stops any rumbling.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickRumble")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickRumble([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
-		{
-			int ret = SDLJoystickRumbleNative(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
-			return ret;
-		}
-
-		/// <summary>
-		/// Start a rumble effect in the joystick's triggers<br/>
-		/// Each call to this function cancels any previous trigger rumble effect, and<br/>
-		/// calling it with 0 intensity stops any rumbling.<br/>
-		/// Note that this is rumbling of the _triggers_ and not the game controller as<br/>
-		/// a whole. This is currently only supported on Xbox One controllers. If you<br/>
-		/// want the (more common) whole-controller rumble, use SDL_JoystickRumble()<br/>
-		/// instead.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickRumbleTriggersNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
-
-		/// <summary>/// Start a rumble effect in the joystick's triggers<br/>/// Each call to this function cancels any previous trigger rumble effect, and<br/>/// calling it with 0 intensity stops any rumbling.<br/>/// Note that this is rumbling of the _triggers_ and not the game controller as<br/>/// a whole. This is currently only supported on Xbox One controllers. If you<br/>/// want the (more common) whole-controller rumble, use SDL_JoystickRumble()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickRumbleTriggers([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
-		{
-			int ret = SDLJoystickRumbleTriggersNative(joystick, leftRumble, rightRumble, durationMs);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a joystick has an LED.<br/>
-		/// An example of a joystick LED is the light on the back of a PlayStation 4's<br/>
-		/// DualShock 4 controller.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickHasLED")]
+		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickHasLED")]
+		[LibraryImport(LibName, EntryPoint = "SDL_IntersectRect")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickHasLEDNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
+		internal static partial SDLBool SDLIntersectRectNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result);
 
-		/// <summary>/// Query whether a joystick has an LED.<br/>/// An example of a joystick LED is the light on the back of a PlayStation 4's<br/>/// DualShock 4 controller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickHasLED")]
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickHasLED([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			SDLBool ret = SDLJoystickHasLEDNative(joystick);
+			SDLBool ret = SDLIntersectRectNative(a, b, result);
 			return ret;
 		}
 
-		/// <summary>
-		/// Query whether a joystick has rumble support.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickHasRumble")]
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickHasRumble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickHasRumbleNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Query whether a joystick has rumble support.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickHasRumble")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickHasRumble([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			SDLBool ret = SDLJoystickHasRumbleNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a joystick has rumble support on triggers.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickHasRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickHasRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLJoystickHasRumbleTriggersNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Query whether a joystick has rumble support on triggers.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickHasRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLJoystickHasRumbleTriggers([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLBool ret = SDLJoystickHasRumbleTriggersNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Update a joystick's LED color.<br/>
-		/// An example of a joystick LED is the light on the back of a PlayStation 4's<br/>
-		/// DualShock 4 controller.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSetLED")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSetLED")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickSetLEDNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue);
-
-		/// <summary>/// Update a joystick's LED color.<br/>/// An example of a joystick LED is the light on the back of a PlayStation 4's<br/>/// DualShock 4 controller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSetLED")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickSetLED([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue)
-		{
-			int ret = SDLJoystickSetLEDNative(joystick, red, green, blue);
-			return ret;
-		}
-
-		/// <summary>
-		/// Send a joystick specific effect packet<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickSendEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickSendEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickSendEffectNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size);
-
-		/// <summary>/// Send a joystick specific effect packet<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickSendEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickSendEffect([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
-		{
-			int ret = SDLJoystickSendEffectNative(joystick, data, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// Close a joystick previously opened with SDL_JoystickOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLJoystickCloseNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Close a joystick previously opened with SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLJoystickClose([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLJoystickCloseNative(joystick);
-		}
-
-		/// <summary>
-		/// Get the battery level of a joystick as SDL_JoystickPowerLevel.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickCurrentPowerLevel")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickPowerLevel")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickCurrentPowerLevel")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystickPowerLevel SDLJoystickCurrentPowerLevelNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Get the battery level of a joystick as SDL_JoystickPowerLevel.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickCurrentPowerLevel")]
-		[return: NativeName(NativeNameType.Type, "SDL_JoystickPowerLevel")]
-		public static SDLJoystickPowerLevel SDLJoystickCurrentPowerLevel([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLJoystickPowerLevel ret = SDLJoystickCurrentPowerLevelNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Locking for multi-threaded access to the sensor API<br/>
-		/// If you are using the sensor API or handling events from multiple threads<br/>
-		/// you should use these locking functions to protect access to the sensors.<br/>
-		/// In particular, you are guaranteed that the sensor list won't change, so the<br/>
-		/// API functions that take a sensor index will be valid, and sensor events<br/>
-		/// will not be delivered.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockSensors")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockSensors")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockSensorsNative();
-
-		/// <summary>/// Locking for multi-threaded access to the sensor API<br/>/// If you are using the sensor API or handling events from multiple threads<br/>/// you should use these locking functions to protect access to the sensors.<br/>/// In particular, you are guaranteed that the sensor list won't change, so the<br/>/// API functions that take a sensor index will be valid, and sensor events<br/>/// will not be delivered.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockSensors")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLockSensors()
-		{
-			SDLLockSensorsNative();
-		}
-
-		[NativeName(NativeNameType.Func, "SDL_UnlockSensors")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockSensors")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockSensorsNative();
-
-		[NativeName(NativeNameType.Func, "SDL_UnlockSensors")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnlockSensors()
-		{
-			SDLUnlockSensorsNative();
-		}
-
-		/// <summary>
-		/// Count the number of sensors attached to the system right now.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_NumSensors")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NumSensors")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLNumSensorsNative();
-
-		/// <summary>/// Count the number of sensors attached to the system right now.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NumSensors")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLNumSensors()
-		{
-			int ret = SDLNumSensorsNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetDeviceName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLSensorGetDeviceNameNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the implementation dependent name of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLSensorGetDeviceName([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			byte* ret = SDLSensorGetDeviceNameNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLSensorGetDeviceNameS([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLSensorGetDeviceNameNative(deviceIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetDeviceType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSensorType SDLSensorGetDeviceTypeNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the type of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorType")]
-		public static SDLSensorType SDLSensorGetDeviceType([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLSensorType ret = SDLSensorGetDeviceTypeNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the platform dependent type of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceNonPortableType")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetDeviceNonPortableType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetDeviceNonPortableTypeNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the platform dependent type of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceNonPortableType")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetDeviceNonPortableType([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLSensorGetDeviceNonPortableTypeNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the instance ID of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetDeviceInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetDeviceInstanceIDNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the instance ID of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDeviceInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorID")]
-		public static int SDLSensorGetDeviceInstanceID([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLSensorGetDeviceInstanceIDNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a sensor for use.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Sensor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorOpen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSensor* SDLSensorOpenNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Open a sensor for use.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Sensor*")]
-		public static SDLSensor* SDLSensorOpen([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLSensor* ret = SDLSensorOpenNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Return the SDL_Sensor associated with an instance id.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Sensor*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorFromInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSensor* SDLSensorFromInstanceIDNative([NativeName(NativeNameType.Param, "instance_id")] [NativeName(NativeNameType.Type, "SDL_SensorID")] int instanceId);
-
-		/// <summary>/// Return the SDL_Sensor associated with an instance id.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_Sensor*")]
-		public static SDLSensor* SDLSensorFromInstanceID([NativeName(NativeNameType.Param, "instance_id")] [NativeName(NativeNameType.Type, "SDL_SensorID")] int instanceId)
-		{
-			SDLSensor* ret = SDLSensorFromInstanceIDNative(instanceId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name of a sensor<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLSensorGetNameNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor);
-
-		/// <summary>/// Get the implementation dependent name of a sensor<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLSensorGetName([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			byte* ret = SDLSensorGetNameNative(sensor);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name of a sensor<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLSensorGetNameS([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLSensorGetNameNative(sensor));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSensorType SDLSensorGetTypeNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor);
-
-		/// <summary>/// Get the type of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorType")]
-		public static SDLSensorType SDLSensorGetType([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			SDLSensorType ret = SDLSensorGetTypeNative(sensor);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the platform dependent type of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetNonPortableType")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetNonPortableType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetNonPortableTypeNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor);
-
-		/// <summary>/// Get the platform dependent type of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetNonPortableType")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetNonPortableType([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			int ret = SDLSensorGetNonPortableTypeNative(sensor);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the instance ID of a sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetInstanceIDNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor);
-
-		/// <summary>/// Get the instance ID of a sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_SensorID")]
-		public static int SDLSensorGetInstanceID([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			int ret = SDLSensorGetInstanceIDNative(sensor);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of an opened sensor.<br/>
-		/// The number of values and interpretation of the data is sensor dependent.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetDataNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
-
-		/// <summary>/// Get the current state of an opened sensor.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetData([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			int ret = SDLSensorGetDataNative(sensor, data, numValues);
-			return ret;
-		}
-
-		/// <summary>/// Get the current state of an opened sensor.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetData([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			fixed (float* pdata = &data)
+			fixed (SDLRect* pa = &a)
 			{
-				int ret = SDLSensorGetDataNative(sensor, (float*)pdata, numValues);
+				SDLBool ret = SDLIntersectRectNative((SDLRect*)pa, b, result);
 				return ret;
 			}
 		}
 
-		/// <summary>
-		/// Get the current state of an opened sensor with the timestamp of the last<br/>
-		/// update.<br/>
-		/// The number of values and interpretation of the data is sensor dependent.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorGetDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorGetDataWithTimestamp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSensorGetDataWithTimestampNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
-
-		/// <summary>/// Get the current state of an opened sensor with the timestamp of the last<br/>/// update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetDataWithTimestamp([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			int ret = SDLSensorGetDataWithTimestampNative(sensor, timestamp, data, numValues);
-			return ret;
-		}
-
-		/// <summary>/// Get the current state of an opened sensor with the timestamp of the last<br/>/// update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetDataWithTimestamp([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ref ulong timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			fixed (ulong* ptimestamp = &timestamp)
+			fixed (SDLRect* pb = &b)
 			{
-				int ret = SDLSensorGetDataWithTimestampNative(sensor, (ulong*)ptimestamp, data, numValues);
+				SDLBool ret = SDLIntersectRectNative(a, (SDLRect*)pb, result);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the current state of an opened sensor with the timestamp of the last<br/>/// update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetDataWithTimestamp([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			fixed (float* pdata = &data)
+			fixed (SDLRect* pa = &a)
 			{
-				int ret = SDLSensorGetDataWithTimestampNative(sensor, timestamp, (float*)pdata, numValues);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the current state of an opened sensor with the timestamp of the last<br/>/// update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorGetDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSensorGetDataWithTimestamp([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ref ulong timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			fixed (ulong* ptimestamp = &timestamp)
-			{
-				fixed (float* pdata = &data)
+				fixed (SDLRect* pb = &b)
 				{
-					int ret = SDLSensorGetDataWithTimestampNative(sensor, (ulong*)ptimestamp, (float*)pdata, numValues);
+					SDLBool ret = SDLIntersectRectNative((SDLRect*)pa, (SDLRect*)pb, result);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>
-		/// Close a sensor previously opened with SDL_SensorOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSensorCloseNative([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor);
-
-		/// <summary>/// Close a sensor previously opened with SDL_SensorOpen().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSensorClose([NativeName(NativeNameType.Param, "sensor")] [NativeName(NativeNameType.Type, "SDL_Sensor*")] SDLSensor* sensor)
-		{
-			SDLSensorCloseNative(sensor);
-		}
-
-		/// <summary>
-		/// Update the current state of the open sensors.<br/>
-		/// This is called automatically by the event loop if sensor events are<br/>
-		/// enabled.<br/>
-		/// This needs to be called from the thread that initialized the sensor<br/>
-		/// subsystem.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SensorUpdate")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SensorUpdate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSensorUpdateNative();
-
-		/// <summary>/// Update the current state of the open sensors.<br/>/// This is called automatically by the event loop if sensor events are<br/>/// enabled.<br/>/// This needs to be called from the thread that initialized the sensor<br/>/// subsystem.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SensorUpdate")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSensorUpdate()
-		{
-			SDLSensorUpdateNative();
-		}
-
-		/// <summary>
-		/// Load a set of Game Controller mappings from a seekable SDL data stream.<br/>
-		/// You can call this function several times, if needed, to load different<br/>
-		/// database files.<br/>
-		/// If a new mapping is loaded for an already known controller GUID, the later<br/>
-		/// version will overwrite the one currently loaded.<br/>
-		/// Mappings not belonging to the current platform or with no platform field<br/>
-		/// specified will be ignored (i.e. mappings for Linux will be ignored in<br/>
-		/// Windows, etc).<br/>
-		/// This function will load the text database entirely in memory before<br/>
-		/// processing it, so take this into consideration if you are in a memory<br/>
-		/// constrained environment.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerAddMappingsFromRW")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerAddMappingsFromRW")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerAddMappingsFromRWNative([NativeName(NativeNameType.Param, "rw")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* rw, [NativeName(NativeNameType.Param, "freerw")] [NativeName(NativeNameType.Type, "int")] int freerw);
-
-		/// <summary>/// Load a set of Game Controller mappings from a seekable SDL data stream.<br/>/// You can call this function several times, if needed, to load different<br/>/// database files.<br/>/// If a new mapping is loaded for an already known controller GUID, the later<br/>/// version will overwrite the one currently loaded.<br/>/// Mappings not belonging to the current platform or with no platform field<br/>/// specified will be ignored (i.e. mappings for Linux will be ignored in<br/>/// Windows, etc).<br/>/// This function will load the text database entirely in memory before<br/>/// processing it, so take this into consideration if you are in a memory<br/>/// constrained environment.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerAddMappingsFromRW")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerAddMappingsFromRW([NativeName(NativeNameType.Param, "rw")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* rw, [NativeName(NativeNameType.Param, "freerw")] [NativeName(NativeNameType.Type, "int")] int freerw)
-		{
-			int ret = SDLGameControllerAddMappingsFromRWNative(rw, freerw);
-			return ret;
-		}
-
-		/// <summary>
-		/// Add support for controllers that SDL is unaware of or to cause an existing<br/>
-		/// controller to have a different binding.<br/>
-		/// The mapping string has the format "GUID,name,mapping", where GUID is the<br/>
-		/// string value from SDL_JoystickGetGUIDString(), name is the human readable<br/>
-		/// string for the device and mappings are controller mappings to joystick<br/>
-		/// ones. Under Windows there is a reserved GUID of "xinput" that covers all<br/>
-		/// XInput devices. The mapping format for joystick is: {| |bX |a joystick<br/>
-		/// button, index X |- |hX.Y |hat X with value Y |- |aX |axis X of the joystick<br/>
-		/// |} Buttons can be used as a controller axes and vice versa.<br/>
-		/// This string shows an example of a valid mapping for a controller:<br/>
-		/// ```c<br/>
-		/// "341a3608000000000000504944564944,Afterglow PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"<br/>
-		/// ```<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerAddMapping")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerAddMapping")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerAddMappingNative([NativeName(NativeNameType.Param, "mappingString")] [NativeName(NativeNameType.Type, "const char*")] byte* mappingString);
-
-		/// <summary>/// Add support for controllers that SDL is unaware of or to cause an existing<br/>/// controller to have a different binding.<br/>/// The mapping string has the format "GUID,name,mapping", where GUID is the<br/>/// string value from SDL_JoystickGetGUIDString(), name is the human readable<br/>/// string for the device and mappings are controller mappings to joystick<br/>/// ones. Under Windows there is a reserved GUID of "xinput" that covers all<br/>/// XInput devices. The mapping format for joystick is: {| |bX |a joystick<br/>/// button, index X |- |hX.Y |hat X with value Y |- |aX |axis X of the joystick<br/>/// |} Buttons can be used as a controller axes and vice versa.<br/>/// This string shows an example of a valid mapping for a controller:<br/>/// ```c<br/>/// "341a3608000000000000504944564944,Afterglow PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7"<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerAddMapping")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerAddMapping([NativeName(NativeNameType.Param, "mappingString")] [NativeName(NativeNameType.Type, "const char*")] byte* mappingString)
-		{
-			int ret = SDLGameControllerAddMappingNative(mappingString);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of mappings installed.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerNumMappings")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerNumMappings")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerNumMappingsNative();
-
-		/// <summary>/// Get the number of mappings installed.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerNumMappings")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerNumMappings()
-		{
-			int ret = SDLGameControllerNumMappingsNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the mapping at a particular index.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerMappingForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerMappingForIndexNative([NativeName(NativeNameType.Param, "mapping_index")] [NativeName(NativeNameType.Type, "int")] int mappingIndex);
-
-		/// <summary>/// Get the mapping at a particular index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGameControllerMappingForIndex([NativeName(NativeNameType.Param, "mapping_index")] [NativeName(NativeNameType.Type, "int")] int mappingIndex)
-		{
-			byte* ret = SDLGameControllerMappingForIndexNative(mappingIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the mapping at a particular index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGameControllerMappingForIndexS([NativeName(NativeNameType.Param, "mapping_index")] [NativeName(NativeNameType.Type, "int")] int mappingIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerMappingForIndexNative(mappingIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the game controller mapping string for a given GUID.<br/>
-		/// The returned string must be freed with SDL_free().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForGUID")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerMappingForGUID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerMappingForGUIDNative([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid);
-
-		/// <summary>/// Get the game controller mapping string for a given GUID.<br/>/// The returned string must be freed with SDL_free().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForGUID")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGameControllerMappingForGUID([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid)
-		{
-			byte* ret = SDLGameControllerMappingForGUIDNative(guid);
-			return ret;
-		}
-
-		/// <summary>/// Get the game controller mapping string for a given GUID.<br/>/// The returned string must be freed with SDL_free().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForGUID")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGameControllerMappingForGUIDS([NativeName(NativeNameType.Param, "guid")] [NativeName(NativeNameType.Type, "SDL_JoystickGUID")] Guid guid)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerMappingForGUIDNative(guid));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current mapping of a Game Controller.<br/>
-		/// The returned string must be freed with SDL_free().<br/>
-		/// Details about mappings are discussed with SDL_GameControllerAddMapping().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerMapping")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerMapping")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerMappingNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the current mapping of a Game Controller.<br/>/// The returned string must be freed with SDL_free().<br/>/// Details about mappings are discussed with SDL_GameControllerAddMapping().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMapping")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGameControllerMapping([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			byte* ret = SDLGameControllerMappingNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>/// Get the current mapping of a Game Controller.<br/>/// The returned string must be freed with SDL_free().<br/>/// Details about mappings are discussed with SDL_GameControllerAddMapping().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMapping")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGameControllerMappingS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerMappingNative(gamecontroller));
-			return ret;
-		}
-
-		/// <summary>
-		/// Check if the given joystick is supported by the game controller interface.<br/>
-		/// `joystick_index` is the same as the `device_index` passed to<br/>
-		/// SDL_JoystickOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_IsGameController")]
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_IsGameController")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLIsGameControllerNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Check if the given joystick is supported by the game controller interface.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IsGameController")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLIsGameController([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			SDLBool ret = SDLIsGameControllerNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name for the game controller.<br/>
-		/// This function can be called before any controllers are opened.<br/>
-		/// `joystick_index` is the same as the `device_index` passed to<br/>
-		/// SDL_JoystickOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerNameForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerNameForIndexNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Get the implementation dependent name for the game controller.<br/>/// This function can be called before any controllers are opened.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerNameForIndex([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			byte* ret = SDLGameControllerNameForIndexNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name for the game controller.<br/>/// This function can be called before any controllers are opened.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerNameForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerNameForIndexS([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerNameForIndexNative(joystickIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent path for the game controller.<br/>
-		/// This function can be called before any controllers are opened.<br/>
-		/// `joystick_index` is the same as the `device_index` passed to<br/>
-		/// SDL_JoystickOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerPathForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerPathForIndexNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Get the implementation dependent path for the game controller.<br/>/// This function can be called before any controllers are opened.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerPathForIndex([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			byte* ret = SDLGameControllerPathForIndexNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent path for the game controller.<br/>/// This function can be called before any controllers are opened.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerPathForIndex")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerPathForIndexS([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerPathForIndexNative(joystickIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of a game controller.<br/>
-		/// This can be called before any controllers are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerTypeForIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerTypeForIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerType SDLGameControllerTypeForIndexNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Get the type of a game controller.<br/>/// This can be called before any controllers are opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerTypeForIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerType")]
-		public static SDLGameControllerType SDLGameControllerTypeForIndex([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			SDLGameControllerType ret = SDLGameControllerTypeForIndexNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the mapping of a game controller.<br/>
-		/// This can be called before any controllers are opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForDeviceIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerMappingForDeviceIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerMappingForDeviceIndexNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Get the mapping of a game controller.<br/>/// This can be called before any controllers are opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForDeviceIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGameControllerMappingForDeviceIndex([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			byte* ret = SDLGameControllerMappingForDeviceIndexNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the mapping of a game controller.<br/>/// This can be called before any controllers are opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerMappingForDeviceIndex")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGameControllerMappingForDeviceIndexS([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerMappingForDeviceIndexNative(joystickIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a game controller for use.<br/>
-		/// `joystick_index` is the same as the `device_index` passed to<br/>
-		/// SDL_JoystickOpen().<br/>
-		/// The index passed as an argument refers to the N'th game controller on the<br/>
-		/// system. This index is not the value which will identify this controller in<br/>
-		/// future controller events. The joystick's instance id (SDL_JoystickID) will<br/>
-		/// be used there instead.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerOpen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameController* SDLGameControllerOpenNative([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex);
-
-		/// <summary>/// Open a game controller for use.<br/>/// `joystick_index` is the same as the `device_index` passed to<br/>/// SDL_JoystickOpen().<br/>/// The index passed as an argument refers to the N'th game controller on the<br/>/// system. This index is not the value which will identify this controller in<br/>/// future controller events. The joystick's instance id (SDL_JoystickID) will<br/>/// be used there instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		public static SDLGameController* SDLGameControllerOpen([NativeName(NativeNameType.Param, "joystick_index")] [NativeName(NativeNameType.Type, "int")] int joystickIndex)
-		{
-			SDLGameController* ret = SDLGameControllerOpenNative(joystickIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL_GameController associated with an instance id.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerFromInstanceID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameController* SDLGameControllerFromInstanceIDNative([NativeName(NativeNameType.Param, "joyid")] [NativeName(NativeNameType.Type, "SDL_JoystickID")] int joyid);
-
-		/// <summary>/// Get the SDL_GameController associated with an instance id.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerFromInstanceID")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		public static SDLGameController* SDLGameControllerFromInstanceID([NativeName(NativeNameType.Param, "joyid")] [NativeName(NativeNameType.Type, "SDL_JoystickID")] int joyid)
-		{
-			SDLGameController* ret = SDLGameControllerFromInstanceIDNative(joyid);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL_GameController associated with a player index.<br/>
-		/// Please note that the player index is _not_ the device index, nor is it the<br/>
-		/// instance id!<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerFromPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerFromPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameController* SDLGameControllerFromPlayerIndexNative([NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex);
-
-		/// <summary>/// Get the SDL_GameController associated with a player index.<br/>/// Please note that the player index is _not_ the device index, nor is it the<br/>/// instance id!<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerFromPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameController*")]
-		public static SDLGameController* SDLGameControllerFromPlayerIndex([NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex)
-		{
-			SDLGameController* ret = SDLGameControllerFromPlayerIndexNative(playerIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation-dependent name for an opened game controller.<br/>
-		/// This is the same name as returned by SDL_GameControllerNameForIndex(), but<br/>
-		/// it takes a controller identifier instead of the (unstable) device index.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerNameNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the implementation-dependent name for an opened game controller.<br/>/// This is the same name as returned by SDL_GameControllerNameForIndex(), but<br/>/// it takes a controller identifier instead of the (unstable) device index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerName([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			byte* ret = SDLGameControllerNameNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation-dependent name for an opened game controller.<br/>/// This is the same name as returned by SDL_GameControllerNameForIndex(), but<br/>/// it takes a controller identifier instead of the (unstable) device index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerNameS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerNameNative(gamecontroller));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation-dependent path for an opened game controller.<br/>
-		/// This is the same path as returned by SDL_GameControllerNameForIndex(), but<br/>
-		/// it takes a controller identifier instead of the (unstable) device index.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerPath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerPathNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the implementation-dependent path for an opened game controller.<br/>/// This is the same path as returned by SDL_GameControllerNameForIndex(), but<br/>/// it takes a controller identifier instead of the (unstable) device index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerPath([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			byte* ret = SDLGameControllerPathNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation-dependent path for an opened game controller.<br/>/// This is the same path as returned by SDL_GameControllerNameForIndex(), but<br/>/// it takes a controller identifier instead of the (unstable) device index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerPath")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerPathS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerPathNative(gamecontroller));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of this currently opened controller<br/>
-		/// This is the same name as returned by SDL_GameControllerTypeForIndex(), but<br/>
-		/// it takes a controller identifier instead of the (unstable) device index.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerType SDLGameControllerGetTypeNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the type of this currently opened controller<br/>/// This is the same name as returned by SDL_GameControllerTypeForIndex(), but<br/>/// it takes a controller identifier instead of the (unstable) device index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetType")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerType")]
-		public static SDLGameControllerType SDLGameControllerGetType([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLGameControllerType ret = SDLGameControllerGetTypeNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the player index of an opened game controller.<br/>
-		/// For XInput controllers this returns the XInput user index.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetPlayerIndexNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the player index of an opened game controller.<br/>/// For XInput controllers this returns the XInput user index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetPlayerIndex([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			int ret = SDLGameControllerGetPlayerIndexNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the player index of an opened game controller.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerSetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSetPlayerIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGameControllerSetPlayerIndexNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex);
-
-		/// <summary>/// Set the player index of an opened game controller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSetPlayerIndex")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGameControllerSetPlayerIndex([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "player_index")] [NativeName(NativeNameType.Type, "int")] int playerIndex)
-		{
-			SDLGameControllerSetPlayerIndexNative(gamecontroller, playerIndex);
-		}
-
-		/// <summary>
-		/// Get the USB vendor ID of an opened controller, if available.<br/>
-		/// If the vendor ID isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetVendor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLGameControllerGetVendorNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the USB vendor ID of an opened controller, if available.<br/>/// If the vendor ID isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetVendor")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLGameControllerGetVendor([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			ushort ret = SDLGameControllerGetVendorNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the USB product ID of an opened controller, if available.<br/>
-		/// If the product ID isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetProduct")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLGameControllerGetProductNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the USB product ID of an opened controller, if available.<br/>/// If the product ID isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetProduct")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLGameControllerGetProduct([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			ushort ret = SDLGameControllerGetProductNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the product version of an opened controller, if available.<br/>
-		/// If the product version isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetProductVersion")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLGameControllerGetProductVersionNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the product version of an opened controller, if available.<br/>/// If the product version isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetProductVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLGameControllerGetProductVersion([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			ushort ret = SDLGameControllerGetProductVersionNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the firmware version of an opened controller, if available.<br/>
-		/// If the firmware version isn't available this function returns 0.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetFirmwareVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetFirmwareVersion")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLGameControllerGetFirmwareVersionNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the firmware version of an opened controller, if available.<br/>/// If the firmware version isn't available this function returns 0.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetFirmwareVersion")]
-		[return: NativeName(NativeNameType.Type, "Uint16")]
-		public static ushort SDLGameControllerGetFirmwareVersion([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			ushort ret = SDLGameControllerGetFirmwareVersionNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the serial number of an opened controller, if available.<br/>
-		/// Returns the serial number of the controller, or NULL if it is not<br/>
-		/// available.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSerial")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetSerialNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the serial number of an opened controller, if available.<br/>/// Returns the serial number of the controller, or NULL if it is not<br/>/// available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerGetSerial([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			byte* ret = SDLGameControllerGetSerialNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>/// Get the serial number of an opened controller, if available.<br/>/// Returns the serial number of the controller, or NULL if it is not<br/>/// available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSerial")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerGetSerialS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerGetSerialNative(gamecontroller));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the Steam Input handle of an opened controller, if available.<br/>
-		/// Returns an InputHandle_t for the controller that can be used with Steam Input API:<br/>
-		/// https://partner.steamgames.com/doc/api/ISteamInput<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSteamHandle")]
-		[return: NativeName(NativeNameType.Type, "Uint64")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSteamHandle")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLGameControllerGetSteamHandleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the Steam Input handle of an opened controller, if available.<br/>/// Returns an InputHandle_t for the controller that can be used with Steam Input API:<br/>/// https://partner.steamgames.com/doc/api/ISteamInput<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSteamHandle")]
-		[return: NativeName(NativeNameType.Type, "Uint64")]
-		public static ulong SDLGameControllerGetSteamHandle([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			ulong ret = SDLGameControllerGetSteamHandleNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Check if a controller has been opened and is currently connected.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAttached")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAttached")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerGetAttachedNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Check if a controller has been opened and is currently connected.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAttached")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerGetAttached([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLBool ret = SDLGameControllerGetAttachedNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the Joystick ID from a Game Controller.<br/>
-		/// This function will give you a SDL_Joystick object, which allows you to use<br/>
-		/// the SDL_Joystick functions with a SDL_GameController object. This would be<br/>
-		/// useful for getting a joystick's position at any given time, even if it<br/>
-		/// hasn't moved (moving it would produce an event, which would have the axis'<br/>
-		/// value).<br/>
-		/// The pointer returned is owned by the SDL_GameController. You should not<br/>
-		/// call SDL_JoystickClose() on it, for example, since doing so will likely<br/>
-		/// cause SDL to crash.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetJoystick")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetJoystick")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLJoystick* SDLGameControllerGetJoystickNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the Joystick ID from a Game Controller.<br/>/// This function will give you a SDL_Joystick object, which allows you to use<br/>/// the SDL_Joystick functions with a SDL_GameController object. This would be<br/>/// useful for getting a joystick's position at any given time, even if it<br/>/// hasn't moved (moving it would produce an event, which would have the axis'<br/>/// value).<br/>/// The pointer returned is owned by the SDL_GameController. You should not<br/>/// call SDL_JoystickClose() on it, for example, since doing so will likely<br/>/// cause SDL to crash.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetJoystick")]
-		[return: NativeName(NativeNameType.Type, "SDL_Joystick*")]
-		public static SDLJoystick* SDLGameControllerGetJoystick([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLJoystick* ret = SDLGameControllerGetJoystickNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query or change current state of Game Controller events.<br/>
-		/// If controller events are disabled, you must call SDL_GameControllerUpdate()<br/>
-		/// yourself and check the state of the controller when you want controller<br/>
-		/// information.<br/>
-		/// Any number can be passed to SDL_GameControllerEventState(), but only -1, 0,<br/>
-		/// and 1 will have any effect. Other numbers will just be returned.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerEventState")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerEventState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerEventStateNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state);
-
-		/// <summary>/// Query or change current state of Game Controller events.<br/>/// If controller events are disabled, you must call SDL_GameControllerUpdate()<br/>/// yourself and check the state of the controller when you want controller<br/>/// information.<br/>/// Any number can be passed to SDL_GameControllerEventState(), but only -1, 0,<br/>/// and 1 will have any effect. Other numbers will just be returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerEventState")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerEventState([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state)
-		{
-			int ret = SDLGameControllerEventStateNative(state);
-			return ret;
-		}
-
-		/// <summary>
-		/// Manually pump game controller updates if not using the loop.<br/>
-		/// This function is called automatically by the event loop if events are<br/>
-		/// enabled. Under such circumstances, it will not be necessary to call this<br/>
-		/// function.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerUpdate")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerUpdate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGameControllerUpdateNative();
-
-		/// <summary>/// Manually pump game controller updates if not using the loop.<br/>/// This function is called automatically by the event loop if events are<br/>/// enabled. Under such circumstances, it will not be necessary to call this<br/>/// function.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerUpdate")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGameControllerUpdate()
-		{
-			SDLGameControllerUpdateNative();
-		}
-
-		/// <summary>
-		/// Convert a string into SDL_GameControllerAxis enum.<br/>
-		/// This function is called internally to translate SDL_GameController mapping<br/>
-		/// strings for the underlying joystick device into the consistent<br/>
-		/// SDL_GameController mapping. You do not normally need to call this function<br/>
-		/// unless you are parsing SDL_GameController mappings in your own code.<br/>
-		/// Note specially that "righttrigger" and "lefttrigger" map to<br/>
-		/// `SDL_CONTROLLER_AXIS_TRIGGERRIGHT` and `SDL_CONTROLLER_AXIS_TRIGGERLEFT`,<br/>
-		/// respectively.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAxisFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerAxis")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAxisFromString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerAxis SDLGameControllerGetAxisFromStringNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
-
-		/// <summary>/// Convert a string into SDL_GameControllerAxis enum.<br/>/// This function is called internally to translate SDL_GameController mapping<br/>/// strings for the underlying joystick device into the consistent<br/>/// SDL_GameController mapping. You do not normally need to call this function<br/>/// unless you are parsing SDL_GameController mappings in your own code.<br/>/// Note specially that "righttrigger" and "lefttrigger" map to<br/>/// `SDL_CONTROLLER_AXIS_TRIGGERRIGHT` and `SDL_CONTROLLER_AXIS_TRIGGERLEFT`,<br/>/// respectively.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAxisFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerAxis")]
-		public static SDLGameControllerAxis SDLGameControllerGetAxisFromString([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
-		{
-			SDLGameControllerAxis ret = SDLGameControllerGetAxisFromStringNative(str);
-			return ret;
-		}
-
-		/// <summary>
-		/// Convert from an SDL_GameControllerAxis enum to a string.<br/>
-		/// The caller should not SDL_free() the returned string.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetStringForAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetStringForAxisNative([NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
-		/// <summary>/// Convert from an SDL_GameControllerAxis enum to a string.<br/>/// The caller should not SDL_free() the returned string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerGetStringForAxis([NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			byte* ret = SDLGameControllerGetStringForAxisNative(axis);
-			return ret;
-		}
-
-		/// <summary>/// Convert from an SDL_GameControllerAxis enum to a string.<br/>/// The caller should not SDL_free() the returned string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerGetStringForAxisS([NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerGetStringForAxisNative(axis));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL joystick layer binding for a controller axis mapping.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetBindForAxis")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButtonBind")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetBindForAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerButtonBind SDLGameControllerGetBindForAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
-		/// <summary>/// Get the SDL joystick layer binding for a controller axis mapping.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetBindForAxis")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButtonBind")]
-		public static SDLGameControllerButtonBind SDLGameControllerGetBindForAxis([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			SDLGameControllerButtonBind ret = SDLGameControllerGetBindForAxisNative(gamecontroller, axis);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a game controller has a given axis.<br/>
-		/// This merely reports whether the controller's mapping defined this axis, as<br/>
-		/// that is all the information SDL has about the physical device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasAxis")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
-		/// <summary>/// Query whether a game controller has a given axis.<br/>/// This merely reports whether the controller's mapping defined this axis, as<br/>/// that is all the information SDL has about the physical device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasAxis")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasAxis([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			SDLBool ret = SDLGameControllerHasAxisNative(gamecontroller, axis);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of an axis control on a game controller.<br/>
-		/// The axis indices start at index 0.<br/>
-		/// For thumbsticks, the state is a value ranging from -32768 (up/left)<br/>
-		/// to 32767 (down/right).<br/>
-		/// Triggers range from 0 when released to 32767 when fully pressed, and<br/>
-		/// never return a negative value. Note that this differs from the value<br/>
-		/// reported by the lower-level SDL_GetJoystickAxis(), which normally uses<br/>
-		/// the full range.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAxis")]
-		[return: NativeName(NativeNameType.Type, "Sint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial short SDLGameControllerGetAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
-		/// <summary>/// Get the current state of an axis control on a game controller.<br/>/// The axis indices start at index 0.<br/>/// For thumbsticks, the state is a value ranging from -32768 (up/left)<br/>/// to 32767 (down/right).<br/>/// Triggers range from 0 when released to 32767 when fully pressed, and<br/>/// never return a negative value. Note that this differs from the value<br/>/// reported by the lower-level SDL_GetJoystickAxis(), which normally uses<br/>/// the full range.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAxis")]
-		[return: NativeName(NativeNameType.Type, "Sint16")]
-		public static short SDLGameControllerGetAxis([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			short ret = SDLGameControllerGetAxisNative(gamecontroller, axis);
-			return ret;
-		}
-
-		/// <summary>
-		/// Convert a string into an SDL_GameControllerButton enum.<br/>
-		/// This function is called internally to translate SDL_GameController mapping<br/>
-		/// strings for the underlying joystick device into the consistent<br/>
-		/// SDL_GameController mapping. You do not normally need to call this function<br/>
-		/// unless you are parsing SDL_GameController mappings in your own code.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetButtonFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButton")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetButtonFromString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerButton SDLGameControllerGetButtonFromStringNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
-
-		/// <summary>/// Convert a string into an SDL_GameControllerButton enum.<br/>/// This function is called internally to translate SDL_GameController mapping<br/>/// strings for the underlying joystick device into the consistent<br/>/// SDL_GameController mapping. You do not normally need to call this function<br/>/// unless you are parsing SDL_GameController mappings in your own code.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetButtonFromString")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButton")]
-		public static SDLGameControllerButton SDLGameControllerGetButtonFromString([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
-		{
-			SDLGameControllerButton ret = SDLGameControllerGetButtonFromStringNative(str);
-			return ret;
-		}
-
-		/// <summary>
-		/// Convert from an SDL_GameControllerButton enum to a string.<br/>
-		/// The caller should not SDL_free() the returned string.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetStringForButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetStringForButtonNative([NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
-		/// <summary>/// Convert from an SDL_GameControllerButton enum to a string.<br/>/// The caller should not SDL_free() the returned string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerGetStringForButton([NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			byte* ret = SDLGameControllerGetStringForButtonNative(button);
-			return ret;
-		}
-
-		/// <summary>/// Convert from an SDL_GameControllerButton enum to a string.<br/>/// The caller should not SDL_free() the returned string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetStringForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerGetStringForButtonS([NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerGetStringForButtonNative(button));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the SDL joystick layer binding for a controller button mapping.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetBindForButton")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButtonBind")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetBindForButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLGameControllerButtonBind SDLGameControllerGetBindForButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
-		/// <summary>/// Get the SDL joystick layer binding for a controller button mapping.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetBindForButton")]
-		[return: NativeName(NativeNameType.Type, "SDL_GameControllerButtonBind")]
-		public static SDLGameControllerButtonBind SDLGameControllerGetBindForButton([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			SDLGameControllerButtonBind ret = SDLGameControllerGetBindForButtonNative(gamecontroller, button);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a game controller has a given button.<br/>
-		/// This merely reports whether the controller's mapping defined this button,<br/>
-		/// as that is all the information SDL has about the physical device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasButton")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
-		/// <summary>/// Query whether a game controller has a given button.<br/>/// This merely reports whether the controller's mapping defined this button,<br/>/// as that is all the information SDL has about the physical device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasButton")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasButton([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			SDLBool ret = SDLGameControllerHasButtonNative(gamecontroller, button);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of a button on a game controller.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetButton")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLGameControllerGetButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
-		/// <summary>/// Get the current state of a button on a game controller.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetButton")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		public static byte SDLGameControllerGetButton([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			byte ret = SDLGameControllerGetButtonNative(gamecontroller, button);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of touchpads on a game controller.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetNumTouchpads")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetNumTouchpads")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetNumTouchpadsNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Get the number of touchpads on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetNumTouchpads")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetNumTouchpads([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			int ret = SDLGameControllerGetNumTouchpadsNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of supported simultaneous fingers on a touchpad on a game<br/>
-		/// controller.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetNumTouchpadFingers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetNumTouchpadFingers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetNumTouchpadFingersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad);
-
-		/// <summary>/// Get the number of supported simultaneous fingers on a touchpad on a game<br/>/// controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetNumTouchpadFingers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetNumTouchpadFingers([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad)
-		{
-			int ret = SDLGameControllerGetNumTouchpadFingersNative(gamecontroller, touchpad);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of a finger on a touchpad on a game controller.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetTouchpadFinger")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetTouchpadFingerNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure);
-
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
-		{
-			int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, x, y, pressure);
-			return ret;
-		}
-
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
-		{
-			fixed (byte* pstate = &state)
+			fixed (SDLRect* presult = &result)
 			{
-				int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, x, y, pressure);
+				SDLBool ret = SDLIntersectRectNative(a, b, (SDLRect*)presult);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			fixed (float* px = &x)
+			fixed (SDLRect* pa = &a)
 			{
-				int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, (float*)px, y, pressure);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
-		{
-			fixed (byte* pstate = &state)
-			{
-				fixed (float* px = &x)
+				fixed (SDLRect* presult = &result)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, (float*)px, y, pressure);
+					SDLBool ret = SDLIntersectRectNative((SDLRect*)pa, b, (SDLRect*)presult);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			fixed (float* py = &y)
+			fixed (SDLRect* pb = &b)
 			{
-				int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, x, (float*)py, pressure);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
-		{
-			fixed (byte* pstate = &state)
-			{
-				fixed (float* py = &y)
+				fixed (SDLRect* presult = &result)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, x, (float*)py, pressure);
+					SDLBool ret = SDLIntersectRectNative(a, (SDLRect*)pb, (SDLRect*)presult);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
+		/// <summary>/// Calculate the intersection of two rectangles.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			fixed (float* px = &x)
+			fixed (SDLRect* pa = &a)
 			{
-				fixed (float* py = &y)
+				fixed (SDLRect* pb = &b)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, (float*)px, (float*)py, pressure);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] float* pressure)
-		{
-			fixed (byte* pstate = &state)
-			{
-				fixed (float* px = &x)
-				{
-					fixed (float* py = &y)
+					fixed (SDLRect* presult = &result)
 					{
-						int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, (float*)px, (float*)py, pressure);
+						SDLBool ret = SDLIntersectRectNative((SDLRect*)pa, (SDLRect*)pb, (SDLRect*)presult);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>
+		/// Calculate the union of two rectangles.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnionRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLUnionRectNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result);
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			fixed (float* ppressure = &pressure)
+			SDLUnionRectNative(a, b, result);
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			fixed (SDLRect* pa = &a)
 			{
-				int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, x, y, (float*)ppressure);
+				SDLUnionRectNative((SDLRect*)pa, b, result);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			fixed (SDLRect* pb = &b)
+			{
+				SDLUnionRectNative(a, (SDLRect*)pb, result);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			fixed (SDLRect* pa = &a)
+			{
+				fixed (SDLRect* pb = &b)
+				{
+					SDLUnionRectNative((SDLRect*)pa, (SDLRect*)pb, result);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLRect* presult = &result)
+			{
+				SDLUnionRectNative(a, b, (SDLRect*)presult);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLRect* pa = &a)
+			{
+				fixed (SDLRect* presult = &result)
+				{
+					SDLUnionRectNative((SDLRect*)pa, b, (SDLRect*)presult);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLRect* pb = &b)
+			{
+				fixed (SDLRect* presult = &result)
+				{
+					SDLUnionRectNative(a, (SDLRect*)pb, (SDLRect*)presult);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLRect* pa = &a)
+			{
+				fixed (SDLRect* pb = &b)
+				{
+					fixed (SDLRect* presult = &result)
+					{
+						SDLUnionRectNative((SDLRect*)pa, (SDLRect*)pb, (SDLRect*)presult);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Calculate a minimal rectangle enclosing a set of points.<br/>
+		/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>
+		/// considered.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_EnclosePoints")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLEnclosePointsNative([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result);
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			SDLBool ret = SDLEnclosePointsNative(points, count, clip, result);
+			return ret;
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			fixed (SDLPoint* ppoints = &points)
+			{
+				SDLBool ret = SDLEnclosePointsNative((SDLPoint*)ppoints, count, clip, result);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
 		{
-			fixed (byte* pstate = &state)
+			fixed (SDLRect* pclip = &clip)
 			{
-				fixed (float* ppressure = &pressure)
+				SDLBool ret = SDLEnclosePointsNative(points, count, (SDLRect*)pclip, result);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* result)
+		{
+			fixed (SDLPoint* ppoints = &points)
+			{
+				fixed (SDLRect* pclip = &clip)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, x, y, (float*)ppressure);
+					SDLBool ret = SDLEnclosePointsNative((SDLPoint*)ppoints, count, (SDLRect*)pclip, result);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			fixed (float* px = &x)
+			fixed (SDLRect* presult = &result)
 			{
-				fixed (float* ppressure = &pressure)
+				SDLBool ret = SDLEnclosePointsNative(points, count, clip, (SDLRect*)presult);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLPoint* ppoints = &points)
+			{
+				fixed (SDLRect* presult = &result)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, (float*)px, y, (float*)ppressure);
+					SDLBool ret = SDLEnclosePointsNative((SDLPoint*)ppoints, count, clip, (SDLRect*)presult);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] float* y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
 		{
-			fixed (byte* pstate = &state)
+			fixed (SDLRect* pclip = &clip)
 			{
-				fixed (float* px = &x)
+				fixed (SDLRect* presult = &result)
 				{
-					fixed (float* ppressure = &pressure)
+					SDLBool ret = SDLEnclosePointsNative(points, count, (SDLRect*)pclip, (SDLRect*)presult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EnclosePoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEnclosePoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect result)
+		{
+			fixed (SDLPoint* ppoints = &points)
+			{
+				fixed (SDLRect* pclip = &clip)
+				{
+					fixed (SDLRect* presult = &result)
 					{
-						int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, (float*)px, y, (float*)ppressure);
+						SDLBool ret = SDLEnclosePointsNative((SDLPoint*)ppoints, count, (SDLRect*)pclip, (SDLRect*)presult);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>
+		/// Calculate the intersection of a rectangle and line segment.<br/>
+		/// This function is used to clip a line segment to a rectangle. A line segment<br/>
+		/// contained entirely within the rectangle or that does not intersect will<br/>
+		/// remain unchanged. A line segment that crosses the rectangle at either or<br/>
+		/// both ends will be clipped to the boundary of the rectangle and the new<br/>
+		/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_IntersectRectAndLine")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLIntersectRectAndLineNative([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2);
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
 		{
-			fixed (float* py = &y)
+			SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, y1, x2, y2);
+			return ret;
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
 			{
-				fixed (float* ppressure = &pressure)
+				SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, y1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, y1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
 				{
-					int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, x, (float*)py, (float*)ppressure);
+					SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, y1, x2, y2);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] float* x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
 		{
-			fixed (byte* pstate = &state)
+			fixed (int* py1 = &y1)
 			{
-				fixed (float* py = &y)
+				SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, (int*)py1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* py1 = &y1)
 				{
-					fixed (float* ppressure = &pressure)
+					SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, (int*)py1, x2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* py1 = &y1)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, (int*)py1, x2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* py1 = &y1)
 					{
-						int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, x, (float*)py, (float*)ppressure);
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, (int*)py1, x2, y2);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
 		{
-			fixed (float* px = &x)
+			fixed (int* px2 = &x2)
 			{
-				fixed (float* py = &y)
+				SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, y1, (int*)px2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px2 = &x2)
 				{
-					fixed (float* ppressure = &pressure)
+					SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, y1, (int*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* px2 = &x2)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, y1, (int*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* px2 = &x2)
 					{
-						int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, (float*)px, (float*)py, (float*)ppressure);
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, y1, (int*)px2, y2);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
 		{
-			fixed (byte* pstate = &state)
+			fixed (int* py1 = &y1)
 			{
-				fixed (float* px = &x)
+				fixed (int* px2 = &x2)
 				{
-					fixed (float* py = &y)
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, (int*)py1, (int*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* px2 = &x2)
 					{
-						fixed (float* ppressure = &pressure)
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, (int*)py1, (int*)px2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* px2 = &x2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, (int*)py1, (int*)px2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] int* y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* py1 = &y1)
+					{
+						fixed (int* px2 = &x2)
 						{
-							int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, (float*)px, (float*)py, (float*)ppressure);
+							SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, (int*)py1, (int*)px2, y2);
 							return ret;
 						}
 					}
@@ -3481,156 +1154,1990 @@ namespace Hexa.NET.SDL2
 			}
 		}
 
-		/// <summary>
-		/// Return whether a game controller has a particular sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasSensor")]
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasSensor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasSensorNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type);
-
-		/// <summary>/// Return whether a game controller has a particular sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasSensor")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasSensor([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
 		{
-			SDLBool ret = SDLGameControllerHasSensorNative(gamecontroller, type);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set whether data reporting for a game controller sensor is enabled.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerSetSensorEnabled")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSetSensorEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSetSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled);
-
-		/// <summary>/// Set whether data reporting for a game controller sensor is enabled.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSetSensorEnabled")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerSetSensorEnabled([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled)
-		{
-			int ret = SDLGameControllerSetSensorEnabledNative(gamecontroller, type, enabled);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether sensor data reporting is enabled for a game controller.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerIsSensorEnabled")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerIsSensorEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerIsSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type);
-
-		/// <summary>/// Query whether sensor data reporting is enabled for a game controller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerIsSensorEnabled")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerIsSensorEnabled([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
-		{
-			SDLBool ret = SDLGameControllerIsSensorEnabledNative(gamecontroller, type);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the data rate (number of events per second) of a game controller<br/>
-		/// sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataRate")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorDataRate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial float SDLGameControllerGetSensorDataRateNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type);
-
-		/// <summary>/// Get the data rate (number of events per second) of a game controller<br/>/// sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataRate")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float SDLGameControllerGetSensorDataRate([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
-		{
-			float ret = SDLGameControllerGetSensorDataRateNative(gamecontroller, type);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the current state of a game controller sensor.<br/>
-		/// The number of values and interpretation of the data is sensor dependent.<br/>
-		/// See SDL_sensor.h for the details for each type of sensor.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetSensorDataNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
-
-		/// <summary>/// Get the current state of a game controller sensor.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorData([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			int ret = SDLGameControllerGetSensorDataNative(gamecontroller, type, data, numValues);
-			return ret;
-		}
-
-		/// <summary>/// Get the current state of a game controller sensor.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorData")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorData([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
-		{
-			fixed (float* pdata = &data)
+			fixed (int* py2 = &y2)
 			{
-				int ret = SDLGameControllerGetSensorDataNative(gamecontroller, type, (float*)pdata, numValues);
+				SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, y1, x2, (int*)py2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, y1, x2, (int*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, y1, x2, (int*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, y1, x2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* py1 = &y1)
+			{
+				fixed (int* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, (int*)py1, x2, (int*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, (int*)py1, x2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, (int*)py1, x2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] int* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* py1 = &y1)
+					{
+						fixed (int* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, (int*)py1, x2, (int*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* px2 = &x2)
+			{
+				fixed (int* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, y1, (int*)px2, (int*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px2 = &x2)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, y1, (int*)px2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* px2 = &x2)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, y1, (int*)px2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] int* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* px2 = &x2)
+					{
+						fixed (int* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, y1, (int*)px2, (int*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* py1 = &y1)
+			{
+				fixed (int* px2 = &x2)
+				{
+					fixed (int* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectRectAndLineNative(rect, x1, (int*)py1, (int*)px2, (int*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] int* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* px2 = &x2)
+					{
+						fixed (int* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, x1, (int*)py1, (int*)px2, (int*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (int* px1 = &x1)
+			{
+				fixed (int* py1 = &y1)
+				{
+					fixed (int* px2 = &x2)
+					{
+						fixed (int* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectRectAndLineNative(rect, (int*)px1, (int*)py1, (int*)px2, (int*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "int*")] ref int x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "int*")] ref int y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "int*")] ref int x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "int*")] ref int y2)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				fixed (int* px1 = &x1)
+				{
+					fixed (int* py1 = &y1)
+					{
+						fixed (int* px2 = &x2)
+						{
+							fixed (int* py2 = &y2)
+							{
+								SDLBool ret = SDLIntersectRectAndLineNative((SDLRect*)prect, (int*)px1, (int*)py1, (int*)px2, (int*)py2);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Determine whether two rectangles intersect with float precision.<br/>
+		/// If either pointer is NULL the function will return SDL_FALSE.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasIntersectionF")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasIntersectionF")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasIntersectionFNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b);
+
+		/// <summary>/// Determine whether two rectangles intersect with float precision.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersectionF")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersectionF([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b)
+		{
+			SDLBool ret = SDLHasIntersectionFNative(a, b);
+			return ret;
+		}
+
+		/// <summary>/// Determine whether two rectangles intersect with float precision.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersectionF")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersectionF([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				SDLBool ret = SDLHasIntersectionFNative((SDLFRect*)pa, b);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Determine whether two rectangles intersect with float precision.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersectionF")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersectionF([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b)
+		{
+			fixed (SDLFRect* pb = &b)
+			{
+				SDLBool ret = SDLHasIntersectionFNative(a, (SDLFRect*)pb);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Determine whether two rectangles intersect with float precision.<br/>/// If either pointer is NULL the function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasIntersectionF")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasIntersectionF([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* pb = &b)
+				{
+					SDLBool ret = SDLHasIntersectionFNative((SDLFRect*)pa, (SDLFRect*)pb);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Calculate the intersection of two rectangles with float precision.<br/>
+		/// If `result` is NULL then this function will return SDL_FALSE.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_IntersectFRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLIntersectFRectNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result);
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			SDLBool ret = SDLIntersectFRectNative(a, b, result);
+			return ret;
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				SDLBool ret = SDLIntersectFRectNative((SDLFRect*)pa, b, result);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pb = &b)
+			{
+				SDLBool ret = SDLIntersectFRectNative(a, (SDLFRect*)pb, result);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* pb = &b)
+				{
+					SDLBool ret = SDLIntersectFRectNative((SDLFRect*)pa, (SDLFRect*)pb, result);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* presult = &result)
+			{
+				SDLBool ret = SDLIntersectFRectNative(a, b, (SDLFRect*)presult);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLBool ret = SDLIntersectFRectNative((SDLFRect*)pa, b, (SDLFRect*)presult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pb = &b)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLBool ret = SDLIntersectFRectNative(a, (SDLFRect*)pb, (SDLFRect*)presult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of two rectangles with float precision.<br/>/// If `result` is NULL then this function will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* pb = &b)
+				{
+					fixed (SDLFRect* presult = &result)
+					{
+						SDLBool ret = SDLIntersectFRectNative((SDLFRect*)pa, (SDLFRect*)pb, (SDLFRect*)presult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Calculate the union of two rectangles with float precision.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnionFRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLUnionFRectNative([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result);
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			SDLUnionFRectNative(a, b, result);
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				SDLUnionFRectNative((SDLFRect*)pa, b, result);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pb = &b)
+			{
+				SDLUnionFRectNative(a, (SDLFRect*)pb, result);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* pb = &b)
+				{
+					SDLUnionFRectNative((SDLFRect*)pa, (SDLFRect*)pb, result);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* presult = &result)
+			{
+				SDLUnionFRectNative(a, b, (SDLFRect*)presult);
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLUnionFRectNative((SDLFRect*)pa, b, (SDLFRect*)presult);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pb = &b)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLUnionFRectNative(a, (SDLFRect*)pb, (SDLFRect*)presult);
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the union of two rectangles with float precision.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnionFRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnionFRect([NativeName(NativeNameType.Param, "A")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect a, [NativeName(NativeNameType.Param, "B")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect b, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pa = &a)
+			{
+				fixed (SDLFRect* pb = &b)
+				{
+					fixed (SDLFRect* presult = &result)
+					{
+						SDLUnionFRectNative((SDLFRect*)pa, (SDLFRect*)pb, (SDLFRect*)presult);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Calculate a minimal rectangle enclosing a set of points with float<br/>
+		/// precision.<br/>
+		/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>
+		/// considered.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_EncloseFPoints")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLEncloseFPointsNative([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result);
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			SDLBool ret = SDLEncloseFPointsNative(points, count, clip, result);
+			return ret;
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFPoint* ppoints = &points)
+			{
+				SDLBool ret = SDLEncloseFPointsNative((SDLFPoint*)ppoints, count, clip, result);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFRect* pclip = &clip)
+			{
+				SDLBool ret = SDLEncloseFPointsNative(points, count, (SDLFRect*)pclip, result);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] SDLFRect* result)
+		{
+			fixed (SDLFPoint* ppoints = &points)
+			{
+				fixed (SDLFRect* pclip = &clip)
+				{
+					SDLBool ret = SDLEncloseFPointsNative((SDLFPoint*)ppoints, count, (SDLFRect*)pclip, result);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* presult = &result)
+			{
+				SDLBool ret = SDLEncloseFPointsNative(points, count, clip, (SDLFRect*)presult);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFPoint* ppoints = &points)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLBool ret = SDLEncloseFPointsNative((SDLFPoint*)ppoints, count, clip, (SDLFRect*)presult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] SDLFPoint* points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFRect* pclip = &clip)
+			{
+				fixed (SDLFRect* presult = &result)
+				{
+					SDLBool ret = SDLEncloseFPointsNative(points, count, (SDLFRect*)pclip, (SDLFRect*)presult);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate a minimal rectangle enclosing a set of points with float<br/>/// precision.<br/>/// If `clip` is not NULL then only points inside of the clipping rectangle are<br/>/// considered.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EncloseFPoints")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLEncloseFPoints([NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const SDL_FPoint*")] ref SDLFPoint points, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "clip")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect clip, [NativeName(NativeNameType.Param, "result")] [NativeName(NativeNameType.Type, "SDL_FRect*")] ref SDLFRect result)
+		{
+			fixed (SDLFPoint* ppoints = &points)
+			{
+				fixed (SDLFRect* pclip = &clip)
+				{
+					fixed (SDLFRect* presult = &result)
+					{
+						SDLBool ret = SDLEncloseFPointsNative((SDLFPoint*)ppoints, count, (SDLFRect*)pclip, (SDLFRect*)presult);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Calculate the intersection of a rectangle and line segment with float<br/>
+		/// precision.<br/>
+		/// This function is used to clip a line segment to a rectangle. A line segment<br/>
+		/// contained entirely within the rectangle or that does not intersect will<br/>
+		/// remain unchanged. A line segment that crosses the rectangle at either or<br/>
+		/// both ends will be clipped to the boundary of the rectangle and the new<br/>
+		/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_IntersectFRectAndLine")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLIntersectFRectAndLineNative([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2);
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, y1, x2, y2);
+			return ret;
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, y1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, y1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, y1, x2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* py1 = &y1)
+			{
+				SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, (float*)py1, x2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* py1 = &y1)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, (float*)py1, x2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* py1 = &y1)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, (float*)py1, x2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* py1 = &y1)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, (float*)py1, x2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* px2 = &x2)
+			{
+				SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, y1, (float*)px2, y2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px2 = &x2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, y1, (float*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* px2 = &x2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, y1, (float*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, y1, (float*)px2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* py1 = &y1)
+			{
+				fixed (float* px2 = &x2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, (float*)py1, (float*)px2, y2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, (float*)py1, (float*)px2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, (float*)py1, (float*)px2, y2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] float* y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* py1 = &y1)
+					{
+						fixed (float* px2 = &x2)
+						{
+							SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, (float*)py1, (float*)px2, y2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* py2 = &y2)
+			{
+				SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, y1, x2, (float*)py2);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, y1, x2, (float*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, y1, x2, (float*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, y1, x2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* py1 = &y1)
+			{
+				fixed (float* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, (float*)py1, x2, (float*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, (float*)py1, x2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, (float*)py1, x2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] float* x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* py1 = &y1)
+					{
+						fixed (float* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, (float*)py1, x2, (float*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* px2 = &x2)
+			{
+				fixed (float* py2 = &y2)
+				{
+					SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, y1, (float*)px2, (float*)py2);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px2 = &x2)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, y1, (float*)px2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* px2 = &x2)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, y1, (float*)px2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] float* y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						fixed (float* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, y1, (float*)px2, (float*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* py1 = &y1)
+			{
+				fixed (float* px2 = &x2)
+				{
+					fixed (float* py2 = &y2)
+					{
+						SDLBool ret = SDLIntersectFRectAndLineNative(rect, x1, (float*)py1, (float*)px2, (float*)py2);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] float* x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						fixed (float* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, x1, (float*)py1, (float*)px2, (float*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] SDLFRect* rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (float* px1 = &x1)
+			{
+				fixed (float* py1 = &y1)
+				{
+					fixed (float* px2 = &x2)
+					{
+						fixed (float* py2 = &y2)
+						{
+							SDLBool ret = SDLIntersectFRectAndLineNative(rect, (float*)px1, (float*)py1, (float*)px2, (float*)py2);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Calculate the intersection of a rectangle and line segment with float<br/>/// precision.<br/>/// This function is used to clip a line segment to a rectangle. A line segment<br/>/// contained entirely within the rectangle or that does not intersect will<br/>/// remain unchanged. A line segment that crosses the rectangle at either or<br/>/// both ends will be clipped to the boundary of the rectangle and the new<br/>/// coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_IntersectFRectAndLine")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLIntersectFRectAndLine([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_FRect*")] ref SDLFRect rect, [NativeName(NativeNameType.Param, "X1")] [NativeName(NativeNameType.Type, "float*")] ref float x1, [NativeName(NativeNameType.Param, "Y1")] [NativeName(NativeNameType.Type, "float*")] ref float y1, [NativeName(NativeNameType.Param, "X2")] [NativeName(NativeNameType.Type, "float*")] ref float x2, [NativeName(NativeNameType.Param, "Y2")] [NativeName(NativeNameType.Type, "float*")] ref float y2)
+		{
+			fixed (SDLFRect* prect = &rect)
+			{
+				fixed (float* px1 = &x1)
+				{
+					fixed (float* py1 = &y1)
+					{
+						fixed (float* px2 = &x2)
+						{
+							fixed (float* py2 = &y2)
+							{
+								SDLBool ret = SDLIntersectFRectAndLineNative((SDLFRect*)prect, (float*)px1, (float*)py1, (float*)px2, (float*)py2);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Compose a custom blend mode for renderers.<br/>
+		/// The functions SDL_SetRenderDrawBlendMode and SDL_SetTextureBlendMode accept<br/>
+		/// the SDL_BlendMode returned by this function if the renderer supports it.<br/>
+		/// A blend mode controls how the pixels from a drawing operation (source) get<br/>
+		/// combined with the pixels from the render target (destination). First, the<br/>
+		/// components of the source and destination pixels get multiplied with their<br/>
+		/// blend factors. Then, the blend operation takes the two products and<br/>
+		/// calculates the result that will get stored in the render target.<br/>
+		/// Expressed in pseudocode, it would look like this:<br/>
+		/// ```c<br/>
+		/// dstRGB = colorOperation(srcRGB * srcColorFactor, dstRGB * dstColorFactor);<br/>
+		/// dstA = alphaOperation(srcA * srcAlphaFactor, dstA * dstAlphaFactor);<br/>
+		/// ```<br/>
+		/// Where the functions `colorOperation(src, dst)` and `alphaOperation(src,<br/>
+		/// dst)` can return one of the following:<br/>
+		/// - `src + dst`<br/>
+		/// - `src - dst`<br/>
+		/// - `dst - src`<br/>
+		/// - `min(src, dst)`<br/>
+		/// - `max(src, dst)`<br/>
+		/// The red, green, and blue components are always multiplied with the first,<br/>
+		/// second, and third components of the SDL_BlendFactor, respectively. The<br/>
+		/// fourth component is not used.<br/>
+		/// The alpha component is always multiplied with the fourth component of the<br/>
+		/// SDL_BlendFactor. The other components are not used in the alpha<br/>
+		/// calculation.<br/>
+		/// Support for these blend modes varies for each renderer. To check if a<br/>
+		/// specific SDL_BlendMode is supported, create a renderer and pass it to<br/>
+		/// either SDL_SetRenderDrawBlendMode or SDL_SetTextureBlendMode. They will<br/>
+		/// return with an error if the blend mode is not supported.<br/>
+		/// This list describes the support of custom blend modes for each renderer in<br/>
+		/// SDL 2.0.6. All renderers support the four blend modes listed in the<br/>
+		/// SDL_BlendMode enumeration.<br/>
+		/// - **direct3d**: Supports all operations with all factors. However, some<br/>
+		/// factors produce unexpected results with `SDL_BLENDOPERATION_MINIMUM` and<br/>
+		/// `SDL_BLENDOPERATION_MAXIMUM`.<br/>
+		/// - **direct3d11**: Same as Direct3D 9.<br/>
+		/// - **opengl**: Supports the `SDL_BLENDOPERATION_ADD` operation with all<br/>
+		/// factors. OpenGL versions 1.1, 1.2, and 1.3 do not work correctly with SDL<br/>
+		/// 2.0.6.<br/>
+		/// - **opengles**: Supports the `SDL_BLENDOPERATION_ADD` operation with all<br/>
+		/// factors. Color and alpha factors need to be the same. OpenGL ES 1<br/>
+		/// implementation specific: May also support `SDL_BLENDOPERATION_SUBTRACT`<br/>
+		/// and `SDL_BLENDOPERATION_REV_SUBTRACT`. May support color and alpha<br/>
+		/// operations being different from each other. May support color and alpha<br/>
+		/// factors being different from each other.<br/>
+		/// - **opengles2**: Supports the `SDL_BLENDOPERATION_ADD`,<br/>
+		/// `SDL_BLENDOPERATION_SUBTRACT`, `SDL_BLENDOPERATION_REV_SUBTRACT`<br/>
+		/// operations with all factors.<br/>
+		/// - **psp**: No custom blend mode support.<br/>
+		/// - **software**: No custom blend mode support.<br/>
+		/// Some renderers do not provide an alpha component for the default render<br/>
+		/// target. The `SDL_BLENDFACTOR_DST_ALPHA` and<br/>
+		/// `SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA` factors do not have an effect in this<br/>
+		/// case.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ComposeCustomBlendMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_BlendMode")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ComposeCustomBlendMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBlendMode SDLComposeCustomBlendModeNative([NativeName(NativeNameType.Param, "srcColorFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor srcColorFactor, [NativeName(NativeNameType.Param, "dstColorFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor dstColorFactor, [NativeName(NativeNameType.Param, "colorOperation")] [NativeName(NativeNameType.Type, "SDL_BlendOperation")] SDLBlendOperation colorOperation, [NativeName(NativeNameType.Param, "srcAlphaFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor srcAlphaFactor, [NativeName(NativeNameType.Param, "dstAlphaFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor dstAlphaFactor, [NativeName(NativeNameType.Param, "alphaOperation")] [NativeName(NativeNameType.Type, "SDL_BlendOperation")] SDLBlendOperation alphaOperation);
+
+		/// <summary>/// Compose a custom blend mode for renderers.<br/>/// The functions SDL_SetRenderDrawBlendMode and SDL_SetTextureBlendMode accept<br/>/// the SDL_BlendMode returned by this function if the renderer supports it.<br/>/// A blend mode controls how the pixels from a drawing operation (source) get<br/>/// combined with the pixels from the render target (destination). First, the<br/>/// components of the source and destination pixels get multiplied with their<br/>/// blend factors. Then, the blend operation takes the two products and<br/>/// calculates the result that will get stored in the render target.<br/>/// Expressed in pseudocode, it would look like this:<br/>/// ```c<br/>/// dstRGB = colorOperation(srcRGB * srcColorFactor, dstRGB * dstColorFactor);<br/>/// dstA = alphaOperation(srcA * srcAlphaFactor, dstA * dstAlphaFactor);<br/>/// ```<br/>/// Where the functions `colorOperation(src, dst)` and `alphaOperation(src,<br/>/// dst)` can return one of the following:<br/>/// - `src + dst`<br/>/// - `src - dst`<br/>/// - `dst - src`<br/>/// - `min(src, dst)`<br/>/// - `max(src, dst)`<br/>/// The red, green, and blue components are always multiplied with the first,<br/>/// second, and third components of the SDL_BlendFactor, respectively. The<br/>/// fourth component is not used.<br/>/// The alpha component is always multiplied with the fourth component of the<br/>/// SDL_BlendFactor. The other components are not used in the alpha<br/>/// calculation.<br/>/// Support for these blend modes varies for each renderer. To check if a<br/>/// specific SDL_BlendMode is supported, create a renderer and pass it to<br/>/// either SDL_SetRenderDrawBlendMode or SDL_SetTextureBlendMode. They will<br/>/// return with an error if the blend mode is not supported.<br/>/// This list describes the support of custom blend modes for each renderer in<br/>/// SDL 2.0.6. All renderers support the four blend modes listed in the<br/>/// SDL_BlendMode enumeration.<br/>/// - **direct3d**: Supports all operations with all factors. However, some<br/>/// factors produce unexpected results with `SDL_BLENDOPERATION_MINIMUM` and<br/>/// `SDL_BLENDOPERATION_MAXIMUM`.<br/>/// - **direct3d11**: Same as Direct3D 9.<br/>/// - **opengl**: Supports the `SDL_BLENDOPERATION_ADD` operation with all<br/>/// factors. OpenGL versions 1.1, 1.2, and 1.3 do not work correctly with SDL<br/>/// 2.0.6.<br/>/// - **opengles**: Supports the `SDL_BLENDOPERATION_ADD` operation with all<br/>/// factors. Color and alpha factors need to be the same. OpenGL ES 1<br/>/// implementation specific: May also support `SDL_BLENDOPERATION_SUBTRACT`<br/>/// and `SDL_BLENDOPERATION_REV_SUBTRACT`. May support color and alpha<br/>/// operations being different from each other. May support color and alpha<br/>/// factors being different from each other.<br/>/// - **opengles2**: Supports the `SDL_BLENDOPERATION_ADD`,<br/>/// `SDL_BLENDOPERATION_SUBTRACT`, `SDL_BLENDOPERATION_REV_SUBTRACT`<br/>/// operations with all factors.<br/>/// - **psp**: No custom blend mode support.<br/>/// - **software**: No custom blend mode support.<br/>/// Some renderers do not provide an alpha component for the default render<br/>/// target. The `SDL_BLENDFACTOR_DST_ALPHA` and<br/>/// `SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA` factors do not have an effect in this<br/>/// case.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ComposeCustomBlendMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_BlendMode")]
+		public static SDLBlendMode SDLComposeCustomBlendMode([NativeName(NativeNameType.Param, "srcColorFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor srcColorFactor, [NativeName(NativeNameType.Param, "dstColorFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor dstColorFactor, [NativeName(NativeNameType.Param, "colorOperation")] [NativeName(NativeNameType.Type, "SDL_BlendOperation")] SDLBlendOperation colorOperation, [NativeName(NativeNameType.Param, "srcAlphaFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor srcAlphaFactor, [NativeName(NativeNameType.Param, "dstAlphaFactor")] [NativeName(NativeNameType.Type, "SDL_BlendFactor")] SDLBlendFactor dstAlphaFactor, [NativeName(NativeNameType.Param, "alphaOperation")] [NativeName(NativeNameType.Type, "SDL_BlendOperation")] SDLBlendOperation alphaOperation)
+		{
+			SDLBlendMode ret = SDLComposeCustomBlendModeNative(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, dstAlphaFactor, alphaOperation);
+			return ret;
+		}
+
+		/// <summary>
+		/// Allocate a new RGB surface.<br/>
+		/// If `depth` is 4 or 8 bits, an empty palette is allocated for the surface.<br/>
+		/// If `depth` is greater than 8 bits, the pixel format is set using the<br/>
+		/// [RGBA]mask parameters.<br/>
+		/// The [RGBA]mask parameters are the bitmasks used to extract that color from<br/>
+		/// a pixel. For instance, `Rmask` being 0xFF000000 means the red data is<br/>
+		/// stored in the most significant byte. Using zeros for the RGB masks sets a<br/>
+		/// default value, based on the depth. For example:<br/>
+		/// ```c++<br/>
+		/// SDL_CreateRGBSurface(0,w,h,32,0,0,0,0);<br/>
+		/// ```<br/>
+		/// However, using zero for the Amask results in an Amask of 0.<br/>
+		/// By default surfaces with an alpha mask are set up for blending as with:<br/>
+		/// ```c++<br/>
+		/// SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND)<br/>
+		/// ```<br/>
+		/// You can change this by calling SDL_SetSurfaceBlendMode() and selecting a<br/>
+		/// different `blendMode`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateRGBSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLCreateRGBSurfaceNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask);
+
+		/// <summary>/// Allocate a new RGB surface.<br/>/// If `depth` is 4 or 8 bits, an empty palette is allocated for the surface.<br/>/// If `depth` is greater than 8 bits, the pixel format is set using the<br/>/// [RGBA]mask parameters.<br/>/// The [RGBA]mask parameters are the bitmasks used to extract that color from<br/>/// a pixel. For instance, `Rmask` being 0xFF000000 means the red data is<br/>/// stored in the most significant byte. Using zeros for the RGB masks sets a<br/>/// default value, based on the depth. For example:<br/>/// ```c++<br/>/// SDL_CreateRGBSurface(0,w,h,32,0,0,0,0);<br/>/// ```<br/>/// However, using zero for the Amask results in an Amask of 0.<br/>/// By default surfaces with an alpha mask are set up for blending as with:<br/>/// ```c++<br/>/// SDL_SetSurfaceBlendMode(surface, SDL_BLENDMODE_BLEND)<br/>/// ```<br/>/// You can change this by calling SDL_SetSurfaceBlendMode() and selecting a<br/>/// different `blendMode`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLCreateRGBSurface([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
+		{
+			SDLSurface* ret = SDLCreateRGBSurfaceNative(flags, width, height, depth, rmask, gmask, bmask, amask);
+			return ret;
+		}
+
+		/// <summary>
+		/// Allocate a new RGB surface with a specific pixel format.<br/>
+		/// This function operates mostly like SDL_CreateRGBSurface(), except instead<br/>
+		/// of providing pixel color masks, you provide it with a predefined format<br/>
+		/// from SDL_PixelFormatEnum.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceWithFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateRGBSurfaceWithFormat")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLCreateRGBSurfaceWithFormatNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format);
+
+		/// <summary>/// Allocate a new RGB surface with a specific pixel format.<br/>/// This function operates mostly like SDL_CreateRGBSurface(), except instead<br/>/// of providing pixel color masks, you provide it with a predefined format<br/>/// from SDL_PixelFormatEnum.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceWithFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLCreateRGBSurfaceWithFormat([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
+		{
+			SDLSurface* ret = SDLCreateRGBSurfaceWithFormatNative(flags, width, height, depth, format);
+			return ret;
+		}
+
+		/// <summary>
+		/// Allocate a new RGB surface with existing pixel data.<br/>
+		/// This function operates mostly like SDL_CreateRGBSurface(), except it does<br/>
+		/// not allocate memory for the pixel data, instead the caller provides an<br/>
+		/// existing buffer of data for the surface to use.<br/>
+		/// No copy is made of the pixel data. Pixel data is not managed automatically;<br/>
+		/// you must free the surface before you free the pixel data.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateRGBSurfaceFrom")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLCreateRGBSurfaceFromNative([NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void*")] void* pixels, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask);
+
+		/// <summary>/// Allocate a new RGB surface with existing pixel data.<br/>/// This function operates mostly like SDL_CreateRGBSurface(), except it does<br/>/// not allocate memory for the pixel data, instead the caller provides an<br/>/// existing buffer of data for the surface to use.<br/>/// No copy is made of the pixel data. Pixel data is not managed automatically;<br/>/// you must free the surface before you free the pixel data.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLCreateRGBSurfaceFrom([NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void*")] void* pixels, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
+		{
+			SDLSurface* ret = SDLCreateRGBSurfaceFromNative(pixels, width, height, depth, pitch, rmask, gmask, bmask, amask);
+			return ret;
+		}
+
+		/// <summary>
+		/// Allocate a new RGB surface with with a specific pixel format and existing<br/>
+		/// pixel data.<br/>
+		/// This function operates mostly like SDL_CreateRGBSurfaceFrom(), except<br/>
+		/// instead of providing pixel color masks, you provide it with a predefined<br/>
+		/// format from SDL_PixelFormatEnum.<br/>
+		/// No copy is made of the pixel data. Pixel data is not managed automatically;<br/>
+		/// you must free the surface before you free the pixel data.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceWithFormatFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateRGBSurfaceWithFormatFrom")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLCreateRGBSurfaceWithFormatFromNative([NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void*")] void* pixels, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format);
+
+		/// <summary>/// Allocate a new RGB surface with with a specific pixel format and existing<br/>/// pixel data.<br/>/// This function operates mostly like SDL_CreateRGBSurfaceFrom(), except<br/>/// instead of providing pixel color masks, you provide it with a predefined<br/>/// format from SDL_PixelFormatEnum.<br/>/// No copy is made of the pixel data. Pixel data is not managed automatically;<br/>/// you must free the surface before you free the pixel data.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateRGBSurfaceWithFormatFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLCreateRGBSurfaceWithFormatFrom([NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "void*")] void* pixels, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "int")] int depth, [NativeName(NativeNameType.Param, "pitch")] [NativeName(NativeNameType.Type, "int")] int pitch, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
+		{
+			SDLSurface* ret = SDLCreateRGBSurfaceWithFormatFromNative(pixels, width, height, depth, pitch, format);
+			return ret;
+		}
+
+		/// <summary>
+		/// Free an RGB surface.<br/>
+		/// It is safe to pass NULL to this function.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FreeSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FreeSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLFreeSurfaceNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
+
+		/// <summary>/// Free an RGB surface.<br/>/// It is safe to pass NULL to this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
+		{
+			SDLFreeSurfaceNative(surface);
+		}
+
+		/// <summary>/// Free an RGB surface.<br/>/// It is safe to pass NULL to this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLFreeSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLFreeSurfaceNative((SDLSurface*)psurface);
+			}
+		}
+
+		/// <summary>
+		/// Set the palette used by a surface.<br/>
+		/// A single palette can be shared with many surfaces.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetSurfacePalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetSurfacePalette")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetSurfacePaletteNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
+
+		/// <summary>/// Set the palette used by a surface.<br/>/// A single palette can be shared with many surfaces.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfacePalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfacePalette([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			int ret = SDLSetSurfacePaletteNative(surface, palette);
+			return ret;
+		}
+
+		/// <summary>/// Set the palette used by a surface.<br/>/// A single palette can be shared with many surfaces.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfacePalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfacePalette([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLSetSurfacePaletteNative((SDLSurface*)psurface, palette);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the palette used by a surface.<br/>/// A single palette can be shared with many surfaces.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfacePalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfacePalette([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
+		{
+			fixed (SDLPalette* ppalette = &palette)
+			{
+				int ret = SDLSetSurfacePaletteNative(surface, (SDLPalette*)ppalette);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the palette used by a surface.<br/>/// A single palette can be shared with many surfaces.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfacePalette")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfacePalette([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLPalette* ppalette = &palette)
+				{
+					int ret = SDLSetSurfacePaletteNative((SDLSurface*)psurface, (SDLPalette*)ppalette);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set up a surface for directly accessing the pixels.<br/>
+		/// Between calls to SDL_LockSurface() / SDL_UnlockSurface(), you can write to<br/>
+		/// and read from `surface->pixels`, using the pixel format stored in<br/>
+		/// `surface->format`. Once you are done accessing the surface, you should use<br/>
+		/// SDL_UnlockSurface() to release it.<br/>
+		/// Not all surfaces require locking. If `SDL_MUSTLOCK(surface)` evaluates to<br/>
+		/// 0, then you can read and write to the surface at any time, and the pixel<br/>
+		/// format of the surface will not change.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LockSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LockSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLLockSurfaceNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
+
+		/// <summary>/// Set up a surface for directly accessing the pixels.<br/>/// Between calls to SDL_LockSurface() / SDL_UnlockSurface(), you can write to<br/>/// and read from `surface->pixels`, using the pixel format stored in<br/>/// `surface->format`. Once you are done accessing the surface, you should use<br/>/// SDL_UnlockSurface() to release it.<br/>/// Not all surfaces require locking. If `SDL_MUSTLOCK(surface)` evaluates to<br/>/// 0, then you can read and write to the surface at any time, and the pixel<br/>/// format of the surface will not change.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLockSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
+		{
+			int ret = SDLLockSurfaceNative(surface);
+			return ret;
+		}
+
+		/// <summary>/// Set up a surface for directly accessing the pixels.<br/>/// Between calls to SDL_LockSurface() / SDL_UnlockSurface(), you can write to<br/>/// and read from `surface->pixels`, using the pixel format stored in<br/>/// `surface->format`. Once you are done accessing the surface, you should use<br/>/// SDL_UnlockSurface() to release it.<br/>/// Not all surfaces require locking. If `SDL_MUSTLOCK(surface)` evaluates to<br/>/// 0, then you can read and write to the surface at any time, and the pixel<br/>/// format of the surface will not change.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockSurface")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLockSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLLockSurfaceNative((SDLSurface*)psurface);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Get the current state of a game controller sensor with the timestamp of the<br/>
-		/// last update.<br/>
-		/// The number of values and interpretation of the data is sensor dependent.<br/>
-		/// See SDL_sensor.h for the details for each type of sensor.<br/>
+		/// Release a surface after directly accessing the pixels.<br/>
+		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorDataWithTimestamp")]
+		[NativeName(NativeNameType.Func, "SDL_UnlockSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnlockSurface")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetSensorDataWithTimestampNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
+		internal static partial void SDLUnlockSurfaceNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
 
-		/// <summary>/// Get the current state of a game controller sensor with the timestamp of the<br/>/// last update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorDataWithTimestamp([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		/// <summary>/// Release a surface after directly accessing the pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnlockSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
 		{
-			int ret = SDLGameControllerGetSensorDataWithTimestampNative(gamecontroller, type, timestamp, data, numValues);
+			SDLUnlockSurfaceNative(surface);
+		}
+
+		/// <summary>/// Release a surface after directly accessing the pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockSurface")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnlockSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLUnlockSurfaceNative((SDLSurface*)psurface);
+			}
+		}
+
+		/// <summary>
+		/// Load a BMP image from a seekable SDL data stream.<br/>
+		/// The new surface should be freed with SDL_FreeSurface(). Not doing so will<br/>
+		/// result in a memory leak.<br/>
+		/// src is an open SDL_RWops buffer, typically loaded with SDL_RWFromFile.<br/>
+		/// Alternitavely, you might also use the macro SDL_LoadBMP to load a bitmap<br/>
+		/// from a file, convert it to an SDL_Surface and then close the file.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LoadBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LoadBMP_RW")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLLoadBMPRWNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc);
+
+		/// <summary>/// Load a BMP image from a seekable SDL data stream.<br/>/// The new surface should be freed with SDL_FreeSurface(). Not doing so will<br/>/// result in a memory leak.<br/>/// src is an open SDL_RWops buffer, typically loaded with SDL_RWFromFile.<br/>/// Alternitavely, you might also use the macro SDL_LoadBMP to load a bitmap<br/>/// from a file, convert it to an SDL_Surface and then close the file.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLLoadBMPRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc)
+		{
+			SDLSurface* ret = SDLLoadBMPRWNative(src, freesrc);
 			return ret;
 		}
 
-		/// <summary>/// Get the current state of a game controller sensor with the timestamp of the<br/>/// last update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorDataWithTimestamp([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ref ulong timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		/// <summary>/// Load a BMP image from a seekable SDL data stream.<br/>/// The new surface should be freed with SDL_FreeSurface(). Not doing so will<br/>/// result in a memory leak.<br/>/// src is an open SDL_RWops buffer, typically loaded with SDL_RWFromFile.<br/>/// Alternitavely, you might also use the macro SDL_LoadBMP to load a bitmap<br/>/// from a file, convert it to an SDL_Surface and then close the file.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLLoadBMPRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc)
 		{
-			fixed (ulong* ptimestamp = &timestamp)
+			fixed (SDLRWops* psrc = &src)
 			{
-				int ret = SDLGameControllerGetSensorDataWithTimestampNative(gamecontroller, type, (ulong*)ptimestamp, data, numValues);
+				SDLSurface* ret = SDLLoadBMPRWNative((SDLRWops*)psrc, freesrc);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Get the current state of a game controller sensor with the timestamp of the<br/>/// last update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
+		/// <summary>
+		/// Save a surface to a seekable SDL data stream in BMP format.<br/>
+		/// Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the<br/>
+		/// BMP directly. Other RGB formats with 8-bit or higher get converted to a<br/>
+		/// 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit<br/>
+		/// surface before they are saved. YUV and paletted 1-bit and 4-bit formats are<br/>
+		/// not supported.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SaveBMP_RW")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorDataWithTimestamp([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		[LibraryImport(LibName, EntryPoint = "SDL_SaveBMP_RW")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSaveBMPRWNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst, [NativeName(NativeNameType.Param, "freedst")] [NativeName(NativeNameType.Type, "int")] int freedst);
+
+		/// <summary>/// Save a surface to a seekable SDL data stream in BMP format.<br/>/// Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the<br/>/// BMP directly. Other RGB formats with 8-bit or higher get converted to a<br/>/// 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit<br/>/// surface before they are saved. YUV and paletted 1-bit and 4-bit formats are<br/>/// not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSaveBMPRW([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst, [NativeName(NativeNameType.Param, "freedst")] [NativeName(NativeNameType.Type, "int")] int freedst)
 		{
-			fixed (float* pdata = &data)
+			int ret = SDLSaveBMPRWNative(surface, dst, freedst);
+			return ret;
+		}
+
+		/// <summary>/// Save a surface to a seekable SDL data stream in BMP format.<br/>/// Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the<br/>/// BMP directly. Other RGB formats with 8-bit or higher get converted to a<br/>/// 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit<br/>/// surface before they are saved. YUV and paletted 1-bit and 4-bit formats are<br/>/// not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSaveBMPRW([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst, [NativeName(NativeNameType.Param, "freedst")] [NativeName(NativeNameType.Type, "int")] int freedst)
+		{
+			fixed (SDLSurface* psurface = &surface)
 			{
-				int ret = SDLGameControllerGetSensorDataWithTimestampNative(gamecontroller, type, timestamp, (float*)pdata, numValues);
+				int ret = SDLSaveBMPRWNative((SDLSurface*)psurface, dst, freedst);
 				return ret;
+			}
+		}
+
+		/// <summary>/// Save a surface to a seekable SDL data stream in BMP format.<br/>/// Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the<br/>/// BMP directly. Other RGB formats with 8-bit or higher get converted to a<br/>/// 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit<br/>/// surface before they are saved. YUV and paletted 1-bit and 4-bit formats are<br/>/// not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSaveBMPRW([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops dst, [NativeName(NativeNameType.Param, "freedst")] [NativeName(NativeNameType.Type, "int")] int freedst)
+		{
+			fixed (SDLRWops* pdst = &dst)
+			{
+				int ret = SDLSaveBMPRWNative(surface, (SDLRWops*)pdst, freedst);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Save a surface to a seekable SDL data stream in BMP format.<br/>/// Surfaces with a 24-bit, 32-bit and paletted 8-bit format get saved in the<br/>/// BMP directly. Other RGB formats with 8-bit or higher get converted to a<br/>/// 24-bit surface or, if they have an alpha mask or a colorkey, to a 32-bit<br/>/// surface before they are saved. YUV and paletted 1-bit and 4-bit formats are<br/>/// not supported.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveBMP_RW")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSaveBMPRW([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops dst, [NativeName(NativeNameType.Param, "freedst")] [NativeName(NativeNameType.Type, "int")] int freedst)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLRWops* pdst = &dst)
+				{
+					int ret = SDLSaveBMPRWNative((SDLSurface*)psurface, (SDLRWops*)pdst, freedst);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the RLE acceleration hint for a surface.<br/>
+		/// If RLE is enabled, color key and alpha blending blits are much faster, but<br/>
+		/// the surface must be locked before directly accessing the pixels.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetSurfaceRLE")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetSurfaceRLENative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag);
+
+		/// <summary>/// Set the RLE acceleration hint for a surface.<br/>/// If RLE is enabled, color key and alpha blending blits are much faster, but<br/>/// the surface must be locked before directly accessing the pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceRLE([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag)
+		{
+			int ret = SDLSetSurfaceRLENative(surface, flag);
+			return ret;
+		}
+
+		/// <summary>/// Set the RLE acceleration hint for a surface.<br/>/// If RLE is enabled, color key and alpha blending blits are much faster, but<br/>/// the surface must be locked before directly accessing the pixels.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceRLE([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLSetSurfaceRLENative((SDLSurface*)psurface, flag);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Returns whether the surface is RLE enabled<br/>
+		/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasSurfaceRLE")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasSurfaceRLENative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
+
+		/// <summary>/// Returns whether the surface is RLE enabled<br/>/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSurfaceRLE([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
+		{
+			SDLBool ret = SDLHasSurfaceRLENative(surface);
+			return ret;
+		}
+
+		/// <summary>/// Returns whether the surface is RLE enabled<br/>/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSurfaceRLE")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasSurfaceRLE([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLBool ret = SDLHasSurfaceRLENative((SDLSurface*)psurface);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the color key (transparent pixel) in a surface.<br/>
+		/// The color key defines a pixel value that will be treated as transparent in<br/>
+		/// a blit. For example, one can use this to specify that cyan pixels should be<br/>
+		/// considered transparent, and therefore not rendered.<br/>
+		/// It is a pixel of the format used by the surface, as generated by<br/>
+		/// SDL_MapRGB().<br/>
+		/// RLE acceleration can substantially speed up blitting of images with large<br/>
+		/// horizontal runs of transparent pixels. See SDL_SetSurfaceRLE() for details.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetColorKey")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetColorKeyNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32")] uint key);
+
+		/// <summary>/// Set the color key (transparent pixel) in a surface.<br/>/// The color key defines a pixel value that will be treated as transparent in<br/>/// a blit. For example, one can use this to specify that cyan pixels should be<br/>/// considered transparent, and therefore not rendered.<br/>/// It is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// RLE acceleration can substantially speed up blitting of images with large<br/>/// horizontal runs of transparent pixels. See SDL_SetSurfaceRLE() for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32")] uint key)
+		{
+			int ret = SDLSetColorKeyNative(surface, flag, key);
+			return ret;
+		}
+
+		/// <summary>/// Set the color key (transparent pixel) in a surface.<br/>/// The color key defines a pixel value that will be treated as transparent in<br/>/// a blit. For example, one can use this to specify that cyan pixels should be<br/>/// considered transparent, and therefore not rendered.<br/>/// It is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// RLE acceleration can substantially speed up blitting of images with large<br/>/// horizontal runs of transparent pixels. See SDL_SetSurfaceRLE() for details.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "flag")] [NativeName(NativeNameType.Type, "int")] int flag, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32")] uint key)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLSetColorKeyNative((SDLSurface*)psurface, flag, key);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Returns whether the surface has a color key<br/>
+		/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_HasColorKey")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_HasColorKey")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLHasColorKeyNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
+
+		/// <summary>/// Returns whether the surface has a color key<br/>/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasColorKey")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
+		{
+			SDLBool ret = SDLHasColorKeyNative(surface);
+			return ret;
+		}
+
+		/// <summary>/// Returns whether the surface has a color key<br/>/// It is safe to pass a NULL `surface` here; it will return SDL_FALSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasColorKey")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLHasColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLBool ret = SDLHasColorKeyNative((SDLSurface*)psurface);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the color key (transparent pixel) for a surface.<br/>
+		/// The color key is a pixel of the format used by the surface, as generated by<br/>
+		/// SDL_MapRGB().<br/>
+		/// If the surface doesn't have color key enabled this function returns -1.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetColorKey")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetColorKeyNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32*")] uint* key);
+
+		/// <summary>/// Get the color key (transparent pixel) for a surface.<br/>/// The color key is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// If the surface doesn't have color key enabled this function returns -1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32*")] uint* key)
+		{
+			int ret = SDLGetColorKeyNative(surface, key);
+			return ret;
+		}
+
+		/// <summary>/// Get the color key (transparent pixel) for a surface.<br/>/// The color key is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// If the surface doesn't have color key enabled this function returns -1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32*")] uint* key)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLGetColorKeyNative((SDLSurface*)psurface, key);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the color key (transparent pixel) for a surface.<br/>/// The color key is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// If the surface doesn't have color key enabled this function returns -1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint key)
+		{
+			fixed (uint* pkey = &key)
+			{
+				int ret = SDLGetColorKeyNative(surface, (uint*)pkey);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the color key (transparent pixel) for a surface.<br/>/// The color key is a pixel of the format used by the surface, as generated by<br/>/// SDL_MapRGB().<br/>/// If the surface doesn't have color key enabled this function returns -1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetColorKey")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetColorKey([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint key)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (uint* pkey = &key)
+				{
+					int ret = SDLGetColorKeyNative((SDLSurface*)psurface, (uint*)pkey);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set an additional color value multiplied into blit operations.<br/>
+		/// When this surface is blitted, during the blit operation each source color<br/>
+		/// channel is modulated by the appropriate color value according to the<br/>
+		/// following formula:<br/>
+		/// `srcC = srcC * (color / 255)`<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetSurfaceColorMod")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetSurfaceColorModNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b);
+
+		/// <summary>/// Set an additional color value multiplied into blit operations.<br/>/// When this surface is blitted, during the blit operation each source color<br/>/// channel is modulated by the appropriate color value according to the<br/>/// following formula:<br/>/// `srcC = srcC * (color / 255)`<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		{
+			int ret = SDLSetSurfaceColorModNative(surface, r, g, b);
+			return ret;
+		}
+
+		/// <summary>/// Set an additional color value multiplied into blit operations.<br/>/// When this surface is blitted, during the blit operation each source color<br/>/// channel is modulated by the appropriate color value according to the<br/>/// following formula:<br/>/// `srcC = srcC * (color / 255)`<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLSetSurfaceColorModNative((SDLSurface*)psurface, r, g, b);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the additional color value multiplied into blit operations.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetSurfaceColorMod")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetSurfaceColorModNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b);
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			int ret = SDLGetSurfaceColorModNative(surface, r, g, b);
+			return ret;
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, r, g, b);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (byte* pr = &r)
+			{
+				int ret = SDLGetSurfaceColorModNative(surface, (byte*)pr, g, b);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pr = &r)
+				{
+					int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, (byte*)pr, g, b);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (byte* pg = &g)
+			{
+				int ret = SDLGetSurfaceColorModNative(surface, r, (byte*)pg, b);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pg = &g)
+				{
+					int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, r, (byte*)pg, b);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					int ret = SDLGetSurfaceColorModNative(surface, (byte*)pr, (byte*)pg, b);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, (byte*)pr, (byte*)pg, b);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pb = &b)
+			{
+				int ret = SDLGetSurfaceColorModNative(surface, r, g, (byte*)pb);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pb = &b)
+				{
+					int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, r, g, (byte*)pb);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pb = &b)
+				{
+					int ret = SDLGetSurfaceColorModNative(surface, (byte*)pr, g, (byte*)pb);
+					return ret;
+				}
 			}
 		}
 	}

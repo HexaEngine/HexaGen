@@ -17,3024 +17,3889 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
-		/// <summary>
-		/// This function is a legacy means of pausing the audio device.<br/>
-		/// New programs might want to use SDL_PauseAudioDevice() instead. This<br/>
-		/// function is equivalent to calling...<br/>
-		/// ```c<br/>
-		/// SDL_PauseAudioDevice(1, pause_on);<br/>
-		/// ```<br/>
-		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PauseAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PauseAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLPauseAudioNative([NativeName(NativeNameType.Param, "pause_on")] [NativeName(NativeNameType.Type, "int")] int pauseOn);
-
-		/// <summary>/// This function is a legacy means of pausing the audio device.<br/>/// New programs might want to use SDL_PauseAudioDevice() instead. This<br/>/// function is equivalent to calling...<br/>/// ```c<br/>/// SDL_PauseAudioDevice(1, pause_on);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PauseAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLPauseAudio([NativeName(NativeNameType.Param, "pause_on")] [NativeName(NativeNameType.Type, "int")] int pauseOn)
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode)
 		{
-			SDLPauseAudioNative(pauseOn);
+			fixed (byte* ptocode = &tocode)
+			{
+				SDLIconv ret = SDLIconvOpenNative((byte*)ptocode, fromcode);
+				return ret;
+			}
 		}
 
-		/// <summary>
-		/// Use this function to pause and unpause audio playback on a specified<br/>
-		/// device.<br/>
-		/// This function pauses and unpauses the audio callback processing for a given<br/>
-		/// device. Newly-opened audio devices start in the paused state, so you must<br/>
-		/// call this function with **pause_on**=0 after opening the specified audio<br/>
-		/// device to start playing sound. This allows you to safely initialize data<br/>
-		/// for your callback function after opening the audio device. Silence will be<br/>
-		/// written to the audio device while paused, and the audio callback is<br/>
-		/// guaranteed to not be called. Pausing one device does not prevent other<br/>
-		/// unpaused devices from running their callbacks.<br/>
-		/// Pausing state does not stack; even if you pause a device several times, a<br/>
-		/// single unpause will start the device playing again, and vice versa. This is<br/>
-		/// different from how SDL_LockAudioDevice() works.<br/>
-		/// If you just need to protect a few variables from race conditions vs your<br/>
-		/// callback, you shouldn't pause the audio device, as it will lead to dropouts<br/>
-		/// in the audio playback. Instead, you should use SDL_LockAudioDevice().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PauseAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PauseAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLPauseAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "pause_on")] [NativeName(NativeNameType.Type, "int")] int pauseOn);
-
-		/// <summary>/// Use this function to pause and unpause audio playback on a specified<br/>/// device.<br/>/// This function pauses and unpauses the audio callback processing for a given<br/>/// device. Newly-opened audio devices start in the paused state, so you must<br/>/// call this function with **pause_on**=0 after opening the specified audio<br/>/// device to start playing sound. This allows you to safely initialize data<br/>/// for your callback function after opening the audio device. Silence will be<br/>/// written to the audio device while paused, and the audio callback is<br/>/// guaranteed to not be called. Pausing one device does not prevent other<br/>/// unpaused devices from running their callbacks.<br/>/// Pausing state does not stack; even if you pause a device several times, a<br/>/// single unpause will start the device playing again, and vice versa. This is<br/>/// different from how SDL_LockAudioDevice() works.<br/>/// If you just need to protect a few variables from race conditions vs your<br/>/// callback, you shouldn't pause the audio device, as it will lead to dropouts<br/>/// in the audio playback. Instead, you should use SDL_LockAudioDevice().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PauseAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLPauseAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "pause_on")] [NativeName(NativeNameType.Type, "int")] int pauseOn)
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode)
 		{
-			SDLPauseAudioDeviceNative(dev, pauseOn);
-		}
-
-		/// <summary>
-		/// Load the audio data of a WAVE file into memory.<br/>
-		/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>
-		/// be valid pointers. The entire data portion of the file is then loaded into<br/>
-		/// memory and decoded if necessary.<br/>
-		/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>
-		/// freed before the function returns.<br/>
-		/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>
-		/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>
-		/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>
-		/// cause an error.<br/>
-		/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>
-		/// and the pointer to the audio data allocated by the function is written to<br/>
-		/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>
-		/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>
-		/// data in the buffer. The `samples` member is set to a sane default and all<br/>
-		/// others are set to zero.<br/>
-		/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>
-		/// `audio_buf` when it is no longer used.<br/>
-		/// Because of the underspecification of the .WAV format, there are many<br/>
-		/// problematic files in the wild that cause issues with strict decoders. To<br/>
-		/// provide compatibility with these files, this decoder is lenient in regards<br/>
-		/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>
-		/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>
-		/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>
-		/// tune the behavior of the loading process.<br/>
-		/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>
-		/// the headers), too big, or unsupported causes an error. Additionally, any<br/>
-		/// critical I/O error from the data source will terminate the loading process<br/>
-		/// with an error. The function returns NULL on error and in all cases (with<br/>
-		/// the exception of `src` being NULL), an appropriate error message will be<br/>
-		/// set.<br/>
-		/// It is required that the data source supports seeking.<br/>
-		/// Example:<br/>
-		/// ```c<br/>
-		/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>
-		/// &spec<br/>
-		/// , <br/>
-		/// &buf<br/>
-		/// , <br/>
-		/// &len<br/>
-		/// );<br/>
-		/// ```<br/>
-		/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>
-		/// messy way:<br/>
-		/// ```c<br/>
-		/// SDL_LoadWAV("sample.wav", <br/>
-		/// &spec<br/>
-		/// , <br/>
-		/// &buf<br/>
-		/// , <br/>
-		/// &len<br/>
-		/// );<br/>
-		/// ```<br/>
-		/// <br/>
-		/// This function returns NULL if the .WAV file cannot be opened, uses<br/>
-		/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>
-		/// more information.<br/>
-		/// When the application is done with the data returned in<br/>
-		/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadWAV_RW")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLAudioSpec* SDLLoadWAVRWNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen);
-
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
-		{
-			SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, audioBuf, audioLen);
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLIconv ret = SDLIconvOpenNative(pStr0, fromcode);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
 			return ret;
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode)
 		{
-			fixed (SDLAudioSpec* pspec = &spec)
+			fixed (byte* pfromcode = &fromcode)
 			{
-				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, audioBuf, audioLen);
+				SDLIconv ret = SDLIconvOpenNative(tocode, (byte*)pfromcode);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode)
 		{
-			fixed (byte** paudioBuf = &audioBuf)
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
 			{
-				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, (byte**)paudioBuf, audioLen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
-		{
-			fixed (SDLAudioSpec* pspec = &spec)
-			{
-				fixed (byte** paudioBuf = &audioBuf)
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
-					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, audioLen);
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLIconv ret = SDLIconvOpenNative(tocode, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					SDLIconv ret = SDLIconvOpenNative((byte*)ptocode, (byte*)pfromcode);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_iconv_t")]
+		public static SDLIconv SDLIconvOpen([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode)
 		{
-			fixed (uint* paudioLen = &audioLen)
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
 			{
-				SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, audioBuf, (uint*)paudioLen);
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			SDLIconv ret = SDLIconvOpenNative(pStr0, pStr1);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_iconv_close")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLIconvCloseNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd);
+
+		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLIconvClose([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd)
+		{
+			int ret = SDLIconvCloseNative(cd);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		[LibraryImport(LibName, EntryPoint = "SDL_iconv")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial ulong SDLIconvNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft);
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			ulong ret = SDLIconvNative(cd, inbuf, inbytesleft, outbuf, outbytesleft);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				ulong ret = SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, outbytesleft);
 				return ret;
 			}
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
 		{
-			fixed (SDLAudioSpec* pspec = &spec)
+			fixed (nuint* pinbytesleft = &inbytesleft)
 			{
-				fixed (uint* paudioLen = &audioLen)
+				ulong ret = SDLIconvNative(cd, inbuf, (ulong*)pinbytesleft, outbuf, outbytesleft);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (nuint* pinbytesleft = &inbytesleft)
 				{
-					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, audioBuf, (uint*)paudioLen);
+					ulong ret = SDLIconvNative(cd, (byte**)pinbuf, (ulong*)pinbytesleft, outbuf, outbytesleft);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
 		{
-			fixed (byte** paudioBuf = &audioBuf)
+			fixed (byte** poutbuf = &outbuf)
 			{
-				fixed (uint* paudioLen = &audioLen)
+				ulong ret = SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (byte** poutbuf = &outbuf)
 				{
-					SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, spec, (byte**)paudioBuf, (uint*)paudioLen);
+					ulong ret = SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, outbytesleft);
 					return ret;
 				}
 			}
 		}
 
-		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
-		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] ref byte* audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint audioLen)
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
 		{
-			fixed (SDLAudioSpec* pspec = &spec)
+			fixed (nuint* pinbytesleft = &inbytesleft)
 			{
-				fixed (byte** paudioBuf = &audioBuf)
+				fixed (byte** poutbuf = &outbuf)
 				{
-					fixed (uint* paudioLen = &audioLen)
+					ulong ret = SDLIconvNative(cd, inbuf, (ulong*)pinbytesleft, (byte**)poutbuf, outbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (nuint* pinbytesleft = &inbytesleft)
+				{
+					fixed (byte** poutbuf = &outbuf)
 					{
-						SDLAudioSpec* ret = SDLLoadWAVRWNative(src, freesrc, (SDLAudioSpec*)pspec, (byte**)paudioBuf, (uint*)paudioLen);
+						ulong ret = SDLIconvNative(cd, (byte**)pinbuf, (ulong*)pinbytesleft, (byte**)poutbuf, outbytesleft);
 						return ret;
 					}
 				}
 			}
 		}
 
-		/// <summary>
-		/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>
-		/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>
-		/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>
-		/// this function with a NULL pointer.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeWAV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeWAVNative([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf);
-
-		/// <summary>/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>/// this function with a NULL pointer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFreeWAV([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf)
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
 		{
-			SDLFreeWAVNative(audioBuf);
-		}
-
-		/// <summary>
-		/// Initialize an SDL_AudioCVT structure for conversion.<br/>
-		/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>
-		/// be initialized with source and destination information.<br/>
-		/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>
-		/// called before the application fills in the final buffer information.<br/>
-		/// Once this function has returned successfully, and reported that a<br/>
-		/// conversion is necessary, the application fills in the rest of the fields in<br/>
-		/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>
-		/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_BuildAudioCVT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLBuildAudioCVTNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate);
-
-		/// <summary>/// Initialize an SDL_AudioCVT structure for conversion.<br/>/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>/// be initialized with source and destination information.<br/>/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>/// called before the application fills in the final buffer information.<br/>/// Once this function has returned successfully, and reported that a<br/>/// conversion is necessary, the application fills in the rest of the fields in<br/>/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLBuildAudioCVT([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate)
-		{
-			int ret = SDLBuildAudioCVTNative(cvt, srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
-			return ret;
-		}
-
-		/// <summary>
-		/// Convert audio data to a desired audio format.<br/>
-		/// This function does the actual audio data conversion, after the application<br/>
-		/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>
-		/// then filled in the buffer details.<br/>
-		/// Once the application has initialized the `cvt` structure using<br/>
-		/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>
-		/// data in the source format, this function will convert the buffer, in-place,<br/>
-		/// to the desired format.<br/>
-		/// The data conversion may go through several passes; any given pass may<br/>
-		/// possibly temporarily increase the size of the data. For example, SDL might<br/>
-		/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>
-		/// shrinking the data size after having grown it briefly. Since the supplied<br/>
-		/// buffer will be both the source and destination, converting as necessary<br/>
-		/// in-place, the application must allocate a buffer that will fully contain<br/>
-		/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>
-		/// returns, the application should set the `cvt->len` field to the size, in<br/>
-		/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>
-		/// cvt->len_mult` bytes long for the `buf` field.<br/>
-		/// The source data should be copied into this buffer before the call to<br/>
-		/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>
-		/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>
-		/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>
-		/// this function returns.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ConvertAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLConvertAudioNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt);
-
-		/// <summary>/// Convert audio data to a desired audio format.<br/>/// This function does the actual audio data conversion, after the application<br/>/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>/// then filled in the buffer details.<br/>/// Once the application has initialized the `cvt` structure using<br/>/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>/// data in the source format, this function will convert the buffer, in-place,<br/>/// to the desired format.<br/>/// The data conversion may go through several passes; any given pass may<br/>/// possibly temporarily increase the size of the data. For example, SDL might<br/>/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>/// shrinking the data size after having grown it briefly. Since the supplied<br/>/// buffer will be both the source and destination, converting as necessary<br/>/// in-place, the application must allocate a buffer that will fully contain<br/>/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>/// returns, the application should set the `cvt->len` field to the size, in<br/>/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>/// cvt->len_mult` bytes long for the `buf` field.<br/>/// The source data should be copied into this buffer before the call to<br/>/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>/// this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLConvertAudio([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt)
-		{
-			int ret = SDLConvertAudioNative(cvt);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create a new audio stream.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NewAudioStream")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLAudioStream* SDLNewAudioStreamNative([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate);
-
-		/// <summary>/// Create a new audio stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
-		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
-		public static SDLAudioStream* SDLNewAudioStream([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate)
-		{
-			SDLAudioStream* ret = SDLNewAudioStreamNative(srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
-			return ret;
-		}
-
-		/// <summary>
-		/// Add data to be converted/resampled to the stream.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamPut")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamPutNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
-
-		/// <summary>/// Add data to be converted/resampled to the stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLAudioStreamPut([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
-		{
-			int ret = SDLAudioStreamPutNative(stream, buf, len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get converted/resampled data from the stream<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamGet")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamGetNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
-
-		/// <summary>/// Get converted/resampled data from the stream<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLAudioStreamGet([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
-		{
-			int ret = SDLAudioStreamGetNative(stream, buf, len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of converted/resampled bytes available.<br/>
-		/// The stream may be buffering data behind the scenes until it has enough to<br/>
-		/// resample correctly, so this number might be lower than what you expect, or<br/>
-		/// even be zero. Add more data or flush the stream if you need the data now.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamAvailable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamAvailableNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
-		/// <summary>/// Get the number of converted/resampled bytes available.<br/>/// The stream may be buffering data behind the scenes until it has enough to<br/>/// resample correctly, so this number might be lower than what you expect, or<br/>/// even be zero. Add more data or flush the stream if you need the data now.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLAudioStreamAvailable([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
-		{
-			int ret = SDLAudioStreamAvailableNative(stream);
-			return ret;
-		}
-
-		/// <summary>
-		/// Tell the stream that you're done sending data, and anything being buffered<br/>
-		/// should be converted/resampled and made available immediately.<br/>
-		/// It is legal to add more data to a stream after flushing, but there will be<br/>
-		/// audio gaps in the output. Generally this is intended to signal the end of<br/>
-		/// input, so the complete output becomes available.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamFlush")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamFlushNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
-		/// <summary>/// Tell the stream that you're done sending data, and anything being buffered<br/>/// should be converted/resampled and made available immediately.<br/>/// It is legal to add more data to a stream after flushing, but there will be<br/>/// audio gaps in the output. Generally this is intended to signal the end of<br/>/// input, so the complete output becomes available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLAudioStreamFlush([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
-		{
-			int ret = SDLAudioStreamFlushNative(stream);
-			return ret;
-		}
-
-		/// <summary>
-		/// Clear any pending data in the stream without converting it<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamClear")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAudioStreamClearNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
-		/// <summary>/// Clear any pending data in the stream without converting it<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAudioStreamClear([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
-		{
-			SDLAudioStreamClearNative(stream);
-		}
-
-		/// <summary>
-		/// Free an audio stream<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeAudioStream")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeAudioStreamNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
-		/// <summary>/// Free an audio stream<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFreeAudioStream([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
-		{
-			SDLFreeAudioStreamNative(stream);
-		}
-
-		/// <summary>
-		/// This function is a legacy means of mixing audio.<br/>
-		/// This function is equivalent to calling...<br/>
-		/// ```c<br/>
-		/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>
-		/// ```<br/>
-		/// ...where `format` is the obtained format of the audio device from the<br/>
-		/// legacy SDL_OpenAudio() function.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MixAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMixAudioNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
-
-		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
-		{
-			SDLMixAudioNative(dst, src, len, volume);
-		}
-
-		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
-		{
-			fixed (byte* psrc = &src)
+			fixed (nuint* poutbytesleft = &outbytesleft)
 			{
-				SDLMixAudioNative(dst, (byte*)psrc, len, volume);
+				ulong ret = SDLIconvNative(cd, inbuf, inbytesleft, outbuf, (ulong*)poutbytesleft);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (nuint* poutbytesleft = &outbytesleft)
+				{
+					ulong ret = SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, outbuf, (ulong*)poutbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (nuint* pinbytesleft = &inbytesleft)
+			{
+				fixed (nuint* poutbytesleft = &outbytesleft)
+				{
+					ulong ret = SDLIconvNative(cd, inbuf, (ulong*)pinbytesleft, outbuf, (ulong*)poutbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (nuint* pinbytesleft = &inbytesleft)
+				{
+					fixed (nuint* poutbytesleft = &outbytesleft)
+					{
+						ulong ret = SDLIconvNative(cd, (byte**)pinbuf, (ulong*)pinbytesleft, outbuf, (ulong*)poutbytesleft);
+						return ret;
+					}
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (byte** poutbuf = &outbuf)
+			{
+				fixed (nuint* poutbytesleft = &outbytesleft)
+				{
+					ulong ret = SDLIconvNative(cd, inbuf, inbytesleft, (byte**)poutbuf, (ulong*)poutbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (byte** poutbuf = &outbuf)
+				{
+					fixed (nuint* poutbytesleft = &outbytesleft)
+					{
+						ulong ret = SDLIconvNative(cd, (byte**)pinbuf, inbytesleft, (byte**)poutbuf, (ulong*)poutbytesleft);
+						return ret;
+					}
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (nuint* pinbytesleft = &inbytesleft)
+			{
+				fixed (byte** poutbuf = &outbuf)
+				{
+					fixed (nuint* poutbytesleft = &outbytesleft)
+					{
+						ulong ret = SDLIconvNative(cd, inbuf, (ulong*)pinbytesleft, (byte**)poutbuf, (ulong*)poutbytesleft);
+						return ret;
+					}
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_iconv")]
+		[return: NativeName(NativeNameType.Type, "size_t")]
+		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] ref byte* outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint outbytesleft)
+		{
+			fixed (byte** pinbuf = &inbuf)
+			{
+				fixed (nuint* pinbytesleft = &inbytesleft)
+				{
+					fixed (byte** poutbuf = &outbuf)
+					{
+						fixed (nuint* poutbytesleft = &outbytesleft)
+						{
+							ulong ret = SDLIconvNative(cd, (byte**)pinbuf, (ulong*)pinbytesleft, (byte**)poutbuf, (ulong*)poutbytesleft);
+							return ret;
+						}
+					}
+				}
 			}
 		}
 
 		/// <summary>
-		/// Mix audio data in a specified format.<br/>
-		/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>
-		/// it into `dst`, performing addition, volume adjustment, and overflow<br/>
-		/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>
-		/// `format` data.<br/>
-		/// This is provided for convenience -- you can mix your own audio data.<br/>
-		/// Do not use this function for mixing together more than two streams of<br/>
-		/// sample data. The output from repeated application of this function may be<br/>
-		/// distorted by clipping, because there is no accumulator with greater range<br/>
-		/// than the input (not to mention this being an inefficient way of doing it).<br/>
-		/// It is a common misconception that this function is required to write audio<br/>
-		/// data to an output stream in an audio callback. While you can do that,<br/>
-		/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>
-		/// audio stream with a volume adjustment.<br/>
+		/// This function converts a buffer or string between encodings in one pass,<br/>
+		/// returning a string that must be freed with SDL_free() or NULL on error.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_iconv_string")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLIconvStringNative([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft);
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* ret = SDLIconvStringNative(tocode, fromcode, inbuf, inbytesleft);
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, inbuf, inbytesleft));
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				byte* ret = SDLIconvStringNative((byte*)ptocode, fromcode, inbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, fromcode, inbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, fromcode, inbuf, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, fromcode, inbuf, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				byte* ret = SDLIconvStringNative(tocode, (byte*)pfromcode, inbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, (byte*)pfromcode, inbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, pStr0, inbuf, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, pStr0, inbuf, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					byte* ret = SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, inbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, inbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, pStr1, inbuf, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, pStr1, inbuf, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pinbuf = &inbuf)
+			{
+				byte* ret = SDLIconvStringNative(tocode, fromcode, (byte*)pinbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pinbuf = &inbuf)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, (byte*)pinbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (inbuf != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(inbuf, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, fromcode, pStr0, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (inbuf != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(inbuf, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, pStr0, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					byte* ret = SDLIconvStringNative((byte*)ptocode, fromcode, (byte*)pinbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, fromcode, (byte*)pinbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, fromcode, pStr1, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, fromcode, pStr1, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					byte* ret = SDLIconvStringNative(tocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, pStr0, pStr1, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, pStr0, pStr1, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					fixed (byte* pinbuf = &inbuf)
+					{
+						byte* ret = SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					fixed (byte* pinbuf = &inbuf)
+					{
+						string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (inbuf != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(inbuf, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, pStr1, pStr2, inbytesleft);
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (inbuf != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(inbuf, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, pStr1, pStr2, inbytesleft));
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* ret = SDLIconvStringNative(tocode, fromcode, inbuf, inbytesleft);
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, inbuf, inbytesleft));
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				byte* ret = SDLIconvStringNative((byte*)ptocode, fromcode, inbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, fromcode, inbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, fromcode, inbuf, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, fromcode, inbuf, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				byte* ret = SDLIconvStringNative(tocode, (byte*)pfromcode, inbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, (byte*)pfromcode, inbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, pStr0, inbuf, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, pStr0, inbuf, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					byte* ret = SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, inbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, inbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, pStr1, inbuf, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, pStr1, inbuf, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pinbuf = &inbuf)
+			{
+				byte* ret = SDLIconvStringNative(tocode, fromcode, (byte*)pinbuf, inbytesleft);
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pinbuf = &inbuf)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, (byte*)pinbuf, inbytesleft));
+				return ret;
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (inbuf != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(inbuf, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, fromcode, pStr0, inbytesleft);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (inbuf != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(inbuf, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, fromcode, pStr0, inbytesleft));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					byte* ret = SDLIconvStringNative((byte*)ptocode, fromcode, (byte*)pinbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, fromcode, (byte*)pinbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, fromcode, pStr1, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, fromcode, pStr1, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					byte* ret = SDLIconvStringNative(tocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* pfromcode = &fromcode)
+			{
+				fixed (byte* pinbuf = &inbuf)
+				{
+					string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = SDLIconvStringNative(tocode, pStr0, pStr1, inbytesleft);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fromcode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fromcode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (inbuf != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(inbuf, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(tocode, pStr0, pStr1, inbytesleft));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					fixed (byte* pinbuf = &inbuf)
+					{
+						byte* ret = SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] ref byte tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] ref byte fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] ref byte inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			fixed (byte* ptocode = &tocode)
+			{
+				fixed (byte* pfromcode = &fromcode)
+				{
+					fixed (byte* pinbuf = &inbuf)
+					{
+						string ret = Utils.DecodeStringUTF8(SDLIconvStringNative((byte*)ptocode, (byte*)pfromcode, (byte*)pinbuf, inbytesleft));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (inbuf != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(inbuf, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			byte* ret = SDLIconvStringNative(pStr0, pStr1, pStr2, inbytesleft);
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLIconvStringS([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] string tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] string fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] string inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] nuint inbytesleft)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (tocode != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(tocode);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(tocode, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (fromcode != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(fromcode);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(fromcode, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (inbuf != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(inbuf);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(inbuf, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLIconvStringNative(pStr0, pStr1, pStr2, inbytesleft));
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_main")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_main")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLMainNative([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv);
+
+		[NativeName(NativeNameType.Func, "SDL_main")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLMain([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv)
+		{
+			int ret = SDLMainNative(argc, argv);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_main")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLMain([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] string[] argv)
+		{
+			byte** pStrArray0 = null;
+			int pStrArraySize0 = Utils.GetByteCountArray(argv);
+			if (argv != null)
+			{
+				if (pStrArraySize0 > Utils.MaxStackallocSize)
+				{
+					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArraySize0);
+				}
+				else
+				{
+					byte* pStrArrayStack0 = stackalloc byte[pStrArraySize0];
+					pStrArray0 = (byte**)pStrArrayStack0;
+				}
+			}
+			for (int i = 0; i < argv.Length; i++)
+			{
+				pStrArray0[i] = (byte*)Utils.StringToUTF8Ptr(argv[i]);
+			}
+			int ret = SDLMainNative(argc, pStrArray0);
+			for (int i = 0; i < argv.Length; i++)
+			{
+				Utils.Free(pStrArray0[i]);
+			}
+			if (pStrArraySize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStrArray0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Circumvent failure of SDL_Init() when not using SDL_main() as an entry<br/>
+		/// point.<br/>
+		/// This function is defined in SDL_main.h, along with the preprocessor rule to<br/>
+		/// redefine main() as SDL_main(). Thus to ensure that your main() function<br/>
+		/// will not be changed it is necessary to define SDL_MAIN_HANDLED before<br/>
+		/// including SDL.h.<br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
+		[NativeName(NativeNameType.Func, "SDL_SetMainReady")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MixAudioFormat")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetMainReady")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMixAudioFormatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
+		internal static partial void SDLSetMainReadyNative();
 
-		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
+		/// <summary>/// Circumvent failure of SDL_Init() when not using SDL_main() as an entry<br/>/// point.<br/>/// This function is defined in SDL_main.h, along with the preprocessor rule to<br/>/// redefine main() as SDL_main(). Thus to ensure that your main() function<br/>/// will not be changed it is necessary to define SDL_MAIN_HANDLED before<br/>/// including SDL.h.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetMainReady")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		public static void SDLSetMainReady()
 		{
-			SDLMixAudioFormatNative(dst, src, format, len, volume);
+			SDLSetMainReadyNative();
 		}
 
-		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] ref byte src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		/// <summary>
+		/// Register a win32 window class for SDL's use.<br/>
+		/// This can be called to set the application window class at startup. It is<br/>
+		/// safe to call this multiple times, as long as every call is eventually<br/>
+		/// paired with a call to SDL_UnregisterApp, but a second registration attempt<br/>
+		/// while a previous registration is still active will be ignored, other than<br/>
+		/// to increment a counter.<br/>
+		/// Most applications do not need to, and should not, call this directly; SDL<br/>
+		/// will call it when initializing the video subsystem.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_RegisterApp")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLRegisterAppNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst);
+
+		/// <summary>/// Register a win32 window class for SDL's use.<br/>/// This can be called to set the application window class at startup. It is<br/>/// safe to call this multiple times, as long as every call is eventually<br/>/// paired with a call to SDL_UnregisterApp, but a second registration attempt<br/>/// while a previous registration is still active will be ignored, other than<br/>/// to increment a counter.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when initializing the video subsystem.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLRegisterApp([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst)
 		{
-			fixed (byte* psrc = &src)
+			int ret = SDLRegisterAppNative(name, style, hInst);
+			return ret;
+		}
+
+		/// <summary>/// Register a win32 window class for SDL's use.<br/>/// This can be called to set the application window class at startup. It is<br/>/// safe to call this multiple times, as long as every call is eventually<br/>/// paired with a call to SDL_UnregisterApp, but a second registration attempt<br/>/// while a previous registration is still active will be ignored, other than<br/>/// to increment a counter.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when initializing the video subsystem.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLRegisterApp([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst)
+		{
+			fixed (byte* pname = &name)
 			{
-				SDLMixAudioFormatNative(dst, (byte*)psrc, format, len, volume);
+				int ret = SDLRegisterAppNative((byte*)pname, style, hInst);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Register a win32 window class for SDL's use.<br/>/// This can be called to set the application window class at startup. It is<br/>/// safe to call this multiple times, as long as every call is eventually<br/>/// paired with a call to SDL_UnregisterApp, but a second registration attempt<br/>/// while a previous registration is still active will be ignored, other than<br/>/// to increment a counter.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when initializing the video subsystem.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLRegisterApp([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			int ret = SDLRegisterAppNative(pStr0, style, hInst);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Deregister the win32 window class from an SDL_RegisterApp call.<br/>
+		/// This can be called to undo the effects of SDL_RegisterApp.<br/>
+		/// Most applications do not need to, and should not, call this directly; SDL<br/>
+		/// will call it when deinitializing the video subsystem.<br/>
+		/// It is safe to call this multiple times, as long as every call is eventually<br/>
+		/// paired with a prior call to SDL_RegisterApp. The window class will only be<br/>
+		/// deregistered when the registration counter in SDL_RegisterApp decrements to<br/>
+		/// zero through calls to this function.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnregisterApp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnregisterApp")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLUnregisterAppNative();
+
+		/// <summary>/// Deregister the win32 window class from an SDL_RegisterApp call.<br/>/// This can be called to undo the effects of SDL_RegisterApp.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when deinitializing the video subsystem.<br/>/// It is safe to call this multiple times, as long as every call is eventually<br/>/// paired with a prior call to SDL_RegisterApp. The window class will only be<br/>/// deregistered when the registration counter in SDL_RegisterApp decrements to<br/>/// zero through calls to this function.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnregisterApp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLUnregisterApp()
+		{
+			SDLUnregisterAppNative();
+		}
+
+		/// <summary>
+		/// Don't include intrin.h here because it contains C++ code <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "__debugbreak")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "__debugbreak")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void DebugbreakNative();
+
+		/// <summary>/// Don't include intrin.h here because it contains C++ code <br/>/// </summary>		[NativeName(NativeNameType.Func, "__debugbreak")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Debugbreak()
+		{
+			DebugbreakNative();
+		}
+
+		/// <summary>
+		/// Set an application-defined assertion handler.<br/>
+		/// This function allows an application to show its own assertion UI and/or<br/>
+		/// force the response to an assertion failure. If the application doesn't<br/>
+		/// provide this, SDL will try to do the right thing, popping up a<br/>
+		/// system-specific GUI dialog, and probably minimizing any fullscreen windows.<br/>
+		/// This callback may fire from any thread, but it runs wrapped in a mutex, so<br/>
+		/// it will only fire from one thread at a time.<br/>
+		/// This callback is NOT reset to SDL's internal handler upon SDL_Quit()!<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetAssertionHandler")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetAssertionHandlerNative([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] SdlAssertionhandler handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+
+		/// <summary>/// Set an application-defined assertion handler.<br/>/// This function allows an application to show its own assertion UI and/or<br/>/// force the response to an assertion failure. If the application doesn't<br/>/// provide this, SDL will try to do the right thing, popping up a<br/>/// system-specific GUI dialog, and probably minimizing any fullscreen windows.<br/>/// This callback may fire from any thread, but it runs wrapped in a mutex, so<br/>/// it will only fire from one thread at a time.<br/>/// This callback is NOT reset to SDL's internal handler upon SDL_Quit()!<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetAssertionHandler([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] SdlAssertionhandler handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			SDLSetAssertionHandlerNative(handler, userdata);
+		}
+
+		/// <summary>
+		/// Get the default assertion handler.<br/>
+		/// This returns the function pointer that is called by default when an<br/>
+		/// assertion is triggered. This is an internal function provided by SDL, that<br/>
+		/// is used for assertions when SDL_SetAssertionHandler() hasn't been used to<br/>
+		/// provide a different function.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetDefaultAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDefaultAssertionHandler")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SdlAssertionhandler SDLGetDefaultAssertionHandlerNative();
+
+		/// <summary>/// Get the default assertion handler.<br/>/// This returns the function pointer that is called by default when an<br/>/// assertion is triggered. This is an internal function provided by SDL, that<br/>/// is used for assertions when SDL_SetAssertionHandler() hasn't been used to<br/>/// provide a different function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDefaultAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
+		public static SdlAssertionhandler SDLGetDefaultAssertionHandler()
+		{
+			SdlAssertionhandler ret = SDLGetDefaultAssertionHandlerNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the current assertion handler.<br/>
+		/// This returns the function pointer that is called when an assertion is<br/>
+		/// triggered. This is either the value last passed to<br/>
+		/// SDL_SetAssertionHandler(), or if no application-specified function is set,<br/>
+		/// is equivalent to calling SDL_GetDefaultAssertionHandler().<br/>
+		/// The parameter `puserdata` is a pointer to a void*, which will store the<br/>
+		/// "userdata" pointer that was passed to SDL_SetAssertionHandler(). This value<br/>
+		/// will always be NULL for the default handler. If you don't care about this<br/>
+		/// data, it is safe to pass a NULL pointer to this function to ignore it.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetAssertionHandler")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SdlAssertionhandler SDLGetAssertionHandlerNative([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata);
+
+		/// <summary>/// Get the current assertion handler.<br/>/// This returns the function pointer that is called when an assertion is<br/>/// triggered. This is either the value last passed to<br/>/// SDL_SetAssertionHandler(), or if no application-specified function is set,<br/>/// is equivalent to calling SDL_GetDefaultAssertionHandler().<br/>/// The parameter `puserdata` is a pointer to a void*, which will store the<br/>/// "userdata" pointer that was passed to SDL_SetAssertionHandler(). This value<br/>/// will always be NULL for the default handler. If you don't care about this<br/>/// data, it is safe to pass a NULL pointer to this function to ignore it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetAssertionHandler")]
+		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
+		public static SdlAssertionhandler SDLGetAssertionHandler([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata)
+		{
+			SdlAssertionhandler ret = SDLGetAssertionHandlerNative(puserdata);
+			return ret;
+		}
+
+		/// <summary>
+		/// Get a list of all assertion failures.<br/>
+		/// This function gets all assertions triggered since the last call to<br/>
+		/// SDL_ResetAssertionReport(), or the start of the program.<br/>
+		/// The proper way to examine this data looks something like this:<br/>
+		/// ```c<br/>
+		/// const SDL_AssertData *item = SDL_GetAssertionReport();<br/>
+		/// while (item) {<br/>
+		/// printf("'%s', %s (%s:%d), triggered %u times, always ignore: %s.\\n",<br/>
+		/// item->condition, item->function, item->filename,<br/>
+		/// item->linenum, item->trigger_count,<br/>
+		/// item->always_ignore ? "yes" : "no");<br/>
+		/// item = item->next;<br/>
+		/// }<br/>
+		/// ```<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetAssertionReport")]
+		[return: NativeName(NativeNameType.Type, "const SDL_AssertData*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetAssertionReport")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLAssertData* SDLGetAssertionReportNative();
+
+		/// <summary>/// Get a list of all assertion failures.<br/>/// This function gets all assertions triggered since the last call to<br/>/// SDL_ResetAssertionReport(), or the start of the program.<br/>/// The proper way to examine this data looks something like this:<br/>/// ```c<br/>/// const SDL_AssertData *item = SDL_GetAssertionReport();<br/>/// while (item) {<br/>/// printf("'%s', %s (%s:%d), triggered %u times, always ignore: %s.\\n",<br/>/// item->condition, item->function, item->filename,<br/>/// item->linenum, item->trigger_count,<br/>/// item->always_ignore ? "yes" : "no");<br/>/// item = item->next;<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetAssertionReport")]
+		[return: NativeName(NativeNameType.Type, "const SDL_AssertData*")]
+		public static SDLAssertData* SDLGetAssertionReport()
+		{
+			SDLAssertData* ret = SDLGetAssertionReportNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Clear the list of all assertion failures.<br/>
+		/// This function will clear the list of all assertions triggered up to that<br/>
+		/// point. Immediately following this call, SDL_GetAssertionReport will return<br/>
+		/// no items. In addition, any previously-triggered assertions will be reset to<br/>
+		/// a trigger_count of zero, and their always_ignore state will be false.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ResetAssertionReport")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ResetAssertionReport")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLResetAssertionReportNative();
+
+		/// <summary>/// Clear the list of all assertion failures.<br/>/// This function will clear the list of all assertions triggered up to that<br/>/// point. Immediately following this call, SDL_GetAssertionReport will return<br/>/// no items. In addition, any previously-triggered assertions will be reset to<br/>/// a trigger_count of zero, and their always_ignore state will be false.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetAssertionReport")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLResetAssertionReport()
+		{
+			SDLResetAssertionReportNative();
+		}
+
+		/// <summary>
+		/// Try to lock a spin lock by setting it to a non-zero value.<br/>
+		/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>
+		/// doing. Please be careful using any sort of spinlock!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicTryLock")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicTryLock")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLAtomicTryLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
+
+		/// <summary>/// Try to lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicTryLock")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLAtomicTryLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
+		{
+			SDLBool ret = SDLAtomicTryLockNative(lock0);
+			return ret;
+		}
+
+		/// <summary>/// Try to lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicTryLock")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLAtomicTryLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] ref int lock0)
+		{
+			fixed (int* plock0 = &lock0)
+			{
+				SDLBool ret = SDLAtomicTryLockNative((int*)plock0);
+				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Queue more audio on non-callback devices.<br/>
-		/// If you are looking to retrieve queued audio from a non-callback capture<br/>
-		/// device, you want SDL_DequeueAudio() instead. SDL_QueueAudio() will return<br/>
-		/// -1 to signify an error if you use it with capture devices.<br/>
-		/// SDL offers two ways to feed audio to the device: you can either supply a<br/>
-		/// callback that SDL triggers with some frequency to obtain more audio (pull<br/>
-		/// method), or you can supply no callback, and then SDL will expect you to<br/>
-		/// supply data at regular intervals (push method) with this function.<br/>
-		/// There are no limits on the amount of data you can queue, short of<br/>
-		/// exhaustion of address space. Queued data will drain to the device as<br/>
-		/// necessary without further intervention from you. If the device needs audio<br/>
-		/// but there is not enough queued, it will play silence to make up the<br/>
-		/// difference. This means you will have skips in your audio playback if you<br/>
-		/// aren't routinely queueing sufficient data.<br/>
-		/// This function copies the supplied data, so you are safe to free it when the<br/>
-		/// function returns. This function is thread-safe, but queueing to the same<br/>
-		/// device from two threads at once does not promise which buffer will be<br/>
-		/// queued first.<br/>
-		/// You may not queue audio on a device that is using an application-supplied<br/>
-		/// callback; doing so returns an error. You have to use the audio callback or<br/>
-		/// queue audio with this function, but not both.<br/>
-		/// You should not call SDL_LockAudio() on the device before queueing; SDL<br/>
-		/// handles locking internally for this function.<br/>
-		/// Note that SDL2 does not support planar audio. You will need to resample<br/>
-		/// from planar audio formats into a non-planar one (see SDL_AudioFormat)<br/>
-		/// before queuing audio.<br/>
+		/// Lock a spin lock by setting it to a non-zero value.<br/>
+		/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>
+		/// doing. Please be careful using any sort of spinlock!***<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_QueueAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLQueueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
-
-		/// <summary>/// Queue more audio on non-callback devices.<br/>/// If you are looking to retrieve queued audio from a non-callback capture<br/>/// device, you want SDL_DequeueAudio() instead. SDL_QueueAudio() will return<br/>/// -1 to signify an error if you use it with capture devices.<br/>/// SDL offers two ways to feed audio to the device: you can either supply a<br/>/// callback that SDL triggers with some frequency to obtain more audio (pull<br/>/// method), or you can supply no callback, and then SDL will expect you to<br/>/// supply data at regular intervals (push method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Queued data will drain to the device as<br/>/// necessary without further intervention from you. If the device needs audio<br/>/// but there is not enough queued, it will play silence to make up the<br/>/// difference. This means you will have skips in your audio playback if you<br/>/// aren't routinely queueing sufficient data.<br/>/// This function copies the supplied data, so you are safe to free it when the<br/>/// function returns. This function is thread-safe, but queueing to the same<br/>/// device from two threads at once does not promise which buffer will be<br/>/// queued first.<br/>/// You may not queue audio on a device that is using an application-supplied<br/>/// callback; doing so returns an error. You have to use the audio callback or<br/>/// queue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before queueing; SDL<br/>/// handles locking internally for this function.<br/>/// Note that SDL2 does not support planar audio. You will need to resample<br/>/// from planar audio formats into a non-planar one (see SDL_AudioFormat)<br/>/// before queuing audio.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLQueueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
-		{
-			int ret = SDLQueueAudioNative(dev, data, len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Dequeue more audio on non-callback devices.<br/>
-		/// If you are looking to queue audio for output on a non-callback playback<br/>
-		/// device, you want SDL_QueueAudio() instead. SDL_DequeueAudio() will always<br/>
-		/// return 0 if you use it with playback devices.<br/>
-		/// SDL offers two ways to retrieve audio from a capture device: you can either<br/>
-		/// supply a callback that SDL triggers with some frequency as the device<br/>
-		/// records more audio data, (push method), or you can supply no callback, and<br/>
-		/// then SDL will expect you to retrieve data at regular intervals (pull<br/>
-		/// method) with this function.<br/>
-		/// There are no limits on the amount of data you can queue, short of<br/>
-		/// exhaustion of address space. Data from the device will keep queuing as<br/>
-		/// necessary without further intervention from you. This means you will<br/>
-		/// eventually run out of memory if you aren't routinely dequeueing data.<br/>
-		/// Capture devices will not queue data when paused; if you are expecting to<br/>
-		/// not need captured audio for some length of time, use SDL_PauseAudioDevice()<br/>
-		/// to stop the capture device from queueing more data. This can be useful<br/>
-		/// during, say, level loading times. When unpaused, capture devices will start<br/>
-		/// queueing data from that point, having flushed any capturable data available<br/>
-		/// while paused.<br/>
-		/// This function is thread-safe, but dequeueing from the same device from two<br/>
-		/// threads at once does not promise which thread will dequeue data first.<br/>
-		/// You may not dequeue audio from a device that is using an<br/>
-		/// application-supplied callback; doing so returns an error. You have to use<br/>
-		/// the audio callback, or dequeue audio with this function, but not both.<br/>
-		/// You should not call SDL_LockAudio() on the device before dequeueing; SDL<br/>
-		/// handles locking internally for this function.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DequeueAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLDequeueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
-
-		/// <summary>/// Dequeue more audio on non-callback devices.<br/>/// If you are looking to queue audio for output on a non-callback playback<br/>/// device, you want SDL_QueueAudio() instead. SDL_DequeueAudio() will always<br/>/// return 0 if you use it with playback devices.<br/>/// SDL offers two ways to retrieve audio from a capture device: you can either<br/>/// supply a callback that SDL triggers with some frequency as the device<br/>/// records more audio data, (push method), or you can supply no callback, and<br/>/// then SDL will expect you to retrieve data at regular intervals (pull<br/>/// method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Data from the device will keep queuing as<br/>/// necessary without further intervention from you. This means you will<br/>/// eventually run out of memory if you aren't routinely dequeueing data.<br/>/// Capture devices will not queue data when paused; if you are expecting to<br/>/// not need captured audio for some length of time, use SDL_PauseAudioDevice()<br/>/// to stop the capture device from queueing more data. This can be useful<br/>/// during, say, level loading times. When unpaused, capture devices will start<br/>/// queueing data from that point, having flushed any capturable data available<br/>/// while paused.<br/>/// This function is thread-safe, but dequeueing from the same device from two<br/>/// threads at once does not promise which thread will dequeue data first.<br/>/// You may not dequeue audio from a device that is using an<br/>/// application-supplied callback; doing so returns an error. You have to use<br/>/// the audio callback, or dequeue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before dequeueing; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLDequeueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
-		{
-			uint ret = SDLDequeueAudioNative(dev, data, len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of bytes of still-queued audio.<br/>
-		/// For playback devices: this is the number of bytes that have been queued for<br/>
-		/// playback with SDL_QueueAudio(), but have not yet been sent to the hardware.<br/>
-		/// Once we've sent it to the hardware, this function can not decide the exact<br/>
-		/// byte boundary of what has been played. It's possible that we just gave the<br/>
-		/// hardware several kilobytes right before you called this function, but it<br/>
-		/// hasn't played any of it yet, or maybe half of it, etc.<br/>
-		/// For capture devices, this is the number of bytes that have been captured by<br/>
-		/// the device and are waiting for you to dequeue. This number may grow at any<br/>
-		/// time, so this only informs of the lower-bound of available data.<br/>
-		/// You may not queue or dequeue audio on a device that is using an<br/>
-		/// application-supplied callback; calling this function on such a device<br/>
-		/// always returns 0. You have to use the audio callback or queue audio, but<br/>
-		/// not both.<br/>
-		/// You should not call SDL_LockAudio() on the device before querying; SDL<br/>
-		/// handles locking internally for this function.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetQueuedAudioSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetQueuedAudioSizeNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
-		/// <summary>/// Get the number of bytes of still-queued audio.<br/>/// For playback devices: this is the number of bytes that have been queued for<br/>/// playback with SDL_QueueAudio(), but have not yet been sent to the hardware.<br/>/// Once we've sent it to the hardware, this function can not decide the exact<br/>/// byte boundary of what has been played. It's possible that we just gave the<br/>/// hardware several kilobytes right before you called this function, but it<br/>/// hasn't played any of it yet, or maybe half of it, etc.<br/>/// For capture devices, this is the number of bytes that have been captured by<br/>/// the device and are waiting for you to dequeue. This number may grow at any<br/>/// time, so this only informs of the lower-bound of available data.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before querying; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLGetQueuedAudioSize([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
-		{
-			uint ret = SDLGetQueuedAudioSizeNative(dev);
-			return ret;
-		}
-
-		/// <summary>
-		/// Drop any queued audio data waiting to be sent to the hardware.<br/>
-		/// Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For<br/>
-		/// output devices, the hardware will start playing silence if more audio isn't<br/>
-		/// queued. For capture devices, the hardware will start filling the empty<br/>
-		/// queue with new data if the capture device isn't paused.<br/>
-		/// This will not prevent playback of queued audio that's already been sent to<br/>
-		/// the hardware, as we can not undo that, so expect there to be some fraction<br/>
-		/// of a second of audio that might still be heard. This can be useful if you<br/>
-		/// want to, say, drop any pending music or any unprocessed microphone input<br/>
-		/// during a level change in your game.<br/>
-		/// You may not queue or dequeue audio on a device that is using an<br/>
-		/// application-supplied callback; calling this function on such a device<br/>
-		/// always returns 0. You have to use the audio callback or queue audio, but<br/>
-		/// not both.<br/>
-		/// You should not call SDL_LockAudio() on the device before clearing the<br/>
-		/// queue; SDL handles locking internally for this function.<br/>
-		/// This function always succeeds and thus returns void.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
+		[NativeName(NativeNameType.Func, "SDL_AtomicLock")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearQueuedAudio")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicLock")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearQueuedAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+		internal static partial void SDLAtomicLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
 
-		/// <summary>/// Drop any queued audio data waiting to be sent to the hardware.<br/>/// Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For<br/>/// output devices, the hardware will start playing silence if more audio isn't<br/>/// queued. For capture devices, the hardware will start filling the empty<br/>/// queue with new data if the capture device isn't paused.<br/>/// This will not prevent playback of queued audio that's already been sent to<br/>/// the hardware, as we can not undo that, so expect there to be some fraction<br/>/// of a second of audio that might still be heard. This can be useful if you<br/>/// want to, say, drop any pending music or any unprocessed microphone input<br/>/// during a level change in your game.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before clearing the<br/>/// queue; SDL handles locking internally for this function.<br/>/// This function always succeeds and thus returns void.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
+		/// <summary>/// Lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicLock")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLClearQueuedAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		public static void SDLAtomicLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
 		{
-			SDLClearQueuedAudioNative(dev);
+			SDLAtomicLockNative(lock0);
+		}
+
+		/// <summary>/// Lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicLock")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLAtomicLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] ref int lock0)
+		{
+			fixed (int* plock0 = &lock0)
+			{
+				SDLAtomicLockNative((int*)plock0);
+			}
 		}
 
 		/// <summary>
-		/// This function is a legacy means of locking the audio device.<br/>
-		/// New programs might want to use SDL_LockAudioDevice() instead. This function<br/>
-		/// is equivalent to calling...<br/>
+		/// Unlock a spin lock by setting it to 0.<br/>
+		/// Always returns immediately.<br/>
+		/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>
+		/// doing. Please be careful using any sort of spinlock!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicUnlock")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicUnlock")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLAtomicUnlockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
+
+		/// <summary>/// Unlock a spin lock by setting it to 0.<br/>/// Always returns immediately.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicUnlock")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLAtomicUnlock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
+		{
+			SDLAtomicUnlockNative(lock0);
+		}
+
+		/// <summary>/// Unlock a spin lock by setting it to 0.<br/>/// Always returns immediately.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicUnlock")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLAtomicUnlock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] ref int lock0)
+		{
+			fixed (int* plock0 = &lock0)
+			{
+				SDLAtomicUnlockNative((int*)plock0);
+			}
+		}
+
+		/// <summary>
+		/// Memory barriers are designed to prevent reads and writes from being<br/>
+		/// reordered by the compiler and being seen out of order on multi-core CPUs.<br/>
+		/// A typical pattern would be for thread A to write some data and a flag, and<br/>
+		/// for thread B to read the flag and get the data. In this case you would<br/>
+		/// insert a release barrier between writing the data and the flag,<br/>
+		/// guaranteeing that the data write completes no later than the flag is<br/>
+		/// written, and you would insert an acquire barrier between reading the flag<br/>
+		/// and reading the data, to ensure that all the reads associated with the flag<br/>
+		/// have completed.<br/>
+		/// In this pattern you should always see a release barrier paired with an<br/>
+		/// acquire barrier and you should gate the data reads/writes with a single<br/>
+		/// flag variable.<br/>
+		/// For more information on these semantics, take a look at the blog post:<br/>
+		/// http://preshing.com/20120913/acquire-and-release-semantics<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierReleaseFunction")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MemoryBarrierReleaseFunction")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLMemoryBarrierReleaseFunctionNative();
+
+		/// <summary>/// Memory barriers are designed to prevent reads and writes from being<br/>/// reordered by the compiler and being seen out of order on multi-core CPUs.<br/>/// A typical pattern would be for thread A to write some data and a flag, and<br/>/// for thread B to read the flag and get the data. In this case you would<br/>/// insert a release barrier between writing the data and the flag,<br/>/// guaranteeing that the data write completes no later than the flag is<br/>/// written, and you would insert an acquire barrier between reading the flag<br/>/// and reading the data, to ensure that all the reads associated with the flag<br/>/// have completed.<br/>/// In this pattern you should always see a release barrier paired with an<br/>/// acquire barrier and you should gate the data reads/writes with a single<br/>/// flag variable.<br/>/// For more information on these semantics, take a look at the blog post:<br/>/// http://preshing.com/20120913/acquire-and-release-semantics<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierReleaseFunction")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMemoryBarrierReleaseFunction()
+		{
+			SDLMemoryBarrierReleaseFunctionNative();
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierAcquireFunction")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_MemoryBarrierAcquireFunction")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLMemoryBarrierAcquireFunctionNative();
+
+		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierAcquireFunction")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLMemoryBarrierAcquireFunction()
+		{
+			SDLMemoryBarrierAcquireFunctionNative();
+		}
+
+		/// <summary>
+		/// Set an atomic variable to a new value if it is currently an old value.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicCAS")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicCAS")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLAtomicCASNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval);
+
+		/// <summary>/// Set an atomic variable to a new value if it is currently an old value.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicCAS")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLAtomicCAS([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval)
+		{
+			SDLBool ret = SDLAtomicCASNative(a, oldval, newval);
+			return ret;
+		}
+
+		/// <summary>/// Set an atomic variable to a new value if it is currently an old value.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicCAS")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLAtomicCAS([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] ref SDLAtomic a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval)
+		{
+			fixed (SDLAtomic* pa = &a)
+			{
+				SDLBool ret = SDLAtomicCASNative((SDLAtomic*)pa, oldval, newval);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set an atomic variable to a value.<br/>
+		/// This function also acts as a full memory barrier.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicSet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicSet")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAtomicSetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v);
+
+		/// <summary>/// Set an atomic variable to a value.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicSet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicSet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			int ret = SDLAtomicSetNative(a, v);
+			return ret;
+		}
+
+		/// <summary>/// Set an atomic variable to a value.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicSet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicSet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] ref SDLAtomic a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			fixed (SDLAtomic* pa = &a)
+			{
+				int ret = SDLAtomicSetNative((SDLAtomic*)pa, v);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the value of an atomic variable.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicGet")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAtomicGetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a);
+
+		/// <summary>/// Get the value of an atomic variable.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicGet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a)
+		{
+			int ret = SDLAtomicGetNative(a);
+			return ret;
+		}
+
+		/// <summary>/// Get the value of an atomic variable.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicGet")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicGet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] ref SDLAtomic a)
+		{
+			fixed (SDLAtomic* pa = &a)
+			{
+				int ret = SDLAtomicGetNative((SDLAtomic*)pa);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Add to an atomic variable.<br/>
+		/// This function also acts as a full memory barrier.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicAdd")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicAdd")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLAtomicAddNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v);
+
+		/// <summary>/// Add to an atomic variable.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicAdd")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicAdd([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			int ret = SDLAtomicAddNative(a, v);
+			return ret;
+		}
+
+		/// <summary>/// Add to an atomic variable.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicAdd")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLAtomicAdd([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] ref SDLAtomic a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			fixed (SDLAtomic* pa = &a)
+			{
+				int ret = SDLAtomicAddNative((SDLAtomic*)pa, v);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set a pointer to a new value if it is currently an old value.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicCASPtr")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicCASPtr")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLAtomicCASPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "void*")] void* oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "void*")] void* newval);
+
+		/// <summary>/// Set a pointer to a new value if it is currently an old value.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicCASPtr")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLAtomicCASPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "void*")] void* oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "void*")] void* newval)
+		{
+			SDLBool ret = SDLAtomicCASPtrNative(a, oldval, newval);
+			return ret;
+		}
+
+		/// <summary>
+		/// Set a pointer to a value atomically.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicSetPtr")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicSetPtr")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLAtomicSetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "void*")] void* v);
+
+		/// <summary>/// Set a pointer to a value atomically.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicSetPtr")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLAtomicSetPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "void*")] void* v)
+		{
+			void* ret = SDLAtomicSetPtrNative(a, v);
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the value of a pointer atomically.<br/>
+		/// ***Note: If you don't know what this function is for, you shouldn't use<br/>
+		/// it!***<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_AtomicGetPtr")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_AtomicGetPtr")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLAtomicGetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a);
+
+		/// <summary>/// Get the value of a pointer atomically.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicGetPtr")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLAtomicGetPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a)
+		{
+			void* ret = SDLAtomicGetPtrNative(a);
+			return ret;
+		}
+
+		/// <summary>
+		/// Set the SDL error message for the current thread.<br/>
+		/// Calling this function will replace any previous error message that was set.<br/>
+		/// This function always returns -1, since SDL frequently uses -1 to signify an<br/>
+		/// failing result, leading to this idiom:<br/>
 		/// ```c<br/>
-		/// SDL_LockAudioDevice(1);<br/>
+		/// if (error_code) {<br/>
+		/// return SDL_SetError("This operation has failed: %d", error_code);<br/>
+		/// }<br/>
 		/// ```<br/>
-		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
+		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockAudio")]
+		[NativeName(NativeNameType.Func, "SDL_SetError")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetError")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockAudioNative();
+		internal static partial int SDLSetErrorNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
 
-		/// <summary>/// This function is a legacy means of locking the audio device.<br/>/// New programs might want to use SDL_LockAudioDevice() instead. This function<br/>/// is equivalent to calling...<br/>/// ```c<br/>/// SDL_LockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLockAudio()
+		/// <summary>/// Set the SDL error message for the current thread.<br/>/// Calling this function will replace any previous error message that was set.<br/>/// This function always returns -1, since SDL frequently uses -1 to signify an<br/>/// failing result, leading to this idiom:<br/>/// ```c<br/>/// if (error_code) {<br/>/// return SDL_SetError("This operation has failed: %d", error_code);<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetError")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetError([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
 		{
-			SDLLockAudioNative();
+			int ret = SDLSetErrorNative(fmt);
+			return ret;
+		}
+
+		/// <summary>/// Set the SDL error message for the current thread.<br/>/// Calling this function will replace any previous error message that was set.<br/>/// This function always returns -1, since SDL frequently uses -1 to signify an<br/>/// failing result, leading to this idiom:<br/>/// ```c<br/>/// if (error_code) {<br/>/// return SDL_SetError("This operation has failed: %d", error_code);<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetError")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetError([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
+		{
+			fixed (byte* pfmt = &fmt)
+			{
+				int ret = SDLSetErrorNative((byte*)pfmt);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the SDL error message for the current thread.<br/>/// Calling this function will replace any previous error message that was set.<br/>/// This function always returns -1, since SDL frequently uses -1 to signify an<br/>/// failing result, leading to this idiom:<br/>/// ```c<br/>/// if (error_code) {<br/>/// return SDL_SetError("This operation has failed: %d", error_code);<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetError")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetError([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (fmt != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(fmt);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			int ret = SDLSetErrorNative(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
 		}
 
 		/// <summary>
-		/// Use this function to lock out the audio callback function for a specified<br/>
-		/// device.<br/>
-		/// The lock manipulated by these functions protects the audio callback<br/>
-		/// function specified in SDL_OpenAudioDevice(). During a<br/>
-		/// SDL_LockAudioDevice()/SDL_UnlockAudioDevice() pair, you can be guaranteed<br/>
-		/// that the callback function for that device is not running, even if the<br/>
-		/// device is not paused. While a device is locked, any other unpaused,<br/>
-		/// unlocked devices may still run their callbacks.<br/>
-		/// Calling this function from inside your audio callback is unnecessary. SDL<br/>
-		/// obtains this lock before calling your function, and releases it when the<br/>
-		/// function returns.<br/>
-		/// You should not hold the lock longer than absolutely necessary. If you hold<br/>
-		/// it too long, you'll experience dropouts in your audio playback. Ideally,<br/>
-		/// your application locks the device, sets a few variables and unlocks again.<br/>
-		/// Do not do heavy work while holding the lock for a device.<br/>
-		/// It is safe to lock the audio device multiple times, as long as you unlock<br/>
-		/// it an equivalent number of times. The callback will not run until the<br/>
-		/// device has been unlocked completely in this way. If your application fails<br/>
-		/// to unlock the device appropriately, your callback will never run, you might<br/>
-		/// hear repeating bursts of audio, and SDL_CloseAudioDevice() will probably<br/>
-		/// deadlock.<br/>
-		/// Internally, the audio device lock is a mutex; if you lock from two threads<br/>
-		/// at once, not only will you block the audio callback, you'll block the other<br/>
+		/// Retrieve a message about the last error that occurred on the current<br/>
+		/// thread.<br/>
+		/// It is possible for multiple errors to occur before calling SDL_GetError().<br/>
+		/// Only the last error is returned.<br/>
+		/// The message is only applicable when an SDL function has signaled an error.<br/>
+		/// You must check the return values of SDL function calls to determine when to<br/>
+		/// appropriately call SDL_GetError(). You should *not* use the results of<br/>
+		/// SDL_GetError() to decide if an error has occurred! Sometimes SDL will set<br/>
+		/// an error string even when reporting success.<br/>
+		/// SDL will *not* clear the error string for successful API calls. You *must*<br/>
+		/// check return values for failure cases before you can assume the error<br/>
+		/// string applies.<br/>
+		/// Error strings are set per-thread, so an error set in a different thread<br/>
+		/// will not interfere with the current thread's operation.<br/>
+		/// The returned string is internally allocated and must not be freed by the<br/>
+		/// application.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetError")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetError")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetErrorNative();
+
+		/// <summary>/// Retrieve a message about the last error that occurred on the current<br/>/// thread.<br/>/// It is possible for multiple errors to occur before calling SDL_GetError().<br/>/// Only the last error is returned.<br/>/// The message is only applicable when an SDL function has signaled an error.<br/>/// You must check the return values of SDL function calls to determine when to<br/>/// appropriately call SDL_GetError(). You should *not* use the results of<br/>/// SDL_GetError() to decide if an error has occurred! Sometimes SDL will set<br/>/// an error string even when reporting success.<br/>/// SDL will *not* clear the error string for successful API calls. You *must*<br/>/// check return values for failure cases before you can assume the error<br/>/// string applies.<br/>/// Error strings are set per-thread, so an error set in a different thread<br/>/// will not interfere with the current thread's operation.<br/>/// The returned string is internally allocated and must not be freed by the<br/>/// application.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetError")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetError()
+		{
+			byte* ret = SDLGetErrorNative();
+			return ret;
+		}
+
+		/// <summary>/// Retrieve a message about the last error that occurred on the current<br/>/// thread.<br/>/// It is possible for multiple errors to occur before calling SDL_GetError().<br/>/// Only the last error is returned.<br/>/// The message is only applicable when an SDL function has signaled an error.<br/>/// You must check the return values of SDL function calls to determine when to<br/>/// appropriately call SDL_GetError(). You should *not* use the results of<br/>/// SDL_GetError() to decide if an error has occurred! Sometimes SDL will set<br/>/// an error string even when reporting success.<br/>/// SDL will *not* clear the error string for successful API calls. You *must*<br/>/// check return values for failure cases before you can assume the error<br/>/// string applies.<br/>/// Error strings are set per-thread, so an error set in a different thread<br/>/// will not interfere with the current thread's operation.<br/>/// The returned string is internally allocated and must not be freed by the<br/>/// application.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetError")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetErrorS()
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetErrorNative());
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the last error message that was set for the current thread.<br/>
+		/// This allows the caller to copy the error string into a provided buffer, but<br/>
+		/// otherwise operates exactly the same as SDL_GetError().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetErrorMsg")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetErrorMsgNative([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen);
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLGetErrorMsg([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			byte* ret = SDLGetErrorMsgNative(errstr, maxlen);
+			return ret;
+		}
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLGetErrorMsgS([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetErrorMsgNative(errstr, maxlen));
+			return ret;
+		}
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLGetErrorMsg([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] ref byte errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			fixed (byte* perrstr = &errstr)
+			{
+				byte* ret = SDLGetErrorMsgNative((byte*)perrstr, maxlen);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLGetErrorMsgS([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] ref byte errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			fixed (byte* perrstr = &errstr)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLGetErrorMsgNative((byte*)perrstr, maxlen));
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* SDLGetErrorMsg([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] ref string errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (errstr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(errstr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(errstr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = SDLGetErrorMsgNative(pStr0, maxlen);
+			errstr = Utils.DecodeStringUTF8(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string SDLGetErrorMsgS([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] ref string errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (errstr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(errstr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(errstr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(SDLGetErrorMsgNative(pStr0, maxlen));
+			errstr = Utils.DecodeStringUTF8(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Clear any previous error message for this thread.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ClearError")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ClearError")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLClearErrorNative();
+
+		/// <summary>/// Clear any previous error message for this thread.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearError")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLClearError()
+		{
+			SDLClearErrorNative();
+		}
+
+		/// <summary>
+		/// SDL_Error() unconditionally returns -1. <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_Error")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_Error")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLErrorNative([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code);
+
+		/// <summary>/// SDL_Error() unconditionally returns -1. <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Error")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLError([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code)
+		{
+			int ret = SDLErrorNative(code);
+			return ret;
+		}
+
+		/// <summary>
+		/// Create a new mutex.<br/>
+		/// All newly-created mutexes begin in the _unlocked_ state.<br/>
+		/// Calls to SDL_LockMutex() will not return while the mutex is locked by<br/>
+		/// another thread. See SDL_TryLockMutex() to attempt to lock without blocking.<br/>
+		/// SDL mutexes are reentrant.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateMutex")]
+		[return: NativeName(NativeNameType.Type, "SDL_mutex*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateMutex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLMutex* SDLCreateMutexNative();
+
+		/// <summary>/// Create a new mutex.<br/>/// All newly-created mutexes begin in the _unlocked_ state.<br/>/// Calls to SDL_LockMutex() will not return while the mutex is locked by<br/>/// another thread. See SDL_TryLockMutex() to attempt to lock without blocking.<br/>/// SDL mutexes are reentrant.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateMutex")]
+		[return: NativeName(NativeNameType.Type, "SDL_mutex*")]
+		public static SDLMutex* SDLCreateMutex()
+		{
+			SDLMutex* ret = SDLCreateMutexNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Lock the mutex.<br/>
+		/// This will block until the mutex is available, which is to say it is in the<br/>
+		/// unlocked state and the OS has chosen the caller as the next thread to lock<br/>
+		/// it. Of all threads waiting to lock the mutex, only one may do so at a time.<br/>
+		/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>
+		/// unlock it the same number of times before it is actually made available for<br/>
+		/// other threads in the system (this is known as a "recursive mutex").<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LockMutex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
+
+		/// <summary>/// Lock the mutex.<br/>/// This will block until the mutex is available, which is to say it is in the<br/>/// unlocked state and the OS has chosen the caller as the next thread to lock<br/>/// it. Of all threads waiting to lock the mutex, only one may do so at a time.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			int ret = SDLLockMutexNative(mutex);
+			return ret;
+		}
+
+		/// <summary>/// Lock the mutex.<br/>/// This will block until the mutex is available, which is to say it is in the<br/>/// unlocked state and the OS has chosen the caller as the next thread to lock<br/>/// it. Of all threads waiting to lock the mutex, only one may do so at a time.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				int ret = SDLLockMutexNative((SDLMutex*)pmutex);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Try to lock a mutex without blocking.<br/>
+		/// This works just like SDL_LockMutex(), but if the mutex is not available,<br/>
+		/// this function returns `SDL_MUTEX_TIMEOUT` immediately.<br/>
+		/// This technique is useful if you need exclusive access to a resource but<br/>
+		/// don't want to wait for it, and will return to it to try again later.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_TryLockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_TryLockMutex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLTryLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
+
+		/// <summary>/// Try to lock a mutex without blocking.<br/>/// This works just like SDL_LockMutex(), but if the mutex is not available,<br/>/// this function returns `SDL_MUTEX_TIMEOUT` immediately.<br/>/// This technique is useful if you need exclusive access to a resource but<br/>/// don't want to wait for it, and will return to it to try again later.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_TryLockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTryLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			int ret = SDLTryLockMutexNative(mutex);
+			return ret;
+		}
+
+		/// <summary>/// Try to lock a mutex without blocking.<br/>/// This works just like SDL_LockMutex(), but if the mutex is not available,<br/>/// this function returns `SDL_MUTEX_TIMEOUT` immediately.<br/>/// This technique is useful if you need exclusive access to a resource but<br/>/// don't want to wait for it, and will return to it to try again later.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_TryLockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTryLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				int ret = SDLTryLockMutexNative((SDLMutex*)pmutex);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Unlock the mutex.<br/>
+		/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>
+		/// unlock it the same number of times before it is actually made available for<br/>
+		/// other threads in the system (this is known as a "recursive mutex").<br/>
+		/// It is an error to unlock a mutex that has not been locked by the current<br/>
+		/// thread, and doing so results in undefined behavior.<br/>
+		/// It is also an error to unlock a mutex that isn't locked at all.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UnlockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UnlockMutex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLUnlockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
+
+		/// <summary>/// Unlock the mutex.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// It is an error to unlock a mutex that has not been locked by the current<br/>/// thread, and doing so results in undefined behavior.<br/>/// It is also an error to unlock a mutex that isn't locked at all.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUnlockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			int ret = SDLUnlockMutexNative(mutex);
+			return ret;
+		}
+
+		/// <summary>/// Unlock the mutex.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// It is an error to unlock a mutex that has not been locked by the current<br/>/// thread, and doing so results in undefined behavior.<br/>/// It is also an error to unlock a mutex that isn't locked at all.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockMutex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUnlockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				int ret = SDLUnlockMutexNative((SDLMutex*)pmutex);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Destroy a mutex created with SDL_CreateMutex().<br/>
+		/// This function must be called on any mutex that is no longer needed. Failure<br/>
+		/// to destroy a mutex will result in a system memory or resource leak. While<br/>
+		/// it is safe to destroy a mutex that is _unlocked_, it is not safe to attempt<br/>
+		/// to destroy a locked mutex, and may result in undefined behavior depending<br/>
+		/// on the platform.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_DestroyMutex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DestroyMutex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLDestroyMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
+
+		/// <summary>/// Destroy a mutex created with SDL_CreateMutex().<br/>/// This function must be called on any mutex that is no longer needed. Failure<br/>/// to destroy a mutex will result in a system memory or resource leak. While<br/>/// it is safe to destroy a mutex that is _unlocked_, it is not safe to attempt<br/>/// to destroy a locked mutex, and may result in undefined behavior depending<br/>/// on the platform.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyMutex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroyMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			SDLDestroyMutexNative(mutex);
+		}
+
+		/// <summary>/// Destroy a mutex created with SDL_CreateMutex().<br/>/// This function must be called on any mutex that is no longer needed. Failure<br/>/// to destroy a mutex will result in a system memory or resource leak. While<br/>/// it is safe to destroy a mutex that is _unlocked_, it is not safe to attempt<br/>/// to destroy a locked mutex, and may result in undefined behavior depending<br/>/// on the platform.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyMutex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroyMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				SDLDestroyMutexNative((SDLMutex*)pmutex);
+			}
+		}
+
+		/// <summary>
+		/// Create a semaphore.<br/>
+		/// This function creates a new semaphore and initializes it with the value<br/>
+		/// `initial_value`. Each wait operation on the semaphore will atomically<br/>
+		/// decrement the semaphore value and potentially block if the semaphore value<br/>
+		/// is 0. Each post operation will atomically increment the semaphore value and<br/>
+		/// wake waiting threads and allow them to retry the wait operation.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateSemaphore")]
+		[return: NativeName(NativeNameType.Type, "SDL_sem*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateSemaphore")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSemaphore* SDLCreateSemaphoreNative([NativeName(NativeNameType.Param, "initial_value")] [NativeName(NativeNameType.Type, "Uint32")] uint initialValue);
+
+		/// <summary>/// Create a semaphore.<br/>/// This function creates a new semaphore and initializes it with the value<br/>/// `initial_value`. Each wait operation on the semaphore will atomically<br/>/// decrement the semaphore value and potentially block if the semaphore value<br/>/// is 0. Each post operation will atomically increment the semaphore value and<br/>/// wake waiting threads and allow them to retry the wait operation.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateSemaphore")]
+		[return: NativeName(NativeNameType.Type, "SDL_sem*")]
+		public static SDLSemaphore* SDLCreateSemaphore([NativeName(NativeNameType.Param, "initial_value")] [NativeName(NativeNameType.Type, "Uint32")] uint initialValue)
+		{
+			SDLSemaphore* ret = SDLCreateSemaphoreNative(initialValue);
+			return ret;
+		}
+
+		/// <summary>
+		/// Destroy a semaphore.<br/>
+		/// It is not safe to destroy a semaphore if there are threads currently<br/>
+		/// waiting on it.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_DestroySemaphore")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DestroySemaphore")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLDestroySemaphoreNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
+
+		/// <summary>/// Destroy a semaphore.<br/>/// It is not safe to destroy a semaphore if there are threads currently<br/>/// waiting on it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroySemaphore")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroySemaphore([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			SDLDestroySemaphoreNative(sem);
+		}
+
+		/// <summary>/// Destroy a semaphore.<br/>/// It is not safe to destroy a semaphore if there are threads currently<br/>/// waiting on it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroySemaphore")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroySemaphore([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				SDLDestroySemaphoreNative((SDLSemaphore*)psem);
+			}
+		}
+
+		/// <summary>
+		/// Wait until a semaphore has a positive value and then decrements it.<br/>
+		/// This function suspends the calling thread until either the semaphore<br/>
+		/// pointed to by `sem` has a positive value or the call is interrupted by a<br/>
+		/// signal or error. If the call is successful it will atomically decrement the<br/>
+		/// semaphore value.<br/>
+		/// This function is the equivalent of calling SDL_SemWaitTimeout() with a time<br/>
+		/// length of `SDL_MUTEX_MAXWAIT`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SemWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SemWait")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSemWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
+
+		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value or the call is interrupted by a<br/>/// signal or error. If the call is successful it will atomically decrement the<br/>/// semaphore value.<br/>/// This function is the equivalent of calling SDL_SemWaitTimeout() with a time<br/>/// length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			int ret = SDLSemWaitNative(sem);
+			return ret;
+		}
+
+		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value or the call is interrupted by a<br/>/// signal or error. If the call is successful it will atomically decrement the<br/>/// semaphore value.<br/>/// This function is the equivalent of calling SDL_SemWaitTimeout() with a time<br/>/// length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				int ret = SDLSemWaitNative((SDLSemaphore*)psem);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// See if a semaphore has a positive value and decrement it if it does.<br/>
+		/// This function checks to see if the semaphore pointed to by `sem` has a<br/>
+		/// positive value and atomically decrements the semaphore value if it does. If<br/>
+		/// the semaphore doesn't have a positive value, the function immediately<br/>
+		/// returns SDL_MUTEX_TIMEDOUT.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SemTryWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SemTryWait")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSemTryWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
+
+		/// <summary>/// See if a semaphore has a positive value and decrement it if it does.<br/>/// This function checks to see if the semaphore pointed to by `sem` has a<br/>/// positive value and atomically decrements the semaphore value if it does. If<br/>/// the semaphore doesn't have a positive value, the function immediately<br/>/// returns SDL_MUTEX_TIMEDOUT.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemTryWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemTryWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			int ret = SDLSemTryWaitNative(sem);
+			return ret;
+		}
+
+		/// <summary>/// See if a semaphore has a positive value and decrement it if it does.<br/>/// This function checks to see if the semaphore pointed to by `sem` has a<br/>/// positive value and atomically decrements the semaphore value if it does. If<br/>/// the semaphore doesn't have a positive value, the function immediately<br/>/// returns SDL_MUTEX_TIMEDOUT.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemTryWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemTryWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				int ret = SDLSemTryWaitNative((SDLSemaphore*)psem);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Wait until a semaphore has a positive value and then decrements it.<br/>
+		/// This function suspends the calling thread until either the semaphore<br/>
+		/// pointed to by `sem` has a positive value, the call is interrupted by a<br/>
+		/// signal or error, or the specified time has elapsed. If the call is<br/>
+		/// successful it will atomically decrement the semaphore value.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SemWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SemWaitTimeout")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSemWaitTimeoutNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout);
+
+		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value, the call is interrupted by a<br/>/// signal or error, or the specified time has elapsed. If the call is<br/>/// successful it will atomically decrement the semaphore value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemWaitTimeout([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout)
+		{
+			int ret = SDLSemWaitTimeoutNative(sem, timeout);
+			return ret;
+		}
+
+		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value, the call is interrupted by a<br/>/// signal or error, or the specified time has elapsed. If the call is<br/>/// successful it will atomically decrement the semaphore value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemWaitTimeout([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				int ret = SDLSemWaitTimeoutNative((SDLSemaphore*)psem, timeout);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Atomically increment a semaphore's value and wake waiting threads.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SemPost")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SemPost")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSemPostNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
+
+		/// <summary>/// Atomically increment a semaphore's value and wake waiting threads.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemPost")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemPost([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			int ret = SDLSemPostNative(sem);
+			return ret;
+		}
+
+		/// <summary>/// Atomically increment a semaphore's value and wake waiting threads.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemPost")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSemPost([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				int ret = SDLSemPostNative((SDLSemaphore*)psem);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the current value of a semaphore.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SemValue")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SemValue")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial uint SDLSemValueNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
+
+		/// <summary>/// Get the current value of a semaphore.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemValue")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLSemValue([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			uint ret = SDLSemValueNative(sem);
+			return ret;
+		}
+
+		/// <summary>/// Get the current value of a semaphore.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemValue")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLSemValue([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] ref SDLSemaphore sem)
+		{
+			fixed (SDLSemaphore* psem = &sem)
+			{
+				uint ret = SDLSemValueNative((SDLSemaphore*)psem);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Create a condition variable.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateCond")]
+		[return: NativeName(NativeNameType.Type, "SDL_cond*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateCond")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLCond* SDLCreateCondNative();
+
+		/// <summary>/// Create a condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateCond")]
+		[return: NativeName(NativeNameType.Type, "SDL_cond*")]
+		public static SDLCond* SDLCreateCond()
+		{
+			SDLCond* ret = SDLCreateCondNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// Destroy a condition variable.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_DestroyCond")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DestroyCond")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLDestroyCondNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
+
+		/// <summary>/// Destroy a condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyCond")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroyCond([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			SDLDestroyCondNative(cond);
+		}
+
+		/// <summary>/// Destroy a condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyCond")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLDestroyCond([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				SDLDestroyCondNative((SDLCond*)pcond);
+			}
+		}
+
+		/// <summary>
+		/// Restart one of the threads that are waiting on the condition variable.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CondSignal")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CondSignal")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLCondSignalNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
+
+		/// <summary>/// Restart one of the threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondSignal")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondSignal([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			int ret = SDLCondSignalNative(cond);
+			return ret;
+		}
+
+		/// <summary>/// Restart one of the threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondSignal")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondSignal([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				int ret = SDLCondSignalNative((SDLCond*)pcond);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Restart all threads that are waiting on the condition variable.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CondBroadcast")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CondBroadcast")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLCondBroadcastNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
+
+		/// <summary>/// Restart all threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondBroadcast")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondBroadcast([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			int ret = SDLCondBroadcastNative(cond);
+			return ret;
+		}
+
+		/// <summary>/// Restart all threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondBroadcast")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondBroadcast([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				int ret = SDLCondBroadcastNative((SDLCond*)pcond);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Wait until a condition variable is signaled.<br/>
+		/// This function unlocks the specified `mutex` and waits for another thread to<br/>
+		/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>
+		/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>
+		/// the function returns.<br/>
+		/// The mutex must be locked before calling this function.<br/>
+		/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>
+		/// time length of `SDL_MUTEX_MAXWAIT`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CondWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CondWait")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLCondWaitNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
+
+		/// <summary>/// Wait until a condition variable is signaled.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>/// the function returns.<br/>/// The mutex must be locked before calling this function.<br/>/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>/// time length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWait([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			int ret = SDLCondWaitNative(cond, mutex);
+			return ret;
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>/// the function returns.<br/>/// The mutex must be locked before calling this function.<br/>/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>/// time length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWait([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				int ret = SDLCondWaitNative((SDLCond*)pcond, mutex);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>/// the function returns.<br/>/// The mutex must be locked before calling this function.<br/>/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>/// time length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWait([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				int ret = SDLCondWaitNative(cond, (SDLMutex*)pmutex);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>/// the function returns.<br/>/// The mutex must be locked before calling this function.<br/>/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>/// time length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWait")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWait([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				fixed (SDLMutex* pmutex = &mutex)
+				{
+					int ret = SDLCondWaitNative((SDLCond*)pcond, (SDLMutex*)pmutex);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Wait until a condition variable is signaled or a certain time has passed.<br/>
+		/// This function unlocks the specified `mutex` and waits for another thread to<br/>
+		/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>
+		/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>
+		/// signaled or the time elapsed, the mutex is re-locked and the function<br/>
+		/// returns.<br/>
+		/// The mutex must be locked before calling this function.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CondWaitTimeout")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLCondWaitTimeoutNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms);
+
+		/// <summary>/// Wait until a condition variable is signaled or a certain time has passed.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>/// signaled or the time elapsed, the mutex is re-locked and the function<br/>/// returns.<br/>/// The mutex must be locked before calling this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWaitTimeout([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
+		{
+			int ret = SDLCondWaitTimeoutNative(cond, mutex, ms);
+			return ret;
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled or a certain time has passed.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>/// signaled or the time elapsed, the mutex is re-locked and the function<br/>/// returns.<br/>/// The mutex must be locked before calling this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWaitTimeout([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				int ret = SDLCondWaitTimeoutNative((SDLCond*)pcond, mutex, ms);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled or a certain time has passed.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>/// signaled or the time elapsed, the mutex is re-locked and the function<br/>/// returns.<br/>/// The mutex must be locked before calling this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWaitTimeout([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
+		{
+			fixed (SDLMutex* pmutex = &mutex)
+			{
+				int ret = SDLCondWaitTimeoutNative(cond, (SDLMutex*)pmutex, ms);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Wait until a condition variable is signaled or a certain time has passed.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>/// signaled or the time elapsed, the mutex is re-locked and the function<br/>/// returns.<br/>/// The mutex must be locked before calling this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLCondWaitTimeout([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] ref SDLCond cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] ref SDLMutex mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
+		{
+			fixed (SDLCond* pcond = &cond)
+			{
+				fixed (SDLMutex* pmutex = &mutex)
+				{
+					int ret = SDLCondWaitTimeoutNative((SDLCond*)pcond, (SDLMutex*)pmutex, ms);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateThread")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLThread* SDL_CreateThreadNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread);
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			SDLThread* ret = SDL_CreateThreadNative(fn, name, data, pfnBeginThread, pfnEndThread);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			fixed (byte* pname = &name)
+			{
+				SDLThread* ret = SDL_CreateThreadNative(fn, (byte*)pname, data, pfnBeginThread, pfnEndThread);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLThread* ret = SDL_CreateThreadNative(fn, pStr0, data, pfnBeginThread, pfnEndThread);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateThreadWithStackSize")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLThread* SDL_CreateThreadWithStackSizeNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread);
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, name, stacksize, data, pfnBeginThread, pfnEndThread);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			fixed (byte* pname = &name)
+			{
+				SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, (byte*)pname, stacksize, data, pfnBeginThread, pfnEndThread);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, pStr0, stacksize, data, pfnBeginThread, pfnEndThread);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, name, stacksize, data, pfnBeginThread, pfnEndThread);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			fixed (byte* pname = &name)
+			{
+				SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, (byte*)pname, stacksize, data, pfnBeginThread, pfnEndThread);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
+		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (name != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(name);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, pStr0, stacksize, data, pfnBeginThread, pfnEndThread);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the thread name as it was specified in SDL_CreateThread().<br/>
+		/// This is internal memory, not to be freed by the caller, and remains valid<br/>
+		/// until the specified thread is cleaned up by SDL_WaitThread().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetThreadName")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetThreadNameNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread);
+
+		/// <summary>/// Get the thread name as it was specified in SDL_CreateThread().<br/>/// This is internal memory, not to be freed by the caller, and remains valid<br/>/// until the specified thread is cleaned up by SDL_WaitThread().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetThreadName([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
+		{
+			byte* ret = SDLGetThreadNameNative(thread);
+			return ret;
+		}
+
+		/// <summary>/// Get the thread name as it was specified in SDL_CreateThread().<br/>/// This is internal memory, not to be freed by the caller, and remains valid<br/>/// until the specified thread is cleaned up by SDL_WaitThread().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetThreadNameS([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetThreadNameNative(thread));
+			return ret;
+		}
+
+		/// <summary>/// Get the thread name as it was specified in SDL_CreateThread().<br/>/// This is internal memory, not to be freed by the caller, and remains valid<br/>/// until the specified thread is cleaned up by SDL_WaitThread().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetThreadName([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] ref SDLThread thread)
+		{
+			fixed (SDLThread* pthread = &thread)
+			{
+				byte* ret = SDLGetThreadNameNative((SDLThread*)pthread);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the thread name as it was specified in SDL_CreateThread().<br/>/// This is internal memory, not to be freed by the caller, and remains valid<br/>/// until the specified thread is cleaned up by SDL_WaitThread().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetThreadNameS([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] ref SDLThread thread)
+		{
+			fixed (SDLThread* pthread = &thread)
+			{
+				string ret = Utils.DecodeStringUTF8(SDLGetThreadNameNative((SDLThread*)pthread));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the thread identifier for the current thread.<br/>
+		/// This thread identifier is as reported by the underlying operating system.<br/>
+		/// If SDL is running on a platform that does not support threads the return<br/>
+		/// value will always be zero.<br/>
+		/// This function also returns a valid thread ID when called from the main<br/>
 		/// thread.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockAudioDevice")]
+		[NativeName(NativeNameType.Func, "SDL_ThreadID")]
+		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ThreadID")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
+		internal static partial uint SDLThreadIDNative();
 
-		/// <summary>/// Use this function to lock out the audio callback function for a specified<br/>/// device.<br/>/// The lock manipulated by these functions protects the audio callback<br/>/// function specified in SDL_OpenAudioDevice(). During a<br/>/// SDL_LockAudioDevice()/SDL_UnlockAudioDevice() pair, you can be guaranteed<br/>/// that the callback function for that device is not running, even if the<br/>/// device is not paused. While a device is locked, any other unpaused,<br/>/// unlocked devices may still run their callbacks.<br/>/// Calling this function from inside your audio callback is unnecessary. SDL<br/>/// obtains this lock before calling your function, and releases it when the<br/>/// function returns.<br/>/// You should not hold the lock longer than absolutely necessary. If you hold<br/>/// it too long, you'll experience dropouts in your audio playback. Ideally,<br/>/// your application locks the device, sets a few variables and unlocks again.<br/>/// Do not do heavy work while holding the lock for a device.<br/>/// It is safe to lock the audio device multiple times, as long as you unlock<br/>/// it an equivalent number of times. The callback will not run until the<br/>/// device has been unlocked completely in this way. If your application fails<br/>/// to unlock the device appropriately, your callback will never run, you might<br/>/// hear repeating bursts of audio, and SDL_CloseAudioDevice() will probably<br/>/// deadlock.<br/>/// Internally, the audio device lock is a mutex; if you lock from two threads<br/>/// at once, not only will you block the audio callback, you'll block the other<br/>/// thread.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		/// <summary>/// Get the thread identifier for the current thread.<br/>/// This thread identifier is as reported by the underlying operating system.<br/>/// If SDL is running on a platform that does not support threads the return<br/>/// value will always be zero.<br/>/// This function also returns a valid thread ID when called from the main<br/>/// thread.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ThreadID")]
+		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
+		public static uint SDLThreadID()
 		{
-			SDLLockAudioDeviceNative(dev);
-		}
-
-		/// <summary>
-		/// This function is a legacy means of unlocking the audio device.<br/>
-		/// New programs might want to use SDL_UnlockAudioDevice() instead. This<br/>
-		/// function is equivalent to calling...<br/>
-		/// ```c<br/>
-		/// SDL_UnlockAudioDevice(1);<br/>
-		/// ```<br/>
-		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockAudioNative();
-
-		/// <summary>/// This function is a legacy means of unlocking the audio device.<br/>/// New programs might want to use SDL_UnlockAudioDevice() instead. This<br/>/// function is equivalent to calling...<br/>/// ```c<br/>/// SDL_UnlockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnlockAudio()
-		{
-			SDLUnlockAudioNative();
-		}
-
-		/// <summary>
-		/// Use this function to unlock the audio callback function for a specified<br/>
-		/// device.<br/>
-		/// This function should be paired with a previous SDL_LockAudioDevice() call.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
-		/// <summary>/// Use this function to unlock the audio callback function for a specified<br/>/// device.<br/>/// This function should be paired with a previous SDL_LockAudioDevice() call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnlockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
-		{
-			SDLUnlockAudioDeviceNative(dev);
-		}
-
-		/// <summary>
-		/// This function is a legacy means of closing the audio device.<br/>
-		/// This function is equivalent to calling...<br/>
-		/// ```c<br/>
-		/// SDL_CloseAudioDevice(1);<br/>
-		/// ```<br/>
-		/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLCloseAudioNative();
-
-		/// <summary>/// This function is a legacy means of closing the audio device.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_CloseAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLCloseAudio()
-		{
-			SDLCloseAudioNative();
-		}
-
-		/// <summary>
-		/// Use this function to shut down audio processing and close the audio device.<br/>
-		/// The application should close open audio devices once they are no longer<br/>
-		/// needed. Calling this function will wait until the device's audio callback<br/>
-		/// is not running, release the audio hardware and then clean up internal<br/>
-		/// state. No further audio will play from this device once this function<br/>
-		/// returns.<br/>
-		/// This function may block briefly while pending audio data is played by the<br/>
-		/// hardware, so that applications don't drop the last buffer of data they<br/>
-		/// supplied.<br/>
-		/// The device ID is invalid as soon as the device is closed, and is eligible<br/>
-		/// for reuse in a new SDL_OpenAudioDevice() call immediately.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLCloseAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
-		/// <summary>/// Use this function to shut down audio processing and close the audio device.<br/>/// The application should close open audio devices once they are no longer<br/>/// needed. Calling this function will wait until the device's audio callback<br/>/// is not running, release the audio hardware and then clean up internal<br/>/// state. No further audio will play from this device once this function<br/>/// returns.<br/>/// This function may block briefly while pending audio data is played by the<br/>/// hardware, so that applications don't drop the last buffer of data they<br/>/// supplied.<br/>/// The device ID is invalid as soon as the device is closed, and is eligible<br/>/// for reuse in a new SDL_OpenAudioDevice() call immediately.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLCloseAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
-		{
-			SDLCloseAudioDeviceNative(dev);
-		}
-
-		/// <summary>
-		/// Put UTF-8 text into the clipboard.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetClipboardText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetClipboardTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
-
-		/// <summary>/// Put UTF-8 text into the clipboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetClipboardText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
-		{
-			int ret = SDLSetClipboardTextNative(text);
+			uint ret = SDLThreadIDNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>
-		/// This functions returns empty string if there was not enough memory left for<br/>
-		/// a copy of the clipboard's content.<br/>
+		/// Get the thread identifier for the specified thread.<br/>
+		/// This thread identifier is as reported by the underlying operating system.<br/>
+		/// If SDL is running on a platform that does not support threads the return<br/>
+		/// value will always be zero.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetClipboardText")]
+		[NativeName(NativeNameType.Func, "SDL_GetThreadID")]
+		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetThreadID")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetClipboardTextNative();
+		internal static partial uint SDLGetThreadIDNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread);
 
-		/// <summary>/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the clipboard's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetClipboardText()
+		/// <summary>/// Get the thread identifier for the specified thread.<br/>/// This thread identifier is as reported by the underlying operating system.<br/>/// If SDL is running on a platform that does not support threads the return<br/>/// value will always be zero.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadID")]
+		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
+		public static uint SDLGetThreadID([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
 		{
-			byte* ret = SDLGetClipboardTextNative();
+			uint ret = SDLGetThreadIDNative(thread);
 			return ret;
 		}
 
-		/// <summary>/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the clipboard's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetClipboardTextS()
+		/// <summary>/// Get the thread identifier for the specified thread.<br/>/// This thread identifier is as reported by the underlying operating system.<br/>/// If SDL is running on a platform that does not support threads the return<br/>/// value will always be zero.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadID")]
+		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
+		public static uint SDLGetThreadID([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] ref SDLThread thread)
 		{
-			string ret = Utils.DecodeStringUTF8(SDLGetClipboardTextNative());
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether the clipboard exists and contains a non-empty text string.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasClipboardText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasClipboardTextNative();
-
-		/// <summary>/// Query whether the clipboard exists and contains a non-empty text string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasClipboardText()
-		{
-			SDLBool ret = SDLHasClipboardTextNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Put UTF-8 text into the primary selection.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPrimarySelectionTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
-
-		/// <summary>/// Put UTF-8 text into the primary selection.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetPrimarySelectionText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
-		{
-			int ret = SDLSetPrimarySelectionTextNative(text);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get UTF-8 text from the primary selection, which must be freed with<br/>
-		/// SDL_free().<br/>
-		/// This functions returns empty string if there was not enough memory left for<br/>
-		/// a copy of the primary selection's content.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPrimarySelectionTextNative();
-
-		/// <summary>/// Get UTF-8 text from the primary selection, which must be freed with<br/>/// SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the primary selection's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetPrimarySelectionText()
-		{
-			byte* ret = SDLGetPrimarySelectionTextNative();
-			return ret;
-		}
-
-		/// <summary>/// Get UTF-8 text from the primary selection, which must be freed with<br/>/// SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the primary selection's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetPrimarySelectionTextS()
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetPrimarySelectionTextNative());
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether the primary selection exists and contains a non-empty text<br/>
-		/// string.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasPrimarySelectionTextNative();
-
-		/// <summary>/// Query whether the primary selection exists and contains a non-empty text<br/>/// string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasPrimarySelectionText()
-		{
-			SDLBool ret = SDLHasPrimarySelectionTextNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of CPU cores available.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCount")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetCPUCountNative();
-
-		/// <summary>/// Get the number of CPU cores available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetCPUCount()
-		{
-			int ret = SDLGetCPUCountNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine the L1 cache line size of the CPU.<br/>
-		/// This is useful for determining multi-threaded structure padding or SIMD<br/>
-		/// prefetch sizes.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCacheLineSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetCPUCacheLineSizeNative();
-
-		/// <summary>/// Determine the L1 cache line size of the CPU.<br/>/// This is useful for determining multi-threaded structure padding or SIMD<br/>/// prefetch sizes.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetCPUCacheLineSize()
-		{
-			int ret = SDLGetCPUCacheLineSizeNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has the RDTSC instruction.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasRDTSC")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasRDTSCNative();
-
-		/// <summary>/// Determine whether the CPU has the RDTSC instruction.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasRDTSC()
-		{
-			SDLBool ret = SDLHasRDTSCNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has AltiVec features.<br/>
-		/// This always returns false on CPUs that aren't using PowerPC instruction<br/>
-		/// sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAltiVec")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAltiVecNative();
-
-		/// <summary>/// Determine whether the CPU has AltiVec features.<br/>/// This always returns false on CPUs that aren't using PowerPC instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasAltiVec()
-		{
-			SDLBool ret = SDLHasAltiVecNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has MMX features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasMMX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasMMXNative();
-
-		/// <summary>/// Determine whether the CPU has MMX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasMMX()
-		{
-			SDLBool ret = SDLHasMMXNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has 3DNow! features.<br/>
-		/// This always returns false on CPUs that aren't using AMD instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Has3DNow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHas3DNowNative();
-
-		/// <summary>/// Determine whether the CPU has 3DNow! features.<br/>/// This always returns false on CPUs that aren't using AMD instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHas3DNow()
-		{
-			SDLBool ret = SDLHas3DNowNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has SSE features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSENative();
-
-		/// <summary>/// Determine whether the CPU has SSE features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasSSE()
-		{
-			SDLBool ret = SDLHasSSENative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has SSE2 features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE2Native();
-
-		/// <summary>/// Determine whether the CPU has SSE2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasSSE2()
-		{
-			SDLBool ret = SDLHasSSE2Native();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has SSE3 features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE3")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE3Native();
-
-		/// <summary>/// Determine whether the CPU has SSE3 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasSSE3()
-		{
-			SDLBool ret = SDLHasSSE3Native();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has SSE4.1 features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE41")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE41Native();
-
-		/// <summary>/// Determine whether the CPU has SSE4.1 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasSSE41()
-		{
-			SDLBool ret = SDLHasSSE41Native();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has SSE4.2 features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE42")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE42Native();
-
-		/// <summary>/// Determine whether the CPU has SSE4.2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasSSE42()
-		{
-			SDLBool ret = SDLHasSSE42Native();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has AVX features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVXNative();
-
-		/// <summary>/// Determine whether the CPU has AVX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasAVX()
-		{
-			SDLBool ret = SDLHasAVXNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has AVX2 features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVX2Native();
-
-		/// <summary>/// Determine whether the CPU has AVX2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasAVX2()
-		{
-			SDLBool ret = SDLHasAVX2Native();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has AVX-512F (foundation) features.<br/>
-		/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX512F")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVX512FNative();
-
-		/// <summary>/// Determine whether the CPU has AVX-512F (foundation) features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasAVX512F()
-		{
-			SDLBool ret = SDLHasAVX512FNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has ARM SIMD (ARMv6) features.<br/>
-		/// This is different from ARM NEON, which is a different instruction set.<br/>
-		/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasARMSIMD")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasARMSIMDNative();
-
-		/// <summary>/// Determine whether the CPU has ARM SIMD (ARMv6) features.<br/>/// This is different from ARM NEON, which is a different instruction set.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasARMSIMD()
-		{
-			SDLBool ret = SDLHasARMSIMDNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has NEON (ARM SIMD) features.<br/>
-		/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasNEON")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasNEONNative();
-
-		/// <summary>/// Determine whether the CPU has NEON (ARM SIMD) features.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasNEON()
-		{
-			SDLBool ret = SDLHasNEONNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has LSX (LOONGARCH SIMD) features.<br/>
-		/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>
-		/// sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasLSX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasLSXNative();
-
-		/// <summary>/// Determine whether the CPU has LSX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasLSX()
-		{
-			SDLBool ret = SDLHasLSXNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.<br/>
-		/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>
-		/// sets.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasLASX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasLASXNative();
-
-		/// <summary>/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasLASX()
-		{
-			SDLBool ret = SDLHasLASXNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the amount of RAM configured in the system.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetSystemRAM")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetSystemRAMNative();
-
-		/// <summary>/// Get the amount of RAM configured in the system.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetSystemRAM()
-		{
-			int ret = SDLGetSystemRAMNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Report the alignment this system needs for SIMD allocations.<br/>
-		/// This will return the minimum number of bytes to which a pointer must be<br/>
-		/// aligned to be compatible with SIMD instructions on the current machine. For<br/>
-		/// example, if the machine supports SSE only, it will return 16, but if it<br/>
-		/// supports AVX-512F, it'll return 64 (etc). This only reports values for<br/>
-		/// instruction sets SDL knows about, so if your SDL build doesn't have<br/>
-		/// SDL_HasAVX512F(), then it might return 16 for the SSE support it sees and<br/>
-		/// not 64 for the AVX-512 instructions that exist but SDL doesn't know about.<br/>
-		/// Plan accordingly.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
-		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDGetAlignment")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLSIMDGetAlignmentNative();
-
-		/// <summary>/// Report the alignment this system needs for SIMD allocations.<br/>/// This will return the minimum number of bytes to which a pointer must be<br/>/// aligned to be compatible with SIMD instructions on the current machine. For<br/>/// example, if the machine supports SSE only, it will return 16, but if it<br/>/// supports AVX-512F, it'll return 64 (etc). This only reports values for<br/>/// instruction sets SDL knows about, so if your SDL build doesn't have<br/>/// SDL_HasAVX512F(), then it might return 16 for the SSE support it sees and<br/>/// not 64 for the AVX-512 instructions that exist but SDL doesn't know about.<br/>/// Plan accordingly.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
-		[return: NativeName(NativeNameType.Type, "size_t")]
-		public static ulong SDLSIMDGetAlignment()
-		{
-			ulong ret = SDLSIMDGetAlignmentNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Allocate memory in a SIMD-friendly way.<br/>
-		/// This will allocate a block of memory that is suitable for use with SIMD<br/>
-		/// instructions. Specifically, it will be properly aligned and padded for the<br/>
-		/// system's supported vector instructions.<br/>
-		/// The memory returned will be padded such that it is safe to read or write an<br/>
-		/// incomplete vector at the end of the memory block. This can be useful so you<br/>
-		/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>
-		/// processing loop to deal with the final elements without overflowing the<br/>
-		/// allocated buffer.<br/>
-		/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>
-		/// delete[], etc.<br/>
-		/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>
-		/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>
-		/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>
-		/// 64. To be clear: if you can't decide to use an instruction set with an<br/>
-		/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>
-		/// through here.<br/>
-		/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>
-		/// out of memory, but you are not allowed to dereference it (because you only<br/>
-		/// own zero bytes of that buffer).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDAlloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLSIMDAllocNative([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
-
-		/// <summary>/// Allocate memory in a SIMD-friendly way.<br/>/// This will allocate a block of memory that is suitable for use with SIMD<br/>/// instructions. Specifically, it will be properly aligned and padded for the<br/>/// system's supported vector instructions.<br/>/// The memory returned will be padded such that it is safe to read or write an<br/>/// incomplete vector at the end of the memory block. This can be useful so you<br/>/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>/// processing loop to deal with the final elements without overflowing the<br/>/// allocated buffer.<br/>/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>/// delete[], etc.<br/>/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>/// 64. To be clear: if you can't decide to use an instruction set with an<br/>/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>/// through here.<br/>/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>/// out of memory, but you are not allowed to dereference it (because you only<br/>/// own zero bytes of that buffer).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSIMDAlloc([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
-		{
-			void* ret = SDLSIMDAllocNative(len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Reallocate memory obtained from SDL_SIMDAlloc<br/>
-		/// It is not valid to use this function on a pointer from anything but<br/>
-		/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>
-		/// SDL_malloc, memalign, new[], etc.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDRealloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLSIMDReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
-
-		/// <summary>/// Reallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>/// SDL_malloc, memalign, new[], etc.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSIMDRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
-		{
-			void* ret = SDLSIMDReallocNative(mem, len);
-			return ret;
-		}
-
-		/// <summary>/// Reallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>/// SDL_malloc, memalign, new[], etc.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLSIMDRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] nuint len)
-		{
-			void* ret = SDLSIMDReallocNative(mem, len);
-			return ret;
-		}
-
-		/// <summary>
-		/// Deallocate memory obtained from SDL_SIMDAlloc<br/>
-		/// It is not valid to use this function on a pointer from anything but<br/>
-		/// SDL_SIMDAlloc() or SDL_SIMDRealloc(). It can't be used on pointers from<br/>
-		/// malloc, realloc, SDL_malloc, memalign, new[], etc.<br/>
-		/// However, SDL_SIMDFree(NULL) is a legal no-op.<br/>
-		/// The memory pointed to by `ptr` is no longer valid for access upon return,<br/>
-		/// and may be returned to the system or reused by a future allocation. The<br/>
-		/// pointer passed to this function is no longer safe to dereference once this<br/>
-		/// function returns, and should be discarded.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDFree")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSIMDFreeNative([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr);
-
-		/// <summary>/// Deallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc() or SDL_SIMDRealloc(). It can't be used on pointers from<br/>/// malloc, realloc, SDL_malloc, memalign, new[], etc.<br/>/// However, SDL_SIMDFree(NULL) is a legal no-op.<br/>/// The memory pointed to by `ptr` is no longer valid for access upon return,<br/>/// and may be returned to the system or reused by a future allocation. The<br/>/// pointer passed to this function is no longer safe to dereference once this<br/>/// function returns, and should be discarded.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSIMDFree([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr)
-		{
-			SDLSIMDFreeNative(ptr);
-		}
-
-		/// <summary>
-		/// Get the human readable name of a pixel format.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPixelFormatName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPixelFormatNameNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format);
-
-		/// <summary>/// Get the human readable name of a pixel format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetPixelFormatName([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
-		{
-			byte* ret = SDLGetPixelFormatNameNative(format);
-			return ret;
-		}
-
-		/// <summary>/// Get the human readable name of a pixel format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetPixelFormatNameS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetPixelFormatNameNative(format));
-			return ret;
-		}
-
-		/// <summary>
-		/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PixelFormatEnumToMasks")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLPixelFormatEnumToMasksNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask);
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, bmask, amask);
-			return ret;
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
+			fixed (SDLThread* pthread = &thread)
 			{
-				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, bmask, amask);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, bmask, amask);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, bmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* pgmask = &gmask)
-			{
-				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, bmask, amask);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, bmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, bmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pgmask = &gmask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, bmask, amask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* pbmask = &bmask)
-			{
-				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, (uint*)pbmask, amask);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, (uint*)pbmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, (uint*)pbmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, (uint*)pbmask, amask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* pgmask = &gmask)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, (uint*)pbmask, amask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, (uint*)pbmask, amask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, amask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pgmask = &gmask)
-					{
-						fixed (uint* pbmask = &bmask)
-						{
-							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, amask);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* pamask = &amask)
-			{
-				SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, bmask, (uint*)pamask);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pamask = &amask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, bmask, (uint*)pamask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pamask = &amask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, bmask, (uint*)pamask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, bmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* pgmask = &gmask)
-			{
-				fixed (uint* pamask = &amask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, bmask, (uint*)pamask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, bmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, bmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pgmask = &gmask)
-					{
-						fixed (uint* pamask = &amask)
-						{
-							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, bmask, (uint*)pamask);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* pbmask = &bmask)
-			{
-				fixed (uint* pamask = &amask)
-				{
-					SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, gmask, (uint*)pbmask, (uint*)pamask);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, gmask, (uint*)pbmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, gmask, (uint*)pbmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						fixed (uint* pamask = &amask)
-						{
-							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, gmask, (uint*)pbmask, (uint*)pamask);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* pgmask = &gmask)
-			{
-				fixed (uint* pbmask = &bmask)
-				{
-					fixed (uint* pamask = &amask)
-					{
-						SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, rmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						fixed (uint* pamask = &amask)
-						{
-							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, rmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (uint* prmask = &rmask)
-			{
-				fixed (uint* pgmask = &gmask)
-				{
-					fixed (uint* pbmask = &bmask)
-					{
-						fixed (uint* pamask = &amask)
-						{
-							SDLBool ret = SDLPixelFormatEnumToMasksNative(format, bpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] ref int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] ref uint amask)
-		{
-			fixed (int* pbpp = &bpp)
-			{
-				fixed (uint* prmask = &rmask)
-				{
-					fixed (uint* pgmask = &gmask)
-					{
-						fixed (uint* pbmask = &bmask)
-						{
-							fixed (uint* pamask = &amask)
-							{
-								SDLBool ret = SDLPixelFormatEnumToMasksNative(format, (int*)pbpp, (uint*)prmask, (uint*)pgmask, (uint*)pbmask, (uint*)pamask);
-								return ret;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Convert a bpp value and RGBA masks to an enumerated pixel format.<br/>
-		/// This will return `SDL_PIXELFORMAT_UNKNOWN` if the conversion wasn't<br/>
-		/// possible.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MasksToPixelFormatEnum")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMasksToPixelFormatEnumNative([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask);
-
-		/// <summary>/// Convert a bpp value and RGBA masks to an enumerated pixel format.<br/>/// This will return `SDL_PIXELFORMAT_UNKNOWN` if the conversion wasn't<br/>/// possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLMasksToPixelFormatEnum([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
-		{
-			uint ret = SDLMasksToPixelFormatEnumNative(bpp, rmask, gmask, bmask, amask);
-			return ret;
-		}
-
-		/// <summary>
-		/// Create an SDL_PixelFormat structure corresponding to a pixel format.<br/>
-		/// Returned structure may come from a shared global cache (i.e. not newly<br/>
-		/// allocated), and hence should not be modified, especially the palette. Weird<br/>
-		/// errors such as `Blit combination not supported` may occur.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
-		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AllocFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLPixelFormat* SDLAllocFormatNative([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat);
-
-		/// <summary>/// Create an SDL_PixelFormat structure corresponding to a pixel format.<br/>/// Returned structure may come from a shared global cache (i.e. not newly<br/>/// allocated), and hence should not be modified, especially the palette. Weird<br/>/// errors such as `Blit combination not supported` may occur.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
-		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
-		public static SDLPixelFormat* SDLAllocFormat([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat)
-		{
-			SDLPixelFormat* ret = SDLAllocFormatNative(pixelFormat);
-			return ret;
-		}
-
-		/// <summary>
-		/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeFormatNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format);
-
-		/// <summary>/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFreeFormat([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format)
-		{
-			SDLFreeFormatNative(format);
-		}
-
-		/// <summary>
-		/// Create a palette structure with the specified number of color entries.<br/>
-		/// The palette entries are initialized to white.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
-		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AllocPalette")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLPalette* SDLAllocPaletteNative([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
-
-		/// <summary>/// Create a palette structure with the specified number of color entries.<br/>/// The palette entries are initialized to white.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
-		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
-		public static SDLPalette* SDLAllocPalette([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
-		{
-			SDLPalette* ret = SDLAllocPaletteNative(ncolors);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the palette for a pixel format structure.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPixelFormatPalette")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPixelFormatPaletteNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
-
-		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
-		{
-			int ret = SDLSetPixelFormatPaletteNative(format, palette);
-			return ret;
-		}
-
-		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] ref SDLPalette palette)
-		{
-			fixed (SDLPalette* ppalette = &palette)
-			{
-				int ret = SDLSetPixelFormatPaletteNative(format, (SDLPalette*)ppalette);
+				uint ret = SDLGetThreadIDNative((SDLThread*)pthread);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Set a range of colors in a palette.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPaletteColors")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPaletteColorsNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
-
-		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
-		{
-			int ret = SDLSetPaletteColorsNative(palette, colors, firstcolor, ncolors);
-			return ret;
-		}
-
-		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] ref SDLColor colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
-		{
-			fixed (SDLColor* pcolors = &colors)
-			{
-				int ret = SDLSetPaletteColorsNative(palette, (SDLColor*)pcolors, firstcolor, ncolors);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Free a palette created with SDL_AllocPalette().<br/>
-		/// <br/>
+		/// Set the priority for the current thread.<br/>
+		/// Note that some platforms will not let you alter the priority (or at least,<br/>
+		/// promote the thread to a higher priority) at all, and some require you to be<br/>
+		/// an administrator account. Be prepared for this to fail.<br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreePalette")]
+		[NativeName(NativeNameType.Func, "SDL_SetThreadPriority")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetThreadPriority")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreePaletteNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
+		internal static partial int SDLSetThreadPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_ThreadPriority")] SDLThreadPriority priority);
 
-		/// <summary>/// Free a palette created with SDL_AllocPalette().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFreePalette([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		/// <summary>/// Set the priority for the current thread.<br/>/// Note that some platforms will not let you alter the priority (or at least,<br/>/// promote the thread to a higher priority) at all, and some require you to be<br/>/// an administrator account. Be prepared for this to fail.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetThreadPriority")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetThreadPriority([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_ThreadPriority")] SDLThreadPriority priority)
 		{
-			SDLFreePaletteNative(palette);
-		}
-
-		/// <summary>
-		/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>
-		/// This function maps the RGB color value to the specified pixel format and<br/>
-		/// returns the pixel value best approximating the given RGB color value for<br/>
-		/// the given pixel format.<br/>
-		/// If the format has a palette (8-bit) the index of the closest matching color<br/>
-		/// in the palette will be returned.<br/>
-		/// If the specified pixel format has an alpha component it will be returned as<br/>
-		/// all 1 bits (fully opaque).<br/>
-		/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>
-		/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>
-		/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>
-		/// for an 8-bpp format).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MapRGB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMapRGBNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b);
-
-		/// <summary>/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>/// This function maps the RGB color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGB color value for<br/>/// the given pixel format.<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the specified pixel format has an alpha component it will be returned as<br/>/// all 1 bits (fully opaque).<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLMapRGB([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
-		{
-			uint ret = SDLMapRGBNative(format, r, g, b);
+			int ret = SDLSetThreadPriorityNative(priority);
 			return ret;
 		}
 
 		/// <summary>
-		/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>
-		/// This function maps the RGBA color value to the specified pixel format and<br/>
-		/// returns the pixel value best approximating the given RGBA color value for<br/>
-		/// the given pixel format.<br/>
-		/// If the specified pixel format has no alpha component the alpha value will<br/>
-		/// be ignored (as it will be in formats with a palette).<br/>
-		/// If the format has a palette (8-bit) the index of the closest matching color<br/>
-		/// in the palette will be returned.<br/>
-		/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>
-		/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>
-		/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>
-		/// for an 8-bpp format).<br/>
+		/// Wait for a thread to finish.<br/>
+		/// Threads that haven't been detached will remain (as a "zombie") until this<br/>
+		/// function cleans them up. Not doing so is a resource leak.<br/>
+		/// Once a thread has been cleaned up through this function, the SDL_Thread<br/>
+		/// that references it becomes invalid and should not be referenced again. As<br/>
+		/// such, only one thread may call SDL_WaitThread() on another.<br/>
+		/// The return code for the thread function is placed in the area pointed to by<br/>
+		/// `status`, if `status` is not NULL.<br/>
+		/// You may not wait on a thread that has been used in a call to<br/>
+		/// SDL_DetachThread(). Use either that function or this one, but not both, or<br/>
+		/// behavior is undefined.<br/>
+		/// It is safe to pass a NULL thread to this function; it is a no-op.<br/>
+		/// Note that the thread pointer is freed by this function and is not valid<br/>
+		/// afterward.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MapRGBA")]
+		[NativeName(NativeNameType.Func, "SDL_WaitThread")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_WaitThread")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMapRGBANative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a);
+		internal static partial void SDLWaitThreadNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread, [NativeName(NativeNameType.Param, "status")] [NativeName(NativeNameType.Type, "int*")] int* status);
 
-		/// <summary>/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>/// This function maps the RGBA color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGBA color value for<br/>/// the given pixel format.<br/>/// If the specified pixel format has no alpha component the alpha value will<br/>/// be ignored (as it will be in formats with a palette).<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
-		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLMapRGBA([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
+		/// <summary>/// Wait for a thread to finish.<br/>/// Threads that haven't been detached will remain (as a "zombie") until this<br/>/// function cleans them up. Not doing so is a resource leak.<br/>/// Once a thread has been cleaned up through this function, the SDL_Thread<br/>/// that references it becomes invalid and should not be referenced again. As<br/>/// such, only one thread may call SDL_WaitThread() on another.<br/>/// The return code for the thread function is placed in the area pointed to by<br/>/// `status`, if `status` is not NULL.<br/>/// You may not wait on a thread that has been used in a call to<br/>/// SDL_DetachThread(). Use either that function or this one, but not both, or<br/>/// behavior is undefined.<br/>/// It is safe to pass a NULL thread to this function; it is a no-op.<br/>/// Note that the thread pointer is freed by this function and is not valid<br/>/// afterward.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitThread")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLWaitThread([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread, [NativeName(NativeNameType.Param, "status")] [NativeName(NativeNameType.Type, "int*")] int* status)
 		{
-			uint ret = SDLMapRGBANative(format, r, g, b, a);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get RGB values from a pixel in the specified format.<br/>
-		/// This function uses the entire 8-bit [0..255] range when converting color<br/>
-		/// components from pixel formats with less than 8-bits per RGB component<br/>
-		/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>
-		/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRGB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetRGBNative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b);
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			SDLGetRGBNative(pixel, format, r, g, b);
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, g, b);
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (byte* pr = &r)
-			{
-				SDLGetRGBNative(pixel, format, (byte*)pr, g, b);
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (byte* pg = &g)
-			{
-				SDLGetRGBNative(pixel, format, r, (byte*)pg, b);
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					SDLGetRGBNative(pixel, format, (byte*)pr, (byte*)pg, b);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pb = &b)
-			{
-				SDLGetRGBNative(pixel, format, r, g, (byte*)pb);
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBNative(pixel, format, (byte*)pr, g, (byte*)pb);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBNative(pixel, format, r, (byte*)pg, (byte*)pb);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBNative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						fixed (byte* pb = &b)
-						{
-							SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Get RGBA values from a pixel in the specified format.<br/>
-		/// This function uses the entire 8-bit [0..255] range when converting color<br/>
-		/// components from pixel formats with less than 8-bits per RGB component<br/>
-		/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>
-		/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>
-		/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>
-		/// (100% opaque).<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRGBA")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetRGBANative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a);
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			SDLGetRGBANative(pixel, format, r, g, b, a);
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, b, a);
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				SDLGetRGBANative(pixel, format, (byte*)pr, g, b, a);
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pg = &g)
-			{
-				SDLGetRGBANative(pixel, format, r, (byte*)pg, b, a);
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, b, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b, a);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pb = &b)
-			{
-				SDLGetRGBANative(pixel, format, r, g, (byte*)pb, a);
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBANative(pixel, format, (byte*)pr, g, (byte*)pb, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb, a);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pb = &b)
-				{
-					SDLGetRGBANative(pixel, format, r, (byte*)pg, (byte*)pb, a);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb, a);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb, a);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] byte* a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						fixed (byte* pb = &b)
-						{
-							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb, a);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pa = &a)
-			{
-				SDLGetRGBANative(pixel, format, r, g, b, (byte*)pa);
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pa = &a)
-				{
-					SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, b, (byte*)pa);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pa = &a)
-				{
-					SDLGetRGBANative(pixel, format, (byte*)pr, g, b, (byte*)pa);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, b, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pa = &a)
-				{
-					SDLGetRGBANative(pixel, format, r, (byte*)pg, b, (byte*)pa);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, b, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, b, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						fixed (byte* pa = &a)
-						{
-							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, b, (byte*)pa);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pb = &b)
-			{
-				fixed (byte* pa = &a)
-				{
-					SDLGetRGBANative(pixel, format, r, g, (byte*)pb, (byte*)pa);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pb = &b)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, g, (byte*)pb, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pb = &b)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, format, (byte*)pr, g, (byte*)pb, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pb = &b)
-					{
-						fixed (byte* pa = &a)
-						{
-							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, g, (byte*)pb, (byte*)pa);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pg = &g)
-			{
-				fixed (byte* pb = &b)
-				{
-					fixed (byte* pa = &a)
-					{
-						SDLGetRGBANative(pixel, format, r, (byte*)pg, (byte*)pb, (byte*)pa);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						fixed (byte* pa = &a)
-						{
-							SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb, (byte*)pa);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						fixed (byte* pa = &a)
-						{
-							SDLGetRGBANative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb, (byte*)pa);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGBA values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// If the surface has no alpha component, the alpha will be returned as 0xff<br/>/// (100% opaque).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGBA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGBA([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte a)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						fixed (byte* pb = &b)
-						{
-							fixed (byte* pa = &a)
-							{
-								SDLGetRGBANative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb, (byte*)pa);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Calculate a 256 entry gamma ramp for a gamma value.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CalculateGammaRamp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLCalculateGammaRampNative([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* ramp);
-
-		/// <summary>/// Calculate a 256 entry gamma ramp for a gamma value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLCalculateGammaRamp([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ushort* ramp)
-		{
-			SDLCalculateGammaRampNative(gamma, ramp);
-		}
-
-		/// <summary>/// Calculate a 256 entry gamma ramp for a gamma value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CalculateGammaRamp")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLCalculateGammaRamp([NativeName(NativeNameType.Param, "gamma")] [NativeName(NativeNameType.Type, "float")] float gamma, [NativeName(NativeNameType.Param, "ramp")] [NativeName(NativeNameType.Type, "Uint16*")] ref ushort ramp)
-		{
-			fixed (ushort* pramp = &ramp)
-			{
-				SDLCalculateGammaRampNative(gamma, (ushort*)pramp);
-			}
+			SDLWaitThreadNative(thread, status);
 		}
 	}
 }

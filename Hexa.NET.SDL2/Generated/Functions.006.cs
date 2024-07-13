@@ -17,3341 +17,3247 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
-		/// <summary>/// Get the current state of a game controller sensor with the timestamp of the<br/>/// last update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerGetSensorDataWithTimestamp([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ref ulong timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] ref float data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
 		{
-			fixed (ulong* ptimestamp = &timestamp)
+			fixed (SDLSurface* psurface = &surface)
 			{
-				fixed (float* pdata = &data)
+				fixed (byte* pr = &r)
 				{
-					int ret = SDLGameControllerGetSensorDataWithTimestampNative(gamecontroller, type, (ulong*)ptimestamp, (float*)pdata, numValues);
+					fixed (byte* pb = &b)
+					{
+						int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, (byte*)pr, g, (byte*)pb);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pg = &g)
+			{
+				fixed (byte* pb = &b)
+				{
+					int ret = SDLGetSurfaceColorModNative(surface, r, (byte*)pg, (byte*)pb);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, r, (byte*)pg, (byte*)pb);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (byte* pr = &r)
+			{
+				fixed (byte* pg = &g)
+				{
+					fixed (byte* pb = &b)
+					{
+						int ret = SDLGetSurfaceColorModNative(surface, (byte*)pr, (byte*)pg, (byte*)pb);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the additional color value multiplied into blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceColorMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceColorMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* pr = &r)
+				{
+					fixed (byte* pg = &g)
+					{
+						fixed (byte* pb = &b)
+						{
+							int ret = SDLGetSurfaceColorModNative((SDLSurface*)psurface, (byte*)pr, (byte*)pg, (byte*)pb);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set an additional alpha value used in blit operations.<br/>
+		/// When this surface is blitted, during the blit operation the source alpha<br/>
+		/// value is modulated by this alpha value according to the following formula:<br/>
+		/// `srcA = srcA * (alpha / 255)`<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetSurfaceAlphaMod")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetSurfaceAlphaModNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8")] byte alpha);
+
+		/// <summary>/// Set an additional alpha value used in blit operations.<br/>/// When this surface is blitted, during the blit operation the source alpha<br/>/// value is modulated by this alpha value according to the following formula:<br/>/// `srcA = srcA * (alpha / 255)`<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8")] byte alpha)
+		{
+			int ret = SDLSetSurfaceAlphaModNative(surface, alpha);
+			return ret;
+		}
+
+		/// <summary>/// Set an additional alpha value used in blit operations.<br/>/// When this surface is blitted, during the blit operation the source alpha<br/>/// value is modulated by this alpha value according to the following formula:<br/>/// `srcA = srcA * (alpha / 255)`<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8")] byte alpha)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLSetSurfaceAlphaModNative((SDLSurface*)psurface, alpha);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the additional alpha value used in blit operations.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetSurfaceAlphaMod")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetSurfaceAlphaModNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] byte* alpha);
+
+		/// <summary>/// Get the additional alpha value used in blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] byte* alpha)
+		{
+			int ret = SDLGetSurfaceAlphaModNative(surface, alpha);
+			return ret;
+		}
+
+		/// <summary>/// Get the additional alpha value used in blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] byte* alpha)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLGetSurfaceAlphaModNative((SDLSurface*)psurface, alpha);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional alpha value used in blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte alpha)
+		{
+			fixed (byte* palpha = &alpha)
+			{
+				int ret = SDLGetSurfaceAlphaModNative(surface, (byte*)palpha);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the additional alpha value used in blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceAlphaMod")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceAlphaMod([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte alpha)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (byte* palpha = &alpha)
+				{
+					int ret = SDLGetSurfaceAlphaModNative((SDLSurface*)psurface, (byte*)palpha);
 					return ret;
 				}
 			}
 		}
 
 		/// <summary>
-		/// Start a rumble effect on a game controller.<br/>
-		/// Each call to this function cancels any previous rumble effect, and calling<br/>
-		/// it with 0 intensity stops any rumbling.<br/>
+		/// Set the blend mode used for blit operations.<br/>
+		/// To copy a surface to another surface (or texture) without blending with the<br/>
+		/// existing data, the blendmode of the SOURCE surface should be set to<br/>
+		/// `SDL_BLENDMODE_NONE`.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerRumble")]
+		[NativeName(NativeNameType.Func, "SDL_SetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerRumble")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetSurfaceBlendMode")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
+		internal static partial int SDLSetSurfaceBlendModeNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode")] SDLBlendMode blendMode);
 
-		/// <summary>/// Start a rumble effect on a game controller.<br/>/// Each call to this function cancels any previous rumble effect, and calling<br/>/// it with 0 intensity stops any rumbling.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerRumble")]
+		/// <summary>/// Set the blend mode used for blit operations.<br/>/// To copy a surface to another surface (or texture) without blending with the<br/>/// existing data, the blendmode of the SOURCE surface should be set to<br/>/// `SDL_BLENDMODE_NONE`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerRumble([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
+		public static int SDLSetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode")] SDLBlendMode blendMode)
 		{
-			int ret = SDLGameControllerRumbleNative(gamecontroller, lowFrequencyRumble, highFrequencyRumble, durationMs);
+			int ret = SDLSetSurfaceBlendModeNative(surface, blendMode);
 			return ret;
 		}
 
-		/// <summary>
-		/// Start a rumble effect in the game controller's triggers.<br/>
-		/// Each call to this function cancels any previous trigger rumble effect, and<br/>
-		/// calling it with 0 intensity stops any rumbling.<br/>
-		/// Note that this is rumbling of the _triggers_ and not the game controller as<br/>
-		/// a whole. This is currently only supported on Xbox One controllers. If you<br/>
-		/// want the (more common) whole-controller rumble, use<br/>
-		/// SDL_GameControllerRumble() instead.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerRumbleTriggers")]
+		/// <summary>/// Set the blend mode used for blit operations.<br/>/// To copy a surface to another surface (or texture) without blending with the<br/>/// existing data, the blendmode of the SOURCE surface should be set to<br/>/// `SDL_BLENDMODE_NONE`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
-
-		/// <summary>/// Start a rumble effect in the game controller's triggers.<br/>/// Each call to this function cancels any previous trigger rumble effect, and<br/>/// calling it with 0 intensity stops any rumbling.<br/>/// Note that this is rumbling of the _triggers_ and not the game controller as<br/>/// a whole. This is currently only supported on Xbox One controllers. If you<br/>/// want the (more common) whole-controller rumble, use<br/>/// SDL_GameControllerRumble() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerRumbleTriggers([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
+		public static int SDLSetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode")] SDLBlendMode blendMode)
 		{
-			int ret = SDLGameControllerRumbleTriggersNative(gamecontroller, leftRumble, rightRumble, durationMs);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a game controller has an LED.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasLED")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasLED")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Query whether a game controller has an LED.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasLED")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasLED([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLBool ret = SDLGameControllerHasLEDNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a game controller has rumble support.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumble")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasRumble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Query whether a game controller has rumble support.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumble")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasRumble([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLBool ret = SDLGameControllerHasRumbleNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether a game controller has rumble support on triggers.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Query whether a game controller has rumble support on triggers.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumbleTriggers")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGameControllerHasRumbleTriggers([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLBool ret = SDLGameControllerHasRumbleTriggersNative(gamecontroller);
-			return ret;
-		}
-
-		/// <summary>
-		/// Update a game controller's LED color.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerSetLED")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSetLED")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSetLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue);
-
-		/// <summary>/// Update a game controller's LED color.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSetLED")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerSetLED([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue)
-		{
-			int ret = SDLGameControllerSetLEDNative(gamecontroller, red, green, blue);
-			return ret;
-		}
-
-		/// <summary>
-		/// Send a controller specific effect packet<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerSendEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSendEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSendEffectNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size);
-
-		/// <summary>/// Send a controller specific effect packet<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSendEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGameControllerSendEffect([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
-		{
-			int ret = SDLGameControllerSendEffectNative(gamecontroller, data, size);
-			return ret;
-		}
-
-		/// <summary>
-		/// Close a game controller previously opened with SDL_GameControllerOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGameControllerCloseNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
-		/// <summary>/// Close a game controller previously opened with SDL_GameControllerOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGameControllerClose([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
-		{
-			SDLGameControllerCloseNative(gamecontroller);
-		}
-
-		/// <summary>
-		/// Return the sfSymbolsName for a given button on a game controller on Apple<br/>
-		/// platforms.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetAppleSFSymbolsNameForButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
-		/// <summary>/// Return the sfSymbolsName for a given button on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerGetAppleSFSymbolsNameForButton([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			byte* ret = SDLGameControllerGetAppleSFSymbolsNameForButtonNative(gamecontroller, button);
-			return ret;
-		}
-
-		/// <summary>/// Return the sfSymbolsName for a given button on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerGetAppleSFSymbolsNameForButtonS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerGetAppleSFSymbolsNameForButtonNative(gamecontroller, button));
-			return ret;
-		}
-
-		/// <summary>
-		/// Return the sfSymbolsName for a given axis on a game controller on Apple<br/>
-		/// platforms.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetAppleSFSymbolsNameForAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
-		/// <summary>/// Return the sfSymbolsName for a given axis on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGameControllerGetAppleSFSymbolsNameForAxis([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			byte* ret = SDLGameControllerGetAppleSFSymbolsNameForAxisNative(gamecontroller, axis);
-			return ret;
-		}
-
-		/// <summary>/// Return the sfSymbolsName for a given axis on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGameControllerGetAppleSFSymbolsNameForAxisS([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGameControllerGetAppleSFSymbolsNameForAxisNative(gamecontroller, axis));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of registered touch devices.<br/>
-		/// On some platforms SDL first sees the touch device if it was actually used.<br/>
-		/// Therefore SDL_GetNumTouchDevices() may return 0 although devices are<br/>
-		/// available. After using all devices at least once the number will be<br/>
-		/// correct.<br/>
-		/// This was fixed for Android in SDL 2.0.1.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetNumTouchDevices")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumTouchDevices")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumTouchDevicesNative();
-
-		/// <summary>/// Get the number of registered touch devices.<br/>/// On some platforms SDL first sees the touch device if it was actually used.<br/>/// Therefore SDL_GetNumTouchDevices() may return 0 although devices are<br/>/// available. After using all devices at least once the number will be<br/>/// correct.<br/>/// This was fixed for Android in SDL 2.0.1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumTouchDevices")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetNumTouchDevices()
-		{
-			int ret = SDLGetNumTouchDevicesNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the touch ID with the given index.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTouchDevice")]
-		[return: NativeName(NativeNameType.Type, "SDL_TouchID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial long SDLGetTouchDeviceNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
-		/// <summary>/// Get the touch ID with the given index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchDevice")]
-		[return: NativeName(NativeNameType.Type, "SDL_TouchID")]
-		public static long SDLGetTouchDevice([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
-		{
-			long ret = SDLGetTouchDeviceNative(index);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the touch device name as reported from the driver or NULL if the index<br/>
-		/// is invalid.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTouchName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetTouchNameNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
-		/// <summary>/// Get the touch device name as reported from the driver or NULL if the index<br/>/// is invalid.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetTouchName([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
-		{
-			byte* ret = SDLGetTouchNameNative(index);
-			return ret;
-		}
-
-		/// <summary>/// Get the touch device name as reported from the driver or NULL if the index<br/>/// is invalid.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetTouchNameS([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetTouchNameNative(index));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the type of the given touch device.<br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTouchDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_TouchDeviceType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchDeviceType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTouchDeviceType SDLGetTouchDeviceTypeNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID);
-
-		/// <summary>/// Get the type of the given touch device.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchDeviceType")]
-		[return: NativeName(NativeNameType.Type, "SDL_TouchDeviceType")]
-		public static SDLTouchDeviceType SDLGetTouchDeviceType([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
-		{
-			SDLTouchDeviceType ret = SDLGetTouchDeviceTypeNative(touchID);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of active fingers for a given touch device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetNumTouchFingers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumTouchFingers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumTouchFingersNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID);
-
-		/// <summary>/// Get the number of active fingers for a given touch device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumTouchFingers")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLGetNumTouchFingers([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
-		{
-			int ret = SDLGetNumTouchFingersNative(touchID);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the finger object for specified touch device ID and finger index.<br/>
-		/// The returned resource is owned by SDL and should not be deallocated.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetTouchFinger")]
-		[return: NativeName(NativeNameType.Type, "SDL_Finger*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchFinger")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLFinger* SDLGetTouchFingerNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
-		/// <summary>/// Get the finger object for specified touch device ID and finger index.<br/>/// The returned resource is owned by SDL and should not be deallocated.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchFinger")]
-		[return: NativeName(NativeNameType.Type, "SDL_Finger*")]
-		public static SDLFinger* SDLGetTouchFinger([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
-		{
-			SDLFinger* ret = SDLGetTouchFingerNative(touchID, index);
-			return ret;
-		}
-
-		/// <summary>
-		/// Begin recording a gesture on a specified touch device or all touch devices.<br/>
-		/// If the parameter `touchId` is -1 (i.e., all devices), this function will<br/>
-		/// always return 1, regardless of whether there actually are any devices.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RecordGesture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RecordGesture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRecordGestureNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId);
-
-		/// <summary>/// Begin recording a gesture on a specified touch device or all touch devices.<br/>/// If the parameter `touchId` is -1 (i.e., all devices), this function will<br/>/// always return 1, regardless of whether there actually are any devices.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RecordGesture")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLRecordGesture([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId)
-		{
-			int ret = SDLRecordGestureNative(touchId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Save all currently loaded Dollar Gesture templates.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SaveAllDollarTemplates")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SaveAllDollarTemplates")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSaveAllDollarTemplatesNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst);
-
-		/// <summary>/// Save all currently loaded Dollar Gesture templates.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveAllDollarTemplates")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSaveAllDollarTemplates([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
-		{
-			int ret = SDLSaveAllDollarTemplatesNative(dst);
-			return ret;
-		}
-
-		/// <summary>
-		/// Save a currently loaded Dollar Gesture template.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SaveDollarTemplate")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SaveDollarTemplate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSaveDollarTemplateNative([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst);
-
-		/// <summary>/// Save a currently loaded Dollar Gesture template.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveDollarTemplate")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSaveDollarTemplate([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
-		{
-			int ret = SDLSaveDollarTemplateNative(gestureId, dst);
-			return ret;
-		}
-
-		/// <summary>/// Save a currently loaded Dollar Gesture template.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveDollarTemplate")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSaveDollarTemplate([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops dst)
-		{
-			fixed (SDLRWops* pdst = &dst)
+			fixed (SDLSurface* psurface = &surface)
 			{
-				int ret = SDLSaveDollarTemplateNative(gestureId, (SDLRWops*)pdst);
+				int ret = SDLSetSurfaceBlendModeNative((SDLSurface*)psurface, blendMode);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Load Dollar Gesture templates from a file.<br/>
+		/// Get the blend mode used for blit operations.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LoadDollarTemplates")]
+		[NativeName(NativeNameType.Func, "SDL_GetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadDollarTemplates")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetSurfaceBlendMode")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLLoadDollarTemplatesNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src);
+		internal static partial int SDLGetSurfaceBlendModeNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] SDLBlendMode* blendMode);
 
-		/// <summary>/// Load Dollar Gesture templates from a file.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadDollarTemplates")]
+		/// <summary>/// Get the blend mode used for blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLoadDollarTemplates([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src)
+		public static int SDLGetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] SDLBlendMode* blendMode)
 		{
-			int ret = SDLLoadDollarTemplatesNative(touchId, src);
+			int ret = SDLGetSurfaceBlendModeNative(surface, blendMode);
 			return ret;
 		}
 
-		/// <summary>/// Load Dollar Gesture templates from a file.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadDollarTemplates")]
+		/// <summary>/// Get the blend mode used for blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceBlendMode")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLLoadDollarTemplates([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src)
+		public static int SDLGetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] SDLBlendMode* blendMode)
 		{
-			fixed (SDLRWops* psrc = &src)
+			fixed (SDLSurface* psurface = &surface)
 			{
-				int ret = SDLLoadDollarTemplatesNative(touchId, (SDLRWops*)psrc);
+				int ret = SDLGetSurfaceBlendModeNative((SDLSurface*)psurface, blendMode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the blend mode used for blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceBlendMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] ref SDLBlendMode blendMode)
+		{
+			fixed (SDLBlendMode* pblendMode = &blendMode)
+			{
+				int ret = SDLGetSurfaceBlendModeNative(surface, (SDLBlendMode*)pblendMode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the blend mode used for blit operations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSurfaceBlendMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetSurfaceBlendMode([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "blendMode")] [NativeName(NativeNameType.Type, "SDL_BlendMode*")] ref SDLBlendMode blendMode)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLBlendMode* pblendMode = &blendMode)
+				{
+					int ret = SDLGetSurfaceBlendModeNative((SDLSurface*)psurface, (SDLBlendMode*)pblendMode);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the clipping rectangle for a surface.<br/>
+		/// When `surface` is the destination of a blit, only the area within the clip<br/>
+		/// rectangle is drawn into.<br/>
+		/// Note that blits are automatically clipped to the edges of the source and<br/>
+		/// destination surfaces.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetClipRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetClipRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLBool SDLSetClipRectNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
+
+		/// <summary>/// Set the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// Note that blits are automatically clipped to the edges of the source and<br/>/// destination surfaces.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLSetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
+		{
+			SDLBool ret = SDLSetClipRectNative(surface, rect);
+			return ret;
+		}
+
+		/// <summary>/// Set the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// Note that blits are automatically clipped to the edges of the source and<br/>/// destination surfaces.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLSetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLBool ret = SDLSetClipRectNative((SDLSurface*)psurface, rect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// Note that blits are automatically clipped to the edges of the source and<br/>/// destination surfaces.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLSetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				SDLBool ret = SDLSetClipRectNative(surface, (SDLRect*)prect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// Note that blits are automatically clipped to the edges of the source and<br/>/// destination surfaces.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipRect")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLSetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLRect* prect = &rect)
+				{
+					SDLBool ret = SDLSetClipRectNative((SDLSurface*)psurface, (SDLRect*)prect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the clipping rectangle for a surface.<br/>
+		/// When `surface` is the destination of a blit, only the area within the clip<br/>
+		/// rectangle is drawn into.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetClipRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetClipRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLGetClipRectNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect);
+
+		/// <summary>/// Get the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
+		{
+			SDLGetClipRectNative(surface, rect);
+		}
+
+		/// <summary>/// Get the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLGetClipRectNative((SDLSurface*)psurface, rect);
+			}
+		}
+
+		/// <summary>/// Get the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				SDLGetClipRectNative(surface, (SDLRect*)prect);
+			}
+		}
+
+		/// <summary>/// Get the clipping rectangle for a surface.<br/>/// When `surface` is the destination of a blit, only the area within the clip<br/>/// rectangle is drawn into.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLGetClipRect([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLRect* prect = &rect)
+				{
+					SDLGetClipRectNative((SDLSurface*)psurface, (SDLRect*)prect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Creates a new surface identical to the existing surface.<br/>
+		/// The returned surface should be freed with SDL_FreeSurface().<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_DuplicateSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_DuplicateSurface")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLSurface* SDLDuplicateSurfaceNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface);
+
+		/// <summary>/// Creates a new surface identical to the existing surface.<br/>/// The returned surface should be freed with SDL_FreeSurface().<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DuplicateSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLDuplicateSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface)
+		{
+			SDLSurface* ret = SDLDuplicateSurfaceNative(surface);
+			return ret;
+		}
+
+		/// <summary>/// Creates a new surface identical to the existing surface.<br/>/// The returned surface should be freed with SDL_FreeSurface().<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DuplicateSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLDuplicateSurface([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				SDLSurface* ret = SDLDuplicateSurfaceNative((SDLSurface*)psurface);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Pump the event loop, gathering events from the input devices.<br/>
-		/// This function updates the event queue and internal input device state.<br/>
-		/// **WARNING**: This should only be run in the thread that initialized the<br/>
-		/// video subsystem, and for extra safety, you should consider only doing those<br/>
-		/// things on the main thread in any case.<br/>
-		/// SDL_PumpEvents() gathers all the pending input information from devices and<br/>
-		/// places it in the event queue. Without calls to SDL_PumpEvents() no events<br/>
-		/// would ever be placed on the queue. Often the need for calls to<br/>
-		/// SDL_PumpEvents() is hidden from the user since SDL_PollEvent() and<br/>
-		/// SDL_WaitEvent() implicitly call SDL_PumpEvents(). However, if you are not<br/>
-		/// polling or waiting for events (e.g. you are filtering them), then you must<br/>
-		/// call SDL_PumpEvents() to force an event queue update.<br/>
+		/// Copy an existing surface to a new surface of the specified format.<br/>
+		/// This function is used to optimize images for faster *repeat* blitting. This<br/>
+		/// is accomplished by converting the original and storing the result as a new<br/>
+		/// surface. The new, optimized surface can then be used as the source for<br/>
+		/// future blits, making them faster.<br/>
+		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PumpEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PumpEvents")]
+		[NativeName(NativeNameType.Func, "SDL_ConvertSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ConvertSurface")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLPumpEventsNative();
+		internal static partial SDLSurface* SDLConvertSurfaceNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* fmt, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
 
-		/// <summary>/// Pump the event loop, gathering events from the input devices.<br/>/// This function updates the event queue and internal input device state.<br/>/// **WARNING**: This should only be run in the thread that initialized the<br/>/// video subsystem, and for extra safety, you should consider only doing those<br/>/// things on the main thread in any case.<br/>/// SDL_PumpEvents() gathers all the pending input information from devices and<br/>/// places it in the event queue. Without calls to SDL_PumpEvents() no events<br/>/// would ever be placed on the queue. Often the need for calls to<br/>/// SDL_PumpEvents() is hidden from the user since SDL_PollEvent() and<br/>/// SDL_WaitEvent() implicitly call SDL_PumpEvents(). However, if you are not<br/>/// polling or waiting for events (e.g. you are filtering them), then you must<br/>/// call SDL_PumpEvents() to force an event queue update.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PumpEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLPumpEvents()
+		/// <summary>/// Copy an existing surface to a new surface of the specified format.<br/>/// This function is used to optimize images for faster *repeat* blitting. This<br/>/// is accomplished by converting the original and storing the result as a new<br/>/// surface. The new, optimized surface can then be used as the source for<br/>/// future blits, making them faster.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurface([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* fmt, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
 		{
-			SDLPumpEventsNative();
+			SDLSurface* ret = SDLConvertSurfaceNative(src, fmt, flags);
+			return ret;
+		}
+
+		/// <summary>/// Copy an existing surface to a new surface of the specified format.<br/>/// This function is used to optimize images for faster *repeat* blitting. This<br/>/// is accomplished by converting the original and storing the result as a new<br/>/// surface. The new, optimized surface can then be used as the source for<br/>/// future blits, making them faster.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurface([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* fmt, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				SDLSurface* ret = SDLConvertSurfaceNative((SDLSurface*)psrc, fmt, flags);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Copy an existing surface to a new surface of the specified format.<br/>/// This function is used to optimize images for faster *repeat* blitting. This<br/>/// is accomplished by converting the original and storing the result as a new<br/>/// surface. The new, optimized surface can then be used as the source for<br/>/// future blits, making them faster.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurface([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat fmt, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (SDLPixelFormat* pfmt = &fmt)
+			{
+				SDLSurface* ret = SDLConvertSurfaceNative(src, (SDLPixelFormat*)pfmt, flags);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Copy an existing surface to a new surface of the specified format.<br/>/// This function is used to optimize images for faster *repeat* blitting. This<br/>/// is accomplished by converting the original and storing the result as a new<br/>/// surface. The new, optimized surface can then be used as the source for<br/>/// future blits, making them faster.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurface")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurface([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat fmt, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLPixelFormat* pfmt = &fmt)
+				{
+					SDLSurface* ret = SDLConvertSurfaceNative((SDLSurface*)psrc, (SDLPixelFormat*)pfmt, flags);
+					return ret;
+				}
+			}
 		}
 
 		/// <summary>
-		/// Check the event queue for messages and optionally return them.<br/>
-		/// `action` may be any of the following:<br/>
-		/// - `SDL_ADDEVENT`: up to `numevents` events will be added to the back of the<br/>
-		/// event queue.<br/>
-		/// - `SDL_PEEKEVENT`: `numevents` events at the front of the event queue,<br/>
-		/// within the specified minimum and maximum type, will be returned to the<br/>
-		/// caller and will _not_ be removed from the queue.<br/>
-		/// - `SDL_GETEVENT`: up to `numevents` events at the front of the event queue,<br/>
-		/// within the specified minimum and maximum type, will be returned to the<br/>
-		/// caller and will be removed from the queue.<br/>
-		/// You may have to call SDL_PumpEvents() before calling this function.<br/>
-		/// Otherwise, the events may not be ready to be filtered when you call<br/>
-		/// SDL_PeepEvents().<br/>
-		/// This function is thread-safe.<br/>
+		/// Copy an existing surface to a new surface of the specified format enum.<br/>
+		/// This function operates just like SDL_ConvertSurface(), but accepts an<br/>
+		/// SDL_PixelFormatEnum value instead of an SDL_PixelFormat structure. As such,<br/>
+		/// it might be easier to call but it doesn't have access to palette<br/>
+		/// information for the destination surface, in case that would be important.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PeepEvents")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PeepEvents")]
+		[NativeName(NativeNameType.Func, "SDL_ConvertSurfaceFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ConvertSurfaceFormat")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPeepEventsNative([NativeName(NativeNameType.Param, "events")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* events, [NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "SDL_eventaction")] SDLEventaction action, [NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
+		internal static partial SDLSurface* SDLConvertSurfaceFormatNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
 
-		/// <summary>/// Check the event queue for messages and optionally return them.<br/>/// `action` may be any of the following:<br/>/// - `SDL_ADDEVENT`: up to `numevents` events will be added to the back of the<br/>/// event queue.<br/>/// - `SDL_PEEKEVENT`: `numevents` events at the front of the event queue,<br/>/// within the specified minimum and maximum type, will be returned to the<br/>/// caller and will _not_ be removed from the queue.<br/>/// - `SDL_GETEVENT`: up to `numevents` events at the front of the event queue,<br/>/// within the specified minimum and maximum type, will be returned to the<br/>/// caller and will be removed from the queue.<br/>/// You may have to call SDL_PumpEvents() before calling this function.<br/>/// Otherwise, the events may not be ready to be filtered when you call<br/>/// SDL_PeepEvents().<br/>/// This function is thread-safe.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PeepEvents")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLPeepEvents([NativeName(NativeNameType.Param, "events")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* events, [NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "SDL_eventaction")] SDLEventaction action, [NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
+		/// <summary>/// Copy an existing surface to a new surface of the specified format enum.<br/>/// This function operates just like SDL_ConvertSurface(), but accepts an<br/>/// SDL_PixelFormatEnum value instead of an SDL_PixelFormat structure. As such,<br/>/// it might be easier to call but it doesn't have access to palette<br/>/// information for the destination surface, in case that would be important.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurfaceFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurfaceFormat([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
 		{
-			int ret = SDLPeepEventsNative(events, numevents, action, minType, maxType);
+			SDLSurface* ret = SDLConvertSurfaceFormatNative(src, pixelFormat, flags);
+			return ret;
+		}
+
+		/// <summary>/// Copy an existing surface to a new surface of the specified format enum.<br/>/// This function operates just like SDL_ConvertSurface(), but accepts an<br/>/// SDL_PixelFormatEnum value instead of an SDL_PixelFormat structure. As such,<br/>/// it might be easier to call but it doesn't have access to palette<br/>/// information for the destination surface, in case that would be important.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertSurfaceFormat")]
+		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
+		public static SDLSurface* SDLConvertSurfaceFormat([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				SDLSurface* ret = SDLConvertSurfaceFormatNative((SDLSurface*)psrc, pixelFormat, flags);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Copy a block of pixels of one format to another format.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_ConvertPixels")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_ConvertPixels")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLConvertPixelsNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "Uint32")] uint srcFormat, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "src_pitch")] [NativeName(NativeNameType.Type, "int")] int srcPitch, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "Uint32")] uint dstFormat, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "dst_pitch")] [NativeName(NativeNameType.Type, "int")] int dstPitch);
+
+		/// <summary>/// Copy a block of pixels of one format to another format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertPixels")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLConvertPixels([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "Uint32")] uint srcFormat, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "src_pitch")] [NativeName(NativeNameType.Type, "int")] int srcPitch, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "Uint32")] uint dstFormat, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "dst_pitch")] [NativeName(NativeNameType.Type, "int")] int dstPitch)
+		{
+			int ret = SDLConvertPixelsNative(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
 			return ret;
 		}
 
 		/// <summary>
-		/// Check for the existence of a certain event type in the event queue.<br/>
-		/// If you need to check for a range of event types, use SDL_HasEvents()<br/>
+		/// Premultiply the alpha on a block of pixels.<br/>
+		/// This is safe to use with src == dst, but not for other overlapping areas.<br/>
+		/// This function is currently only implemented for SDL_PIXELFORMAT_ARGB8888.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_PremultiplyAlpha")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_PremultiplyAlpha")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLPremultiplyAlphaNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "Uint32")] uint srcFormat, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "src_pitch")] [NativeName(NativeNameType.Type, "int")] int srcPitch, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "Uint32")] uint dstFormat, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "dst_pitch")] [NativeName(NativeNameType.Type, "int")] int dstPitch);
+
+		/// <summary>/// Premultiply the alpha on a block of pixels.<br/>/// This is safe to use with src == dst, but not for other overlapping areas.<br/>/// This function is currently only implemented for SDL_PIXELFORMAT_ARGB8888.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PremultiplyAlpha")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLPremultiplyAlpha([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "Uint32")] uint srcFormat, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "src_pitch")] [NativeName(NativeNameType.Type, "int")] int srcPitch, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "Uint32")] uint dstFormat, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "dst_pitch")] [NativeName(NativeNameType.Type, "int")] int dstPitch)
+		{
+			int ret = SDLPremultiplyAlphaNative(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
+			return ret;
+		}
+
+		/// <summary>
+		/// Perform a fast fill of a rectangle with a specific color.<br/>
+		/// `color` should be a pixel of the format used by the surface, and can be<br/>
+		/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>
+		/// alpha component then the destination is simply filled with that alpha<br/>
+		/// information, no blending takes place.<br/>
+		/// If there is a clip rectangle set on the destination (set via<br/>
+		/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>
+		/// of the clip rectangle and `rect`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FillRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FillRect")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLFillRectNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color);
+
+		/// <summary>/// Perform a fast fill of a rectangle with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRect([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			int ret = SDLFillRectNative(dst, rect, color);
+			return ret;
+		}
+
+		/// <summary>/// Perform a fast fill of a rectangle with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRect([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLFillRectNative((SDLSurface*)pdst, rect, color);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast fill of a rectangle with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRect([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				int ret = SDLFillRectNative(dst, (SDLRect*)prect, color);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast fill of a rectangle with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRect")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRect([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* prect = &rect)
+				{
+					int ret = SDLFillRectNative((SDLSurface*)pdst, (SDLRect*)prect, color);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform a fast fill of a set of rectangles with a specific color.<br/>
+		/// `color` should be a pixel of the format used by the surface, and can be<br/>
+		/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>
+		/// alpha component then the destination is simply filled with that alpha<br/>
+		/// information, no blending takes place.<br/>
+		/// If there is a clip rectangle set on the destination (set via<br/>
+		/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>
+		/// of the clip rectangle and `rect`.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_FillRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_FillRects")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLFillRectsNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color);
+
+		/// <summary>/// Perform a fast fill of a set of rectangles with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRects([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			int ret = SDLFillRectsNative(dst, rects, count, color);
+			return ret;
+		}
+
+		/// <summary>/// Perform a fast fill of a set of rectangles with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRects([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rects, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLFillRectsNative((SDLSurface*)pdst, rects, count, color);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast fill of a set of rectangles with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRects([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rects, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLRect* prects = &rects)
+			{
+				int ret = SDLFillRectsNative(dst, (SDLRect*)prects, count, color);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast fill of a set of rectangles with a specific color.<br/>/// `color` should be a pixel of the format used by the surface, and can be<br/>/// generated by SDL_MapRGB() or SDL_MapRGBA(). If the color value contains an<br/>/// alpha component then the destination is simply filled with that alpha<br/>/// information, no blending takes place.<br/>/// If there is a clip rectangle set on the destination (set via<br/>/// SDL_SetClipRect()), then this function will fill based on the intersection<br/>/// of the clip rectangle and `rect`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FillRects")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLFillRects([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "rects")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rects, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count, [NativeName(NativeNameType.Param, "color")] [NativeName(NativeNameType.Type, "Uint32")] uint color)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* prects = &rects)
+				{
+					int ret = SDLFillRectsNative((SDLSurface*)pdst, (SDLRect*)prects, count, color);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform a fast blit from the source surface to the destination surface.<br/>
+		/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>
+		/// macro for this function with a less confusing name.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UpperBlit")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLUpperBlitNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			int ret = SDLUpperBlitNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLUpperBlitNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLUpperBlitNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLUpperBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLUpperBlitNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLUpperBlitNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLUpperBlitNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLUpperBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLUpperBlitNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast blit from the source surface to the destination surface.<br/>/// SDL_UpperBlit() has been replaced by SDL_BlitSurface(), which is merely a<br/>/// macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLUpperBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform low-level surface blitting only.<br/>
+		/// This is a semi-private blit function and it performs low-level surface<br/>
+		/// blitting, assuming the input rectangles have already been clipped.<br/>
+		/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>
 		/// instead.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasEvent")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasEvent")]
+		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LowerBlit")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type);
+		internal static partial int SDLLowerBlitNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
 
-		/// <summary>/// Check for the existence of a certain event type in the event queue.<br/>/// If you need to check for a range of event types, use SDL_HasEvents()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasEvent")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasEvent([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
 		{
-			SDLBool ret = SDLHasEventNative(type);
+			int ret = SDLLowerBlitNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLLowerBlitNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLLowerBlitNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLLowerBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLLowerBlitNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLLowerBlitNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLLowerBlitNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLLowerBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLLowerBlitNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface blitting only.<br/>/// This is a semi-private blit function and it performs low-level surface<br/>/// blitting, assuming the input rectangles have already been clipped.<br/>/// Unless you know what you're doing, you should be using SDL_BlitSurface()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlit([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLLowerBlitNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>
+		/// format.<br/>
+		/// Please use SDL_BlitScaled() instead.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SoftStretch")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSoftStretchNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect);
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			int ret = SDLSoftStretchNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLSoftStretchNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLSoftStretchNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLSoftStretchNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLSoftStretchNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLSoftStretchNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLSoftStretchNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLSoftStretchNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLSoftStretchNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a fast, low quality, stretch blit between two surfaces of the same<br/>/// format.<br/>/// Please use SDL_BlitScaled() instead.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretch")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretch([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLSoftStretchNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SoftStretchLinear")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSoftStretchLinearNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect);
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			int ret = SDLSoftStretchLinearNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLSoftStretchLinearNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLSoftStretchLinearNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLSoftStretchLinearNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLSoftStretchLinearNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchLinearNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLSoftStretchLinearNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLSoftStretchLinearNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform bilinear scaling between two surfaces of the same format, 32BPP.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SoftStretchLinear")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSoftStretchLinear([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLSoftStretchLinearNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform a scaled surface copy to a destination surface.<br/>
+		/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>
+		/// merely a macro for this function with a less confusing name.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_UpperBlitScaled")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLUpperBlitScaledNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			int ret = SDLUpperBlitScaledNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLUpperBlitScaledNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLUpperBlitScaledNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLUpperBlitScaledNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLUpperBlitScaledNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitScaledNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLUpperBlitScaledNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLUpperBlitScaledNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform a scaled surface copy to a destination surface.<br/>/// SDL_UpperBlitScaled() has been replaced by SDL_BlitScaled(), which is<br/>/// merely a macro for this function with a less confusing name.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UpperBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLUpperBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLUpperBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Perform low-level surface scaled blitting only.<br/>
+		/// This is a semi-private function and it performs low-level surface blitting,<br/>
+		/// assuming the input rectangles have already been clipped.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_LowerBlitScaled")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLLowerBlitScaledNative([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect);
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			int ret = SDLLowerBlitScaledNative(src, srcrect, dst, dstrect);
+			return ret;
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, srcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				int ret = SDLLowerBlitScaledNative(src, (SDLRect*)psrcrect, dst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				int ret = SDLLowerBlitScaledNative(src, srcrect, (SDLSurface*)pdst, dstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					int ret = SDLLowerBlitScaledNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, dstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* pdstrect = &dstrect)
+			{
+				int ret = SDLLowerBlitScaledNative(src, srcrect, dst, (SDLRect*)pdstrect);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, srcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitScaledNative(src, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, dst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* pdst = &dst)
+			{
+				fixed (SDLRect* pdstrect = &dstrect)
+				{
+					int ret = SDLLowerBlitScaledNative(src, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, srcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLRect* psrcrect = &srcrect)
+			{
+				fixed (SDLSurface* pdst = &dst)
+				{
+					fixed (SDLRect* pdstrect = &dstrect)
+					{
+						int ret = SDLLowerBlitScaledNative(src, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Perform low-level surface scaled blitting only.<br/>/// This is a semi-private function and it performs low-level surface blitting,<br/>/// assuming the input rectangles have already been clipped.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LowerBlitScaled")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLLowerBlitScaled([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface src, [NativeName(NativeNameType.Param, "srcrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect srcrect, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface dst, [NativeName(NativeNameType.Param, "dstrect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect dstrect)
+		{
+			fixed (SDLSurface* psrc = &src)
+			{
+				fixed (SDLRect* psrcrect = &srcrect)
+				{
+					fixed (SDLSurface* pdst = &dst)
+					{
+						fixed (SDLRect* pdstrect = &dstrect)
+						{
+							int ret = SDLLowerBlitScaledNative((SDLSurface*)psrc, (SDLRect*)psrcrect, (SDLSurface*)pdst, (SDLRect*)pdstrect);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set the YUV conversion mode<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetYUVConversionMode")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetYUVConversionMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLSetYUVConversionModeNative([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")] SdlYuvConversionMode mode);
+
+		/// <summary>/// Set the YUV conversion mode<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetYUVConversionMode")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLSetYUVConversionMode([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")] SdlYuvConversionMode mode)
+		{
+			SDLSetYUVConversionModeNative(mode);
+		}
+
+		/// <summary>
+		/// Get the YUV conversion mode<br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetYUVConversionMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetYUVConversionMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SdlYuvConversionMode SDLGetYUVConversionModeNative();
+
+		/// <summary>/// Get the YUV conversion mode<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetYUVConversionMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")]
+		public static SdlYuvConversionMode SDLGetYUVConversionMode()
+		{
+			SdlYuvConversionMode ret = SDLGetYUVConversionModeNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Check for the existence of certain event types in the event queue.<br/>
-		/// If you need to check for a single event type, use SDL_HasEvent() instead.<br/>
-		/// <br/>
-		/// <br/>
+		/// Get the YUV conversion mode, returning the correct mode for the resolution<br/>
+		/// when the current conversion mode is SDL_YUV_CONVERSION_AUTOMATIC<br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HasEvents")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasEvents")]
+		[NativeName(NativeNameType.Func, "SDL_GetYUVConversionModeForResolution")]
+		[return: NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetYUVConversionModeForResolution")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
+		internal static partial SdlYuvConversionMode SDLGetYUVConversionModeForResolutionNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height);
 
-		/// <summary>/// Check for the existence of certain event types in the event queue.<br/>/// If you need to check for a single event type, use SDL_HasEvent() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasEvents")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLHasEvents([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
+		/// <summary>/// Get the YUV conversion mode, returning the correct mode for the resolution<br/>/// when the current conversion mode is SDL_YUV_CONVERSION_AUTOMATIC<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetYUVConversionModeForResolution")]
+		[return: NativeName(NativeNameType.Type, "SDL_YUV_CONVERSION_MODE")]
+		public static SdlYuvConversionMode SDLGetYUVConversionModeForResolution([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "int")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "int")] int height)
 		{
-			SDLBool ret = SDLHasEventsNative(minType, maxType);
+			SdlYuvConversionMode ret = SDLGetYUVConversionModeForResolutionNative(width, height);
 			return ret;
 		}
 
 		/// <summary>
-		/// Clear events of a specific type from the event queue.<br/>
-		/// This will unconditionally remove any events from the queue that match<br/>
-		/// `type`. If you need to remove a range of event types, use SDL_FlushEvents()<br/>
-		/// instead.<br/>
-		/// It's also normal to just ignore events you don't care about in your event<br/>
-		/// loop without calling this function.<br/>
-		/// This function only affects currently queued events. If you want to make<br/>
-		/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>
-		/// on the main thread immediately before the flush call.<br/>
+		/// Get the number of video drivers compiled into SDL.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FlushEvent")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FlushEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFlushEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type);
-
-		/// <summary>/// Clear events of a specific type from the event queue.<br/>/// This will unconditionally remove any events from the queue that match<br/>/// `type`. If you need to remove a range of event types, use SDL_FlushEvents()<br/>/// instead.<br/>/// It's also normal to just ignore events you don't care about in your event<br/>/// loop without calling this function.<br/>/// This function only affects currently queued events. If you want to make<br/>/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>/// on the main thread immediately before the flush call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FlushEvent")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFlushEvent([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
-		{
-			SDLFlushEventNative(type);
-		}
-
-		/// <summary>
-		/// Clear events of a range of types from the event queue.<br/>
-		/// This will unconditionally remove any events from the queue that are in the<br/>
-		/// range of `minType` to `maxType`, inclusive. If you need to remove a single<br/>
-		/// event type, use SDL_FlushEvent() instead.<br/>
-		/// It's also normal to just ignore events you don't care about in your event<br/>
-		/// loop without calling this function.<br/>
-		/// This function only affects currently queued events. If you want to make<br/>
-		/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>
-		/// on the main thread immediately before the flush call.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FlushEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FlushEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFlushEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
-
-		/// <summary>/// Clear events of a range of types from the event queue.<br/>/// This will unconditionally remove any events from the queue that are in the<br/>/// range of `minType` to `maxType`, inclusive. If you need to remove a single<br/>/// event type, use SDL_FlushEvent() instead.<br/>/// It's also normal to just ignore events you don't care about in your event<br/>/// loop without calling this function.<br/>/// This function only affects currently queued events. If you want to make<br/>/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>/// on the main thread immediately before the flush call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FlushEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFlushEvents([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
-		{
-			SDLFlushEventsNative(minType, maxType);
-		}
-
-		/// <summary>
-		/// Poll for currently pending events.<br/>
-		/// If `event` is not NULL, the next event is removed from the queue and stored<br/>
-		/// in the SDL_Event structure pointed to by `event`. The 1 returned refers to<br/>
-		/// this event, immediately stored in the SDL Event structure -- not an event<br/>
-		/// to follow.<br/>
-		/// If `event` is NULL, it simply returns 1 if there is an event in the queue,<br/>
-		/// but will not remove it from the queue.<br/>
-		/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>
-		/// this function in the thread that set the video mode.<br/>
-		/// SDL_PollEvent() is the favored way of receiving system events since it can<br/>
-		/// be done from the main loop and does not suspend the main loop while waiting<br/>
-		/// on an event to be posted.<br/>
-		/// The common practice is to fully process the event queue once every frame,<br/>
-		/// usually as a first step before updating the game's state:<br/>
-		/// ```c<br/>
-		/// while (game_is_still_running) {<br/>
-		/// SDL_Event event;<br/>
-		/// while (SDL_PollEvent(<br/>
-		/// &event<br/>
-		/// )) {  // poll until all events are handled!<br/>
-		/// // decide what to do with this event.<br/>
-		/// }<br/>
-		/// // update game state, draw the current frame<br/>
-		/// }<br/>
-		/// ```<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PollEvent")]
+		[NativeName(NativeNameType.Func, "SDL_GetNumVideoDrivers")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PollEvent")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetNumVideoDrivers")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPollEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
+		internal static partial int SDLGetNumVideoDriversNative();
 
-		/// <summary>/// Poll for currently pending events.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`. The 1 returned refers to<br/>/// this event, immediately stored in the SDL Event structure -- not an event<br/>/// to follow.<br/>/// If `event` is NULL, it simply returns 1 if there is an event in the queue,<br/>/// but will not remove it from the queue.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that set the video mode.<br/>/// SDL_PollEvent() is the favored way of receiving system events since it can<br/>/// be done from the main loop and does not suspend the main loop while waiting<br/>/// on an event to be posted.<br/>/// The common practice is to fully process the event queue once every frame,<br/>/// usually as a first step before updating the game's state:<br/>/// ```c<br/>/// while (game_is_still_running) {<br/>/// SDL_Event event;<br/>/// while (SDL_PollEvent(<br/>/// &event<br/>/// )) {  // poll until all events are handled!<br/>/// // decide what to do with this event.<br/>/// }<br/>/// // update game state, draw the current frame<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PollEvent")]
+		/// <summary>/// Get the number of video drivers compiled into SDL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumVideoDrivers")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLPollEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		public static int SDLGetNumVideoDrivers()
 		{
-			int ret = SDLPollEventNative(evnt);
+			int ret = SDLGetNumVideoDriversNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Wait indefinitely for the next available event.<br/>
-		/// If `event` is not NULL, the next event is removed from the queue and stored<br/>
-		/// in the SDL_Event structure pointed to by `event`.<br/>
-		/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>
-		/// this function in the thread that initialized the video subsystem.<br/>
+		/// Get the name of a built in video driver.<br/>
+		/// The video drivers are presented in the order in which they are normally<br/>
+		/// checked during initialization.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_WaitEvent")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WaitEvent")]
+		[NativeName(NativeNameType.Func, "SDL_GetVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetVideoDriver")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWaitEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
+		internal static partial byte* SDLGetVideoDriverNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
 
-		/// <summary>/// Wait indefinitely for the next available event.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that initialized the video subsystem.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitEvent")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLWaitEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		/// <summary>/// Get the name of a built in video driver.<br/>/// The video drivers are presented in the order in which they are normally<br/>/// checked during initialization.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetVideoDriver([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
 		{
-			int ret = SDLWaitEventNative(evnt);
+			byte* ret = SDLGetVideoDriverNative(index);
+			return ret;
+		}
+
+		/// <summary>/// Get the name of a built in video driver.<br/>/// The video drivers are presented in the order in which they are normally<br/>/// checked during initialization.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetVideoDriverS([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetVideoDriverNative(index));
 			return ret;
 		}
 
 		/// <summary>
-		/// Wait until the specified timeout (in milliseconds) for the next available<br/>
-		/// event.<br/>
-		/// If `event` is not NULL, the next event is removed from the queue and stored<br/>
-		/// in the SDL_Event structure pointed to by `event`.<br/>
-		/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>
-		/// this function in the thread that initialized the video subsystem.<br/>
+		/// Initialize the video subsystem, optionally specifying a video driver.<br/>
+		/// This function initializes the video subsystem, setting up a connection to<br/>
+		/// the window manager, etc, and determines the available display modes and<br/>
+		/// pixel formats, but does not initialize a window or graphics mode.<br/>
+		/// If you use this function and you haven't used the SDL_INIT_VIDEO flag with<br/>
+		/// either SDL_Init() or SDL_InitSubSystem(), you should call SDL_VideoQuit()<br/>
+		/// before calling SDL_Quit().<br/>
+		/// It is safe to call this function multiple times. SDL_VideoInit() will call<br/>
+		/// SDL_VideoQuit() itself if the video subsystem has already been initialized.<br/>
+		/// You can use SDL_GetNumVideoDrivers() and SDL_GetVideoDriver() to find a<br/>
+		/// specific `driver_name`.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_WaitEventTimeout")]
+		[NativeName(NativeNameType.Func, "SDL_VideoInit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WaitEventTimeout")]
+		[LibraryImport(LibName, EntryPoint = "SDL_VideoInit")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWaitEventTimeoutNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "int")] int timeout);
+		internal static partial int SDLVideoInitNative([NativeName(NativeNameType.Param, "driver_name")] [NativeName(NativeNameType.Type, "const char*")] byte* driverName);
 
-		/// <summary>/// Wait until the specified timeout (in milliseconds) for the next available<br/>/// event.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that initialized the video subsystem.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitEventTimeout")]
+		/// <summary>/// Initialize the video subsystem, optionally specifying a video driver.<br/>/// This function initializes the video subsystem, setting up a connection to<br/>/// the window manager, etc, and determines the available display modes and<br/>/// pixel formats, but does not initialize a window or graphics mode.<br/>/// If you use this function and you haven't used the SDL_INIT_VIDEO flag with<br/>/// either SDL_Init() or SDL_InitSubSystem(), you should call SDL_VideoQuit()<br/>/// before calling SDL_Quit().<br/>/// It is safe to call this function multiple times. SDL_VideoInit() will call<br/>/// SDL_VideoQuit() itself if the video subsystem has already been initialized.<br/>/// You can use SDL_GetNumVideoDrivers() and SDL_GetVideoDriver() to find a<br/>/// specific `driver_name`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_VideoInit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLWaitEventTimeout([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "int")] int timeout)
+		public static int SDLVideoInit([NativeName(NativeNameType.Param, "driver_name")] [NativeName(NativeNameType.Type, "const char*")] byte* driverName)
 		{
-			int ret = SDLWaitEventTimeoutNative(evnt, timeout);
+			int ret = SDLVideoInitNative(driverName);
+			return ret;
+		}
+
+		/// <summary>/// Initialize the video subsystem, optionally specifying a video driver.<br/>/// This function initializes the video subsystem, setting up a connection to<br/>/// the window manager, etc, and determines the available display modes and<br/>/// pixel formats, but does not initialize a window or graphics mode.<br/>/// If you use this function and you haven't used the SDL_INIT_VIDEO flag with<br/>/// either SDL_Init() or SDL_InitSubSystem(), you should call SDL_VideoQuit()<br/>/// before calling SDL_Quit().<br/>/// It is safe to call this function multiple times. SDL_VideoInit() will call<br/>/// SDL_VideoQuit() itself if the video subsystem has already been initialized.<br/>/// You can use SDL_GetNumVideoDrivers() and SDL_GetVideoDriver() to find a<br/>/// specific `driver_name`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_VideoInit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLVideoInit([NativeName(NativeNameType.Param, "driver_name")] [NativeName(NativeNameType.Type, "const char*")] ref byte driverName)
+		{
+			fixed (byte* pdriverName = &driverName)
+			{
+				int ret = SDLVideoInitNative((byte*)pdriverName);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Initialize the video subsystem, optionally specifying a video driver.<br/>/// This function initializes the video subsystem, setting up a connection to<br/>/// the window manager, etc, and determines the available display modes and<br/>/// pixel formats, but does not initialize a window or graphics mode.<br/>/// If you use this function and you haven't used the SDL_INIT_VIDEO flag with<br/>/// either SDL_Init() or SDL_InitSubSystem(), you should call SDL_VideoQuit()<br/>/// before calling SDL_Quit().<br/>/// It is safe to call this function multiple times. SDL_VideoInit() will call<br/>/// SDL_VideoQuit() itself if the video subsystem has already been initialized.<br/>/// You can use SDL_GetNumVideoDrivers() and SDL_GetVideoDriver() to find a<br/>/// specific `driver_name`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_VideoInit")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLVideoInit([NativeName(NativeNameType.Param, "driver_name")] [NativeName(NativeNameType.Type, "const char*")] string driverName)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (driverName != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(driverName);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(driverName, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			int ret = SDLVideoInitNative(pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
 			return ret;
 		}
 
 		/// <summary>
-		/// Add an event to the event queue.<br/>
-		/// The event queue can actually be used as a two way communication channel.<br/>
-		/// Not only can events be read from the queue, but the user can also push<br/>
-		/// their own events onto it. `event` is a pointer to the event structure you<br/>
-		/// wish to push onto the queue. The event is copied into the queue, and the<br/>
-		/// caller may dispose of the memory pointed to after SDL_PushEvent() returns.<br/>
-		/// Note: Pushing device input events onto the queue doesn't modify the state<br/>
-		/// of the device within SDL.<br/>
-		/// This function is thread-safe, and can be called from other threads safely.<br/>
-		/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>
-		/// the event filter but events added with SDL_PeepEvents() do not.<br/>
-		/// For pushing application-specific events, please use SDL_RegisterEvents() to<br/>
-		/// get an event type that does not conflict with other code that also wants<br/>
-		/// its own custom event types.<br/>
+		/// Shut down the video subsystem, if initialized with SDL_VideoInit().<br/>
+		/// This function closes all windows, and restores the original video mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_VideoQuit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		[LibraryImport(LibName, EntryPoint = "SDL_VideoQuit")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void SDLVideoQuitNative();
+
+		/// <summary>/// Shut down the video subsystem, if initialized with SDL_VideoInit().<br/>/// This function closes all windows, and restores the original video mode.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_VideoQuit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLVideoQuit()
+		{
+			SDLVideoQuitNative();
+		}
+
+		/// <summary>
+		/// Get the name of the currently initialized video driver.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_PushEvent")]
+		[NativeName(NativeNameType.Func, "SDL_GetCurrentVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetCurrentVideoDriver")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial byte* SDLGetCurrentVideoDriverNative();
+
+		/// <summary>/// Get the name of the currently initialized video driver.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCurrentVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetCurrentVideoDriver()
+		{
+			byte* ret = SDLGetCurrentVideoDriverNative();
+			return ret;
+		}
+
+		/// <summary>/// Get the name of the currently initialized video driver.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCurrentVideoDriver")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetCurrentVideoDriverS()
+		{
+			string ret = Utils.DecodeStringUTF8(SDLGetCurrentVideoDriverNative());
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the number of available video displays.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetNumVideoDisplays")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PushEvent")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetNumVideoDisplays")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPushEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
+		internal static partial int SDLGetNumVideoDisplaysNative();
 
-		/// <summary>/// Add an event to the event queue.<br/>/// The event queue can actually be used as a two way communication channel.<br/>/// Not only can events be read from the queue, but the user can also push<br/>/// their own events onto it. `event` is a pointer to the event structure you<br/>/// wish to push onto the queue. The event is copied into the queue, and the<br/>/// caller may dispose of the memory pointed to after SDL_PushEvent() returns.<br/>/// Note: Pushing device input events onto the queue doesn't modify the state<br/>/// of the device within SDL.<br/>/// This function is thread-safe, and can be called from other threads safely.<br/>/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>/// the event filter but events added with SDL_PeepEvents() do not.<br/>/// For pushing application-specific events, please use SDL_RegisterEvents() to<br/>/// get an event type that does not conflict with other code that also wants<br/>/// its own custom event types.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PushEvent")]
+		/// <summary>/// Get the number of available video displays.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumVideoDisplays")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLPushEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		public static int SDLGetNumVideoDisplays()
 		{
-			int ret = SDLPushEventNative(evnt);
+			int ret = SDLGetNumVideoDisplaysNative();
 			return ret;
 		}
 
 		/// <summary>
-		/// Set up a filter to process all events before they change internal state and<br/>
-		/// are posted to the internal event queue.<br/>
-		/// If the filter function returns 1 when called, then the event will be added<br/>
-		/// to the internal queue. If it returns 0, then the event will be dropped from<br/>
-		/// the queue, but the internal state will still be updated. This allows<br/>
-		/// selective filtering of dynamically arriving events.<br/>
-		/// **WARNING**: Be very careful of what you do in the event filter function,<br/>
-		/// as it may run in a different thread!<br/>
-		/// On platforms that support it, if the quit event is generated by an<br/>
-		/// interrupt signal (e.g. pressing Ctrl-C), it will be delivered to the<br/>
-		/// application at the next event poll.<br/>
-		/// There is one caveat when dealing with the ::SDL_QuitEvent event type. The<br/>
-		/// event filter is only called when the window manager desires to close the<br/>
-		/// application window. If the event filter returns 1, then the window will be<br/>
-		/// closed, otherwise the window will remain open if possible.<br/>
-		/// Note: Disabled events never make it to the event filter function; see<br/>
-		/// SDL_EventState().<br/>
-		/// Note: If you just want to inspect events without filtering, you should use<br/>
-		/// SDL_AddEventWatch() instead.<br/>
-		/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>
-		/// the event filter, but events pushed onto the queue with SDL_PeepEvents() do<br/>
-		/// not.<br/>
+		/// Get the name of a display in UTF-8 encoding.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetEventFilter")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetEventFilter")]
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayName")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+		internal static partial byte* SDLGetDisplayNameNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex);
 
-		/// <summary>/// Set up a filter to process all events before they change internal state and<br/>/// are posted to the internal event queue.<br/>/// If the filter function returns 1 when called, then the event will be added<br/>/// to the internal queue. If it returns 0, then the event will be dropped from<br/>/// the queue, but the internal state will still be updated. This allows<br/>/// selective filtering of dynamically arriving events.<br/>/// **WARNING**: Be very careful of what you do in the event filter function,<br/>/// as it may run in a different thread!<br/>/// On platforms that support it, if the quit event is generated by an<br/>/// interrupt signal (e.g. pressing Ctrl-C), it will be delivered to the<br/>/// application at the next event poll.<br/>/// There is one caveat when dealing with the ::SDL_QuitEvent event type. The<br/>/// event filter is only called when the window manager desires to close the<br/>/// application window. If the event filter returns 1, then the window will be<br/>/// closed, otherwise the window will remain open if possible.<br/>/// Note: Disabled events never make it to the event filter function; see<br/>/// SDL_EventState().<br/>/// Note: If you just want to inspect events without filtering, you should use<br/>/// SDL_AddEventWatch() instead.<br/>/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>/// the event filter, but events pushed onto the queue with SDL_PeepEvents() do<br/>/// not.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetEventFilter")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		/// <summary>/// Get the name of a display in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* SDLGetDisplayName([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex)
 		{
-			SDLSetEventFilterNative(filter, userdata);
+			byte* ret = SDLGetDisplayNameNative(displayIndex);
+			return ret;
 		}
 
-		/// <summary>
-		/// Query the current event filter.<br/>
-		/// This function can be used to "chain" filters, by saving the existing filter<br/>
-		/// before replacing it with a function that will call that saved filter.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetEventFilter")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetEventFilter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata);
-
-		/// <summary>/// Query the current event filter.<br/>/// This function can be used to "chain" filters, by saving the existing filter<br/>/// before replacing it with a function that will call that saved filter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetEventFilter")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
+		/// <summary>/// Get the name of a display in UTF-8 encoding.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string SDLGetDisplayNameS([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex)
 		{
-			SDLBool ret = SDLGetEventFilterNative(filter, userdata);
+			string ret = Utils.DecodeStringUTF8(SDLGetDisplayNameNative(displayIndex));
 			return ret;
 		}
 
 		/// <summary>
-		/// Add a callback to be triggered when an event is added to the event queue.<br/>
-		/// `filter` will be called when an event happens, and its return value is<br/>
-		/// ignored.<br/>
-		/// **WARNING**: Be very careful of what you do in the event filter function,<br/>
-		/// as it may run in a different thread!<br/>
-		/// If the quit event is generated by a signal (e.g. SIGINT), it will bypass<br/>
-		/// the internal queue and be delivered to the watch callback immediately, and<br/>
-		/// arrive at the next event poll.<br/>
-		/// Note: the callback is called for events posted by the user through<br/>
-		/// SDL_PushEvent(), but not for disabled events, nor for events by a filter<br/>
-		/// callback set with SDL_SetEventFilter(), nor for events posted by the user<br/>
-		/// through SDL_PeepEvents().<br/>
+		/// Get the desktop area represented by a display.<br/>
+		/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AddEventWatch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AddEventWatch")]
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayBounds")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAddEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+		internal static partial int SDLGetDisplayBoundsNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect);
 
-		/// <summary>/// Add a callback to be triggered when an event is added to the event queue.<br/>/// `filter` will be called when an event happens, and its return value is<br/>/// ignored.<br/>/// **WARNING**: Be very careful of what you do in the event filter function,<br/>/// as it may run in a different thread!<br/>/// If the quit event is generated by a signal (e.g. SIGINT), it will bypass<br/>/// the internal queue and be delivered to the watch callback immediately, and<br/>/// arrive at the next event poll.<br/>/// Note: the callback is called for events posted by the user through<br/>/// SDL_PushEvent(), but not for disabled events, nor for events by a filter<br/>/// callback set with SDL_SetEventFilter(), nor for events posted by the user<br/>/// through SDL_PeepEvents().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddEventWatch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		/// <summary>/// Get the desktop area represented by a display.<br/>/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayBounds([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
 		{
-			SDLAddEventWatchNative(filter, userdata);
+			int ret = SDLGetDisplayBoundsNative(displayIndex, rect);
+			return ret;
+		}
+
+		/// <summary>/// Get the desktop area represented by a display.<br/>/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayBounds([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				int ret = SDLGetDisplayBoundsNative(displayIndex, (SDLRect*)prect);
+				return ret;
+			}
 		}
 
 		/// <summary>
-		/// Remove an event watch callback added with SDL_AddEventWatch().<br/>
-		/// This function takes the same input as SDL_AddEventWatch() to identify and<br/>
-		/// delete the corresponding callback.<br/>
+		/// Get the usable desktop area represented by a display.<br/>
+		/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>
+		/// This is the same area as SDL_GetDisplayBounds() reports, but with portions<br/>
+		/// reserved by the system removed. For example, on Apple's macOS, this<br/>
+		/// subtracts the area occupied by the menu bar and dock.<br/>
+		/// Setting a window to be fullscreen generally bypasses these unusable areas,<br/>
+		/// so these are good guidelines for the maximum space available to a<br/>
+		/// non-fullscreen window.<br/>
+		/// The parameter `rect` is ignored if it is NULL.<br/>
+		/// This function also returns -1 if the parameter `displayIndex` is out of<br/>
+		/// range.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DelEventWatch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DelEventWatch")]
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayUsableBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayUsableBounds")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDelEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+		internal static partial int SDLGetDisplayUsableBoundsNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect);
 
-		/// <summary>/// Remove an event watch callback added with SDL_AddEventWatch().<br/>/// This function takes the same input as SDL_AddEventWatch() to identify and<br/>/// delete the corresponding callback.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelEventWatch")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		/// <summary>/// Get the usable desktop area represented by a display.<br/>/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>/// This is the same area as SDL_GetDisplayBounds() reports, but with portions<br/>/// reserved by the system removed. For example, on Apple's macOS, this<br/>/// subtracts the area occupied by the menu bar and dock.<br/>/// Setting a window to be fullscreen generally bypasses these unusable areas,<br/>/// so these are good guidelines for the maximum space available to a<br/>/// non-fullscreen window.<br/>/// The parameter `rect` is ignored if it is NULL.<br/>/// This function also returns -1 if the parameter `displayIndex` is out of<br/>/// range.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayUsableBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayUsableBounds([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] SDLRect* rect)
 		{
-			SDLDelEventWatchNative(filter, userdata);
+			int ret = SDLGetDisplayUsableBoundsNative(displayIndex, rect);
+			return ret;
+		}
+
+		/// <summary>/// Get the usable desktop area represented by a display.<br/>/// The primary display (`displayIndex` zero) is always located at 0,0.<br/>/// This is the same area as SDL_GetDisplayBounds() reports, but with portions<br/>/// reserved by the system removed. For example, on Apple's macOS, this<br/>/// subtracts the area occupied by the menu bar and dock.<br/>/// Setting a window to be fullscreen generally bypasses these unusable areas,<br/>/// so these are good guidelines for the maximum space available to a<br/>/// non-fullscreen window.<br/>/// The parameter `rect` is ignored if it is NULL.<br/>/// This function also returns -1 if the parameter `displayIndex` is out of<br/>/// range.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayUsableBounds")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayUsableBounds([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				int ret = SDLGetDisplayUsableBoundsNative(displayIndex, (SDLRect*)prect);
+				return ret;
+			}
 		}
 
 		/// <summary>
-		/// Run a specific filter function on the current event queue, removing any<br/>
-		/// events for which the filter returns 0.<br/>
-		/// See SDL_SetEventFilter() for more information. Unlike SDL_SetEventFilter(),<br/>
-		/// this function does not change the filter permanently, it only uses the<br/>
-		/// supplied filter until this function returns.<br/>
+		/// Get the dots/pixels-per-inch for a display.<br/>
+		/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>
+		/// appropriate parameter is non-NULL.<br/>
+		/// A failure of this function usually means that either no DPI information is<br/>
+		/// available or the `displayIndex` is out of range.<br/>
+		/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>
+		/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>
+		/// find the window size, which might be in logical points instead of pixels,<br/>
+		/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>
+		/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>
+		/// the two values to get an actual scaling value between the two. We will be<br/>
+		/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>
+		/// more consistent, reliable, and clear.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_FilterEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FilterEvents")]
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayDPI")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFilterEventsNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
+		internal static partial int SDLGetDisplayDPINative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] float* ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] float* hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] float* vdpi);
 
-		/// <summary>/// Run a specific filter function on the current event queue, removing any<br/>/// events for which the filter returns 0.<br/>/// See SDL_SetEventFilter() for more information. Unlike SDL_SetEventFilter(),<br/>/// this function does not change the filter permanently, it only uses the<br/>/// supplied filter until this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FilterEvents")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFilterEvents([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] float* ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] float* hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] float* vdpi)
 		{
-			SDLFilterEventsNative(filter, userdata);
+			int ret = SDLGetDisplayDPINative(displayIndex, ddpi, hdpi, vdpi);
+			return ret;
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] ref float ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] float* hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] float* vdpi)
+		{
+			fixed (float* pddpi = &ddpi)
+			{
+				int ret = SDLGetDisplayDPINative(displayIndex, (float*)pddpi, hdpi, vdpi);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] float* ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] ref float hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] float* vdpi)
+		{
+			fixed (float* phdpi = &hdpi)
+			{
+				int ret = SDLGetDisplayDPINative(displayIndex, ddpi, (float*)phdpi, vdpi);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] ref float ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] ref float hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] float* vdpi)
+		{
+			fixed (float* pddpi = &ddpi)
+			{
+				fixed (float* phdpi = &hdpi)
+				{
+					int ret = SDLGetDisplayDPINative(displayIndex, (float*)pddpi, (float*)phdpi, vdpi);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] float* ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] float* hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] ref float vdpi)
+		{
+			fixed (float* pvdpi = &vdpi)
+			{
+				int ret = SDLGetDisplayDPINative(displayIndex, ddpi, hdpi, (float*)pvdpi);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] ref float ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] float* hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] ref float vdpi)
+		{
+			fixed (float* pddpi = &ddpi)
+			{
+				fixed (float* pvdpi = &vdpi)
+				{
+					int ret = SDLGetDisplayDPINative(displayIndex, (float*)pddpi, hdpi, (float*)pvdpi);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] float* ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] ref float hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] ref float vdpi)
+		{
+			fixed (float* phdpi = &hdpi)
+			{
+				fixed (float* pvdpi = &vdpi)
+				{
+					int ret = SDLGetDisplayDPINative(displayIndex, ddpi, (float*)phdpi, (float*)pvdpi);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>/// Get the dots/pixels-per-inch for a display.<br/>/// Diagonal, horizontal and vertical DPI can all be optionally returned if the<br/>/// appropriate parameter is non-NULL.<br/>/// A failure of this function usually means that either no DPI information is<br/>/// available or the `displayIndex` is out of range.<br/>/// **WARNING**: This reports the DPI that the hardware reports, and it is not<br/>/// always reliable! It is almost always better to use SDL_GetWindowSize() to<br/>/// find the window size, which might be in logical points instead of pixels,<br/>/// and then SDL_GL_GetDrawableSize(), SDL_Vulkan_GetDrawableSize(),<br/>/// SDL_Metal_GetDrawableSize(), or SDL_GetRendererOutputSize(), and compare<br/>/// the two values to get an actual scaling value between the two. We will be<br/>/// rethinking how high-dpi details should be managed in SDL3 to make things<br/>/// more consistent, reliable, and clear.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayDPI")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayDPI([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "ddpi")] [NativeName(NativeNameType.Type, "float*")] ref float ddpi, [NativeName(NativeNameType.Param, "hdpi")] [NativeName(NativeNameType.Type, "float*")] ref float hdpi, [NativeName(NativeNameType.Param, "vdpi")] [NativeName(NativeNameType.Type, "float*")] ref float vdpi)
+		{
+			fixed (float* pddpi = &ddpi)
+			{
+				fixed (float* phdpi = &hdpi)
+				{
+					fixed (float* pvdpi = &vdpi)
+					{
+						int ret = SDLGetDisplayDPINative(displayIndex, (float*)pddpi, (float*)phdpi, (float*)pvdpi);
+						return ret;
+					}
+				}
+			}
 		}
 
 		/// <summary>
-		/// Set the state of processing events by type.<br/>
-		/// `state` may be any of the following:<br/>
-		/// - `SDL_QUERY`: returns the current processing state of the specified event<br/>
-		/// - `SDL_IGNORE` (aka `SDL_DISABLE`): the event will automatically be dropped<br/>
-		/// from the event queue and will not be filtered<br/>
-		/// - `SDL_ENABLE`: the event will be processed normally<br/>
+		/// Get the orientation of a display.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_EventState")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDL_EventState")]
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayOrientation")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayOrientation")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayOrientation")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLEventStateNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state);
+		internal static partial SDLDisplayOrientation SDLGetDisplayOrientationNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex);
 
-		/// <summary>/// Set the state of processing events by type.<br/>/// `state` may be any of the following:<br/>/// - `SDL_QUERY`: returns the current processing state of the specified event<br/>/// - `SDL_IGNORE` (aka `SDL_DISABLE`): the event will automatically be dropped<br/>/// from the event queue and will not be filtered<br/>/// - `SDL_ENABLE`: the event will be processed normally<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EventState")]
-		[return: NativeName(NativeNameType.Type, "Uint8")]
-		public static byte SDLEventState([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state)
+		/// <summary>/// Get the orientation of a display.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayOrientation")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayOrientation")]
+		public static SDLDisplayOrientation SDLGetDisplayOrientation([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex)
 		{
-			byte ret = SDLEventStateNative(type, state);
+			SDLDisplayOrientation ret = SDLGetDisplayOrientationNative(displayIndex);
 			return ret;
 		}
 
 		/// <summary>
-		/// Allocate a set of user-defined events, and return the beginning event<br/>
-		/// number for that set of events.<br/>
-		/// Calling this function with `numevents` <br/>
-		/// <<br/>
-		/// = 0 is an error and will return<br/>
-		/// (Uint32)-1.<br/>
-		/// Note, (Uint32)-1 means the maximum unsigned 32-bit integer value (or<br/>
-		/// 0xFFFFFFFF), but is clearer to write.<br/>
+		/// Get the number of available display modes.<br/>
+		/// The `displayIndex` needs to be in the range from 0 to<br/>
+		/// SDL_GetNumVideoDisplays() - 1.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_RegisterEvents")]
+		[NativeName(NativeNameType.Func, "SDL_GetNumDisplayModes")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetNumDisplayModes")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetNumDisplayModesNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex);
+
+		/// <summary>/// Get the number of available display modes.<br/>/// The `displayIndex` needs to be in the range from 0 to<br/>/// SDL_GetNumVideoDisplays() - 1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumDisplayModes")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetNumDisplayModes([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex)
+		{
+			int ret = SDLGetNumDisplayModesNative(displayIndex);
+			return ret;
+		}
+
+		/// <summary>
+		/// Get information about a specific display mode.<br/>
+		/// The display modes are sorted in this priority:<br/>
+		/// - width -> largest to smallest<br/>
+		/// - height -> largest to smallest<br/>
+		/// - bits per pixel -> more colors to fewer colors<br/>
+		/// - packed pixel layout -> largest to smallest<br/>
+		/// - refresh rate -> highest to lowest<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetDisplayModeNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "modeIndex")] [NativeName(NativeNameType.Type, "int")] int modeIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode);
+
+		/// <summary>/// Get information about a specific display mode.<br/>/// The display modes are sorted in this priority:<br/>/// - width -> largest to smallest<br/>/// - height -> largest to smallest<br/>/// - bits per pixel -> more colors to fewer colors<br/>/// - packed pixel layout -> largest to smallest<br/>/// - refresh rate -> highest to lowest<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "modeIndex")] [NativeName(NativeNameType.Type, "int")] int modeIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			int ret = SDLGetDisplayModeNative(displayIndex, modeIndex, mode);
+			return ret;
+		}
+
+		/// <summary>/// Get information about a specific display mode.<br/>/// The display modes are sorted in this priority:<br/>/// - width -> largest to smallest<br/>/// - height -> largest to smallest<br/>/// - bits per pixel -> more colors to fewer colors<br/>/// - packed pixel layout -> largest to smallest<br/>/// - refresh rate -> highest to lowest<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "modeIndex")] [NativeName(NativeNameType.Type, "int")] int modeIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				int ret = SDLGetDisplayModeNative(displayIndex, modeIndex, (SDLDisplayMode*)pmode);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get information about the desktop's display mode.<br/>
+		/// There's a difference between this function and SDL_GetCurrentDisplayMode()<br/>
+		/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>
+		/// function will return the previous native display mode, and not the current<br/>
+		/// display mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetDesktopDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetDesktopDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetDesktopDisplayModeNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode);
+
+		/// <summary>/// Get information about the desktop's display mode.<br/>/// There's a difference between this function and SDL_GetCurrentDisplayMode()<br/>/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>/// function will return the previous native display mode, and not the current<br/>/// display mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDesktopDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDesktopDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			int ret = SDLGetDesktopDisplayModeNative(displayIndex, mode);
+			return ret;
+		}
+
+		/// <summary>/// Get information about the desktop's display mode.<br/>/// There's a difference between this function and SDL_GetCurrentDisplayMode()<br/>/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>/// function will return the previous native display mode, and not the current<br/>/// display mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDesktopDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetDesktopDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				int ret = SDLGetDesktopDisplayModeNative(displayIndex, (SDLDisplayMode*)pmode);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get information about the current display mode.<br/>
+		/// There's a difference between this function and SDL_GetDesktopDisplayMode()<br/>
+		/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>
+		/// function will return the current display mode, and not the previous native<br/>
+		/// display mode.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetCurrentDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetCurrentDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetCurrentDisplayModeNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode);
+
+		/// <summary>/// Get information about the current display mode.<br/>/// There's a difference between this function and SDL_GetDesktopDisplayMode()<br/>/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>/// function will return the current display mode, and not the previous native<br/>/// display mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCurrentDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetCurrentDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			int ret = SDLGetCurrentDisplayModeNative(displayIndex, mode);
+			return ret;
+		}
+
+		/// <summary>/// Get information about the current display mode.<br/>/// There's a difference between this function and SDL_GetDesktopDisplayMode()<br/>/// when SDL runs fullscreen and has changed the resolution. In that case this<br/>/// function will return the current display mode, and not the previous native<br/>/// display mode.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCurrentDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetCurrentDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				int ret = SDLGetCurrentDisplayModeNative(displayIndex, (SDLDisplayMode*)pmode);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the closest match to the requested display mode.<br/>
+		/// The available display modes are scanned and `closest` is filled in with the<br/>
+		/// closest mode matching the requested mode and returned. The mode format and<br/>
+		/// refresh rate default to the desktop mode if they are set to 0. The modes<br/>
+		/// are scanned with size being first priority, format being second priority,<br/>
+		/// and finally checking the refresh rate. If all the available modes are too<br/>
+		/// small, then NULL is returned.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetClosestDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayMode*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetClosestDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLDisplayMode* SDLGetClosestDisplayModeNative([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode, [NativeName(NativeNameType.Param, "closest")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* closest);
+
+		/// <summary>/// Get the closest match to the requested display mode.<br/>/// The available display modes are scanned and `closest` is filled in with the<br/>/// closest mode matching the requested mode and returned. The mode format and<br/>/// refresh rate default to the desktop mode if they are set to 0. The modes<br/>/// are scanned with size being first priority, format being second priority,<br/>/// and finally checking the refresh rate. If all the available modes are too<br/>/// small, then NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClosestDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayMode*")]
+		public static SDLDisplayMode* SDLGetClosestDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode, [NativeName(NativeNameType.Param, "closest")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* closest)
+		{
+			SDLDisplayMode* ret = SDLGetClosestDisplayModeNative(displayIndex, mode, closest);
+			return ret;
+		}
+
+		/// <summary>/// Get the closest match to the requested display mode.<br/>/// The available display modes are scanned and `closest` is filled in with the<br/>/// closest mode matching the requested mode and returned. The mode format and<br/>/// refresh rate default to the desktop mode if they are set to 0. The modes<br/>/// are scanned with size being first priority, format being second priority,<br/>/// and finally checking the refresh rate. If all the available modes are too<br/>/// small, then NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClosestDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayMode*")]
+		public static SDLDisplayMode* SDLGetClosestDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] ref SDLDisplayMode mode, [NativeName(NativeNameType.Param, "closest")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* closest)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				SDLDisplayMode* ret = SDLGetClosestDisplayModeNative(displayIndex, (SDLDisplayMode*)pmode, closest);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the closest match to the requested display mode.<br/>/// The available display modes are scanned and `closest` is filled in with the<br/>/// closest mode matching the requested mode and returned. The mode format and<br/>/// refresh rate default to the desktop mode if they are set to 0. The modes<br/>/// are scanned with size being first priority, format being second priority,<br/>/// and finally checking the refresh rate. If all the available modes are too<br/>/// small, then NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClosestDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayMode*")]
+		public static SDLDisplayMode* SDLGetClosestDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode, [NativeName(NativeNameType.Param, "closest")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode closest)
+		{
+			fixed (SDLDisplayMode* pclosest = &closest)
+			{
+				SDLDisplayMode* ret = SDLGetClosestDisplayModeNative(displayIndex, mode, (SDLDisplayMode*)pclosest);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the closest match to the requested display mode.<br/>/// The available display modes are scanned and `closest` is filled in with the<br/>/// closest mode matching the requested mode and returned. The mode format and<br/>/// refresh rate default to the desktop mode if they are set to 0. The modes<br/>/// are scanned with size being first priority, format being second priority,<br/>/// and finally checking the refresh rate. If all the available modes are too<br/>/// small, then NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClosestDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "SDL_DisplayMode*")]
+		public static SDLDisplayMode* SDLGetClosestDisplayMode([NativeName(NativeNameType.Param, "displayIndex")] [NativeName(NativeNameType.Type, "int")] int displayIndex, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] ref SDLDisplayMode mode, [NativeName(NativeNameType.Param, "closest")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode closest)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				fixed (SDLDisplayMode* pclosest = &closest)
+				{
+					SDLDisplayMode* ret = SDLGetClosestDisplayModeNative(displayIndex, (SDLDisplayMode*)pmode, (SDLDisplayMode*)pclosest);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the index of the display containing a point<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetPointDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetPointDisplayIndex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetPointDisplayIndexNative([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* point);
+
+		/// <summary>/// Get the index of the display containing a point<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPointDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetPointDisplayIndex([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "const SDL_Point*")] SDLPoint* point)
+		{
+			int ret = SDLGetPointDisplayIndexNative(point);
+			return ret;
+		}
+
+		/// <summary>/// Get the index of the display containing a point<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPointDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetPointDisplayIndex([NativeName(NativeNameType.Param, "point")] [NativeName(NativeNameType.Type, "const SDL_Point*")] ref SDLPoint point)
+		{
+			fixed (SDLPoint* ppoint = &point)
+			{
+				int ret = SDLGetPointDisplayIndexNative((SDLPoint*)ppoint);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the index of the display primarily containing a rect<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetRectDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetRectDisplayIndex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetRectDisplayIndexNative([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect);
+
+		/// <summary>/// Get the index of the display primarily containing a rect<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRectDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetRectDisplayIndex([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] SDLRect* rect)
+		{
+			int ret = SDLGetRectDisplayIndexNative(rect);
+			return ret;
+		}
+
+		/// <summary>/// Get the index of the display primarily containing a rect<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRectDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetRectDisplayIndex([NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const SDL_Rect*")] ref SDLRect rect)
+		{
+			fixed (SDLRect* prect = &rect)
+			{
+				int ret = SDLGetRectDisplayIndexNative((SDLRect*)prect);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Get the index of the display associated with a window.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowDisplayIndex")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetWindowDisplayIndexNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
+
+		/// <summary>/// Get the index of the display associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayIndex([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			int ret = SDLGetWindowDisplayIndexNative(window);
+			return ret;
+		}
+
+		/// <summary>/// Get the index of the display associated with a window.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayIndex")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayIndex([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLGetWindowDisplayIndexNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Set the display mode to use when a window is visible at fullscreen.<br/>
+		/// This only affects the display mode used when the window is fullscreen. To<br/>
+		/// change the window size when the window is not fullscreen, use<br/>
+		/// SDL_SetWindowSize().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_SetWindowDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLSetWindowDisplayModeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode);
+
+		/// <summary>/// Set the display mode to use when a window is visible at fullscreen.<br/>/// This only affects the display mode used when the window is fullscreen. To<br/>/// change the window size when the window is not fullscreen, use<br/>/// SDL_SetWindowSize().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			int ret = SDLSetWindowDisplayModeNative(window, mode);
+			return ret;
+		}
+
+		/// <summary>/// Set the display mode to use when a window is visible at fullscreen.<br/>/// This only affects the display mode used when the window is fullscreen. To<br/>/// change the window size when the window is not fullscreen, use<br/>/// SDL_SetWindowSize().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLSetWindowDisplayModeNative((SDLWindow*)pwindow, mode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the display mode to use when a window is visible at fullscreen.<br/>/// This only affects the display mode used when the window is fullscreen. To<br/>/// change the window size when the window is not fullscreen, use<br/>/// SDL_SetWindowSize().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				int ret = SDLSetWindowDisplayModeNative(window, (SDLDisplayMode*)pmode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Set the display mode to use when a window is visible at fullscreen.<br/>/// This only affects the display mode used when the window is fullscreen. To<br/>/// change the window size when the window is not fullscreen, use<br/>/// SDL_SetWindowSize().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLSetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "const SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (SDLDisplayMode* pmode = &mode)
+				{
+					int ret = SDLSetWindowDisplayModeNative((SDLWindow*)pwindow, (SDLDisplayMode*)pmode);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Query the display mode to use when a window is visible at fullscreen.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowDisplayMode")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial int SDLGetWindowDisplayModeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode);
+
+		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			int ret = SDLGetWindowDisplayModeNative(window, mode);
+			return ret;
+		}
+
+		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] SDLDisplayMode* mode)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				int ret = SDLGetWindowDisplayModeNative((SDLWindow*)pwindow, mode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLDisplayMode* pmode = &mode)
+			{
+				int ret = SDLGetWindowDisplayModeNative(window, (SDLDisplayMode*)pmode);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Query the display mode to use when a window is visible at fullscreen.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowDisplayMode")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGetWindowDisplayMode([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "SDL_DisplayMode*")] ref SDLDisplayMode mode)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (SDLDisplayMode* pmode = &mode)
+				{
+					int ret = SDLGetWindowDisplayModeNative((SDLWindow*)pwindow, (SDLDisplayMode*)pmode);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the raw ICC profile data for the screen the window is currently on.<br/>
+		/// Data returned should be freed with SDL_free.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowICCProfile")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial void* SDLGetWindowICCProfileNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* size);
+
+		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* size)
+		{
+			void* ret = SDLGetWindowICCProfileNative(window, size);
+			return ret;
+		}
+
+		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* size)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				void* ret = SDLGetWindowICCProfileNative((SDLWindow*)pwindow, size);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint size)
+		{
+			fixed (nuint* psize = &size)
+			{
+				void* ret = SDLGetWindowICCProfileNative(window, (ulong*)psize);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Get the raw ICC profile data for the screen the window is currently on.<br/>/// Data returned should be freed with SDL_free.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowICCProfile")]
+		[return: NativeName(NativeNameType.Type, "void*")]
+		public static void* SDLGetWindowICCProfile([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint size)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				fixed (nuint* psize = &size)
+				{
+					void* ret = SDLGetWindowICCProfileNative((SDLWindow*)pwindow, (ulong*)psize);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get the pixel format associated with the window.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowPixelFormat")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RegisterEvents")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowPixelFormat")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLRegisterEventsNative([NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents);
+		internal static partial uint SDLGetWindowPixelFormatNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
 
-		/// <summary>/// Allocate a set of user-defined events, and return the beginning event<br/>/// number for that set of events.<br/>/// Calling this function with `numevents` <br/>/// <<br/>/// = 0 is an error and will return<br/>/// (Uint32)-1.<br/>/// Note, (Uint32)-1 means the maximum unsigned 32-bit integer value (or<br/>/// 0xFFFFFFFF), but is clearer to write.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterEvents")]
+		/// <summary>/// Get the pixel format associated with the window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPixelFormat")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLRegisterEvents([NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents)
+		public static uint SDLGetWindowPixelFormat([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
 		{
-			uint ret = SDLRegisterEventsNative(numevents);
+			uint ret = SDLGetWindowPixelFormatNative(window);
 			return ret;
 		}
 
-		/// <summary>
-		/// Get the directory where the application was run from.<br/>
-		/// This is not necessarily a fast call, so you should call this once near<br/>
-		/// startup and save the string if you need it.<br/>
-		/// **Mac OS X and iOS Specific Functionality**: If the application is in a<br/>
-		/// ".app" bundle, this function returns the Resource directory (e.g.<br/>
-		/// MyApp.app/Contents/Resources/). This behaviour can be overridden by adding<br/>
-		/// a property to the Info.plist file. Adding a string key with the name<br/>
-		/// SDL_FILESYSTEM_BASE_DIR_TYPE with a supported value will change the<br/>
-		/// behaviour.<br/>
-		/// Supported values for the SDL_FILESYSTEM_BASE_DIR_TYPE property (Given an<br/>
-		/// application in /Applications/SDLApp/MyApp.app):<br/>
-		/// - `resource`: bundle resource directory (the default). For example:<br/>
-		/// `/Applications/SDLApp/MyApp.app/Contents/Resources`<br/>
-		/// - `bundle`: the Bundle directory. For example:<br/>
-		/// `/Applications/SDLApp/MyApp.app/`<br/>
-		/// - `parent`: the containing directory of the bundle. For example:<br/>
-		/// `/Applications/SDLApp/`<br/>
-		/// **Nintendo 3DS Specific Functionality**: This function returns "romfs"<br/>
-		/// directory of the application as it is uncommon to store resources outside<br/>
-		/// the executable. As such it is not a writable directory.<br/>
-		/// The returned path is guaranteed to end with a path separator ('<br/>
-		/// \<br/>
-		/// ' on<br/>
-		/// Windows, '/' on most other platforms).<br/>
-		/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>
-		/// pointer when done with it.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetBasePath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetBasePath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetBasePathNative();
-
-		/// <summary>/// Get the directory where the application was run from.<br/>/// This is not necessarily a fast call, so you should call this once near<br/>/// startup and save the string if you need it.<br/>/// **Mac OS X and iOS Specific Functionality**: If the application is in a<br/>/// ".app" bundle, this function returns the Resource directory (e.g.<br/>/// MyApp.app/Contents/Resources/). This behaviour can be overridden by adding<br/>/// a property to the Info.plist file. Adding a string key with the name<br/>/// SDL_FILESYSTEM_BASE_DIR_TYPE with a supported value will change the<br/>/// behaviour.<br/>/// Supported values for the SDL_FILESYSTEM_BASE_DIR_TYPE property (Given an<br/>/// application in /Applications/SDLApp/MyApp.app):<br/>/// - `resource`: bundle resource directory (the default). For example:<br/>/// `/Applications/SDLApp/MyApp.app/Contents/Resources`<br/>/// - `bundle`: the Bundle directory. For example:<br/>/// `/Applications/SDLApp/MyApp.app/`<br/>/// - `parent`: the containing directory of the bundle. For example:<br/>/// `/Applications/SDLApp/`<br/>/// **Nintendo 3DS Specific Functionality**: This function returns "romfs"<br/>/// directory of the application as it is uncommon to store resources outside<br/>/// the executable. As such it is not a writable directory.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetBasePath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetBasePath()
-		{
-			byte* ret = SDLGetBasePathNative();
-			return ret;
-		}
-
-		/// <summary>/// Get the directory where the application was run from.<br/>/// This is not necessarily a fast call, so you should call this once near<br/>/// startup and save the string if you need it.<br/>/// **Mac OS X and iOS Specific Functionality**: If the application is in a<br/>/// ".app" bundle, this function returns the Resource directory (e.g.<br/>/// MyApp.app/Contents/Resources/). This behaviour can be overridden by adding<br/>/// a property to the Info.plist file. Adding a string key with the name<br/>/// SDL_FILESYSTEM_BASE_DIR_TYPE with a supported value will change the<br/>/// behaviour.<br/>/// Supported values for the SDL_FILESYSTEM_BASE_DIR_TYPE property (Given an<br/>/// application in /Applications/SDLApp/MyApp.app):<br/>/// - `resource`: bundle resource directory (the default). For example:<br/>/// `/Applications/SDLApp/MyApp.app/Contents/Resources`<br/>/// - `bundle`: the Bundle directory. For example:<br/>/// `/Applications/SDLApp/MyApp.app/`<br/>/// - `parent`: the containing directory of the bundle. For example:<br/>/// `/Applications/SDLApp/`<br/>/// **Nintendo 3DS Specific Functionality**: This function returns "romfs"<br/>/// directory of the application as it is uncommon to store resources outside<br/>/// the executable. As such it is not a writable directory.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetBasePath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetBasePathS()
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetBasePathNative());
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the user-and-app-specific path where files can be written.<br/>
-		/// Get the "pref dir". This is meant to be where users can write personal<br/>
-		/// files (preferences and save games, etc) that are specific to your<br/>
-		/// application. This directory is unique per user, per application.<br/>
-		/// This function will decide the appropriate location in the native<br/>
-		/// filesystem, create the directory if necessary, and return a string of the<br/>
-		/// absolute path to the directory in UTF-8 encoding.<br/>
-		/// On Windows, the string might look like:<br/>
-		/// `C:<br/>
-		/// \<br/>
-		/// Users<br/>
-		/// \<br/>
-		/// bob<br/>
-		/// \<br/>
-		/// AppData<br/>
-		/// \<br/>
-		/// Roaming<br/>
-		/// \<br/>
-		/// My Company<br/>
-		/// \<br/>
-		/// My Program Name<br/>
-		/// \<br/>
-		/// `<br/>
-		/// On Linux, the string might look like:<br/>
-		/// `/home/bob/.local/share/My Program Name/`<br/>
-		/// On Mac OS X, the string might look like:<br/>
-		/// `/Users/bob/Library/Application Support/My Program Name/`<br/>
-		/// You should assume the path returned by this function is the only safe place<br/>
-		/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>
-		/// even the parent of the returned path, isn't where you should be writing<br/>
-		/// things).<br/>
-		/// Both the org and app strings may become part of a directory name, so please<br/>
-		/// follow these rules:<br/>
-		/// - Try to use the same org string (_including case-sensitivity_) for all<br/>
-		/// your applications that use this function.<br/>
-		/// - Always use a unique app string for each one, and make sure it never<br/>
-		/// changes for an app once you've decided on it.<br/>
-		/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>
-		/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>
-		/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>
-		/// The returned path is guaranteed to end with a path separator ('<br/>
-		/// \<br/>
-		/// ' on<br/>
-		/// Windows, '/' on most other platforms).<br/>
-		/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>
-		/// pointer when done with it.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPrefPath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPrefPathNative([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app);
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetPrefPath([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app)
-		{
-			byte* ret = SDLGetPrefPathNative(org, app);
-			return ret;
-		}
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetPrefPathS([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetPrefPathNative(org, app));
-			return ret;
-		}
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetPrefPath([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] ref byte app)
-		{
-			fixed (byte* papp = &app)
-			{
-				byte* ret = SDLGetPrefPathNative(org, (byte*)papp);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetPrefPathS([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] ref byte app)
-		{
-			fixed (byte* papp = &app)
-			{
-				string ret = Utils.DecodeStringUTF8(SDLGetPrefPathNative(org, (byte*)papp));
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static byte* SDLGetPrefPath([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] string app)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (app != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(app);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(app, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = SDLGetPrefPathNative(org, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
-		[return: NativeName(NativeNameType.Type, "char*")]
-		public static string SDLGetPrefPathS([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] string app)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (app != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(app);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(app, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(SDLGetPrefPathNative(org, pStr0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Count the number of haptic devices attached to the system.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_NumHaptics")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NumHaptics")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLNumHapticsNative();
-
-		/// <summary>/// Count the number of haptic devices attached to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NumHaptics")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLNumHaptics()
-		{
-			int ret = SDLNumHapticsNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the implementation dependent name of a haptic device.<br/>
-		/// This can be called before any joysticks are opened. If no name can be<br/>
-		/// found, this function returns NULL.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLHapticNameNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Get the implementation dependent name of a haptic device.<br/>/// This can be called before any joysticks are opened. If no name can be<br/>/// found, this function returns NULL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLHapticName([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			byte* ret = SDLHapticNameNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>/// Get the implementation dependent name of a haptic device.<br/>/// This can be called before any joysticks are opened. If no name can be<br/>/// found, this function returns NULL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLHapticNameS([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLHapticNameNative(deviceIndex));
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a haptic device for use.<br/>
-		/// The index passed as an argument refers to the N'th haptic device on this<br/>
-		/// system.<br/>
-		/// When opening a haptic device, its gain will be set to maximum and<br/>
-		/// autocenter will be disabled. To modify these values use SDL_HapticSetGain()<br/>
-		/// and SDL_HapticSetAutocenter().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Open a haptic device for use.<br/>/// The index passed as an argument refers to the N'th haptic device on this<br/>/// system.<br/>/// When opening a haptic device, its gain will be set to maximum and<br/>/// autocenter will be disabled. To modify these values use SDL_HapticSetGain()<br/>/// and SDL_HapticSetAutocenter().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpen")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		public static SDLHaptic* SDLHapticOpen([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			SDLHaptic* ret = SDLHapticOpenNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Check if the haptic device at the designated index has been opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticOpened")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpened")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticOpenedNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
-		/// <summary>/// Check if the haptic device at the designated index has been opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpened")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticOpened([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
-		{
-			int ret = SDLHapticOpenedNative(deviceIndex);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the index of a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticIndexNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Get the index of a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticIndex")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticIndex([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticIndexNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Query whether or not the current mouse has haptic capabilities.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_MouseIsHaptic")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MouseIsHaptic")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLMouseIsHapticNative();
-
-		/// <summary>/// Query whether or not the current mouse has haptic capabilities.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MouseIsHaptic")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLMouseIsHaptic()
-		{
-			int ret = SDLMouseIsHapticNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Try to open a haptic device from the current mouse.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromMouse")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpenFromMouse")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenFromMouseNative();
-
-		/// <summary>/// Try to open a haptic device from the current mouse.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromMouse")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		public static SDLHaptic* SDLHapticOpenFromMouse()
-		{
-			SDLHaptic* ret = SDLHapticOpenFromMouseNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Query if a joystick has haptic features.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_JoystickIsHaptic")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickIsHaptic")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickIsHapticNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Query if a joystick has haptic features.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickIsHaptic")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLJoystickIsHaptic([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			int ret = SDLJoystickIsHapticNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a haptic device for use from a joystick device.<br/>
-		/// You must still close the haptic device separately. It will not be closed<br/>
-		/// with the joystick.<br/>
-		/// When opened from a joystick you should first close the haptic device before<br/>
-		/// closing the joystick device. If not, on some implementations the haptic<br/>
-		/// device will also get unallocated and you'll be unable to use force feedback<br/>
-		/// on that device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromJoystick")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpenFromJoystick")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenFromJoystickNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
-		/// <summary>/// Open a haptic device for use from a joystick device.<br/>/// You must still close the haptic device separately. It will not be closed<br/>/// with the joystick.<br/>/// When opened from a joystick you should first close the haptic device before<br/>/// closing the joystick device. If not, on some implementations the haptic<br/>/// device will also get unallocated and you'll be unable to use force feedback<br/>/// on that device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromJoystick")]
-		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		public static SDLHaptic* SDLHapticOpenFromJoystick([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
-		{
-			SDLHaptic* ret = SDLHapticOpenFromJoystickNative(joystick);
-			return ret;
-		}
-
-		/// <summary>
-		/// Close a haptic device previously opened with SDL_HapticOpen().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHapticCloseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Close a haptic device previously opened with SDL_HapticOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticClose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHapticClose([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			SDLHapticCloseNative(haptic);
-		}
-
-		/// <summary>
-		/// Get the number of effects a haptic device can store.<br/>
-		/// On some platforms this isn't fully supported, and therefore is an<br/>
-		/// approximation. Always check to see if your created effect was actually<br/>
-		/// created and do not rely solely on SDL_HapticNumEffects().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticNumEffects")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumEffects")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumEffectsNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Get the number of effects a haptic device can store.<br/>/// On some platforms this isn't fully supported, and therefore is an<br/>/// approximation. Always check to see if your created effect was actually<br/>/// created and do not rely solely on SDL_HapticNumEffects().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumEffects")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticNumEffects([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticNumEffectsNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of effects a haptic device can play at the same time.<br/>
-		/// This is not supported on all platforms, but will always return a value.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticNumEffectsPlaying")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumEffectsPlaying")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumEffectsPlayingNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Get the number of effects a haptic device can play at the same time.<br/>/// This is not supported on all platforms, but will always return a value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumEffectsPlaying")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticNumEffectsPlaying([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticNumEffectsPlayingNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the haptic device's supported features in bitwise manner.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticQuery")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticQuery")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLHapticQueryNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Get the haptic device's supported features in bitwise manner.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticQuery")]
-		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		public static uint SDLHapticQuery([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			uint ret = SDLHapticQueryNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the number of haptic axes the device has.<br/>
-		/// The number of haptic axes might be useful if working with the<br/>
-		/// SDL_HapticDirection effect.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticNumAxes")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumAxes")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumAxesNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Get the number of haptic axes the device has.<br/>/// The number of haptic axes might be useful if working with the<br/>/// SDL_HapticDirection effect.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumAxes")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticNumAxes([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticNumAxesNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Check to see if an effect is supported by a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticEffectSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticEffectSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticEffectSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect);
-
-		/// <summary>/// Check to see if an effect is supported by a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticEffectSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticEffectSupported([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
-		{
-			int ret = SDLHapticEffectSupportedNative(haptic, effect);
-			return ret;
-		}
-
-		/// <summary>/// Check to see if an effect is supported by a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticEffectSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticEffectSupported([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] ref SDLHapticEffect effect)
-		{
-			fixed (SDLHapticEffect* peffect = &effect)
-			{
-				int ret = SDLHapticEffectSupportedNative(haptic, (SDLHapticEffect*)peffect);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Create a new haptic effect on a specified device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticNewEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNewEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNewEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect);
-
-		/// <summary>/// Create a new haptic effect on a specified device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNewEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticNewEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
-		{
-			int ret = SDLHapticNewEffectNative(haptic, effect);
-			return ret;
-		}
-
-		/// <summary>/// Create a new haptic effect on a specified device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNewEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticNewEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] ref SDLHapticEffect effect)
-		{
-			fixed (SDLHapticEffect* peffect = &effect)
-			{
-				int ret = SDLHapticNewEffectNative(haptic, (SDLHapticEffect*)peffect);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Update the properties of an effect.<br/>
-		/// Can be used dynamically, although behavior when dynamically changing<br/>
-		/// direction may be strange. Specifically the effect may re-upload itself and<br/>
-		/// start playing from the start. You also cannot change the type either when<br/>
-		/// running SDL_HapticUpdateEffect().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticUpdateEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticUpdateEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticUpdateEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* data);
-
-		/// <summary>/// Update the properties of an effect.<br/>/// Can be used dynamically, although behavior when dynamically changing<br/>/// direction may be strange. Specifically the effect may re-upload itself and<br/>/// start playing from the start. You also cannot change the type either when<br/>/// running SDL_HapticUpdateEffect().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticUpdateEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticUpdateEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* data)
-		{
-			int ret = SDLHapticUpdateEffectNative(haptic, effect, data);
-			return ret;
-		}
-
-		/// <summary>/// Update the properties of an effect.<br/>/// Can be used dynamically, although behavior when dynamically changing<br/>/// direction may be strange. Specifically the effect may re-upload itself and<br/>/// start playing from the start. You also cannot change the type either when<br/>/// running SDL_HapticUpdateEffect().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticUpdateEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticUpdateEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] ref SDLHapticEffect data)
-		{
-			fixed (SDLHapticEffect* pdata = &data)
-			{
-				int ret = SDLHapticUpdateEffectNative(haptic, effect, (SDLHapticEffect*)pdata);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Run the haptic effect on its associated haptic device.<br/>
-		/// To repeat the effect over and over indefinitely, set `iterations` to<br/>
-		/// `SDL_HAPTIC_INFINITY`. (Repeats the envelope - attack and fade.) To make<br/>
-		/// one instance of the effect last indefinitely (so the effect does not fade),<br/>
-		/// set the effect's `length` in its structure/union to `SDL_HAPTIC_INFINITY`<br/>
-		/// instead.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticRunEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRunEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRunEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "iterations")] [NativeName(NativeNameType.Type, "Uint32")] uint iterations);
-
-		/// <summary>/// Run the haptic effect on its associated haptic device.<br/>/// To repeat the effect over and over indefinitely, set `iterations` to<br/>/// `SDL_HAPTIC_INFINITY`. (Repeats the envelope - attack and fade.) To make<br/>/// one instance of the effect last indefinitely (so the effect does not fade),<br/>/// set the effect's `length` in its structure/union to `SDL_HAPTIC_INFINITY`<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRunEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticRunEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "iterations")] [NativeName(NativeNameType.Type, "Uint32")] uint iterations)
-		{
-			int ret = SDLHapticRunEffectNative(haptic, effect, iterations);
-			return ret;
-		}
-
-		/// <summary>
-		/// Stop the haptic effect on its associated haptic device.<br/>
-		/// *<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticStopEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticStopEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticStopEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
-		/// <summary>/// Stop the haptic effect on its associated haptic device.<br/>/// *<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticStopEffect")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticStopEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
-		{
-			int ret = SDLHapticStopEffectNative(haptic, effect);
-			return ret;
-		}
-
-		/// <summary>
-		/// Destroy a haptic effect on the device.<br/>
-		/// This will stop the effect if it's running. Effects are automatically<br/>
-		/// destroyed when the device is closed.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticDestroyEffect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticDestroyEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHapticDestroyEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
-		/// <summary>/// Destroy a haptic effect on the device.<br/>/// This will stop the effect if it's running. Effects are automatically<br/>/// destroyed when the device is closed.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticDestroyEffect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHapticDestroyEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
-		{
-			SDLHapticDestroyEffectNative(haptic, effect);
-		}
-
-		/// <summary>
-		/// Get the status of the current effect on the specified haptic device.<br/>
-		/// Device must support the SDL_HAPTIC_STATUS feature.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticGetEffectStatus")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticGetEffectStatus")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticGetEffectStatusNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
-		/// <summary>/// Get the status of the current effect on the specified haptic device.<br/>/// Device must support the SDL_HAPTIC_STATUS feature.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticGetEffectStatus")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticGetEffectStatus([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
-		{
-			int ret = SDLHapticGetEffectStatusNative(haptic, effect);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the global gain of the specified haptic device.<br/>
-		/// Device must support the SDL_HAPTIC_GAIN feature.<br/>
-		/// The user may specify the maximum gain by setting the environment variable<br/>
-		/// `SDL_HAPTIC_GAIN_MAX` which should be between 0 and 100. All calls to<br/>
-		/// SDL_HapticSetGain() will scale linearly using `SDL_HAPTIC_GAIN_MAX` as the<br/>
-		/// maximum.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticSetGain")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticSetGain")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticSetGainNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "gain")] [NativeName(NativeNameType.Type, "int")] int gain);
-
-		/// <summary>/// Set the global gain of the specified haptic device.<br/>/// Device must support the SDL_HAPTIC_GAIN feature.<br/>/// The user may specify the maximum gain by setting the environment variable<br/>/// `SDL_HAPTIC_GAIN_MAX` which should be between 0 and 100. All calls to<br/>/// SDL_HapticSetGain() will scale linearly using `SDL_HAPTIC_GAIN_MAX` as the<br/>/// maximum.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticSetGain")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticSetGain([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "gain")] [NativeName(NativeNameType.Type, "int")] int gain)
-		{
-			int ret = SDLHapticSetGainNative(haptic, gain);
-			return ret;
-		}
-
-		/// <summary>
-		/// Set the global autocenter of the device.<br/>
-		/// Autocenter should be between 0 and 100. Setting it to 0 will disable<br/>
-		/// autocentering.<br/>
-		/// Device must support the SDL_HAPTIC_AUTOCENTER feature.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticSetAutocenter")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticSetAutocenter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticSetAutocenterNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "autocenter")] [NativeName(NativeNameType.Type, "int")] int autocenter);
-
-		/// <summary>/// Set the global autocenter of the device.<br/>/// Autocenter should be between 0 and 100. Setting it to 0 will disable<br/>/// autocentering.<br/>/// Device must support the SDL_HAPTIC_AUTOCENTER feature.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticSetAutocenter")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticSetAutocenter([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "autocenter")] [NativeName(NativeNameType.Type, "int")] int autocenter)
-		{
-			int ret = SDLHapticSetAutocenterNative(haptic, autocenter);
-			return ret;
-		}
-
-		/// <summary>
-		/// Pause a haptic device.<br/>
-		/// Device must support the `SDL_HAPTIC_PAUSE` feature. Call<br/>
-		/// SDL_HapticUnpause() to resume playback.<br/>
-		/// Do not modify the effects nor add new ones while the device is paused. That<br/>
-		/// can cause all sorts of weird errors.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticPause")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticPause")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticPauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Pause a haptic device.<br/>/// Device must support the `SDL_HAPTIC_PAUSE` feature. Call<br/>/// SDL_HapticUnpause() to resume playback.<br/>/// Do not modify the effects nor add new ones while the device is paused. That<br/>/// can cause all sorts of weird errors.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticPause")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticPause([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticPauseNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Unpause a haptic device.<br/>
-		/// Call to unpause after SDL_HapticPause().<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticUnpause")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticUnpause")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticUnpauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Unpause a haptic device.<br/>/// Call to unpause after SDL_HapticPause().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticUnpause")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticUnpause([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticUnpauseNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Stop all the currently playing effects on a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticStopAll")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticStopAll")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticStopAllNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Stop all the currently playing effects on a haptic device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticStopAll")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticStopAll([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticStopAllNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Check whether rumble is supported on a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticRumbleSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Check whether rumble is supported on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleSupported")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticRumbleSupported([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticRumbleSupportedNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Initialize a haptic device for simple rumble playback.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticRumbleInit")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleInit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleInitNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Initialize a haptic device for simple rumble playback.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleInit")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticRumbleInit([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticRumbleInitNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Run a simple rumble effect on a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticRumblePlay")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumblePlay")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumblePlayNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "float")] float strength, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "Uint32")] uint length);
-
-		/// <summary>/// Run a simple rumble effect on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumblePlay")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticRumblePlay([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "float")] float strength, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "Uint32")] uint length)
-		{
-			int ret = SDLHapticRumblePlayNative(haptic, strength, length);
-			return ret;
-		}
-
-		/// <summary>
-		/// Stop the simple rumble on a haptic device.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_HapticRumbleStop")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleStop")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleStopNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
-		/// <summary>/// Stop the simple rumble on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleStop")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHapticRumbleStop([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
-		{
-			int ret = SDLHapticRumbleStopNative(haptic);
-			return ret;
-		}
-
-		/// <summary>
-		/// Initialize the HIDAPI library.<br/>
-		/// This function initializes the HIDAPI library. Calling it is not strictly<br/>
-		/// necessary, as it will be called automatically by SDL_hid_enumerate() and<br/>
-		/// any of the SDL_hid_open_*() functions if it is needed. This function should<br/>
-		/// be called at the beginning of execution however, if there is a chance of<br/>
-		/// HIDAPI handles being opened by different threads simultaneously.<br/>
-		/// Each call to this function should have a matching call to SDL_hid_exit()<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_init")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_init")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidInitNative();
-
-		/// <summary>/// Initialize the HIDAPI library.<br/>/// This function initializes the HIDAPI library. Calling it is not strictly<br/>/// necessary, as it will be called automatically by SDL_hid_enumerate() and<br/>/// any of the SDL_hid_open_*() functions if it is needed. This function should<br/>/// be called at the beginning of execution however, if there is a chance of<br/>/// HIDAPI handles being opened by different threads simultaneously.<br/>/// Each call to this function should have a matching call to SDL_hid_exit()<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_init")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidInit()
-		{
-			int ret = SDLHidInitNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Finalize the HIDAPI library.<br/>
-		/// This function frees all of the static data associated with HIDAPI. It<br/>
-		/// should be called at the end of execution to avoid memory leaks.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_exit")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_exit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidExitNative();
-
-		/// <summary>/// Finalize the HIDAPI library.<br/>/// This function frees all of the static data associated with HIDAPI. It<br/>/// should be called at the end of execution to avoid memory leaks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_exit")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidExit()
-		{
-			int ret = SDLHidExitNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Check to see if devices may have been added or removed.<br/>
-		/// Enumerating the HID devices is an expensive operation, so you can call this<br/>
-		/// to see if there have been any system device changes since the last call to<br/>
-		/// this function. A change in the counter returned doesn't necessarily mean<br/>
-		/// that anything has changed, but you can call SDL_hid_enumerate() to get an<br/>
-		/// updated device list.<br/>
-		/// Calling this function for the first time may cause a thread or other system<br/>
-		/// resource to be allocated to track device change notifications.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_device_change_count")]
+		/// <summary>/// Get the pixel format associated with the window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowPixelFormat")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_device_change_count")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLHidDeviceChangeCountNative();
+		public static uint SDLGetWindowPixelFormat([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
+		{
+			fixed (SDLWindow* pwindow = &window)
+			{
+				uint ret = SDLGetWindowPixelFormatNative((SDLWindow*)pwindow);
+				return ret;
+			}
+		}
 
-		/// <summary>/// Check to see if devices may have been added or removed.<br/>/// Enumerating the HID devices is an expensive operation, so you can call this<br/>/// to see if there have been any system device changes since the last call to<br/>/// this function. A change in the counter returned doesn't necessarily mean<br/>/// that anything has changed, but you can call SDL_hid_enumerate() to get an<br/>/// updated device list.<br/>/// Calling this function for the first time may cause a thread or other system<br/>/// resource to be allocated to track device change notifications.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_device_change_count")]
+		/// <summary>
+		/// Create a window with the specified position, dimensions, and flags.<br/>
+		/// `flags` may be any of the following OR'd together:<br/>
+		/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>
+		/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>
+		/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>
+		/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>
+		/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>
+		/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>
+		/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>
+		/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>
+		/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>
+		/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>
+		/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>
+		/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>
+		/// supported (>= SDL 2.0.1)<br/>
+		/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>
+		/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>
+		/// queried later using SDL_GetWindowFlags().<br/>
+		/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>
+		/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>
+		/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>
+		/// in pixels may differ from its size in screen coordinates on platforms with<br/>
+		/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>
+		/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>
+		/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>
+		/// when this flag is set, the drawable size can vary after the window is<br/>
+		/// created and should be queried after major window events such as when the<br/>
+		/// window is resized or moved between displays.<br/>
+		/// If the window is set fullscreen, the width and height parameters `w` and<br/>
+		/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>
+		/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>
+		/// platforms at window creation.<br/>
+		/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>
+		/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>
+		/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>
+		/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>
+		/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>
+		/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>
+		/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>
+		/// SDL_CreateWindow() will fail.<br/>
+		/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>
+		/// loader or link to a dynamic library version. This limitation may be removed<br/>
+		/// in a future version of SDL.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateWindow")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLWindow* SDLCreateWindowNative([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
+
+		/// <summary>/// Create a window with the specified position, dimensions, and flags.<br/>/// `flags` may be any of the following OR'd together:<br/>/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>/// supported (>= SDL 2.0.1)<br/>/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>/// queried later using SDL_GetWindowFlags().<br/>/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>/// in pixels may differ from its size in screen coordinates on platforms with<br/>/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>/// when this flag is set, the drawable size can vary after the window is<br/>/// created and should be queried after major window events such as when the<br/>/// window is resized or moved between displays.<br/>/// If the window is set fullscreen, the width and height parameters `w` and<br/>/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>/// platforms at window creation.<br/>/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>/// SDL_CreateWindow() will fail.<br/>/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>/// loader or link to a dynamic library version. This limitation may be removed<br/>/// in a future version of SDL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLCreateWindow([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			SDLWindow* ret = SDLCreateWindowNative(title, x, y, w, h, flags);
+			return ret;
+		}
+
+		/// <summary>/// Create a window with the specified position, dimensions, and flags.<br/>/// `flags` may be any of the following OR'd together:<br/>/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>/// supported (>= SDL 2.0.1)<br/>/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>/// queried later using SDL_GetWindowFlags().<br/>/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>/// in pixels may differ from its size in screen coordinates on platforms with<br/>/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>/// when this flag is set, the drawable size can vary after the window is<br/>/// created and should be queried after major window events such as when the<br/>/// window is resized or moved between displays.<br/>/// If the window is set fullscreen, the width and height parameters `w` and<br/>/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>/// platforms at window creation.<br/>/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>/// SDL_CreateWindow() will fail.<br/>/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>/// loader or link to a dynamic library version. This limitation may be removed<br/>/// in a future version of SDL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLCreateWindow([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] ref byte title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			fixed (byte* ptitle = &title)
+			{
+				SDLWindow* ret = SDLCreateWindowNative((byte*)ptitle, x, y, w, h, flags);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Create a window with the specified position, dimensions, and flags.<br/>/// `flags` may be any of the following OR'd together:<br/>/// - `SDL_WINDOW_FULLSCREEN`: fullscreen window<br/>/// - `SDL_WINDOW_FULLSCREEN_DESKTOP`: fullscreen window at desktop resolution<br/>/// - `SDL_WINDOW_OPENGL`: window usable with an OpenGL context<br/>/// - `SDL_WINDOW_VULKAN`: window usable with a Vulkan instance<br/>/// - `SDL_WINDOW_METAL`: window usable with a Metal instance<br/>/// - `SDL_WINDOW_HIDDEN`: window is not visible<br/>/// - `SDL_WINDOW_BORDERLESS`: no window decoration<br/>/// - `SDL_WINDOW_RESIZABLE`: window can be resized<br/>/// - `SDL_WINDOW_MINIMIZED`: window is minimized<br/>/// - `SDL_WINDOW_MAXIMIZED`: window is maximized<br/>/// - `SDL_WINDOW_INPUT_GRABBED`: window has grabbed input focus<br/>/// - `SDL_WINDOW_ALLOW_HIGHDPI`: window should be created in high-DPI mode if<br/>/// supported (>= SDL 2.0.1)<br/>/// `SDL_WINDOW_SHOWN` is ignored by SDL_CreateWindow(). The SDL_Window is<br/>/// implicitly shown if SDL_WINDOW_HIDDEN is not set. `SDL_WINDOW_SHOWN` may be<br/>/// queried later using SDL_GetWindowFlags().<br/>/// On Apple's macOS, you **must** set the NSHighResolutionCapable Info.plist<br/>/// property to YES, otherwise you will not receive a High-DPI OpenGL canvas.<br/>/// If the window is created with the `SDL_WINDOW_ALLOW_HIGHDPI` flag, its size<br/>/// in pixels may differ from its size in screen coordinates on platforms with<br/>/// high-DPI support (e.g. iOS and macOS). Use SDL_GetWindowSize() to query the<br/>/// client area's size in screen coordinates, and SDL_GL_GetDrawableSize() or<br/>/// SDL_GetRendererOutputSize() to query the drawable size in pixels. Note that<br/>/// when this flag is set, the drawable size can vary after the window is<br/>/// created and should be queried after major window events such as when the<br/>/// window is resized or moved between displays.<br/>/// If the window is set fullscreen, the width and height parameters `w` and<br/>/// `h` will not be used. However, invalid size parameters (e.g. too large) may<br/>/// still fail. Window size is actually limited to 16384 x 16384 for all<br/>/// platforms at window creation.<br/>/// If the window is created with any of the SDL_WINDOW_OPENGL or<br/>/// SDL_WINDOW_VULKAN flags, then the corresponding LoadLibrary function<br/>/// (SDL_GL_LoadLibrary or SDL_Vulkan_LoadLibrary) is called and the<br/>/// corresponding UnloadLibrary function is called by SDL_DestroyWindow().<br/>/// If SDL_WINDOW_VULKAN is specified and there isn't a working Vulkan driver,<br/>/// SDL_CreateWindow() will fail because SDL_Vulkan_LoadLibrary() will fail.<br/>/// If SDL_WINDOW_METAL is specified on an OS that does not support Metal,<br/>/// SDL_CreateWindow() will fail.<br/>/// On non-Apple devices, SDL requires you to either not link to the Vulkan<br/>/// loader or link to a dynamic library version. This limitation may be removed<br/>/// in a future version of SDL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindow")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLCreateWindow([NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (title != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(title);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			SDLWindow* ret = SDLCreateWindowNative(pStr0, x, y, w, h, flags);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Create an SDL window from an existing native window.<br/>
+		/// In some cases (e.g. OpenGL) and on some platforms (e.g. Microsoft Windows)<br/>
+		/// the hint `SDL_HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT` needs to be configured<br/>
+		/// before using SDL_CreateWindowFrom().<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_CreateWindowFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_CreateWindowFrom")]
+		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
+		internal static partial SDLWindow* SDLCreateWindowFromNative([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data);
+
+		/// <summary>/// Create an SDL window from an existing native window.<br/>/// In some cases (e.g. OpenGL) and on some platforms (e.g. Microsoft Windows)<br/>/// the hint `SDL_HINT_VIDEO_WINDOW_SHARE_PIXEL_FORMAT` needs to be configured<br/>/// before using SDL_CreateWindowFrom().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateWindowFrom")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLCreateWindowFrom([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data)
+		{
+			SDLWindow* ret = SDLCreateWindowFromNative(data);
+			return ret;
+		}
+
+		/// <summary>
+		/// Get the numeric ID of a window.<br/>
+		/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>
+		/// these events to specific SDL_Window objects.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GetWindowID")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		public static uint SDLHidDeviceChangeCount()
-		{
-			uint ret = SDLHidDeviceChangeCountNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// Enumerate the HID Devices.<br/>
-		/// This function returns a linked list of all the HID devices attached to the<br/>
-		/// system which match vendor_id and product_id. If `vendor_id` is set to 0<br/>
-		/// then any vendor matches. If `product_id` is set to 0 then any product<br/>
-		/// matches. If `vendor_id` and `product_id` are both set to 0, then all HID<br/>
-		/// devices will be returned.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_enumerate")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device_info*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_enumerate")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowID")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDeviceInfo* SDLHidEnumerateNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId);
+		internal static partial uint SDLGetWindowIDNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
 
-		/// <summary>/// Enumerate the HID Devices.<br/>/// This function returns a linked list of all the HID devices attached to the<br/>/// system which match vendor_id and product_id. If `vendor_id` is set to 0<br/>/// then any vendor matches. If `product_id` is set to 0 then any product<br/>/// matches. If `vendor_id` and `product_id` are both set to 0, then all HID<br/>/// devices will be returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_enumerate")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device_info*")]
-		public static SDLHidDeviceInfo* SDLHidEnumerate([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId)
+		/// <summary>/// Get the numeric ID of a window.<br/>/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>/// these events to specific SDL_Window objects.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowID")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLGetWindowID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
 		{
-			SDLHidDeviceInfo* ret = SDLHidEnumerateNative(vendorId, productId);
+			uint ret = SDLGetWindowIDNative(window);
 			return ret;
 		}
 
-		/// <summary>
-		/// Free an enumeration Linked List<br/>
-		/// This function frees a linked list created by SDL_hid_enumerate().<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_free_enumeration")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidFreeEnumerationNative([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs);
-
-		/// <summary>/// Free an enumeration Linked List<br/>/// This function frees a linked list created by SDL_hid_enumerate().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHidFreeEnumeration([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs)
+		/// <summary>/// Get the numeric ID of a window.<br/>/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>/// these events to specific SDL_Window objects.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowID")]
+		[return: NativeName(NativeNameType.Type, "Uint32")]
+		public static uint SDLGetWindowID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
 		{
-			SDLHidFreeEnumerationNative(devs);
-		}
-
-		/// <summary>
-		/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>
-		/// a serial number.<br/>
-		/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>
-		/// is opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_open")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDevice* SDLHidOpenNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber);
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber)
-		{
-			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, serialNumber);
-			return ret;
-		}
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] ref char serialNumber)
-		{
-			fixed (char* pserialNumber = &serialNumber)
+			fixed (SDLWindow* pwindow = &window)
 			{
-				SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, (char*)pserialNumber);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] string serialNumber)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (serialNumber != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(serialNumber);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(serialNumber, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a HID device by its path name.<br/>
-		/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>
-		/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_open_path")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDevice* SDLHidOpenPathNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive);
-
-		/// <summary>/// Open a HID device by its path name.<br/>/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpenPath([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive)
-		{
-			SDLHidDevice* ret = SDLHidOpenPathNative(path, bExclusive);
-			return ret;
-		}
-
-		/// <summary>
-		/// Write an Output report to a HID device.<br/>
-		/// The first byte of `data` must contain the Report ID. For devices which only<br/>
-		/// support a single report, this must be set to 0x0. The remaining bytes<br/>
-		/// contain the report data. Since the Report ID is mandatory, calls to<br/>
-		/// SDL_hid_write() will always contain one more byte than the report contains.<br/>
-		/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>
-		/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>
-		/// followed by the report data (16 bytes). In this example, the length passed<br/>
-		/// in would be 17.<br/>
-		/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>
-		/// exists. If it does not, it will send the data through the Control Endpoint<br/>
-		/// (Endpoint 0).<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_write")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_write")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidWriteNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
-		/// <summary>/// Write an Output report to a HID device.<br/>/// The first byte of `data` must contain the Report ID. For devices which only<br/>/// support a single report, this must be set to 0x0. The remaining bytes<br/>/// contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_write() will always contain one more byte than the report contains.<br/>/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>/// followed by the report data (16 bytes). In this example, the length passed<br/>/// in would be 17.<br/>/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>/// exists. If it does not, it will send the data through the Control Endpoint<br/>/// (Endpoint 0).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_write")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidWrite([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			int ret = SDLHidWriteNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Write an Output report to a HID device.<br/>/// The first byte of `data` must contain the Report ID. For devices which only<br/>/// support a single report, this must be set to 0x0. The remaining bytes<br/>/// contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_write() will always contain one more byte than the report contains.<br/>/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>/// followed by the report data (16 bytes). In this example, the length passed<br/>/// in would be 17.<br/>/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>/// exists. If it does not, it will send the data through the Control Endpoint<br/>/// (Endpoint 0).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_write")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidWrite([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidWriteNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Write an Output report to a HID device.<br/>/// The first byte of `data` must contain the Report ID. For devices which only<br/>/// support a single report, this must be set to 0x0. The remaining bytes<br/>/// contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_write() will always contain one more byte than the report contains.<br/>/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>/// followed by the report data (16 bytes). In this example, the length passed<br/>/// in would be 17.<br/>/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>/// exists. If it does not, it will send the data through the Control Endpoint<br/>/// (Endpoint 0).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_write")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidWrite([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			int ret = SDLHidWriteNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Write an Output report to a HID device.<br/>/// The first byte of `data` must contain the Report ID. For devices which only<br/>/// support a single report, this must be set to 0x0. The remaining bytes<br/>/// contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_write() will always contain one more byte than the report contains.<br/>/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>/// followed by the report data (16 bytes). In this example, the length passed<br/>/// in would be 17.<br/>/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>/// exists. If it does not, it will send the data through the Control Endpoint<br/>/// (Endpoint 0).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_write")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidWrite([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidWriteNative(dev, (byte*)pdata, length);
+				uint ret = SDLGetWindowIDNative((SDLWindow*)pwindow);
 				return ret;
 			}
 		}
 
 		/// <summary>
-		/// Read an Input report from a HID device with timeout.<br/>
-		/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>
-		/// The first byte will contain the Report number if the device uses numbered<br/>
-		/// reports.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_read_timeout")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidReadTimeoutNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds);
-
-		/// <summary>/// Read an Input report from a HID device with timeout.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidReadTimeout([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
-		{
-			int ret = SDLHidReadTimeoutNative(dev, data, length, milliseconds);
-			return ret;
-		}
-
-		/// <summary>/// Read an Input report from a HID device with timeout.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidReadTimeout([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidReadTimeoutNative(dev, (byte*)pdata, length, milliseconds);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Read an Input report from a HID device with timeout.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidReadTimeout([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
-		{
-			int ret = SDLHidReadTimeoutNative(dev, data, length, milliseconds);
-			return ret;
-		}
-
-		/// <summary>/// Read an Input report from a HID device with timeout.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidReadTimeout([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidReadTimeoutNative(dev, (byte*)pdata, length, milliseconds);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Read an Input report from a HID device.<br/>
-		/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>
-		/// The first byte will contain the Report number if the device uses numbered<br/>
-		/// reports.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_read")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_read")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidReadNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
-		/// <summary>/// Read an Input report from a HID device.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidRead([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			int ret = SDLHidReadNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Read an Input report from a HID device.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidRead([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidReadNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Read an Input report from a HID device.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidRead([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			int ret = SDLHidReadNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Read an Input report from a HID device.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidRead([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidReadNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Set the device handle to be non-blocking.<br/>
-		/// In non-blocking mode calls to SDL_hid_read() will return immediately with a<br/>
-		/// value of 0 if there is no data to be read. In blocking mode, SDL_hid_read()<br/>
-		/// will wait (block) until there is data to read before returning.<br/>
-		/// Nonblocking can be turned on and off at any time.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_set_nonblocking")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_set_nonblocking")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidSetNonblockingNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "nonblock")] [NativeName(NativeNameType.Type, "int")] int nonblock);
-
-		/// <summary>/// Set the device handle to be non-blocking.<br/>/// In non-blocking mode calls to SDL_hid_read() will return immediately with a<br/>/// value of 0 if there is no data to be read. In blocking mode, SDL_hid_read()<br/>/// will wait (block) until there is data to read before returning.<br/>/// Nonblocking can be turned on and off at any time.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_set_nonblocking")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidSetNonblocking([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "nonblock")] [NativeName(NativeNameType.Type, "int")] int nonblock)
-		{
-			int ret = SDLHidSetNonblockingNative(dev, nonblock);
-			return ret;
-		}
-
-		/// <summary>
-		/// Send a Feature report to the device.<br/>
-		/// Feature reports are sent over the Control endpoint as a Set_Report<br/>
-		/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>
-		/// which only support a single report, this must be set to 0x0. The remaining<br/>
-		/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>
-		/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>
-		/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>
-		/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>
-		/// devices which do not use numbered reports), followed by the report data (16<br/>
-		/// bytes). In this example, the length passed in would be 17.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_send_feature_report")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidSendFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
-		/// <summary>/// Send a Feature report to the device.<br/>/// Feature reports are sent over the Control endpoint as a Set_Report<br/>/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>/// which only support a single report, this must be set to 0x0. The remaining<br/>/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>/// devices which do not use numbered reports), followed by the report data (16<br/>/// bytes). In this example, the length passed in would be 17.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidSendFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			int ret = SDLHidSendFeatureReportNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Send a Feature report to the device.<br/>/// Feature reports are sent over the Control endpoint as a Set_Report<br/>/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>/// which only support a single report, this must be set to 0x0. The remaining<br/>/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>/// devices which do not use numbered reports), followed by the report data (16<br/>/// bytes). In this example, the length passed in would be 17.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidSendFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidSendFeatureReportNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Send a Feature report to the device.<br/>/// Feature reports are sent over the Control endpoint as a Set_Report<br/>/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>/// which only support a single report, this must be set to 0x0. The remaining<br/>/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>/// devices which do not use numbered reports), followed by the report data (16<br/>/// bytes). In this example, the length passed in would be 17.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidSendFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			int ret = SDLHidSendFeatureReportNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Send a Feature report to the device.<br/>/// Feature reports are sent over the Control endpoint as a Set_Report<br/>/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>/// which only support a single report, this must be set to 0x0. The remaining<br/>/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>/// devices which do not use numbered reports), followed by the report data (16<br/>/// bytes). In this example, the length passed in would be 17.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidSendFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidSendFeatureReportNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Get a feature report from a HID device.<br/>
-		/// Set the first byte of `data` to the Report ID of the report to be read.<br/>
-		/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>
-		/// first byte will still contain the Report ID, and the report data will start<br/>
-		/// in data[1].<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_feature_report")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
-		/// <summary>/// Get a feature report from a HID device.<br/>/// Set the first byte of `data` to the Report ID of the report to be read.<br/>/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>/// first byte will still contain the Report ID, and the report data will start<br/>/// in data[1].<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			int ret = SDLHidGetFeatureReportNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Get a feature report from a HID device.<br/>/// Set the first byte of `data` to the Report ID of the report to be read.<br/>/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>/// first byte will still contain the Report ID, and the report data will start<br/>/// in data[1].<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidGetFeatureReportNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get a feature report from a HID device.<br/>/// Set the first byte of `data` to the Report ID of the report to be read.<br/>/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>/// first byte will still contain the Report ID, and the report data will start<br/>/// in data[1].<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			int ret = SDLHidGetFeatureReportNative(dev, data, length);
-			return ret;
-		}
-
-		/// <summary>/// Get a feature report from a HID device.<br/>/// Set the first byte of `data` to the Report ID of the report to be read.<br/>/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>/// first byte will still contain the Report ID, and the report data will start<br/>/// in data[1].<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] nuint length)
-		{
-			fixed (byte* pdata = &data)
-			{
-				int ret = SDLHidGetFeatureReportNative(dev, (byte*)pdata, length);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Close a HID device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_close")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_close")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidCloseNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev);
-
-		/// <summary>/// Close a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_close")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHidClose([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev)
-		{
-			SDLHidCloseNative(dev);
-		}
-
-		/// <summary>
-		/// Get The Manufacturer String from a HID device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_manufacturer_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetManufacturerStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			int ret = SDLHidGetManufacturerStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetManufacturerStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetManufacturerStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			int ret = SDLHidGetManufacturerStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetManufacturerStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetManufacturerStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Get The Product String from a HID device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_product_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetProductStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			int ret = SDLHidGetProductStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetProductStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetProductStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			int ret = SDLHidGetProductStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetProductStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetProductStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Get The Serial Number String from a HID device.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_serial_number_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetSerialNumberStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			int ret = SDLHidGetSerialNumberStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetSerialNumberStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetSerialNumberStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			int ret = SDLHidGetSerialNumberStringNative(dev, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetSerialNumberStringNative(dev, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetSerialNumberStringNative(dev, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Get a string from a HID device, based on its string index.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_indexed_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetIndexedStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			int ret = SDLHidGetIndexedStringNative(dev, stringIndex, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetIndexedStringNative(dev, stringIndex, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetIndexedStringNative(dev, stringIndex, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			int ret = SDLHidGetIndexedStringNative(dev, stringIndex, str, maxlen);
-			return ret;
-		}
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref char str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			fixed (char* pstr = &str)
-			{
-				int ret = SDLHidGetIndexedStringNative(dev, stringIndex, (char*)pstr, maxlen);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] ref string str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] nuint maxlen)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (str != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(str);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(str, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			int ret = SDLHidGetIndexedStringNative(dev, stringIndex, pStr0, maxlen);
-			str = Utils.DecodeStringUTF16(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Start or stop a BLE scan on iOS and tvOS to pair Steam Controllers<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_ble_scan")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_ble_scan")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidBleScanNative([NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool active);
-
-		/// <summary>/// Start or stop a BLE scan on iOS and tvOS to pair Steam Controllers<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_ble_scan")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHidBleScan([NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool active)
-		{
-			SDLHidBleScanNative(active);
-		}
-
-		/// <summary>
-		/// Set a hint with a specific priority.<br/>
-		/// The priority controls the behavior when setting a hint that already has a<br/>
-		/// value. Hints will replace existing hints of their priority and lower.<br/>
-		/// Environment variables are considered to have override priority.<br/>
+		/// Get a window from a stored ID.<br/>
+		/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>
+		/// these events to specific SDL_Window objects.<br/>
 		/// <br/>
 		/// <br/>
 		/// <br/>
 		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetHintWithPriority")]
+		[NativeName(NativeNameType.Func, "SDL_GetWindowFromID")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowFromID")]
 		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLSetHintWithPriorityNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority);
+		internal static partial SDLWindow* SDLGetWindowFromIDNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "Uint32")] uint id);
 
-		/// <summary>/// Set a hint with a specific priority.<br/>/// The priority controls the behavior when setting a hint that already has a<br/>/// value. Hints will replace existing hints of their priority and lower.<br/>/// Environment variables are considered to have override priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHintWithPriority([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority)
+		/// <summary>/// Get a window from a stored ID.<br/>/// The numeric ID is what SDL_WindowEvent references, and is necessary to map<br/>/// these events to specific SDL_Window objects.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowFromID")]
+		[return: NativeName(NativeNameType.Type, "SDL_Window*")]
+		public static SDLWindow* SDLGetWindowFromID([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "Uint32")] uint id)
 		{
-			SDLBool ret = SDLSetHintWithPriorityNative(name, value, priority);
+			SDLWindow* ret = SDLGetWindowFromIDNative(id);
 			return ret;
-		}
-
-		/// <summary>/// Set a hint with a specific priority.<br/>/// The priority controls the behavior when setting a hint that already has a<br/>/// value. Hints will replace existing hints of their priority and lower.<br/>/// Environment variables are considered to have override priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHintWithPriority([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority)
-		{
-			fixed (byte* pvalue = &value)
-			{
-				SDLBool ret = SDLSetHintWithPriorityNative(name, (byte*)pvalue, priority);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Set a hint with a specific priority.<br/>/// The priority controls the behavior when setting a hint that already has a<br/>/// value. Hints will replace existing hints of their priority and lower.<br/>/// Environment variables are considered to have override priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHintWithPriority([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (value != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(value);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(value, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLBool ret = SDLSetHintWithPriorityNative(name, pStr0, priority);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Set a hint with normal priority.<br/>
-		/// Hints will not be set if there is an existing override hint or environment<br/>
-		/// variable that takes precedence. You can use SDL_SetHintWithPriority() to<br/>
-		/// set the hint with override priority instead.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_SetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLSetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value);
-
-		/// <summary>/// Set a hint with normal priority.<br/>/// Hints will not be set if there is an existing override hint or environment<br/>/// variable that takes precedence. You can use SDL_SetHintWithPriority() to<br/>/// set the hint with override priority instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value)
-		{
-			SDLBool ret = SDLSetHintNative(name, value);
-			return ret;
-		}
-
-		/// <summary>/// Set a hint with normal priority.<br/>/// Hints will not be set if there is an existing override hint or environment<br/>/// variable that takes precedence. You can use SDL_SetHintWithPriority() to<br/>/// set the hint with override priority instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] ref byte value)
-		{
-			fixed (byte* pvalue = &value)
-			{
-				SDLBool ret = SDLSetHintNative(name, (byte*)pvalue);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Set a hint with normal priority.<br/>/// Hints will not be set if there is an existing override hint or environment<br/>/// variable that takes precedence. You can use SDL_SetHintWithPriority() to<br/>/// set the hint with override priority instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLSetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] string value)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (value != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(value);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(value, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLBool ret = SDLSetHintNative(name, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Reset a hint to the default value.<br/>
-		/// This will reset a hint to the value of the environment variable, or NULL if<br/>
-		/// the environment isn't set. Callbacks will be called normally with this<br/>
-		/// change.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ResetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLResetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Reset a hint to the default value.<br/>/// This will reset a hint to the value of the environment variable, or NULL if<br/>/// the environment isn't set. Callbacks will be called normally with this<br/>/// change.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetHint")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLResetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			SDLBool ret = SDLResetHintNative(name);
-			return ret;
-		}
-
-		/// <summary>
-		/// Reset all hints to the default values.<br/>
-		/// This will reset all hints to the value of the associated environment<br/>
-		/// variable, or NULL if the environment isn't set. Callbacks will be called<br/>
-		/// normally with this change.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ResetHints")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetHints")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLResetHintsNative();
-
-		/// <summary>/// Reset all hints to the default values.<br/>/// This will reset all hints to the value of the associated environment<br/>/// variable, or NULL if the environment isn't set. Callbacks will be called<br/>/// normally with this change.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetHints")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLResetHints()
-		{
-			SDLResetHintsNative();
-		}
-
-		/// <summary>
-		/// Get the value of a hint.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetHint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Get the value of a hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetHint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* SDLGetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			byte* ret = SDLGetHintNative(name);
-			return ret;
-		}
-
-		/// <summary>/// Get the value of a hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetHint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string SDLGetHintS([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			string ret = Utils.DecodeStringUTF8(SDLGetHintNative(name));
-			return ret;
-		}
-
-		/// <summary>
-		/// Get the boolean value of a hint variable.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_GetHintBoolean")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetHintBoolean")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetHintBooleanNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool defaultValue);
-
-		/// <summary>/// Get the boolean value of a hint variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetHintBoolean")]
-		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetHintBoolean([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool defaultValue)
-		{
-			SDLBool ret = SDLGetHintBooleanNative(name, defaultValue);
-			return ret;
-		}
-
-		/// <summary>
-		/// Add a function to watch a particular hint.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AddHintCallback")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAddHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
-		/// <summary>/// Add a function to watch a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			SDLAddHintCallbackNative(name, callback, userdata);
-		}
-
-		/// <summary>
-		/// Remove a function watching a particular hint.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DelHintCallback")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDelHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
-		/// <summary>/// Remove a function watching a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
-		{
-			SDLDelHintCallbackNative(name, callback, userdata);
-		}
-
-		/// <summary>
-		/// Clear all hints.<br/>
-		/// This function is automatically called during SDL_Quit(), and deletes all<br/>
-		/// callbacks without calling them and frees all memory associated with hints.<br/>
-		/// If you're calling this from application code you probably want to call<br/>
-		/// SDL_ResetHints() instead.<br/>
-		/// This function will be removed from the API the next time we rev the ABI.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_ClearHints")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearHints")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearHintsNative();
-
-		/// <summary>/// Clear all hints.<br/>/// This function is automatically called during SDL_Quit(), and deletes all<br/>/// callbacks without calling them and frees all memory associated with hints.<br/>/// If you're calling this from application code you probably want to call<br/>/// SDL_ResetHints() instead.<br/>/// This function will be removed from the API the next time we rev the ABI.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearHints")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLClearHints()
-		{
-			SDLClearHintsNative();
-		}
-
-		/// <summary>
-		/// Dynamically load a shared object.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LoadObject")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadObject")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLLoadObjectNative([NativeName(NativeNameType.Param, "sofile")] [NativeName(NativeNameType.Type, "const char*")] byte* sofile);
-
-		/// <summary>/// Dynamically load a shared object.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadObject")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLLoadObject([NativeName(NativeNameType.Param, "sofile")] [NativeName(NativeNameType.Type, "const char*")] byte* sofile)
-		{
-			void* ret = SDLLoadObjectNative(sofile);
-			return ret;
-		}
-
-		/// <summary>
-		/// Look up the address of the named function in a shared object.<br/>
-		/// This function pointer is no longer valid after calling SDL_UnloadObject().<br/>
-		/// This function can only look up C function names. Other languages may have<br/>
-		/// name mangling and intrinsic language support that varies from compiler to<br/>
-		/// compiler.<br/>
-		/// Make sure you declare your function pointers with the same calling<br/>
-		/// convention as the actual library function. Your code will crash<br/>
-		/// mysteriously if you do not do this.<br/>
-		/// If the requested function doesn't exist, NULL is returned.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLLoadFunctionNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
-		/// <summary>/// Look up the address of the named function in a shared object.<br/>/// This function pointer is no longer valid after calling SDL_UnloadObject().<br/>/// This function can only look up C function names. Other languages may have<br/>/// name mangling and intrinsic language support that varies from compiler to<br/>/// compiler.<br/>/// Make sure you declare your function pointers with the same calling<br/>/// convention as the actual library function. Your code will crash<br/>/// mysteriously if you do not do this.<br/>/// If the requested function doesn't exist, NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLLoadFunction([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
-		{
-			void* ret = SDLLoadFunctionNative(handle, name);
-			return ret;
-		}
-
-		/// <summary>/// Look up the address of the named function in a shared object.<br/>/// This function pointer is no longer valid after calling SDL_UnloadObject().<br/>/// This function can only look up C function names. Other languages may have<br/>/// name mangling and intrinsic language support that varies from compiler to<br/>/// compiler.<br/>/// Make sure you declare your function pointers with the same calling<br/>/// convention as the actual library function. Your code will crash<br/>/// mysteriously if you do not do this.<br/>/// If the requested function doesn't exist, NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLLoadFunction([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name)
-		{
-			fixed (byte* pname = &name)
-			{
-				void* ret = SDLLoadFunctionNative(handle, (byte*)pname);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Look up the address of the named function in a shared object.<br/>/// This function pointer is no longer valid after calling SDL_UnloadObject().<br/>/// This function can only look up C function names. Other languages may have<br/>/// name mangling and intrinsic language support that varies from compiler to<br/>/// compiler.<br/>/// Make sure you declare your function pointers with the same calling<br/>/// convention as the actual library function. Your code will crash<br/>/// mysteriously if you do not do this.<br/>/// If the requested function doesn't exist, NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
-		[return: NativeName(NativeNameType.Type, "void*")]
-		public static void* SDLLoadFunction([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (name != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(name);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(name, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			void* ret = SDLLoadFunctionNative(handle, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Unload a shared object from memory.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_UnloadObject")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnloadObject")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnloadObjectNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle);
-
-		/// <summary>/// Unload a shared object from memory.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnloadObject")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLUnloadObject([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle)
-		{
-			SDLUnloadObjectNative(handle);
-		}
-
-		/// <summary>
-		/// Set the priority of all log categories.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogSetAllPriority")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetAllPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetAllPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority);
-
-		/// <summary>/// Set the priority of all log categories.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetAllPriority")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogSetAllPriority([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
-		{
-			SDLLogSetAllPriorityNative(priority);
-		}
-
-		/// <summary>
-		/// Set the priority of a particular log category.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogSetPriority")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority);
-
-		/// <summary>/// Set the priority of a particular log category.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetPriority")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogSetPriority([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
-		{
-			SDLLogSetPriorityNative(category, priority);
-		}
-
-		/// <summary>
-		/// Get the priority of a particular log category.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogGetPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_LogPriority")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogGetPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLLogPriority SDLLogGetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category);
-
-		/// <summary>/// Get the priority of a particular log category.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogGetPriority")]
-		[return: NativeName(NativeNameType.Type, "SDL_LogPriority")]
-		public static SDLLogPriority SDLLogGetPriority([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category)
-		{
-			SDLLogPriority ret = SDLLogGetPriorityNative(category);
-			return ret;
-		}
-
-		/// <summary>
-		/// Reset all priorities to default.<br/>
-		/// This is called by SDL_Quit().<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogResetPriorities")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogResetPriorities")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogResetPrioritiesNative();
-
-		/// <summary>/// Reset all priorities to default.<br/>/// This is called by SDL_Quit().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogResetPriorities")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogResetPriorities()
-		{
-			SDLLogResetPrioritiesNative();
-		}
-
-		/// <summary>
-		/// Log a message with SDL_LOG_CATEGORY_APPLICATION and SDL_LOG_PRIORITY_INFO.<br/>
-		/// = * <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_Log")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Log")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>
-		/// Log a message with SDL_LOG_PRIORITY_VERBOSE.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogVerbose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogVerboseNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_VERBOSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogVerbose([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
-		{
-			SDLLogVerboseNative(category, fmt);
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_VERBOSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogVerbose([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				SDLLogVerboseNative(category, (byte*)pfmt);
-			}
-		}
-
-		/// <summary>/// Log a message with SDL_LOG_PRIORITY_VERBOSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogVerbose([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SDLLogVerboseNative(category, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
 		}
 	}
 }

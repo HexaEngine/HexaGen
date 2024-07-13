@@ -170,7 +170,11 @@
         {
             Unindent(1);
             WriteLine("}");
+            TrySplit();
+        }
 
+        public void TrySplit()
+        {
             if (linesWritten >= SplitThreshold && indentLevel == baseIndentLevel)
             {
                 while (indentLevel > 0)

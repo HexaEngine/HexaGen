@@ -10,4 +10,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\HexaGen.Runtime.COM\HexaGen.Runtime.COM.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Generated\" />
+	</ItemGroup>
 </Project>

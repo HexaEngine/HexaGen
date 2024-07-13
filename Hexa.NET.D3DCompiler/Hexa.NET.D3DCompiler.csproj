@@ -12,6 +12,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Hexa.NET.D3D11\Hexa.NET.D3D11.csproj" />
+		<ProjectReference Include="..\Hexa.NET.D3DCommon\Hexa.NET.D3DCommon.csproj" />
 		<ProjectReference Include="..\HexaGen.Runtime.COM\HexaGen.Runtime.COM.csproj" />
 	</ItemGroup>
 </Project>

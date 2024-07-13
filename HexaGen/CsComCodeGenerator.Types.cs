@@ -50,7 +50,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupTypeUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), 1);
 
             GenContext context = new(compilation, filePath, writer);
 

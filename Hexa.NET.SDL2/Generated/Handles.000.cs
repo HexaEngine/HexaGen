@@ -87,4 +87,453 @@ namespace Hexa.NET.SDL2
 		private string DebuggerDisplay => string.Format("SDLMetalView [0x{0}]", Handle.ToString("X"));
 	}
 
+	[NativeName(NativeNameType.Typedef, "EGLDisplay")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLDisplay : IEquatable<EGLDisplay>
+	{
+		public EGLDisplay(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLDisplay Null => new EGLDisplay(0);
+		public static implicit operator EGLDisplay(nint handle) => new EGLDisplay(handle);
+		public static bool operator ==(EGLDisplay left, EGLDisplay right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLDisplay left, EGLDisplay right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLDisplay left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLDisplay left, nint right) => left.Handle != right;
+		public bool Equals(EGLDisplay other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLDisplay handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLDisplay [0x{0}]", Handle.ToString("X"));
+	}
+
+	/// <summary>
+	/// #include <br/>
+	/// <KHR<br/>
+	/// /khrplatform.h><br/>
+	/// #include <br/>
+	/// <EGL<br/>
+	/// /eglplatform.h><br/>
+	/// </summary>
+	[NativeName(NativeNameType.Typedef, "EGLConfig")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLConfig : IEquatable<EGLConfig>
+	{
+		public EGLConfig(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLConfig Null => new EGLConfig(0);
+		public static implicit operator EGLConfig(nint handle) => new EGLConfig(handle);
+		public static bool operator ==(EGLConfig left, EGLConfig right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLConfig left, EGLConfig right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLConfig left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLConfig left, nint right) => left.Handle != right;
+		public bool Equals(EGLConfig other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLConfig handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLConfig [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLSurface")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLSurface : IEquatable<EGLSurface>
+	{
+		public EGLSurface(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLSurface Null => new EGLSurface(0);
+		public static implicit operator EGLSurface(nint handle) => new EGLSurface(handle);
+		public static bool operator ==(EGLSurface left, EGLSurface right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLSurface left, EGLSurface right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLSurface left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLSurface left, nint right) => left.Handle != right;
+		public bool Equals(EGLSurface other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLSurface handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLSurface [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLContext")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLContext : IEquatable<EGLContext>
+	{
+		public EGLContext(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLContext Null => new EGLContext(0);
+		public static implicit operator EGLContext(nint handle) => new EGLContext(handle);
+		public static bool operator ==(EGLContext left, EGLContext right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLContext left, EGLContext right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLContext left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLContext left, nint right) => left.Handle != right;
+		public bool Equals(EGLContext other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLContext handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLContext [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLClientBuffer")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLClientBuffer : IEquatable<EGLClientBuffer>
+	{
+		public EGLClientBuffer(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLClientBuffer Null => new EGLClientBuffer(0);
+		public static implicit operator EGLClientBuffer(nint handle) => new EGLClientBuffer(handle);
+		public static bool operator ==(EGLClientBuffer left, EGLClientBuffer right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLClientBuffer left, EGLClientBuffer right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLClientBuffer left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLClientBuffer left, nint right) => left.Handle != right;
+		public bool Equals(EGLClientBuffer other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLClientBuffer handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLClientBuffer [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLSync")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLSync : IEquatable<EGLSync>
+	{
+		public EGLSync(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLSync Null => new EGLSync(0);
+		public static implicit operator EGLSync(nint handle) => new EGLSync(handle);
+		public static bool operator ==(EGLSync left, EGLSync right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLSync left, EGLSync right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLSync left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLSync left, nint right) => left.Handle != right;
+		public bool Equals(EGLSync other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLSync handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLSync [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLImage")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLImage : IEquatable<EGLImage>
+	{
+		public EGLImage(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLImage Null => new EGLImage(0);
+		public static implicit operator EGLImage(nint handle) => new EGLImage(handle);
+		public static bool operator ==(EGLImage left, EGLImage right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLImage left, EGLImage right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLImage left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLImage left, nint right) => left.Handle != right;
+		public bool Equals(EGLImage other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLImage handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLImage [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLSyncKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLSyncKHR : IEquatable<EGLSyncKHR>
+	{
+		public EGLSyncKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLSyncKHR Null => new EGLSyncKHR(0);
+		public static implicit operator EGLSyncKHR(nint handle) => new EGLSyncKHR(handle);
+		public static bool operator ==(EGLSyncKHR left, EGLSyncKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLSyncKHR left, EGLSyncKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLSyncKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLSyncKHR left, nint right) => left.Handle != right;
+		public bool Equals(EGLSyncKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLSyncKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLSyncKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLLabelKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLLabelKHR : IEquatable<EGLLabelKHR>
+	{
+		public EGLLabelKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLLabelKHR Null => new EGLLabelKHR(0);
+		public static implicit operator EGLLabelKHR(nint handle) => new EGLLabelKHR(handle);
+		public static bool operator ==(EGLLabelKHR left, EGLLabelKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLLabelKHR left, EGLLabelKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLLabelKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLLabelKHR left, nint right) => left.Handle != right;
+		public bool Equals(EGLLabelKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLLabelKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLLabelKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLObjectKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLObjectKHR : IEquatable<EGLObjectKHR>
+	{
+		public EGLObjectKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLObjectKHR Null => new EGLObjectKHR(0);
+		public static implicit operator EGLObjectKHR(nint handle) => new EGLObjectKHR(handle);
+		public static bool operator ==(EGLObjectKHR left, EGLObjectKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLObjectKHR left, EGLObjectKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLObjectKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLObjectKHR left, nint right) => left.Handle != right;
+		public bool Equals(EGLObjectKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLObjectKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLObjectKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLImageKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLImageKHR : IEquatable<EGLImageKHR>
+	{
+		public EGLImageKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLImageKHR Null => new EGLImageKHR(0);
+		public static implicit operator EGLImageKHR(nint handle) => new EGLImageKHR(handle);
+		public static bool operator ==(EGLImageKHR left, EGLImageKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLImageKHR left, EGLImageKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLImageKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLImageKHR left, nint right) => left.Handle != right;
+		public bool Equals(EGLImageKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLImageKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLImageKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLStreamKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLStreamKHR : IEquatable<EGLStreamKHR>
+	{
+		public EGLStreamKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLStreamKHR Null => new EGLStreamKHR(0);
+		public static implicit operator EGLStreamKHR(nint handle) => new EGLStreamKHR(handle);
+		public static bool operator ==(EGLStreamKHR left, EGLStreamKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLStreamKHR left, EGLStreamKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLStreamKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLStreamKHR left, nint right) => left.Handle != right;
+		public bool Equals(EGLStreamKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLStreamKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLStreamKHR [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLDeviceEXT")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLDeviceEXT : IEquatable<EGLDeviceEXT>
+	{
+		public EGLDeviceEXT(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLDeviceEXT Null => new EGLDeviceEXT(0);
+		public static implicit operator EGLDeviceEXT(nint handle) => new EGLDeviceEXT(handle);
+		public static bool operator ==(EGLDeviceEXT left, EGLDeviceEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLDeviceEXT left, EGLDeviceEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLDeviceEXT left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLDeviceEXT left, nint right) => left.Handle != right;
+		public bool Equals(EGLDeviceEXT other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLDeviceEXT handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLDeviceEXT [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLOutputLayerEXT")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLOutputLayerEXT : IEquatable<EGLOutputLayerEXT>
+	{
+		public EGLOutputLayerEXT(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLOutputLayerEXT Null => new EGLOutputLayerEXT(0);
+		public static implicit operator EGLOutputLayerEXT(nint handle) => new EGLOutputLayerEXT(handle);
+		public static bool operator ==(EGLOutputLayerEXT left, EGLOutputLayerEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLOutputLayerEXT left, EGLOutputLayerEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLOutputLayerEXT left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLOutputLayerEXT left, nint right) => left.Handle != right;
+		public bool Equals(EGLOutputLayerEXT other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLOutputLayerEXT handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLOutputLayerEXT [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLOutputPortEXT")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLOutputPortEXT : IEquatable<EGLOutputPortEXT>
+	{
+		public EGLOutputPortEXT(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLOutputPortEXT Null => new EGLOutputPortEXT(0);
+		public static implicit operator EGLOutputPortEXT(nint handle) => new EGLOutputPortEXT(handle);
+		public static bool operator ==(EGLOutputPortEXT left, EGLOutputPortEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLOutputPortEXT left, EGLOutputPortEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLOutputPortEXT left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLOutputPortEXT left, nint right) => left.Handle != right;
+		public bool Equals(EGLOutputPortEXT other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLOutputPortEXT handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLOutputPortEXT [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "EGLSyncNV")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct EGLSyncNV : IEquatable<EGLSyncNV>
+	{
+		public EGLSyncNV(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static EGLSyncNV Null => new EGLSyncNV(0);
+		public static implicit operator EGLSyncNV(nint handle) => new EGLSyncNV(handle);
+		public static bool operator ==(EGLSyncNV left, EGLSyncNV right) => left.Handle == right.Handle;
+		public static bool operator !=(EGLSyncNV left, EGLSyncNV right) => left.Handle != right.Handle;
+		public static bool operator ==(EGLSyncNV left, nint right) => left.Handle == right;
+		public static bool operator !=(EGLSyncNV left, nint right) => left.Handle != right;
+		public bool Equals(EGLSyncNV other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is EGLSyncNV handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("EGLSyncNV [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "GLsync")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct GLsync : IEquatable<GLsync>
+	{
+		public GLsync(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static GLsync Null => new GLsync(0);
+		public static implicit operator GLsync(nint handle) => new GLsync(handle);
+		public static bool operator ==(GLsync left, GLsync right) => left.Handle == right.Handle;
+		public static bool operator !=(GLsync left, GLsync right) => left.Handle != right.Handle;
+		public static bool operator ==(GLsync left, nint right) => left.Handle == right;
+		public static bool operator !=(GLsync left, nint right) => left.Handle != right;
+		public bool Equals(GLsync other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLsync handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("GLsync [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "GLeglImageOES")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct GLeglImageOES : IEquatable<GLeglImageOES>
+	{
+		public GLeglImageOES(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static GLeglImageOES Null => new GLeglImageOES(0);
+		public static implicit operator GLeglImageOES(nint handle) => new GLeglImageOES(handle);
+		public static bool operator ==(GLeglImageOES left, GLeglImageOES right) => left.Handle == right.Handle;
+		public static bool operator !=(GLeglImageOES left, GLeglImageOES right) => left.Handle != right.Handle;
+		public static bool operator ==(GLeglImageOES left, nint right) => left.Handle == right;
+		public static bool operator !=(GLeglImageOES left, nint right) => left.Handle != right;
+		public bool Equals(GLeglImageOES other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLeglImageOES handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("GLeglImageOES [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "GLeglClientBufferEXT")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct GLeglClientBufferEXT : IEquatable<GLeglClientBufferEXT>
+	{
+		public GLeglClientBufferEXT(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static GLeglClientBufferEXT Null => new GLeglClientBufferEXT(0);
+		public static implicit operator GLeglClientBufferEXT(nint handle) => new GLeglClientBufferEXT(handle);
+		public static bool operator ==(GLeglClientBufferEXT left, GLeglClientBufferEXT right) => left.Handle == right.Handle;
+		public static bool operator !=(GLeglClientBufferEXT left, GLeglClientBufferEXT right) => left.Handle != right.Handle;
+		public static bool operator ==(GLeglClientBufferEXT left, nint right) => left.Handle == right;
+		public static bool operator !=(GLeglClientBufferEXT left, nint right) => left.Handle != right;
+		public bool Equals(GLeglClientBufferEXT other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is GLeglClientBufferEXT handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("GLeglClientBufferEXT [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "VkInstance")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkInstance : IEquatable<VkInstance>
+	{
+		public VkInstance(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkInstance Null => new VkInstance(0);
+		public static implicit operator VkInstance(nint handle) => new VkInstance(handle);
+		public static bool operator ==(VkInstance left, VkInstance right) => left.Handle == right.Handle;
+		public static bool operator !=(VkInstance left, VkInstance right) => left.Handle != right.Handle;
+		public static bool operator ==(VkInstance left, nint right) => left.Handle == right;
+		public static bool operator !=(VkInstance left, nint right) => left.Handle != right;
+		public bool Equals(VkInstance other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkInstance handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkInstance [0x{0}]", Handle.ToString("X"));
+	}
+
+	[NativeName(NativeNameType.Typedef, "VkSurfaceKHR")]
+	[DebuggerDisplay("{DebuggerDisplay,nq}")]
+	public readonly partial struct VkSurfaceKHR : IEquatable<VkSurfaceKHR>
+	{
+		public VkSurfaceKHR(nint handle) { Handle = handle; }
+		public nint Handle { get; }
+		public bool IsNull => Handle == 0;
+		public static VkSurfaceKHR Null => new VkSurfaceKHR(0);
+		public static implicit operator VkSurfaceKHR(nint handle) => new VkSurfaceKHR(handle);
+		public static bool operator ==(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle == right.Handle;
+		public static bool operator !=(VkSurfaceKHR left, VkSurfaceKHR right) => left.Handle != right.Handle;
+		public static bool operator ==(VkSurfaceKHR left, nint right) => left.Handle == right;
+		public static bool operator !=(VkSurfaceKHR left, nint right) => left.Handle != right;
+		public bool Equals(VkSurfaceKHR other) => Handle == other.Handle;
+		/// <inheritdoc/>
+		public override bool Equals(object obj) => obj is VkSurfaceKHR handle && Equals(handle);
+		/// <inheritdoc/>
+		public override int GetHashCode() => Handle.GetHashCode();
+		private string DebuggerDisplay => string.Format("VkSurfaceKHR [0x{0}]", Handle.ToString("X"));
+	}
+
 }

@@ -6,6 +6,7 @@
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
+  "GenerateMetadata": true,
   "BoolType": 1,
   "KnownConstantNames": {
   },

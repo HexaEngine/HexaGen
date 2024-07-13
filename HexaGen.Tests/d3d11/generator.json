@@ -7,6 +7,7 @@
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
   "GenerateDelegates": false,
+  "GenerateMetadata": true,
   "BoolType": 1,
   "KnownConstantNames": {
   },
@@ -56,6 +57,7 @@
     "USHORT": "ushort",
     "UINT16": "ushort",
     "UINT": "uint",
+    "LONG": "int",
     "ULONG": "uint",
     "DWORD": "uint",
     "WORD": "short",
@@ -80,6 +82,7 @@
     "DXGI_USAGE": "uint",
     "RECT": "Rect32",
     "D3D11_RECT": "Rect32",
+    "tagRECT": "Rect32",
     "POINT": "Point32",
     "SIZE_T": "nuint",
     "LUID": "Luid",
@@ -88,7 +91,8 @@
     "SECURITY_ATTRIBUTES": "SecurityAttributes",
     "D3D11_TRACE_COMPONENT_MASK": "byte",
     "D3D11_TRACE_MISC_OPERATIONS_MASK": "ushort",
-    "ID3DBlob": "ID3D10Blob"
+    "ID3DBlob": "ID3D10Blob",
+    "D3D11_SRV_DIMENSION": "D3DSrvDimension"
   },
   "IgnoredEnums": [
     "D3D_FEATURE_LEVEL",
