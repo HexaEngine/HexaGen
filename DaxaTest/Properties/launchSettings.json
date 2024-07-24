@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DaxaTest": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

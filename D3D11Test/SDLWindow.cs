@@ -71,12 +71,12 @@
         {
             get
             {
-                SDLSysWMinfo wmInfo;
+                SDLSysWMInfo wmInfo;
 
                 SDL.SDLGetVersion(&wmInfo.Version);
                 SDL.SDLGetWindowWMInfo(window, &wmInfo);
 
-                return (wmInfo.Union.Win.Window, wmInfo.Union.Win.Hdc, wmInfo.Union.Win.Hinstance);
+                return (wmInfo.Info.Win.Window, wmInfo.Info.Win.Hdc, wmInfo.Info.Win.HInstance);
             }
         }
 
@@ -86,7 +86,7 @@
             Console.WriteLine($"{type}");
             switch (type)
             {
-                case SDLWindowEventID.WindoweventSizeChanged:
+                case SDLWindowEventID.SizeChanged:
                     Resized?.Invoke(new(width, height, windowEvent.Data1, windowEvent.Data2));
                     width = windowEvent.Data1;
                     height = windowEvent.Data2;

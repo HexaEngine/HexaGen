@@ -48,7 +48,7 @@
                 return true;
             if (cppFunction.Parameters.Count == 0 || cppFunction.Parameters[0].Type.TypeKind == CppTypeKind.Pointer && !isCustomHandle)
                 return true;
-      
+
             if (cppFunction.Parameters[0].Type.GetDisplayName() == typedef.GetDisplayName())
             {
                 return false;
@@ -64,14 +64,16 @@
 
         protected virtual bool FilterExtension(GenContext context, HashSet<string> definedExtensions, string header)
         {
-            if (definedExtensions.Contains(header))
+            lock (definedExtensions)
             {
-                LogWarn($"{context.FilePath}: {header} extension is already defined!");
-                return true;
+                if (definedExtensions.Contains(header))
+                {
+                    LogWarn($"{context.FilePath}: {header} extension is already defined!");
+                    return true;
+                }
+
+                definedExtensions.Add(header);
             }
-
-            definedExtensions.Add(header);
-
             return false;
         }
 

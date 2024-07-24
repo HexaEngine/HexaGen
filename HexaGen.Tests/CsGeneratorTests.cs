@@ -564,5 +564,19 @@ namespace HexaGen.Tests
             EvaluateResult(generator);
             Assert.Pass();
         }
+
+        [Test]
+        public void Daxa()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("daxa/generator.json");
+
+            string headerFile = "daxa/daxa.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.Daxa/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
     }
 }
