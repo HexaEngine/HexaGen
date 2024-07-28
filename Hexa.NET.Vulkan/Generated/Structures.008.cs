@@ -2002,12 +2002,12 @@ namespace Hexa.NET.Vulkan
 		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* PUserData;
 
-		public unsafe VkDeviceDeviceMemoryReportCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, PFNVkDeviceMemoryReportCallbackEXT pfnUserCallback = default, void* pUserData = default)
+		public unsafe VkDeviceDeviceMemoryReportCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, delegate*<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback = default, void* pUserData = default)
 		{
 			SType = sType;
 			PNext = pNext;
 			Flags = flags;
-			PfnUserCallback = (void*)Marshal.GetFunctionPointerForDelegate(pfnUserCallback);
+			PfnUserCallback = (void*)pfnUserCallback;
 			PUserData = pUserData;
 		}
 

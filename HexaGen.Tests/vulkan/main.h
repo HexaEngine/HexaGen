@@ -8,4 +8,3 @@
 
 #include "include/vulkan_core.h"
 #include "include/vulkan.h"
-VkExternalMemoryHandleTypeFlagsKHR

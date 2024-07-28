@@ -331,13 +331,13 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_SLICE_TYPE_P")]
 		[NativeName(NativeNameType.Value, "0")]
-		Typep = unchecked(0),
+		P = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_SLICE_TYPE_B")]
 		[NativeName(NativeNameType.Value, "1")]
-		Typeb = unchecked(1),
+		B = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_SLICE_TYPE_I")]
 		[NativeName(NativeNameType.Value, "2")]
-		Typei = unchecked(2),
+		I = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_SLICE_TYPE_INVALID")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		Invalid = unchecked(2147483647),
@@ -351,13 +351,13 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_PICTURE_TYPE_P")]
 		[NativeName(NativeNameType.Value, "0")]
-		Typep = unchecked(0),
+		P = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_PICTURE_TYPE_B")]
 		[NativeName(NativeNameType.Value, "1")]
-		Typeb = unchecked(1),
+		B = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_PICTURE_TYPE_I")]
 		[NativeName(NativeNameType.Value, "2")]
-		Typei = unchecked(2),
+		I = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H264_PICTURE_TYPE_IDR")]
 		[NativeName(NativeNameType.Value, "5")]
 		Idr = unchecked(5),
@@ -505,13 +505,13 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_SLICE_TYPE_B")]
 		[NativeName(NativeNameType.Value, "0")]
-		Typeb = unchecked(0),
+		B = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_SLICE_TYPE_P")]
 		[NativeName(NativeNameType.Value, "1")]
-		Typep = unchecked(1),
+		P = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_SLICE_TYPE_I")]
 		[NativeName(NativeNameType.Value, "2")]
-		Typei = unchecked(2),
+		I = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_SLICE_TYPE_INVALID")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		Invalid = unchecked(2147483647),
@@ -525,13 +525,13 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_PICTURE_TYPE_P")]
 		[NativeName(NativeNameType.Value, "0")]
-		Typep = unchecked(0),
+		P = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_PICTURE_TYPE_B")]
 		[NativeName(NativeNameType.Value, "1")]
-		Typeb = unchecked(1),
+		B = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_PICTURE_TYPE_I")]
 		[NativeName(NativeNameType.Value, "2")]
-		Typei = unchecked(2),
+		I = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "STD_VIDEO_H265_PICTURE_TYPE_IDR")]
 		[NativeName(NativeNameType.Value, "3")]
 		Idr = unchecked(3),
@@ -1604,22 +1604,22 @@ namespace Hexa.NET.Vulkan
 		ImageViewAddressPropertiesNvx = unchecked(1000030001),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_CAPABILITIES_KHR")]
 		[NativeName(NativeNameType.Value, "1000040000")]
-		VideoDecodeh264CapabilitiesKhr = unchecked(1000040000),
+		VideoDecodeH264CapabilitiesKhr = unchecked(1000040000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PICTURE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000040001")]
-		VideoDecodeh264PictureInfoKhr = unchecked(1000040001),
+		VideoDecodeH264PictureInfoKhr = unchecked(1000040001),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_PROFILE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000040003")]
-		VideoDecodeh264ProfileInfoKhr = unchecked(1000040003),
+		VideoDecodeH264ProfileInfoKhr = unchecked(1000040003),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000040004")]
-		VideoDecodeh264SessionParametersCreateInfoKhr = unchecked(1000040004),
+		VideoDecodeH264SessionParametersCreateInfoKhr = unchecked(1000040004),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000040005")]
-		VideoDecodeh264SessionParametersAddInfoKhr = unchecked(1000040005),
+		VideoDecodeH264SessionParametersAddInfoKhr = unchecked(1000040005),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000040006")]
-		VideoDecodeh264DpbSlotInfoKhr = unchecked(1000040006),
+		VideoDecodeH264DpbSlotInfoKhr = unchecked(1000040006),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD")]
 		[NativeName(NativeNameType.Value, "1000041000")]
 		TextureLodGatherFormatPropertiesAmd = unchecked(1000041000),
@@ -1709,7 +1709,7 @@ namespace Hexa.NET.Vulkan
 		ExportSemaphoreWin32HandleInfoKhr = unchecked(1000078001),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000078002")]
-		Typed3D12FenceSubmitInfoKhr = unchecked(1000078002),
+		D3D12FenceSubmitInfoKhr = unchecked(1000078002),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_SEMAPHORE_GET_WIN32_HANDLE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000078003")]
 		SemaphoreGetWin32HandleInfoKhr = unchecked(1000078003),
@@ -1736,7 +1736,7 @@ namespace Hexa.NET.Vulkan
 		PresentRegionsKhr = unchecked(1000084000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV")]
 		[NativeName(NativeNameType.Value, "1000087000")]
-		PipelineViewportwScalingStateCreateInfoNv = unchecked(1000087000),
+		PipelineViewportWScalingStateCreateInfoNv = unchecked(1000087000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_EXT")]
 		[NativeName(NativeNameType.Value, "1000090000")]
 		SurfaceCapabilities_2_EXT = unchecked(1000090000),
@@ -2090,22 +2090,22 @@ namespace Hexa.NET.Vulkan
 		PhysicalDeviceShaderCorePropertiesAmd = unchecked(1000185000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_CAPABILITIES_KHR")]
 		[NativeName(NativeNameType.Value, "1000187000")]
-		VideoDecodeh265CapabilitiesKhr = unchecked(1000187000),
+		VideoDecodeH265CapabilitiesKhr = unchecked(1000187000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000187001")]
-		VideoDecodeh265SessionParametersCreateInfoKhr = unchecked(1000187001),
+		VideoDecodeH265SessionParametersCreateInfoKhr = unchecked(1000187001),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000187002")]
-		VideoDecodeh265SessionParametersAddInfoKhr = unchecked(1000187002),
+		VideoDecodeH265SessionParametersAddInfoKhr = unchecked(1000187002),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PROFILE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000187003")]
-		VideoDecodeh265ProfileInfoKhr = unchecked(1000187003),
+		VideoDecodeH265ProfileInfoKhr = unchecked(1000187003),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_PICTURE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000187004")]
-		VideoDecodeh265PictureInfoKhr = unchecked(1000187004),
+		VideoDecodeH265PictureInfoKhr = unchecked(1000187004),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000187005")]
-		VideoDecodeh265DpbSlotInfoKhr = unchecked(1000187005),
+		VideoDecodeH265DpbSlotInfoKhr = unchecked(1000187005),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR")]
 		[NativeName(NativeNameType.Value, "1000174000")]
 		DeviceQueueGlobalPriorityCreateInfoKhr = unchecked(1000174000),
@@ -2630,7 +2630,7 @@ namespace Hexa.NET.Vulkan
 		DeviceFaultInfoExt = unchecked(1000341002),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT")]
 		[NativeName(NativeNameType.Value, "1000344000")]
-		PhysicalDeviceRgba10x6FormatsFeaturesExt = unchecked(1000344000),
+		PhysicalDeviceRgba10X6FormatsFeaturesExt = unchecked(1000344000),
 		[NativeName(NativeNameType.EnumItem, "VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT")]
 		[NativeName(NativeNameType.Value, "1000346000")]
 		DirectfbSurfaceCreateInfoExt = unchecked(1000346000),
@@ -4936,16 +4936,16 @@ namespace Hexa.NET.Vulkan
 		One = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_COMPONENT_SWIZZLE_R")]
 		[NativeName(NativeNameType.Value, "3")]
-		Swizzler = unchecked(3),
+		R = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "VK_COMPONENT_SWIZZLE_G")]
 		[NativeName(NativeNameType.Value, "4")]
-		Swizzleg = unchecked(4),
+		G = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_COMPONENT_SWIZZLE_B")]
 		[NativeName(NativeNameType.Value, "5")]
-		Swizzleb = unchecked(5),
+		B = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "VK_COMPONENT_SWIZZLE_A")]
 		[NativeName(NativeNameType.Value, "6")]
-		Swizzlea = unchecked(6),
+		A = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "VK_COMPONENT_SWIZZLE_MAX_ENUM")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnum = unchecked(2147483647),

@@ -4,7 +4,7 @@ namespace Hexa.NET.Vulkan
     {
         static Vulkan()
         {
-            LibraryLoader.SetImportResolver();
+            InitApi();
         }
 
         public static uint MakeApiVersion(byte variant, byte major, byte minor, byte patch)
@@ -19,5 +19,10 @@ namespace Hexa.NET.Vulkan
         public static readonly uint VkApiVersion12 = MakeApiVersion(0, 1, 2, 0);
 
         public static readonly uint VkApiVersion13 = MakeApiVersion(0, 1, 3, 0);
+
+        public static nint GetLibraryName()
+        {
+            return LibraryLoader.LoadLibrary();
+        }
     }
 }

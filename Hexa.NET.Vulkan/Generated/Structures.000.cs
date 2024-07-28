@@ -671,6 +671,28 @@ namespace Hexa.NET.Vulkan
 		}
 
 
+		public unsafe Span<Pointer<byte>> ScalingList4x4
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList4x4_0)
+				{
+					return new Span<Pointer<byte>>(p, 6);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ScalingList8x8
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList8x8_0)
+				{
+					return new Span<Pointer<byte>>(p, 6);
+				}
+			}
+		}
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "StdVideoH264SequenceParameterSet")]
@@ -1906,6 +1928,50 @@ namespace Hexa.NET.Vulkan
 		}
 
 
+		public unsafe Span<Pointer<byte>> ScalingList4x4
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList4x4_0)
+				{
+					return new Span<Pointer<byte>>(p, 6);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ScalingList8x8
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList8x8_0)
+				{
+					return new Span<Pointer<byte>>(p, 6);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ScalingList16x16
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList16x16_0)
+				{
+					return new Span<Pointer<byte>>(p, 6);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ScalingList32x32
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ScalingList32x32_0)
+				{
+					return new Span<Pointer<byte>>(p, 2);
+				}
+			}
+		}
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "StdVideoH265SpsVuiFlags")]
@@ -2139,6 +2205,17 @@ namespace Hexa.NET.Vulkan
 		}
 
 
+		public unsafe Span<Pointer<ushort>> PredictorPaletteEntries
+		
+		{
+			get
+			{
+				fixed (ushort** p = &this.PredictorPaletteEntries_0)
+				{
+					return new Span<Pointer<ushort>>(p, 3);
+				}
+			}
+		}
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "StdVideoH265SpsFlags")]
@@ -4557,6 +4634,50 @@ namespace Hexa.NET.Vulkan
 		}
 
 
+		public unsafe Span<Pointer<byte>> ChromaWeightL0
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ChromaWeightL0_0)
+				{
+					return new Span<Pointer<byte>>(p, 32);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ChromaOffsetL0
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ChromaOffsetL0_0)
+				{
+					return new Span<Pointer<byte>>(p, 32);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ChromaWeightL1
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ChromaWeightL1_0)
+				{
+					return new Span<Pointer<byte>>(p, 32);
+				}
+			}
+		}
+		public unsafe Span<Pointer<byte>> ChromaOffsetL1
+		
+		{
+			get
+			{
+				fixed (byte** p = &this.ChromaOffsetL1_0)
+				{
+					return new Span<Pointer<byte>>(p, 32);
+				}
+			}
+		}
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "StdVideoEncodeH264SliceHeaderFlags")]
@@ -4942,489 +5063,6 @@ namespace Hexa.NET.Vulkan
 			Reserved1 = reserved1;
 			Reserved2 = reserved2;
 			PWeightTable = pWeightTable;
-		}
-
-
-	}
-
-	[NativeName(NativeNameType.StructOrClass, "StdVideoEncodeH265WeightTableFlags")]
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct StdVideoEncodeH265WeightTableFlags
-	{
-		[NativeName(NativeNameType.Field, "luma_weight_l0_flag")]
-		[NativeName(NativeNameType.Type, "uint16_t")]
-		public ushort LumaWeightL0Flag;
-		[NativeName(NativeNameType.Field, "chroma_weight_l0_flag")]
-		[NativeName(NativeNameType.Type, "uint16_t")]
-		public ushort ChromaWeightL0Flag;
-		[NativeName(NativeNameType.Field, "luma_weight_l1_flag")]
-		[NativeName(NativeNameType.Type, "uint16_t")]
-		public ushort LumaWeightL1Flag;
-		[NativeName(NativeNameType.Field, "chroma_weight_l1_flag")]
-		[NativeName(NativeNameType.Type, "uint16_t")]
-		public ushort ChromaWeightL1Flag;
-
-		public unsafe StdVideoEncodeH265WeightTableFlags(ushort lumaWeightl0Flag = default, ushort chromaWeightl0Flag = default, ushort lumaWeightl1Flag = default, ushort chromaWeightl1Flag = default)
-		{
-			LumaWeightL0Flag = lumaWeightl0Flag;
-			ChromaWeightL0Flag = chromaWeightl0Flag;
-			LumaWeightL1Flag = lumaWeightl1Flag;
-			ChromaWeightL1Flag = chromaWeightl1Flag;
-		}
-
-
-	}
-
-	[NativeName(NativeNameType.StructOrClass, "StdVideoEncodeH265WeightTable")]
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct StdVideoEncodeH265WeightTable
-	{
-		[NativeName(NativeNameType.Field, "flags")]
-		[NativeName(NativeNameType.Type, "StdVideoEncodeH265WeightTableFlags")]
-		public StdVideoEncodeH265WeightTableFlags Flags;
-		[NativeName(NativeNameType.Field, "luma_log2_weight_denom")]
-		[NativeName(NativeNameType.Type, "uint8_t")]
-		public byte LumaLog2WeightDenom;
-		[NativeName(NativeNameType.Field, "delta_chroma_log2_weight_denom")]
-		[NativeName(NativeNameType.Type, "int8_t")]
-		public byte DeltaChromaLog2WeightDenom;
-		[NativeName(NativeNameType.Field, "delta_luma_weight_l0")]
-		[NativeName(NativeNameType.Type, "int8_t[15]")]
-		public byte DeltaLumaWeightL0_0;
-		public byte DeltaLumaWeightL0_1;
-		public byte DeltaLumaWeightL0_2;
-		public byte DeltaLumaWeightL0_3;
-		public byte DeltaLumaWeightL0_4;
-		public byte DeltaLumaWeightL0_5;
-		public byte DeltaLumaWeightL0_6;
-		public byte DeltaLumaWeightL0_7;
-		public byte DeltaLumaWeightL0_8;
-		public byte DeltaLumaWeightL0_9;
-		public byte DeltaLumaWeightL0_10;
-		public byte DeltaLumaWeightL0_11;
-		public byte DeltaLumaWeightL0_12;
-		public byte DeltaLumaWeightL0_13;
-		public byte DeltaLumaWeightL0_14;
-		[NativeName(NativeNameType.Field, "luma_offset_l0")]
-		[NativeName(NativeNameType.Type, "int8_t[15]")]
-		public byte LumaOffsetL0_0;
-		public byte LumaOffsetL0_1;
-		public byte LumaOffsetL0_2;
-		public byte LumaOffsetL0_3;
-		public byte LumaOffsetL0_4;
-		public byte LumaOffsetL0_5;
-		public byte LumaOffsetL0_6;
-		public byte LumaOffsetL0_7;
-		public byte LumaOffsetL0_8;
-		public byte LumaOffsetL0_9;
-		public byte LumaOffsetL0_10;
-		public byte LumaOffsetL0_11;
-		public byte LumaOffsetL0_12;
-		public byte LumaOffsetL0_13;
-		public byte LumaOffsetL0_14;
-		[NativeName(NativeNameType.Field, "delta_chroma_weight_l0")]
-		[NativeName(NativeNameType.Type, "int8_t[2][15]")]
-		public unsafe byte* DeltaChromaWeightL0_0;
-		public unsafe byte* DeltaChromaWeightL0_1;
-		public unsafe byte* DeltaChromaWeightL0_2;
-		public unsafe byte* DeltaChromaWeightL0_3;
-		public unsafe byte* DeltaChromaWeightL0_4;
-		public unsafe byte* DeltaChromaWeightL0_5;
-		public unsafe byte* DeltaChromaWeightL0_6;
-		public unsafe byte* DeltaChromaWeightL0_7;
-		public unsafe byte* DeltaChromaWeightL0_8;
-		public unsafe byte* DeltaChromaWeightL0_9;
-		public unsafe byte* DeltaChromaWeightL0_10;
-		public unsafe byte* DeltaChromaWeightL0_11;
-		public unsafe byte* DeltaChromaWeightL0_12;
-		public unsafe byte* DeltaChromaWeightL0_13;
-		public unsafe byte* DeltaChromaWeightL0_14;
-		[NativeName(NativeNameType.Field, "delta_chroma_offset_l0")]
-		[NativeName(NativeNameType.Type, "int8_t[2][15]")]
-		public unsafe byte* DeltaChromaOffsetL0_0;
-		public unsafe byte* DeltaChromaOffsetL0_1;
-		public unsafe byte* DeltaChromaOffsetL0_2;
-		public unsafe byte* DeltaChromaOffsetL0_3;
-		public unsafe byte* DeltaChromaOffsetL0_4;
-		public unsafe byte* DeltaChromaOffsetL0_5;
-		public unsafe byte* DeltaChromaOffsetL0_6;
-		public unsafe byte* DeltaChromaOffsetL0_7;
-		public unsafe byte* DeltaChromaOffsetL0_8;
-		public unsafe byte* DeltaChromaOffsetL0_9;
-		public unsafe byte* DeltaChromaOffsetL0_10;
-		public unsafe byte* DeltaChromaOffsetL0_11;
-		public unsafe byte* DeltaChromaOffsetL0_12;
-		public unsafe byte* DeltaChromaOffsetL0_13;
-		public unsafe byte* DeltaChromaOffsetL0_14;
-		[NativeName(NativeNameType.Field, "delta_luma_weight_l1")]
-		[NativeName(NativeNameType.Type, "int8_t[15]")]
-		public byte DeltaLumaWeightL1_0;
-		public byte DeltaLumaWeightL1_1;
-		public byte DeltaLumaWeightL1_2;
-		public byte DeltaLumaWeightL1_3;
-		public byte DeltaLumaWeightL1_4;
-		public byte DeltaLumaWeightL1_5;
-		public byte DeltaLumaWeightL1_6;
-		public byte DeltaLumaWeightL1_7;
-		public byte DeltaLumaWeightL1_8;
-		public byte DeltaLumaWeightL1_9;
-		public byte DeltaLumaWeightL1_10;
-		public byte DeltaLumaWeightL1_11;
-		public byte DeltaLumaWeightL1_12;
-		public byte DeltaLumaWeightL1_13;
-		public byte DeltaLumaWeightL1_14;
-		[NativeName(NativeNameType.Field, "luma_offset_l1")]
-		[NativeName(NativeNameType.Type, "int8_t[15]")]
-		public byte LumaOffsetL1_0;
-		public byte LumaOffsetL1_1;
-		public byte LumaOffsetL1_2;
-		public byte LumaOffsetL1_3;
-		public byte LumaOffsetL1_4;
-		public byte LumaOffsetL1_5;
-		public byte LumaOffsetL1_6;
-		public byte LumaOffsetL1_7;
-		public byte LumaOffsetL1_8;
-		public byte LumaOffsetL1_9;
-		public byte LumaOffsetL1_10;
-		public byte LumaOffsetL1_11;
-		public byte LumaOffsetL1_12;
-		public byte LumaOffsetL1_13;
-		public byte LumaOffsetL1_14;
-		[NativeName(NativeNameType.Field, "delta_chroma_weight_l1")]
-		[NativeName(NativeNameType.Type, "int8_t[2][15]")]
-		public unsafe byte* DeltaChromaWeightL1_0;
-		public unsafe byte* DeltaChromaWeightL1_1;
-		public unsafe byte* DeltaChromaWeightL1_2;
-		public unsafe byte* DeltaChromaWeightL1_3;
-		public unsafe byte* DeltaChromaWeightL1_4;
-		public unsafe byte* DeltaChromaWeightL1_5;
-		public unsafe byte* DeltaChromaWeightL1_6;
-		public unsafe byte* DeltaChromaWeightL1_7;
-		public unsafe byte* DeltaChromaWeightL1_8;
-		public unsafe byte* DeltaChromaWeightL1_9;
-		public unsafe byte* DeltaChromaWeightL1_10;
-		public unsafe byte* DeltaChromaWeightL1_11;
-		public unsafe byte* DeltaChromaWeightL1_12;
-		public unsafe byte* DeltaChromaWeightL1_13;
-		public unsafe byte* DeltaChromaWeightL1_14;
-		[NativeName(NativeNameType.Field, "delta_chroma_offset_l1")]
-		[NativeName(NativeNameType.Type, "int8_t[2][15]")]
-		public unsafe byte* DeltaChromaOffsetL1_0;
-		public unsafe byte* DeltaChromaOffsetL1_1;
-		public unsafe byte* DeltaChromaOffsetL1_2;
-		public unsafe byte* DeltaChromaOffsetL1_3;
-		public unsafe byte* DeltaChromaOffsetL1_4;
-		public unsafe byte* DeltaChromaOffsetL1_5;
-		public unsafe byte* DeltaChromaOffsetL1_6;
-		public unsafe byte* DeltaChromaOffsetL1_7;
-		public unsafe byte* DeltaChromaOffsetL1_8;
-		public unsafe byte* DeltaChromaOffsetL1_9;
-		public unsafe byte* DeltaChromaOffsetL1_10;
-		public unsafe byte* DeltaChromaOffsetL1_11;
-		public unsafe byte* DeltaChromaOffsetL1_12;
-		public unsafe byte* DeltaChromaOffsetL1_13;
-		public unsafe byte* DeltaChromaOffsetL1_14;
-
-		public unsafe StdVideoEncodeH265WeightTable(StdVideoEncodeH265WeightTableFlags flags = default, byte lumalog2WeightDenom = default, byte deltaChromalog2WeightDenom = default, byte* deltaLumaWeightl0 = default, byte* lumaOffsetl0 = default, byte** deltaChromaWeightl0 = default, byte** deltaChromaOffsetl0 = default, byte* deltaLumaWeightl1 = default, byte* lumaOffsetl1 = default, byte** deltaChromaWeightl1 = default, byte** deltaChromaOffsetl1 = default)
-		{
-			Flags = flags;
-			LumaLog2WeightDenom = lumalog2WeightDenom;
-			DeltaChromaLog2WeightDenom = deltaChromalog2WeightDenom;
-			if (deltaLumaWeightl0 != default)
-			{
-				DeltaLumaWeightL0_0 = deltaLumaWeightl0[0];
-				DeltaLumaWeightL0_1 = deltaLumaWeightl0[1];
-				DeltaLumaWeightL0_2 = deltaLumaWeightl0[2];
-				DeltaLumaWeightL0_3 = deltaLumaWeightl0[3];
-				DeltaLumaWeightL0_4 = deltaLumaWeightl0[4];
-				DeltaLumaWeightL0_5 = deltaLumaWeightl0[5];
-				DeltaLumaWeightL0_6 = deltaLumaWeightl0[6];
-				DeltaLumaWeightL0_7 = deltaLumaWeightl0[7];
-				DeltaLumaWeightL0_8 = deltaLumaWeightl0[8];
-				DeltaLumaWeightL0_9 = deltaLumaWeightl0[9];
-				DeltaLumaWeightL0_10 = deltaLumaWeightl0[10];
-				DeltaLumaWeightL0_11 = deltaLumaWeightl0[11];
-				DeltaLumaWeightL0_12 = deltaLumaWeightl0[12];
-				DeltaLumaWeightL0_13 = deltaLumaWeightl0[13];
-				DeltaLumaWeightL0_14 = deltaLumaWeightl0[14];
-			}
-			if (lumaOffsetl0 != default)
-			{
-				LumaOffsetL0_0 = lumaOffsetl0[0];
-				LumaOffsetL0_1 = lumaOffsetl0[1];
-				LumaOffsetL0_2 = lumaOffsetl0[2];
-				LumaOffsetL0_3 = lumaOffsetl0[3];
-				LumaOffsetL0_4 = lumaOffsetl0[4];
-				LumaOffsetL0_5 = lumaOffsetl0[5];
-				LumaOffsetL0_6 = lumaOffsetl0[6];
-				LumaOffsetL0_7 = lumaOffsetl0[7];
-				LumaOffsetL0_8 = lumaOffsetl0[8];
-				LumaOffsetL0_9 = lumaOffsetl0[9];
-				LumaOffsetL0_10 = lumaOffsetl0[10];
-				LumaOffsetL0_11 = lumaOffsetl0[11];
-				LumaOffsetL0_12 = lumaOffsetl0[12];
-				LumaOffsetL0_13 = lumaOffsetl0[13];
-				LumaOffsetL0_14 = lumaOffsetl0[14];
-			}
-			if (deltaChromaWeightl0 != default)
-			{
-				DeltaChromaWeightL0_0 = deltaChromaWeightl0[0];
-				DeltaChromaWeightL0_1 = deltaChromaWeightl0[1];
-				DeltaChromaWeightL0_2 = deltaChromaWeightl0[2];
-				DeltaChromaWeightL0_3 = deltaChromaWeightl0[3];
-				DeltaChromaWeightL0_4 = deltaChromaWeightl0[4];
-				DeltaChromaWeightL0_5 = deltaChromaWeightl0[5];
-				DeltaChromaWeightL0_6 = deltaChromaWeightl0[6];
-				DeltaChromaWeightL0_7 = deltaChromaWeightl0[7];
-				DeltaChromaWeightL0_8 = deltaChromaWeightl0[8];
-				DeltaChromaWeightL0_9 = deltaChromaWeightl0[9];
-				DeltaChromaWeightL0_10 = deltaChromaWeightl0[10];
-				DeltaChromaWeightL0_11 = deltaChromaWeightl0[11];
-				DeltaChromaWeightL0_12 = deltaChromaWeightl0[12];
-				DeltaChromaWeightL0_13 = deltaChromaWeightl0[13];
-				DeltaChromaWeightL0_14 = deltaChromaWeightl0[14];
-			}
-			if (deltaChromaOffsetl0 != default)
-			{
-				DeltaChromaOffsetL0_0 = deltaChromaOffsetl0[0];
-				DeltaChromaOffsetL0_1 = deltaChromaOffsetl0[1];
-				DeltaChromaOffsetL0_2 = deltaChromaOffsetl0[2];
-				DeltaChromaOffsetL0_3 = deltaChromaOffsetl0[3];
-				DeltaChromaOffsetL0_4 = deltaChromaOffsetl0[4];
-				DeltaChromaOffsetL0_5 = deltaChromaOffsetl0[5];
-				DeltaChromaOffsetL0_6 = deltaChromaOffsetl0[6];
-				DeltaChromaOffsetL0_7 = deltaChromaOffsetl0[7];
-				DeltaChromaOffsetL0_8 = deltaChromaOffsetl0[8];
-				DeltaChromaOffsetL0_9 = deltaChromaOffsetl0[9];
-				DeltaChromaOffsetL0_10 = deltaChromaOffsetl0[10];
-				DeltaChromaOffsetL0_11 = deltaChromaOffsetl0[11];
-				DeltaChromaOffsetL0_12 = deltaChromaOffsetl0[12];
-				DeltaChromaOffsetL0_13 = deltaChromaOffsetl0[13];
-				DeltaChromaOffsetL0_14 = deltaChromaOffsetl0[14];
-			}
-			if (deltaLumaWeightl1 != default)
-			{
-				DeltaLumaWeightL1_0 = deltaLumaWeightl1[0];
-				DeltaLumaWeightL1_1 = deltaLumaWeightl1[1];
-				DeltaLumaWeightL1_2 = deltaLumaWeightl1[2];
-				DeltaLumaWeightL1_3 = deltaLumaWeightl1[3];
-				DeltaLumaWeightL1_4 = deltaLumaWeightl1[4];
-				DeltaLumaWeightL1_5 = deltaLumaWeightl1[5];
-				DeltaLumaWeightL1_6 = deltaLumaWeightl1[6];
-				DeltaLumaWeightL1_7 = deltaLumaWeightl1[7];
-				DeltaLumaWeightL1_8 = deltaLumaWeightl1[8];
-				DeltaLumaWeightL1_9 = deltaLumaWeightl1[9];
-				DeltaLumaWeightL1_10 = deltaLumaWeightl1[10];
-				DeltaLumaWeightL1_11 = deltaLumaWeightl1[11];
-				DeltaLumaWeightL1_12 = deltaLumaWeightl1[12];
-				DeltaLumaWeightL1_13 = deltaLumaWeightl1[13];
-				DeltaLumaWeightL1_14 = deltaLumaWeightl1[14];
-			}
-			if (lumaOffsetl1 != default)
-			{
-				LumaOffsetL1_0 = lumaOffsetl1[0];
-				LumaOffsetL1_1 = lumaOffsetl1[1];
-				LumaOffsetL1_2 = lumaOffsetl1[2];
-				LumaOffsetL1_3 = lumaOffsetl1[3];
-				LumaOffsetL1_4 = lumaOffsetl1[4];
-				LumaOffsetL1_5 = lumaOffsetl1[5];
-				LumaOffsetL1_6 = lumaOffsetl1[6];
-				LumaOffsetL1_7 = lumaOffsetl1[7];
-				LumaOffsetL1_8 = lumaOffsetl1[8];
-				LumaOffsetL1_9 = lumaOffsetl1[9];
-				LumaOffsetL1_10 = lumaOffsetl1[10];
-				LumaOffsetL1_11 = lumaOffsetl1[11];
-				LumaOffsetL1_12 = lumaOffsetl1[12];
-				LumaOffsetL1_13 = lumaOffsetl1[13];
-				LumaOffsetL1_14 = lumaOffsetl1[14];
-			}
-			if (deltaChromaWeightl1 != default)
-			{
-				DeltaChromaWeightL1_0 = deltaChromaWeightl1[0];
-				DeltaChromaWeightL1_1 = deltaChromaWeightl1[1];
-				DeltaChromaWeightL1_2 = deltaChromaWeightl1[2];
-				DeltaChromaWeightL1_3 = deltaChromaWeightl1[3];
-				DeltaChromaWeightL1_4 = deltaChromaWeightl1[4];
-				DeltaChromaWeightL1_5 = deltaChromaWeightl1[5];
-				DeltaChromaWeightL1_6 = deltaChromaWeightl1[6];
-				DeltaChromaWeightL1_7 = deltaChromaWeightl1[7];
-				DeltaChromaWeightL1_8 = deltaChromaWeightl1[8];
-				DeltaChromaWeightL1_9 = deltaChromaWeightl1[9];
-				DeltaChromaWeightL1_10 = deltaChromaWeightl1[10];
-				DeltaChromaWeightL1_11 = deltaChromaWeightl1[11];
-				DeltaChromaWeightL1_12 = deltaChromaWeightl1[12];
-				DeltaChromaWeightL1_13 = deltaChromaWeightl1[13];
-				DeltaChromaWeightL1_14 = deltaChromaWeightl1[14];
-			}
-			if (deltaChromaOffsetl1 != default)
-			{
-				DeltaChromaOffsetL1_0 = deltaChromaOffsetl1[0];
-				DeltaChromaOffsetL1_1 = deltaChromaOffsetl1[1];
-				DeltaChromaOffsetL1_2 = deltaChromaOffsetl1[2];
-				DeltaChromaOffsetL1_3 = deltaChromaOffsetl1[3];
-				DeltaChromaOffsetL1_4 = deltaChromaOffsetl1[4];
-				DeltaChromaOffsetL1_5 = deltaChromaOffsetl1[5];
-				DeltaChromaOffsetL1_6 = deltaChromaOffsetl1[6];
-				DeltaChromaOffsetL1_7 = deltaChromaOffsetl1[7];
-				DeltaChromaOffsetL1_8 = deltaChromaOffsetl1[8];
-				DeltaChromaOffsetL1_9 = deltaChromaOffsetl1[9];
-				DeltaChromaOffsetL1_10 = deltaChromaOffsetl1[10];
-				DeltaChromaOffsetL1_11 = deltaChromaOffsetl1[11];
-				DeltaChromaOffsetL1_12 = deltaChromaOffsetl1[12];
-				DeltaChromaOffsetL1_13 = deltaChromaOffsetl1[13];
-				DeltaChromaOffsetL1_14 = deltaChromaOffsetl1[14];
-			}
-		}
-
-		public unsafe StdVideoEncodeH265WeightTable(StdVideoEncodeH265WeightTableFlags flags = default, byte lumalog2WeightDenom = default, byte deltaChromalog2WeightDenom = default, Span<byte> deltaLumaWeightl0 = default, Span<byte> lumaOffsetl0 = default, Span<Pointer<byte>> deltaChromaWeightl0 = default, Span<Pointer<byte>> deltaChromaOffsetl0 = default, Span<byte> deltaLumaWeightl1 = default, Span<byte> lumaOffsetl1 = default, Span<Pointer<byte>> deltaChromaWeightl1 = default, Span<Pointer<byte>> deltaChromaOffsetl1 = default)
-		{
-			Flags = flags;
-			LumaLog2WeightDenom = lumalog2WeightDenom;
-			DeltaChromaLog2WeightDenom = deltaChromalog2WeightDenom;
-			if (deltaLumaWeightl0 != default)
-			{
-				DeltaLumaWeightL0_0 = deltaLumaWeightl0[0];
-				DeltaLumaWeightL0_1 = deltaLumaWeightl0[1];
-				DeltaLumaWeightL0_2 = deltaLumaWeightl0[2];
-				DeltaLumaWeightL0_3 = deltaLumaWeightl0[3];
-				DeltaLumaWeightL0_4 = deltaLumaWeightl0[4];
-				DeltaLumaWeightL0_5 = deltaLumaWeightl0[5];
-				DeltaLumaWeightL0_6 = deltaLumaWeightl0[6];
-				DeltaLumaWeightL0_7 = deltaLumaWeightl0[7];
-				DeltaLumaWeightL0_8 = deltaLumaWeightl0[8];
-				DeltaLumaWeightL0_9 = deltaLumaWeightl0[9];
-				DeltaLumaWeightL0_10 = deltaLumaWeightl0[10];
-				DeltaLumaWeightL0_11 = deltaLumaWeightl0[11];
-				DeltaLumaWeightL0_12 = deltaLumaWeightl0[12];
-				DeltaLumaWeightL0_13 = deltaLumaWeightl0[13];
-				DeltaLumaWeightL0_14 = deltaLumaWeightl0[14];
-			}
-			if (lumaOffsetl0 != default)
-			{
-				LumaOffsetL0_0 = lumaOffsetl0[0];
-				LumaOffsetL0_1 = lumaOffsetl0[1];
-				LumaOffsetL0_2 = lumaOffsetl0[2];
-				LumaOffsetL0_3 = lumaOffsetl0[3];
-				LumaOffsetL0_4 = lumaOffsetl0[4];
-				LumaOffsetL0_5 = lumaOffsetl0[5];
-				LumaOffsetL0_6 = lumaOffsetl0[6];
-				LumaOffsetL0_7 = lumaOffsetl0[7];
-				LumaOffsetL0_8 = lumaOffsetl0[8];
-				LumaOffsetL0_9 = lumaOffsetl0[9];
-				LumaOffsetL0_10 = lumaOffsetl0[10];
-				LumaOffsetL0_11 = lumaOffsetl0[11];
-				LumaOffsetL0_12 = lumaOffsetl0[12];
-				LumaOffsetL0_13 = lumaOffsetl0[13];
-				LumaOffsetL0_14 = lumaOffsetl0[14];
-			}
-			if (deltaChromaWeightl0 != default)
-			{
-				DeltaChromaWeightL0_0 = deltaChromaWeightl0[0];
-				DeltaChromaWeightL0_1 = deltaChromaWeightl0[1];
-				DeltaChromaWeightL0_2 = deltaChromaWeightl0[2];
-				DeltaChromaWeightL0_3 = deltaChromaWeightl0[3];
-				DeltaChromaWeightL0_4 = deltaChromaWeightl0[4];
-				DeltaChromaWeightL0_5 = deltaChromaWeightl0[5];
-				DeltaChromaWeightL0_6 = deltaChromaWeightl0[6];
-				DeltaChromaWeightL0_7 = deltaChromaWeightl0[7];
-				DeltaChromaWeightL0_8 = deltaChromaWeightl0[8];
-				DeltaChromaWeightL0_9 = deltaChromaWeightl0[9];
-				DeltaChromaWeightL0_10 = deltaChromaWeightl0[10];
-				DeltaChromaWeightL0_11 = deltaChromaWeightl0[11];
-				DeltaChromaWeightL0_12 = deltaChromaWeightl0[12];
-				DeltaChromaWeightL0_13 = deltaChromaWeightl0[13];
-				DeltaChromaWeightL0_14 = deltaChromaWeightl0[14];
-			}
-			if (deltaChromaOffsetl0 != default)
-			{
-				DeltaChromaOffsetL0_0 = deltaChromaOffsetl0[0];
-				DeltaChromaOffsetL0_1 = deltaChromaOffsetl0[1];
-				DeltaChromaOffsetL0_2 = deltaChromaOffsetl0[2];
-				DeltaChromaOffsetL0_3 = deltaChromaOffsetl0[3];
-				DeltaChromaOffsetL0_4 = deltaChromaOffsetl0[4];
-				DeltaChromaOffsetL0_5 = deltaChromaOffsetl0[5];
-				DeltaChromaOffsetL0_6 = deltaChromaOffsetl0[6];
-				DeltaChromaOffsetL0_7 = deltaChromaOffsetl0[7];
-				DeltaChromaOffsetL0_8 = deltaChromaOffsetl0[8];
-				DeltaChromaOffsetL0_9 = deltaChromaOffsetl0[9];
-				DeltaChromaOffsetL0_10 = deltaChromaOffsetl0[10];
-				DeltaChromaOffsetL0_11 = deltaChromaOffsetl0[11];
-				DeltaChromaOffsetL0_12 = deltaChromaOffsetl0[12];
-				DeltaChromaOffsetL0_13 = deltaChromaOffsetl0[13];
-				DeltaChromaOffsetL0_14 = deltaChromaOffsetl0[14];
-			}
-			if (deltaLumaWeightl1 != default)
-			{
-				DeltaLumaWeightL1_0 = deltaLumaWeightl1[0];
-				DeltaLumaWeightL1_1 = deltaLumaWeightl1[1];
-				DeltaLumaWeightL1_2 = deltaLumaWeightl1[2];
-				DeltaLumaWeightL1_3 = deltaLumaWeightl1[3];
-				DeltaLumaWeightL1_4 = deltaLumaWeightl1[4];
-				DeltaLumaWeightL1_5 = deltaLumaWeightl1[5];
-				DeltaLumaWeightL1_6 = deltaLumaWeightl1[6];
-				DeltaLumaWeightL1_7 = deltaLumaWeightl1[7];
-				DeltaLumaWeightL1_8 = deltaLumaWeightl1[8];
-				DeltaLumaWeightL1_9 = deltaLumaWeightl1[9];
-				DeltaLumaWeightL1_10 = deltaLumaWeightl1[10];
-				DeltaLumaWeightL1_11 = deltaLumaWeightl1[11];
-				DeltaLumaWeightL1_12 = deltaLumaWeightl1[12];
-				DeltaLumaWeightL1_13 = deltaLumaWeightl1[13];
-				DeltaLumaWeightL1_14 = deltaLumaWeightl1[14];
-			}
-			if (lumaOffsetl1 != default)
-			{
-				LumaOffsetL1_0 = lumaOffsetl1[0];
-				LumaOffsetL1_1 = lumaOffsetl1[1];
-				LumaOffsetL1_2 = lumaOffsetl1[2];
-				LumaOffsetL1_3 = lumaOffsetl1[3];
-				LumaOffsetL1_4 = lumaOffsetl1[4];
-				LumaOffsetL1_5 = lumaOffsetl1[5];
-				LumaOffsetL1_6 = lumaOffsetl1[6];
-				LumaOffsetL1_7 = lumaOffsetl1[7];
-				LumaOffsetL1_8 = lumaOffsetl1[8];
-				LumaOffsetL1_9 = lumaOffsetl1[9];
-				LumaOffsetL1_10 = lumaOffsetl1[10];
-				LumaOffsetL1_11 = lumaOffsetl1[11];
-				LumaOffsetL1_12 = lumaOffsetl1[12];
-				LumaOffsetL1_13 = lumaOffsetl1[13];
-				LumaOffsetL1_14 = lumaOffsetl1[14];
-			}
-			if (deltaChromaWeightl1 != default)
-			{
-				DeltaChromaWeightL1_0 = deltaChromaWeightl1[0];
-				DeltaChromaWeightL1_1 = deltaChromaWeightl1[1];
-				DeltaChromaWeightL1_2 = deltaChromaWeightl1[2];
-				DeltaChromaWeightL1_3 = deltaChromaWeightl1[3];
-				DeltaChromaWeightL1_4 = deltaChromaWeightl1[4];
-				DeltaChromaWeightL1_5 = deltaChromaWeightl1[5];
-				DeltaChromaWeightL1_6 = deltaChromaWeightl1[6];
-				DeltaChromaWeightL1_7 = deltaChromaWeightl1[7];
-				DeltaChromaWeightL1_8 = deltaChromaWeightl1[8];
-				DeltaChromaWeightL1_9 = deltaChromaWeightl1[9];
-				DeltaChromaWeightL1_10 = deltaChromaWeightl1[10];
-				DeltaChromaWeightL1_11 = deltaChromaWeightl1[11];
-				DeltaChromaWeightL1_12 = deltaChromaWeightl1[12];
-				DeltaChromaWeightL1_13 = deltaChromaWeightl1[13];
-				DeltaChromaWeightL1_14 = deltaChromaWeightl1[14];
-			}
-			if (deltaChromaOffsetl1 != default)
-			{
-				DeltaChromaOffsetL1_0 = deltaChromaOffsetl1[0];
-				DeltaChromaOffsetL1_1 = deltaChromaOffsetl1[1];
-				DeltaChromaOffsetL1_2 = deltaChromaOffsetl1[2];
-				DeltaChromaOffsetL1_3 = deltaChromaOffsetl1[3];
-				DeltaChromaOffsetL1_4 = deltaChromaOffsetl1[4];
-				DeltaChromaOffsetL1_5 = deltaChromaOffsetl1[5];
-				DeltaChromaOffsetL1_6 = deltaChromaOffsetl1[6];
-				DeltaChromaOffsetL1_7 = deltaChromaOffsetl1[7];
-				DeltaChromaOffsetL1_8 = deltaChromaOffsetl1[8];
-				DeltaChromaOffsetL1_9 = deltaChromaOffsetl1[9];
-				DeltaChromaOffsetL1_10 = deltaChromaOffsetl1[10];
-				DeltaChromaOffsetL1_11 = deltaChromaOffsetl1[11];
-				DeltaChromaOffsetL1_12 = deltaChromaOffsetl1[12];
-				DeltaChromaOffsetL1_13 = deltaChromaOffsetl1[13];
-				DeltaChromaOffsetL1_14 = deltaChromaOffsetl1[14];
-			}
 		}
 
 
