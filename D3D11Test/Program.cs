@@ -2,5 +2,4 @@
 
 using D3D11Test;
 
-
 Application.Run(new SDLWindow());

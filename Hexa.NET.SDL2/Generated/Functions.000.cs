@@ -31,10 +31,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetPlatform")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPlatform")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPlatformNative();
-
+		internal static byte* SDLGetPlatformNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[0])();
+		}
 		/// <summary>/// Get the name of the platform.<br/>/// Here are the names returned for some (but not all) supported platforms:<br/>/// - "Windows"<br/>/// - "Mac OS X"<br/>/// - "Linux"<br/>/// - "iOS"<br/>/// - "Android"<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPlatform")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetPlatform()
@@ -53,10 +53,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_malloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_malloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLMallocNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size);
-
+		internal static void* SDLMallocNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong, void*>)vt[1])(size);
+		}
 		[NativeName(NativeNameType.Func, "SDL_malloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLMalloc([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
@@ -75,10 +75,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_calloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_calloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLCallocNative([NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size);
-
+		internal static void* SDLCallocNative([NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong, ulong, void*>)vt[2])(nmemb, size);
+		}
 		[NativeName(NativeNameType.Func, "SDL_calloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLCalloc([NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
@@ -113,10 +113,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_realloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_realloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size);
-
+		internal static void* SDLReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, ulong, void*>)vt[3])(mem, size);
+		}
 		[NativeName(NativeNameType.Func, "SDL_realloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size)
@@ -135,10 +135,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_free")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_free")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem);
-
+		internal static void SDLFreeNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem)
+		{
+			((delegate* unmanaged[Cdecl]<void*, void>)vt[4])(mem);
+		}
 		[NativeName(NativeNameType.Func, "SDL_free")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFree([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem)
@@ -152,13 +152,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetOriginalMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetOriginalMemoryFunctions")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetOriginalMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] SdlFreeFunc freeFunc);
-
+		internal static void SDLGetOriginalMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] delegate*<ulong, void*>* mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] delegate*<ulong, ulong, void*>* callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] delegate*<void*, ulong, void*>* reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] delegate*<void*, void>* freeFunc)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<ulong, void*>*, delegate*<ulong, ulong, void*>*, delegate*<void*, ulong, void*>*, delegate*<void*, void>*, void>)vt[5])(mallocFunc, callocFunc, reallocFunc, freeFunc);
+		}
 		/// <summary>/// Get the original set of SDL memory functions<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetOriginalMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetOriginalMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] SdlFreeFunc freeFunc)
+		public static void SDLGetOriginalMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] delegate*<ulong, void*>* mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] delegate*<ulong, ulong, void*>* callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] delegate*<void*, ulong, void*>* reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] delegate*<void*, void>* freeFunc)
 		{
 			SDLGetOriginalMemoryFunctionsNative(mallocFunc, callocFunc, reallocFunc, freeFunc);
 		}
@@ -169,13 +169,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetMemoryFunctions")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] SdlFreeFunc freeFunc);
-
+		internal static void SDLGetMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] delegate*<ulong, void*>* mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] delegate*<ulong, ulong, void*>* callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] delegate*<void*, ulong, void*>* reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] delegate*<void*, void>* freeFunc)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<ulong, void*>*, delegate*<ulong, ulong, void*>*, delegate*<void*, ulong, void*>*, delegate*<void*, void>*, void>)vt[6])(mallocFunc, callocFunc, reallocFunc, freeFunc);
+		}
 		/// <summary>/// Get the current set of SDL memory functions<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] SdlFreeFunc freeFunc)
+		public static void SDLGetMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func*")] delegate*<ulong, void*>* mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func*")] delegate*<ulong, ulong, void*>* callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func*")] delegate*<void*, ulong, void*>* reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func*")] delegate*<void*, void>* freeFunc)
 		{
 			SDLGetMemoryFunctionsNative(mallocFunc, callocFunc, reallocFunc, freeFunc);
 		}
@@ -186,13 +186,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetMemoryFunctions")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func")] SdlFreeFunc freeFunc);
-
+		internal static int SDLSetMemoryFunctionsNative([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func")] delegate*<ulong, void*> mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func")] delegate*<ulong, ulong, void*> callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func")] delegate*<void*, ulong, void*> reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func")] delegate*<void*, void> freeFunc)
+		{
+			return ((delegate* unmanaged[Cdecl]<delegate*<ulong, void*>, delegate*<ulong, ulong, void*>, delegate*<void*, ulong, void*>, delegate*<void*, void>, int>)vt[7])(mallocFunc, callocFunc, reallocFunc, freeFunc);
+		}
 		/// <summary>/// Replace SDL's memory allocation functions with a custom set<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetMemoryFunctions")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLSetMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func")] SdlMallocFunc mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func")] SdlCallocFunc callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func")] SdlReallocFunc reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func")] SdlFreeFunc freeFunc)
+		public static int SDLSetMemoryFunctions([NativeName(NativeNameType.Param, "malloc_func")] [NativeName(NativeNameType.Type, "SDL_malloc_func")] delegate*<ulong, void*> mallocFunc, [NativeName(NativeNameType.Param, "calloc_func")] [NativeName(NativeNameType.Type, "SDL_calloc_func")] delegate*<ulong, ulong, void*> callocFunc, [NativeName(NativeNameType.Param, "realloc_func")] [NativeName(NativeNameType.Type, "SDL_realloc_func")] delegate*<void*, ulong, void*> reallocFunc, [NativeName(NativeNameType.Param, "free_func")] [NativeName(NativeNameType.Type, "SDL_free_func")] delegate*<void*, void> freeFunc)
 		{
 			int ret = SDLSetMemoryFunctionsNative(mallocFunc, callocFunc, reallocFunc, freeFunc);
 			return ret;
@@ -204,10 +204,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetNumAllocations")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumAllocations")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumAllocationsNative();
-
+		internal static int SDLGetNumAllocationsNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[8])();
+		}
 		/// <summary>/// Get the number of outstanding (unfreed) allocations<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumAllocations")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetNumAllocations()
@@ -218,10 +218,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_getenv")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_getenv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetenvNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
+		internal static byte* SDLGetenvNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[9])(name);
+		}
 		[NativeName(NativeNameType.Func, "SDL_getenv")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetenv([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
@@ -320,10 +320,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_setenv")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_setenv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetenvNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "overwrite")] [NativeName(NativeNameType.Type, "int")] int overwrite);
-
+		internal static int SDLSetenvNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "overwrite")] [NativeName(NativeNameType.Type, "int")] int overwrite)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, int, int>)vt[10])(name, value, overwrite);
+		}
 		[NativeName(NativeNameType.Func, "SDL_setenv")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetenv([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "overwrite")] [NativeName(NativeNameType.Type, "int")] int overwrite)
@@ -478,10 +478,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_qsort")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_qsort")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLQsortNative([NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, ulong, ulong, delegate*<void*, void*, int>, int> compare);
-
+		internal static void SDLQsortNative([NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, ulong, ulong, delegate*<void*, void*, int>, int> compare)
+		{
+			((delegate* unmanaged[Cdecl]<void*, ulong, ulong, delegate*<void*, ulong, ulong, delegate*<void*, void*, int>, int>, void>)vt[11])(baseValue, nmemb, size, compare);
+		}
 		[NativeName(NativeNameType.Func, "SDL_qsort")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLQsort([NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, ulong, ulong, delegate*<void*, void*, int>, int> compare)
@@ -512,10 +512,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_bsearch")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_bsearch")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLBsearchNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "const void*")] void* key, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "const void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(const void* key, const void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, void*, ulong, ulong, delegate*<void*, void*, int>, int> compare);
-
+		internal static void* SDLBsearchNative([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "const void*")] void* key, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "const void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(const void* key, const void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, void*, ulong, ulong, delegate*<void*, void*, int>, int> compare)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, void*, ulong, ulong, delegate*<void*, void*, ulong, ulong, delegate*<void*, void*, int>, int>, void*>)vt[12])(key, baseValue, nmemb, size, compare);
+		}
 		[NativeName(NativeNameType.Func, "SDL_bsearch")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLBsearch([NativeName(NativeNameType.Param, "key")] [NativeName(NativeNameType.Type, "const void*")] void* key, [NativeName(NativeNameType.Param, "base")] [NativeName(NativeNameType.Type, "const void*")] void* baseValue, [NativeName(NativeNameType.Param, "nmemb")] [NativeName(NativeNameType.Type, "size_t")] ulong nmemb, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "compare")] [NativeName(NativeNameType.Type, "int (*)(const void* key, const void* base, size_t nmemb, size_t size, int (*)(const void*, const void*)* compare)*")] delegate*<void*, void*, ulong, ulong, delegate*<void*, void*, int>, int> compare)
@@ -550,10 +550,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_abs")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_abs")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAbsNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLAbsNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[13])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_abs")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAbs([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -564,10 +564,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isalpha")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isalpha")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsalphaNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsalphaNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[14])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isalpha")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsalpha([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -578,10 +578,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isalnum")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isalnum")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsalnumNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsalnumNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[15])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isalnum")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsalnum([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -592,10 +592,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isblank")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isblank")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsblankNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsblankNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[16])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isblank")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsblank([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -606,10 +606,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_iscntrl")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_iscntrl")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIscntrlNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIscntrlNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[17])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_iscntrl")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIscntrl([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -620,10 +620,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isdigit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isdigit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsdigitNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsdigitNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[18])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isdigit")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsdigit([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -634,10 +634,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isxdigit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isxdigit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsxdigitNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsxdigitNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[19])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isxdigit")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsxdigit([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -648,10 +648,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_ispunct")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ispunct")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIspunctNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIspunctNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[20])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_ispunct")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIspunct([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -662,10 +662,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isspace")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isspace")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsspaceNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsspaceNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[21])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isspace")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsspace([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -676,10 +676,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isupper")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isupper")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsupperNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsupperNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[22])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isupper")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsupper([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -690,10 +690,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_islower")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_islower")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIslowerNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIslowerNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[23])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_islower")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIslower([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -704,10 +704,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isprint")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isprint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsprintNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsprintNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[24])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isprint")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsprint([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -718,10 +718,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_isgraph")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_isgraph")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIsgraphNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLIsgraphNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[25])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_isgraph")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIsgraph([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -732,10 +732,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_toupper")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_toupper")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLToupperNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLToupperNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[26])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_toupper")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLToupper([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -746,10 +746,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_tolower")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_tolower")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTolowerNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x);
-
+		internal static int SDLTolowerNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[27])(x);
+		}
 		[NativeName(NativeNameType.Func, "SDL_tolower")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTolower([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x)
@@ -760,10 +760,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_crc16")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDL_crc16")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLCrc16Native([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint16")] ushort crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static ushort SDLCrc16Native([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint16")] ushort crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort, void*, ulong, ushort>)vt[28])(crc, data, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_crc16")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
 		public static ushort SDLCrc16([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint16")] ushort crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -782,10 +782,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_crc32")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_crc32")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLCrc32Native([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint32")] uint crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static uint SDLCrc32Native([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint32")] uint crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, void*, ulong, uint>)vt[29])(crc, data, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_crc32")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLCrc32([NativeName(NativeNameType.Param, "crc")] [NativeName(NativeNameType.Type, "Uint32")] uint crc, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -804,10 +804,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_memset")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_memset")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLMemsetNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static void* SDLMemsetNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, int, ulong, void*>)vt[30])(dst, c, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_memset")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLMemset([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -826,10 +826,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_memcpy")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_memcpy")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLMemcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static void* SDLMemcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, void*, ulong, void*>)vt[31])(dst, src, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_memcpy")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLMemcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -848,10 +848,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_memmove")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_memmove")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLMemmoveNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static void* SDLMemmoveNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, void*, ulong, void*>)vt[32])(dst, src, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_memmove")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLMemmove([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "void*")] void* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const void*")] void* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -870,10 +870,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_memcmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_memcmp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLMemcmpNative([NativeName(NativeNameType.Param, "s1")] [NativeName(NativeNameType.Type, "const void*")] void* s1, [NativeName(NativeNameType.Param, "s2")] [NativeName(NativeNameType.Type, "const void*")] void* s2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static int SDLMemcmpNative([NativeName(NativeNameType.Param, "s1")] [NativeName(NativeNameType.Type, "const void*")] void* s1, [NativeName(NativeNameType.Param, "s2")] [NativeName(NativeNameType.Type, "const void*")] void* s2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, void*, ulong, int>)vt[33])(s1, s2, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_memcmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLMemcmp([NativeName(NativeNameType.Param, "s1")] [NativeName(NativeNameType.Type, "const void*")] void* s1, [NativeName(NativeNameType.Param, "s2")] [NativeName(NativeNameType.Type, "const void*")] void* s2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -892,10 +892,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcslen")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcslen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLWcslenNative([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr);
-
+		internal static ulong SDLWcslenNative([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, ulong>)vt[34])(wstr);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcslen")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLWcslen([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr)
@@ -946,10 +946,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcslcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcslcpy")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLWcslcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static ulong SDLWcslcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, ulong, ulong>)vt[35])(dst, src, maxlen);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcslcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLWcslcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -1260,10 +1260,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcslcat")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcslcat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLWcslcatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static ulong SDLWcslcatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, ulong, ulong>)vt[36])(dst, src, maxlen);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcslcat")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLWcslcat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "wchar*")] char* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const wchar*")] char* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -1574,10 +1574,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcsdup")]
 		[return: NativeName(NativeNameType.Type, "wchar*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcsdup")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial char* SDLWcsdupNative([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr);
-
+		internal static char* SDLWcsdupNative([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*>)vt[37])(wstr);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcsdup")]
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsdup([NativeName(NativeNameType.Param, "wstr")] [NativeName(NativeNameType.Type, "const wchar*")] char* wstr)
@@ -1676,10 +1676,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcsstr")]
 		[return: NativeName(NativeNameType.Type, "wchar*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcsstr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial char* SDLWcsstrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] char* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] char* needle);
-
+		internal static char* SDLWcsstrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] char* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] char* needle)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, char*>)vt[38])(haystack, needle);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcsstr")]
 		[return: NativeName(NativeNameType.Type, "wchar*")]
 		public static char* SDLWcsstr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const wchar*")] char* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const wchar*")] char* needle)
@@ -1986,10 +1986,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcscmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcscmp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWcscmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2);
-
+		internal static int SDLWcscmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, int>)vt[39])(str1, str2);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcscmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
@@ -2144,10 +2144,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcsncmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcsncmp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWcsncmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static int SDLWcsncmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, ulong, int>)vt[40])(str1, str2, maxlen);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcsncmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -2454,10 +2454,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcscasecmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcscasecmp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWcscasecmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2);
-
+		internal static int SDLWcscasecmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, int>)vt[41])(str1, str2);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcscasecmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcscasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2)
@@ -2612,10 +2612,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_wcsncasecmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_wcsncasecmp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWcsncasecmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static int SDLWcsncasecmpNative([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<char*, char*, ulong, int>)vt[42])(str1, str2, len);
+		}
 		[NativeName(NativeNameType.Func, "SDL_wcsncasecmp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWcsncasecmp([NativeName(NativeNameType.Param, "str1")] [NativeName(NativeNameType.Type, "const wchar*")] char* str1, [NativeName(NativeNameType.Param, "str2")] [NativeName(NativeNameType.Type, "const wchar*")] char* str2, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -2922,10 +2922,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strlen")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strlen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLStrlenNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
-
+		internal static ulong SDLStrlenNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, ulong>)vt[43])(str);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strlen")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLStrlen([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
@@ -2976,10 +2976,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strlcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strlcpy")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLStrlcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static ulong SDLStrlcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, ulong, ulong>)vt[44])(dst, src, maxlen);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strlcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLStrlcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -3290,10 +3290,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_utf8strlcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_utf8strlcpy")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLUtf8StrlcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "dst_bytes")] [NativeName(NativeNameType.Type, "size_t")] ulong dstBytes);
-
+		internal static ulong SDLUtf8StrlcpyNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "dst_bytes")] [NativeName(NativeNameType.Type, "size_t")] ulong dstBytes)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, ulong, ulong>)vt[45])(dst, src, dstBytes);
+		}
 		[NativeName(NativeNameType.Func, "SDL_utf8strlcpy")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLUtf8Strlcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "dst_bytes")] [NativeName(NativeNameType.Type, "size_t")] ulong dstBytes)
@@ -3604,10 +3604,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strlcat")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strlcat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLStrlcatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static ulong SDLStrlcatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, ulong, ulong>)vt[46])(dst, src, maxlen);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strlcat")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLStrlcat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const char*")] byte* src, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -3918,10 +3918,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strdup")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strdup")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrdupNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
-
+		internal static byte* SDLStrdupNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[47])(str);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strdup")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrdup([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str)
@@ -4020,10 +4020,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strrev")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strrev")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrrevNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str);
-
+		internal static byte* SDLStrrevNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[48])(str);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strrev")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrrev([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
@@ -4124,10 +4124,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strupr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strupr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStruprNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str);
-
+		internal static byte* SDLStruprNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[49])(str);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strupr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrupr([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
@@ -4228,10 +4228,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strlwr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strlwr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrlwrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str);
-
+		internal static byte* SDLStrlwrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[50])(str);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strlwr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrlwr([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "char*")] byte* str)
@@ -4332,10 +4332,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strchr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strchr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrchrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c);
-
+		internal static byte* SDLStrchrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int, byte*>)vt[51])(str, c);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strchr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrchr([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c)
@@ -4434,10 +4434,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strrchr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strrchr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrrchrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c);
-
+		internal static byte* SDLStrrchrNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int, byte*>)vt[52])(str, c);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strrchr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrrchr([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "int")] int c)
@@ -4536,10 +4536,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strstr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strstr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrstrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle);
-
+		internal static byte* SDLStrstrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[53])(haystack, needle);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strstr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrstr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle)
@@ -4846,10 +4846,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_strcasestr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_strcasestr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLStrcasestrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle);
-
+		internal static byte* SDLStrcasestrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[54])(haystack, needle);
+		}
 		[NativeName(NativeNameType.Func, "SDL_strcasestr")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLStrcasestr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle)

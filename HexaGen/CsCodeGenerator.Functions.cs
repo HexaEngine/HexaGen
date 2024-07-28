@@ -1,10 +1,12 @@
 ﻿namespace HexaGen
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.IO;
+    using System.Runtime.InteropServices;
     using System.Text;
 
     public enum WriteFunctionFlags
@@ -32,6 +34,11 @@
 
         protected virtual bool FilterFunctionIgnored(GenContext context, CppFunction cppFunction)
         {
+            if (!cppFunction.IsPublicExport())
+            {
+                return true;
+            }
+
             if (cppFunction.IsFunctionTemplate)
             {
                 return true;
@@ -92,7 +99,8 @@
             // Generate Functions
             using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
             GenContext context = new(compilation, filePath, writer);
-
+            int vTableIndex = 0;
+            StringBuilder sbVt = new();
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {
                 writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
@@ -112,7 +120,7 @@
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
                     var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut, settings.GenerateMetadata);
-                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
+                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false)})";
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
                     if (FilterNativeFunction(context, cppFunction, headerId))
@@ -127,29 +135,75 @@
                         writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
                     }
 
-                    string modifiers;
+                    string? modifiers = null;
 
-                    if (settings.UseLibraryImport)
+                    switch (settings.ImportType)
                     {
-                        writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
-                        writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
-                        modifiers = "internal static partial";
-                    }
-                    else
-                    {
-                        writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
-                        modifiers = "internal static extern";
-                    }
+                        case ImportType.DllImport:
+                            writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
+                            modifiers = "internal static extern";
+                            break;
 
-                    if (boolReturn)
-                    {
-                        writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
-                        writer.WriteLine();
+                        case ImportType.LibraryImport:
+                            writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
+                            writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
+                            modifiers = "internal static partial";
+                            break;
+
+                        case ImportType.VTable:
+                            if (boolReturn)
+                            {
+                                writer.BeginBlock($"internal static {settings.GetBoolType()} {csName}Native({argumentsString})");
+                            }
+                            else
+                            {
+                                writer.BeginBlock($"internal static {header}");
+                            }
+
+                            string returnType = settings.GetCsTypeName(cppFunction.ReturnType, requiresUnmanaged: true);
+                            string delegateType;
+                            if (cppFunction.Parameters.Count == 0)
+                            {
+                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{returnType}>";
+                            }
+                            else
+                            {
+                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
+                            }
+
+                            // isolates the argument names
+                            string argumentNames = settings.GetParameterSignatureNames(cppFunction.Parameters);
+
+                            if (returnCsName == "void")
+                            {
+                                writer.WriteLine($"(({delegateType})vt[{vTableIndex}])({argumentNames});");
+                            }
+                            else
+                            {
+                                writer.WriteLine($"return (({delegateType})vt[{vTableIndex}])({argumentNames});");
+                            }
+
+                            sbVt.AppendLine($"vt.Load({vTableIndex}, \"{cppFunction.Name}\");");
+
+                            writer.EndBlock();
+                            vTableIndex++;
+                            break;
+
+                        default:
+                            throw new NotSupportedException();
                     }
-                    else
+                    if (modifiers is not null)
                     {
-                        writer.WriteLine($"{modifiers} {header};");
-                        writer.WriteLine();
+                        if (boolReturn)
+                        {
+                            writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
+                            writer.WriteLine();
+                        }
+                        else
+                        {
+                            writer.WriteLine($"{modifiers} {header};");
+                            writer.WriteLine();
+                        }
                     }
 
                     var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
@@ -157,6 +211,27 @@
                     overload.Modifiers.Add("static");
                     funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
                     WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
+                }
+            }
+
+            if (settings.UseVTable)
+            {
+                string filePathVT = Path.Combine(outputPath, "Functions.VT.cs");
+                using var writerVt = new CsCodeWriter(filePathVT, settings.Namespace, SetupFunctionUsings());
+                using (writerVt.PushBlock($"public unsafe partial class {settings.ApiName}"))
+                {
+                    writerVt.WriteLine("internal static VTable vt;");
+                    writerVt.WriteLine();
+                    using (writerVt.PushBlock("public static void InitApi()"))
+                    {
+                        writerVt.WriteLine($"vt = new VTable(GetLibraryName(), {vTableIndex + 1});");
+                        writerVt.WriteLines(sbVt.ToString());
+                    }
+                    writerVt.WriteLine();
+                    using (writerVt.PushBlock("public static void FreeApi()"))
+                    {
+                        writerVt.WriteLine("vt.Free();");
+                    }
                 }
             }
         }

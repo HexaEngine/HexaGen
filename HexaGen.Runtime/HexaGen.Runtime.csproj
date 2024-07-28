@@ -8,8 +8,8 @@
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
 
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.0.0</PackageVersion>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<PackageVersion>1.1.0</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
@@ -20,7 +20,7 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<None Update="README.md" Pack="true" PackagePath="\" />
-		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
+		<Content Include="../README.md" Pack="true" PackagePath="/" />
+		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 	</ItemGroup>
 </Project>

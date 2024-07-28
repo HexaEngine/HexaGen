@@ -16,6 +16,123 @@ namespace Hexa.NET.SDL2
 {
 	public unsafe partial class SDL
 	{
+		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
+		{
+			int ret = SDLTestCompareSurfacesNative(surface, referenceSurface, allowableError);
+			return ret;
+		}
+
+		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				int ret = SDLTestCompareSurfacesNative((SDLSurface*)psurface, referenceSurface, allowableError);
+				return ret;
+			}
+		}
+
+		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
+		{
+			fixed (SDLSurface* preferenceSurface = &referenceSurface)
+			{
+				int ret = SDLTestCompareSurfacesNative(surface, (SDLSurface*)preferenceSurface, allowableError);
+				return ret;
+			}
+		}
+
+		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
+		{
+			fixed (SDLSurface* psurface = &surface)
+			{
+				fixed (SDLSurface* preferenceSurface = &referenceSurface)
+				{
+					int ret = SDLTestCompareSurfacesNative((SDLSurface*)psurface, (SDLSurface*)preferenceSurface, allowableError);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// Note: The function initializes the crc table required for all crc calculations.<br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		internal static int SDLTestCrc32InitNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, int>)vt[1364])(crcContext);
+		}
+		/// <summary>/// <br/>/// Note: The function initializes the crc table required for all crc calculations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCrc32Init([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext)
+		{
+			int ret = SDLTestCrc32InitNative(crcContext);
+			return ret;
+		}
+
+		/// <summary>/// <br/>/// Note: The function initializes the crc table required for all crc calculations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCrc32Init([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] ref SDLTestCrc32Context crcContext)
+		{
+			fixed (SDLTestCrc32Context* pcrcContext = &crcContext)
+			{
+				int ret = SDLTestCrc32InitNative((SDLTestCrc32Context*)pcrcContext);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		internal static int SDLTestCrc32CalcNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, byte*, uint, uint*, int>)vt[1365])(crcContext, inBuf, inLen, crc32);
+		}
+		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			int ret = SDLTestCrc32CalcNative(crcContext, inBuf, inLen, crc32);
+			return ret;
+		}
+
+		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] ref SDLTestCrc32Context crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			fixed (SDLTestCrc32Context* pcrcContext = &crcContext)
+			{
+				int ret = SDLTestCrc32CalcNative((SDLTestCrc32Context*)pcrcContext, inBuf, inLen, crc32);
+				return ret;
+			}
+		}
+
+		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			fixed (byte* pinBuf = &inBuf)
+			{
+				int ret = SDLTestCrc32CalcNative(crcContext, (byte*)pinBuf, inLen, crc32);
+				return ret;
+			}
+		}
 
 		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
 		[return: NativeName(NativeNameType.Type, "int")]
@@ -92,10 +209,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcStart")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32CalcStart")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32CalcStartNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32);
-
+		internal static int SDLTestCrc32CalcStartNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, uint*, int>)vt[1366])(crcContext, crc32);
+		}
 		/// <summary>/// Same routine broken down into three steps <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcStart")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestCrc32CalcStart([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
@@ -142,10 +259,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcEnd")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32CalcEnd")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32CalcEndNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32);
-
+		internal static int SDLTestCrc32CalcEndNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, uint*, int>)vt[1367])(crcContext, crc32);
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcEnd")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestCrc32CalcEnd([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
@@ -192,10 +309,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcBuffer")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32CalcBuffer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32CalcBufferNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32);
-
+		internal static int SDLTestCrc32CalcBufferNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, byte*, uint, uint*, int>)vt[1368])(crcContext, inBuf, inLen, crc32);
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32CalcBuffer")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestCrc32CalcBuffer([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
@@ -303,10 +420,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Crc32Done")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32Done")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32DoneNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext);
-
+		internal static int SDLTestCrc32DoneNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCrc32Context*, int>)vt[1369])(crcContext);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Done")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestCrc32Done([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext)
@@ -333,10 +450,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_DrawCharacter")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_DrawCharacter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestDrawCharacterNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "Uint32")] uint c);
-
+		internal static int SDLTestDrawCharacterNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "Uint32")] uint c)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLRenderer*, int, int, uint, int>)vt[1370])(renderer, x, y, c);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_DrawCharacter")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestDrawCharacter([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "Uint32")] uint c)
@@ -364,10 +481,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_DrawString")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_DrawString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestDrawStringNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "const char*")] byte* s);
-
+		internal static int SDLTestDrawStringNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "const char*")] byte* s)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLRenderer*, int, int, byte*, int>)vt[1371])(renderer, x, y, s);
+		}
 		/// <summary>/// <br/>/// The font currently only supports characters in the Basic Latin and Latin-1 Supplement sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_DrawString")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestDrawString([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "const char*")] byte* s)
@@ -481,10 +598,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowCreate")]
 		[return: NativeName(NativeNameType.Type, "SDLTest_TextWindow*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowCreate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTestTextWindow* SDLTestTextWindowCreateNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h);
-
+		internal static SDLTestTextWindow* SDLTestTextWindowCreateNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int, int, int, SDLTestTextWindow*>)vt[1372])(x, y, w, h);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowCreate")]
 		[return: NativeName(NativeNameType.Type, "SDLTest_TextWindow*")]
 		public static SDLTestTextWindow* SDLTestTextWindowCreate([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "int")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "int")] int y, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int")] int w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int")] int h)
@@ -501,10 +618,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowDisplay")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowDisplay")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestTextWindowDisplayNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer);
-
+		internal static void SDLTestTextWindowDisplayNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestTextWindow*, SDLRenderer*, void>)vt[1373])(textwin, renderer);
+		}
 		/// <summary>/// <br/>/// This function should be called every frame to display the text<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowDisplay")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestTextWindowDisplay([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer)
@@ -555,10 +672,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowAddText")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowAddText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestTextWindowAddTextNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLTestTextWindowAddTextNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestTextWindow*, byte*, void>)vt[1374])(textwin, fmt);
+		}
 		/// <summary>/// <br/>/// Adds UTF-8 text to the end of the current text. The newline character starts a<br/>/// new line of text. The backspace character deletes the last character or, if the<br/>/// line is empty, deletes the line and goes to the end of the previous line.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowAddText")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestTextWindowAddText([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -668,10 +785,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowAddTextWithLength")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowAddTextWithLength")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestTextWindowAddTextWithLengthNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len);
-
+		internal static void SDLTestTextWindowAddTextWithLengthNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestTextWindow*, byte*, ulong, void>)vt[1375])(textwin, text, len);
+		}
 		/// <summary>/// <br/>/// Adds UTF-8 text to the end of the current text. The newline character starts a<br/>/// new line of text. The backspace character deletes the last character or, if the<br/>/// line is empty, deletes the line and goes to the end of the previous line.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowAddTextWithLength")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestTextWindowAddTextWithLength([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "size_t")] ulong len)
@@ -877,10 +994,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowClear")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowClear")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestTextWindowClearNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin);
-
+		internal static void SDLTestTextWindowClearNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestTextWindow*, void>)vt[1376])(textwin);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowClear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestTextWindowClear([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin)
@@ -905,10 +1022,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TextWindowDestroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TextWindowDestroy")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestTextWindowDestroyNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin);
-
+		internal static void SDLTestTextWindowDestroyNative([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestTextWindow*, void>)vt[1377])(textwin);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TextWindowDestroy")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestTextWindowDestroy([NativeName(NativeNameType.Param, "textwin")] [NativeName(NativeNameType.Type, "SDLTest_TextWindow*")] SDLTestTextWindow* textwin)
@@ -931,10 +1048,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CleanupTextDrawing")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CleanupTextDrawing")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestCleanupTextDrawingNative();
-
+		internal static void SDLTestCleanupTextDrawingNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1378])();
+		}
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CleanupTextDrawing")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestCleanupTextDrawing()
@@ -949,10 +1066,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_FuzzerInit")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_FuzzerInit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestFuzzerInitNative([NativeName(NativeNameType.Param, "execKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong execKey);
-
+		internal static void SDLTestFuzzerInitNative([NativeName(NativeNameType.Param, "execKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong execKey)
+		{
+			((delegate* unmanaged[Cdecl]<ulong, void>)vt[1379])(execKey);
+		}
 		/// <summary>/// Initializes the fuzzer for a test<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_FuzzerInit")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestFuzzerInit([NativeName(NativeNameType.Param, "execKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong execKey)
@@ -966,10 +1083,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint8")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint8")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLTestRandomUint8Native();
-
+		internal static byte SDLTestRandomUint8Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte>)vt[1380])();
+		}
 		/// <summary>/// Returns a random Uint8<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint8")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
 		public static byte SDLTestRandomUint8()
@@ -984,10 +1101,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint8")]
 		[return: NativeName(NativeNameType.Type, "Sint8")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint8")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial sbyte SDLTestRandomSint8Native();
-
+		internal static sbyte SDLTestRandomSint8Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<sbyte>)vt[1381])();
+		}
 		/// <summary>/// Returns a random Sint8<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint8")]
 		[return: NativeName(NativeNameType.Type, "Sint8")]
 		public static sbyte SDLTestRandomSint8()
@@ -1002,10 +1119,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint16")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint16")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLTestRandomUint16Native();
-
+		internal static ushort SDLTestRandomUint16Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort>)vt[1382])();
+		}
 		/// <summary>/// Returns a random Uint16<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint16")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
 		public static ushort SDLTestRandomUint16()
@@ -1020,10 +1137,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint16")]
 		[return: NativeName(NativeNameType.Type, "Sint16")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint16")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial short SDLTestRandomSint16Native();
-
+		internal static short SDLTestRandomSint16Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<short>)vt[1383])();
+		}
 		/// <summary>/// Returns a random Sint16<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint16")]
 		[return: NativeName(NativeNameType.Type, "Sint16")]
 		public static short SDLTestRandomSint16()
@@ -1038,10 +1155,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint32")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint32")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestRandomSint32Native();
-
+		internal static int SDLTestRandomSint32Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[1384])();
+		}
 		/// <summary>/// Returns a random integer<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint32")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
 		public static int SDLTestRandomSint32()
@@ -1056,10 +1173,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint32")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint32")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLTestRandomUint32Native();
-
+		internal static uint SDLTestRandomUint32Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<uint>)vt[1385])();
+		}
 		/// <summary>/// Returns a random positive integer<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint32")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLTestRandomUint32()
@@ -1074,10 +1191,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint64")]
 		[return: NativeName(NativeNameType.Type, "Uint64")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint64")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLTestRandomUint64Native();
-
+		internal static ulong SDLTestRandomUint64Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong>)vt[1386])();
+		}
 		/// <summary>/// Returns random Uint64.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint64")]
 		[return: NativeName(NativeNameType.Type, "Uint64")]
 		public static ulong SDLTestRandomUint64()
@@ -1092,10 +1209,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint64")]
 		[return: NativeName(NativeNameType.Type, "Sint64")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint64")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial long SDLTestRandomSint64Native();
-
+		internal static long SDLTestRandomSint64Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<long>)vt[1387])();
+		}
 		/// <summary>/// Returns random Sint64.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint64")]
 		[return: NativeName(NativeNameType.Type, "Sint64")]
 		public static long SDLTestRandomSint64()
@@ -1109,10 +1226,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUnitFloat")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUnitFloat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial float SDLTestRandomUnitFloatNative();
-
+		internal static float SDLTestRandomUnitFloatNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<float>)vt[1388])();
+		}
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUnitFloat")]
 		[return: NativeName(NativeNameType.Type, "float")]
 		public static float SDLTestRandomUnitFloat()
@@ -1126,10 +1243,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUnitDouble")]
 		[return: NativeName(NativeNameType.Type, "double")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUnitDouble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial double SDLTestRandomUnitDoubleNative();
-
+		internal static double SDLTestRandomUnitDoubleNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<double>)vt[1389])();
+		}
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUnitDouble")]
 		[return: NativeName(NativeNameType.Type, "double")]
 		public static double SDLTestRandomUnitDouble()
@@ -1144,10 +1261,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomFloat")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomFloat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial float SDLTestRandomFloatNative();
-
+		internal static float SDLTestRandomFloatNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<float>)vt[1390])();
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomFloat")]
 		[return: NativeName(NativeNameType.Type, "float")]
 		public static float SDLTestRandomFloat()
@@ -1162,10 +1279,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomDouble")]
 		[return: NativeName(NativeNameType.Type, "double")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomDouble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial double SDLTestRandomDoubleNative();
-
+		internal static double SDLTestRandomDoubleNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<double>)vt[1391])();
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomDouble")]
 		[return: NativeName(NativeNameType.Type, "double")]
 		public static double SDLTestRandomDouble()
@@ -1190,10 +1307,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint8BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint8BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLTestRandomUint8BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static byte SDLTestRandomUint8BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte, byte, SDLBool, byte>)vt[1392])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Uint8 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomUint8BoundaryValue(10, 20, SDL_TRUE) returns 10, 11, 19 or 20<br/>/// RandomUint8BoundaryValue(1, 20, SDL_FALSE) returns 0 or 21<br/>/// RandomUint8BoundaryValue(0, 99, SDL_FALSE) returns 100<br/>/// RandomUint8BoundaryValue(0, 255, SDL_FALSE) returns 0 (error set)<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint8BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
 		public static byte SDLTestRandomUint8BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint8")] byte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1218,10 +1335,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint16BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint16BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ushort SDLTestRandomUint16BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static ushort SDLTestRandomUint16BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort, ushort, SDLBool, ushort>)vt[1393])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Uint16 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomUint16BoundaryValue(10, 20, SDL_TRUE) returns 10, 11, 19 or 20<br/>/// RandomUint16BoundaryValue(1, 20, SDL_FALSE) returns 0 or 21<br/>/// RandomUint16BoundaryValue(0, 99, SDL_FALSE) returns 100<br/>/// RandomUint16BoundaryValue(0, 0xFFFF, SDL_FALSE) returns 0 (error set)<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint16BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint16")]
 		public static ushort SDLTestRandomUint16BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint16")] ushort boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1246,10 +1363,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint32BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint32BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLTestRandomUint32BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static uint SDLTestRandomUint32BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, uint, SDLBool, uint>)vt[1394])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Uint32 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomUint32BoundaryValue(10, 20, SDL_TRUE) returns 10, 11, 19 or 20<br/>/// RandomUint32BoundaryValue(1, 20, SDL_FALSE) returns 0 or 21<br/>/// RandomUint32BoundaryValue(0, 99, SDL_FALSE) returns 100<br/>/// RandomUint32BoundaryValue(0, 0xFFFFFFFF, SDL_FALSE) returns 0 (with error set)<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint32BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLTestRandomUint32BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint32")] uint boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1274,10 +1391,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomUint64BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint64")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomUint64BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLTestRandomUint64BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static ulong SDLTestRandomUint64BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong, ulong, SDLBool, ulong>)vt[1395])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Uint64 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomUint64BoundaryValue(10, 20, SDL_TRUE) returns 10, 11, 19 or 20<br/>/// RandomUint64BoundaryValue(1, 20, SDL_FALSE) returns 0 or 21<br/>/// RandomUint64BoundaryValue(0, 99, SDL_FALSE) returns 100<br/>/// RandomUint64BoundaryValue(0, 0xFFFFFFFFFFFFFFFF, SDL_FALSE) returns 0 (with error set)<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomUint64BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Uint64")]
 		public static ulong SDLTestRandomUint64BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Uint64")] ulong boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1302,10 +1419,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint8BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint8")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint8BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial sbyte SDLTestRandomSint8BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static sbyte SDLTestRandomSint8BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<sbyte, sbyte, SDLBool, sbyte>)vt[1396])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Sint8 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomSint8BoundaryValue(-10, 20, SDL_TRUE) returns -11, -10, 19 or 20<br/>/// RandomSint8BoundaryValue(-100, -10, SDL_FALSE) returns -101 or -9<br/>/// RandomSint8BoundaryValue(SINT8_MIN, 99, SDL_FALSE) returns 100<br/>/// RandomSint8BoundaryValue(SINT8_MIN, SINT8_MAX, SDL_FALSE) returns SINT8_MIN (== error value) with error set<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint8BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint8")]
 		public static sbyte SDLTestRandomSint8BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint8")] sbyte boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1330,10 +1447,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint16BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint16")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint16BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial short SDLTestRandomSint16BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint16")] short boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint16")] short boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static short SDLTestRandomSint16BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint16")] short boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint16")] short boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<short, short, SDLBool, short>)vt[1397])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Sint16 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomSint16BoundaryValue(-10, 20, SDL_TRUE) returns -11, -10, 19 or 20<br/>/// RandomSint16BoundaryValue(-100, -10, SDL_FALSE) returns -101 or -9<br/>/// RandomSint16BoundaryValue(SINT16_MIN, 99, SDL_FALSE) returns 100<br/>/// RandomSint16BoundaryValue(SINT16_MIN, SINT16_MAX, SDL_FALSE) returns SINT16_MIN (== error value) with error set<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint16BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint16")]
 		public static short SDLTestRandomSint16BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint16")] short boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint16")] short boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1358,10 +1475,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint32BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint32BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestRandomSint32BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint32")] int boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint32")] int boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static int SDLTestRandomSint32BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint32")] int boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint32")] int boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int, SDLBool, int>)vt[1398])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Sint32 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomSint32BoundaryValue(-10, 20, SDL_TRUE) returns -11, -10, 19 or 20<br/>/// RandomSint32BoundaryValue(-100, -10, SDL_FALSE) returns -101 or -9<br/>/// RandomSint32BoundaryValue(SINT32_MIN, 99, SDL_FALSE) returns 100<br/>/// RandomSint32BoundaryValue(SINT32_MIN, SINT32_MAX, SDL_FALSE) returns SINT32_MIN (== error value)<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint32BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
 		public static int SDLTestRandomSint32BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint32")] int boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint32")] int boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1386,10 +1503,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomSint64BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint64")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomSint64BoundaryValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial long SDLTestRandomSint64BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint64")] long boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint64")] long boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain);
-
+		internal static long SDLTestRandomSint64BoundaryValueNative([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint64")] long boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint64")] long boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, long, SDLBool, long>)vt[1399])(boundary1, boundary2, validDomain);
+		}
 		/// <summary>/// Returns a random boundary value for Sint64 within the given boundaries.<br/>/// Boundaries are inclusive, see the usage examples below. If validDomain<br/>/// is true, the function will only return valid boundaries, otherwise non-valid<br/>/// boundaries are also possible.<br/>/// If boundary1 > boundary2, the values are swapped<br/>/// Usage examples:<br/>/// RandomSint64BoundaryValue(-10, 20, SDL_TRUE) returns -11, -10, 19 or 20<br/>/// RandomSint64BoundaryValue(-100, -10, SDL_FALSE) returns -101 or -9<br/>/// RandomSint64BoundaryValue(SINT64_MIN, 99, SDL_FALSE) returns 100<br/>/// RandomSint64BoundaryValue(SINT64_MIN, SINT64_MAX, SDL_FALSE) returns SINT64_MIN (== error value) and error set<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomSint64BoundaryValue")]
 		[return: NativeName(NativeNameType.Type, "Sint64")]
 		public static long SDLTestRandomSint64BoundaryValue([NativeName(NativeNameType.Param, "boundary1")] [NativeName(NativeNameType.Type, "Sint64")] long boundary1, [NativeName(NativeNameType.Param, "boundary2")] [NativeName(NativeNameType.Type, "Sint64")] long boundary2, [NativeName(NativeNameType.Param, "validDomain")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool validDomain)
@@ -1408,10 +1525,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomIntegerInRange")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomIntegerInRange")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestRandomIntegerInRangeNative([NativeName(NativeNameType.Param, "min")] [NativeName(NativeNameType.Type, "Sint32")] int min, [NativeName(NativeNameType.Param, "max")] [NativeName(NativeNameType.Type, "Sint32")] int max);
-
+		internal static int SDLTestRandomIntegerInRangeNative([NativeName(NativeNameType.Param, "min")] [NativeName(NativeNameType.Type, "Sint32")] int min, [NativeName(NativeNameType.Param, "max")] [NativeName(NativeNameType.Type, "Sint32")] int max)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int, int>)vt[1400])(min, max);
+		}
 		/// <summary>/// Returns integer in range [min, max] (inclusive).<br/>/// Min and max values can be negative values.<br/>/// If Max in smaller than min, then the values are swapped.<br/>/// Min and max are the same value, that value will be returned.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomIntegerInRange")]
 		[return: NativeName(NativeNameType.Type, "Sint32")]
 		public static int SDLTestRandomIntegerInRange([NativeName(NativeNameType.Param, "min")] [NativeName(NativeNameType.Type, "Sint32")] int min, [NativeName(NativeNameType.Param, "max")] [NativeName(NativeNameType.Type, "Sint32")] int max)
@@ -1429,10 +1546,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiString")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomAsciiString")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLTestRandomAsciiStringNative();
-
+		internal static byte* SDLTestRandomAsciiStringNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[1401])();
+		}
 		/// <summary>/// Generates random null-terminated string. The minimum length for<br/>/// the string is 1 character, maximum length for the string is 255<br/>/// characters and it can contain ASCII characters from 32 to 126.<br/>/// Note: Returned string needs to be deallocated.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiString")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLTestRandomAsciiString()
@@ -1459,10 +1576,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiStringWithMaximumLength")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomAsciiStringWithMaximumLength")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLTestRandomAsciiStringWithMaximumLengthNative([NativeName(NativeNameType.Param, "maxLength")] [NativeName(NativeNameType.Type, "int")] int maxLength);
-
+		internal static byte* SDLTestRandomAsciiStringWithMaximumLengthNative([NativeName(NativeNameType.Param, "maxLength")] [NativeName(NativeNameType.Type, "int")] int maxLength)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)vt[1402])(maxLength);
+		}
 		/// <summary>/// Generates random null-terminated string. The maximum length for<br/>/// the string is defined by the maxLength parameter.<br/>/// String can contain ASCII characters from 32 to 126.<br/>/// Note: Returned string needs to be deallocated.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiStringWithMaximumLength")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLTestRandomAsciiStringWithMaximumLength([NativeName(NativeNameType.Param, "maxLength")] [NativeName(NativeNameType.Type, "int")] int maxLength)
@@ -1489,10 +1606,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiStringOfSize")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomAsciiStringOfSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLTestRandomAsciiStringOfSizeNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size);
-
+		internal static byte* SDLTestRandomAsciiStringOfSizeNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)vt[1403])(size);
+		}
 		/// <summary>/// Generates random null-terminated string. The length for<br/>/// the string is defined by the size parameter.<br/>/// String can contain ASCII characters from 32 to 126.<br/>/// Note: Returned string needs to be deallocated.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomAsciiStringOfSize")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLTestRandomAsciiStringOfSize([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
@@ -1515,10 +1632,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_GetFuzzerInvocationCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_GetFuzzerInvocationCount")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestGetFuzzerInvocationCountNative();
-
+		internal static int SDLTestGetFuzzerInvocationCountNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[1404])();
+		}
 		/// <summary>/// Get the invocation count for the fuzzer since last ...FuzzerInit.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_GetFuzzerInvocationCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestGetFuzzerInvocationCount()
@@ -1535,10 +1652,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_GenerateRunSeed")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_GenerateRunSeed")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLTestGenerateRunSeedNative([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "const int")] int length);
-
+		internal static byte* SDLTestGenerateRunSeedNative([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "const int")] int length)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)vt[1405])(length);
+		}
 		/// <summary>/// <br/>/// Note: The returned string needs to be deallocated by the caller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_GenerateRunSeed")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLTestGenerateRunSeed([NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "const int")] int length)
@@ -1562,10 +1679,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RunSuites")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RunSuites")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestRunSuitesNative([NativeName(NativeNameType.Param, "testSuites")] [NativeName(NativeNameType.Type, "SDLTest_TestSuiteReference*[-1]")] SDLTestTestSuiteReference** testSuites, [NativeName(NativeNameType.Param, "userRunSeed")] [NativeName(NativeNameType.Type, "const char*")] byte* userRunSeed, [NativeName(NativeNameType.Param, "userExecKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong userExecKey, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "const char*")] byte* filter, [NativeName(NativeNameType.Param, "testIterations")] [NativeName(NativeNameType.Type, "int")] int testIterations);
-
+		internal static int SDLTestRunSuitesNative([NativeName(NativeNameType.Param, "testSuites")] [NativeName(NativeNameType.Type, "SDLTest_TestSuiteReference*[-1]")] SDLTestTestSuiteReference** testSuites, [NativeName(NativeNameType.Param, "userRunSeed")] [NativeName(NativeNameType.Type, "const char*")] byte* userRunSeed, [NativeName(NativeNameType.Param, "userExecKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong userExecKey, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "const char*")] byte* filter, [NativeName(NativeNameType.Param, "testIterations")] [NativeName(NativeNameType.Type, "int")] int testIterations)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestTestSuiteReference**, byte*, ulong, byte*, int, int>)vt[1406])(testSuites, userRunSeed, userExecKey, filter, testIterations);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RunSuites")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestRunSuites([NativeName(NativeNameType.Param, "testSuites")] [NativeName(NativeNameType.Type, "SDLTest_TestSuiteReference*[-1]")] SDLTestTestSuiteReference** testSuites, [NativeName(NativeNameType.Param, "userRunSeed")] [NativeName(NativeNameType.Type, "const char*")] byte* userRunSeed, [NativeName(NativeNameType.Param, "userExecKey")] [NativeName(NativeNameType.Type, "Uint64")] ulong userExecKey, [NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "const char*")] byte* filter, [NativeName(NativeNameType.Param, "testIterations")] [NativeName(NativeNameType.Type, "int")] int testIterations)
@@ -1724,10 +1841,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Log")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Log")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestLogNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLTestLogNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, void>)vt[1407])(fmt);
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Log")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestLog([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -1779,10 +1896,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_LogError")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_LogError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestLogErrorNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLTestLogErrorNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, void>)vt[1408])(fmt);
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_LogError")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestLogError([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -1837,10 +1954,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Md5Init")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Md5Init")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestMd5InitNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext);
-
+		internal static void SDLTestMd5InitNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestMd5Context*, void>)vt[1409])(mdContext);
+		}
 		/// <summary>/// <br/>/// <br/>/// Note: The function initializes the message-digest context<br/>/// mdContext. Call before each new use of the context -<br/>/// all fields are set to zero.<br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Md5Init")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestMd5Init([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext)
@@ -1867,10 +1984,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Md5Update")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Md5Update")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestMd5UpdateNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen);
-
+		internal static void SDLTestMd5UpdateNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestMd5Context*, byte*, uint, void>)vt[1410])(mdContext, inBuf, inLen);
+		}
 		/// <summary>/// <br/>/// <br/>/// Note: The function updates the message-digest context to account<br/>/// for the presence of each of the characters inBuf[0..inLen-1]<br/>/// in the message whose digest is being computed.<br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Md5Update")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestMd5Update([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen)
@@ -1920,10 +2037,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Md5Final")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Md5Final")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestMd5FinalNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext);
-
+		internal static void SDLTestMd5FinalNative([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestMd5Context*, void>)vt[1411])(mdContext);
+		}
 		/// <summary>/// <br/>/// <br/>/// Note: The function terminates the message-digest computation and<br/>/// ends with the desired message digest in mdContext.digest[0..15].<br/>/// Always call before using the digest[] variable.<br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Md5Final")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestMd5Final([NativeName(NativeNameType.Param, "mdContext")] [NativeName(NativeNameType.Type, "SDLTest_Md5Context*")] SDLTestMd5Context* mdContext)
@@ -1947,10 +2064,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_TrackAllocations")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_TrackAllocations")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestTrackAllocationsNative();
-
+		internal static int SDLTestTrackAllocationsNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[1412])();
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_TrackAllocations")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestTrackAllocations()
@@ -1965,10 +2082,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_LogAllocations")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_LogAllocations")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestLogAllocationsNative();
-
+		internal static void SDLTestLogAllocationsNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1413])();
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_LogAllocations")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestLogAllocations()
@@ -1985,10 +2102,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomInit")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomInit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestRandomInitNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext, [NativeName(NativeNameType.Param, "xi")] [NativeName(NativeNameType.Type, "unsigned int")] uint xi, [NativeName(NativeNameType.Param, "ci")] [NativeName(NativeNameType.Type, "unsigned int")] uint ci);
-
+		internal static void SDLTestRandomInitNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext, [NativeName(NativeNameType.Param, "xi")] [NativeName(NativeNameType.Type, "unsigned int")] uint xi, [NativeName(NativeNameType.Param, "ci")] [NativeName(NativeNameType.Type, "unsigned int")] uint ci)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestRandomContext*, uint, uint, void>)vt[1414])(rndContext, xi, ci);
+		}
 		/// <summary>/// <br/>/// Note: The random sequence of numbers returned by ...Random() is the<br/>/// same for the same two integers and has a period of 2^31.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomInit")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestRandomInit([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext, [NativeName(NativeNameType.Param, "xi")] [NativeName(NativeNameType.Type, "unsigned int")] uint xi, [NativeName(NativeNameType.Param, "ci")] [NativeName(NativeNameType.Type, "unsigned int")] uint ci)
@@ -2013,10 +2130,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_RandomInitTime")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_RandomInitTime")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestRandomInitTimeNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext);
-
+		internal static void SDLTestRandomInitTimeNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestRandomContext*, void>)vt[1415])(rndContext);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_RandomInitTime")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestRandomInitTime([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext)
@@ -2044,10 +2161,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Random")]
 		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Random")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLTestRandomNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext);
-
+		internal static uint SDLTestRandomNative([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestRandomContext*, uint>)vt[1416])(rndContext);
+		}
 		/// <summary>/// <br/>/// Note: ...RandomInit() or ...RandomInitTime() must have been called<br/>/// before using this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Random")]
 		[return: NativeName(NativeNameType.Type, "unsigned int")]
 		public static uint SDLTestRandom([NativeName(NativeNameType.Param, "rndContext")] [NativeName(NativeNameType.Type, "SDLTest_RandomContext*")] SDLTestRandomContext* rndContext)
@@ -2099,10 +2216,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_LoadLibrary")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_LoadLibrary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLVulkanLoadLibraryNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path);
-
+		internal static int SDLVulkanLoadLibraryNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int>)vt[1417])(path);
+		}
 		/// <summary>/// Dynamically load the Vulkan loader library.<br/>/// This should be called after initializing the video driver, but before<br/>/// creating any Vulkan windows. If no Vulkan loader library is loaded, the<br/>/// default library will be loaded upon creation of the first Vulkan window.<br/>/// It is fairly common for Vulkan applications to link with libvulkan instead<br/>/// of explicitly loading it at run time. This will work with SDL provided the<br/>/// application links to a dynamic library and both it and SDL use the same<br/>/// search path.<br/>/// If you specify a non-NULL `path`, an application should retrieve all of the<br/>/// Vulkan functions it uses from the dynamic library using<br/>/// SDL_Vulkan_GetVkGetInstanceProcAddr unless you can guarantee `path` points<br/>/// to the same vulkan loader library the application linked to.<br/>/// On Apple devices, if `path` is NULL, SDL will attempt to find the<br/>/// `vkGetInstanceProcAddr` address within all the Mach-O images of the current<br/>/// process. This is because it is fairly common for Vulkan applications to<br/>/// link with libvulkan (and historically MoltenVK was provided as a static<br/>/// library). If it is not found, on macOS, SDL will attempt to load<br/>/// `vulkan.framework/vulkan`, `libvulkan.1.dylib`,<br/>/// `MoltenVK.framework/MoltenVK`, and `libMoltenVK.dylib`, in that order. On<br/>/// iOS, SDL will attempt to load `libMoltenVK.dylib`. Applications using a<br/>/// dynamic framework or .dylib must ensure it is included in its application<br/>/// bundle.<br/>/// On non-Apple devices, application linking with a static libvulkan is not<br/>/// supported. Either do not link to the Vulkan loader or link to a dynamic<br/>/// library version.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_LoadLibrary")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLVulkanLoadLibrary([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path)
@@ -2160,10 +2277,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetVkGetInstanceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_GetVkGetInstanceProcAddr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLVulkanGetVkGetInstanceProcAddrNative();
-
+		internal static void* SDLVulkanGetVkGetInstanceProcAddrNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<void*>)vt[1418])();
+		}
 		/// <summary>/// Get the address of the `vkGetInstanceProcAddr` function.<br/>/// This should be called after either calling SDL_Vulkan_LoadLibrary() or<br/>/// creating an SDL_Window with the `SDL_WINDOW_VULKAN` flag.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetVkGetInstanceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLVulkanGetVkGetInstanceProcAddr()
@@ -2179,10 +2296,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_UnloadLibrary")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_UnloadLibrary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLVulkanUnloadLibraryNative();
-
+		internal static void SDLVulkanUnloadLibraryNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1419])();
+		}
 		/// <summary>/// Unload the Vulkan library previously loaded by SDL_Vulkan_LoadLibrary()<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_UnloadLibrary")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLVulkanUnloadLibrary()
@@ -2209,10 +2326,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetInstanceExtensions")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_GetInstanceExtensions")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLVulkanGetInstanceExtensionsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* pCount, [NativeName(NativeNameType.Param, "pNames")] [NativeName(NativeNameType.Type, "const char**")] byte** pNames);
-
+		internal static SDLBool SDLVulkanGetInstanceExtensionsNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* pCount, [NativeName(NativeNameType.Param, "pNames")] [NativeName(NativeNameType.Type, "const char**")] byte** pNames)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLWindow*, uint*, byte**, SDLBool>)vt[1420])(window, pCount, pNames);
+		}
 		/// <summary>/// Get the names of the Vulkan instance extensions needed to create a surface<br/>/// with SDL_Vulkan_CreateSurface.<br/>/// If `pNames` is NULL, then the number of required Vulkan instance extensions<br/>/// is returned in `pCount`. Otherwise, `pCount` must point to a variable set<br/>/// to the number of elements in the `pNames` array, and on return the variable<br/>/// is overwritten with the number of names actually written to `pNames`. If<br/>/// `pCount` is less than the number of required extensions, at most `pCount`<br/>/// structures will be written. If `pCount` is smaller than the number of<br/>/// required extensions, SDL_FALSE will be returned instead of SDL_TRUE, to<br/>/// indicate that not all the required extensions were returned.<br/>/// The `window` parameter is currently needed to be valid as of SDL 2.0.8,<br/>/// however, this parameter will likely be removed in future releases<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetInstanceExtensions")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLVulkanGetInstanceExtensions([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "pCount")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* pCount, [NativeName(NativeNameType.Param, "pNames")] [NativeName(NativeNameType.Type, "const char**")] byte** pNames)
@@ -2324,10 +2441,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_CreateSurface")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_CreateSurface")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLVulkanCreateSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* surface);
-
+		internal static SDLBool SDLVulkanCreateSurfaceNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* surface)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLWindow*, VkInstance, VkSurfaceKHR*, SDLBool>)vt[1421])(window, instance, surface);
+		}
 		/// <summary>/// Create a Vulkan rendering surface for a window.<br/>/// The `window` must have been created with the `SDL_WINDOW_VULKAN` flag and<br/>/// `instance` must have been created with extensions returned by<br/>/// SDL_Vulkan_GetInstanceExtensions() enabled.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_CreateSurface")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLVulkanCreateSurface([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* surface)
@@ -2384,10 +2501,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetDrawableSize")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Vulkan_GetDrawableSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLVulkanGetDrawableSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h);
-
+		internal static void SDLVulkanGetDrawableSizeNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)
+		{
+			((delegate* unmanaged[Cdecl]<SDLWindow*, int*, int*, void>)vt[1422])(window, w, h);
+		}
 		/// <summary>/// Get the size of the window's underlying drawable dimensions in pixels.<br/>/// This may differ from SDL_GetWindowSize() if we're rendering to a high-DPI<br/>/// drawable, i.e. the window was created with `SDL_WINDOW_ALLOW_HIGHDPI` on a<br/>/// platform with high-DPI support (Apple calls this "Retina"), and not<br/>/// disabled by the `SDL_HINT_VIDEO_HIGHDPI_DISABLED` hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Vulkan_GetDrawableSize")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLVulkanGetDrawableSize([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "w")] [NativeName(NativeNameType.Type, "int*")] int* w, [NativeName(NativeNameType.Param, "h")] [NativeName(NativeNameType.Type, "int*")] int* h)

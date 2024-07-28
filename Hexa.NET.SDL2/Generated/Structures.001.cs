@@ -2105,9 +2105,9 @@ namespace Hexa.NET.SDL2
 		public int Enabled;
 
 
-		public unsafe SDLTestTestCaseReference(SDLTestTestCaseFp testCase = default, byte* name = default, byte* description = default, int enabled = default)
+		public unsafe SDLTestTestCaseReference(delegate*<void*, int> testCase = default, byte* name = default, byte* description = default, int enabled = default)
 		{
-			TestCase = (void*)Marshal.GetFunctionPointerForDelegate(testCase);
+			TestCase = (void*)testCase;
 			Name = name;
 			Description = description;
 			Enabled = enabled;
@@ -2158,12 +2158,12 @@ namespace Hexa.NET.SDL2
 		[NativeName(NativeNameType.Type, "SDLTest_TestCaseTearDownFp")]
 		public unsafe void* TestTearDown;
 
-		public unsafe SDLTestTestSuiteReference(byte* name = default, SDLTestTestCaseSetUpFp testSetUp = default, SDLTestTestCaseReference** testCases = default, SDLTestTestCaseTearDownFp testTearDown = default)
+		public unsafe SDLTestTestSuiteReference(byte* name = default, delegate*<void*, void> testSetUp = default, SDLTestTestCaseReference** testCases = default, delegate*<void*, void> testTearDown = default)
 		{
 			Name = name;
-			TestSetUp = (void*)Marshal.GetFunctionPointerForDelegate(testSetUp);
+			TestSetUp = (void*)testSetUp;
 			TestCases = testCases;
-			TestTearDown = (void*)Marshal.GetFunctionPointerForDelegate(testTearDown);
+			TestTearDown = (void*)testTearDown;
 		}
 
 

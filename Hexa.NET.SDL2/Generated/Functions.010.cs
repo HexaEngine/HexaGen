@@ -17,6 +17,116 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
+		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		{
+			fixed (float* px = &x)
+			{
+				fixed (float* py = &y)
+				{
+					fixed (float* ppressure = &pressure)
+					{
+						int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, state, (float*)px, (float*)py, (float*)ppressure);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] ref SDLGameController gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] byte* state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		{
+			fixed (SDLGameController* pgamecontroller = &gamecontroller)
+			{
+				fixed (float* px = &x)
+				{
+					fixed (float* py = &y)
+					{
+						fixed (float* ppressure = &pressure)
+						{
+							int ret = SDLGameControllerGetTouchpadFingerNative((SDLGameController*)pgamecontroller, touchpad, finger, state, (float*)px, (float*)py, (float*)ppressure);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		{
+			fixed (byte* pstate = &state)
+			{
+				fixed (float* px = &x)
+				{
+					fixed (float* py = &y)
+					{
+						fixed (float* ppressure = &pressure)
+						{
+							int ret = SDLGameControllerGetTouchpadFingerNative(gamecontroller, touchpad, finger, (byte*)pstate, (float*)px, (float*)py, (float*)ppressure);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>/// Get the current state of a finger on a touchpad on a game controller.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetTouchpadFinger")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int SDLGameControllerGetTouchpadFinger([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] ref SDLGameController gamecontroller, [NativeName(NativeNameType.Param, "touchpad")] [NativeName(NativeNameType.Type, "int")] int touchpad, [NativeName(NativeNameType.Param, "finger")] [NativeName(NativeNameType.Type, "int")] int finger, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte state, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "float*")] ref float x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "float*")] ref float y, [NativeName(NativeNameType.Param, "pressure")] [NativeName(NativeNameType.Type, "float*")] ref float pressure)
+		{
+			fixed (SDLGameController* pgamecontroller = &gamecontroller)
+			{
+				fixed (byte* pstate = &state)
+				{
+					fixed (float* px = &x)
+					{
+						fixed (float* py = &y)
+						{
+							fixed (float* ppressure = &pressure)
+							{
+								int ret = SDLGameControllerGetTouchpadFingerNative((SDLGameController*)pgamecontroller, touchpad, finger, (byte*)pstate, (float*)px, (float*)py, (float*)ppressure);
+								return ret;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Return whether a game controller has a particular sensor.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_GameControllerHasSensor")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		internal static SDLBool SDLGameControllerHasSensorNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, SDLBool>)vt[595])(gamecontroller, type);
+		}
+		/// <summary>/// Return whether a game controller has a particular sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasSensor")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGameControllerHasSensor([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		{
+			SDLBool ret = SDLGameControllerHasSensorNative(gamecontroller, type);
+			return ret;
+		}
+
+		/// <summary>/// Return whether a game controller has a particular sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasSensor")]
+		[return: NativeName(NativeNameType.Type, "SDL_bool")]
+		public static SDLBool SDLGameControllerHasSensor([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] ref SDLGameController gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		{
+			fixed (SDLGameController* pgamecontroller = &gamecontroller)
+			{
+				SDLBool ret = SDLGameControllerHasSensorNative((SDLGameController*)pgamecontroller, type);
+				return ret;
+			}
+		}
+
 		/// <summary>
 		/// Set whether data reporting for a game controller sensor is enabled.<br/>
 		/// <br/>
@@ -24,10 +134,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerSetSensorEnabled")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSetSensorEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSetSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled);
-
+		internal static int SDLGameControllerSetSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, SDLBool, int>)vt[596])(gamecontroller, type, enabled);
+		}
 		/// <summary>/// Set whether data reporting for a game controller sensor is enabled.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSetSensorEnabled")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerSetSensorEnabled([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "enabled")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool enabled)
@@ -54,10 +164,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerIsSensorEnabled")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerIsSensorEnabled")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerIsSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type);
-
+		internal static SDLBool SDLGameControllerIsSensorEnabledNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, SDLBool>)vt[597])(gamecontroller, type);
+		}
 		/// <summary>/// Query whether sensor data reporting is enabled for a game controller.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerIsSensorEnabled")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGameControllerIsSensorEnabled([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
@@ -85,10 +195,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataRate")]
 		[return: NativeName(NativeNameType.Type, "float")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorDataRate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial float SDLGameControllerGetSensorDataRateNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type);
-
+		internal static float SDLGameControllerGetSensorDataRateNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, float>)vt[598])(gamecontroller, type);
+		}
 		/// <summary>/// Get the data rate (number of events per second) of a game controller<br/>/// sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataRate")]
 		[return: NativeName(NativeNameType.Type, "float")]
 		public static float SDLGameControllerGetSensorDataRate([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type)
@@ -117,10 +227,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorData")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorData")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetSensorDataNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
-
+		internal static int SDLGameControllerGetSensorDataNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, float*, int, int>)vt[599])(gamecontroller, type, data, numValues);
+		}
 		/// <summary>/// Get the current state of a game controller sensor.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorData")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerGetSensorData([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
@@ -175,10 +285,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetSensorDataWithTimestamp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerGetSensorDataWithTimestampNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues);
-
+		internal static int SDLGameControllerGetSensorDataWithTimestampNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLSensorType, ulong*, float*, int, int>)vt[600])(gamecontroller, type, timestamp, data, numValues);
+		}
 		/// <summary>/// Get the current state of a game controller sensor with the timestamp of the<br/>/// last update.<br/>/// The number of values and interpretation of the data is sensor dependent.<br/>/// See SDL_sensor.h for the details for each type of sensor.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetSensorDataWithTimestamp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerGetSensorDataWithTimestamp([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "SDL_SensorType")] SDLSensorType type, [NativeName(NativeNameType.Param, "timestamp")] [NativeName(NativeNameType.Type, "Uint64*")] ulong* timestamp, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "float*")] float* data, [NativeName(NativeNameType.Param, "num_values")] [NativeName(NativeNameType.Type, "int")] int numValues)
@@ -289,10 +399,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerRumble")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerRumble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
-
+		internal static int SDLGameControllerRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, ushort, ushort, uint, int>)vt[601])(gamecontroller, lowFrequencyRumble, highFrequencyRumble, durationMs);
+		}
 		/// <summary>/// Start a rumble effect on a game controller.<br/>/// Each call to this function cancels any previous rumble effect, and calling<br/>/// it with 0 intensity stops any rumbling.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerRumble")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerRumble([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "low_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort lowFrequencyRumble, [NativeName(NativeNameType.Param, "high_frequency_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort highFrequencyRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
@@ -326,10 +436,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerRumbleTriggers")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs);
-
+		internal static int SDLGameControllerRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, ushort, ushort, uint, int>)vt[602])(gamecontroller, leftRumble, rightRumble, durationMs);
+		}
 		/// <summary>/// Start a rumble effect in the game controller's triggers.<br/>/// Each call to this function cancels any previous trigger rumble effect, and<br/>/// calling it with 0 intensity stops any rumbling.<br/>/// Note that this is rumbling of the _triggers_ and not the game controller as<br/>/// a whole. This is currently only supported on Xbox One controllers. If you<br/>/// want the (more common) whole-controller rumble, use<br/>/// SDL_GameControllerRumble() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerRumbleTriggers")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerRumbleTriggers([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "left_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort leftRumble, [NativeName(NativeNameType.Param, "right_rumble")] [NativeName(NativeNameType.Type, "Uint16")] ushort rightRumble, [NativeName(NativeNameType.Param, "duration_ms")] [NativeName(NativeNameType.Type, "Uint32")] uint durationMs)
@@ -356,10 +466,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerHasLED")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasLED")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
+		internal static SDLBool SDLGameControllerHasLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLBool>)vt[603])(gamecontroller);
+		}
 		/// <summary>/// Query whether a game controller has an LED.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasLED")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGameControllerHasLED([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
@@ -387,10 +497,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumble")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasRumble")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
+		internal static SDLBool SDLGameControllerHasRumbleNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLBool>)vt[604])(gamecontroller);
+		}
 		/// <summary>/// Query whether a game controller has rumble support.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumble")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGameControllerHasRumble([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
@@ -418,10 +528,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumbleTriggers")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerHasRumbleTriggers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGameControllerHasRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
+		internal static SDLBool SDLGameControllerHasRumbleTriggersNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLBool>)vt[605])(gamecontroller);
+		}
 		/// <summary>/// Query whether a game controller has rumble support on triggers.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerHasRumbleTriggers")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGameControllerHasRumbleTriggers([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
@@ -448,10 +558,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerSetLED")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSetLED")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSetLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue);
-
+		internal static int SDLGameControllerSetLEDNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, byte, byte, byte, int>)vt[606])(gamecontroller, red, green, blue);
+		}
 		/// <summary>/// Update a game controller's LED color.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSetLED")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerSetLED([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "Uint8")] byte red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "Uint8")] byte green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "Uint8")] byte blue)
@@ -478,10 +588,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerSendEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerSendEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGameControllerSendEffectNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size);
-
+		internal static int SDLGameControllerSendEffectNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, void*, int, int>)vt[607])(gamecontroller, data, size);
+		}
 		/// <summary>/// Send a controller specific effect packet<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerSendEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGameControllerSendEffect([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "int")] int size)
@@ -509,10 +619,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerClose")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGameControllerCloseNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller);
-
+		internal static void SDLGameControllerCloseNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
+		{
+			((delegate* unmanaged[Cdecl]<SDLGameController*, void>)vt[608])(gamecontroller);
+		}
 		/// <summary>/// Close a game controller previously opened with SDL_GameControllerOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerClose")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLGameControllerClose([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller)
@@ -539,10 +649,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetAppleSFSymbolsNameForButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button);
-
+		internal static byte* SDLGameControllerGetAppleSFSymbolsNameForButtonNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLGameControllerButton, byte*>)vt[609])(gamecontroller, button);
+		}
 		/// <summary>/// Return the sfSymbolsName for a given button on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForButton")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGameControllerGetAppleSFSymbolsNameForButton([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "button")] [NativeName(NativeNameType.Type, "SDL_GameControllerButton")] SDLGameControllerButton button)
@@ -590,10 +700,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGameControllerGetAppleSFSymbolsNameForAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis);
-
+		internal static byte* SDLGameControllerGetAppleSFSymbolsNameForAxisNative([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLGameController*, SDLGameControllerAxis, byte*>)vt[610])(gamecontroller, axis);
+		}
 		/// <summary>/// Return the sfSymbolsName for a given axis on a game controller on Apple<br/>/// platforms.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GameControllerGetAppleSFSymbolsNameForAxis")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGameControllerGetAppleSFSymbolsNameForAxis([NativeName(NativeNameType.Param, "gamecontroller")] [NativeName(NativeNameType.Type, "SDL_GameController*")] SDLGameController* gamecontroller, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "SDL_GameControllerAxis")] SDLGameControllerAxis axis)
@@ -645,10 +755,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetNumTouchDevices")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumTouchDevices")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumTouchDevicesNative();
-
+		internal static int SDLGetNumTouchDevicesNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[611])();
+		}
 		/// <summary>/// Get the number of registered touch devices.<br/>/// On some platforms SDL first sees the touch device if it was actually used.<br/>/// Therefore SDL_GetNumTouchDevices() may return 0 although devices are<br/>/// available. After using all devices at least once the number will be<br/>/// correct.<br/>/// This was fixed for Android in SDL 2.0.1.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumTouchDevices")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetNumTouchDevices()
@@ -665,10 +775,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetTouchDevice")]
 		[return: NativeName(NativeNameType.Type, "SDL_TouchID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial long SDLGetTouchDeviceNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
+		internal static long SDLGetTouchDeviceNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, long>)vt[612])(index);
+		}
 		/// <summary>/// Get the touch ID with the given index.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchDevice")]
 		[return: NativeName(NativeNameType.Type, "SDL_TouchID")]
 		public static long SDLGetTouchDevice([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
@@ -684,10 +794,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetTouchName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetTouchNameNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
+		internal static byte* SDLGetTouchNameNative([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)vt[613])(index);
+		}
 		/// <summary>/// Get the touch device name as reported from the driver or NULL if the index<br/>/// is invalid.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetTouchName([NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
@@ -710,10 +820,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetTouchDeviceType")]
 		[return: NativeName(NativeNameType.Type, "SDL_TouchDeviceType")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchDeviceType")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTouchDeviceType SDLGetTouchDeviceTypeNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID);
-
+		internal static SDLTouchDeviceType SDLGetTouchDeviceTypeNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, SDLTouchDeviceType>)vt[614])(touchID);
+		}
 		/// <summary>/// Get the type of the given touch device.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchDeviceType")]
 		[return: NativeName(NativeNameType.Type, "SDL_TouchDeviceType")]
 		public static SDLTouchDeviceType SDLGetTouchDeviceType([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
@@ -730,10 +840,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetNumTouchFingers")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetNumTouchFingers")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetNumTouchFingersNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID);
-
+		internal static int SDLGetNumTouchFingersNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, int>)vt[615])(touchID);
+		}
 		/// <summary>/// Get the number of active fingers for a given touch device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetNumTouchFingers")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetNumTouchFingers([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID)
@@ -751,10 +861,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetTouchFinger")]
 		[return: NativeName(NativeNameType.Type, "SDL_Finger*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetTouchFinger")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLFinger* SDLGetTouchFingerNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
+		internal static SDLFinger* SDLGetTouchFingerNative([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, int, SDLFinger*>)vt[616])(touchID, index);
+		}
 		/// <summary>/// Get the finger object for specified touch device ID and finger index.<br/>/// The returned resource is owned by SDL and should not be deallocated.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetTouchFinger")]
 		[return: NativeName(NativeNameType.Type, "SDL_Finger*")]
 		public static SDLFinger* SDLGetTouchFinger([NativeName(NativeNameType.Param, "touchID")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchID, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
@@ -773,10 +883,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_RecordGesture")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RecordGesture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRecordGestureNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId);
-
+		internal static int SDLRecordGestureNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, int>)vt[617])(touchId);
+		}
 		/// <summary>/// Begin recording a gesture on a specified touch device or all touch devices.<br/>/// If the parameter `touchId` is -1 (i.e., all devices), this function will<br/>/// always return 1, regardless of whether there actually are any devices.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RecordGesture")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLRecordGesture([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId)
@@ -793,10 +903,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SaveAllDollarTemplates")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SaveAllDollarTemplates")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSaveAllDollarTemplatesNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst);
-
+		internal static int SDLSaveAllDollarTemplatesNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLRWops*, int>)vt[618])(dst);
+		}
 		/// <summary>/// Save all currently loaded Dollar Gesture templates.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveAllDollarTemplates")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSaveAllDollarTemplates([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
@@ -824,10 +934,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SaveDollarTemplate")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SaveDollarTemplate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSaveDollarTemplateNative([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst);
-
+		internal static int SDLSaveDollarTemplateNative([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, SDLRWops*, int>)vt[619])(gestureId, dst);
+		}
 		/// <summary>/// Save a currently loaded Dollar Gesture template.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SaveDollarTemplate")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSaveDollarTemplate([NativeName(NativeNameType.Param, "gestureId")] [NativeName(NativeNameType.Type, "SDL_GestureID")] long gestureId, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* dst)
@@ -855,10 +965,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LoadDollarTemplates")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadDollarTemplates")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLLoadDollarTemplatesNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src);
-
+		internal static int SDLLoadDollarTemplatesNative([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src)
+		{
+			return ((delegate* unmanaged[Cdecl]<long, SDLRWops*, int>)vt[620])(touchId, src);
+		}
 		/// <summary>/// Load Dollar Gesture templates from a file.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadDollarTemplates")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLLoadDollarTemplates([NativeName(NativeNameType.Param, "touchId")] [NativeName(NativeNameType.Type, "SDL_TouchID")] long touchId, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src)
@@ -896,10 +1006,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_PumpEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PumpEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLPumpEventsNative();
-
+		internal static void SDLPumpEventsNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[621])();
+		}
 		/// <summary>/// Pump the event loop, gathering events from the input devices.<br/>/// This function updates the event queue and internal input device state.<br/>/// **WARNING**: This should only be run in the thread that initialized the<br/>/// video subsystem, and for extra safety, you should consider only doing those<br/>/// things on the main thread in any case.<br/>/// SDL_PumpEvents() gathers all the pending input information from devices and<br/>/// places it in the event queue. Without calls to SDL_PumpEvents() no events<br/>/// would ever be placed on the queue. Often the need for calls to<br/>/// SDL_PumpEvents() is hidden from the user since SDL_PollEvent() and<br/>/// SDL_WaitEvent() implicitly call SDL_PumpEvents(). However, if you are not<br/>/// polling or waiting for events (e.g. you are filtering them), then you must<br/>/// call SDL_PumpEvents() to force an event queue update.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PumpEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLPumpEvents()
@@ -928,10 +1038,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_PeepEvents")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PeepEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPeepEventsNative([NativeName(NativeNameType.Param, "events")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* events, [NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "SDL_eventaction")] SDLEventaction action, [NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
-
+		internal static int SDLPeepEventsNative([NativeName(NativeNameType.Param, "events")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* events, [NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "SDL_eventaction")] SDLEventaction action, [NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLEvent*, int, SDLEventaction, uint, uint, int>)vt[622])(events, numevents, action, minType, maxType);
+		}
 		/// <summary>/// Check the event queue for messages and optionally return them.<br/>/// `action` may be any of the following:<br/>/// - `SDL_ADDEVENT`: up to `numevents` events will be added to the back of the<br/>/// event queue.<br/>/// - `SDL_PEEKEVENT`: `numevents` events at the front of the event queue,<br/>/// within the specified minimum and maximum type, will be returned to the<br/>/// caller and will _not_ be removed from the queue.<br/>/// - `SDL_GETEVENT`: up to `numevents` events at the front of the event queue,<br/>/// within the specified minimum and maximum type, will be returned to the<br/>/// caller and will be removed from the queue.<br/>/// You may have to call SDL_PumpEvents() before calling this function.<br/>/// Otherwise, the events may not be ready to be filtered when you call<br/>/// SDL_PeepEvents().<br/>/// This function is thread-safe.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PeepEvents")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLPeepEvents([NativeName(NativeNameType.Param, "events")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* events, [NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents, [NativeName(NativeNameType.Param, "action")] [NativeName(NativeNameType.Type, "SDL_eventaction")] SDLEventaction action, [NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
@@ -961,10 +1071,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasEvent")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type);
-
+		internal static SDLBool SDLHasEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, SDLBool>)vt[623])(type);
+		}
 		/// <summary>/// Check for the existence of a certain event type in the event queue.<br/>/// If you need to check for a range of event types, use SDL_HasEvents()<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasEvent")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasEvent([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
@@ -982,10 +1092,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasEvents")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
-
+		internal static SDLBool SDLHasEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, uint, SDLBool>)vt[624])(minType, maxType);
+		}
 		/// <summary>/// Check for the existence of certain event types in the event queue.<br/>/// If you need to check for a single event type, use SDL_HasEvent() instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasEvents")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasEvents([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
@@ -1010,10 +1120,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FlushEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FlushEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFlushEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type);
-
+		internal static void SDLFlushEventNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[625])(type);
+		}
 		/// <summary>/// Clear events of a specific type from the event queue.<br/>/// This will unconditionally remove any events from the queue that match<br/>/// `type`. If you need to remove a range of event types, use SDL_FlushEvents()<br/>/// instead.<br/>/// It's also normal to just ignore events you don't care about in your event<br/>/// loop without calling this function.<br/>/// This function only affects currently queued events. If you want to make<br/>/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>/// on the main thread immediately before the flush call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FlushEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFlushEvent([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type)
@@ -1037,10 +1147,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FlushEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FlushEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFlushEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType);
-
+		internal static void SDLFlushEventsNative([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, void>)vt[626])(minType, maxType);
+		}
 		/// <summary>/// Clear events of a range of types from the event queue.<br/>/// This will unconditionally remove any events from the queue that are in the<br/>/// range of `minType` to `maxType`, inclusive. If you need to remove a single<br/>/// event type, use SDL_FlushEvent() instead.<br/>/// It's also normal to just ignore events you don't care about in your event<br/>/// loop without calling this function.<br/>/// This function only affects currently queued events. If you want to make<br/>/// sure that all pending OS events are flushed, you can call SDL_PumpEvents()<br/>/// on the main thread immediately before the flush call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FlushEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFlushEvents([NativeName(NativeNameType.Param, "minType")] [NativeName(NativeNameType.Type, "Uint32")] uint minType, [NativeName(NativeNameType.Param, "maxType")] [NativeName(NativeNameType.Type, "Uint32")] uint maxType)
@@ -1080,10 +1190,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_PollEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PollEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPollEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
-
+		internal static int SDLPollEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLEvent*, int>)vt[627])(evnt);
+		}
 		/// <summary>/// Poll for currently pending events.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`. The 1 returned refers to<br/>/// this event, immediately stored in the SDL Event structure -- not an event<br/>/// to follow.<br/>/// If `event` is NULL, it simply returns 1 if there is an event in the queue,<br/>/// but will not remove it from the queue.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that set the video mode.<br/>/// SDL_PollEvent() is the favored way of receiving system events since it can<br/>/// be done from the main loop and does not suspend the main loop while waiting<br/>/// on an event to be posted.<br/>/// The common practice is to fully process the event queue once every frame,<br/>/// usually as a first step before updating the game's state:<br/>/// ```c<br/>/// while (game_is_still_running) {<br/>/// SDL_Event event;<br/>/// while (SDL_PollEvent(<br/>/// &event<br/>/// )) {  // poll until all events are handled!<br/>/// // decide what to do with this event.<br/>/// }<br/>/// // update game state, draw the current frame<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PollEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLPollEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
@@ -1115,10 +1225,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_WaitEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WaitEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWaitEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
-
+		internal static int SDLWaitEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLEvent*, int>)vt[628])(evnt);
+		}
 		/// <summary>/// Wait indefinitely for the next available event.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that initialized the video subsystem.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWaitEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
@@ -1151,10 +1261,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_WaitEventTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WaitEventTimeout")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLWaitEventTimeoutNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "int")] int timeout);
-
+		internal static int SDLWaitEventTimeoutNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "int")] int timeout)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLEvent*, int, int>)vt[629])(evnt, timeout);
+		}
 		/// <summary>/// Wait until the specified timeout (in milliseconds) for the next available<br/>/// event.<br/>/// If `event` is not NULL, the next event is removed from the queue and stored<br/>/// in the SDL_Event structure pointed to by `event`.<br/>/// As this function may implicitly call SDL_PumpEvents(), you can only call<br/>/// this function in the thread that initialized the video subsystem.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitEventTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLWaitEventTimeout([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "int")] int timeout)
@@ -1195,10 +1305,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_PushEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PushEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLPushEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt);
-
+		internal static int SDLPushEventNative([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLEvent*, int>)vt[630])(evnt);
+		}
 		/// <summary>/// Add an event to the event queue.<br/>/// The event queue can actually be used as a two way communication channel.<br/>/// Not only can events be read from the queue, but the user can also push<br/>/// their own events onto it. `event` is a pointer to the event structure you<br/>/// wish to push onto the queue. The event is copied into the queue, and the<br/>/// caller may dispose of the memory pointed to after SDL_PushEvent() returns.<br/>/// Note: Pushing device input events onto the queue doesn't modify the state<br/>/// of the device within SDL.<br/>/// This function is thread-safe, and can be called from other threads safely.<br/>/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>/// the event filter but events added with SDL_PeepEvents() do not.<br/>/// For pushing application-specific events, please use SDL_RegisterEvents() to<br/>/// get an event type that does not conflict with other code that also wants<br/>/// its own custom event types.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PushEvent")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLPushEvent([NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt)
@@ -1247,13 +1357,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetEventFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetEventFilter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLSetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, SDLEvent*, int>, void*, void>)vt[631])(filter, userdata);
+		}
 		/// <summary>/// Set up a filter to process all events before they change internal state and<br/>/// are posted to the internal event queue.<br/>/// If the filter function returns 1 when called, then the event will be added<br/>/// to the internal queue. If it returns 0, then the event will be dropped from<br/>/// the queue, but the internal state will still be updated. This allows<br/>/// selective filtering of dynamically arriving events.<br/>/// **WARNING**: Be very careful of what you do in the event filter function,<br/>/// as it may run in a different thread!<br/>/// On platforms that support it, if the quit event is generated by an<br/>/// interrupt signal (e.g. pressing Ctrl-C), it will be delivered to the<br/>/// application at the next event poll.<br/>/// There is one caveat when dealing with the ::SDL_QuitEvent event type. The<br/>/// event filter is only called when the window manager desires to close the<br/>/// application window. If the event filter returns 1, then the window will be<br/>/// closed, otherwise the window will remain open if possible.<br/>/// Note: Disabled events never make it to the event filter function; see<br/>/// SDL_EventState().<br/>/// Note: If you just want to inspect events without filtering, you should use<br/>/// SDL_AddEventWatch() instead.<br/>/// Note: Events pushed onto the queue with SDL_PushEvent() get passed through<br/>/// the event filter, but events pushed onto the queue with SDL_PeepEvents() do<br/>/// not.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetEventFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLSetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLSetEventFilterNative(filter, userdata);
 		}
@@ -1268,13 +1378,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetEventFilter")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetEventFilter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata);
-
+		internal static SDLBool SDLGetEventFilterNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] delegate*<void*, SDLEvent*, int>* filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
+		{
+			return ((delegate* unmanaged[Cdecl]<delegate*<void*, SDLEvent*, int>*, void**, SDLBool>)vt[632])(filter, userdata);
+		}
 		/// <summary>/// Query the current event filter.<br/>/// This function can be used to "chain" filters, by saving the existing filter<br/>/// before replacing it with a function that will call that saved filter.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetEventFilter")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		public static SDLBool SDLGetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
+		public static SDLBool SDLGetEventFilter([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter*")] delegate*<void*, SDLEvent*, int>* filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
 		{
 			SDLBool ret = SDLGetEventFilterNative(filter, userdata);
 			return ret;
@@ -1299,13 +1409,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AddEventWatch")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AddEventWatch")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAddEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLAddEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, SDLEvent*, int>, void*, void>)vt[633])(filter, userdata);
+		}
 		/// <summary>/// Add a callback to be triggered when an event is added to the event queue.<br/>/// `filter` will be called when an event happens, and its return value is<br/>/// ignored.<br/>/// **WARNING**: Be very careful of what you do in the event filter function,<br/>/// as it may run in a different thread!<br/>/// If the quit event is generated by a signal (e.g. SIGINT), it will bypass<br/>/// the internal queue and be delivered to the watch callback immediately, and<br/>/// arrive at the next event poll.<br/>/// Note: the callback is called for events posted by the user through<br/>/// SDL_PushEvent(), but not for disabled events, nor for events by a filter<br/>/// callback set with SDL_SetEventFilter(), nor for events posted by the user<br/>/// through SDL_PeepEvents().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddEventWatch")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLAddEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLAddEventWatchNative(filter, userdata);
 		}
@@ -1320,13 +1430,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DelEventWatch")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DelEventWatch")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDelEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLDelEventWatchNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, SDLEvent*, int>, void*, void>)vt[634])(filter, userdata);
+		}
 		/// <summary>/// Remove an event watch callback added with SDL_AddEventWatch().<br/>/// This function takes the same input as SDL_AddEventWatch() to identify and<br/>/// delete the corresponding callback.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelEventWatch")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLDelEventWatch([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLDelEventWatchNative(filter, userdata);
 		}
@@ -1343,13 +1453,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FilterEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FilterEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFilterEventsNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLFilterEventsNative([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, SDLEvent*, int>, void*, void>)vt[635])(filter, userdata);
+		}
 		/// <summary>/// Run a specific filter function on the current event queue, removing any<br/>/// events for which the filter returns 0.<br/>/// See SDL_SetEventFilter() for more information. Unlike SDL_SetEventFilter(),<br/>/// this function does not change the filter permanently, it only uses the<br/>/// supplied filter until this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FilterEvents")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLFilterEvents([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] SdlEventfilter filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLFilterEvents([NativeName(NativeNameType.Param, "filter")] [NativeName(NativeNameType.Type, "SDL_EventFilter")] delegate*<void*, SDLEvent*, int> filter, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLFilterEventsNative(filter, userdata);
 		}
@@ -1367,10 +1477,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_EventState")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
-		[LibraryImport(LibName, EntryPoint = "SDL_EventState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte SDLEventStateNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state);
-
+		internal static byte SDLEventStateNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, int, byte>)vt[636])(type, state);
+		}
 		/// <summary>/// Set the state of processing events by type.<br/>/// `state` may be any of the following:<br/>/// - `SDL_QUERY`: returns the current processing state of the specified event<br/>/// - `SDL_IGNORE` (aka `SDL_DISABLE`): the event will automatically be dropped<br/>/// from the event queue and will not be filtered<br/>/// - `SDL_ENABLE`: the event will be processed normally<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_EventState")]
 		[return: NativeName(NativeNameType.Type, "Uint8")]
 		public static byte SDLEventState([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "Uint32")] uint type, [NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "int")] int state)
@@ -1394,10 +1504,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_RegisterEvents")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RegisterEvents")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLRegisterEventsNative([NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents);
-
+		internal static uint SDLRegisterEventsNative([NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, uint>)vt[637])(numevents);
+		}
 		/// <summary>/// Allocate a set of user-defined events, and return the beginning event<br/>/// number for that set of events.<br/>/// Calling this function with `numevents` <br/>/// <<br/>/// = 0 is an error and will return<br/>/// (Uint32)-1.<br/>/// Note, (Uint32)-1 means the maximum unsigned 32-bit integer value (or<br/>/// 0xFFFFFFFF), but is clearer to write.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterEvents")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLRegisterEvents([NativeName(NativeNameType.Param, "numevents")] [NativeName(NativeNameType.Type, "int")] int numevents)
@@ -1439,10 +1549,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetBasePath")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetBasePath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetBasePathNative();
-
+		internal static byte* SDLGetBasePathNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[638])();
+		}
 		/// <summary>/// Get the directory where the application was run from.<br/>/// This is not necessarily a fast call, so you should call this once near<br/>/// startup and save the string if you need it.<br/>/// **Mac OS X and iOS Specific Functionality**: If the application is in a<br/>/// ".app" bundle, this function returns the Resource directory (e.g.<br/>/// MyApp.app/Contents/Resources/). This behaviour can be overridden by adding<br/>/// a property to the Info.plist file. Adding a string key with the name<br/>/// SDL_FILESYSTEM_BASE_DIR_TYPE with a supported value will change the<br/>/// behaviour.<br/>/// Supported values for the SDL_FILESYSTEM_BASE_DIR_TYPE property (Given an<br/>/// application in /Applications/SDLApp/MyApp.app):<br/>/// - `resource`: bundle resource directory (the default). For example:<br/>/// `/Applications/SDLApp/MyApp.app/Contents/Resources`<br/>/// - `bundle`: the Bundle directory. For example:<br/>/// `/Applications/SDLApp/MyApp.app/`<br/>/// - `parent`: the containing directory of the bundle. For example:<br/>/// `/Applications/SDLApp/`<br/>/// **Nintendo 3DS Specific Functionality**: This function returns "romfs"<br/>/// directory of the application as it is uncommon to store resources outside<br/>/// the executable. As such it is not a writable directory.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetBasePath")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetBasePath()
@@ -1512,10 +1622,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPrefPath")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPrefPathNative([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app);
-
+		internal static byte* SDLGetPrefPathNative([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[639])(org, app);
+		}
 		/// <summary>/// Get the user-and-app-specific path where files can be written.<br/>/// Get the "pref dir". This is meant to be where users can write personal<br/>/// files (preferences and save games, etc) that are specific to your<br/>/// application. This directory is unique per user, per application.<br/>/// This function will decide the appropriate location in the native<br/>/// filesystem, create the directory if necessary, and return a string of the<br/>/// absolute path to the directory in UTF-8 encoding.<br/>/// On Windows, the string might look like:<br/>/// `C:<br/>/// \<br/>/// Users<br/>/// \<br/>/// bob<br/>/// \<br/>/// AppData<br/>/// \<br/>/// Roaming<br/>/// \<br/>/// My Company<br/>/// \<br/>/// My Program Name<br/>/// \<br/>/// `<br/>/// On Linux, the string might look like:<br/>/// `/home/bob/.local/share/My Program Name/`<br/>/// On Mac OS X, the string might look like:<br/>/// `/Users/bob/Library/Application Support/My Program Name/`<br/>/// You should assume the path returned by this function is the only safe place<br/>/// to write files (and that SDL_GetBasePath(), while it might be writable, or<br/>/// even the parent of the returned path, isn't where you should be writing<br/>/// things).<br/>/// Both the org and app strings may become part of a directory name, so please<br/>/// follow these rules:<br/>/// - Try to use the same org string (_including case-sensitivity_) for all<br/>/// your applications that use this function.<br/>/// - Always use a unique app string for each one, and make sure it never<br/>/// changes for an app once you've decided on it.<br/>/// - Unicode characters are legal, as long as it's UTF-8 encoded, but...<br/>/// - ...only use letters, numbers, and spaces. Avoid punctuation like "Game<br/>/// Name 2: Bad Guy's Revenge!" ... "Game Name 2" is sufficient.<br/>/// The returned path is guaranteed to end with a path separator ('<br/>/// \<br/>/// ' on<br/>/// Windows, '/' on most other platforms).<br/>/// The pointer returned is owned by the caller. Please call SDL_free() on the<br/>/// pointer when done with it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrefPath")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetPrefPath([NativeName(NativeNameType.Param, "org")] [NativeName(NativeNameType.Type, "const char*")] byte* org, [NativeName(NativeNameType.Param, "app")] [NativeName(NativeNameType.Type, "const char*")] byte* app)
@@ -1828,10 +1938,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_NumHaptics")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NumHaptics")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLNumHapticsNative();
-
+		internal static int SDLNumHapticsNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[640])();
+		}
 		/// <summary>/// Count the number of haptic devices attached to the system.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NumHaptics")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLNumHaptics()
@@ -1850,10 +1960,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLHapticNameNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
+		internal static byte* SDLHapticNameNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*>)vt[641])(deviceIndex);
+		}
 		/// <summary>/// Get the implementation dependent name of a haptic device.<br/>/// This can be called before any joysticks are opened. If no name can be<br/>/// found, this function returns NULL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLHapticName([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
@@ -1883,10 +1993,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticOpen")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpen")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
+		internal static SDLHaptic* SDLHapticOpenNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, SDLHaptic*>)vt[642])(deviceIndex);
+		}
 		/// <summary>/// Open a haptic device for use.<br/>/// The index passed as an argument refers to the N'th haptic device on this<br/>/// system.<br/>/// When opening a haptic device, its gain will be set to maximum and<br/>/// autocenter will be disabled. To modify these values use SDL_HapticSetGain()<br/>/// and SDL_HapticSetAutocenter().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpen")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
 		public static SDLHaptic* SDLHapticOpen([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
@@ -1903,10 +2013,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticOpened")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpened")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticOpenedNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex);
-
+		internal static int SDLHapticOpenedNative([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, int>)vt[643])(deviceIndex);
+		}
 		/// <summary>/// Check if the haptic device at the designated index has been opened.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpened")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticOpened([NativeName(NativeNameType.Param, "device_index")] [NativeName(NativeNameType.Type, "int")] int deviceIndex)
@@ -1923,10 +2033,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticIndex")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticIndex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticIndexNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticIndexNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[644])(haptic);
+		}
 		/// <summary>/// Get the index of a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticIndex")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticIndex([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -1954,10 +2064,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MouseIsHaptic")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MouseIsHaptic")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLMouseIsHapticNative();
-
+		internal static int SDLMouseIsHapticNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[645])();
+		}
 		/// <summary>/// Query whether or not the current mouse has haptic capabilities.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MouseIsHaptic")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLMouseIsHaptic()
@@ -1974,10 +2084,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromMouse")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpenFromMouse")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenFromMouseNative();
-
+		internal static SDLHaptic* SDLHapticOpenFromMouseNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*>)vt[646])();
+		}
 		/// <summary>/// Try to open a haptic device from the current mouse.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromMouse")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
 		public static SDLHaptic* SDLHapticOpenFromMouse()
@@ -1994,10 +2104,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_JoystickIsHaptic")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_JoystickIsHaptic")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLJoystickIsHapticNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
+		internal static int SDLJoystickIsHapticNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLJoystick*, int>)vt[647])(joystick);
+		}
 		/// <summary>/// Query if a joystick has haptic features.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_JoystickIsHaptic")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLJoystickIsHaptic([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
@@ -2031,10 +2141,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromJoystick")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticOpenFromJoystick")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHaptic* SDLHapticOpenFromJoystickNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick);
-
+		internal static SDLHaptic* SDLHapticOpenFromJoystickNative([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLJoystick*, SDLHaptic*>)vt[648])(joystick);
+		}
 		/// <summary>/// Open a haptic device for use from a joystick device.<br/>/// You must still close the haptic device separately. It will not be closed<br/>/// with the joystick.<br/>/// When opened from a joystick you should first close the haptic device before<br/>/// closing the joystick device. If not, on some implementations the haptic<br/>/// device will also get unallocated and you'll be unable to use force feedback<br/>/// on that device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticOpenFromJoystick")]
 		[return: NativeName(NativeNameType.Type, "SDL_Haptic*")]
 		public static SDLHaptic* SDLHapticOpenFromJoystick([NativeName(NativeNameType.Param, "joystick")] [NativeName(NativeNameType.Type, "SDL_Joystick*")] SDLJoystick* joystick)
@@ -2062,10 +2172,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticClose")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticClose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHapticCloseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static void SDLHapticCloseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			((delegate* unmanaged[Cdecl]<SDLHaptic*, void>)vt[649])(haptic);
+		}
 		/// <summary>/// Close a haptic device previously opened with SDL_HapticOpen().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticClose")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLHapticClose([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2094,10 +2204,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticNumEffects")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumEffects")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumEffectsNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticNumEffectsNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[650])(haptic);
+		}
 		/// <summary>/// Get the number of effects a haptic device can store.<br/>/// On some platforms this isn't fully supported, and therefore is an<br/>/// approximation. Always check to see if your created effect was actually<br/>/// created and do not rely solely on SDL_HapticNumEffects().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumEffects")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticNumEffects([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2126,10 +2236,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticNumEffectsPlaying")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumEffectsPlaying")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumEffectsPlayingNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticNumEffectsPlayingNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[651])(haptic);
+		}
 		/// <summary>/// Get the number of effects a haptic device can play at the same time.<br/>/// This is not supported on all platforms, but will always return a value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumEffectsPlaying")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticNumEffectsPlaying([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2157,10 +2267,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticQuery")]
 		[return: NativeName(NativeNameType.Type, "unsigned int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticQuery")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLHapticQueryNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static uint SDLHapticQueryNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, uint>)vt[652])(haptic);
+		}
 		/// <summary>/// Get the haptic device's supported features in bitwise manner.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticQuery")]
 		[return: NativeName(NativeNameType.Type, "unsigned int")]
 		public static uint SDLHapticQuery([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2189,10 +2299,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticNumAxes")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNumAxes")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNumAxesNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticNumAxesNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[653])(haptic);
+		}
 		/// <summary>/// Get the number of haptic axes the device has.<br/>/// The number of haptic axes might be useful if working with the<br/>/// SDL_HapticDirection effect.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNumAxes")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticNumAxes([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2220,10 +2330,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticEffectSupported")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticEffectSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticEffectSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect);
-
+		internal static int SDLHapticEffectSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, SDLHapticEffect*, int>)vt[654])(haptic, effect);
+		}
 		/// <summary>/// Check to see if an effect is supported by a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticEffectSupported")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticEffectSupported([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
@@ -2276,10 +2386,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticNewEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticNewEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticNewEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect);
-
+		internal static int SDLHapticNewEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, SDLHapticEffect*, int>)vt[655])(haptic, effect);
+		}
 		/// <summary>/// Create a new haptic effect on a specified device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticNewEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticNewEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* effect)
@@ -2336,10 +2446,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticUpdateEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticUpdateEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticUpdateEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* data);
-
+		internal static int SDLHapticUpdateEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* data)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, SDLHapticEffect*, int>)vt[656])(haptic, effect, data);
+		}
 		/// <summary>/// Update the properties of an effect.<br/>/// Can be used dynamically, although behavior when dynamically changing<br/>/// direction may be strange. Specifically the effect may re-upload itself and<br/>/// start playing from the start. You also cannot change the type either when<br/>/// running SDL_HapticUpdateEffect().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticUpdateEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticUpdateEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "SDL_HapticEffect*")] SDLHapticEffect* data)
@@ -2397,10 +2507,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticRunEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRunEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRunEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "iterations")] [NativeName(NativeNameType.Type, "Uint32")] uint iterations);
-
+		internal static int SDLHapticRunEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "iterations")] [NativeName(NativeNameType.Type, "Uint32")] uint iterations)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, uint, int>)vt[657])(haptic, effect, iterations);
+		}
 		/// <summary>/// Run the haptic effect on its associated haptic device.<br/>/// To repeat the effect over and over indefinitely, set `iterations` to<br/>/// `SDL_HAPTIC_INFINITY`. (Repeats the envelope - attack and fade.) To make<br/>/// one instance of the effect last indefinitely (so the effect does not fade),<br/>/// set the effect's `length` in its structure/union to `SDL_HAPTIC_INFINITY`<br/>/// instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRunEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticRunEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect, [NativeName(NativeNameType.Param, "iterations")] [NativeName(NativeNameType.Type, "Uint32")] uint iterations)
@@ -2429,10 +2539,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticStopEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticStopEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticStopEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
+		internal static int SDLHapticStopEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, int>)vt[658])(haptic, effect);
+		}
 		/// <summary>/// Stop the haptic effect on its associated haptic device.<br/>/// *<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticStopEffect")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticStopEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
@@ -2462,10 +2572,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticDestroyEffect")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticDestroyEffect")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHapticDestroyEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
+		internal static void SDLHapticDestroyEffectNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
+		{
+			((delegate* unmanaged[Cdecl]<SDLHaptic*, int, void>)vt[659])(haptic, effect);
+		}
 		/// <summary>/// Destroy a haptic effect on the device.<br/>/// This will stop the effect if it's running. Effects are automatically<br/>/// destroyed when the device is closed.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticDestroyEffect")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLHapticDestroyEffect([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
@@ -2492,10 +2602,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticGetEffectStatus")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticGetEffectStatus")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticGetEffectStatusNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect);
-
+		internal static int SDLHapticGetEffectStatusNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, int>)vt[660])(haptic, effect);
+		}
 		/// <summary>/// Get the status of the current effect on the specified haptic device.<br/>/// Device must support the SDL_HAPTIC_STATUS feature.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticGetEffectStatus")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticGetEffectStatus([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "effect")] [NativeName(NativeNameType.Type, "int")] int effect)
@@ -2528,10 +2638,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticSetGain")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticSetGain")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticSetGainNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "gain")] [NativeName(NativeNameType.Type, "int")] int gain);
-
+		internal static int SDLHapticSetGainNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "gain")] [NativeName(NativeNameType.Type, "int")] int gain)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, int>)vt[661])(haptic, gain);
+		}
 		/// <summary>/// Set the global gain of the specified haptic device.<br/>/// Device must support the SDL_HAPTIC_GAIN feature.<br/>/// The user may specify the maximum gain by setting the environment variable<br/>/// `SDL_HAPTIC_GAIN_MAX` which should be between 0 and 100. All calls to<br/>/// SDL_HapticSetGain() will scale linearly using `SDL_HAPTIC_GAIN_MAX` as the<br/>/// maximum.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticSetGain")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticSetGain([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "gain")] [NativeName(NativeNameType.Type, "int")] int gain)
@@ -2562,10 +2672,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticSetAutocenter")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticSetAutocenter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticSetAutocenterNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "autocenter")] [NativeName(NativeNameType.Type, "int")] int autocenter);
-
+		internal static int SDLHapticSetAutocenterNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "autocenter")] [NativeName(NativeNameType.Type, "int")] int autocenter)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int, int>)vt[662])(haptic, autocenter);
+		}
 		/// <summary>/// Set the global autocenter of the device.<br/>/// Autocenter should be between 0 and 100. Setting it to 0 will disable<br/>/// autocentering.<br/>/// Device must support the SDL_HAPTIC_AUTOCENTER feature.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticSetAutocenter")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticSetAutocenter([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "autocenter")] [NativeName(NativeNameType.Type, "int")] int autocenter)
@@ -2597,10 +2707,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticPause")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticPause")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticPauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticPauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[663])(haptic);
+		}
 		/// <summary>/// Pause a haptic device.<br/>/// Device must support the `SDL_HAPTIC_PAUSE` feature. Call<br/>/// SDL_HapticUnpause() to resume playback.<br/>/// Do not modify the effects nor add new ones while the device is paused. That<br/>/// can cause all sorts of weird errors.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticPause")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticPause([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2629,10 +2739,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticUnpause")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticUnpause")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticUnpauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticUnpauseNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[664])(haptic);
+		}
 		/// <summary>/// Unpause a haptic device.<br/>/// Call to unpause after SDL_HapticPause().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticUnpause")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticUnpause([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2659,10 +2769,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticStopAll")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticStopAll")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticStopAllNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticStopAllNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[665])(haptic);
+		}
 		/// <summary>/// Stop all the currently playing effects on a haptic device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticStopAll")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticStopAll([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2690,10 +2800,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticRumbleSupported")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleSupported")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticRumbleSupportedNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[666])(haptic);
+		}
 		/// <summary>/// Check whether rumble is supported on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleSupported")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticRumbleSupported([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2721,10 +2831,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticRumbleInit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleInit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleInitNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticRumbleInitNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[667])(haptic);
+		}
 		/// <summary>/// Initialize a haptic device for simple rumble playback.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleInit")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticRumbleInit([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2752,10 +2862,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticRumblePlay")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumblePlay")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumblePlayNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "float")] float strength, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "Uint32")] uint length);
-
+		internal static int SDLHapticRumblePlayNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "float")] float strength, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "Uint32")] uint length)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, float, uint, int>)vt[668])(haptic, strength, length);
+		}
 		/// <summary>/// Run a simple rumble effect on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumblePlay")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticRumblePlay([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic, [NativeName(NativeNameType.Param, "strength")] [NativeName(NativeNameType.Type, "float")] float strength, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "Uint32")] uint length)
@@ -2783,10 +2893,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HapticRumbleStop")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HapticRumbleStop")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHapticRumbleStopNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic);
-
+		internal static int SDLHapticRumbleStopNative([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHaptic*, int>)vt[669])(haptic);
+		}
 		/// <summary>/// Stop the simple rumble on a haptic device.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HapticRumbleStop")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHapticRumbleStop([NativeName(NativeNameType.Param, "haptic")] [NativeName(NativeNameType.Type, "SDL_Haptic*")] SDLHaptic* haptic)
@@ -2820,10 +2930,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_init")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_init")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidInitNative();
-
+		internal static int SDLHidInitNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[670])();
+		}
 		/// <summary>/// Initialize the HIDAPI library.<br/>/// This function initializes the HIDAPI library. Calling it is not strictly<br/>/// necessary, as it will be called automatically by SDL_hid_enumerate() and<br/>/// any of the SDL_hid_open_*() functions if it is needed. This function should<br/>/// be called at the beginning of execution however, if there is a chance of<br/>/// HIDAPI handles being opened by different threads simultaneously.<br/>/// Each call to this function should have a matching call to SDL_hid_exit()<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_init")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidInit()
@@ -2842,10 +2952,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_exit")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_exit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidExitNative();
-
+		internal static int SDLHidExitNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[671])();
+		}
 		/// <summary>/// Finalize the HIDAPI library.<br/>/// This function frees all of the static data associated with HIDAPI. It<br/>/// should be called at the end of execution to avoid memory leaks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_exit")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidExit()
@@ -2869,10 +2979,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_device_change_count")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_device_change_count")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLHidDeviceChangeCountNative();
-
+		internal static uint SDLHidDeviceChangeCountNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<uint>)vt[672])();
+		}
 		/// <summary>/// Check to see if devices may have been added or removed.<br/>/// Enumerating the HID devices is an expensive operation, so you can call this<br/>/// to see if there have been any system device changes since the last call to<br/>/// this function. A change in the counter returned doesn't necessarily mean<br/>/// that anything has changed, but you can call SDL_hid_enumerate() to get an<br/>/// updated device list.<br/>/// Calling this function for the first time may cause a thread or other system<br/>/// resource to be allocated to track device change notifications.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_device_change_count")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLHidDeviceChangeCount()
@@ -2894,127 +3004,15 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_enumerate")]
 		[return: NativeName(NativeNameType.Type, "SDL_hid_device_info*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_enumerate")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDeviceInfo* SDLHidEnumerateNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId);
-
+		internal static SDLHidDeviceInfo* SDLHidEnumerateNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId)
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort, ushort, SDLHidDeviceInfo*>)vt[673])(vendorId, productId);
+		}
 		/// <summary>/// Enumerate the HID Devices.<br/>/// This function returns a linked list of all the HID devices attached to the<br/>/// system which match vendor_id and product_id. If `vendor_id` is set to 0<br/>/// then any vendor matches. If `product_id` is set to 0 then any product<br/>/// matches. If `vendor_id` and `product_id` are both set to 0, then all HID<br/>/// devices will be returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_enumerate")]
 		[return: NativeName(NativeNameType.Type, "SDL_hid_device_info*")]
 		public static SDLHidDeviceInfo* SDLHidEnumerate([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId)
 		{
 			SDLHidDeviceInfo* ret = SDLHidEnumerateNative(vendorId, productId);
-			return ret;
-		}
-
-		/// <summary>
-		/// Free an enumeration Linked List<br/>
-		/// This function frees a linked list created by SDL_hid_enumerate().<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_free_enumeration")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidFreeEnumerationNative([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs);
-
-		/// <summary>/// Free an enumeration Linked List<br/>/// This function frees a linked list created by SDL_hid_enumerate().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHidFreeEnumeration([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs)
-		{
-			SDLHidFreeEnumerationNative(devs);
-		}
-
-		/// <summary>/// Free an enumeration Linked List<br/>/// This function frees a linked list created by SDL_hid_enumerate().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLHidFreeEnumeration([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] ref SDLHidDeviceInfo devs)
-		{
-			fixed (SDLHidDeviceInfo* pdevs = &devs)
-			{
-				SDLHidFreeEnumerationNative((SDLHidDeviceInfo*)pdevs);
-			}
-		}
-
-		/// <summary>
-		/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>
-		/// a serial number.<br/>
-		/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>
-		/// is opened.<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_open")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDevice* SDLHidOpenNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber);
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber)
-		{
-			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, serialNumber);
-			return ret;
-		}
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] ref char serialNumber)
-		{
-			fixed (char* pserialNumber = &serialNumber)
-			{
-				SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, (char*)pserialNumber);
-				return ret;
-			}
-		}
-
-		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] string serialNumber)
-		{
-			char* pStr0 = null;
-			int pStrSize0 = 0;
-			if (serialNumber != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF16(serialNumber);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = (char*)pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF16(serialNumber, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = '\0';
-			}
-			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// Open a HID device by its path name.<br/>
-		/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>
-		/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_open_path")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLHidDevice* SDLHidOpenPathNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive);
-
-		/// <summary>/// Open a HID device by its path name.<br/>/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
-		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
-		public static SDLHidDevice* SDLHidOpenPath([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive)
-		{
-			SDLHidDevice* ret = SDLHidOpenPathNative(path, bExclusive);
 			return ret;
 		}
 	}

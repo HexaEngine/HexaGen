@@ -8,6 +8,7 @@
   "DelegatesAsVoidPointer": true,
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": true,
+  "ImportType": "VTable",
   "IncludeFolders": [
     "C:\\VulkanSDK\\1.3.250.0\\Include\\"
   ],

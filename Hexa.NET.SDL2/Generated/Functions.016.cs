@@ -17,12 +17,168 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
+		[NativeName(NativeNameType.Func, "glGetPixelMapusv")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlGetPixelMapusvNative([NativeName(NativeNameType.Param, "map")] [NativeName(NativeNameType.Type, "GLenum")] uint map, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLushort*")] ushort* values)
+		{
+			((delegate* unmanaged[Cdecl]<uint, ushort*, void>)vt[1137])(map, values);
+		}
+		[NativeName(NativeNameType.Func, "glGetPixelMapusv")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlGetPixelMapusv([NativeName(NativeNameType.Param, "map")] [NativeName(NativeNameType.Type, "GLenum")] uint map, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLushort*")] ushort* values)
+		{
+			GlGetPixelMapusvNative(map, values);
+		}
+
+		[NativeName(NativeNameType.Func, "glGetPixelMapusv")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlGetPixelMapusv([NativeName(NativeNameType.Param, "map")] [NativeName(NativeNameType.Type, "GLenum")] uint map, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLushort*")] ref ushort values)
+		{
+			fixed (ushort* pvalues = &values)
+			{
+				GlGetPixelMapusvNative(map, (ushort*)pvalues);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "glBitmap")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlBitmapNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "xorig")] [NativeName(NativeNameType.Type, "GLfloat")] float xorig, [NativeName(NativeNameType.Param, "yorig")] [NativeName(NativeNameType.Type, "GLfloat")] float yorig, [NativeName(NativeNameType.Param, "xmove")] [NativeName(NativeNameType.Type, "GLfloat")] float xmove, [NativeName(NativeNameType.Param, "ymove")] [NativeName(NativeNameType.Type, "GLfloat")] float ymove, [NativeName(NativeNameType.Param, "bitmap")] [NativeName(NativeNameType.Type, "const GLubyte*")] byte* bitmap)
+		{
+			((delegate* unmanaged[Cdecl]<int, int, float, float, float, float, byte*, void>)vt[1138])(width, height, xorig, yorig, xmove, ymove, bitmap);
+		}
+		[NativeName(NativeNameType.Func, "glBitmap")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlBitmap([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "xorig")] [NativeName(NativeNameType.Type, "GLfloat")] float xorig, [NativeName(NativeNameType.Param, "yorig")] [NativeName(NativeNameType.Type, "GLfloat")] float yorig, [NativeName(NativeNameType.Param, "xmove")] [NativeName(NativeNameType.Type, "GLfloat")] float xmove, [NativeName(NativeNameType.Param, "ymove")] [NativeName(NativeNameType.Type, "GLfloat")] float ymove, [NativeName(NativeNameType.Param, "bitmap")] [NativeName(NativeNameType.Type, "const GLubyte*")] byte* bitmap)
+		{
+			GlBitmapNative(width, height, xorig, yorig, xmove, ymove, bitmap);
+		}
+
+		[NativeName(NativeNameType.Func, "glBitmap")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlBitmap([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "xorig")] [NativeName(NativeNameType.Type, "GLfloat")] float xorig, [NativeName(NativeNameType.Param, "yorig")] [NativeName(NativeNameType.Type, "GLfloat")] float yorig, [NativeName(NativeNameType.Param, "xmove")] [NativeName(NativeNameType.Type, "GLfloat")] float xmove, [NativeName(NativeNameType.Param, "ymove")] [NativeName(NativeNameType.Type, "GLfloat")] float ymove, [NativeName(NativeNameType.Param, "bitmap")] [NativeName(NativeNameType.Type, "const GLubyte*")] ref byte bitmap)
+		{
+			fixed (byte* pbitmap = &bitmap)
+			{
+				GlBitmapNative(width, height, xorig, yorig, xmove, ymove, (byte*)pbitmap);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "glReadPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlReadPixelsNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<int, int, int, int, uint, uint, void*, void>)vt[1139])(x, y, width, height, format, type, pixels);
+		}
+		[NativeName(NativeNameType.Func, "glReadPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlReadPixels([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "GLvoid*")] void* pixels)
+		{
+			GlReadPixelsNative(x, y, width, height, format, type, pixels);
+		}
+
+		[NativeName(NativeNameType.Func, "glDrawPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlDrawPixelsNative([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<int, int, uint, uint, void*, void>)vt[1140])(width, height, format, type, pixels);
+		}
+		[NativeName(NativeNameType.Func, "glDrawPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlDrawPixels([NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			GlDrawPixelsNative(width, height, format, type, pixels);
+		}
+
+		[NativeName(NativeNameType.Func, "glCopyPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlCopyPixelsNative([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type)
+		{
+			((delegate* unmanaged[Cdecl]<int, int, int, int, uint, void>)vt[1141])(x, y, width, height, type);
+		}
+		[NativeName(NativeNameType.Func, "glCopyPixels")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlCopyPixels([NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type)
+		{
+			GlCopyPixelsNative(x, y, width, height, type);
+		}
+
+		/// <summary>
+		/// Stenciling<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "glStencilFunc")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlStencilFuncNative([NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "GLenum")] uint func, [NativeName(NativeNameType.Param, "ref")] [NativeName(NativeNameType.Type, "GLint")] int reference, [NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "GLuint")] uint mask)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, void>)vt[1142])(func, reference, mask);
+		}
+		/// <summary>/// Stenciling<br/>/// </summary>		[NativeName(NativeNameType.Func, "glStencilFunc")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlStencilFunc([NativeName(NativeNameType.Param, "func")] [NativeName(NativeNameType.Type, "GLenum")] uint func, [NativeName(NativeNameType.Param, "ref")] [NativeName(NativeNameType.Type, "GLint")] int reference, [NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "GLuint")] uint mask)
+		{
+			GlStencilFuncNative(func, reference, mask);
+		}
+
+		[NativeName(NativeNameType.Func, "glStencilMask")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlStencilMaskNative([NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "GLuint")] uint mask)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1143])(mask);
+		}
+		[NativeName(NativeNameType.Func, "glStencilMask")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlStencilMask([NativeName(NativeNameType.Param, "mask")] [NativeName(NativeNameType.Type, "GLuint")] uint mask)
+		{
+			GlStencilMaskNative(mask);
+		}
+
+		[NativeName(NativeNameType.Func, "glStencilOp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlStencilOpNative([NativeName(NativeNameType.Param, "fail")] [NativeName(NativeNameType.Type, "GLenum")] uint fail, [NativeName(NativeNameType.Param, "zfail")] [NativeName(NativeNameType.Type, "GLenum")] uint zfail, [NativeName(NativeNameType.Param, "zpass")] [NativeName(NativeNameType.Type, "GLenum")] uint zpass)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, uint, void>)vt[1144])(fail, zfail, zpass);
+		}
+		[NativeName(NativeNameType.Func, "glStencilOp")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlStencilOp([NativeName(NativeNameType.Param, "fail")] [NativeName(NativeNameType.Type, "GLenum")] uint fail, [NativeName(NativeNameType.Param, "zfail")] [NativeName(NativeNameType.Type, "GLenum")] uint zfail, [NativeName(NativeNameType.Param, "zpass")] [NativeName(NativeNameType.Type, "GLenum")] uint zpass)
+		{
+			GlStencilOpNative(fail, zfail, zpass);
+		}
+
+		[NativeName(NativeNameType.Func, "glClearStencil")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlClearStencilNative([NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
+		{
+			((delegate* unmanaged[Cdecl]<int, void>)vt[1145])(s);
+		}
+		[NativeName(NativeNameType.Func, "glClearStencil")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlClearStencil([NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
+		{
+			GlClearStencilNative(s);
+		}
+
+		/// <summary>
+		/// Texture mapping<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "glTexGend")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void GlTexGendNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLdouble")] double param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, double, void>)vt[1146])(coord, pname, param);
+		}
+		/// <summary>/// Texture mapping<br/>/// </summary>		[NativeName(NativeNameType.Func, "glTexGend")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void GlTexGend([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLdouble")] double param)
+		{
+			GlTexGendNative(coord, pname, param);
+		}
+
 		[NativeName(NativeNameType.Func, "glTexGenf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexGenf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexGenfNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param);
-
+		internal static void GlTexGenfNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float, void>)vt[1147])(coord, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexGenf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexGenf([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
@@ -32,10 +188,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexGeni")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexGeni")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexGeniNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param);
-
+		internal static void GlTexGeniNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, void>)vt[1148])(coord, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexGeni")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexGeni([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
@@ -45,10 +201,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexGendv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexGendv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexGendvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* @params);
-
+		internal static void GlTexGendvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, double*, void>)vt[1149])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexGendv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexGendv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* @params)
@@ -68,10 +224,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexGenfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexGenfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexGenfvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlTexGenfvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1150])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexGenfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexGenfv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -91,10 +247,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexGeniv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexGeniv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexGenivNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlTexGenivNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1151])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexGeniv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexGeniv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -114,10 +270,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexGendv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexGendv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexGendvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLdouble*")] double* @params);
-
+		internal static void GlGetTexGendvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLdouble*")] double* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, double*, void>)vt[1152])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexGendv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexGendv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLdouble*")] double* @params)
@@ -137,10 +293,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexGenfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexGenfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexGenfvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetTexGenfvNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1153])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexGenfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexGenfv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -160,10 +316,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexGeniv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexGeniv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexGenivNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetTexGenivNative([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1154])(coord, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexGeniv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexGeniv([NativeName(NativeNameType.Param, "coord")] [NativeName(NativeNameType.Type, "GLenum")] uint coord, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -183,10 +339,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexEnvf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexEnvf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexEnvfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param);
-
+		internal static void GlTexEnvfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float, void>)vt[1155])(target, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexEnvf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexEnvf([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
@@ -196,10 +352,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexEnvi")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexEnvi")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexEnviNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param);
-
+		internal static void GlTexEnviNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, void>)vt[1156])(target, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexEnvi")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexEnvi([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
@@ -209,10 +365,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexEnvfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexEnvfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexEnvfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlTexEnvfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1157])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexEnvfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexEnvfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -232,10 +388,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexEnviv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexEnviv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexEnvivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlTexEnvivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1158])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexEnviv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexEnviv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -255,10 +411,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexEnvfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexEnvfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexEnvfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetTexEnvfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1159])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexEnvfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexEnvfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -278,10 +434,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexEnviv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexEnviv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexEnvivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetTexEnvivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1160])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexEnviv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexEnviv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -301,10 +457,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexParameterf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexParameterf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexParameterfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param);
-
+		internal static void GlTexParameterfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float, void>)vt[1161])(target, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexParameterf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexParameterf([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
@@ -314,10 +470,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexParameteri")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexParameteri")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexParameteriNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param);
-
+		internal static void GlTexParameteriNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, void>)vt[1162])(target, pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glTexParameteri")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexParameteri([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
@@ -327,10 +483,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlTexParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1163])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -350,10 +506,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlTexParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1164])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glTexParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -373,10 +529,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetTexParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1165])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -396,10 +552,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetTexParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1166])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -419,10 +575,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexLevelParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexLevelParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexLevelParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetTexLevelParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, float*, void>)vt[1167])(target, level, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexLevelParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexLevelParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -442,10 +598,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexLevelParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexLevelParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexLevelParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetTexLevelParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int*, void>)vt[1168])(target, level, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexLevelParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexLevelParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -465,10 +621,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, uint, uint, void*, void>)vt[1169])(target, level, internalFormat, width, border, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -478,10 +634,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, uint, uint, void*, void>)vt[1170])(target, level, internalFormat, width, height, border, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -491,10 +647,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetTexImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetTexImage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetTexImageNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "GLvoid*")] void* pixels);
-
+		internal static void GlGetTexImageNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, uint, void*, void>)vt[1171])(target, level, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glGetTexImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetTexImage([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "GLvoid*")] void* pixels)
@@ -507,10 +663,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glGenTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGenTextures")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGenTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "GLuint*")] uint* textures);
-
+		internal static void GlGenTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "GLuint*")] uint* textures)
+		{
+			((delegate* unmanaged[Cdecl]<int, uint*, void>)vt[1172])(n, textures);
+		}
 		/// <summary>/// 1.1 functions <br/>/// </summary>		[NativeName(NativeNameType.Func, "glGenTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGenTextures([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "GLuint*")] uint* textures)
@@ -530,10 +686,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glDeleteTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glDeleteTextures")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlDeleteTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures);
-
+		internal static void GlDeleteTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures)
+		{
+			((delegate* unmanaged[Cdecl]<int, uint*, void>)vt[1173])(n, textures);
+		}
 		[NativeName(NativeNameType.Func, "glDeleteTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlDeleteTextures([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures)
@@ -553,10 +709,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glBindTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glBindTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlBindTextureNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture);
-
+		internal static void GlBindTextureNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, void>)vt[1174])(target, texture);
+		}
 		[NativeName(NativeNameType.Func, "glBindTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlBindTexture([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture)
@@ -566,10 +722,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glPrioritizeTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glPrioritizeTextures")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlPrioritizeTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "priorities")] [NativeName(NativeNameType.Type, "const GLclampf*")] float* priorities);
-
+		internal static void GlPrioritizeTexturesNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "priorities")] [NativeName(NativeNameType.Type, "const GLclampf*")] float* priorities)
+		{
+			((delegate* unmanaged[Cdecl]<int, uint*, float*, void>)vt[1175])(n, textures, priorities);
+		}
 		[NativeName(NativeNameType.Func, "glPrioritizeTextures")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlPrioritizeTextures([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "priorities")] [NativeName(NativeNameType.Type, "const GLclampf*")] float* priorities)
@@ -612,10 +768,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glAreTexturesResident")]
 		[return: NativeName(NativeNameType.Type, "GLboolean")]
-		[LibraryImport(LibName, EntryPoint = "glAreTexturesResident")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte GlAreTexturesResidentNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "residences")] [NativeName(NativeNameType.Type, "GLboolean*")] byte* residences);
-
+		internal static byte GlAreTexturesResidentNative([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "residences")] [NativeName(NativeNameType.Type, "GLboolean*")] byte* residences)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, uint*, byte*, byte>)vt[1176])(n, textures, residences);
+		}
 		[NativeName(NativeNameType.Func, "glAreTexturesResident")]
 		[return: NativeName(NativeNameType.Type, "GLboolean")]
 		public static byte GlAreTexturesResident([NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "GLsizei")] int n, [NativeName(NativeNameType.Param, "textures")] [NativeName(NativeNameType.Type, "const GLuint*")] uint* textures, [NativeName(NativeNameType.Param, "residences")] [NativeName(NativeNameType.Type, "GLboolean*")] byte* residences)
@@ -662,10 +818,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glIsTexture")]
 		[return: NativeName(NativeNameType.Type, "GLboolean")]
-		[LibraryImport(LibName, EntryPoint = "glIsTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte GlIsTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture);
-
+		internal static byte GlIsTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, byte>)vt[1177])(texture);
+		}
 		[NativeName(NativeNameType.Func, "glIsTexture")]
 		[return: NativeName(NativeNameType.Type, "GLboolean")]
 		public static byte GlIsTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLuint")] uint texture)
@@ -676,10 +832,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexSubImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, uint, uint, void*, void>)vt[1178])(target, level, xoffset, width, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexSubImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -689,10 +845,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexSubImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, uint, uint, void*, void>)vt[1179])(target, level, xoffset, yoffset, width, height, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexSubImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -702,10 +858,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyTexImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border);
-
+		internal static void GlCopyTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int, int, int, int, void>)vt[1180])(target, level, internalformat, x, y, width, border);
+		}
 		[NativeName(NativeNameType.Func, "glCopyTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyTexImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border)
@@ -715,10 +871,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyTexImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border);
-
+		internal static void GlCopyTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int, int, int, int, int, void>)vt[1181])(target, level, internalformat, x, y, width, height, border);
+		}
 		[NativeName(NativeNameType.Func, "glCopyTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyTexImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border)
@@ -728,10 +884,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyTexSubImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width);
-
+		internal static void GlCopyTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, void>)vt[1182])(target, level, xoffset, x, y, width);
+		}
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyTexSubImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
@@ -741,10 +897,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyTexSubImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height);
-
+		internal static void GlCopyTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, int, int, void>)vt[1183])(target, level, xoffset, yoffset, x, y, width, height);
+		}
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyTexSubImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
@@ -757,10 +913,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glMap1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMap1d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMap1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points);
-
+		internal static void GlMap1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, int, int, double*, void>)vt[1184])(target, u1, u2, stride, order, points);
+		}
 		/// <summary>/// Evaluators<br/>/// </summary>		[NativeName(NativeNameType.Func, "glMap1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMap1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points)
@@ -780,10 +936,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMap1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMap1f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMap1FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points);
-
+		internal static void GlMap1FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, int, int, float*, void>)vt[1185])(target, u1, u2, stride, order, points);
+		}
 		[NativeName(NativeNameType.Func, "glMap1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMap1F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "GLint")] int stride, [NativeName(NativeNameType.Param, "order")] [NativeName(NativeNameType.Type, "GLint")] int order, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points)
@@ -803,10 +959,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMap2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMap2d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMap2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points);
-
+		internal static void GlMap2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, int, int, double, double, int, int, double*, void>)vt[1186])(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+		}
 		[NativeName(NativeNameType.Func, "glMap2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMap2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* points)
@@ -826,10 +982,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMap2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMap2f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMap2FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points);
-
+		internal static void GlMap2FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, int, int, float, float, int, int, float*, void>)vt[1187])(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+		}
 		[NativeName(NativeNameType.Func, "glMap2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMap2F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "ustride")] [NativeName(NativeNameType.Type, "GLint")] int ustride, [NativeName(NativeNameType.Param, "uorder")] [NativeName(NativeNameType.Type, "GLint")] int uorder, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2, [NativeName(NativeNameType.Param, "vstride")] [NativeName(NativeNameType.Type, "GLint")] int vstride, [NativeName(NativeNameType.Param, "vorder")] [NativeName(NativeNameType.Type, "GLint")] int vorder, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* points)
@@ -849,10 +1005,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMapdv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMapdv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMapdvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble*")] double* v);
-
+		internal static void GlGetMapdvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, double*, void>)vt[1188])(target, query, v);
+		}
 		[NativeName(NativeNameType.Func, "glGetMapdv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMapdv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble*")] double* v)
@@ -872,10 +1028,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMapfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMapfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMapfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat*")] float* v);
-
+		internal static void GlGetMapfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1189])(target, query, v);
+		}
 		[NativeName(NativeNameType.Func, "glGetMapfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMapfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat*")] float* v)
@@ -895,10 +1051,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMapiv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMapiv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMapivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLint*")] int* v);
-
+		internal static void GlGetMapivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1190])(target, query, v);
+		}
 		[NativeName(NativeNameType.Func, "glGetMapiv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMapiv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "query")] [NativeName(NativeNameType.Type, "GLenum")] uint query, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLint*")] int* v)
@@ -918,10 +1074,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord1d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord1DNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u);
-
+		internal static void GlEvalCoord1DNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u)
+		{
+			((delegate* unmanaged[Cdecl]<double, void>)vt[1191])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord1D([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u)
@@ -931,10 +1087,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord1f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord1FNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u);
-
+		internal static void GlEvalCoord1FNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u)
+		{
+			((delegate* unmanaged[Cdecl]<float, void>)vt[1192])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord1F([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u)
@@ -944,10 +1100,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord1dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord1dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord1DvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u);
-
+		internal static void GlEvalCoord1DvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u)
+		{
+			((delegate* unmanaged[Cdecl]<double*, void>)vt[1193])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord1dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord1Dv([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u)
@@ -967,10 +1123,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord1fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord1fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord1FvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u);
-
+		internal static void GlEvalCoord1FvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u)
+		{
+			((delegate* unmanaged[Cdecl]<float*, void>)vt[1194])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord1fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord1Fv([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u)
@@ -990,10 +1146,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord2d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord2DNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble")] double v);
-
+		internal static void GlEvalCoord2DNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble")] double v)
+		{
+			((delegate* unmanaged[Cdecl]<double, double, void>)vt[1195])(u, v);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord2D([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLdouble")] double u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLdouble")] double v)
@@ -1003,10 +1159,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord2f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord2FNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat")] float v);
-
+		internal static void GlEvalCoord2FNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat")] float v)
+		{
+			((delegate* unmanaged[Cdecl]<float, float, void>)vt[1196])(u, v);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord2F([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "GLfloat")] float u, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "GLfloat")] float v)
@@ -1016,10 +1172,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord2dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord2dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord2DvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u);
-
+		internal static void GlEvalCoord2DvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u)
+		{
+			((delegate* unmanaged[Cdecl]<double*, void>)vt[1197])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord2dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord2Dv([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* u)
@@ -1039,10 +1195,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalCoord2fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalCoord2fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalCoord2FvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u);
-
+		internal static void GlEvalCoord2FvNative([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u)
+		{
+			((delegate* unmanaged[Cdecl]<float*, void>)vt[1198])(u);
+		}
 		[NativeName(NativeNameType.Func, "glEvalCoord2fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalCoord2Fv([NativeName(NativeNameType.Param, "u")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* u)
@@ -1062,10 +1218,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMapGrid1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMapGrid1d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMapGrid1DNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2);
-
+		internal static void GlMapGrid1DNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2)
+		{
+			((delegate* unmanaged[Cdecl]<int, double, double, void>)vt[1199])(un, u1, u2);
+		}
 		[NativeName(NativeNameType.Func, "glMapGrid1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMapGrid1D([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2)
@@ -1075,10 +1231,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMapGrid1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMapGrid1f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMapGrid1FNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2);
-
+		internal static void GlMapGrid1FNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2)
+		{
+			((delegate* unmanaged[Cdecl]<int, float, float, void>)vt[1200])(un, u1, u2);
+		}
 		[NativeName(NativeNameType.Func, "glMapGrid1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMapGrid1F([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2)
@@ -1088,10 +1244,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMapGrid2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMapGrid2d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMapGrid2DNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2);
-
+		internal static void GlMapGrid2DNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2)
+		{
+			((delegate* unmanaged[Cdecl]<int, double, double, int, double, double, void>)vt[1201])(un, u1, u2, vn, v1, v2);
+		}
 		[NativeName(NativeNameType.Func, "glMapGrid2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMapGrid2D([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLdouble")] double u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLdouble")] double u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLdouble")] double v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLdouble")] double v2)
@@ -1101,10 +1257,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMapGrid2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMapGrid2f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMapGrid2FNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2);
-
+		internal static void GlMapGrid2FNative([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2)
+		{
+			((delegate* unmanaged[Cdecl]<int, float, float, int, float, float, void>)vt[1202])(un, u1, u2, vn, v1, v2);
+		}
 		[NativeName(NativeNameType.Func, "glMapGrid2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMapGrid2F([NativeName(NativeNameType.Param, "un")] [NativeName(NativeNameType.Type, "GLint")] int un, [NativeName(NativeNameType.Param, "u1")] [NativeName(NativeNameType.Type, "GLfloat")] float u1, [NativeName(NativeNameType.Param, "u2")] [NativeName(NativeNameType.Type, "GLfloat")] float u2, [NativeName(NativeNameType.Param, "vn")] [NativeName(NativeNameType.Type, "GLint")] int vn, [NativeName(NativeNameType.Param, "v1")] [NativeName(NativeNameType.Type, "GLfloat")] float v1, [NativeName(NativeNameType.Param, "v2")] [NativeName(NativeNameType.Type, "GLfloat")] float v2)
@@ -1114,10 +1270,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalPoint1")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalPoint1")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalPoint1Native([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i);
-
+		internal static void GlEvalPoint1Native([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i)
+		{
+			((delegate* unmanaged[Cdecl]<int, void>)vt[1203])(i);
+		}
 		[NativeName(NativeNameType.Func, "glEvalPoint1")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalPoint1([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i)
@@ -1127,10 +1283,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalPoint2")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalPoint2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalPoint2Native([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i, [NativeName(NativeNameType.Param, "j")] [NativeName(NativeNameType.Type, "GLint")] int j);
-
+		internal static void GlEvalPoint2Native([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i, [NativeName(NativeNameType.Param, "j")] [NativeName(NativeNameType.Type, "GLint")] int j)
+		{
+			((delegate* unmanaged[Cdecl]<int, int, void>)vt[1204])(i, j);
+		}
 		[NativeName(NativeNameType.Func, "glEvalPoint2")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalPoint2([NativeName(NativeNameType.Param, "i")] [NativeName(NativeNameType.Type, "GLint")] int i, [NativeName(NativeNameType.Param, "j")] [NativeName(NativeNameType.Type, "GLint")] int j)
@@ -1140,10 +1296,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalMesh1")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalMesh1")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalMesh1Native([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2);
-
+		internal static void GlEvalMesh1Native([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, void>)vt[1205])(mode, i1, i2);
+		}
 		[NativeName(NativeNameType.Func, "glEvalMesh1")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalMesh1([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2)
@@ -1153,10 +1309,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glEvalMesh2")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glEvalMesh2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlEvalMesh2Native([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2, [NativeName(NativeNameType.Param, "j1")] [NativeName(NativeNameType.Type, "GLint")] int j1, [NativeName(NativeNameType.Param, "j2")] [NativeName(NativeNameType.Type, "GLint")] int j2);
-
+		internal static void GlEvalMesh2Native([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2, [NativeName(NativeNameType.Param, "j1")] [NativeName(NativeNameType.Type, "GLint")] int j1, [NativeName(NativeNameType.Param, "j2")] [NativeName(NativeNameType.Type, "GLint")] int j2)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, void>)vt[1206])(mode, i1, i2, j1, j2);
+		}
 		[NativeName(NativeNameType.Func, "glEvalMesh2")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlEvalMesh2([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "i1")] [NativeName(NativeNameType.Type, "GLint")] int i1, [NativeName(NativeNameType.Param, "i2")] [NativeName(NativeNameType.Type, "GLint")] int i2, [NativeName(NativeNameType.Param, "j1")] [NativeName(NativeNameType.Type, "GLint")] int j1, [NativeName(NativeNameType.Param, "j2")] [NativeName(NativeNameType.Type, "GLint")] int j2)
@@ -1169,10 +1325,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glFogf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glFogf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlFogfNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param);
-
+		internal static void GlFogfNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, void>)vt[1207])(pname, param);
+		}
 		/// <summary>/// Fog<br/>/// </summary>		[NativeName(NativeNameType.Func, "glFogf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlFogf([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLfloat")] float param)
@@ -1182,10 +1338,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glFogi")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glFogi")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlFogiNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param);
-
+		internal static void GlFogiNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, void>)vt[1208])(pname, param);
+		}
 		[NativeName(NativeNameType.Func, "glFogi")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlFogi([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "param")] [NativeName(NativeNameType.Type, "GLint")] int param)
@@ -1195,10 +1351,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glFogfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glFogfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlFogfvNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlFogfvNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1209])(pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glFogfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlFogfv([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -1218,10 +1374,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glFogiv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glFogiv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlFogivNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlFogivNative([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1210])(pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glFogiv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlFogiv([NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -1244,10 +1400,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "glFeedbackBuffer")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glFeedbackBuffer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlFeedbackBufferNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLfloat*")] float* buffer);
-
+		internal static void GlFeedbackBufferNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLfloat*")] float* buffer)
+		{
+			((delegate* unmanaged[Cdecl]<int, uint, float*, void>)vt[1211])(size, type, buffer);
+		}
 		/// <summary>/// Selection and Feedback<br/>/// </summary>		[NativeName(NativeNameType.Func, "glFeedbackBuffer")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlFeedbackBuffer([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLfloat*")] float* buffer)
@@ -1267,10 +1423,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glPassThrough")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glPassThrough")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlPassThroughNative([NativeName(NativeNameType.Param, "token")] [NativeName(NativeNameType.Type, "GLfloat")] float token);
-
+		internal static void GlPassThroughNative([NativeName(NativeNameType.Param, "token")] [NativeName(NativeNameType.Type, "GLfloat")] float token)
+		{
+			((delegate* unmanaged[Cdecl]<float, void>)vt[1212])(token);
+		}
 		[NativeName(NativeNameType.Func, "glPassThrough")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlPassThrough([NativeName(NativeNameType.Param, "token")] [NativeName(NativeNameType.Type, "GLfloat")] float token)
@@ -1280,10 +1436,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glSelectBuffer")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glSelectBuffer")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlSelectBufferNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLuint*")] uint* buffer);
-
+		internal static void GlSelectBufferNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLuint*")] uint* buffer)
+		{
+			((delegate* unmanaged[Cdecl]<int, uint*, void>)vt[1213])(size, buffer);
+		}
 		[NativeName(NativeNameType.Func, "glSelectBuffer")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlSelectBuffer([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "GLsizei")] int size, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "GLuint*")] uint* buffer)
@@ -1303,10 +1459,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glInitNames")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glInitNames")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlInitNamesNative();
-
+		internal static void GlInitNamesNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1214])();
+		}
 		[NativeName(NativeNameType.Func, "glInitNames")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlInitNames()
@@ -1316,10 +1472,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glLoadName")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glLoadName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlLoadNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name);
-
+		internal static void GlLoadNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1215])(name);
+		}
 		[NativeName(NativeNameType.Func, "glLoadName")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlLoadName([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name)
@@ -1329,10 +1485,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glPushName")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glPushName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlPushNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name);
-
+		internal static void GlPushNameNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1216])(name);
+		}
 		[NativeName(NativeNameType.Func, "glPushName")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlPushName([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "GLuint")] uint name)
@@ -1342,10 +1498,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glPopName")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glPopName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlPopNameNative();
-
+		internal static void GlPopNameNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1217])();
+		}
 		[NativeName(NativeNameType.Func, "glPopName")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlPopName()
@@ -1355,10 +1511,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glDrawRangeElements")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glDrawRangeElements")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlDrawRangeElementsNative([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLuint")] uint start, [NativeName(NativeNameType.Param, "end")] [NativeName(NativeNameType.Type, "GLuint")] uint end, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "indices")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* indices);
-
+		internal static void GlDrawRangeElementsNative([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLuint")] uint start, [NativeName(NativeNameType.Param, "end")] [NativeName(NativeNameType.Type, "GLuint")] uint end, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "indices")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* indices)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, uint, int, uint, void*, void>)vt[1218])(mode, start, end, count, type, indices);
+		}
 		[NativeName(NativeNameType.Func, "glDrawRangeElements")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlDrawRangeElements([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLuint")] uint start, [NativeName(NativeNameType.Param, "end")] [NativeName(NativeNameType.Type, "GLuint")] uint end, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "indices")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* indices)
@@ -1368,10 +1524,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexImage3D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, int, uint, uint, void*, void>)vt[1219])(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexImage3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalFormat")] [NativeName(NativeNameType.Type, "GLint")] int internalFormat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -1381,10 +1537,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glTexSubImage3D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels);
-
+		internal static void GlTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, int, int, uint, uint, void*, void>)vt[1220])(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+		}
 		[NativeName(NativeNameType.Func, "glTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlTexSubImage3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "pixels")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* pixels)
@@ -1394,10 +1550,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyTexSubImage3D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height);
-
+		internal static void GlCopyTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, int, int, int, void>)vt[1221])(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+		}
 		[NativeName(NativeNameType.Func, "glCopyTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyTexSubImage3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
@@ -1407,10 +1563,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glColorTable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* table);
-
+		internal static void GlColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* table)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, uint, uint, void*, void>)vt[1222])(target, internalformat, width, format, type, table);
+		}
 		[NativeName(NativeNameType.Func, "glColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlColorTable([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* table)
@@ -1420,10 +1576,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glColorSubTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glColorSubTable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlColorSubTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlColorSubTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, uint, uint, void*, void>)vt[1223])(target, start, count, format, type, data);
+		}
 		[NativeName(NativeNameType.Func, "glColorSubTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlColorSubTable([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "GLsizei")] int count, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -1433,10 +1589,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glColorTableParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glColorTableParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlColorTableParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlColorTableParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1224])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glColorTableParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlColorTableParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -1456,10 +1612,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glColorTableParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glColorTableParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlColorTableParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlColorTableParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1225])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glColorTableParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlColorTableParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -1479,10 +1635,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyColorSubTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyColorSubTable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyColorSubTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width);
-
+		internal static void GlCopyColorSubTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, void>)vt[1226])(target, start, x, y, width);
+		}
 		[NativeName(NativeNameType.Func, "glCopyColorSubTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyColorSubTable([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "start")] [NativeName(NativeNameType.Type, "GLsizei")] int start, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
@@ -1492,10 +1648,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyColorTable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width);
-
+		internal static void GlCopyColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, int, int, void>)vt[1227])(target, internalformat, x, y, width);
+		}
 		[NativeName(NativeNameType.Func, "glCopyColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyColorTable([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
@@ -1505,10 +1661,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetColorTable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "GLvoid*")] void* table);
-
+		internal static void GlGetColorTableNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "GLvoid*")] void* table)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, uint, void*, void>)vt[1228])(target, format, type, table);
+		}
 		[NativeName(NativeNameType.Func, "glGetColorTable")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetColorTable([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "table")] [NativeName(NativeNameType.Type, "GLvoid*")] void* table)
@@ -1518,10 +1674,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetColorTableParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetColorTableParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetColorTableParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetColorTableParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1229])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetColorTableParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetColorTableParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -1541,10 +1697,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetColorTableParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetColorTableParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetColorTableParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetColorTableParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1230])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetColorTableParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetColorTableParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -1564,10 +1720,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glBlendEquation")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glBlendEquation")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlBlendEquationNative([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode);
-
+		internal static void GlBlendEquationNative([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1231])(mode);
+		}
 		[NativeName(NativeNameType.Func, "glBlendEquation")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlBlendEquation([NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "GLenum")] uint mode)
@@ -1577,10 +1733,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glBlendColor")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glBlendColor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlBlendColorNative([NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "GLclampf")] float red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "GLclampf")] float green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "GLclampf")] float blue, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "GLclampf")] float alpha);
-
+		internal static void GlBlendColorNative([NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "GLclampf")] float red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "GLclampf")] float green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "GLclampf")] float blue, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "GLclampf")] float alpha)
+		{
+			((delegate* unmanaged[Cdecl]<float, float, float, float, void>)vt[1232])(red, green, blue, alpha);
+		}
 		[NativeName(NativeNameType.Func, "glBlendColor")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlBlendColor([NativeName(NativeNameType.Param, "red")] [NativeName(NativeNameType.Type, "GLclampf")] float red, [NativeName(NativeNameType.Param, "green")] [NativeName(NativeNameType.Type, "GLclampf")] float green, [NativeName(NativeNameType.Param, "blue")] [NativeName(NativeNameType.Type, "GLclampf")] float blue, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "GLclampf")] float alpha)
@@ -1590,10 +1746,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glHistogram")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink);
-
+		internal static void GlHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, byte, void>)vt[1233])(target, width, internalformat, sink);
+		}
 		[NativeName(NativeNameType.Func, "glHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlHistogram([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink)
@@ -1603,10 +1759,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glResetHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glResetHistogram")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlResetHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target);
-
+		internal static void GlResetHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1234])(target);
+		}
 		[NativeName(NativeNameType.Func, "glResetHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlResetHistogram([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target)
@@ -1616,10 +1772,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetHistogram")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values);
-
+		internal static void GlGetHistogramNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values)
+		{
+			((delegate* unmanaged[Cdecl]<uint, byte, uint, uint, void*, void>)vt[1235])(target, reset, format, type, values);
+		}
 		[NativeName(NativeNameType.Func, "glGetHistogram")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetHistogram([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values)
@@ -1629,10 +1785,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetHistogramParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetHistogramParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetHistogramParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetHistogramParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1236])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetHistogramParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetHistogramParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -1652,10 +1808,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetHistogramParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetHistogramParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetHistogramParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetHistogramParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1237])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetHistogramParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetHistogramParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -1675,10 +1831,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMinmax")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink);
-
+		internal static void GlMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, byte, void>)vt[1238])(target, internalformat, sink);
+		}
 		[NativeName(NativeNameType.Func, "glMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMinmax([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "sink")] [NativeName(NativeNameType.Type, "GLboolean")] byte sink)
@@ -1688,10 +1844,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glResetMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glResetMinmax")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlResetMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target);
-
+		internal static void GlResetMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1239])(target);
+		}
 		[NativeName(NativeNameType.Func, "glResetMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlResetMinmax([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target)
@@ -1701,10 +1857,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMinmax")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "types")] [NativeName(NativeNameType.Type, "GLenum")] uint types, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values);
-
+		internal static void GlGetMinmaxNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "types")] [NativeName(NativeNameType.Type, "GLenum")] uint types, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values)
+		{
+			((delegate* unmanaged[Cdecl]<uint, byte, uint, uint, void*, void>)vt[1240])(target, reset, format, types, values);
+		}
 		[NativeName(NativeNameType.Func, "glGetMinmax")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMinmax([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "reset")] [NativeName(NativeNameType.Type, "GLboolean")] byte reset, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "types")] [NativeName(NativeNameType.Type, "GLenum")] uint types, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "GLvoid*")] void* values)
@@ -1714,10 +1870,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMinmaxParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMinmaxParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMinmaxParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetMinmaxParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1241])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetMinmaxParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMinmaxParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -1737,10 +1893,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetMinmaxParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetMinmaxParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetMinmaxParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetMinmaxParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1242])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetMinmaxParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetMinmaxParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -1760,10 +1916,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionFilter1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionFilter1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionFilter1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image);
-
+		internal static void GlConvolutionFilter1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, uint, uint, void*, void>)vt[1243])(target, internalformat, width, format, type, image);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionFilter1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionFilter1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image)
@@ -1773,10 +1929,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionFilter2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image);
-
+		internal static void GlConvolutionFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, int, uint, uint, void*, void>)vt[1244])(target, internalformat, width, height, format, type, image);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionFilter2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* image)
@@ -1786,10 +1942,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionParameterf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionParameterf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionParameterfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat")] float @params);
-
+		internal static void GlConvolutionParameterfNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat")] float @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float, void>)vt[1245])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionParameterf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionParameterf([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat")] float @params)
@@ -1799,10 +1955,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params);
-
+		internal static void GlConvolutionParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1246])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* @params)
@@ -1822,10 +1978,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionParameteri")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionParameteri")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionParameteriNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint")] int @params);
-
+		internal static void GlConvolutionParameteriNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint")] int @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, void>)vt[1247])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionParameteri")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionParameteri([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint")] int @params)
@@ -1835,10 +1991,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glConvolutionParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glConvolutionParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlConvolutionParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params);
-
+		internal static void GlConvolutionParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1248])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glConvolutionParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlConvolutionParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "const GLint*")] int* @params)
@@ -1858,10 +2014,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyConvolutionFilter1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyConvolutionFilter1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyConvolutionFilter1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width);
-
+		internal static void GlCopyConvolutionFilter1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, int, int, void>)vt[1249])(target, internalformat, x, y, width);
+		}
 		[NativeName(NativeNameType.Func, "glCopyConvolutionFilter1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyConvolutionFilter1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width)
@@ -1871,10 +2027,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCopyConvolutionFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCopyConvolutionFilter2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCopyConvolutionFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height);
-
+		internal static void GlCopyConvolutionFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, int, int, int, void>)vt[1250])(target, internalformat, x, y, width, height);
+		}
 		[NativeName(NativeNameType.Func, "glCopyConvolutionFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCopyConvolutionFilter2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "x")] [NativeName(NativeNameType.Type, "GLint")] int x, [NativeName(NativeNameType.Param, "y")] [NativeName(NativeNameType.Type, "GLint")] int y, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height)
@@ -1884,10 +2040,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetConvolutionFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetConvolutionFilter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetConvolutionFilterNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "GLvoid*")] void* image);
-
+		internal static void GlGetConvolutionFilterNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "GLvoid*")] void* image)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, uint, void*, void>)vt[1251])(target, format, type, image);
+		}
 		[NativeName(NativeNameType.Func, "glGetConvolutionFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetConvolutionFilter([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "GLvoid*")] void* image)
@@ -1897,10 +2053,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetConvolutionParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetConvolutionParameterfv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetConvolutionParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params);
-
+		internal static void GlGetConvolutionParameterfvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, float*, void>)vt[1252])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetConvolutionParameterfv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetConvolutionParameterfv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLfloat*")] float* @params)
@@ -1920,10 +2076,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetConvolutionParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetConvolutionParameteriv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetConvolutionParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params);
-
+		internal static void GlGetConvolutionParameterivNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int*, void>)vt[1253])(target, pname, @params);
+		}
 		[NativeName(NativeNameType.Func, "glGetConvolutionParameteriv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetConvolutionParameteriv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "pname")] [NativeName(NativeNameType.Type, "GLenum")] uint pname, [NativeName(NativeNameType.Param, "params")] [NativeName(NativeNameType.Type, "GLint*")] int* @params)
@@ -1943,10 +2099,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glSeparableFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glSeparableFilter2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlSeparableFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* column);
-
+		internal static void GlSeparableFilter2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* column)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, int, int, uint, uint, void*, void*, void>)vt[1254])(target, internalformat, width, height, format, type, row, column);
+		}
 		[NativeName(NativeNameType.Func, "glSeparableFilter2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlSeparableFilter2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* column)
@@ -1956,10 +2112,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetSeparableFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetSeparableFilter")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetSeparableFilterNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "GLvoid*")] void* column, [NativeName(NativeNameType.Param, "span")] [NativeName(NativeNameType.Type, "GLvoid*")] void* span);
-
+		internal static void GlGetSeparableFilterNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "GLvoid*")] void* column, [NativeName(NativeNameType.Param, "span")] [NativeName(NativeNameType.Type, "GLvoid*")] void* span)
+		{
+			((delegate* unmanaged[Cdecl]<uint, uint, uint, void*, void*, void*, void>)vt[1255])(target, format, type, row, column, span);
+		}
 		[NativeName(NativeNameType.Func, "glGetSeparableFilter")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetSeparableFilter([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "GLenum")] uint type, [NativeName(NativeNameType.Param, "row")] [NativeName(NativeNameType.Type, "GLvoid*")] void* row, [NativeName(NativeNameType.Param, "column")] [NativeName(NativeNameType.Type, "GLvoid*")] void* column, [NativeName(NativeNameType.Param, "span")] [NativeName(NativeNameType.Type, "GLvoid*")] void* span)
@@ -1969,10 +2125,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glActiveTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glActiveTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlActiveTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture);
-
+		internal static void GlActiveTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1256])(texture);
+		}
 		[NativeName(NativeNameType.Func, "glActiveTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlActiveTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
@@ -1982,10 +2138,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glClientActiveTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glClientActiveTexture")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlClientActiveTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture);
-
+		internal static void GlClientActiveTextureNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1257])(texture);
+		}
 		[NativeName(NativeNameType.Func, "glClientActiveTexture")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlClientActiveTexture([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
@@ -1995,10 +2151,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int, int, int, void*, void>)vt[1258])(target, level, internalformat, width, border, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2008,10 +2164,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int, int, int, int, void*, void>)vt[1259])(target, level, internalformat, width, height, border, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2021,10 +2177,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexImage3D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, uint, int, int, int, int, int, void*, void>)vt[1260])(target, level, internalformat, width, height, depth, border, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexImage3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "internalformat")] [NativeName(NativeNameType.Type, "GLenum")] uint internalformat, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "GLint")] int border, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2034,10 +2190,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexSubImage1D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexSubImage1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, uint, int, void*, void>)vt[1261])(target, level, xoffset, width, format, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage1D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexSubImage1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2047,10 +2203,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexSubImage2D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexSubImage2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, uint, int, void*, void>)vt[1262])(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage2D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexSubImage2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2060,10 +2216,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glCompressedTexSubImage3D")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlCompressedTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data);
-
+		internal static void GlCompressedTexSubImage3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, int, int, int, uint, int, void*, void>)vt[1263])(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+		}
 		[NativeName(NativeNameType.Func, "glCompressedTexSubImage3D")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlCompressedTexSubImage3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "level")] [NativeName(NativeNameType.Type, "GLint")] int level, [NativeName(NativeNameType.Param, "xoffset")] [NativeName(NativeNameType.Type, "GLint")] int xoffset, [NativeName(NativeNameType.Param, "yoffset")] [NativeName(NativeNameType.Type, "GLint")] int yoffset, [NativeName(NativeNameType.Param, "zoffset")] [NativeName(NativeNameType.Type, "GLint")] int zoffset, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "GLsizei")] int width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "GLsizei")] int height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "GLsizei")] int depth, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "GLenum")] uint format, [NativeName(NativeNameType.Param, "imageSize")] [NativeName(NativeNameType.Type, "GLsizei")] int imageSize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const GLvoid*")] void* data)
@@ -2073,10 +2229,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glGetCompressedTexImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glGetCompressedTexImage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlGetCompressedTexImageNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "lod")] [NativeName(NativeNameType.Type, "GLint")] int lod, [NativeName(NativeNameType.Param, "img")] [NativeName(NativeNameType.Type, "GLvoid*")] void* img);
-
+		internal static void GlGetCompressedTexImageNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "lod")] [NativeName(NativeNameType.Type, "GLint")] int lod, [NativeName(NativeNameType.Param, "img")] [NativeName(NativeNameType.Type, "GLvoid*")] void* img)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, void*, void>)vt[1264])(target, lod, img);
+		}
 		[NativeName(NativeNameType.Func, "glGetCompressedTexImage")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlGetCompressedTexImage([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "lod")] [NativeName(NativeNameType.Type, "GLint")] int lod, [NativeName(NativeNameType.Param, "img")] [NativeName(NativeNameType.Type, "GLvoid*")] void* img)
@@ -2086,10 +2242,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s);
-
+		internal static void GlMultiTexCoord1DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, void>)vt[1265])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s)
@@ -2099,10 +2255,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord1DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1266])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1Dv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2122,10 +2278,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s);
-
+		internal static void GlMultiTexCoord1FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, void>)vt[1267])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s)
@@ -2135,10 +2291,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord1FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1268])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1Fv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -2158,10 +2314,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1i")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1i")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s);
-
+		internal static void GlMultiTexCoord1INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, void>)vt[1269])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1i")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1I([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
@@ -2171,10 +2327,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1iv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord1IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1270])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1Iv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -2194,10 +2350,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1s")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1s")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s);
-
+		internal static void GlMultiTexCoord1SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, void>)vt[1271])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1s")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1S([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s)
@@ -2207,10 +2363,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1sv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord1SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1272])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1Sv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -2230,10 +2386,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t);
-
+		internal static void GlMultiTexCoord2DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, void>)vt[1273])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t)
@@ -2243,10 +2399,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord2DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1274])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2Dv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2266,10 +2422,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t);
-
+		internal static void GlMultiTexCoord2FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, void>)vt[1275])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t)
@@ -2279,10 +2435,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord2FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1276])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2Fv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -2302,10 +2458,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2i")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2i")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t);
-
+		internal static void GlMultiTexCoord2INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, void>)vt[1277])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2i")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2I([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t)
@@ -2315,10 +2471,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2iv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord2IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1278])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2Iv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -2338,10 +2494,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2s")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2s")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t);
-
+		internal static void GlMultiTexCoord2SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, void>)vt[1279])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2s")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2S([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t)
@@ -2351,10 +2507,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2sv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord2SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1280])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2Sv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -2374,10 +2530,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r);
-
+		internal static void GlMultiTexCoord3DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, double, void>)vt[1281])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r)
@@ -2387,10 +2543,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord3DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1282])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3Dv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2410,10 +2566,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r);
-
+		internal static void GlMultiTexCoord3FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, float, void>)vt[1283])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r)
@@ -2423,10 +2579,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord3FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1284])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3Fv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -2446,10 +2602,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3i")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3i")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r);
-
+		internal static void GlMultiTexCoord3INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, void>)vt[1285])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3i")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3I([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r)
@@ -2459,10 +2615,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3iv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord3IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1286])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3Iv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -2482,10 +2638,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3s")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3s")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r);
-
+		internal static void GlMultiTexCoord3SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, short, void>)vt[1287])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3s")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3S([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r)
@@ -2495,10 +2651,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3sv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord3SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1288])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3Sv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -2518,10 +2674,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4d")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4d")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q);
-
+		internal static void GlMultiTexCoord4DNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, double, double, void>)vt[1289])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4d")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4D([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q)
@@ -2531,10 +2687,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4dv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord4DvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1290])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4Dv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2554,10 +2710,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4f")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4f")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q);
-
+		internal static void GlMultiTexCoord4FNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, float, float, void>)vt[1291])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4f")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4F([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q)
@@ -2567,10 +2723,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4fv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord4FvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1292])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4Fv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -2590,10 +2746,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4i")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4i")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q);
-
+		internal static void GlMultiTexCoord4INative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, void>)vt[1293])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4i")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4I([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q)
@@ -2603,10 +2759,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4iv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord4IvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1294])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4iv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4Iv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -2626,10 +2782,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4s")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4s")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q);
-
+		internal static void GlMultiTexCoord4SNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, short, short, void>)vt[1295])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4s")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4S([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q)
@@ -2639,10 +2795,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4sv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord4SvNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1296])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4sv")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4Sv([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -2662,10 +2818,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glLoadTransposeMatrixd")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glLoadTransposeMatrixd")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlLoadTransposeMatrixdNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m);
-
+		internal static void GlLoadTransposeMatrixdNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m)
+		{
+			((delegate* unmanaged[Cdecl]<double*, void>)vt[1297])(m);
+		}
 		[NativeName(NativeNameType.Func, "glLoadTransposeMatrixd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlLoadTransposeMatrixd([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m)
@@ -2685,10 +2841,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glLoadTransposeMatrixf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glLoadTransposeMatrixf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlLoadTransposeMatrixfNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m);
-
+		internal static void GlLoadTransposeMatrixfNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m)
+		{
+			((delegate* unmanaged[Cdecl]<float*, void>)vt[1298])(m);
+		}
 		[NativeName(NativeNameType.Func, "glLoadTransposeMatrixf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlLoadTransposeMatrixf([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m)
@@ -2708,10 +2864,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultTransposeMatrixd")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultTransposeMatrixd")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultTransposeMatrixdNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m);
-
+		internal static void GlMultTransposeMatrixdNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m)
+		{
+			((delegate* unmanaged[Cdecl]<double*, void>)vt[1299])(m);
+		}
 		[NativeName(NativeNameType.Func, "glMultTransposeMatrixd")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultTransposeMatrixd([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLdouble[16]")] double* m)
@@ -2731,10 +2887,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultTransposeMatrixf")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultTransposeMatrixf")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultTransposeMatrixfNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m);
-
+		internal static void GlMultTransposeMatrixfNative([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m)
+		{
+			((delegate* unmanaged[Cdecl]<float*, void>)vt[1300])(m);
+		}
 		[NativeName(NativeNameType.Func, "glMultTransposeMatrixf")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultTransposeMatrixf([NativeName(NativeNameType.Param, "m")] [NativeName(NativeNameType.Type, "const GLfloat[16]")] float* m)
@@ -2754,10 +2910,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glSampleCoverage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glSampleCoverage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlSampleCoverageNative([NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "GLclampf")] float value, [NativeName(NativeNameType.Param, "invert")] [NativeName(NativeNameType.Type, "GLboolean")] byte invert);
-
+		internal static void GlSampleCoverageNative([NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "GLclampf")] float value, [NativeName(NativeNameType.Param, "invert")] [NativeName(NativeNameType.Type, "GLboolean")] byte invert)
+		{
+			((delegate* unmanaged[Cdecl]<float, byte, void>)vt[1301])(value, invert);
+		}
 		[NativeName(NativeNameType.Func, "glSampleCoverage")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlSampleCoverage([NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "GLclampf")] float value, [NativeName(NativeNameType.Param, "invert")] [NativeName(NativeNameType.Type, "GLboolean")] byte invert)
@@ -2767,10 +2923,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glActiveTextureARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glActiveTextureARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlActiveTextureARBNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture);
-
+		internal static void GlActiveTextureARBNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1302])(texture);
+		}
 		[NativeName(NativeNameType.Func, "glActiveTextureARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlActiveTextureARB([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
@@ -2780,10 +2936,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glClientActiveTextureARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glClientActiveTextureARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlClientActiveTextureARBNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture);
-
+		internal static void GlClientActiveTextureARBNative([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[1303])(texture);
+		}
 		[NativeName(NativeNameType.Func, "glClientActiveTextureARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlClientActiveTextureARB([NativeName(NativeNameType.Param, "texture")] [NativeName(NativeNameType.Type, "GLenum")] uint texture)
@@ -2793,10 +2949,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1dARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s);
-
+		internal static void GlMultiTexCoord1DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, void>)vt[1304])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1DARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s)
@@ -2806,10 +2962,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1dvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord1DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1305])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1DvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2829,10 +2985,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1fARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s);
-
+		internal static void GlMultiTexCoord1FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, void>)vt[1306])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1FARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s)
@@ -2842,10 +2998,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1fvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord1FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1307])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1FvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -2865,10 +3021,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1iARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s);
-
+		internal static void GlMultiTexCoord1IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, void>)vt[1308])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1IARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s)
@@ -2878,10 +3034,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1ivARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord1IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1309])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1IvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -2901,10 +3057,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1sARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s);
-
+		internal static void GlMultiTexCoord1SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, void>)vt[1310])(target, s);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1SARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s)
@@ -2914,10 +3070,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord1svARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord1SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord1SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1311])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord1svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord1SvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -2937,10 +3093,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2dARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t);
-
+		internal static void GlMultiTexCoord2DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, void>)vt[1312])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2DARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t)
@@ -2950,10 +3106,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2dvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord2DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1313])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2DvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -2973,10 +3129,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2fARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t);
-
+		internal static void GlMultiTexCoord2FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, void>)vt[1314])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2FARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t)
@@ -2986,10 +3142,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2fvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord2FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1315])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2FvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -3009,10 +3165,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2iARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t);
-
+		internal static void GlMultiTexCoord2IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, void>)vt[1316])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2IARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t)
@@ -3022,10 +3178,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2ivARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord2IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1317])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2IvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -3045,10 +3201,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2sARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t);
-
+		internal static void GlMultiTexCoord2SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, void>)vt[1318])(target, s, t);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2SARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t)
@@ -3058,10 +3214,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord2svARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord2SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord2SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1319])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord2svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord2SvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -3081,10 +3237,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3dARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r);
-
+		internal static void GlMultiTexCoord3DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, double, void>)vt[1320])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3DARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r)
@@ -3094,10 +3250,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3dvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord3DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1321])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3DvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -3117,10 +3273,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3fARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r);
-
+		internal static void GlMultiTexCoord3FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, float, void>)vt[1322])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3FARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r)
@@ -3130,10 +3286,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3fvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord3FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1323])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3FvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -3153,10 +3309,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3iARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r);
-
+		internal static void GlMultiTexCoord3IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, void>)vt[1324])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3IARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r)
@@ -3166,10 +3322,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3ivARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord3IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1325])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3IvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -3189,10 +3345,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3sARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r);
-
+		internal static void GlMultiTexCoord3SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, short, void>)vt[1326])(target, s, t, r);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3SARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r)
@@ -3202,10 +3358,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord3svARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord3SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord3SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1327])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord3svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord3SvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -3225,10 +3381,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4dARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q);
-
+		internal static void GlMultiTexCoord4DARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double, double, double, double, void>)vt[1328])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4DARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLdouble")] double s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLdouble")] double t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLdouble")] double r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLdouble")] double q)
@@ -3238,10 +3394,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4dvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v);
-
+		internal static void GlMultiTexCoord4DvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, double*, void>)vt[1329])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4dvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4DvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLdouble*")] double* v)
@@ -3261,10 +3417,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4fARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q);
-
+		internal static void GlMultiTexCoord4FARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float, float, float, float, void>)vt[1330])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4FARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLfloat")] float s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLfloat")] float t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLfloat")] float r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLfloat")] float q)
@@ -3274,10 +3430,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4fvARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v);
-
+		internal static void GlMultiTexCoord4FvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, float*, void>)vt[1331])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4fvARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4FvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLfloat*")] float* v)
@@ -3297,10 +3453,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4iARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q);
-
+		internal static void GlMultiTexCoord4IARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int, int, int, int, void>)vt[1332])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4iARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4IARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLint")] int s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLint")] int t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLint")] int r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLint")] int q)
@@ -3310,10 +3466,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4ivARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v);
-
+		internal static void GlMultiTexCoord4IvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, int*, void>)vt[1333])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4ivARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4IvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLint*")] int* v)
@@ -3333,10 +3489,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4sARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q);
-
+		internal static void GlMultiTexCoord4SARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short, short, short, short, void>)vt[1334])(target, s, t, r, q);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4sARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4SARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "s")] [NativeName(NativeNameType.Type, "GLshort")] short s, [NativeName(NativeNameType.Param, "t")] [NativeName(NativeNameType.Type, "GLshort")] short t, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "GLshort")] short r, [NativeName(NativeNameType.Param, "q")] [NativeName(NativeNameType.Type, "GLshort")] short q)
@@ -3346,10 +3502,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "glMultiTexCoord4svARB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void GlMultiTexCoord4SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v);
-
+		internal static void GlMultiTexCoord4SvARBNative([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
+		{
+			((delegate* unmanaged[Cdecl]<uint, short*, void>)vt[1335])(target, v);
+		}
 		[NativeName(NativeNameType.Func, "glMultiTexCoord4svARB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GlMultiTexCoord4SvARB([NativeName(NativeNameType.Param, "target")] [NativeName(NativeNameType.Type, "GLenum")] uint target, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "const GLshort*")] short* v)
@@ -3380,10 +3536,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetWindowWMInfo")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetWindowWMInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetWindowWMInfoNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_SysWMinfo*")] SDLSysWMInfo* info);
-
+		internal static SDLBool SDLGetWindowWMInfoNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_SysWMinfo*")] SDLSysWMInfo* info)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLWindow*, SDLSysWMInfo*, SDLBool>)vt[1336])(window, info);
+		}
 		/// <summary>/// Get driver-specific information about a window.<br/>/// You must include SDL_syswm.h for the declaration of SDL_SysWMinfo.<br/>/// The caller must initialize the `info` structure's version by using<br/>/// `SDL_VERSION(<br/>/// &info<br/>/// .version)`, and then this function will fill in the rest<br/>/// of the structure with information about the given window.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetWindowWMInfo")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGetWindowWMInfo([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "info")] [NativeName(NativeNameType.Type, "SDL_SysWMinfo*")] SDLSysWMInfo* info)
@@ -3434,10 +3590,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_Assert")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Assert")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestAssertNative([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription);
-
+		internal static void SDLTestAssertNative([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[1337])(assertCondition, assertDescription);
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Assert")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestAssert([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
@@ -3490,10 +3646,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_AssertCheck")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_AssertCheck")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestAssertCheckNative([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription);
-
+		internal static int SDLTestAssertCheckNative([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte*, int>)vt[1338])(assertCondition, assertDescription);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_AssertCheck")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestAssertCheck([NativeName(NativeNameType.Param, "assertCondition")] [NativeName(NativeNameType.Type, "int")] int assertCondition, [NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
@@ -3548,10 +3704,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_AssertPass")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_AssertPass")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestAssertPassNative([NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription);
-
+		internal static void SDLTestAssertPassNative([NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, void>)vt[1339])(assertDescription);
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_AssertPass")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestAssertPass([NativeName(NativeNameType.Param, "assertDescription")] [NativeName(NativeNameType.Type, "const char*")] byte* assertDescription)
@@ -3602,10 +3758,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_ResetAssertSummary")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ResetAssertSummary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestResetAssertSummaryNative();
-
+		internal static void SDLTestResetAssertSummaryNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1340])();
+		}
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_ResetAssertSummary")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestResetAssertSummary()
@@ -3618,10 +3774,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_LogAssertSummary")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_LogAssertSummary")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestLogAssertSummaryNative();
-
+		internal static void SDLTestLogAssertSummaryNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[1341])();
+		}
 		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_LogAssertSummary")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestLogAssertSummary()
@@ -3635,10 +3791,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_AssertSummaryToTestResult")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_AssertSummaryToTestResult")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestAssertSummaryToTestResultNative();
-
+		internal static int SDLTestAssertSummaryToTestResultNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[1342])();
+		}
 		/// <summary>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_AssertSummaryToTestResult")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestAssertSummaryToTestResult()
@@ -3654,10 +3810,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonCreateState")]
 		[return: NativeName(NativeNameType.Type, "SDLTest_CommonState*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonCreateState")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLTestCommonState* SDLTestCommonCreateStateNative([NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags);
-
+		internal static SDLTestCommonState* SDLTestCommonCreateStateNative([NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte**, uint, SDLTestCommonState*>)vt[1343])(argv, flags);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonCreateState")]
 		[return: NativeName(NativeNameType.Type, "SDLTest_CommonState*")]
 		public static SDLTestCommonState* SDLTestCommonCreateState([NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags)
@@ -3684,10 +3840,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonArg")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonArg")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCommonArgNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index);
-
+		internal static int SDLTestCommonArgNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCommonState*, int, int>)vt[1344])(state, index);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonArg")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTestCommonArg([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "index")] [NativeName(NativeNameType.Type, "int")] int index)
@@ -3717,10 +3873,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonLogUsage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonLogUsage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestCommonLogUsageNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argv0")] [NativeName(NativeNameType.Type, "const char*")] byte* argv0, [NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "const char**")] byte** options);
-
+		internal static void SDLTestCommonLogUsageNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argv0")] [NativeName(NativeNameType.Type, "const char*")] byte* argv0, [NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "const char**")] byte** options)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestCommonState*, byte*, byte**, void>)vt[1345])(state, argv0, options);
+		}
 		/// <summary>/// <br/>/// This logs the appropriate command line options for the subsystems in use<br/>/// plus other common options, and then any application-specific options.<br/>/// This uses the SDL_Log() function and splits up output to be friendly to<br/>/// 80-character-wide terminals.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonLogUsage")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestCommonLogUsage([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argv0")] [NativeName(NativeNameType.Type, "const char*")] byte* argv0, [NativeName(NativeNameType.Param, "options")] [NativeName(NativeNameType.Type, "const char**")] byte** options)
@@ -3947,10 +4103,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonUsage")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonUsage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLTestCommonUsageNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state);
-
+		internal static byte* SDLTestCommonUsageNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCommonState*, byte*>)vt[1346])(state);
+		}
 		/// <summary>/// <br/>/// You should (probably) be using SDLTest_CommonLogUsage() instead, but this<br/>/// function remains for binary compatibility. Strings returned from this<br/>/// function are valid until SDLTest_CommonQuit() is called, in which case<br/>/// those strings' memory is freed and can no longer be used.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonUsage")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLTestCommonUsage([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
@@ -3996,10 +4152,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonInit")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonInit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLTestCommonInitNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state);
-
+		internal static SDLBool SDLTestCommonInitNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCommonState*, SDLBool>)vt[1347])(state);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonInit")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLTestCommonInit([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
@@ -4026,10 +4182,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonDefaultArgs")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonDefaultArgs")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLTestCommonDefaultArgsNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "const int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv);
-
+		internal static SDLBool SDLTestCommonDefaultArgsNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "const int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLTestCommonState*, int, byte**, SDLBool>)vt[1348])(state, argc, argv);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonDefaultArgs")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLTestCommonDefaultArgs([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "const int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char**")] byte** argv)
@@ -4081,10 +4237,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonEvent")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestCommonEventNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "done")] [NativeName(NativeNameType.Type, "int*")] int* done);
-
+		internal static void SDLTestCommonEventNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "done")] [NativeName(NativeNameType.Type, "int*")] int* done)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestCommonState*, SDLEvent*, int*, void>)vt[1349])(state, evnt, done);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonEvent")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestCommonEvent([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state, [NativeName(NativeNameType.Param, "event")] [NativeName(NativeNameType.Type, "SDL_Event*")] SDLEvent* evnt, [NativeName(NativeNameType.Param, "done")] [NativeName(NativeNameType.Type, "int*")] int* done)
@@ -4184,10 +4340,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonQuit")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonQuit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestCommonQuitNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state);
-
+		internal static void SDLTestCommonQuitNative([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
+		{
+			((delegate* unmanaged[Cdecl]<SDLTestCommonState*, void>)vt[1350])(state);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonQuit")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestCommonQuit([NativeName(NativeNameType.Param, "state")] [NativeName(NativeNameType.Type, "SDLTest_CommonState*")] SDLTestCommonState* state)
@@ -4212,10 +4368,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CommonDrawWindowInfo")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CommonDrawWindowInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLTestCommonDrawWindowInfoNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "usedHeight")] [NativeName(NativeNameType.Type, "int*")] int* usedHeight);
-
+		internal static void SDLTestCommonDrawWindowInfoNative([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "usedHeight")] [NativeName(NativeNameType.Type, "int*")] int* usedHeight)
+		{
+			((delegate* unmanaged[Cdecl]<SDLRenderer*, SDLWindow*, int*, void>)vt[1351])(renderer, window, usedHeight);
+		}
 		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CommonDrawWindowInfo")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLTestCommonDrawWindowInfo([NativeName(NativeNameType.Param, "renderer")] [NativeName(NativeNameType.Type, "SDL_Renderer*")] SDLRenderer* renderer, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window, [NativeName(NativeNameType.Param, "usedHeight")] [NativeName(NativeNameType.Type, "int*")] int* usedHeight)
@@ -4313,10 +4469,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlit")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlit")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitNative();
-
+		internal static SDLSurface* SDLTestImageBlitNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1352])();
+		}
 		/// <summary>/// Test images <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_ImageBlit")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlit()
@@ -4327,10 +4483,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitColor")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitColor")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitColorNative();
-
+		internal static SDLSurface* SDLTestImageBlitColorNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1353])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitColor")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitColor()
@@ -4341,10 +4497,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitAlpha")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitAlpha")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitAlphaNative();
-
+		internal static SDLSurface* SDLTestImageBlitAlphaNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1354])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitAlpha")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitAlpha()
@@ -4355,10 +4511,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendAdd")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitBlendAdd")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitBlendAddNative();
-
+		internal static SDLSurface* SDLTestImageBlitBlendAddNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1355])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendAdd")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitBlendAdd()
@@ -4369,10 +4525,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlend")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitBlend")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitBlendNative();
-
+		internal static SDLSurface* SDLTestImageBlitBlendNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1356])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlend")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitBlend()
@@ -4383,10 +4539,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendMod")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitBlendMod")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitBlendModNative();
-
+		internal static SDLSurface* SDLTestImageBlitBlendModNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1357])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendMod")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitBlendMod()
@@ -4397,10 +4553,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendNone")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitBlendNone")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitBlendNoneNative();
-
+		internal static SDLSurface* SDLTestImageBlitBlendNoneNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1358])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendNone")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitBlendNone()
@@ -4411,10 +4567,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendAll")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageBlitBlendAll")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageBlitBlendAllNative();
-
+		internal static SDLSurface* SDLTestImageBlitBlendAllNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1359])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageBlitBlendAll")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageBlitBlendAll()
@@ -4425,10 +4581,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImageFace")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImageFace")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImageFaceNative();
-
+		internal static SDLSurface* SDLTestImageFaceNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1360])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImageFace")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImageFace()
@@ -4439,10 +4595,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImagePrimitives")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImagePrimitives")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImagePrimitivesNative();
-
+		internal static SDLSurface* SDLTestImagePrimitivesNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1361])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImagePrimitives")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImagePrimitives()
@@ -4453,10 +4609,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDLTest_ImagePrimitivesBlend")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_ImagePrimitivesBlend")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSurface* SDLTestImagePrimitivesBlendNative();
-
+		internal static SDLSurface* SDLTestImagePrimitivesBlendNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*>)vt[1362])();
+		}
 		[NativeName(NativeNameType.Func, "SDLTest_ImagePrimitivesBlend")]
 		[return: NativeName(NativeNameType.Type, "SDL_Surface*")]
 		public static SDLSurface* SDLTestImagePrimitivesBlend()
@@ -4472,126 +4628,9 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_CompareSurfaces")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCompareSurfacesNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError);
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
+		internal static int SDLTestCompareSurfacesNative([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
 		{
-			int ret = SDLTestCompareSurfacesNative(surface, referenceSurface, allowableError);
-			return ret;
-		}
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
-		{
-			fixed (SDLSurface* psurface = &surface)
-			{
-				int ret = SDLTestCompareSurfacesNative((SDLSurface*)psurface, referenceSurface, allowableError);
-				return ret;
-			}
-		}
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] SDLSurface* surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
-		{
-			fixed (SDLSurface* preferenceSurface = &referenceSurface)
-			{
-				int ret = SDLTestCompareSurfacesNative(surface, (SDLSurface*)preferenceSurface, allowableError);
-				return ret;
-			}
-		}
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_CompareSurfaces")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCompareSurfaces([NativeName(NativeNameType.Param, "surface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface surface, [NativeName(NativeNameType.Param, "referenceSurface")] [NativeName(NativeNameType.Type, "SDL_Surface*")] ref SDLSurface referenceSurface, [NativeName(NativeNameType.Param, "allowable_error")] [NativeName(NativeNameType.Type, "int")] int allowableError)
-		{
-			fixed (SDLSurface* psurface = &surface)
-			{
-				fixed (SDLSurface* preferenceSurface = &referenceSurface)
-				{
-					int ret = SDLTestCompareSurfacesNative((SDLSurface*)psurface, (SDLSurface*)preferenceSurface, allowableError);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// Note: The function initializes the crc table required for all crc calculations.<br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32Init")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32InitNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext);
-
-		/// <summary>/// <br/>/// Note: The function initializes the crc table required for all crc calculations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCrc32Init([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext)
-		{
-			int ret = SDLTestCrc32InitNative(crcContext);
-			return ret;
-		}
-
-		/// <summary>/// <br/>/// Note: The function initializes the crc table required for all crc calculations.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Init")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCrc32Init([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] ref SDLTestCrc32Context crcContext)
-		{
-			fixed (SDLTestCrc32Context* pcrcContext = &crcContext)
-			{
-				int ret = SDLTestCrc32InitNative((SDLTestCrc32Context*)pcrcContext);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// <br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDLTest_Crc32Calc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTestCrc32CalcNative([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32);
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
-		{
-			int ret = SDLTestCrc32CalcNative(crcContext, inBuf, inLen, crc32);
-			return ret;
-		}
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] ref SDLTestCrc32Context crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
-		{
-			fixed (SDLTestCrc32Context* pcrcContext = &crcContext)
-			{
-				int ret = SDLTestCrc32CalcNative((SDLTestCrc32Context*)pcrcContext, inBuf, inLen, crc32);
-				return ret;
-			}
-		}
-
-		/// <summary>/// <br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDLTest_Crc32Calc")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLTestCrc32Calc([NativeName(NativeNameType.Param, "crcContext")] [NativeName(NativeNameType.Type, "SDLTest_Crc32Context*")] SDLTestCrc32Context* crcContext, [NativeName(NativeNameType.Param, "inBuf")] [NativeName(NativeNameType.Type, "unsigned char*")] ref byte inBuf, [NativeName(NativeNameType.Param, "inLen")] [NativeName(NativeNameType.Type, "unsigned int")] uint inLen, [NativeName(NativeNameType.Param, "crc32")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* crc32)
-		{
-			fixed (byte* pinBuf = &inBuf)
-			{
-				int ret = SDLTestCrc32CalcNative(crcContext, (byte*)pinBuf, inLen, crc32);
-				return ret;
-			}
+			return ((delegate* unmanaged[Cdecl]<SDLSurface*, SDLSurface*, int, int>)vt[1363])(surface, referenceSurface, allowableError);
 		}
 	}
 }

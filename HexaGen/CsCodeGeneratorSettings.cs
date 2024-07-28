@@ -3,12 +3,14 @@
     using ClangSharp;
     using CppAst;
     using HexaGen.Core;
+    using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Runtime.InteropServices;
     using System.Text;
     using System.Text.Json;
     using System.Text.Json.Serialization;
@@ -19,6 +21,13 @@
         public UnexposedTypeException(CppUnexposedType unexposedType) : base($"Cannot handle unexposed type '{unexposedType}'")
         {
         }
+    }
+
+    public enum ImportType
+    {
+        DllImport,
+        LibraryImport,
+        VTable
     }
 
     public partial class CsCodeGeneratorSettings : IGeneratorSettings
@@ -214,12 +223,10 @@
             if (!result.EnableExperimentalOptions)
             {
                 result.GenerateConstructorsForStructs = false;
-                result.UseVTable = false;
-            }
-
-            if (result.UseVTable)
-            {
-                result.UseLibraryImport = false;
+                if (result.UseVTable)
+                {
+                    result.ImportType = ImportType.LibraryImport;
+                }
             }
 
             result.Save(file);
@@ -283,14 +290,25 @@
         public bool GeneratePlaceholderComments { get; set; } = true;
 
         /// <summary>
-        /// This causes the code generator to use <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/> instead of <see cref="System.Runtime.InteropServices.DllImportAttribute"/>
+        /// This causes the code generator to use <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/>.
         /// </summary>
-        public bool UseLibraryImport { get; set; } = true;
+        public bool UseLibraryImport => ImportType == ImportType.LibraryImport;
 
         /// <summary>
-        /// This causes the code generator to use a VTable instead of <see cref="System.Runtime.InteropServices.LibraryImportAttribute"/> <see cref="System.Runtime.InteropServices.DllImportAttribute"/> (EXPERIMENTAL)
+        /// This causes the code generator to use a VTable.
         /// </summary>
-        public bool UseVTable { get; set; } = false;
+        public bool UseVTable => ImportType == ImportType.VTable;
+
+        /// <summary>
+        /// Determines the import type. (Default: <see cref="ImportType.LibraryImport"/>)
+        /// </summary>
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public ImportType ImportType { get; set; } = ImportType.LibraryImport;
+
+        /// <summary>
+        /// Indicates that the generated code requires unmanaged code. (Default: <see langword="false"/>)
+        /// </summary>
+        public bool RequiresUnmanaged => UseVTable;
 
         /// <summary>
         /// The generator will generate [NativeName] attributes.
@@ -730,48 +748,63 @@
 
         #endregion Mapping Helpers
 
-        private readonly ConcurrentDictionary<CppType, string> typeNameCache = new();
+        private readonly ConcurrentDictionary<(CppType, TypeNameFlags), string> typeNameCache = new();
 
-        public string GetCsTypeName(CppType? type, bool isPointer = false)
+        private enum TypeNameFlags
+        {
+            None,
+            Unmanaged,
+        }
+
+        public string GetCsTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (typeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (typeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsTypeNameInternal(type, isPointer);
-            typeNameCache.TryAdd(type, name);
+            var name = GetCsTypeNameInternal(type, isPointer, requiresUnmanaged.Value);
+            typeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
-        public string GetCsTypeName(CppPointerType type)
+        public string GetCsTypeName(CppPointerType type, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (typeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (typeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsTypeNameInternal(type);
-            typeNameCache.TryAdd(type, name);
+            var name = GetCsTypeNameInternal(type, requiresUnmanaged: requiresUnmanaged.Value);
+            typeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
-        public string GetCsTypeName(CppPrimitiveType type, bool isPointer)
+        public string GetCsTypeName(CppPrimitiveType type, bool isPointer, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (typeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (typeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsTypeNameInternal(type, isPointer);
-            typeNameCache.TryAdd(type, name);
+            var name = GetCsTypeNameInternal(type, isPointer, requiresUnmanaged.Value);
+            typeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
-        internal string GetCsTypeNameInternal(CppType? type, bool isPointer = false)
+        internal string GetCsTypeNameInternal(CppType? type, bool isPointer = false, bool requiresUnmanaged = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
@@ -813,13 +846,26 @@
                 }
 
                 var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate(out var _))
+                if (typedef.IsDelegate(out var cppFunction))
                 {
-                    return typeDefCsName;
+                    if (isPointer)
+                    {
+                        return MakeDelegatePointer(cppFunction) + "*";
+                    }
+                    else if (requiresUnmanaged)
+                    {
+                        return MakeDelegatePointer(cppFunction);
+                    }
+                    else
+                    {
+                        return typeDefCsName;
+                    }
                 }
 
                 if (isPointer)
+                {
                     return typeDefCsName + "*";
+                }
 
                 return typeDefCsName;
             }
@@ -886,14 +932,7 @@
 
             if (pointerType.ElementType is CppFunctionType functionType)
             {
-                if (functionType.Parameters.Count == 0)
-                {
-                    return $"delegate*<{GetCsTypeNameInternal(functionType.ReturnType)}>";
-                }
-                else
-                {
-                    return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
-                }
+                return MakeDelegatePointer(functionType);
             }
 
             if (pointerType.ElementType is CppPointerType subPointer)
@@ -902,6 +941,18 @@
             }
 
             return GetCsTypeNameInternal(pointerType.ElementType, true);
+        }
+
+        private string MakeDelegatePointer(CppFunctionType functionType)
+        {
+            if (functionType.Parameters.Count == 0)
+            {
+                return $"delegate*<{GetCsTypeNameInternal(functionType.ReturnType)}>";
+            }
+            else
+            {
+                return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false, true)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
+            }
         }
 
         private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
@@ -957,7 +1008,7 @@
             return string.Empty;
         }
 
-        private readonly ConcurrentDictionary<CppType, string> wrapperTypeNameCache = new();
+        private readonly ConcurrentDictionary<(CppType, TypeNameFlags), string> wrapperTypeNameCache = new();
 
         /// <summary>
         /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
@@ -965,20 +1016,23 @@
         /// <param name="type"></param>
         /// <param name="isPointer"></param>
         /// <returns></returns>
-        public string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
+        public string GetCsWrapperTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (wrapperTypeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsWrapperTypeNameInternal(type, isPointer);
+            var name = GetCsWrapperTypeNameInternal(type, isPointer, requiresUnmanaged: requiresUnmanaged.Value);
             if (name == "ref void") // exception for void type
             {
                 name = "void*";
             }
-            wrapperTypeNameCache.TryAdd(type, name);
+            wrapperTypeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
@@ -987,16 +1041,19 @@
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public string GetCsWrapperTypeName(CppPointerType type)
+        public string GetCsWrapperTypeName(CppPointerType type, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (wrapperTypeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsWrapperTypeNameInternal(type);
-            wrapperTypeNameCache.TryAdd(type, name);
+            var name = GetCsWrapperTypeNameInternal(type, requiresUnmanaged: requiresUnmanaged.Value);
+            wrapperTypeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
@@ -1006,20 +1063,23 @@
         /// <param name="type"></param>
         /// <param name="isPointer"></param>
         /// <returns></returns>
-        public string GetCsWrapperTypeName(CppPrimitiveType type, bool isPointer)
+        public string GetCsWrapperTypeName(CppPrimitiveType type, bool isPointer, bool? requiresUnmanaged = null)
         {
             if (type == null)
                 return string.Empty;
 
-            if (wrapperTypeNameCache.TryGetValue(type, out var typeName))
+            requiresUnmanaged ??= RequiresUnmanaged;
+            TypeNameFlags flags = requiresUnmanaged.Value ? TypeNameFlags.Unmanaged : TypeNameFlags.None;
+
+            if (wrapperTypeNameCache.TryGetValue((type, flags), out var typeName))
                 return typeName;
 
-            var name = GetCsWrapperTypeNameInternal(type, isPointer);
-            wrapperTypeNameCache.TryAdd(type, name);
+            var name = GetCsWrapperTypeNameInternal(type, isPointer, requiresUnmanaged.Value);
+            wrapperTypeNameCache.TryAdd((type, flags), name);
             return name;
         }
 
-        private string GetCsWrapperTypeNameInternal(CppType? type, bool isPointer = false)
+        private string GetCsWrapperTypeNameInternal(CppType? type, bool isPointer = false, bool requiresUnmanaged = false)
         {
             if (type is CppPrimitiveType primitiveType)
             {
@@ -1061,10 +1121,22 @@
                 }
 
                 var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate())
+                if (typedef.IsDelegate(out var cppFunction))
                 {
-                    return typeDefCsName;
+                    if (isPointer)
+                    {
+                        return MakeDelegatePointer(cppFunction) + "*";
+                    }
+                    else if (requiresUnmanaged)
+                    {
+                        return MakeDelegatePointer(cppFunction);
+                    }
+                    else
+                    {
+                        return typeDefCsName;
+                    }
                 }
+
                 if (isPointer && typeDefCsName == "void")
                     return "void*";
                 if (isPointer)
@@ -1471,7 +1543,14 @@
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = GetParameterName(i, cppParameter.Name);
 
-                if (delegateType && cppParameter.Type is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !paramCsTypeName.Contains('*'))
+                CppType ptrType = cppParameter.Type;
+                int depth = 0;
+                if (cppParameter.Type.IsPointer(ref depth, out var pointerType))
+                {
+                    ptrType = pointerType;
+                }
+
+                if ((delegateType || ptrType != cppParameter.Type) && ptrType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !paramCsTypeName.Contains('*'))
                 {
                     if (cppFunction.Parameters.Count == 0)
                     {
@@ -1480,6 +1559,11 @@
                     else
                     {
                         paramCsTypeName = $"delegate*<{GetNamelessParameterSignature(cppFunction.Parameters, false)}, {GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    }
+
+                    while (depth-- > 0)
+                    {
+                        paramCsTypeName += "*";
                     }
                 }
 
@@ -1518,7 +1602,38 @@
             return argumentBuilder.ToString();
         }
 
-        public string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut)
+        public string GetParameterSignatureNames(IList<CppParameter> parameters)
+        {
+            StringBuilder argumentBuilder = new();
+            int index = 0;
+
+            for (int i = 0; i < parameters.Count; i++)
+            {
+                CppParameter cppParameter = parameters[i];
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsName = GetParameterName(i, cppParameter.Name);
+
+                CppType ptrType = cppParameter.Type;
+                int depth = 0;
+                if (cppParameter.Type.IsPointer(ref depth, out var pointerType))
+                {
+                    ptrType = pointerType;
+                }
+
+                argumentBuilder.Append(paramCsName);
+
+                if (index < parameters.Count - 1)
+                {
+                    argumentBuilder.Append(", ");
+                }
+
+                index++;
+            }
+
+            return argumentBuilder.ToString();
+        }
+
+        public string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool delegateType = false)
         {
             var argumentBuilder = new StringBuilder();
             int index = 0;
@@ -1527,6 +1642,30 @@
             {
                 string direction = string.Empty;
                 var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+
+                CppType ptrType = cppParameter.Type;
+                int depth = 0;
+                if (cppParameter.Type.IsPointer(ref depth, out var pointerType))
+                {
+                    ptrType = pointerType;
+                }
+
+                if (delegateType && ptrType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction))
+                {
+                    if (cppFunction.Parameters.Count == 0)
+                    {
+                        paramCsTypeName = $"delegate*<{GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    }
+                    else
+                    {
+                        paramCsTypeName = $"delegate*<{GetNamelessParameterSignature(cppFunction.Parameters, false, delegateType)}, {GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    }
+
+                    while (depth-- > 0)
+                    {
+                        paramCsTypeName += "*";
+                    }
+                }
 
                 if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
                 {

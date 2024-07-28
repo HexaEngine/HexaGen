@@ -19,6 +19,17 @@ namespace Hexa.NET.SDL2
 
 		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
 		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
+		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] ref SDLRWops src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] SDLAudioSpec* spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
+		{
+			fixed (SDLRWops* psrc = &src)
+			{
+				SDLAudioSpec* ret = SDLLoadWAVRWNative((SDLRWops*)psrc, freesrc, spec, audioBuf, audioLen);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Load the audio data of a WAVE file into memory.<br/>/// Loading a WAVE file requires `src`, `spec`, `audio_buf` and `audio_len` to<br/>/// be valid pointers. The entire data portion of the file is then loaded into<br/>/// memory and decoded if necessary.<br/>/// If `freesrc` is non-zero, the data source gets automatically closed and<br/>/// freed before the function returns.<br/>/// Supported formats are RIFF WAVE files with the formats PCM (8, 16, 24, and<br/>/// 32 bits), IEEE Float (32 bits), Microsoft ADPCM and IMA ADPCM (4 bits), and<br/>/// A-law and mu-law (8 bits). Other formats are currently unsupported and<br/>/// cause an error.<br/>/// If this function succeeds, the pointer returned by it is equal to `spec`<br/>/// and the pointer to the audio data allocated by the function is written to<br/>/// `audio_buf` and its length in bytes to `audio_len`. The SDL_AudioSpec<br/>/// members `freq`, `channels`, and `format` are set to the values of the audio<br/>/// data in the buffer. The `samples` member is set to a sane default and all<br/>/// others are set to zero.<br/>/// It's necessary to use SDL_FreeWAV() to free the audio data returned in<br/>/// `audio_buf` when it is no longer used.<br/>/// Because of the underspecification of the .WAV format, there are many<br/>/// problematic files in the wild that cause issues with strict decoders. To<br/>/// provide compatibility with these files, this decoder is lenient in regards<br/>/// to the truncation of the file, the fact chunk, and the size of the RIFF<br/>/// chunk. The hints `SDL_HINT_WAVE_RIFF_CHUNK_SIZE`,<br/>/// `SDL_HINT_WAVE_TRUNCATION`, and `SDL_HINT_WAVE_FACT_CHUNK` can be used to<br/>/// tune the behavior of the loading process.<br/>/// Any file that is invalid (due to truncation, corruption, or wrong values in<br/>/// the headers), too big, or unsupported causes an error. Additionally, any<br/>/// critical I/O error from the data source will terminate the loading process<br/>/// with an error. The function returns NULL on error and in all cases (with<br/>/// the exception of `src` being NULL), an appropriate error message will be<br/>/// set.<br/>/// It is required that the data source supports seeking.<br/>/// Example:<br/>/// ```c<br/>/// SDL_LoadWAV_RW(SDL_RWFromFile("sample.wav", "rb"), 1, <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// Note that the SDL_LoadWAV macro does this same thing for you, but in a less<br/>/// messy way:<br/>/// ```c<br/>/// SDL_LoadWAV("sample.wav", <br/>/// &spec<br/>/// , <br/>/// &buf<br/>/// , <br/>/// &len<br/>/// );<br/>/// ```<br/>/// <br/>/// This function returns NULL if the .WAV file cannot be opened, uses<br/>/// an unknown data format, or is corrupt; call SDL_GetError() for<br/>/// more information.<br/>/// When the application is done with the data returned in<br/>/// `audio_buf`, it should call SDL_FreeWAV() to dispose of it.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadWAV_RW")]
+		[return: NativeName(NativeNameType.Type, "SDL_AudioSpec*")]
 		public static SDLAudioSpec* SDLLoadWAVRW([NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "SDL_RWops*")] SDLRWops* src, [NativeName(NativeNameType.Param, "freesrc")] [NativeName(NativeNameType.Type, "int")] int freesrc, [NativeName(NativeNameType.Param, "spec")] [NativeName(NativeNameType.Type, "SDL_AudioSpec*")] ref SDLAudioSpec spec, [NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8**")] byte** audioBuf, [NativeName(NativeNameType.Param, "audio_len")] [NativeName(NativeNameType.Type, "Uint32*")] uint* audioLen)
 		{
 			fixed (SDLAudioSpec* pspec = &spec)
@@ -233,10 +244,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeWAV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeWAVNative([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf);
-
+		internal static void SDLFreeWAVNative([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, void>)vt[228])(audioBuf);
+		}
 		/// <summary>/// Free data previously allocated with SDL_LoadWAV() or SDL_LoadWAV_RW().<br/>/// After a WAVE file has been opened with SDL_LoadWAV() or SDL_LoadWAV_RW()<br/>/// its data can eventually be freed with SDL_FreeWAV(). It is safe to call<br/>/// this function with a NULL pointer.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeWAV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFreeWAV([NativeName(NativeNameType.Param, "audio_buf")] [NativeName(NativeNameType.Type, "Uint8*")] byte* audioBuf)
@@ -270,10 +281,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_BuildAudioCVT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLBuildAudioCVTNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate);
-
+		internal static int SDLBuildAudioCVTNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioCVT*, ushort, byte, int, ushort, byte, int, int>)vt[229])(cvt, srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+		}
 		/// <summary>/// Initialize an SDL_AudioCVT structure for conversion.<br/>/// Before an SDL_AudioCVT structure can be used to convert audio data it must<br/>/// be initialized with source and destination information.<br/>/// This function will zero out every field of the SDL_AudioCVT, so it must be<br/>/// called before the application fills in the final buffer information.<br/>/// Once this function has returned successfully, and reported that a<br/>/// conversion is necessary, the application fills in the rest of the fields in<br/>/// SDL_AudioCVT, now that it knows how large a buffer it needs to allocate,<br/>/// and then can call SDL_ConvertAudio() to complete the conversion.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_BuildAudioCVT")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLBuildAudioCVT([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt, [NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "int")] int dstRate)
@@ -323,10 +334,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ConvertAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLConvertAudioNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt);
-
+		internal static int SDLConvertAudioNative([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioCVT*, int>)vt[230])(cvt);
+		}
 		/// <summary>/// Convert audio data to a desired audio format.<br/>/// This function does the actual audio data conversion, after the application<br/>/// has called SDL_BuildAudioCVT() to prepare the conversion information and<br/>/// then filled in the buffer details.<br/>/// Once the application has initialized the `cvt` structure using<br/>/// SDL_BuildAudioCVT(), allocated an audio buffer and filled it with audio<br/>/// data in the source format, this function will convert the buffer, in-place,<br/>/// to the desired format.<br/>/// The data conversion may go through several passes; any given pass may<br/>/// possibly temporarily increase the size of the data. For example, SDL might<br/>/// expand 16-bit data to 32 bits before resampling to a lower frequency,<br/>/// shrinking the data size after having grown it briefly. Since the supplied<br/>/// buffer will be both the source and destination, converting as necessary<br/>/// in-place, the application must allocate a buffer that will fully contain<br/>/// the data during its largest conversion pass. After SDL_BuildAudioCVT()<br/>/// returns, the application should set the `cvt->len` field to the size, in<br/>/// bytes, of the source data, and allocate a buffer that is `cvt->len *<br/>/// cvt->len_mult` bytes long for the `buf` field.<br/>/// The source data should be copied into this buffer before the call to<br/>/// SDL_ConvertAudio(). Upon successful return, this buffer will contain the<br/>/// converted audio, and `cvt->len_cvt` will be the size of the converted data,<br/>/// in bytes. Any bytes in the buffer past `cvt->len_cvt` are undefined once<br/>/// this function returns.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ConvertAudio")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLConvertAudio([NativeName(NativeNameType.Param, "cvt")] [NativeName(NativeNameType.Type, "SDL_AudioCVT*")] SDLAudioCVT* cvt)
@@ -354,10 +365,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
 		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_NewAudioStream")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLAudioStream* SDLNewAudioStreamNative([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate);
-
+		internal static SDLAudioStream* SDLNewAudioStreamNative([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate)
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort, byte, int, ushort, byte, int, SDLAudioStream*>)vt[231])(srcFormat, srcChannels, srcRate, dstFormat, dstChannels, dstRate);
+		}
 		/// <summary>/// Create a new audio stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_NewAudioStream")]
 		[return: NativeName(NativeNameType.Type, "SDL_AudioStream*")]
 		public static SDLAudioStream* SDLNewAudioStream([NativeName(NativeNameType.Param, "src_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort srcFormat, [NativeName(NativeNameType.Param, "src_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte srcChannels, [NativeName(NativeNameType.Param, "src_rate")] [NativeName(NativeNameType.Type, "const int")] int srcRate, [NativeName(NativeNameType.Param, "dst_format")] [NativeName(NativeNameType.Type, "const SDL_AudioFormat")] ushort dstFormat, [NativeName(NativeNameType.Param, "dst_channels")] [NativeName(NativeNameType.Type, "const Uint8")] byte dstChannels, [NativeName(NativeNameType.Param, "dst_rate")] [NativeName(NativeNameType.Type, "const int")] int dstRate)
@@ -374,10 +385,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamPut")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamPutNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
-
+		internal static int SDLAudioStreamPutNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioStream*, void*, int, int>)vt[232])(stream, buf, len);
+		}
 		/// <summary>/// Add data to be converted/resampled to the stream.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamPut")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAudioStreamPut([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
@@ -405,10 +416,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamGet")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamGetNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len);
-
+		internal static int SDLAudioStreamGetNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioStream*, void*, int, int>)vt[233])(stream, buf, len);
+		}
 		/// <summary>/// Get converted/resampled data from the stream<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamGet")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAudioStreamGet([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream, [NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "void*")] void* buf, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "int")] int len)
@@ -438,10 +449,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamAvailable")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamAvailableNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
+		internal static int SDLAudioStreamAvailableNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioStream*, int>)vt[234])(stream);
+		}
 		/// <summary>/// Get the number of converted/resampled bytes available.<br/>/// The stream may be buffering data behind the scenes until it has enough to<br/>/// resample correctly, so this number might be lower than what you expect, or<br/>/// even be zero. Add more data or flush the stream if you need the data now.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamAvailable")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAudioStreamAvailable([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
@@ -472,10 +483,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamFlush")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAudioStreamFlushNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
+		internal static int SDLAudioStreamFlushNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAudioStream*, int>)vt[235])(stream);
+		}
 		/// <summary>/// Tell the stream that you're done sending data, and anything being buffered<br/>/// should be converted/resampled and made available immediately.<br/>/// It is legal to add more data to a stream after flushing, but there will be<br/>/// audio gaps in the output. Generally this is intended to signal the end of<br/>/// input, so the complete output becomes available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamFlush")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAudioStreamFlush([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
@@ -502,10 +513,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AudioStreamClear")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAudioStreamClearNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
+		internal static void SDLAudioStreamClearNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			((delegate* unmanaged[Cdecl]<SDLAudioStream*, void>)vt[236])(stream);
+		}
 		/// <summary>/// Clear any pending data in the stream without converting it<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AudioStreamClear")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLAudioStreamClear([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
@@ -530,10 +541,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeAudioStream")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeAudioStreamNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream);
-
+		internal static void SDLFreeAudioStreamNative([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
+		{
+			((delegate* unmanaged[Cdecl]<SDLAudioStream*, void>)vt[237])(stream);
+		}
 		/// <summary>/// Free an audio stream<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeAudioStream")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFreeAudioStream([NativeName(NativeNameType.Param, "stream")] [NativeName(NativeNameType.Type, "SDL_AudioStream*")] SDLAudioStream* stream)
@@ -565,10 +576,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MixAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMixAudioNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
-
+		internal static void SDLMixAudioNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, byte*, uint, int, void>)vt[238])(dst, src, len, volume);
+		}
 		/// <summary>/// This function is a legacy means of mixing audio.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_MixAudioFormat(dst, src, format, len, volume);<br/>/// ```<br/>/// ...where `format` is the obtained format of the audio device from the<br/>/// legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLMixAudio([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
@@ -629,10 +640,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MixAudioFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMixAudioFormatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume);
-
+		internal static void SDLMixAudioFormatNative([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, byte*, ushort, uint, int, void>)vt[239])(dst, src, format, len, volume);
+		}
 		/// <summary>/// Mix audio data in a specified format.<br/>/// This takes an audio buffer `src` of `len` bytes of `format` data and mixes<br/>/// it into `dst`, performing addition, volume adjustment, and overflow<br/>/// clipping. The buffer pointed to by `dst` must also be `len` bytes of<br/>/// `format` data.<br/>/// This is provided for convenience -- you can mix your own audio data.<br/>/// Do not use this function for mixing together more than two streams of<br/>/// sample data. The output from repeated application of this function may be<br/>/// distorted by clipping, because there is no accumulator with greater range<br/>/// than the input (not to mention this being an inefficient way of doing it).<br/>/// It is a common misconception that this function is required to write audio<br/>/// data to an output stream in an audio callback. While you can do that,<br/>/// SDL_MixAudioFormat() is really only needed when you're mixing a single<br/>/// audio stream with a volume adjustment.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MixAudioFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLMixAudioFormat([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "Uint8*")] byte* dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "const Uint8*")] byte* src, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_AudioFormat")] ushort format, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len, [NativeName(NativeNameType.Param, "volume")] [NativeName(NativeNameType.Type, "int")] int volume)
@@ -706,10 +717,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_QueueAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLQueueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
-
+		internal static int SDLQueueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, void*, uint, int>)vt[240])(dev, data, len);
+		}
 		/// <summary>/// Queue more audio on non-callback devices.<br/>/// If you are looking to retrieve queued audio from a non-callback capture<br/>/// device, you want SDL_DequeueAudio() instead. SDL_QueueAudio() will return<br/>/// -1 to signify an error if you use it with capture devices.<br/>/// SDL offers two ways to feed audio to the device: you can either supply a<br/>/// callback that SDL triggers with some frequency to obtain more audio (pull<br/>/// method), or you can supply no callback, and then SDL will expect you to<br/>/// supply data at regular intervals (push method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Queued data will drain to the device as<br/>/// necessary without further intervention from you. If the device needs audio<br/>/// but there is not enough queued, it will play silence to make up the<br/>/// difference. This means you will have skips in your audio playback if you<br/>/// aren't routinely queueing sufficient data.<br/>/// This function copies the supplied data, so you are safe to free it when the<br/>/// function returns. This function is thread-safe, but queueing to the same<br/>/// device from two threads at once does not promise which buffer will be<br/>/// queued first.<br/>/// You may not queue audio on a device that is using an application-supplied<br/>/// callback; doing so returns an error. You have to use the audio callback or<br/>/// queue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before queueing; SDL<br/>/// handles locking internally for this function.<br/>/// Note that SDL2 does not support planar audio. You will need to resample<br/>/// from planar audio formats into a non-planar one (see SDL_AudioFormat)<br/>/// before queuing audio.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_QueueAudio")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLQueueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
@@ -751,10 +762,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DequeueAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLDequeueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len);
-
+		internal static uint SDLDequeueAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, void*, uint, uint>)vt[241])(dev, data, len);
+		}
 		/// <summary>/// Dequeue more audio on non-callback devices.<br/>/// If you are looking to queue audio for output on a non-callback playback<br/>/// device, you want SDL_QueueAudio() instead. SDL_DequeueAudio() will always<br/>/// return 0 if you use it with playback devices.<br/>/// SDL offers two ways to retrieve audio from a capture device: you can either<br/>/// supply a callback that SDL triggers with some frequency as the device<br/>/// records more audio data, (push method), or you can supply no callback, and<br/>/// then SDL will expect you to retrieve data at regular intervals (pull<br/>/// method) with this function.<br/>/// There are no limits on the amount of data you can queue, short of<br/>/// exhaustion of address space. Data from the device will keep queuing as<br/>/// necessary without further intervention from you. This means you will<br/>/// eventually run out of memory if you aren't routinely dequeueing data.<br/>/// Capture devices will not queue data when paused; if you are expecting to<br/>/// not need captured audio for some length of time, use SDL_PauseAudioDevice()<br/>/// to stop the capture device from queueing more data. This can be useful<br/>/// during, say, level loading times. When unpaused, capture devices will start<br/>/// queueing data from that point, having flushed any capturable data available<br/>/// while paused.<br/>/// This function is thread-safe, but dequeueing from the same device from two<br/>/// threads at once does not promise which thread will dequeue data first.<br/>/// You may not dequeue audio from a device that is using an<br/>/// application-supplied callback; doing so returns an error. You have to use<br/>/// the audio callback, or dequeue audio with this function, but not both.<br/>/// You should not call SDL_LockAudio() on the device before dequeueing; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DequeueAudio")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLDequeueAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "Uint32")] uint len)
@@ -786,10 +797,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetQueuedAudioSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetQueuedAudioSizeNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
+		internal static uint SDLGetQueuedAudioSizeNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, uint>)vt[242])(dev);
+		}
 		/// <summary>/// Get the number of bytes of still-queued audio.<br/>/// For playback devices: this is the number of bytes that have been queued for<br/>/// playback with SDL_QueueAudio(), but have not yet been sent to the hardware.<br/>/// Once we've sent it to the hardware, this function can not decide the exact<br/>/// byte boundary of what has been played. It's possible that we just gave the<br/>/// hardware several kilobytes right before you called this function, but it<br/>/// hasn't played any of it yet, or maybe half of it, etc.<br/>/// For capture devices, this is the number of bytes that have been captured by<br/>/// the device and are waiting for you to dequeue. This number may grow at any<br/>/// time, so this only informs of the lower-bound of available data.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before querying; SDL<br/>/// handles locking internally for this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetQueuedAudioSize")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLGetQueuedAudioSize([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
@@ -822,10 +833,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearQueuedAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearQueuedAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
+		internal static void SDLClearQueuedAudioNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[243])(dev);
+		}
 		/// <summary>/// Drop any queued audio data waiting to be sent to the hardware.<br/>/// Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For<br/>/// output devices, the hardware will start playing silence if more audio isn't<br/>/// queued. For capture devices, the hardware will start filling the empty<br/>/// queue with new data if the capture device isn't paused.<br/>/// This will not prevent playback of queued audio that's already been sent to<br/>/// the hardware, as we can not undo that, so expect there to be some fraction<br/>/// of a second of audio that might still be heard. This can be useful if you<br/>/// want to, say, drop any pending music or any unprocessed microphone input<br/>/// during a level change in your game.<br/>/// You may not queue or dequeue audio on a device that is using an<br/>/// application-supplied callback; calling this function on such a device<br/>/// always returns 0. You have to use the audio callback or queue audio, but<br/>/// not both.<br/>/// You should not call SDL_LockAudio() on the device before clearing the<br/>/// queue; SDL handles locking internally for this function.<br/>/// This function always succeeds and thus returns void.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearQueuedAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLClearQueuedAudio([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
@@ -846,10 +857,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockAudioNative();
-
+		internal static void SDLLockAudioNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[244])();
+		}
 		/// <summary>/// This function is a legacy means of locking the audio device.<br/>/// New programs might want to use SDL_LockAudioDevice() instead. This function<br/>/// is equivalent to calling...<br/>/// ```c<br/>/// SDL_LockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLockAudio()
@@ -888,10 +899,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
+		internal static void SDLLockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[245])(dev);
+		}
 		/// <summary>/// Use this function to lock out the audio callback function for a specified<br/>/// device.<br/>/// The lock manipulated by these functions protects the audio callback<br/>/// function specified in SDL_OpenAudioDevice(). During a<br/>/// SDL_LockAudioDevice()/SDL_UnlockAudioDevice() pair, you can be guaranteed<br/>/// that the callback function for that device is not running, even if the<br/>/// device is not paused. While a device is locked, any other unpaused,<br/>/// unlocked devices may still run their callbacks.<br/>/// Calling this function from inside your audio callback is unnecessary. SDL<br/>/// obtains this lock before calling your function, and releases it when the<br/>/// function returns.<br/>/// You should not hold the lock longer than absolutely necessary. If you hold<br/>/// it too long, you'll experience dropouts in your audio playback. Ideally,<br/>/// your application locks the device, sets a few variables and unlocks again.<br/>/// Do not do heavy work while holding the lock for a device.<br/>/// It is safe to lock the audio device multiple times, as long as you unlock<br/>/// it an equivalent number of times. The callback will not run until the<br/>/// device has been unlocked completely in this way. If your application fails<br/>/// to unlock the device appropriately, your callback will never run, you might<br/>/// hear repeating bursts of audio, and SDL_CloseAudioDevice() will probably<br/>/// deadlock.<br/>/// Internally, the audio device lock is a mutex; if you lock from two threads<br/>/// at once, not only will you block the audio callback, you'll block the other<br/>/// thread.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
@@ -912,10 +923,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockAudioNative();
-
+		internal static void SDLUnlockAudioNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[246])();
+		}
 		/// <summary>/// This function is a legacy means of unlocking the audio device.<br/>/// New programs might want to use SDL_UnlockAudioDevice() instead. This<br/>/// function is equivalent to calling...<br/>/// ```c<br/>/// SDL_UnlockAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLUnlockAudio()
@@ -933,10 +944,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnlockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
+		internal static void SDLUnlockAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[247])(dev);
+		}
 		/// <summary>/// Use this function to unlock the audio callback function for a specified<br/>/// device.<br/>/// This function should be paired with a previous SDL_LockAudioDevice() call.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLUnlockAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
@@ -956,10 +967,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudio")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLCloseAudioNative();
-
+		internal static void SDLCloseAudioNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[248])();
+		}
 		/// <summary>/// This function is a legacy means of closing the audio device.<br/>/// This function is equivalent to calling...<br/>/// ```c<br/>/// SDL_CloseAudioDevice(1);<br/>/// ```<br/>/// ...and is only useful if you used the legacy SDL_OpenAudio() function.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudio")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLCloseAudio()
@@ -985,10 +996,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CloseAudioDevice")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLCloseAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev);
-
+		internal static void SDLCloseAudioDeviceNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
+		{
+			((delegate* unmanaged[Cdecl]<uint, void>)vt[249])(dev);
+		}
 		/// <summary>/// Use this function to shut down audio processing and close the audio device.<br/>/// The application should close open audio devices once they are no longer<br/>/// needed. Calling this function will wait until the device's audio callback<br/>/// is not running, release the audio hardware and then clean up internal<br/>/// state. No further audio will play from this device once this function<br/>/// returns.<br/>/// This function may block briefly while pending audio data is played by the<br/>/// hardware, so that applications don't drop the last buffer of data they<br/>/// supplied.<br/>/// The device ID is invalid as soon as the device is closed, and is eligible<br/>/// for reuse in a new SDL_OpenAudioDevice() call immediately.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CloseAudioDevice")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLCloseAudioDevice([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_AudioDeviceID")] uint dev)
@@ -1004,10 +1015,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetClipboardText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetClipboardTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
-
+		internal static int SDLSetClipboardTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int>)vt[250])(text);
+		}
 		/// <summary>/// Put UTF-8 text into the clipboard.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetClipboardText")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetClipboardText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
@@ -1066,10 +1077,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetClipboardText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetClipboardTextNative();
-
+		internal static byte* SDLGetClipboardTextNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[251])();
+		}
 		/// <summary>/// Get UTF-8 text from the clipboard, which must be freed with SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the clipboard's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetClipboardText")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetClipboardText()
@@ -1094,10 +1105,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasClipboardText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasClipboardTextNative();
-
+		internal static SDLBool SDLHasClipboardTextNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[252])();
+		}
 		/// <summary>/// Query whether the clipboard exists and contains a non-empty text string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasClipboardText")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasClipboardText()
@@ -1114,10 +1125,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPrimarySelectionTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
-
+		internal static int SDLSetPrimarySelectionTextNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int>)vt[253])(text);
+		}
 		/// <summary>/// Put UTF-8 text into the primary selection.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetPrimarySelectionText([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
@@ -1177,10 +1188,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPrimarySelectionTextNative();
-
+		internal static byte* SDLGetPrimarySelectionTextNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[254])();
+		}
 		/// <summary>/// Get UTF-8 text from the primary selection, which must be freed with<br/>/// SDL_free().<br/>/// This functions returns empty string if there was not enough memory left for<br/>/// a copy of the primary selection's content.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetPrimarySelectionText()
@@ -1206,10 +1217,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasPrimarySelectionText")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasPrimarySelectionTextNative();
-
+		internal static SDLBool SDLHasPrimarySelectionTextNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[255])();
+		}
 		/// <summary>/// Query whether the primary selection exists and contains a non-empty text<br/>/// string.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasPrimarySelectionText")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasPrimarySelectionText()
@@ -1225,10 +1236,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCount")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetCPUCountNative();
-
+		internal static int SDLGetCPUCountNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[256])();
+		}
 		/// <summary>/// Get the number of CPU cores available.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCount")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetCPUCount()
@@ -1246,10 +1257,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetCPUCacheLineSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetCPUCacheLineSizeNative();
-
+		internal static int SDLGetCPUCacheLineSizeNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[257])();
+		}
 		/// <summary>/// Determine the L1 cache line size of the CPU.<br/>/// This is useful for determining multi-threaded structure padding or SIMD<br/>/// prefetch sizes.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetCPUCacheLineSize")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetCPUCacheLineSize()
@@ -1267,10 +1278,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasRDTSC")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasRDTSCNative();
-
+		internal static SDLBool SDLHasRDTSCNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[258])();
+		}
 		/// <summary>/// Determine whether the CPU has the RDTSC instruction.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasRDTSC")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasRDTSC()
@@ -1289,10 +1300,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAltiVec")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAltiVecNative();
-
+		internal static SDLBool SDLHasAltiVecNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[259])();
+		}
 		/// <summary>/// Determine whether the CPU has AltiVec features.<br/>/// This always returns false on CPUs that aren't using PowerPC instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAltiVec")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasAltiVec()
@@ -1310,10 +1321,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasMMX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasMMXNative();
-
+		internal static SDLBool SDLHasMMXNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[260])();
+		}
 		/// <summary>/// Determine whether the CPU has MMX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasMMX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasMMX()
@@ -1331,10 +1342,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Has3DNow")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHas3DNowNative();
-
+		internal static SDLBool SDLHas3DNowNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[261])();
+		}
 		/// <summary>/// Determine whether the CPU has 3DNow! features.<br/>/// This always returns false on CPUs that aren't using AMD instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Has3DNow")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHas3DNow()
@@ -1352,10 +1363,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSENative();
-
+		internal static SDLBool SDLHasSSENative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[262])();
+		}
 		/// <summary>/// Determine whether the CPU has SSE features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasSSE()
@@ -1373,10 +1384,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE2Native();
-
+		internal static SDLBool SDLHasSSE2Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[263])();
+		}
 		/// <summary>/// Determine whether the CPU has SSE2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE2")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasSSE2()
@@ -1394,10 +1405,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE3")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE3Native();
-
+		internal static SDLBool SDLHasSSE3Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[264])();
+		}
 		/// <summary>/// Determine whether the CPU has SSE3 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE3")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasSSE3()
@@ -1415,10 +1426,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE41")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE41Native();
-
+		internal static SDLBool SDLHasSSE41Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[265])();
+		}
 		/// <summary>/// Determine whether the CPU has SSE4.1 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE41")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasSSE41()
@@ -1436,10 +1447,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasSSE42")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasSSE42Native();
-
+		internal static SDLBool SDLHasSSE42Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[266])();
+		}
 		/// <summary>/// Determine whether the CPU has SSE4.2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasSSE42")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasSSE42()
@@ -1457,10 +1468,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVXNative();
-
+		internal static SDLBool SDLHasAVXNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[267])();
+		}
 		/// <summary>/// Determine whether the CPU has AVX features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasAVX()
@@ -1478,10 +1489,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX2")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVX2Native();
-
+		internal static SDLBool SDLHasAVX2Native()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[268])();
+		}
 		/// <summary>/// Determine whether the CPU has AVX2 features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX2")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasAVX2()
@@ -1499,10 +1510,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasAVX512F")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasAVX512FNative();
-
+		internal static SDLBool SDLHasAVX512FNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[269])();
+		}
 		/// <summary>/// Determine whether the CPU has AVX-512F (foundation) features.<br/>/// This always returns false on CPUs that aren't using Intel instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasAVX512F")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasAVX512F()
@@ -1521,10 +1532,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasARMSIMD")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasARMSIMDNative();
-
+		internal static SDLBool SDLHasARMSIMDNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[270])();
+		}
 		/// <summary>/// Determine whether the CPU has ARM SIMD (ARMv6) features.<br/>/// This is different from ARM NEON, which is a different instruction set.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasARMSIMD")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasARMSIMD()
@@ -1541,10 +1552,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasNEON")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasNEONNative();
-
+		internal static SDLBool SDLHasNEONNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[271])();
+		}
 		/// <summary>/// Determine whether the CPU has NEON (ARM SIMD) features.<br/>/// This always returns false on CPUs that aren't using ARM instruction sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasNEON")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasNEON()
@@ -1562,10 +1573,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasLSX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasLSXNative();
-
+		internal static SDLBool SDLHasLSXNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[272])();
+		}
 		/// <summary>/// Determine whether the CPU has LSX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLSX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasLSX()
@@ -1583,10 +1594,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_HasLASX")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLHasLASXNative();
-
+		internal static SDLBool SDLHasLASXNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLBool>)vt[273])();
+		}
 		/// <summary>/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.<br/>/// This always returns false on CPUs that aren't using LOONGARCH instruction<br/>/// sets.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_HasLASX")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLHasLASX()
@@ -1602,10 +1613,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetSystemRAM")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLGetSystemRAMNative();
-
+		internal static int SDLGetSystemRAMNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<int>)vt[274])();
+		}
 		/// <summary>/// Get the amount of RAM configured in the system.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetSystemRAM")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLGetSystemRAM()
@@ -1629,10 +1640,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDGetAlignment")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLSIMDGetAlignmentNative();
-
+		internal static ulong SDLSIMDGetAlignmentNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong>)vt[275])();
+		}
 		/// <summary>/// Report the alignment this system needs for SIMD allocations.<br/>/// This will return the minimum number of bytes to which a pointer must be<br/>/// aligned to be compatible with SIMD instructions on the current machine. For<br/>/// example, if the machine supports SSE only, it will return 16, but if it<br/>/// supports AVX-512F, it'll return 64 (etc). This only reports values for<br/>/// instruction sets SDL knows about, so if your SDL build doesn't have<br/>/// SDL_HasAVX512F(), then it might return 16 for the SSE support it sees and<br/>/// not 64 for the AVX-512 instructions that exist but SDL doesn't know about.<br/>/// Plan accordingly.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDGetAlignment")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLSIMDGetAlignment()
@@ -1668,10 +1679,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDAlloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLSIMDAllocNative([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
-
+		internal static void* SDLSIMDAllocNative([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<ulong, void*>)vt[276])(len);
+		}
 		/// <summary>/// Allocate memory in a SIMD-friendly way.<br/>/// This will allocate a block of memory that is suitable for use with SIMD<br/>/// instructions. Specifically, it will be properly aligned and padded for the<br/>/// system's supported vector instructions.<br/>/// The memory returned will be padded such that it is safe to read or write an<br/>/// incomplete vector at the end of the memory block. This can be useful so you<br/>/// don't have to drop back to a scalar fallback at the end of your SIMD<br/>/// processing loop to deal with the final elements without overflowing the<br/>/// allocated buffer.<br/>/// You must free this memory with SDL_FreeSIMD(), not free() or SDL_free() or<br/>/// delete[], etc.<br/>/// Note that SDL will only deal with SIMD instruction sets it is aware of; for<br/>/// example, SDL 2.0.8 knows that SSE wants 16-byte vectors (SDL_HasSSE()), and<br/>/// AVX2 wants 32 bytes (SDL_HasAVX2()), but doesn't know that AVX-512 wants<br/>/// 64. To be clear: if you can't decide to use an instruction set with an<br/>/// SDL_Has*() function, don't use that instruction set with memory allocated<br/>/// through here.<br/>/// SDL_AllocSIMD(0) will return a non-NULL pointer, assuming the system isn't<br/>/// out of memory, but you are not allowed to dereference it (because you only<br/>/// own zero bytes of that buffer).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDAlloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLSIMDAlloc([NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
@@ -1699,10 +1710,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDRealloc")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLSIMDReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len);
-
+		internal static void* SDLSIMDReallocNative([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, ulong, void*>)vt[277])(mem, len);
+		}
 		/// <summary>/// Reallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc(). It can't be used on pointers from malloc, realloc,<br/>/// SDL_malloc, memalign, new[], etc.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDRealloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLSIMDRealloc([NativeName(NativeNameType.Param, "mem")] [NativeName(NativeNameType.Type, "void*")] void* mem, [NativeName(NativeNameType.Param, "len")] [NativeName(NativeNameType.Type, "const size_t")] ulong len)
@@ -1735,10 +1746,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SIMDFree")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSIMDFreeNative([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr);
-
+		internal static void SDLSIMDFreeNative([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr)
+		{
+			((delegate* unmanaged[Cdecl]<void*, void>)vt[278])(ptr);
+		}
 		/// <summary>/// Deallocate memory obtained from SDL_SIMDAlloc<br/>/// It is not valid to use this function on a pointer from anything but<br/>/// SDL_SIMDAlloc() or SDL_SIMDRealloc(). It can't be used on pointers from<br/>/// malloc, realloc, SDL_malloc, memalign, new[], etc.<br/>/// However, SDL_SIMDFree(NULL) is a legal no-op.<br/>/// The memory pointed to by `ptr` is no longer valid for access upon return,<br/>/// and may be returned to the system or reused by a future allocation. The<br/>/// pointer passed to this function is no longer safe to dereference once this<br/>/// function returns, and should be discarded.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SIMDFree")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLSIMDFree([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr)
@@ -1753,10 +1764,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetPixelFormatName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetPixelFormatNameNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format);
-
+		internal static byte* SDLGetPixelFormatNameNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, byte*>)vt[279])(format);
+		}
 		/// <summary>/// Get the human readable name of a pixel format.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetPixelFormatName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetPixelFormatName([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format)
@@ -1781,10 +1792,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_PixelFormatEnumToMasks")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLPixelFormatEnumToMasksNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask);
-
+		internal static SDLBool SDLPixelFormatEnumToMasksNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, int*, uint*, uint*, uint*, uint*, SDLBool>)vt[280])(format, bpp, rmask, gmask, bmask, amask);
+		}
 		/// <summary>/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_PixelFormatEnumToMasks")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLPixelFormatEnumToMasks([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "Uint32")] uint format, [NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int*")] int* bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32*")] uint* amask)
@@ -2291,10 +2302,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MasksToPixelFormatEnum")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMasksToPixelFormatEnumNative([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask);
-
+		internal static uint SDLMasksToPixelFormatEnumNative([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, uint, uint, uint, uint, uint>)vt[281])(bpp, rmask, gmask, bmask, amask);
+		}
 		/// <summary>/// Convert a bpp value and RGBA masks to an enumerated pixel format.<br/>/// This will return `SDL_PIXELFORMAT_UNKNOWN` if the conversion wasn't<br/>/// possible.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MasksToPixelFormatEnum")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLMasksToPixelFormatEnum([NativeName(NativeNameType.Param, "bpp")] [NativeName(NativeNameType.Type, "int")] int bpp, [NativeName(NativeNameType.Param, "Rmask")] [NativeName(NativeNameType.Type, "Uint32")] uint rmask, [NativeName(NativeNameType.Param, "Gmask")] [NativeName(NativeNameType.Type, "Uint32")] uint gmask, [NativeName(NativeNameType.Param, "Bmask")] [NativeName(NativeNameType.Type, "Uint32")] uint bmask, [NativeName(NativeNameType.Param, "Amask")] [NativeName(NativeNameType.Type, "Uint32")] uint amask)
@@ -2314,10 +2325,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
 		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AllocFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLPixelFormat* SDLAllocFormatNative([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat);
-
+		internal static SDLPixelFormat* SDLAllocFormatNative([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, SDLPixelFormat*>)vt[282])(pixelFormat);
+		}
 		/// <summary>/// Create an SDL_PixelFormat structure corresponding to a pixel format.<br/>/// Returned structure may come from a shared global cache (i.e. not newly<br/>/// allocated), and hence should not be modified, especially the palette. Weird<br/>/// errors such as `Blit combination not supported` may occur.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocFormat")]
 		[return: NativeName(NativeNameType.Type, "SDL_PixelFormat*")]
 		public static SDLPixelFormat* SDLAllocFormat([NativeName(NativeNameType.Param, "pixel_format")] [NativeName(NativeNameType.Type, "Uint32")] uint pixelFormat)
@@ -2334,10 +2345,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreeFormat")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreeFormatNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format);
-
+		internal static void SDLFreeFormatNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format)
+		{
+			((delegate* unmanaged[Cdecl]<SDLPixelFormat*, void>)vt[283])(format);
+		}
 		/// <summary>/// Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreeFormat")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFreeFormat([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format)
@@ -2364,10 +2375,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
 		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AllocPalette")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLPalette* SDLAllocPaletteNative([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
-
+		internal static SDLPalette* SDLAllocPaletteNative([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, SDLPalette*>)vt[284])(ncolors);
+		}
 		/// <summary>/// Create a palette structure with the specified number of color entries.<br/>/// The palette entries are initialized to white.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AllocPalette")]
 		[return: NativeName(NativeNameType.Type, "SDL_Palette*")]
 		public static SDLPalette* SDLAllocPalette([NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
@@ -2384,10 +2395,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPixelFormatPalette")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPixelFormatPaletteNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
-
+		internal static int SDLSetPixelFormatPaletteNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLPixelFormat*, SDLPalette*, int>)vt[285])(format, palette);
+		}
 		/// <summary>/// Set the palette for a pixel format structure.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPixelFormatPalette")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetPixelFormatPalette([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
@@ -2440,10 +2451,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetPaletteColors")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetPaletteColorsNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors);
-
+		internal static int SDLSetPaletteColorsNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLPalette*, SDLColor*, int, int, int>)vt[286])(palette, colors, firstcolor, ncolors);
+		}
 		/// <summary>/// Set a range of colors in a palette.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetPaletteColors")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetPaletteColors([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette, [NativeName(NativeNameType.Param, "colors")] [NativeName(NativeNameType.Type, "const SDL_Color*")] SDLColor* colors, [NativeName(NativeNameType.Param, "firstcolor")] [NativeName(NativeNameType.Type, "int")] int firstcolor, [NativeName(NativeNameType.Param, "ncolors")] [NativeName(NativeNameType.Type, "int")] int ncolors)
@@ -2496,10 +2507,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_FreePalette")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLFreePaletteNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette);
-
+		internal static void SDLFreePaletteNative([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
+		{
+			((delegate* unmanaged[Cdecl]<SDLPalette*, void>)vt[287])(palette);
+		}
 		/// <summary>/// Free a palette created with SDL_AllocPalette().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_FreePalette")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLFreePalette([NativeName(NativeNameType.Param, "palette")] [NativeName(NativeNameType.Type, "SDL_Palette*")] SDLPalette* palette)
@@ -2536,10 +2547,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MapRGB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMapRGBNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b);
-
+		internal static uint SDLMapRGBNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLPixelFormat*, byte, byte, byte, uint>)vt[288])(format, r, g, b);
+		}
 		/// <summary>/// Map an RGB triple to an opaque pixel value for a given pixel format.<br/>/// This function maps the RGB color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGB color value for<br/>/// the given pixel format.<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the specified pixel format has an alpha component it will be returned as<br/>/// all 1 bits (fully opaque).<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGB")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLMapRGB([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b)
@@ -2578,10 +2589,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MapRGBA")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLMapRGBANative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a);
-
+		internal static uint SDLMapRGBANative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLPixelFormat*, byte, byte, byte, byte, uint>)vt[289])(format, r, g, b, a);
+		}
 		/// <summary>/// Map an RGBA quadruple to a pixel value for a given pixel format.<br/>/// This function maps the RGBA color value to the specified pixel format and<br/>/// returns the pixel value best approximating the given RGBA color value for<br/>/// the given pixel format.<br/>/// If the specified pixel format has no alpha component the alpha value will<br/>/// be ignored (as it will be in formats with a palette).<br/>/// If the format has a palette (8-bit) the index of the closest matching color<br/>/// in the palette will be returned.<br/>/// If the pixel format bpp (color depth) is less than 32-bpp then the unused<br/>/// upper bits of the return value can safely be ignored (e.g., with a 16-bpp<br/>/// format the return value can be assigned to a Uint16, and similarly a Uint8<br/>/// for an 8-bpp format).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MapRGBA")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLMapRGBA([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8")] byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8")] byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8")] byte b, [NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "Uint8")] byte a)
@@ -2613,10 +2624,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetRGB")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLGetRGBNative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b);
-
+		internal static void SDLGetRGBNative([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
+		{
+			((delegate* unmanaged[Cdecl]<uint, SDLPixelFormat*, byte*, byte*, byte*, void>)vt[290])(pixel, format, r, g, b);
+		}
 		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] byte* g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] byte* b)
@@ -2770,57 +2781,6 @@ namespace Hexa.NET.SDL2
 				fixed (byte* pb = &b)
 				{
 					SDLGetRGBNative(pixel, format, r, (byte*)pg, (byte*)pb);
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] byte* r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, r, (byte*)pg, (byte*)pb);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] SDLPixelFormat* format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (byte* pr = &r)
-			{
-				fixed (byte* pg = &g)
-				{
-					fixed (byte* pb = &b)
-					{
-						SDLGetRGBNative(pixel, format, (byte*)pr, (byte*)pg, (byte*)pb);
-					}
-				}
-			}
-		}
-
-		/// <summary>/// Get RGB values from a pixel in the specified format.<br/>/// This function uses the entire 8-bit [0..255] range when converting color<br/>/// components from pixel formats with less than 8-bits per RGB component<br/>/// (e.g., a completely white pixel in 16-bit RGB565 format would return [0xff,<br/>/// 0xff, 0xff] not [0xf8, 0xfc, 0xf8]).<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetRGB")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLGetRGB([NativeName(NativeNameType.Param, "pixel")] [NativeName(NativeNameType.Type, "Uint32")] uint pixel, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const SDL_PixelFormat*")] ref SDLPixelFormat format, [NativeName(NativeNameType.Param, "r")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte r, [NativeName(NativeNameType.Param, "g")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte g, [NativeName(NativeNameType.Param, "b")] [NativeName(NativeNameType.Type, "Uint8*")] ref byte b)
-		{
-			fixed (SDLPixelFormat* pformat = &format)
-			{
-				fixed (byte* pr = &r)
-				{
-					fixed (byte* pg = &g)
-					{
-						fixed (byte* pb = &b)
-						{
-							SDLGetRGBNative(pixel, (SDLPixelFormat*)pformat, (byte*)pr, (byte*)pg, (byte*)pb);
-						}
-					}
 				}
 			}
 		}

@@ -80,17 +80,17 @@
 
         string GetCsSubTypeName(CppClass parentClass, string parentCsName, CppClass subClass, int idxSubClass);
 
-        string GetCsTypeName(CppPointerType pointerType);
+        string GetCsTypeName(CppPointerType pointerType, bool? requiresUnmanaged = null);
 
-        string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer);
+        string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer, bool? requiresUnmanaged = null);
 
-        string GetCsTypeName(CppType? type, bool isPointer = false);
+        string GetCsTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null);
 
-        string GetCsWrapperTypeName(CppPointerType pointerType);
+        string GetCsWrapperTypeName(CppPointerType pointerType, bool? requiresUnmanaged = null);
 
-        string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer);
+        string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer, bool? requiresUnmanaged = null);
 
-        string GetCsWrapperTypeName(CppType? type, bool isPointer = false);
+        string GetCsWrapperTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null);
 
         DelegateMapping? GetDelegateMapping(string delegateName);
 
@@ -102,7 +102,7 @@
 
         FunctionMapping? GetFunctionMapping(string functionName);
 
-        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut);
+        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool delegateType = false);
 
         string GetParameterName(int paramIdx, string name);
 

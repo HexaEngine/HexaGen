@@ -13,7 +13,7 @@
 
 		<PackageId>Hexa.NET.SDL2</PackageId>
 		<AssemblyVersion>2.30.5</AssemblyVersion>
-		<PackageVersion>1.1.0</PackageVersion>
+		<PackageVersion>1.2.0</PackageVersion>
 		<Description>A .NET Wrapper for SDL2 (v 2.30.5), generated with the HexaGen code generator. HexaGen allows users to access native libraries easily and with high performance.</Description>
 		<PackageTags>SDL SDL2 Hexa HexaGen Source Generator C# .NET DotNet Sharp Windows macOS Android Bindings Wrapper Native</PackageTags>
 		<Authors>Juna Meinhold</Authors>
