@@ -641,69 +641,6 @@ namespace Hexa.NET.VMA
 			VMA.VmaDestroyImageNative(allocator, image, allocation);
 		}
 
-		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
-		{
-			VMA.VmaBuildStatsStringNative(allocator, ppStatsString, detailedMap);
-		}
-
-		/// <summary>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
-		{
-			fixed (byte** pppStatsString = &ppStatsString)
-			{
-				VMA.VmaBuildStatsStringNative(allocator, (byte**)pppStatsString, detailedMap);
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vmaFreeStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] byte* pStatsString)
-		{
-			VMA.VmaFreeStatsStringNative(allocator, pStatsString);
-		}
-
-		[NativeName(NativeNameType.Func, "vmaFreeStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] ref byte pStatsString)
-		{
-			fixed (byte* ppStatsString = &pStatsString)
-			{
-				VMA.VmaFreeStatsStringNative(allocator, (byte*)ppStatsString);
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vmaFreeStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeStatsString(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] ref string pStatsString)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (pStatsString != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(pStatsString);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(pStatsString, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			VMA.VmaFreeStatsStringNative(allocator, pStr0);
-			pStatsString = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
 		[NativeName(NativeNameType.Func, "VmaMalloc")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* Malloc(this VmaAllocator hAllocator, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "size_t")] ulong size, [NativeName(NativeNameType.Param, "alignment")] [NativeName(NativeNameType.Type, "size_t")] ulong alignment)
@@ -741,6 +678,23 @@ namespace Hexa.NET.VMA
 		public static void Free(this VmaAllocator hAllocator, [NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr)
 		{
 			VMA.VmaFreeNative(hAllocator, ptr);
+		}
+
+		/// <summary>/// <br/>/// This function automatically:<br/>/// -# Creates buffer.<br/>/// -# Allocates appropriate memory for it.<br/>/// -# Binds the buffer with the memory.<br/>/// If any of these operations fail, buffer and allocation are not created,<br/>/// returned value is negative error code, `*pBuffer` and `*pAllocation` are null.<br/>/// If the function succeeded, you must destroy both buffer and allocation when you<br/>/// no longer need them using either convenience function vmaDestroyBuffer() or<br/>/// separately, using `vkDestroyBuffer()` and vmaFreeMemory().<br/>/// If #VMA_ALLOCATOR_CREATE_KHR_DEDICATED_ALLOCATION_BIT flag was used,<br/>/// VK_KHR_dedicated_allocation extension is used internally to query driver whether<br/>/// it requires or prefers the new buffer to have dedicated allocation. If yes,<br/>/// and if dedicated allocation is possible<br/>/// (#VMA_ALLOCATION_CREATE_NEVER_ALLOCATE_BIT is not used), it creates dedicated<br/>/// allocation for this buffer, just like when using<br/>/// #VMA_ALLOCATION_CREATE_DEDICATED_MEMORY_BIT.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaCreateBuffer")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult CreateBuffer(this VmaAllocator allocator, [NativeName(NativeNameType.Param, "pBufferCreateInfo")] [NativeName(NativeNameType.Type, "const VkBufferCreateInfo*")] VkBufferCreateInfo* pBufferCreateInfo, [NativeName(NativeNameType.Param, "pAllocationCreateInfo")] [NativeName(NativeNameType.Type, "const VmaAllocationCreateInfo*")] VmaAllocationCreateInfo* pAllocationCreateInfo, [NativeName(NativeNameType.Param, "pBuffer")] [NativeName(NativeNameType.Type, "VkBuffer*")] ref VkBuffer pBuffer, [NativeName(NativeNameType.Param, "pAllocation")] [NativeName(NativeNameType.Type, "VmaAllocation*")] ref VmaAllocation pAllocation, [NativeName(NativeNameType.Param, "pAllocationInfo")] [NativeName(NativeNameType.Type, "VmaAllocationInfo*")] ref VmaAllocationInfo pAllocationInfo)
+		{
+			fixed (VkBuffer* ppBuffer = &pBuffer)
+			{
+				fixed (VmaAllocation* ppAllocation = &pAllocation)
+				{
+					fixed (VmaAllocationInfo* ppAllocationInfo = &pAllocationInfo)
+					{
+						VkResult ret = VMA.VmaCreateBufferNative(allocator, pBufferCreateInfo, pAllocationCreateInfo, (VkBuffer*)ppBuffer, (VmaAllocation*)ppAllocation, (VmaAllocationInfo*)ppAllocationInfo);
+						return ret;
+					}
+				}
+			}
 		}
 
 		/// <summary>/// <br/>/// Please note that you should consciously handle virtual allocations that could remain unfreed in the block.<br/>/// You should either free them individually using vmaVirtualFree() or call vmaClearVirtualBlock()<br/>/// if you are sure this is what you want. If you do neither, an assert is called.<br/>/// If you keep pointers to some additional metadata associated with your virtual allocations in their `pUserData`,<br/>/// don't forget to free them.<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaDestroyVirtualBlock")]
@@ -927,69 +881,6 @@ namespace Hexa.NET.VMA
 			fixed (VmaDetailedStatistics* ppStats = &pStats)
 			{
 				VMA.VmaCalculateVirtualBlockStatisticsNative(virtualBlock, (VmaDetailedStatistics*)ppStats);
-			}
-		}
-
-		/// <summary>/// <br/>/// Returned string must be freed using vmaFreeVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildVirtualBlockStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] byte** ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
-		{
-			VMA.VmaBuildVirtualBlockStatsStringNative(virtualBlock, ppStatsString, detailedMap);
-		}
-
-		/// <summary>/// <br/>/// Returned string must be freed using vmaFreeVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaBuildVirtualBlockStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void BuildVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "ppStatsString")] [NativeName(NativeNameType.Type, "char**")] ref byte* ppStatsString, [NativeName(NativeNameType.Param, "detailedMap")] [NativeName(NativeNameType.Type, "VkBool32")] uint detailedMap)
-		{
-			fixed (byte** pppStatsString = &ppStatsString)
-			{
-				VMA.VmaBuildVirtualBlockStatsStringNative(virtualBlock, (byte**)pppStatsString, detailedMap);
-			}
-		}
-
-		/// <summary>/// Frees a string returned by vmaBuildVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaFreeVirtualBlockStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] byte* pStatsString)
-		{
-			VMA.VmaFreeVirtualBlockStatsStringNative(virtualBlock, pStatsString);
-		}
-
-		/// <summary>/// Frees a string returned by vmaBuildVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaFreeVirtualBlockStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] ref byte pStatsString)
-		{
-			fixed (byte* ppStatsString = &pStatsString)
-			{
-				VMA.VmaFreeVirtualBlockStatsStringNative(virtualBlock, (byte*)ppStatsString);
-			}
-		}
-
-		/// <summary>/// Frees a string returned by vmaBuildVirtualBlockStatsString().<br/>/// </summary>		[NativeName(NativeNameType.Func, "vmaFreeVirtualBlockStatsString")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void FreeVirtualBlockStatsString(this VmaVirtualBlock virtualBlock, [NativeName(NativeNameType.Param, "pStatsString")] [NativeName(NativeNameType.Type, "char*")] ref string pStatsString)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (pStatsString != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(pStatsString);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(pStatsString, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			VMA.VmaFreeVirtualBlockStatsStringNative(virtualBlock, pStr0);
-			pStatsString = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
 			}
 		}
 

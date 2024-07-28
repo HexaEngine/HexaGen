@@ -35,6 +35,10 @@ namespace Hexa.NET.VMA
 		[NativeName(NativeNameType.Value, "1")]
 		public const int _WIN64 = 1;
 
+		[NativeName(NativeNameType.Const, "VMA_STATS_STRING_ENABLED")]
+		[NativeName(NativeNameType.Value, "0")]
+		public const int VMA_STATS_STRING_ENABLED = 0;
+
 		[NativeName(NativeNameType.Const, "VMA_VULKAN_VERSION")]
 		[NativeName(NativeNameType.Value, "1003000")]
 		public const int VMA_VULKAN_VERSION = 1003000;
@@ -70,10 +74,6 @@ namespace Hexa.NET.VMA
 		[NativeName(NativeNameType.Const, "VMA_EXTERNAL_MEMORY")]
 		[NativeName(NativeNameType.Value, "1")]
 		public const int VMA_EXTERNAL_MEMORY = 1;
-
-		[NativeName(NativeNameType.Const, "VMA_STATS_STRING_ENABLED")]
-		[NativeName(NativeNameType.Value, "1")]
-		public const int VMA_STATS_STRING_ENABLED = 1;
 
 		[NativeName(NativeNameType.Const, "VMA_CPP20")]
 		[NativeName(NativeNameType.Value, "0")]

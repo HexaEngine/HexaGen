@@ -27,11 +27,26 @@
   "IgnoredParts": [
     "bit"
   ],
+  "IgnoredEnums": [
+    "VmaVirtualAllocationCreateFlagBits"
+  ],
+  "IgnoredTypes": [
+    "VmaBufferImageUsage"
+  ],
+  "IgnoredTypedefs": [
+    "VmaAllocationCreateInfo"
+  ],
   "PreserveCaps": [
     ""
   ],
   "TypeMappings": {
     "VmaAllocatorCreateFlags": "VmaAllocatorCreateFlagBits",
+    "VmaVirtualAllocationCreateFlags": "VmaVirtualAllocationCreateFlagBits",
+    "VmaVirtualBlockCreateFlags": "VmaVirtualBlockCreateFlagBits",
+    "VmaDefragmentationFlags": "VmaDefragmentationFlagBits",
+    "VmaPoolCreateFlags": "VmaPoolCreateFlagBits",
+    "VmaAllocationCreateFlags": "VmaAllocationCreateFlagBits",
+    "VkExternalMemoryHandleTypeFlagsKHR": "VkExternalMemoryHandleTypeFlagBits",
     "VkPipelineInfoEXT": "VkPipelineInfoKHR",
     "VkMemoryRequirements2KHR": "VkMemoryRequirements2",
     "VkDeviceAddress": "ulong",

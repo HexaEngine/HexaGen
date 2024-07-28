@@ -62,6 +62,7 @@
     "daxa_f32vec2": "Vector2",
     "daxa_i32": "int",
     "daxa_u32": "uint",
+    "VmaRWMutex": "void*",
     "VmaAllocatorCreateFlags": "VmaAllocatorCreateFlagBits",
     "VmaVirtualAllocationCreateFlags": "VmaVirtualAllocationCreateFlagBits",
     "VmaVirtualBlockCreateFlags": "VmaVirtualBlockCreateFlagBits",

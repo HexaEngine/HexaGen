@@ -38,7 +38,7 @@ namespace Hexa.NET.VMA
 	[NativeName(NativeNameType.Delegate, "vkGetInstanceProcAddr")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction VkGetInstanceProcAddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> VkGetInstanceProcAddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	/// <summary>
 	/// Required when using VMA_DYNAMIC_VULKAN_FUNCTIONS.<br/>
@@ -46,7 +46,7 @@ namespace Hexa.NET.VMA
 	[NativeName(NativeNameType.Delegate, "vkGetDeviceProcAddr")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction VkGetDeviceProcAddr([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> VkGetDeviceProcAddr([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	[NativeName(NativeNameType.Delegate, "vkGetPhysicalDeviceProperties")]
 	[return: NativeName(NativeNameType.Type, "void")]
