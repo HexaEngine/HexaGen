@@ -10,6 +10,9 @@ namespace HexaGen
         [JsonIgnore]
         public CustomEnumItemMapperDelegate? CustomEnumItemMapper { get; set; }
 
+        [JsonIgnore]
+        internal Dictionary<string, CsEnumMetadata> DefinedCppEnums { get; set; } = []; // set to empty just to make sure, because if enum generation is disabled, this will not be set
+
         public static int IndexOfUnionField(CppClass parent, CppClass union)
         {
             for (int i = 0; i < parent.Fields.Count; i++)

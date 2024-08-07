@@ -27,7 +27,7 @@
 
         void WriteLine(string @string);
 
-        void WriteLines(string? @string, bool newLineAtEnd = false);
+        void WriteLines(string? @string);
 
         void WriteLines(IEnumerable<string> lines);
     }

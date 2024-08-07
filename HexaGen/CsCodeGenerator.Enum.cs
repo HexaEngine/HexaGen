@@ -19,7 +19,7 @@
             return usings;
         }
 
-        protected virtual bool FilterEnum(GenContext context, CsEnumMetadata metadata)
+        protected virtual bool FilterEnum(GenContext? context, CsEnumMetadata metadata)
         {
             if (settings.AllowedEnums.Count != 0 && !settings.AllowedEnums.Contains(metadata.Identifier))
                 return true;
@@ -54,7 +54,7 @@
                     }
                 }
 
-                LogWarn($"{context.FilePath}: {metadata} is already defined!");
+                LogWarn($"{context?.FilePath}: {metadata} is already defined!");
                 return true;
             }
 
@@ -66,36 +66,98 @@
 
         protected virtual void GenerateEnums(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Enumerations.cs");
-
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupEnumUsings(), 1);
-            GenContext context = new(compilation, filePath, writer);
-
-            for (int i = 0; i < compilation.Enums.Count; i++)
+            string folder = Path.Combine(outputPath, "Enums");
+            if (Directory.Exists(folder))
             {
-                CppEnum cppEnum = compilation.Enums[i];
-                var csEnum = ParseEnum(cppEnum, cppEnum);
-                WriteEnum(context, csEnum);
+                Directory.Delete(folder, true);
             }
+            Directory.CreateDirectory(folder);
+            string filePath = Path.Combine(folder, "Enums.cs");
 
-            for (int i = 0; i < compilation.Typedefs.Count; i++)
+            if (settings.OneFilePerType)
             {
-                var typeDef = compilation.Typedefs[i];
-                if (!typeDef.IsEnum(out var cppEnum))
+                for (int i = 0; i < compilation.Enums.Count; i++)
                 {
-                    continue;
+                    CppEnum cppEnum = compilation.Enums[i];
+                    var canon = cppEnum.GetCanonicalType();
+                    var csEnum = ParseEnum(cppEnum, cppEnum);
+                    if (FilterEnum(null, csEnum))
+                    {
+                        continue;
+                    }
+                    WriteEnumFile(compilation, folder, filePath, csEnum);
                 }
-                var csEnum = ParseEnum(cppEnum, typeDef);
-                WriteEnum(context, csEnum);
+
+                for (int i = 0; i < compilation.Typedefs.Count; i++)
+                {
+                    var typeDef = compilation.Typedefs[i];
+                    if (!typeDef.IsEnum(out var cppEnum))
+                    {
+                        continue;
+                    }
+                    var csEnum = ParseEnum(cppEnum, typeDef);
+                    if (FilterEnum(null, csEnum))
+                    {
+                        continue;
+                    }
+                    WriteEnumFile(compilation, folder, filePath, csEnum);
+                }
             }
+            else
+            {
+                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupEnumUsings(), settings.HeaderInjector, 1);
+                GenContext context = new(compilation, filePath, writer);
+
+                List<CsEnumMetadata> enums = new();
+
+                for (int i = 0; i < compilation.Enums.Count; i++)
+                {
+                    CppEnum cppEnum = compilation.Enums[i];
+                    var csEnum = ParseEnum(cppEnum, cppEnum);
+                    if (FilterEnum(context, csEnum))
+                    {
+                        continue;
+                    }
+                    enums.Add(csEnum);
+                }
+
+                for (int i = 0; i < compilation.Typedefs.Count; i++)
+                {
+                    var typeDef = compilation.Typedefs[i];
+                    if (!typeDef.IsEnum(out var cppEnum))
+                    {
+                        continue;
+                    }
+                    var csEnum = ParseEnum(cppEnum, typeDef);
+                    if (FilterEnum(context, csEnum))
+                    {
+                        continue;
+                    }
+                    enums.Add(csEnum);
+                }
+
+                for (int i = 0; i < enums.Count; i++)
+                {
+                    WriteEnum(context, enums[i]);
+                    if (i + 1 != enums.Count)
+                    {
+                        writer.WriteLine();
+                    }
+                }
+            }
+        }
+
+        private void WriteEnumFile(CppCompilation compilation, string folder, string filePath, CsEnumMetadata csEnum)
+        {
+            using var writer = new CsCodeWriter(Path.Combine(folder, $"{csEnum.Name}.cs"), settings.Namespace, SetupEnumUsings(), settings.HeaderInjector);
+            GenContext context = new(compilation, filePath, writer);
+            WriteEnum(context, csEnum);
         }
 
         private int unknownEnumCounter = 0;
 
         protected virtual CsEnumMetadata ParseEnum(CppEnum cppEnum, ICppMember cppMember)
         {
-            CsEnumMetadata csEnum = new(cppEnum.Name);
-
             string csName = settings.GetCsCleanName(cppEnum.Name);
 
             if (csName.StartsWith("(unnamed enum at ") && csName.EndsWith(')'))
@@ -114,8 +176,7 @@
             var mapping = settings.GetEnumMapping(cppEnum.Name);
             csName = mapping?.FriendlyName ?? csName;
 
-            csEnum.Name = csName;
-            csEnum.Comment = settings.WriteCsSummary(cppEnum.Comment);
+            CsEnumMetadata csEnum = new(cppEnum.Name, csName, settings.WriteCsSummary(cppEnum.Comment));
             csEnum.BaseType = settings.GetCsTypeName(cppEnum.IntegerType);
 
             bool noneAdded = false;
@@ -157,6 +218,11 @@
                 cppValue = rawExpression.Text;
                 string enumValueName = settings.GetEnumNameEx(rawExpression.Text, enumNamePrefix);
 
+                if (settings.KnownEnumValueNames.TryGetValue(rawExpression.Text, out string? knownName))
+                {
+                    enumValueName = knownName;
+                }
+
                 if (enumItem.Name == rawExpression.Text)
                 {
                     csValue = $"{enumIndex}";
@@ -190,11 +256,6 @@
 
         protected virtual void WriteEnum(GenContext context, CsEnumMetadata csEnum)
         {
-            if (FilterEnum(context, csEnum))
-            {
-                return;
-            }
-
             var writer = context.Writer;
 
             LogInfo("defined enum " + csEnum.Name);
@@ -209,11 +270,15 @@
             {
                 for (int j = 0; j < csEnum.Items.Count; j++)
                 {
-                    WriteEnumItem(context, csEnum.Items[j]);
+                    var csEnumItem = csEnum.Items[j];
+                    WriteEnumItem(context, csEnumItem);
+
+                    if (csEnumItem.Comment != null && j + 1 != csEnum.Items.Count)
+                    {
+                        writer.WriteLine();
+                    }
                 }
             }
-
-            writer.WriteLine();
         }
 
         protected virtual void WriteEnumItem(GenContext context, CsEnumItemMetadata csEnumItem)
@@ -226,10 +291,6 @@
                 writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csEnumItem.EscapedCppValue}\")]");
             }
             writer.WriteLine($"{csEnumItem.Name} = {csEnumItem.Value},");
-            if (csEnumItem.Comment != null)
-            {
-                writer.WriteLine();
-            }
         }
     }
 }

@@ -20,7 +20,7 @@
 
         public readonly bool IsSuccess
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return IndicatesSuccess(Value);
@@ -29,7 +29,7 @@
 
         public readonly bool IsFailure
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return IndicatesFailure(Value);
@@ -38,7 +38,7 @@
 
         public readonly bool IsError
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return IndicatesError(Value);
@@ -47,7 +47,7 @@
 
         public readonly int Code
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetCode(Value);
@@ -56,7 +56,7 @@
 
         public readonly int Facility
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetFacility(Value);
@@ -65,50 +65,50 @@
 
         public readonly int Severity
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 return GetSeverity(Value);
             }
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IndicatesSuccess(int hr)
         {
             return hr >= 0;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IndicatesFailure(int hr)
         {
             return hr < 0;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IndicatesError(int status)
         {
             return (uint)status >> 31 == 1;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetCode(int hr)
         {
             return hr & 0xFFFF;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetFacility(int hr)
         {
             return (hr >> 16) & 0x1FFF;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetSeverity(int hr)
         {
             return (hr >> 31) & 1;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Create(int severity, int facility, int code)
         {
             return (severity << 31) | (facility << 16) | code;
@@ -139,7 +139,7 @@
 
         public override readonly int GetHashCode()
         {
-            return HashCode.Combine(Value);
+            return Value;
         }
 
         public static implicit operator HResult(int value)

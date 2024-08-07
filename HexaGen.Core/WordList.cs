@@ -4,6 +4,7 @@
     using System.Buffers.Binary;
     using System.Diagnostics.CodeAnalysis;
     using System.IO.Compression;
+    using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -34,7 +35,15 @@
 
         public WordList(string countryCode)
         {
-            ReadTxt(countryCode + ".txt");
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("HexaGen.Core.Resources." + countryCode + ".txt");
+            if (stream != null)
+            {
+                ReadTxt(stream);
+            }
+            else
+            {
+                ReadTxt(countryCode + ".txt");
+            }
         }
 
         public static unsafe void CreateFromTxt(string source, string destination)
@@ -126,6 +135,19 @@
             for (int i = 0; i < lines.Length; i++)
             {
                 var line = lines[i];
+                if (!words.Contains(line))
+                {
+                    words.Add(line);
+                }
+            }
+        }
+
+        public unsafe void ReadTxt(Stream stream)
+        {
+            TextReader reader = new StreamReader(stream);
+            string? line;
+            while ((line = reader.ReadLine()) != null)
+            {
                 if (!words.Contains(line))
                 {
                     words.Add(line);

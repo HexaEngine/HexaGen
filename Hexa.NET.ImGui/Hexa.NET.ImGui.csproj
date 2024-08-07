@@ -11,4 +11,8 @@
 		<ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Generated\" />
+	</ItemGroup>
+
 </Project>

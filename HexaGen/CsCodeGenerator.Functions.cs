@@ -1,12 +1,12 @@
 ﻿namespace HexaGen
 {
-    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.InteropServices;
+    using System.Security.Cryptography;
     using System.Text;
 
     public enum WriteFunctionFlags
@@ -21,9 +21,12 @@
     public partial class CsCodeGenerator
     {
         protected readonly HashSet<string> LibDefinedFunctions = new();
+        public readonly HashSet<string> CppDefinedFunctions = new();
         public readonly HashSet<string> DefinedFunctions = new();
         protected readonly HashSet<string> DefinedVariationsFunctions = new();
         protected readonly HashSet<string> OutReturnFunctions = new();
+
+        public int VTableLength { get; private set; }
 
         protected virtual List<string> SetupFunctionUsings()
         {
@@ -39,10 +42,12 @@
                 return true;
             }
 
+#if CPPAST_15_OR_GREATER
             if (cppFunction.IsFunctionTemplate)
             {
                 return true;
             }
+#endif
 
             if (cppFunction.Flags == CppFunctionFlags.Inline)
             {
@@ -64,10 +69,12 @@
 
         protected virtual bool FilterNativeFunction(GenContext context, CppFunction cppFunction, string header)
         {
-            if (LibDefinedFunctions.Contains(header))
+            if (LibDefinedFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
+
+            CppDefinedFunctions.Add(cppFunction.Name);
 
             if (DefinedFunctions.Contains(header))
             {
@@ -93,17 +100,28 @@
 
         protected virtual void GenerateFunctions(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Functions.cs");
+            string folder = Path.Combine(outputPath, "Functions");
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+            string filePath = Path.Combine(folder, "Functions.cs");
+
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
-            int vTableIndex = 0;
-            StringBuilder sbVt = new();
+
+            VTableBuilder vTableBuilder = new(settings.VTableStart);
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {
-                writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
+                if (!settings.UseVTable)
+                {
+                    writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
+                }
+
                 List<CsFunction> functions = new();
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
@@ -128,7 +146,9 @@
                         continue;
                     }
 
-                    settings.WriteCsSummary(cppFunction.Comment, writer);
+                    var function = CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
+
+                    writer.WriteLines(function.Comment);
                     if (settings.GenerateMetadata)
                     {
                         writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
@@ -160,7 +180,11 @@
                                 writer.BeginBlock($"internal static {header}");
                             }
 
-                            string returnType = settings.GetCsTypeName(cppFunction.ReturnType, requiresUnmanaged: true);
+                            string returnType = settings.GetCsTypeName(cppFunction.ReturnType);
+                            if (returnType == "bool")
+                            {
+                                returnType = settings.GetBoolType();
+                            }
                             string delegateType;
                             if (cppFunction.Parameters.Count == 0)
                             {
@@ -171,8 +195,11 @@
                                 delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
                             }
 
+                            writer.WriteLine("#if NET5_0_OR_GREATER");
                             // isolates the argument names
-                            string argumentNames = settings.GetParameterSignatureNames(cppFunction.Parameters);
+                            string argumentNames = settings.WriteFunctionMarshalling(cppFunction.Parameters);
+
+                            int vTableIndex = vTableBuilder.Add(cppFunction.Name);
 
                             if (returnCsName == "void")
                             {
@@ -183,10 +210,41 @@
                                 writer.WriteLine($"return (({delegateType})vt[{vTableIndex}])({argumentNames});");
                             }
 
-                            sbVt.AppendLine($"vt.Load({vTableIndex}, \"{cppFunction.Name}\");");
+                            writer.WriteLine("#else");
+
+                            string returnTypeOld = settings.GetCsTypeName(cppFunction.ReturnType);
+                            if (returnTypeOld == "bool")
+                            {
+                                returnTypeOld = settings.GetBoolType();
+                            }
+                            if (returnTypeOld.Contains('*'))
+                            {
+                                returnTypeOld = "nint";
+                            }
+                            string delegateTypeOld;
+                            if (cppFunction.Parameters.Count == 0)
+                            {
+                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{returnTypeOld}>";
+                            }
+                            else
+                            {
+                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false, true, compatibility: true)}, {returnTypeOld}>";
+                            }
+
+                            string argumentNamesOld = settings.WriteFunctionMarshalling(cppFunction.Parameters, compatibility: true);
+
+                            if (returnCsName == "void")
+                            {
+                                writer.WriteLine($"(({delegateTypeOld})vt[{vTableIndex}])({argumentNamesOld});");
+                            }
+                            else
+                            {
+                                writer.WriteLine($"return ({returnType})(({delegateTypeOld})vt[{vTableIndex}])({argumentNamesOld});");
+                            }
+
+                            writer.WriteLine("#endif");
 
                             writer.EndBlock();
-                            vTableIndex++;
                             break;
 
                         default:
@@ -197,35 +255,34 @@
                         if (boolReturn)
                         {
                             writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
-                            writer.WriteLine();
                         }
                         else
                         {
                             writer.WriteLine($"{modifiers} {header};");
-                            writer.WriteLine();
                         }
                     }
+                    writer.WriteLine();
 
-                    var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
                     overload.Modifiers.Add("public");
                     overload.Modifiers.Add("static");
-                    funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
+                    funcGen.GenerateVariations(cppFunction.Parameters, overload);
                     WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
                 }
             }
 
             if (settings.UseVTable)
             {
+                var initString = vTableBuilder.Finish(out var count);
                 string filePathVT = Path.Combine(outputPath, "Functions.VT.cs");
-                using var writerVt = new CsCodeWriter(filePathVT, settings.Namespace, SetupFunctionUsings());
+                using var writerVt = new CsCodeWriter(filePathVT, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
                 using (writerVt.PushBlock($"public unsafe partial class {settings.ApiName}"))
                 {
                     writerVt.WriteLine("internal static VTable vt;");
                     writerVt.WriteLine();
                     using (writerVt.PushBlock("public static void InitApi()"))
                     {
-                        writerVt.WriteLine($"vt = new VTable(GetLibraryName(), {vTableIndex + 1});");
-                        writerVt.WriteLines(sbVt.ToString());
+                        writerVt.WriteLine($"vt = new VTable(GetLibraryName(), {count});");
+                        writerVt.WriteLines(initString);
                     }
                     writerVt.WriteLine();
                     using (writerVt.PushBlock("public static void FreeApi()"))
@@ -233,6 +290,8 @@
                         writerVt.WriteLine("vt.Free();");
                     }
                 }
+
+                VTableLength = count;
             }
         }
 
@@ -240,7 +299,7 @@
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteFunction(context, definedFunctions, csFunction, overload, overload.Variations[j], flags, modifiers);
+                WriteFunctionEx(context, definedFunctions, csFunction, overload, overload.Variations[j], flags, modifiers);
             }
         }
 
@@ -274,7 +333,18 @@
                 if (!isFirst)
                     sb.Append(", ");
 
-                sb.Append($"{(useAttributes ? string.Join(" ", param.Attributes) : string.Empty)} {param.Type} {(useNames ? param.Name : string.Empty)}");
+                if (useAttributes)
+                {
+                    sb.Append($"{string.Join(" ", param.Attributes)} ");
+                }
+
+                sb.Append($"{param.Type}");
+
+                if (useNames)
+                {
+                    sb.Append($" {param.Name}");
+                }
+
                 isFirst = false;
             }
 
@@ -432,6 +502,12 @@
                         sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
                         blockCounter++;
                     }
+                    else if (paramFlags.HasFlag(ParameterFlags.Span))
+                    {
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = {cppParameter.Name})");
+                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
+                        blockCounter++;
+                    }
                     else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = {cppParameter.Name})");
@@ -501,6 +577,147 @@
                     blockCounter--;
                     writer.EndBlock();
                 }
+            }
+
+            writer.WriteLine();
+        }
+
+        protected virtual void WriteFunctionEx(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
+        {
+            var writer = context.Writer;
+            CsType csReturnType = variation.ReturnType;
+            PrepareArgs(variation, csReturnType);
+
+            string header = BuildFunctionHeader(variation, csReturnType, flags, settings.GenerateMetadata);
+            string id = BuildFunctionHeaderId(variation, flags);
+
+            if (FilterFunction(context, definedFunctions, id))
+            {
+                return;
+            }
+
+            ClassifyParameters(overload, variation, csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged);
+
+            LogInfo("defined function " + header);
+
+            writer.WriteLines(overload.Comment);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLines(overload.Attributes);
+            }
+            using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
+            {
+                StringBuilder sb = new();
+
+                if (!firstParamReturn && (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer))
+                {
+                    if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
+                    {
+                        sb.Append($"{settings.GetBoolType()} ret = ");
+                    }
+                    else
+                    {
+                        sb.Append($"{csReturnType.Name} ret = ");
+                    }
+                }
+
+                if (csReturnType.IsString)
+                {
+                    WriteStringConvertToManaged(sb, variation.ReturnType);
+                }
+
+                if (flags != WriteFunctionFlags.None)
+                {
+                    sb.Append($"{settings.ApiName}.");
+                }
+
+                if (hasManaged)
+                {
+                    sb.Append($"{overload.Name}(");
+                }
+                else if (firstParamReturn)
+                {
+                    sb.Append($"{overload.Name}Native(&ret" + (overload.Parameters.Count > 1 ? ", " : ""));
+                }
+                else
+                {
+                    sb.Append($"{overload.Name}Native(");
+                }
+
+                FunctionWriterContext writerContext = new(context.Writer, settings, sb, overload, variation, flags);
+                List<IParameterWriter> parameterWriters =
+                [
+                    new HandleParameterWriter(),
+                    new UseThisParameterWriter(),
+                    new DefaultValueParameterWriter(),
+                    new StringParameterWriter(),
+                    new RefParameterWriter(),
+                    new SpanParameterWriter(),
+                    new ArrayParameterWriter(),
+                    new BoolParameterWriter(),
+                    new FallthroughParameterWriter(),
+                ];
+                parameterWriters.Sort(new ParameterPriorityComparer());
+
+                for (int i = 0; i < overload.Parameters.Count - offset; i++)
+                {
+                    var cppParameter = overload.Parameters[i + offset];
+                    var paramFlags = ParameterFlags.None;
+
+                    if (variation.TryGetParameter(cppParameter.Name, out var param))
+                    {
+                        paramFlags = param.Flags;
+                        cppParameter = param;
+                    }
+
+                    foreach (var parameterWriter in parameterWriters)
+                    {
+                        if (parameterWriter.CanWrite(writerContext, overload.Parameters[i], cppParameter, paramFlags, i, offset))
+                        {
+                            parameterWriter.Write(writerContext, overload.Parameters[i], cppParameter, paramFlags, i, offset);
+                            break;
+                        }
+                    }
+
+                    if (i != overload.Parameters.Count - 1 - offset)
+                    {
+                        sb.Append(", ");
+                    }
+                }
+
+                if (csReturnType.IsString)
+                {
+                    sb.Append("));");
+                }
+                else
+                {
+                    sb.Append(");");
+                }
+
+                if (firstParamReturn)
+                {
+                    writer.WriteLine($"{csReturnType.Name} ret;");
+                }
+
+                writer.WriteLine(sb.ToString());
+
+                writerContext.ConvertStrings();
+                writerContext.FreeStringArrays();
+                writerContext.FreeStrings();
+
+                if (firstParamReturn || !csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)
+                {
+                    if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
+                    {
+                        writer.WriteLine("return ret != 0;");
+                    }
+                    else
+                    {
+                        writer.WriteLine("return ret;");
+                    }
+                }
+
+                writerContext.EndBlocks();
             }
 
             writer.WriteLine();
@@ -814,6 +1031,18 @@
             using (writer.PushBlock($"if (pStrArraySize{i} >= Utils.MaxStackallocSize)"))
             {
                 writer.WriteLine($"Utils.Free(pStrArray{i});");
+            }
+        }
+
+        protected static void WriteFreeUnmanagedStringArray(ICodeWriter writer, string name, string varName)
+        {
+            using (writer.PushBlock($"for (int i = 0; i < {name}.Length; i++)"))
+            {
+                writer.WriteLine($"Utils.Free({varName}[i]);");
+            }
+            using (writer.PushBlock($"if ({varName}Size >= Utils.MaxStackallocSize)"))
+            {
+                writer.WriteLine($"Utils.Free({varName});");
             }
         }
     }

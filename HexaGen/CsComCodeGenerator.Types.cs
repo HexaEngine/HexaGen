@@ -50,7 +50,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), 1);
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector, 1);
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -210,11 +210,13 @@
             {
                 var cppFunction = cppClass.Functions[i];
 
+#if CPPAST_15_OR_GREATER
                 if (cppFunction.IsFunctionTemplate)
                 {
                     vTableIndex--;
                     continue;
                 }
+#endif
 
                 if (FilterCOMFunction(context, cppFunction))
                 {
@@ -223,8 +225,8 @@
 
                 string? csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
 
-                CsFunction? function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
-                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
+                CsFunction? function = CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
+                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
 
                 if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedFunctions))
                 {
@@ -417,7 +419,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()} )1 : ( {settings.GetBoolType()})0");
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {

@@ -17,11 +17,20 @@
         {
         }
 
+#if NET5_0_OR_GREATER
+
         [SupportedOSPlatform("windows")]
-        public unsafe ComPtr(ComObject obj)
-            : this((T*)obj.Handle)
+        public unsafe ComPtr(ComObject obj) : this((T*)obj.Handle)
         {
         }
+
+#else
+
+        public unsafe ComPtr(ComObject obj) : this((T*)obj.Handle)
+        {
+        }
+
+#endif
 
         public static unsafe implicit operator ComPtr<T>(T* other)
         {
@@ -38,11 +47,21 @@
             return (IUnknown*)@this.Handle;
         }
 
+#if NET5_0_OR_GREATER
+
         [SupportedOSPlatform("windows")]
-        public unsafe ComObject? AsComObject()
+        public readonly unsafe ComObject? AsComObject()
         {
             return ComObject.FromPtr((IUnknown*)Handle);
         }
+
+#else
+
+        public readonly unsafe ComObject? AsComObject()
+        {
+            return ComObject.FromPtr((IUnknown*)Handle);
+        }
+#endif
 
         private readonly unsafe void AddRef()
         {

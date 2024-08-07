@@ -30,7 +30,7 @@
 
         public int SplitCount => splitCount;
 
-        public CsSplitCodeWriter(string fileName, string @namespace, IList<string> usings, int baseIndentLevel = 2)
+        public CsSplitCodeWriter(string fileName, string @namespace, IList<string> usings, HeaderInjectionDelegate? headerInjector, int baseIndentLevel = 2)
         {
             this.baseIndentLevel = baseIndentLevel;
             _indentStrings = new string[10];
@@ -61,6 +61,8 @@
             {
                 WriteLineInternal($"using {ns};");
             }
+
+            headerInjector?.Invoke(this, sb);
 
             if (Namespaces.Length > 0)
             {
@@ -128,26 +130,47 @@
             _shouldIndent = true;
         }
 
-        public void WriteLines(string? @string, bool newLineAtEnd = false)
+        private static readonly char[] newLineCharacters = ['\n', '\r'];
+
+        public void WriteLines(string? text)
         {
-            if (@string == null)
+            if (text == null)
                 return;
 
             capture &= indentLevel < baseIndentLevel;
 
-            if (@string.Contains('\n'))
+            ReadOnlySpan<char> span = text.AsSpan();
+            while (span.Length > 0)
             {
-                var lines = @string.Split('\n', StringSplitOptions.RemoveEmptyEntries);
-                for (int i = 0; i < lines.Length; i++)
+                int index = span.IndexOfAny(newLineCharacters);
+                if (index == -1)
                 {
-                    WriteIndented(lines[i]);
-                    if (capture)
-                    {
-                        sb.AppendLine();
-                    }
-                    linesWritten++;
+                    index = span.Length;
                 }
+
+                var part = span[..index];
+                WriteIndented(part);
+                _writer.WriteLine();
+                _shouldIndent = true;
+                if (capture)
+                {
+                    sb.AppendLine();
+                }
+                linesWritten++;
+
+                if (index + 1 < span.Length && (span[index + 1] == '\n' || span[index + 1] == '\r'))
+                {
+                    index++;
+                }
+
+                if (index + 1 >= span.Length)
+                {
+                    break;
+                }
+
+                span = span[(index + 1)..];
             }
+
             _shouldIndent = true;
         }
 
@@ -246,6 +269,26 @@
         }
 
         private void WriteIndented(string @string)
+        {
+            capture &= indentLevel < baseIndentLevel;
+            if (_shouldIndent)
+            {
+                if (capture)
+                {
+                    sb.Append(_indentString);
+                }
+                _writer.Write(_indentString);
+                _shouldIndent = false;
+            }
+
+            if (capture)
+            {
+                sb.Append(@string);
+            }
+            _writer.Write(@string);
+        }
+
+        private void WriteIndented(ReadOnlySpan<char> @string)
         {
             capture &= indentLevel < baseIndentLevel;
             if (_shouldIndent)

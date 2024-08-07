@@ -35,7 +35,7 @@
         BoolType BoolType { get; set; }
         List<TypeMapping> ClassMappings { get; set; }
         List<ConstantMapping> ConstantMappings { get; set; }
-        LogSevertiy CppLogLevel { get; set; }
+        LogSeverity CppLogLevel { get; set; }
         List<DelegateMapping> DelegateMappings { get; set; }
         bool DelegatesAsVoidPointer { get; set; }
         List<EnumMapping> EnumMappings { get; set; }
@@ -67,7 +67,7 @@
         Dictionary<string, string> KnownExtensionPrefixes { get; set; }
         Dictionary<string, List<string>> KnownMemberFunctions { get; set; }
         string LibName { get; set; }
-        LogSevertiy LogLevel { get; set; }
+        LogSeverity LogLevel { get; set; }
         Dictionary<string, string> NameMappings { get; set; }
         string Namespace { get; set; }
 
@@ -80,17 +80,17 @@
 
         string GetCsSubTypeName(CppClass parentClass, string parentCsName, CppClass subClass, int idxSubClass);
 
-        string GetCsTypeName(CppPointerType pointerType, bool? requiresUnmanaged = null);
+        string GetCsTypeName(CppPointerType pointerType);
 
-        string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer, bool? requiresUnmanaged = null);
+        string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer);
 
-        string GetCsTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null);
+        string GetCsTypeName(CppType? type, bool isPointer = false);
 
-        string GetCsWrapperTypeName(CppPointerType pointerType, bool? requiresUnmanaged = null);
+        string GetCsWrapperTypeName(CppPointerType pointerType);
 
-        string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer, bool? requiresUnmanaged = null);
+        string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer);
 
-        string GetCsWrapperTypeName(CppType? type, bool isPointer = false, bool? requiresUnmanaged = null);
+        string GetCsWrapperTypeName(CppType? type, bool isPointer = false);
 
         DelegateMapping? GetDelegateMapping(string delegateName);
 
@@ -102,11 +102,11 @@
 
         FunctionMapping? GetFunctionMapping(string functionName);
 
-        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool delegateType = false);
+        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool delegateType = false, bool compatibility = false);
 
         string GetParameterName(int paramIdx, string name);
 
-        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false);
+        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false, bool compatibility = false);
 
         string GetConstantName(string value);
 

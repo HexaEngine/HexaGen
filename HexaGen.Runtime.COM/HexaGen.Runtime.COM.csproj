@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net7.0;netstandard2.0;netstandard2.1;net472</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
+		<LangVersion>12</LangVersion>
+
 		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.0.0</PackageVersion>
+		<PackageVersion>1.1.4</PackageVersion>
 		<Description>The COM Runtime for all COM Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
@@ -20,9 +22,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-		<None Update="README.md" Pack="true" PackagePath="\" />
-		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
+		<Content Include="../README.md" Pack="true" PackagePath="/" />
+		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 	</ItemGroup>
 </Project>

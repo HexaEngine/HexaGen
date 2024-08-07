@@ -4,13 +4,14 @@
 
     public class CsType : ICloneable<CsType>
     {
-        public CsType(string name, string cleanName, bool isPointer, bool isOut, bool isRef, bool isString, bool isPrimitive, bool isVoid, bool isBool, bool isArray, bool isEnum, CsStringType stringType, CsPrimitiveType primitiveType)
+        public CsType(string name, string cleanName, bool isPointer, bool isOut, bool isRef, bool isSpan, bool isString, bool isPrimitive, bool isVoid, bool isBool, bool isArray, bool isEnum, CsStringType stringType, CsPrimitiveType primitiveType)
         {
             Name = name;
             CleanName = cleanName;
             IsPointer = isPointer;
             IsOut = isOut;
             IsRef = isRef;
+            IsSpan = isSpan;
             IsString = isString;
             IsPrimitive = isPrimitive;
             IsVoid = isVoid;
@@ -65,6 +66,8 @@
         public bool IsOut { get; set; }
 
         public bool IsRef { get; set; }
+
+        public bool IsSpan { get; set; }
 
         public bool IsString { get; set; }
 
@@ -122,6 +125,7 @@
         public string Classify()
         {
             IsRef = Name.StartsWith("ref ");
+            IsSpan = Name.StartsWith("ReadOnlySpan<") || Name.StartsWith("Span<");
             IsOut = Name.StartsWith("out ");
             IsArray = Name.Contains("[]");
             IsPointer = Name.Contains('*');
@@ -146,6 +150,12 @@
             if (IsRef)
             {
                 return Name.Replace("ref ", string.Empty);
+            }
+            if (IsSpan)
+            {
+                var temp = Name.AsSpan().TrimStart("ReadOnlySpan<").TrimStart("Span<");
+
+                return temp[..^1].ToString();
             }
             else if (IsArray)
             {
@@ -179,7 +189,8 @@
                 CppPrimitiveKind.Float => CsPrimitiveType.Float,
                 CppPrimitiveKind.Double => CsPrimitiveType.Double,
                 CppPrimitiveKind.LongDouble => CsPrimitiveType.Double,
-                _ => throw new NotImplementedException(),
+
+                _ => throw new NotSupportedException($"The kind '{kind}' is not supported"),
             };
         }
 
@@ -190,7 +201,7 @@
 
         public CsType Clone()
         {
-            return new CsType(Name, CleanName, IsPointer, IsOut, IsRef, IsString, IsPrimitive, IsVoid, IsBool, IsArray, IsEnum, StringType, PrimitiveType);
+            return new CsType(Name, CleanName, IsPointer, IsOut, IsRef, IsSpan, IsString, IsPrimitive, IsVoid, IsBool, IsArray, IsEnum, StringType, PrimitiveType);
         }
     }
 }

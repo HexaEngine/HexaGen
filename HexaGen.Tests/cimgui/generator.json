@@ -2,12 +2,17 @@
   "Namespace": "Hexa.NET.ImGui",
   "ApiName": "ImGui",
   "LibName": "cimgui",
-  "UseLibraryImport": true,
+  "ImportType": "VTable",
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
+  "AutoSquashTypedef": true,
+  "GenerateMetadata": true,
   "KnownConstantNames": {},
-  "KnownEnumValueNames": { "": "" },
+  "KnownEnumValueNames": {
+    "ImGuiInputFlags_Repeat": "ImGuiInputFlags.Repeat",
+    "ImGuiItemFlags_AutoClosePopups": "ImGuiItemFlags.AutoClosePopups"
+  },
   "KnownEnumPrefixes": {},
   "KnownExtensionPrefixes": {},
   "KnownExtensionNames": {},
@@ -81,7 +86,9 @@
     "ImPoolIdx": "int",
     "ImGuiTableDrawChannelIdx": "byte",
     "ImGuiTableColumnIdx": "sbyte",
-    "va_list": "nuint"
+    "ImGuiSelectionUserData": "long",
+    "ImBitArrayForNamedKeys": "nuint",
+    "va_list": "nint"
   },
   "AllowedFunctions": [],
   "AllowedTypes": [],

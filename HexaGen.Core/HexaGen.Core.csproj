@@ -5,15 +5,35 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<PackageVersion>1.0.0</PackageVersion>
+		<Description></Description>
+		<PackageTags></PackageTags>
+		<Authors>Juna Meinhold</Authors>
+		<Copyright>Copyright (c) 2023 Juna Meinhold</Copyright>
+		<PackageProjectUrl>https://github.com/HexaEngine/HexaGen</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/HexaEngine/HexaGen</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CppAst" Version="0.15.0" />
-		<PackageReference Include="libclang.runtime.win-x64" Version="17.0.4" />
-		<PackageReference Include="libClangSharp.runtime.win-x64" Version="17.0.4" />
+		<PackageReference Include="CppAst" Version="0.11.0" />
+		<PackageReference Include="libclang.runtime.win-x64" Version="15.0.0" />
+		<PackageReference Include="libClangSharp.runtime.win-x64" Version="15.0.0" />
 	</ItemGroup>
+	
 	<ItemGroup>
-	  <None Update="en_EN.txt">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
+		<EmbeddedResource Include="Resources\en_EN.txt" Pack="true" PackagePath="/">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+		<Content Include="../README.md" Pack="true" PackagePath="/" />
 	</ItemGroup>
 </Project>

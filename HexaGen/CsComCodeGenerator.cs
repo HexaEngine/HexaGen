@@ -94,7 +94,7 @@
             }
         }
 
-        public override void Generate(List<string> headerFiles, string outputPath)
+        public override bool Generate(List<string> headerFiles, string outputPath)
         {
             var options = PrepareSettings();
 
@@ -106,10 +106,10 @@
 
             CppCompilation compilation = CppParser.ParseFiles(headerFiles, options);
 
-            Generate(compilation, outputPath);
+            return Generate(compilation, headerFiles, outputPath);
         }
 
-        public override void Generate(string headerFile, string outputPath)
+        public override bool Generate(string headerFile, string outputPath)
         {
             var options = PrepareSettings();
 
@@ -118,25 +118,25 @@
 
             CppCompilation compilation = CppParser.ParseFile(headerFile, options);
 
-            Generate(compilation, outputPath);
+            return Generate(compilation, [headerFile], outputPath);
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath)
+        public override bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
         {
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSevertiy.Error)
+                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSeverity.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSevertiy.Warning)
+                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSeverity.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSevertiy.Information)
+                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSeverity.Information)
                 {
                     LogInfo(message.ToString());
                 }
@@ -144,7 +144,7 @@
 
             if (compilation.HasErrors)
             {
-                return;
+                return false;
             }
 
             List<Task> tasks = new();
@@ -198,7 +198,18 @@
                 taskDelegates.Start();
             }
 
-            Task.WaitAll(tasks.ToArray());
+            bool failed = false;
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                var task = tasks[i];
+                if (task.Exception != null)
+                {
+                    LogError(task.Exception.ToString());
+                    failed = true;
+                }
+            }
+
+            return !failed;
         }
     }
 }

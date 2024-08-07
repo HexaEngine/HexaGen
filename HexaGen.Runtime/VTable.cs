@@ -6,32 +6,50 @@
     {
         private nint library;
         private void** _vtable;
+        private int length;
 
-        public VTable(void** vtable)
+        public VTable(void** vtable, int length)
         {
             _vtable = vtable;
+            this.length = length;
         }
 
-        public VTable(nint library, int size)
+        public VTable(nint library, int length)
         {
-            _vtable = (void**)Marshal.AllocHGlobal(size * sizeof(void*));
+            _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
+            new Span<nint>(_vtable, length).Clear(); // Fill with null pointers
             this.library = library;
+            this.length = length;
         }
 
-        public VTable(string libraryPath, int size)
+        public VTable(string libraryPath, int length)
         {
             library = NativeLibrary.Load(libraryPath);
-            _vtable = (void**)Marshal.AllocHGlobal(size * sizeof(void*));
+            _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
+            new Span<nint>(_vtable, length).Clear(); // Fill with null pointers
+            this.length = length;
         }
+
+        public int Length => length;
 
         public void Load(int index, string export)
         {
             if (!NativeLibrary.TryGetExport(library, export, out var address))
             {
+                _vtable[index] = null;
                 return;
             }
 
             _vtable[index] = (void*)address;
+        }
+
+        public void Resize(int newLength)
+        {
+            if (newLength == length)
+                return;
+
+            _vtable = (void**)Marshal.ReAllocHGlobal((nint)_vtable, (nint)(newLength * sizeof(void*)));
+            length = newLength;
         }
 
         public void* this[int index]

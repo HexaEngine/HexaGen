@@ -59,7 +59,7 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings(), settings.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe partial class Extensions"))
@@ -110,11 +110,13 @@
             {
                 var cppFunction = cppClass.Functions[i];
 
+#if CPPAST_15_OR_GREATER
                 if (cppFunction.IsFunctionTemplate)
                 {
                     vTableIndex--;
                     continue;
                 }
+#endif
 
                 if (FilterCOMExtensionFunction(context, cppFunction))
                 {
@@ -126,8 +128,8 @@
                 var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                 var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
 
-                CreateCsFunction(cppFunction, csName, commands, out var overload);
-                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
+                CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, commands, out var overload);
+                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
 
                 if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedExtensions))
                 {
