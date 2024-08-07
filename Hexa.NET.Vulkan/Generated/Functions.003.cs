@@ -17,6 +17,274 @@ namespace Hexa.NET.Vulkan
 	public unsafe partial class Vulkan
 	{
 
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		internal static VkResult VkRegisterDisplayEventEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] VkDisplayEventInfoEXT* pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] VkFence* pFence)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDisplayKHR, VkDisplayEventInfoEXT*, VkAllocationCallbacks*, VkFence*, VkResult>)vt[372])(device, display, pDisplayEventInfo, pAllocator, pFence);
+		}
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] VkDisplayEventInfoEXT* pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] VkFence* pFence)
+		{
+			VkResult ret = VkRegisterDisplayEventEXTNative(device, display, pDisplayEventInfo, pAllocator, pFence);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] ref VkDisplayEventInfoEXT pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] VkFence* pFence)
+		{
+			fixed (VkDisplayEventInfoEXT* ppDisplayEventInfo = &pDisplayEventInfo)
+			{
+				VkResult ret = VkRegisterDisplayEventEXTNative(device, display, (VkDisplayEventInfoEXT*)ppDisplayEventInfo, pAllocator, pFence);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] VkDisplayEventInfoEXT* pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] VkFence* pFence)
+		{
+			fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
+			{
+				VkResult ret = VkRegisterDisplayEventEXTNative(device, display, pDisplayEventInfo, (VkAllocationCallbacks*)ppAllocator, pFence);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] ref VkDisplayEventInfoEXT pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] VkFence* pFence)
+		{
+			fixed (VkDisplayEventInfoEXT* ppDisplayEventInfo = &pDisplayEventInfo)
+			{
+				fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
+				{
+					VkResult ret = VkRegisterDisplayEventEXTNative(device, display, (VkDisplayEventInfoEXT*)ppDisplayEventInfo, (VkAllocationCallbacks*)ppAllocator, pFence);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] VkDisplayEventInfoEXT* pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] ref VkFence pFence)
+		{
+			fixed (VkFence* ppFence = &pFence)
+			{
+				VkResult ret = VkRegisterDisplayEventEXTNative(device, display, pDisplayEventInfo, pAllocator, (VkFence*)ppFence);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] ref VkDisplayEventInfoEXT pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] ref VkFence pFence)
+		{
+			fixed (VkDisplayEventInfoEXT* ppDisplayEventInfo = &pDisplayEventInfo)
+			{
+				fixed (VkFence* ppFence = &pFence)
+				{
+					VkResult ret = VkRegisterDisplayEventEXTNative(device, display, (VkDisplayEventInfoEXT*)ppDisplayEventInfo, pAllocator, (VkFence*)ppFence);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] VkDisplayEventInfoEXT* pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] ref VkFence pFence)
+		{
+			fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
+			{
+				fixed (VkFence* ppFence = &pFence)
+				{
+					VkResult ret = VkRegisterDisplayEventEXTNative(device, display, pDisplayEventInfo, (VkAllocationCallbacks*)ppAllocator, (VkFence*)ppFence);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkRegisterDisplayEventEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkRegisterDisplayEventEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display, [NativeName(NativeNameType.Param, "pDisplayEventInfo")] [NativeName(NativeNameType.Type, "const VkDisplayEventInfoEXT*")] ref VkDisplayEventInfoEXT pDisplayEventInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pFence")] [NativeName(NativeNameType.Type, "VkFence*")] ref VkFence pFence)
+		{
+			fixed (VkDisplayEventInfoEXT* ppDisplayEventInfo = &pDisplayEventInfo)
+			{
+				fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
+				{
+					fixed (VkFence* ppFence = &pFence)
+					{
+						VkResult ret = VkRegisterDisplayEventEXTNative(device, display, (VkDisplayEventInfoEXT*)ppDisplayEventInfo, (VkAllocationCallbacks*)ppAllocator, (VkFence*)ppFence);
+						return ret;
+					}
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetSwapchainCounterEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		internal static VkResult VkGetSwapchainCounterEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "counter")] [NativeName(NativeNameType.Type, "VkSurfaceCounterFlagBitsEXT")] VkSurfaceCounterFlagBitsEXT counter, [NativeName(NativeNameType.Param, "pCounterValue")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pCounterValue)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkSwapchainKHR, VkSurfaceCounterFlagBitsEXT, ulong*, VkResult>)vt[373])(device, swapchain, counter, pCounterValue);
+		}
+		[NativeName(NativeNameType.Func, "vkGetSwapchainCounterEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetSwapchainCounterEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "counter")] [NativeName(NativeNameType.Type, "VkSurfaceCounterFlagBitsEXT")] VkSurfaceCounterFlagBitsEXT counter, [NativeName(NativeNameType.Param, "pCounterValue")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pCounterValue)
+		{
+			VkResult ret = VkGetSwapchainCounterEXTNative(device, swapchain, counter, pCounterValue);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetSwapchainCounterEXT")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetSwapchainCounterEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "counter")] [NativeName(NativeNameType.Type, "VkSurfaceCounterFlagBitsEXT")] VkSurfaceCounterFlagBitsEXT counter, [NativeName(NativeNameType.Param, "pCounterValue")] [NativeName(NativeNameType.Type, "uint64_t*")] ref ulong pCounterValue)
+		{
+			fixed (ulong* ppCounterValue = &pCounterValue)
+			{
+				VkResult ret = VkGetSwapchainCounterEXTNative(device, swapchain, counter, (ulong*)ppCounterValue);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetRefreshCycleDurationGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		internal static VkResult VkGetRefreshCycleDurationGOOGLENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pDisplayTimingProperties")] [NativeName(NativeNameType.Type, "VkRefreshCycleDurationGOOGLE*")] VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkSwapchainKHR, VkRefreshCycleDurationGOOGLE*, VkResult>)vt[374])(device, swapchain, pDisplayTimingProperties);
+		}
+		[NativeName(NativeNameType.Func, "vkGetRefreshCycleDurationGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetRefreshCycleDurationGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pDisplayTimingProperties")] [NativeName(NativeNameType.Type, "VkRefreshCycleDurationGOOGLE*")] VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties)
+		{
+			VkResult ret = VkGetRefreshCycleDurationGOOGLENative(device, swapchain, pDisplayTimingProperties);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetRefreshCycleDurationGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetRefreshCycleDurationGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pDisplayTimingProperties")] [NativeName(NativeNameType.Type, "VkRefreshCycleDurationGOOGLE*")] ref VkRefreshCycleDurationGOOGLE pDisplayTimingProperties)
+		{
+			fixed (VkRefreshCycleDurationGOOGLE* ppDisplayTimingProperties = &pDisplayTimingProperties)
+			{
+				VkResult ret = VkGetRefreshCycleDurationGOOGLENative(device, swapchain, (VkRefreshCycleDurationGOOGLE*)ppDisplayTimingProperties);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetPastPresentationTimingGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		internal static VkResult VkGetPastPresentationTimingGOOGLENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pPresentationTimingCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPresentationTimingCount, [NativeName(NativeNameType.Param, "pPresentationTimings")] [NativeName(NativeNameType.Type, "VkPastPresentationTimingGOOGLE*")] VkPastPresentationTimingGOOGLE* pPresentationTimings)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkSwapchainKHR, uint*, VkPastPresentationTimingGOOGLE*, VkResult>)vt[375])(device, swapchain, pPresentationTimingCount, pPresentationTimings);
+		}
+		[NativeName(NativeNameType.Func, "vkGetPastPresentationTimingGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetPastPresentationTimingGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pPresentationTimingCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPresentationTimingCount, [NativeName(NativeNameType.Param, "pPresentationTimings")] [NativeName(NativeNameType.Type, "VkPastPresentationTimingGOOGLE*")] VkPastPresentationTimingGOOGLE* pPresentationTimings)
+		{
+			VkResult ret = VkGetPastPresentationTimingGOOGLENative(device, swapchain, pPresentationTimingCount, pPresentationTimings);
+			return ret;
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetPastPresentationTimingGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetPastPresentationTimingGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pPresentationTimingCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pPresentationTimingCount, [NativeName(NativeNameType.Param, "pPresentationTimings")] [NativeName(NativeNameType.Type, "VkPastPresentationTimingGOOGLE*")] VkPastPresentationTimingGOOGLE* pPresentationTimings)
+		{
+			fixed (uint* ppPresentationTimingCount = &pPresentationTimingCount)
+			{
+				VkResult ret = VkGetPastPresentationTimingGOOGLENative(device, swapchain, (uint*)ppPresentationTimingCount, pPresentationTimings);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetPastPresentationTimingGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetPastPresentationTimingGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pPresentationTimingCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPresentationTimingCount, [NativeName(NativeNameType.Param, "pPresentationTimings")] [NativeName(NativeNameType.Type, "VkPastPresentationTimingGOOGLE*")] ref VkPastPresentationTimingGOOGLE pPresentationTimings)
+		{
+			fixed (VkPastPresentationTimingGOOGLE* ppPresentationTimings = &pPresentationTimings)
+			{
+				VkResult ret = VkGetPastPresentationTimingGOOGLENative(device, swapchain, pPresentationTimingCount, (VkPastPresentationTimingGOOGLE*)ppPresentationTimings);
+				return ret;
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkGetPastPresentationTimingGOOGLE")]
+		[return: NativeName(NativeNameType.Type, "VkResult")]
+		public static VkResult VkGetPastPresentationTimingGOOGLE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapchain, [NativeName(NativeNameType.Param, "pPresentationTimingCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pPresentationTimingCount, [NativeName(NativeNameType.Param, "pPresentationTimings")] [NativeName(NativeNameType.Type, "VkPastPresentationTimingGOOGLE*")] ref VkPastPresentationTimingGOOGLE pPresentationTimings)
+		{
+			fixed (uint* ppPresentationTimingCount = &pPresentationTimingCount)
+			{
+				fixed (VkPastPresentationTimingGOOGLE* ppPresentationTimings = &pPresentationTimings)
+				{
+					VkResult ret = VkGetPastPresentationTimingGOOGLENative(device, swapchain, (uint*)ppPresentationTimingCount, (VkPastPresentationTimingGOOGLE*)ppPresentationTimings);
+					return ret;
+				}
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void VkCmdSetDiscardRectangleEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstDiscardRectangle")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstDiscardRectangle, [NativeName(NativeNameType.Param, "discardRectangleCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint discardRectangleCount, [NativeName(NativeNameType.Param, "pDiscardRectangles")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pDiscardRectangles)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkRect2D*, void>)vt[376])(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
+		}
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void VkCmdSetDiscardRectangleEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstDiscardRectangle")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstDiscardRectangle, [NativeName(NativeNameType.Param, "discardRectangleCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint discardRectangleCount, [NativeName(NativeNameType.Param, "pDiscardRectangles")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pDiscardRectangles)
+		{
+			VkCmdSetDiscardRectangleEXTNative(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles);
+		}
+
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void VkCmdSetDiscardRectangleEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstDiscardRectangle")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstDiscardRectangle, [NativeName(NativeNameType.Param, "discardRectangleCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint discardRectangleCount, [NativeName(NativeNameType.Param, "pDiscardRectangles")] [NativeName(NativeNameType.Type, "const VkRect2D*")] ref VkRect2D pDiscardRectangles)
+		{
+			fixed (VkRect2D* ppDiscardRectangles = &pDiscardRectangles)
+			{
+				VkCmdSetDiscardRectangleEXTNative(commandBuffer, firstDiscardRectangle, discardRectangleCount, (VkRect2D*)ppDiscardRectangles);
+			}
+		}
+
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleEnableEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void VkCmdSetDiscardRectangleEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "discardRectangleEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint discardRectangleEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[377])(commandBuffer, discardRectangleEnable);
+		}
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleEnableEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void VkCmdSetDiscardRectangleEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "discardRectangleEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint discardRectangleEnable)
+		{
+			VkCmdSetDiscardRectangleEnableEXTNative(commandBuffer, discardRectangleEnable);
+		}
+
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleModeEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void VkCmdSetDiscardRectangleModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "discardRectangleMode")] [NativeName(NativeNameType.Type, "VkDiscardRectangleModeEXT")] VkDiscardRectangleModeEXT discardRectangleMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkDiscardRectangleModeEXT, void>)vt[378])(commandBuffer, discardRectangleMode);
+		}
+		[NativeName(NativeNameType.Func, "vkCmdSetDiscardRectangleModeEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void VkCmdSetDiscardRectangleModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "discardRectangleMode")] [NativeName(NativeNameType.Type, "VkDiscardRectangleModeEXT")] VkDiscardRectangleModeEXT discardRectangleMode)
+		{
+			VkCmdSetDiscardRectangleModeEXTNative(commandBuffer, discardRectangleMode);
+		}
+
+		[NativeName(NativeNameType.Func, "vkSetHdrMetadataEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void VkSetHdrMetadataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchainCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint swapchainCount, [NativeName(NativeNameType.Param, "pSwapchains")] [NativeName(NativeNameType.Type, "const VkSwapchainKHR*")] VkSwapchainKHR* pSwapchains, [NativeName(NativeNameType.Param, "pMetadata")] [NativeName(NativeNameType.Type, "const VkHdrMetadataEXT*")] VkHdrMetadataEXT* pMetadata)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, uint, VkSwapchainKHR*, VkHdrMetadataEXT*, void>)vt[379])(device, swapchainCount, pSwapchains, pMetadata);
+		}
+		[NativeName(NativeNameType.Func, "vkSetHdrMetadataEXT")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void VkSetHdrMetadataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchainCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint swapchainCount, [NativeName(NativeNameType.Param, "pSwapchains")] [NativeName(NativeNameType.Type, "const VkSwapchainKHR*")] VkSwapchainKHR* pSwapchains, [NativeName(NativeNameType.Param, "pMetadata")] [NativeName(NativeNameType.Type, "const VkHdrMetadataEXT*")] VkHdrMetadataEXT* pMetadata)
+		{
+			VkSetHdrMetadataEXTNative(device, swapchainCount, pSwapchains, pMetadata);
+		}
+
 		[NativeName(NativeNameType.Func, "vkSetHdrMetadataEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkSetHdrMetadataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapchainCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint swapchainCount, [NativeName(NativeNameType.Param, "pSwapchains")] [NativeName(NativeNameType.Type, "const VkSwapchainKHR*")] ref VkSwapchainKHR pSwapchains, [NativeName(NativeNameType.Param, "pMetadata")] [NativeName(NativeNameType.Type, "const VkHdrMetadataEXT*")] VkHdrMetadataEXT* pMetadata)
@@ -52,10 +320,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSetDebugUtilsObjectNameEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkSetDebugUtilsObjectNameEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkSetDebugUtilsObjectNameEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pNameInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectNameInfoEXT*")] VkDebugUtilsObjectNameInfoEXT* pNameInfo);
-
+		internal static VkResult VkSetDebugUtilsObjectNameEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pNameInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectNameInfoEXT*")] VkDebugUtilsObjectNameInfoEXT* pNameInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDebugUtilsObjectNameInfoEXT*, VkResult>)vt[380])(device, pNameInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkSetDebugUtilsObjectNameEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkSetDebugUtilsObjectNameEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pNameInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectNameInfoEXT*")] VkDebugUtilsObjectNameInfoEXT* pNameInfo)
@@ -77,10 +345,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSetDebugUtilsObjectTagEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkSetDebugUtilsObjectTagEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkSetDebugUtilsObjectTagEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pTagInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectTagInfoEXT*")] VkDebugUtilsObjectTagInfoEXT* pTagInfo);
-
+		internal static VkResult VkSetDebugUtilsObjectTagEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pTagInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectTagInfoEXT*")] VkDebugUtilsObjectTagInfoEXT* pTagInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDebugUtilsObjectTagInfoEXT*, VkResult>)vt[381])(device, pTagInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkSetDebugUtilsObjectTagEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkSetDebugUtilsObjectTagEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pTagInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsObjectTagInfoEXT*")] VkDebugUtilsObjectTagInfoEXT* pTagInfo)
@@ -102,10 +370,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkQueueBeginDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkQueueBeginDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkQueueBeginDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo);
-
+		internal static void VkQueueBeginDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkQueue, VkDebugUtilsLabelEXT*, void>)vt[382])(queue, pLabelInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkQueueBeginDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkQueueBeginDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
@@ -125,10 +393,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkQueueEndDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkQueueEndDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkQueueEndDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue);
-
+		internal static void VkQueueEndDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue)
+		{
+			((delegate* unmanaged[Cdecl]<VkQueue, void>)vt[383])(queue);
+		}
 		[NativeName(NativeNameType.Func, "vkQueueEndDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkQueueEndDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue)
@@ -138,10 +406,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkQueueInsertDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkQueueInsertDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkQueueInsertDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo);
-
+		internal static void VkQueueInsertDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkQueue, VkDebugUtilsLabelEXT*, void>)vt[384])(queue, pLabelInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkQueueInsertDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkQueueInsertDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
@@ -161,10 +429,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBeginDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBeginDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBeginDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo);
-
+		internal static void VkCmdBeginDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>)vt[385])(commandBuffer, pLabelInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBeginDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBeginDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
@@ -184,10 +452,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdEndDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdEndDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdEndDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer);
-
+		internal static void VkCmdEndDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, void>)vt[386])(commandBuffer);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdEndDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdEndDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer)
@@ -197,10 +465,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdInsertDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdInsertDebugUtilsLabelEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdInsertDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo);
-
+		internal static void VkCmdInsertDebugUtilsLabelEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkDebugUtilsLabelEXT*, void>)vt[387])(commandBuffer, pLabelInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdInsertDebugUtilsLabelEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdInsertDebugUtilsLabelEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pLabelInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsLabelEXT*")] VkDebugUtilsLabelEXT* pLabelInfo)
@@ -220,10 +488,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateDebugUtilsMessengerEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateDebugUtilsMessengerEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateDebugUtilsMessengerEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCreateInfoEXT*")] VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMessenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT*")] VkDebugUtilsMessengerEXT* pMessenger);
-
+		internal static VkResult VkCreateDebugUtilsMessengerEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCreateInfoEXT*")] VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMessenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT*")] VkDebugUtilsMessengerEXT* pMessenger)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkInstance, VkDebugUtilsMessengerCreateInfoEXT*, VkAllocationCallbacks*, VkDebugUtilsMessengerEXT*, VkResult>)vt[388])(instance, pCreateInfo, pAllocator, pMessenger);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateDebugUtilsMessengerEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateDebugUtilsMessengerEXT([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCreateInfoEXT*")] VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMessenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT*")] VkDebugUtilsMessengerEXT* pMessenger)
@@ -326,10 +594,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyDebugUtilsMessengerEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyDebugUtilsMessengerEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyDebugUtilsMessengerEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT")] VkDebugUtilsMessengerEXT messenger, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyDebugUtilsMessengerEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT")] VkDebugUtilsMessengerEXT messenger, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkInstance, VkDebugUtilsMessengerEXT, VkAllocationCallbacks*, void>)vt[389])(instance, messenger, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyDebugUtilsMessengerEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyDebugUtilsMessengerEXT([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messenger")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessengerEXT")] VkDebugUtilsMessengerEXT messenger, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -349,10 +617,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSubmitDebugUtilsMessageEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkSubmitDebugUtilsMessageEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkSubmitDebugUtilsMessageEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messageSeverity")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageSeverityFlagBitsEXT")] VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, [NativeName(NativeNameType.Param, "messageTypes")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageTypeFlagsEXT")] uint messageTypes, [NativeName(NativeNameType.Param, "pCallbackData")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCallbackDataEXT*")] VkDebugUtilsMessengerCallbackDataEXT* pCallbackData);
-
+		internal static void VkSubmitDebugUtilsMessageEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messageSeverity")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageSeverityFlagBitsEXT")] VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, [NativeName(NativeNameType.Param, "messageTypes")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageTypeFlagsEXT")] uint messageTypes, [NativeName(NativeNameType.Param, "pCallbackData")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCallbackDataEXT*")] VkDebugUtilsMessengerCallbackDataEXT* pCallbackData)
+		{
+			((delegate* unmanaged[Cdecl]<VkInstance, VkDebugUtilsMessageSeverityFlagBitsEXT, uint, VkDebugUtilsMessengerCallbackDataEXT*, void>)vt[390])(instance, messageSeverity, messageTypes, pCallbackData);
+		}
 		[NativeName(NativeNameType.Func, "vkSubmitDebugUtilsMessageEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkSubmitDebugUtilsMessageEXT([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "messageSeverity")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageSeverityFlagBitsEXT")] VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, [NativeName(NativeNameType.Param, "messageTypes")] [NativeName(NativeNameType.Type, "VkDebugUtilsMessageTypeFlagsEXT")] uint messageTypes, [NativeName(NativeNameType.Param, "pCallbackData")] [NativeName(NativeNameType.Type, "const VkDebugUtilsMessengerCallbackDataEXT*")] VkDebugUtilsMessengerCallbackDataEXT* pCallbackData)
@@ -372,10 +640,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleLocationsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetSampleLocationsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetSampleLocationsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pSampleLocationsInfo")] [NativeName(NativeNameType.Type, "const VkSampleLocationsInfoEXT*")] VkSampleLocationsInfoEXT* pSampleLocationsInfo);
-
+		internal static void VkCmdSetSampleLocationsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pSampleLocationsInfo")] [NativeName(NativeNameType.Type, "const VkSampleLocationsInfoEXT*")] VkSampleLocationsInfoEXT* pSampleLocationsInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkSampleLocationsInfoEXT*, void>)vt[391])(commandBuffer, pSampleLocationsInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleLocationsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetSampleLocationsEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pSampleLocationsInfo")] [NativeName(NativeNameType.Type, "const VkSampleLocationsInfoEXT*")] VkSampleLocationsInfoEXT* pSampleLocationsInfo)
@@ -395,10 +663,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceMultisamplePropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceMultisamplePropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetPhysicalDeviceMultisamplePropertiesEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pMultisampleProperties")] [NativeName(NativeNameType.Type, "VkMultisamplePropertiesEXT*")] VkMultisamplePropertiesEXT* pMultisampleProperties);
-
+		internal static void VkGetPhysicalDeviceMultisamplePropertiesEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pMultisampleProperties")] [NativeName(NativeNameType.Type, "VkMultisamplePropertiesEXT*")] VkMultisamplePropertiesEXT* pMultisampleProperties)
+		{
+			((delegate* unmanaged[Cdecl]<VkPhysicalDevice, VkSampleCountFlagBits, VkMultisamplePropertiesEXT*, void>)vt[392])(physicalDevice, samples, pMultisampleProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceMultisamplePropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetPhysicalDeviceMultisamplePropertiesEXT([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pMultisampleProperties")] [NativeName(NativeNameType.Type, "VkMultisamplePropertiesEXT*")] VkMultisamplePropertiesEXT* pMultisampleProperties)
@@ -418,10 +686,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetImageDrmFormatModifierPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetImageDrmFormatModifierPropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetImageDrmFormatModifierPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkImageDrmFormatModifierPropertiesEXT*")] VkImageDrmFormatModifierPropertiesEXT* pProperties);
-
+		internal static VkResult VkGetImageDrmFormatModifierPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkImageDrmFormatModifierPropertiesEXT*")] VkImageDrmFormatModifierPropertiesEXT* pProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkImage, VkImageDrmFormatModifierPropertiesEXT*, VkResult>)vt[393])(device, image, pProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetImageDrmFormatModifierPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetImageDrmFormatModifierPropertiesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkImageDrmFormatModifierPropertiesEXT*")] VkImageDrmFormatModifierPropertiesEXT* pProperties)
@@ -443,10 +711,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateValidationCacheEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateValidationCacheEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateValidationCacheEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkValidationCacheCreateInfoEXT*")] VkValidationCacheCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pValidationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT*")] VkValidationCacheEXT* pValidationCache);
-
+		internal static VkResult VkCreateValidationCacheEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkValidationCacheCreateInfoEXT*")] VkValidationCacheCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pValidationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT*")] VkValidationCacheEXT* pValidationCache)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkValidationCacheCreateInfoEXT*, VkAllocationCallbacks*, VkValidationCacheEXT*, VkResult>)vt[394])(device, pCreateInfo, pAllocator, pValidationCache);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateValidationCacheEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateValidationCacheEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkValidationCacheCreateInfoEXT*")] VkValidationCacheCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pValidationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT*")] VkValidationCacheEXT* pValidationCache)
@@ -549,10 +817,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyValidationCacheEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyValidationCacheEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyValidationCacheEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyValidationCacheEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkValidationCacheEXT, VkAllocationCallbacks*, void>)vt[395])(device, validationCache, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyValidationCacheEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyValidationCacheEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -572,10 +840,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkMergeValidationCachesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkMergeValidationCachesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkMergeValidationCachesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "dstCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT dstCache, [NativeName(NativeNameType.Param, "srcCacheCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint srcCacheCount, [NativeName(NativeNameType.Param, "pSrcCaches")] [NativeName(NativeNameType.Type, "const VkValidationCacheEXT*")] VkValidationCacheEXT* pSrcCaches);
-
+		internal static VkResult VkMergeValidationCachesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "dstCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT dstCache, [NativeName(NativeNameType.Param, "srcCacheCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint srcCacheCount, [NativeName(NativeNameType.Param, "pSrcCaches")] [NativeName(NativeNameType.Type, "const VkValidationCacheEXT*")] VkValidationCacheEXT* pSrcCaches)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkValidationCacheEXT, uint, VkValidationCacheEXT*, VkResult>)vt[396])(device, dstCache, srcCacheCount, pSrcCaches);
+		}
 		[NativeName(NativeNameType.Func, "vkMergeValidationCachesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkMergeValidationCachesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "dstCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT dstCache, [NativeName(NativeNameType.Param, "srcCacheCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint srcCacheCount, [NativeName(NativeNameType.Param, "pSrcCaches")] [NativeName(NativeNameType.Type, "const VkValidationCacheEXT*")] VkValidationCacheEXT* pSrcCaches)
@@ -597,10 +865,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetValidationCacheDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetValidationCacheDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetValidationCacheDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetValidationCacheDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkValidationCacheEXT, ulong*, void*, VkResult>)vt[397])(device, validationCache, pDataSize, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetValidationCacheDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetValidationCacheDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "validationCache")] [NativeName(NativeNameType.Type, "VkValidationCacheEXT")] VkValidationCacheEXT validationCache, [NativeName(NativeNameType.Param, "pDataSize")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -622,10 +890,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindShadingRateImageNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindShadingRateImageNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindShadingRateImageNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout);
-
+		internal static void VkCmdBindShadingRateImageNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkImageView, VkImageLayout, void>)vt[398])(commandBuffer, imageView, imageLayout);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindShadingRateImageNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindShadingRateImageNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout)
@@ -635,10 +903,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportShadingRatePaletteNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetViewportShadingRatePaletteNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetViewportShadingRatePaletteNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pShadingRatePalettes")] [NativeName(NativeNameType.Type, "const VkShadingRatePaletteNV*")] VkShadingRatePaletteNV* pShadingRatePalettes);
-
+		internal static void VkCmdSetViewportShadingRatePaletteNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pShadingRatePalettes")] [NativeName(NativeNameType.Type, "const VkShadingRatePaletteNV*")] VkShadingRatePaletteNV* pShadingRatePalettes)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkShadingRatePaletteNV*, void>)vt[399])(commandBuffer, firstViewport, viewportCount, pShadingRatePalettes);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportShadingRatePaletteNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetViewportShadingRatePaletteNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pShadingRatePalettes")] [NativeName(NativeNameType.Type, "const VkShadingRatePaletteNV*")] VkShadingRatePaletteNV* pShadingRatePalettes)
@@ -658,10 +926,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoarseSampleOrderNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoarseSampleOrderNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoarseSampleOrderNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleOrderType")] [NativeName(NativeNameType.Type, "VkCoarseSampleOrderTypeNV")] VkCoarseSampleOrderTypeNV sampleOrderType, [NativeName(NativeNameType.Param, "customSampleOrderCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint customSampleOrderCount, [NativeName(NativeNameType.Param, "pCustomSampleOrders")] [NativeName(NativeNameType.Type, "const VkCoarseSampleOrderCustomNV*")] VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
-
+		internal static void VkCmdSetCoarseSampleOrderNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleOrderType")] [NativeName(NativeNameType.Type, "VkCoarseSampleOrderTypeNV")] VkCoarseSampleOrderTypeNV sampleOrderType, [NativeName(NativeNameType.Param, "customSampleOrderCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint customSampleOrderCount, [NativeName(NativeNameType.Param, "pCustomSampleOrders")] [NativeName(NativeNameType.Type, "const VkCoarseSampleOrderCustomNV*")] VkCoarseSampleOrderCustomNV* pCustomSampleOrders)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCoarseSampleOrderTypeNV, uint, VkCoarseSampleOrderCustomNV*, void>)vt[400])(commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoarseSampleOrderNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoarseSampleOrderNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleOrderType")] [NativeName(NativeNameType.Type, "VkCoarseSampleOrderTypeNV")] VkCoarseSampleOrderTypeNV sampleOrderType, [NativeName(NativeNameType.Param, "customSampleOrderCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint customSampleOrderCount, [NativeName(NativeNameType.Param, "pCustomSampleOrders")] [NativeName(NativeNameType.Type, "const VkCoarseSampleOrderCustomNV*")] VkCoarseSampleOrderCustomNV* pCustomSampleOrders)
@@ -681,10 +949,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateAccelerationStructureNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateAccelerationStructureNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCreateInfoNV*")] VkAccelerationStructureCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pAccelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructure);
-
+		internal static VkResult VkCreateAccelerationStructureNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCreateInfoNV*")] VkAccelerationStructureCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pAccelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructure)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureCreateInfoNV*, VkAllocationCallbacks*, VkAccelerationStructureNV*, VkResult>)vt[401])(device, pCreateInfo, pAllocator, pAccelerationStructure);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateAccelerationStructureNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCreateInfoNV*")] VkAccelerationStructureCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pAccelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructure)
@@ -787,10 +1055,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyAccelerationStructureNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyAccelerationStructureNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyAccelerationStructureNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureNV, VkAllocationCallbacks*, void>)vt[402])(device, accelerationStructure, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyAccelerationStructureNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -810,10 +1078,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureMemoryRequirementsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetAccelerationStructureMemoryRequirementsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetAccelerationStructureMemoryRequirementsNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureMemoryRequirementsInfoNV*")] VkAccelerationStructureMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2KHR*")] VkMemoryRequirements2* pMemoryRequirements);
-
+		internal static void VkGetAccelerationStructureMemoryRequirementsNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureMemoryRequirementsInfoNV*")] VkAccelerationStructureMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2KHR*")] VkMemoryRequirements2* pMemoryRequirements)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>)vt[403])(device, pInfo, pMemoryRequirements);
+		}
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureMemoryRequirementsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetAccelerationStructureMemoryRequirementsNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureMemoryRequirementsInfoNV*")] VkAccelerationStructureMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2KHR*")] VkMemoryRequirements2* pMemoryRequirements)
@@ -856,10 +1124,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkBindAccelerationStructureMemoryNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkBindAccelerationStructureMemoryNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkBindAccelerationStructureMemoryNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "bindInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindInfoCount, [NativeName(NativeNameType.Param, "pBindInfos")] [NativeName(NativeNameType.Type, "const VkBindAccelerationStructureMemoryInfoNV*")] VkBindAccelerationStructureMemoryInfoNV* pBindInfos);
-
+		internal static VkResult VkBindAccelerationStructureMemoryNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "bindInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindInfoCount, [NativeName(NativeNameType.Param, "pBindInfos")] [NativeName(NativeNameType.Type, "const VkBindAccelerationStructureMemoryInfoNV*")] VkBindAccelerationStructureMemoryInfoNV* pBindInfos)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, uint, VkBindAccelerationStructureMemoryInfoNV*, VkResult>)vt[404])(device, bindInfoCount, pBindInfos);
+		}
 		[NativeName(NativeNameType.Func, "vkBindAccelerationStructureMemoryNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkBindAccelerationStructureMemoryNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "bindInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindInfoCount, [NativeName(NativeNameType.Param, "pBindInfos")] [NativeName(NativeNameType.Type, "const VkBindAccelerationStructureMemoryInfoNV*")] VkBindAccelerationStructureMemoryInfoNV* pBindInfos)
@@ -881,10 +1149,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBuildAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBuildAccelerationStructureNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBuildAccelerationStructureNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureInfoNV*")] VkAccelerationStructureInfoNV* pInfo, [NativeName(NativeNameType.Param, "instanceData")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer instanceData, [NativeName(NativeNameType.Param, "instanceOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong instanceOffset, [NativeName(NativeNameType.Param, "update")] [NativeName(NativeNameType.Type, "VkBool32")] uint update, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "scratch")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer scratch, [NativeName(NativeNameType.Param, "scratchOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong scratchOffset);
-
+		internal static void VkCmdBuildAccelerationStructureNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureInfoNV*")] VkAccelerationStructureInfoNV* pInfo, [NativeName(NativeNameType.Param, "instanceData")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer instanceData, [NativeName(NativeNameType.Param, "instanceOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong instanceOffset, [NativeName(NativeNameType.Param, "update")] [NativeName(NativeNameType.Type, "VkBool32")] uint update, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "scratch")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer scratch, [NativeName(NativeNameType.Param, "scratchOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong scratchOffset)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkAccelerationStructureInfoNV*, VkBuffer, ulong, uint, VkAccelerationStructureNV, VkAccelerationStructureNV, VkBuffer, ulong, void>)vt[405])(commandBuffer, pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBuildAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBuildAccelerationStructureNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureInfoNV*")] VkAccelerationStructureInfoNV* pInfo, [NativeName(NativeNameType.Param, "instanceData")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer instanceData, [NativeName(NativeNameType.Param, "instanceOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong instanceOffset, [NativeName(NativeNameType.Param, "update")] [NativeName(NativeNameType.Type, "VkBool32")] uint update, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "scratch")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer scratch, [NativeName(NativeNameType.Param, "scratchOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong scratchOffset)
@@ -904,10 +1172,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyAccelerationStructureNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyAccelerationStructureNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "VkCopyAccelerationStructureModeKHR")] VkCopyAccelerationStructureModeKHR mode);
-
+		internal static void VkCmdCopyAccelerationStructureNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "VkCopyAccelerationStructureModeKHR")] VkCopyAccelerationStructureModeKHR mode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkAccelerationStructureNV, VkAccelerationStructureNV, VkCopyAccelerationStructureModeKHR, void>)vt[406])(commandBuffer, dst, src, mode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyAccelerationStructureNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyAccelerationStructureNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV dst, [NativeName(NativeNameType.Param, "src")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV src, [NativeName(NativeNameType.Param, "mode")] [NativeName(NativeNameType.Type, "VkCopyAccelerationStructureModeKHR")] VkCopyAccelerationStructureModeKHR mode)
@@ -917,10 +1185,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdTraceRaysNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdTraceRaysNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdTraceRaysNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer raygenShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong raygenShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer missShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "missShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingStride, [NativeName(NativeNameType.Param, "hitShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer hitShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "hitShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingOffset, [NativeName(NativeNameType.Param, "hitShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingStride, [NativeName(NativeNameType.Param, "callableShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer callableShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "callableShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingOffset, [NativeName(NativeNameType.Param, "callableShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingStride, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "uint32_t")] uint width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "uint32_t")] uint height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "uint32_t")] uint depth);
-
+		internal static void VkCmdTraceRaysNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer raygenShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong raygenShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer missShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "missShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingStride, [NativeName(NativeNameType.Param, "hitShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer hitShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "hitShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingOffset, [NativeName(NativeNameType.Param, "hitShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingStride, [NativeName(NativeNameType.Param, "callableShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer callableShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "callableShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingOffset, [NativeName(NativeNameType.Param, "callableShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingStride, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "uint32_t")] uint width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "uint32_t")] uint height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "uint32_t")] uint depth)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, VkBuffer, ulong, ulong, uint, uint, uint, void>)vt[407])(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdTraceRaysNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdTraceRaysNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer raygenShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "raygenShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong raygenShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer missShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "missShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingOffset, [NativeName(NativeNameType.Param, "missShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong missShaderBindingStride, [NativeName(NativeNameType.Param, "hitShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer hitShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "hitShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingOffset, [NativeName(NativeNameType.Param, "hitShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong hitShaderBindingStride, [NativeName(NativeNameType.Param, "callableShaderBindingTableBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer callableShaderBindingTableBuffer, [NativeName(NativeNameType.Param, "callableShaderBindingOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingOffset, [NativeName(NativeNameType.Param, "callableShaderBindingStride")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong callableShaderBindingStride, [NativeName(NativeNameType.Param, "width")] [NativeName(NativeNameType.Type, "uint32_t")] uint width, [NativeName(NativeNameType.Param, "height")] [NativeName(NativeNameType.Type, "uint32_t")] uint height, [NativeName(NativeNameType.Param, "depth")] [NativeName(NativeNameType.Type, "uint32_t")] uint depth)
@@ -930,10 +1198,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateRayTracingPipelinesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateRayTracingPipelinesNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateRayTracingPipelinesNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipelineCache")] [NativeName(NativeNameType.Type, "VkPipelineCache")] VkPipelineCache pipelineCache, [NativeName(NativeNameType.Param, "createInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint createInfoCount, [NativeName(NativeNameType.Param, "pCreateInfos")] [NativeName(NativeNameType.Type, "const VkRayTracingPipelineCreateInfoNV*")] VkRayTracingPipelineCreateInfoNV* pCreateInfos, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPipelines")] [NativeName(NativeNameType.Type, "VkPipeline*")] VkPipeline* pPipelines);
-
+		internal static VkResult VkCreateRayTracingPipelinesNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipelineCache")] [NativeName(NativeNameType.Type, "VkPipelineCache")] VkPipelineCache pipelineCache, [NativeName(NativeNameType.Param, "createInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint createInfoCount, [NativeName(NativeNameType.Param, "pCreateInfos")] [NativeName(NativeNameType.Type, "const VkRayTracingPipelineCreateInfoNV*")] VkRayTracingPipelineCreateInfoNV* pCreateInfos, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPipelines")] [NativeName(NativeNameType.Type, "VkPipeline*")] VkPipeline* pPipelines)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPipelineCache, uint, VkRayTracingPipelineCreateInfoNV*, VkAllocationCallbacks*, VkPipeline*, VkResult>)vt[408])(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateRayTracingPipelinesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateRayTracingPipelinesNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipelineCache")] [NativeName(NativeNameType.Type, "VkPipelineCache")] VkPipelineCache pipelineCache, [NativeName(NativeNameType.Param, "createInfoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint createInfoCount, [NativeName(NativeNameType.Param, "pCreateInfos")] [NativeName(NativeNameType.Type, "const VkRayTracingPipelineCreateInfoNV*")] VkRayTracingPipelineCreateInfoNV* pCreateInfos, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPipelines")] [NativeName(NativeNameType.Type, "VkPipeline*")] VkPipeline* pPipelines)
@@ -1036,10 +1304,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetRayTracingShaderGroupHandlesKHR")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetRayTracingShaderGroupHandlesKHR")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetRayTracingShaderGroupHandlesKHRNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetRayTracingShaderGroupHandlesKHRNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vt[409])(device, pipeline, firstGroup, groupCount, dataSize, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetRayTracingShaderGroupHandlesKHR")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetRayTracingShaderGroupHandlesKHR([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -1058,10 +1326,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetRayTracingShaderGroupHandlesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetRayTracingShaderGroupHandlesNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetRayTracingShaderGroupHandlesNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetRayTracingShaderGroupHandlesNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPipeline, uint, uint, ulong, void*, VkResult>)vt[410])(device, pipeline, firstGroup, groupCount, dataSize, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetRayTracingShaderGroupHandlesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetRayTracingShaderGroupHandlesNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "firstGroup")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstGroup, [NativeName(NativeNameType.Param, "groupCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCount, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -1080,10 +1348,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureHandleNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetAccelerationStructureHandleNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetAccelerationStructureHandleNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetAccelerationStructureHandleNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureNV, ulong, void*, VkResult>)vt[411])(device, accelerationStructure, dataSize, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureHandleNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetAccelerationStructureHandleNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "accelerationStructure")] [NativeName(NativeNameType.Type, "VkAccelerationStructureNV")] VkAccelerationStructureNV accelerationStructure, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -1102,10 +1370,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdWriteAccelerationStructuresPropertiesNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdWriteAccelerationStructuresPropertiesNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdWriteAccelerationStructuresPropertiesNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "accelerationStructureCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint accelerationStructureCount, [NativeName(NativeNameType.Param, "pAccelerationStructures")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructures, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery);
-
+		internal static void VkCmdWriteAccelerationStructuresPropertiesNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "accelerationStructureCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint accelerationStructureCount, [NativeName(NativeNameType.Param, "pAccelerationStructures")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructures, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkAccelerationStructureNV*, VkQueryType, VkQueryPool, uint, void>)vt[412])(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdWriteAccelerationStructuresPropertiesNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdWriteAccelerationStructuresPropertiesNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "accelerationStructureCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint accelerationStructureCount, [NativeName(NativeNameType.Param, "pAccelerationStructures")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureNV*")] VkAccelerationStructureNV* pAccelerationStructures, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery)
@@ -1125,10 +1393,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCompileDeferredNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCompileDeferredNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCompileDeferredNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "shader")] [NativeName(NativeNameType.Type, "uint32_t")] uint shader);
-
+		internal static VkResult VkCompileDeferredNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "shader")] [NativeName(NativeNameType.Type, "uint32_t")] uint shader)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPipeline, uint, VkResult>)vt[413])(device, pipeline, shader);
+		}
 		[NativeName(NativeNameType.Func, "vkCompileDeferredNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCompileDeferredNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "shader")] [NativeName(NativeNameType.Type, "uint32_t")] uint shader)
@@ -1139,10 +1407,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetMemoryHostPointerPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetMemoryHostPointerPropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetMemoryHostPointerPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "handleType")] [NativeName(NativeNameType.Type, "VkExternalMemoryHandleTypeFlagBits")] VkExternalMemoryHandleTypeFlagBits handleType, [NativeName(NativeNameType.Param, "pHostPointer")] [NativeName(NativeNameType.Type, "const void*")] void* pHostPointer, [NativeName(NativeNameType.Param, "pMemoryHostPointerProperties")] [NativeName(NativeNameType.Type, "VkMemoryHostPointerPropertiesEXT*")] VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
-
+		internal static VkResult VkGetMemoryHostPointerPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "handleType")] [NativeName(NativeNameType.Type, "VkExternalMemoryHandleTypeFlagBits")] VkExternalMemoryHandleTypeFlagBits handleType, [NativeName(NativeNameType.Param, "pHostPointer")] [NativeName(NativeNameType.Type, "const void*")] void* pHostPointer, [NativeName(NativeNameType.Param, "pMemoryHostPointerProperties")] [NativeName(NativeNameType.Type, "VkMemoryHostPointerPropertiesEXT*")] VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkExternalMemoryHandleTypeFlagBits, void*, VkMemoryHostPointerPropertiesEXT*, VkResult>)vt[414])(device, handleType, pHostPointer, pMemoryHostPointerProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetMemoryHostPointerPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetMemoryHostPointerPropertiesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "handleType")] [NativeName(NativeNameType.Type, "VkExternalMemoryHandleTypeFlagBits")] VkExternalMemoryHandleTypeFlagBits handleType, [NativeName(NativeNameType.Param, "pHostPointer")] [NativeName(NativeNameType.Type, "const void*")] void* pHostPointer, [NativeName(NativeNameType.Param, "pMemoryHostPointerProperties")] [NativeName(NativeNameType.Type, "VkMemoryHostPointerPropertiesEXT*")] VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties)
@@ -1164,10 +1432,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdWriteBufferMarkerAMD")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdWriteBufferMarkerAMD")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdWriteBufferMarkerAMDNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineStage")] [NativeName(NativeNameType.Type, "VkPipelineStageFlagBits")] VkPipelineStageFlagBits pipelineStage, [NativeName(NativeNameType.Param, "dstBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer dstBuffer, [NativeName(NativeNameType.Param, "dstOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong dstOffset, [NativeName(NativeNameType.Param, "marker")] [NativeName(NativeNameType.Type, "uint32_t")] uint marker);
-
+		internal static void VkCmdWriteBufferMarkerAMDNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineStage")] [NativeName(NativeNameType.Type, "VkPipelineStageFlagBits")] VkPipelineStageFlagBits pipelineStage, [NativeName(NativeNameType.Param, "dstBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer dstBuffer, [NativeName(NativeNameType.Param, "dstOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong dstOffset, [NativeName(NativeNameType.Param, "marker")] [NativeName(NativeNameType.Type, "uint32_t")] uint marker)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPipelineStageFlagBits, VkBuffer, ulong, uint, void>)vt[415])(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdWriteBufferMarkerAMD")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdWriteBufferMarkerAMD([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineStage")] [NativeName(NativeNameType.Type, "VkPipelineStageFlagBits")] VkPipelineStageFlagBits pipelineStage, [NativeName(NativeNameType.Param, "dstBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer dstBuffer, [NativeName(NativeNameType.Param, "dstOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong dstOffset, [NativeName(NativeNameType.Param, "marker")] [NativeName(NativeNameType.Type, "uint32_t")] uint marker)
@@ -1177,10 +1445,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPhysicalDeviceCalibrateableTimeDomainsEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pTimeDomainCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pTimeDomainCount, [NativeName(NativeNameType.Param, "pTimeDomains")] [NativeName(NativeNameType.Type, "VkTimeDomainEXT*")] VkTimeDomainEXT* pTimeDomains);
-
+		internal static VkResult VkGetPhysicalDeviceCalibrateableTimeDomainsEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pTimeDomainCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pTimeDomainCount, [NativeName(NativeNameType.Param, "pTimeDomains")] [NativeName(NativeNameType.Type, "VkTimeDomainEXT*")] VkTimeDomainEXT* pTimeDomains)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, uint*, VkTimeDomainEXT*, VkResult>)vt[416])(physicalDevice, pTimeDomainCount, pTimeDomains);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPhysicalDeviceCalibrateableTimeDomainsEXT([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pTimeDomainCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pTimeDomainCount, [NativeName(NativeNameType.Param, "pTimeDomains")] [NativeName(NativeNameType.Type, "VkTimeDomainEXT*")] VkTimeDomainEXT* pTimeDomains)
@@ -1227,10 +1495,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetCalibratedTimestampsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetCalibratedTimestampsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetCalibratedTimestampsEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "timestampCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint timestampCount, [NativeName(NativeNameType.Param, "pTimestampInfos")] [NativeName(NativeNameType.Type, "const VkCalibratedTimestampInfoEXT*")] VkCalibratedTimestampInfoEXT* pTimestampInfos, [NativeName(NativeNameType.Param, "pTimestamps")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pTimestamps, [NativeName(NativeNameType.Param, "pMaxDeviation")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pMaxDeviation);
-
+		internal static VkResult VkGetCalibratedTimestampsEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "timestampCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint timestampCount, [NativeName(NativeNameType.Param, "pTimestampInfos")] [NativeName(NativeNameType.Type, "const VkCalibratedTimestampInfoEXT*")] VkCalibratedTimestampInfoEXT* pTimestampInfos, [NativeName(NativeNameType.Param, "pTimestamps")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pTimestamps, [NativeName(NativeNameType.Param, "pMaxDeviation")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pMaxDeviation)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, uint, VkCalibratedTimestampInfoEXT*, ulong*, ulong*, VkResult>)vt[417])(device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation);
+		}
 		[NativeName(NativeNameType.Func, "vkGetCalibratedTimestampsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetCalibratedTimestampsEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "timestampCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint timestampCount, [NativeName(NativeNameType.Param, "pTimestampInfos")] [NativeName(NativeNameType.Type, "const VkCalibratedTimestampInfoEXT*")] VkCalibratedTimestampInfoEXT* pTimestampInfos, [NativeName(NativeNameType.Param, "pTimestamps")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pTimestamps, [NativeName(NativeNameType.Param, "pMaxDeviation")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pMaxDeviation)
@@ -1333,10 +1601,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawMeshTasksNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawMeshTasksNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "taskCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint taskCount, [NativeName(NativeNameType.Param, "firstTask")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstTask);
-
+		internal static void VkCmdDrawMeshTasksNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "taskCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint taskCount, [NativeName(NativeNameType.Param, "firstTask")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstTask)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, void>)vt[418])(commandBuffer, taskCount, firstTask);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawMeshTasksNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "taskCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint taskCount, [NativeName(NativeNameType.Param, "firstTask")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstTask)
@@ -1346,10 +1614,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawMeshTasksIndirectNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawMeshTasksIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride);
-
+		internal static void VkCmdDrawMeshTasksIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkBuffer, ulong, uint, uint, void>)vt[419])(commandBuffer, buffer, offset, drawCount, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawMeshTasksIndirectNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
@@ -1359,10 +1627,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksIndirectCountNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawMeshTasksIndirectCountNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawMeshTasksIndirectCountNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "countBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer countBuffer, [NativeName(NativeNameType.Param, "countBufferOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong countBufferOffset, [NativeName(NativeNameType.Param, "maxDrawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint maxDrawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride);
-
+		internal static void VkCmdDrawMeshTasksIndirectCountNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "countBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer countBuffer, [NativeName(NativeNameType.Param, "countBufferOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong countBufferOffset, [NativeName(NativeNameType.Param, "maxDrawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint maxDrawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkBuffer, ulong, VkBuffer, ulong, uint, uint, void>)vt[420])(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawMeshTasksIndirectCountNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawMeshTasksIndirectCountNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset, [NativeName(NativeNameType.Param, "countBuffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer countBuffer, [NativeName(NativeNameType.Param, "countBufferOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong countBufferOffset, [NativeName(NativeNameType.Param, "maxDrawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint maxDrawCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
@@ -1372,10 +1640,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetExclusiveScissorEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetExclusiveScissorEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetExclusiveScissorEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissorEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pExclusiveScissorEnables);
-
+		internal static void VkCmdSetExclusiveScissorEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissorEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pExclusiveScissorEnables)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, uint*, void>)vt[421])(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetExclusiveScissorEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetExclusiveScissorEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissorEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pExclusiveScissorEnables)
@@ -1395,10 +1663,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetExclusiveScissorNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetExclusiveScissorNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetExclusiveScissorNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pExclusiveScissors);
-
+		internal static void VkCmdSetExclusiveScissorNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pExclusiveScissors)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkRect2D*, void>)vt[422])(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetExclusiveScissorNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetExclusiveScissorNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstExclusiveScissor")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstExclusiveScissor, [NativeName(NativeNameType.Param, "exclusiveScissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint exclusiveScissorCount, [NativeName(NativeNameType.Param, "pExclusiveScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pExclusiveScissors)
@@ -1418,10 +1686,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCheckpointNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCheckpointNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCheckpointNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pCheckpointMarker")] [NativeName(NativeNameType.Type, "const void*")] void* pCheckpointMarker);
-
+		internal static void VkCmdSetCheckpointNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pCheckpointMarker")] [NativeName(NativeNameType.Type, "const void*")] void* pCheckpointMarker)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, void*, void>)vt[423])(commandBuffer, pCheckpointMarker);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCheckpointNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCheckpointNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pCheckpointMarker")] [NativeName(NativeNameType.Type, "const void*")] void* pCheckpointMarker)
@@ -1431,10 +1699,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetQueueCheckpointDataNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetQueueCheckpointDataNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetQueueCheckpointDataNVNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pCheckpointDataCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCheckpointDataCount, [NativeName(NativeNameType.Param, "pCheckpointData")] [NativeName(NativeNameType.Type, "VkCheckpointDataNV*")] VkCheckpointDataNV* pCheckpointData);
-
+		internal static void VkGetQueueCheckpointDataNVNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pCheckpointDataCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCheckpointDataCount, [NativeName(NativeNameType.Param, "pCheckpointData")] [NativeName(NativeNameType.Type, "VkCheckpointDataNV*")] VkCheckpointDataNV* pCheckpointData)
+		{
+			((delegate* unmanaged[Cdecl]<VkQueue, uint*, VkCheckpointDataNV*, void>)vt[424])(queue, pCheckpointDataCount, pCheckpointData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetQueueCheckpointDataNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetQueueCheckpointDataNV([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "pCheckpointDataCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCheckpointDataCount, [NativeName(NativeNameType.Param, "pCheckpointData")] [NativeName(NativeNameType.Type, "VkCheckpointDataNV*")] VkCheckpointDataNV* pCheckpointData)
@@ -1477,10 +1745,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkInitializePerformanceApiINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkInitializePerformanceApiINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkInitializePerformanceApiINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInitializeInfo")] [NativeName(NativeNameType.Type, "const VkInitializePerformanceApiInfoINTEL*")] VkInitializePerformanceApiInfoINTEL* pInitializeInfo);
-
+		internal static VkResult VkInitializePerformanceApiINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInitializeInfo")] [NativeName(NativeNameType.Type, "const VkInitializePerformanceApiInfoINTEL*")] VkInitializePerformanceApiInfoINTEL* pInitializeInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkInitializePerformanceApiInfoINTEL*, VkResult>)vt[425])(device, pInitializeInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkInitializePerformanceApiINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkInitializePerformanceApiINTEL([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInitializeInfo")] [NativeName(NativeNameType.Type, "const VkInitializePerformanceApiInfoINTEL*")] VkInitializePerformanceApiInfoINTEL* pInitializeInfo)
@@ -1502,10 +1770,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkUninitializePerformanceApiINTEL")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkUninitializePerformanceApiINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkUninitializePerformanceApiINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device);
-
+		internal static void VkUninitializePerformanceApiINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, void>)vt[426])(device);
+		}
 		[NativeName(NativeNameType.Func, "vkUninitializePerformanceApiINTEL")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkUninitializePerformanceApiINTEL([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device)
@@ -1515,10 +1783,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceMarkerINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPerformanceMarkerINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCmdSetPerformanceMarkerINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceMarkerInfoINTEL*")] VkPerformanceMarkerInfoINTEL* pMarkerInfo);
-
+		internal static VkResult VkCmdSetPerformanceMarkerINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceMarkerInfoINTEL*")] VkPerformanceMarkerInfoINTEL* pMarkerInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPerformanceMarkerInfoINTEL*, VkResult>)vt[427])(commandBuffer, pMarkerInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceMarkerINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCmdSetPerformanceMarkerINTEL([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceMarkerInfoINTEL*")] VkPerformanceMarkerInfoINTEL* pMarkerInfo)
@@ -1540,10 +1808,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceStreamMarkerINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPerformanceStreamMarkerINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCmdSetPerformanceStreamMarkerINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceStreamMarkerInfoINTEL*")] VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo);
-
+		internal static VkResult VkCmdSetPerformanceStreamMarkerINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceStreamMarkerInfoINTEL*")] VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPerformanceStreamMarkerInfoINTEL*, VkResult>)vt[428])(commandBuffer, pMarkerInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceStreamMarkerINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCmdSetPerformanceStreamMarkerINTEL([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pMarkerInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceStreamMarkerInfoINTEL*")] VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo)
@@ -1565,10 +1833,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceOverrideINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPerformanceOverrideINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCmdSetPerformanceOverrideINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pOverrideInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceOverrideInfoINTEL*")] VkPerformanceOverrideInfoINTEL* pOverrideInfo);
-
+		internal static VkResult VkCmdSetPerformanceOverrideINTELNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pOverrideInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceOverrideInfoINTEL*")] VkPerformanceOverrideInfoINTEL* pOverrideInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPerformanceOverrideInfoINTEL*, VkResult>)vt[429])(commandBuffer, pOverrideInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPerformanceOverrideINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCmdSetPerformanceOverrideINTEL([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pOverrideInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceOverrideInfoINTEL*")] VkPerformanceOverrideInfoINTEL* pOverrideInfo)
@@ -1590,10 +1858,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkAcquirePerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkAcquirePerformanceConfigurationINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkAcquirePerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pAcquireInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceConfigurationAcquireInfoINTEL*")] VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo, [NativeName(NativeNameType.Param, "pConfiguration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL*")] VkPerformanceConfigurationINTEL* pConfiguration);
-
+		internal static VkResult VkAcquirePerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pAcquireInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceConfigurationAcquireInfoINTEL*")] VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo, [NativeName(NativeNameType.Param, "pConfiguration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL*")] VkPerformanceConfigurationINTEL* pConfiguration)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPerformanceConfigurationAcquireInfoINTEL*, VkPerformanceConfigurationINTEL*, VkResult>)vt[430])(device, pAcquireInfo, pConfiguration);
+		}
 		[NativeName(NativeNameType.Func, "vkAcquirePerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkAcquirePerformanceConfigurationINTEL([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pAcquireInfo")] [NativeName(NativeNameType.Type, "const VkPerformanceConfigurationAcquireInfoINTEL*")] VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo, [NativeName(NativeNameType.Param, "pConfiguration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL*")] VkPerformanceConfigurationINTEL* pConfiguration)
@@ -1640,10 +1908,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkReleasePerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkReleasePerformanceConfigurationINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkReleasePerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration);
-
+		internal static VkResult VkReleasePerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPerformanceConfigurationINTEL, VkResult>)vt[431])(device, configuration);
+		}
 		[NativeName(NativeNameType.Func, "vkReleasePerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkReleasePerformanceConfigurationINTEL([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration)
@@ -1654,10 +1922,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkQueueSetPerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkQueueSetPerformanceConfigurationINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkQueueSetPerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration);
-
+		internal static VkResult VkQueueSetPerformanceConfigurationINTELNative([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkQueue, VkPerformanceConfigurationINTEL, VkResult>)vt[432])(queue, configuration);
+		}
 		[NativeName(NativeNameType.Func, "vkQueueSetPerformanceConfigurationINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkQueueSetPerformanceConfigurationINTEL([NativeName(NativeNameType.Param, "queue")] [NativeName(NativeNameType.Type, "VkQueue")] VkQueue queue, [NativeName(NativeNameType.Param, "configuration")] [NativeName(NativeNameType.Type, "VkPerformanceConfigurationINTEL")] VkPerformanceConfigurationINTEL configuration)
@@ -1668,10 +1936,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPerformanceParameterINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPerformanceParameterINTEL")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPerformanceParameterINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "parameter")] [NativeName(NativeNameType.Type, "VkPerformanceParameterTypeINTEL")] VkPerformanceParameterTypeINTEL parameter, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "VkPerformanceValueINTEL*")] VkPerformanceValueINTEL* pValue);
-
+		internal static VkResult VkGetPerformanceParameterINTELNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "parameter")] [NativeName(NativeNameType.Type, "VkPerformanceParameterTypeINTEL")] VkPerformanceParameterTypeINTEL parameter, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "VkPerformanceValueINTEL*")] VkPerformanceValueINTEL* pValue)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPerformanceParameterTypeINTEL, VkPerformanceValueINTEL*, VkResult>)vt[433])(device, parameter, pValue);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPerformanceParameterINTEL")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPerformanceParameterINTEL([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "parameter")] [NativeName(NativeNameType.Type, "VkPerformanceParameterTypeINTEL")] VkPerformanceParameterTypeINTEL parameter, [NativeName(NativeNameType.Param, "pValue")] [NativeName(NativeNameType.Type, "VkPerformanceValueINTEL*")] VkPerformanceValueINTEL* pValue)
@@ -1693,10 +1961,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSetLocalDimmingAMD")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkSetLocalDimmingAMD")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkSetLocalDimmingAMDNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapChain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapChain, [NativeName(NativeNameType.Param, "localDimmingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint localDimmingEnable);
-
+		internal static void VkSetLocalDimmingAMDNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapChain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapChain, [NativeName(NativeNameType.Param, "localDimmingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint localDimmingEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkSwapchainKHR, uint, void>)vt[434])(device, swapChain, localDimmingEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkSetLocalDimmingAMD")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkSetLocalDimmingAMD([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "swapChain")] [NativeName(NativeNameType.Type, "VkSwapchainKHR")] VkSwapchainKHR swapChain, [NativeName(NativeNameType.Param, "localDimmingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint localDimmingEnable)
@@ -1706,10 +1974,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetBufferDeviceAddressEXT")]
 		[return: NativeName(NativeNameType.Type, "VkDeviceAddress")]
-		[LibraryImport(LibName, EntryPoint = "vkGetBufferDeviceAddressEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong VkGetBufferDeviceAddressEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferDeviceAddressInfo*")] VkBufferDeviceAddressInfo* pInfo);
-
+		internal static ulong VkGetBufferDeviceAddressEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferDeviceAddressInfo*")] VkBufferDeviceAddressInfo* pInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkBufferDeviceAddressInfo*, ulong>)vt[435])(device, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkGetBufferDeviceAddressEXT")]
 		[return: NativeName(NativeNameType.Type, "VkDeviceAddress")]
 		public static ulong VkGetBufferDeviceAddressEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferDeviceAddressInfo*")] VkBufferDeviceAddressInfo* pInfo)
@@ -1731,10 +1999,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceToolPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceToolPropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPhysicalDeviceToolPropertiesEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pToolCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pToolCount, [NativeName(NativeNameType.Param, "pToolProperties")] [NativeName(NativeNameType.Type, "VkPhysicalDeviceToolProperties*")] VkPhysicalDeviceToolProperties* pToolProperties);
-
+		internal static VkResult VkGetPhysicalDeviceToolPropertiesEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pToolCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pToolCount, [NativeName(NativeNameType.Param, "pToolProperties")] [NativeName(NativeNameType.Type, "VkPhysicalDeviceToolProperties*")] VkPhysicalDeviceToolProperties* pToolProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, uint*, VkPhysicalDeviceToolProperties*, VkResult>)vt[436])(physicalDevice, pToolCount, pToolProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceToolPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPhysicalDeviceToolPropertiesEXT([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pToolCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pToolCount, [NativeName(NativeNameType.Param, "pToolProperties")] [NativeName(NativeNameType.Type, "VkPhysicalDeviceToolProperties*")] VkPhysicalDeviceToolProperties* pToolProperties)
@@ -1781,10 +2049,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPhysicalDeviceCooperativeMatrixPropertiesNVNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pPropertyCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPropertyCount, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkCooperativeMatrixPropertiesNV*")] VkCooperativeMatrixPropertiesNV* pProperties);
-
+		internal static VkResult VkGetPhysicalDeviceCooperativeMatrixPropertiesNVNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pPropertyCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPropertyCount, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkCooperativeMatrixPropertiesNV*")] VkCooperativeMatrixPropertiesNV* pProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, uint*, VkCooperativeMatrixPropertiesNV*, VkResult>)vt[437])(physicalDevice, pPropertyCount, pProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPhysicalDeviceCooperativeMatrixPropertiesNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pPropertyCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pPropertyCount, [NativeName(NativeNameType.Param, "pProperties")] [NativeName(NativeNameType.Type, "VkCooperativeMatrixPropertiesNV*")] VkCooperativeMatrixPropertiesNV* pProperties)
@@ -1831,10 +2099,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pCombinationCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCombinationCount, [NativeName(NativeNameType.Param, "pCombinations")] [NativeName(NativeNameType.Type, "VkFramebufferMixedSamplesCombinationNV*")] VkFramebufferMixedSamplesCombinationNV* pCombinations);
-
+		internal static VkResult VkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNVNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pCombinationCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCombinationCount, [NativeName(NativeNameType.Param, "pCombinations")] [NativeName(NativeNameType.Type, "VkFramebufferMixedSamplesCombinationNV*")] VkFramebufferMixedSamplesCombinationNV* pCombinations)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, uint*, VkFramebufferMixedSamplesCombinationNV*, VkResult>)vt[438])(physicalDevice, pCombinationCount, pCombinations);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pCombinationCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pCombinationCount, [NativeName(NativeNameType.Param, "pCombinations")] [NativeName(NativeNameType.Type, "VkFramebufferMixedSamplesCombinationNV*")] VkFramebufferMixedSamplesCombinationNV* pCombinations)
@@ -1881,10 +2149,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateHeadlessSurfaceEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateHeadlessSurfaceEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateHeadlessSurfaceEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkHeadlessSurfaceCreateInfoEXT*")] VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSurface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* pSurface);
-
+		internal static VkResult VkCreateHeadlessSurfaceEXTNative([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkHeadlessSurfaceCreateInfoEXT*")] VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSurface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* pSurface)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkInstance, VkHeadlessSurfaceCreateInfoEXT*, VkAllocationCallbacks*, VkSurfaceKHR*, VkResult>)vt[439])(instance, pCreateInfo, pAllocator, pSurface);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateHeadlessSurfaceEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateHeadlessSurfaceEXT([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkHeadlessSurfaceCreateInfoEXT*")] VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSurface")] [NativeName(NativeNameType.Type, "VkSurfaceKHR*")] VkSurfaceKHR* pSurface)
@@ -1987,10 +2255,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetLineStippleEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetLineStippleEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetLineStippleEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineStippleFactor")] [NativeName(NativeNameType.Type, "uint32_t")] uint lineStippleFactor, [NativeName(NativeNameType.Param, "lineStipplePattern")] [NativeName(NativeNameType.Type, "uint16_t")] ushort lineStipplePattern);
-
+		internal static void VkCmdSetLineStippleEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineStippleFactor")] [NativeName(NativeNameType.Type, "uint32_t")] uint lineStippleFactor, [NativeName(NativeNameType.Param, "lineStipplePattern")] [NativeName(NativeNameType.Type, "uint16_t")] ushort lineStipplePattern)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, ushort, void>)vt[440])(commandBuffer, lineStippleFactor, lineStipplePattern);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetLineStippleEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetLineStippleEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineStippleFactor")] [NativeName(NativeNameType.Type, "uint32_t")] uint lineStippleFactor, [NativeName(NativeNameType.Param, "lineStipplePattern")] [NativeName(NativeNameType.Type, "uint16_t")] ushort lineStipplePattern)
@@ -2000,10 +2268,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkResetQueryPoolEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkResetQueryPoolEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkResetQueryPoolEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery, [NativeName(NativeNameType.Param, "queryCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint queryCount);
-
+		internal static void VkResetQueryPoolEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery, [NativeName(NativeNameType.Param, "queryCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint queryCount)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkQueryPool, uint, uint, void>)vt[441])(device, queryPool, firstQuery, queryCount);
+		}
 		[NativeName(NativeNameType.Func, "vkResetQueryPoolEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkResetQueryPoolEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery, [NativeName(NativeNameType.Param, "queryCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint queryCount)
@@ -2013,10 +2281,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCullModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCullModeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCullModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "cullMode")] [NativeName(NativeNameType.Type, "VkCullModeFlags")] uint cullMode);
-
+		internal static void VkCmdSetCullModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "cullMode")] [NativeName(NativeNameType.Type, "VkCullModeFlags")] uint cullMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[442])(commandBuffer, cullMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCullModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCullModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "cullMode")] [NativeName(NativeNameType.Type, "VkCullModeFlags")] uint cullMode)
@@ -2026,10 +2294,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetFrontFaceEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetFrontFaceEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetFrontFaceEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "frontFace")] [NativeName(NativeNameType.Type, "VkFrontFace")] VkFrontFace frontFace);
-
+		internal static void VkCmdSetFrontFaceEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "frontFace")] [NativeName(NativeNameType.Type, "VkFrontFace")] VkFrontFace frontFace)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkFrontFace, void>)vt[443])(commandBuffer, frontFace);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetFrontFaceEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetFrontFaceEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "frontFace")] [NativeName(NativeNameType.Type, "VkFrontFace")] VkFrontFace frontFace)
@@ -2039,10 +2307,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPrimitiveTopologyEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPrimitiveTopologyEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetPrimitiveTopologyEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveTopology")] [NativeName(NativeNameType.Type, "VkPrimitiveTopology")] VkPrimitiveTopology primitiveTopology);
-
+		internal static void VkCmdSetPrimitiveTopologyEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveTopology")] [NativeName(NativeNameType.Type, "VkPrimitiveTopology")] VkPrimitiveTopology primitiveTopology)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPrimitiveTopology, void>)vt[444])(commandBuffer, primitiveTopology);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPrimitiveTopologyEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetPrimitiveTopologyEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveTopology")] [NativeName(NativeNameType.Type, "VkPrimitiveTopology")] VkPrimitiveTopology primitiveTopology)
@@ -2052,10 +2320,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportWithCountEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetViewportWithCountEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetViewportWithCountEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewports")] [NativeName(NativeNameType.Type, "const VkViewport*")] VkViewport* pViewports);
-
+		internal static void VkCmdSetViewportWithCountEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewports")] [NativeName(NativeNameType.Type, "const VkViewport*")] VkViewport* pViewports)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkViewport*, void>)vt[445])(commandBuffer, viewportCount, pViewports);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportWithCountEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetViewportWithCountEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewports")] [NativeName(NativeNameType.Type, "const VkViewport*")] VkViewport* pViewports)
@@ -2075,10 +2343,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetScissorWithCountEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetScissorWithCountEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetScissorWithCountEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "scissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint scissorCount, [NativeName(NativeNameType.Param, "pScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pScissors);
-
+		internal static void VkCmdSetScissorWithCountEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "scissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint scissorCount, [NativeName(NativeNameType.Param, "pScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pScissors)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkRect2D*, void>)vt[446])(commandBuffer, scissorCount, pScissors);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetScissorWithCountEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetScissorWithCountEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "scissorCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint scissorCount, [NativeName(NativeNameType.Param, "pScissors")] [NativeName(NativeNameType.Type, "const VkRect2D*")] VkRect2D* pScissors)
@@ -2098,10 +2366,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindVertexBuffers2EXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindVertexBuffers2EXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindVertexBuffers2EXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstBinding")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstBinding, [NativeName(NativeNameType.Param, "bindingCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindingCount, [NativeName(NativeNameType.Param, "pBuffers")] [NativeName(NativeNameType.Type, "const VkBuffer*")] VkBuffer* pBuffers, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets, [NativeName(NativeNameType.Param, "pSizes")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pSizes, [NativeName(NativeNameType.Param, "pStrides")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pStrides);
-
+		internal static void VkCmdBindVertexBuffers2EXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstBinding")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstBinding, [NativeName(NativeNameType.Param, "bindingCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindingCount, [NativeName(NativeNameType.Param, "pBuffers")] [NativeName(NativeNameType.Type, "const VkBuffer*")] VkBuffer* pBuffers, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets, [NativeName(NativeNameType.Param, "pSizes")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pSizes, [NativeName(NativeNameType.Param, "pStrides")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pStrides)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkBuffer*, ulong*, ulong*, ulong*, void>)vt[447])(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes, pStrides);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindVertexBuffers2EXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindVertexBuffers2EXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstBinding")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstBinding, [NativeName(NativeNameType.Param, "bindingCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bindingCount, [NativeName(NativeNameType.Param, "pBuffers")] [NativeName(NativeNameType.Type, "const VkBuffer*")] VkBuffer* pBuffers, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets, [NativeName(NativeNameType.Param, "pSizes")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pSizes, [NativeName(NativeNameType.Param, "pStrides")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pStrides)
@@ -2312,10 +2580,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthTestEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthTestEnable);
-
+		internal static void VkCmdSetDepthTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthTestEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[448])(commandBuffer, depthTestEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthTestEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthTestEnable)
@@ -2325,10 +2593,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthWriteEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthWriteEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthWriteEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthWriteEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthWriteEnable);
-
+		internal static void VkCmdSetDepthWriteEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthWriteEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthWriteEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[449])(commandBuffer, depthWriteEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthWriteEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthWriteEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthWriteEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthWriteEnable)
@@ -2338,10 +2606,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthCompareOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthCompareOpEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthCompareOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthCompareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp depthCompareOp);
-
+		internal static void VkCmdSetDepthCompareOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthCompareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp depthCompareOp)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCompareOp, void>)vt[450])(commandBuffer, depthCompareOp);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthCompareOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthCompareOpEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthCompareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp depthCompareOp)
@@ -2351,10 +2619,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthBoundsTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthBoundsTestEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthBoundsTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBoundsTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBoundsTestEnable);
-
+		internal static void VkCmdSetDepthBoundsTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBoundsTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBoundsTestEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[451])(commandBuffer, depthBoundsTestEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthBoundsTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthBoundsTestEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBoundsTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBoundsTestEnable)
@@ -2364,10 +2632,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetStencilTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetStencilTestEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetStencilTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stencilTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stencilTestEnable);
-
+		internal static void VkCmdSetStencilTestEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stencilTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stencilTestEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[452])(commandBuffer, stencilTestEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetStencilTestEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetStencilTestEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stencilTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stencilTestEnable)
@@ -2377,10 +2645,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetStencilOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetStencilOpEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetStencilOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "faceMask")] [NativeName(NativeNameType.Type, "VkStencilFaceFlags")] uint faceMask, [NativeName(NativeNameType.Param, "failOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp failOp, [NativeName(NativeNameType.Param, "passOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp passOp, [NativeName(NativeNameType.Param, "depthFailOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp depthFailOp, [NativeName(NativeNameType.Param, "compareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp compareOp);
-
+		internal static void VkCmdSetStencilOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "faceMask")] [NativeName(NativeNameType.Type, "VkStencilFaceFlags")] uint faceMask, [NativeName(NativeNameType.Param, "failOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp failOp, [NativeName(NativeNameType.Param, "passOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp passOp, [NativeName(NativeNameType.Param, "depthFailOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp depthFailOp, [NativeName(NativeNameType.Param, "compareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp compareOp)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkStencilOp, VkStencilOp, VkStencilOp, VkCompareOp, void>)vt[453])(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetStencilOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetStencilOpEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "faceMask")] [NativeName(NativeNameType.Type, "VkStencilFaceFlags")] uint faceMask, [NativeName(NativeNameType.Param, "failOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp failOp, [NativeName(NativeNameType.Param, "passOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp passOp, [NativeName(NativeNameType.Param, "depthFailOp")] [NativeName(NativeNameType.Type, "VkStencilOp")] VkStencilOp depthFailOp, [NativeName(NativeNameType.Param, "compareOp")] [NativeName(NativeNameType.Type, "VkCompareOp")] VkCompareOp compareOp)
@@ -2390,10 +2658,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkReleaseSwapchainImagesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkReleaseSwapchainImagesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkReleaseSwapchainImagesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pReleaseInfo")] [NativeName(NativeNameType.Type, "const VkReleaseSwapchainImagesInfoEXT*")] VkReleaseSwapchainImagesInfoEXT* pReleaseInfo);
-
+		internal static VkResult VkReleaseSwapchainImagesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pReleaseInfo")] [NativeName(NativeNameType.Type, "const VkReleaseSwapchainImagesInfoEXT*")] VkReleaseSwapchainImagesInfoEXT* pReleaseInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkReleaseSwapchainImagesInfoEXT*, VkResult>)vt[454])(device, pReleaseInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkReleaseSwapchainImagesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkReleaseSwapchainImagesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pReleaseInfo")] [NativeName(NativeNameType.Type, "const VkReleaseSwapchainImagesInfoEXT*")] VkReleaseSwapchainImagesInfoEXT* pReleaseInfo)
@@ -2415,10 +2683,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetGeneratedCommandsMemoryRequirementsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetGeneratedCommandsMemoryRequirementsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetGeneratedCommandsMemoryRequirementsNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsMemoryRequirementsInfoNV*")] VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2*")] VkMemoryRequirements2* pMemoryRequirements);
-
+		internal static void VkGetGeneratedCommandsMemoryRequirementsNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsMemoryRequirementsInfoNV*")] VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2*")] VkMemoryRequirements2* pMemoryRequirements)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkGeneratedCommandsMemoryRequirementsInfoNV*, VkMemoryRequirements2*, void>)vt[455])(device, pInfo, pMemoryRequirements);
+		}
 		[NativeName(NativeNameType.Func, "vkGetGeneratedCommandsMemoryRequirementsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetGeneratedCommandsMemoryRequirementsNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsMemoryRequirementsInfoNV*")] VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, [NativeName(NativeNameType.Param, "pMemoryRequirements")] [NativeName(NativeNameType.Type, "VkMemoryRequirements2*")] VkMemoryRequirements2* pMemoryRequirements)
@@ -2461,10 +2729,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdPreprocessGeneratedCommandsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdPreprocessGeneratedCommandsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdPreprocessGeneratedCommandsNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
-
+		internal static void VkCmdPreprocessGeneratedCommandsNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkGeneratedCommandsInfoNV*, void>)vt[456])(commandBuffer, pGeneratedCommandsInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdPreprocessGeneratedCommandsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdPreprocessGeneratedCommandsNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo)
@@ -2484,10 +2752,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdExecuteGeneratedCommandsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdExecuteGeneratedCommandsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdExecuteGeneratedCommandsNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "isPreprocessed")] [NativeName(NativeNameType.Type, "VkBool32")] uint isPreprocessed, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
-
+		internal static void VkCmdExecuteGeneratedCommandsNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "isPreprocessed")] [NativeName(NativeNameType.Type, "VkBool32")] uint isPreprocessed, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkGeneratedCommandsInfoNV*, void>)vt[457])(commandBuffer, isPreprocessed, pGeneratedCommandsInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdExecuteGeneratedCommandsNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdExecuteGeneratedCommandsNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "isPreprocessed")] [NativeName(NativeNameType.Type, "VkBool32")] uint isPreprocessed, [NativeName(NativeNameType.Param, "pGeneratedCommandsInfo")] [NativeName(NativeNameType.Type, "const VkGeneratedCommandsInfoNV*")] VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo)
@@ -2507,10 +2775,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindPipelineShaderGroupNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindPipelineShaderGroupNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindPipelineShaderGroupNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "groupIndex")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupIndex);
-
+		internal static void VkCmdBindPipelineShaderGroupNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "groupIndex")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupIndex)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPipelineBindPoint, VkPipeline, uint, void>)vt[458])(commandBuffer, pipelineBindPoint, pipeline, groupIndex);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindPipelineShaderGroupNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindPipelineShaderGroupNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "pipeline")] [NativeName(NativeNameType.Type, "VkPipeline")] VkPipeline pipeline, [NativeName(NativeNameType.Param, "groupIndex")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupIndex)
@@ -2520,10 +2788,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateIndirectCommandsLayoutNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateIndirectCommandsLayoutNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateIndirectCommandsLayoutNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkIndirectCommandsLayoutCreateInfoNV*")] VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pIndirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV*")] VkIndirectCommandsLayoutNV* pIndirectCommandsLayout);
-
+		internal static VkResult VkCreateIndirectCommandsLayoutNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkIndirectCommandsLayoutCreateInfoNV*")] VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pIndirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV*")] VkIndirectCommandsLayoutNV* pIndirectCommandsLayout)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkIndirectCommandsLayoutCreateInfoNV*, VkAllocationCallbacks*, VkIndirectCommandsLayoutNV*, VkResult>)vt[459])(device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateIndirectCommandsLayoutNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateIndirectCommandsLayoutNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkIndirectCommandsLayoutCreateInfoNV*")] VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pIndirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV*")] VkIndirectCommandsLayoutNV* pIndirectCommandsLayout)
@@ -2626,10 +2894,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyIndirectCommandsLayoutNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyIndirectCommandsLayoutNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyIndirectCommandsLayoutNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "indirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV")] VkIndirectCommandsLayoutNV indirectCommandsLayout, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyIndirectCommandsLayoutNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "indirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV")] VkIndirectCommandsLayoutNV indirectCommandsLayout, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkIndirectCommandsLayoutNV, VkAllocationCallbacks*, void>)vt[460])(device, indirectCommandsLayout, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyIndirectCommandsLayoutNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyIndirectCommandsLayoutNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "indirectCommandsLayout")] [NativeName(NativeNameType.Type, "VkIndirectCommandsLayoutNV")] VkIndirectCommandsLayoutNV indirectCommandsLayout, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -2649,10 +2917,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkAcquireDrmDisplayEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkAcquireDrmDisplayEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkAcquireDrmDisplayEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display);
-
+		internal static VkResult VkAcquireDrmDisplayEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, int, VkDisplayKHR, VkResult>)vt[461])(physicalDevice, drmFd, display);
+		}
 		[NativeName(NativeNameType.Func, "vkAcquireDrmDisplayEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkAcquireDrmDisplayEXT([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR")] VkDisplayKHR display)
@@ -2663,10 +2931,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDrmDisplayEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDrmDisplayEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetDrmDisplayEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "connectorId")] [NativeName(NativeNameType.Type, "uint32_t")] uint connectorId, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR*")] VkDisplayKHR* display);
-
+		internal static VkResult VkGetDrmDisplayEXTNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "connectorId")] [NativeName(NativeNameType.Type, "uint32_t")] uint connectorId, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR*")] VkDisplayKHR* display)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkPhysicalDevice, int, uint, VkDisplayKHR*, VkResult>)vt[462])(physicalDevice, drmFd, connectorId, display);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDrmDisplayEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetDrmDisplayEXT([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "drmFd")] [NativeName(NativeNameType.Type, "int32_t")] int drmFd, [NativeName(NativeNameType.Param, "connectorId")] [NativeName(NativeNameType.Type, "uint32_t")] uint connectorId, [NativeName(NativeNameType.Param, "display")] [NativeName(NativeNameType.Type, "VkDisplayKHR*")] VkDisplayKHR* display)
@@ -2688,10 +2956,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreatePrivateDataSlotEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreatePrivateDataSlotEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreatePrivateDataSlotEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkPrivateDataSlotCreateInfo*")] VkPrivateDataSlotCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPrivateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot*")] VkPrivateDataSlot* pPrivateDataSlot);
-
+		internal static VkResult VkCreatePrivateDataSlotEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkPrivateDataSlotCreateInfo*")] VkPrivateDataSlotCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPrivateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot*")] VkPrivateDataSlot* pPrivateDataSlot)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPrivateDataSlotCreateInfo*, VkAllocationCallbacks*, VkPrivateDataSlot*, VkResult>)vt[463])(device, pCreateInfo, pAllocator, pPrivateDataSlot);
+		}
 		[NativeName(NativeNameType.Func, "vkCreatePrivateDataSlotEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreatePrivateDataSlotEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkPrivateDataSlotCreateInfo*")] VkPrivateDataSlotCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pPrivateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot*")] VkPrivateDataSlot* pPrivateDataSlot)
@@ -2794,10 +3062,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyPrivateDataSlotEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyPrivateDataSlotEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyPrivateDataSlotEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyPrivateDataSlotEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkPrivateDataSlot, VkAllocationCallbacks*, void>)vt[464])(device, privateDataSlot, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyPrivateDataSlotEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyPrivateDataSlotEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -2817,10 +3085,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSetPrivateDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkSetPrivateDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkSetPrivateDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "uint64_t")] ulong data);
-
+		internal static VkResult VkSetPrivateDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "uint64_t")] ulong data)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong, VkResult>)vt[465])(device, objectType, objectHandle, privateDataSlot, data);
+		}
 		[NativeName(NativeNameType.Func, "vkSetPrivateDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkSetPrivateDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "uint64_t")] ulong data)
@@ -2831,10 +3099,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPrivateDataEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPrivateDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetPrivateDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pData);
-
+		internal static void VkGetPrivateDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pData)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkObjectType, ulong, VkPrivateDataSlot, ulong*, void>)vt[466])(device, objectType, objectHandle, privateDataSlot, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPrivateDataEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetPrivateDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "objectType")] [NativeName(NativeNameType.Type, "VkObjectType")] VkObjectType objectType, [NativeName(NativeNameType.Param, "objectHandle")] [NativeName(NativeNameType.Type, "uint64_t")] ulong objectHandle, [NativeName(NativeNameType.Param, "privateDataSlot")] [NativeName(NativeNameType.Type, "VkPrivateDataSlot")] VkPrivateDataSlot privateDataSlot, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "uint64_t*")] ulong* pData)
@@ -2854,10 +3122,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutSizeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDescriptorSetLayoutSizeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDescriptorSetLayoutSizeEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "pLayoutSizeInBytes")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pLayoutSizeInBytes);
-
+		internal static void VkGetDescriptorSetLayoutSizeEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "pLayoutSizeInBytes")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pLayoutSizeInBytes)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDescriptorSetLayout, ulong*, void>)vt[467])(device, layout, pLayoutSizeInBytes);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutSizeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDescriptorSetLayoutSizeEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "pLayoutSizeInBytes")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pLayoutSizeInBytes)
@@ -2877,10 +3145,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutBindingOffsetEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDescriptorSetLayoutBindingOffsetEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDescriptorSetLayoutBindingOffsetEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "uint32_t")] uint binding, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset);
-
+		internal static void VkGetDescriptorSetLayoutBindingOffsetEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "uint32_t")] uint binding, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDescriptorSetLayout, uint, ulong*, void>)vt[468])(device, layout, binding, pOffset);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutBindingOffsetEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDescriptorSetLayoutBindingOffsetEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayout")] VkDescriptorSetLayout layout, [NativeName(NativeNameType.Param, "binding")] [NativeName(NativeNameType.Type, "uint32_t")] uint binding, [NativeName(NativeNameType.Param, "pOffset")] [NativeName(NativeNameType.Type, "VkDeviceSize*")] ulong* pOffset)
@@ -2900,10 +3168,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDescriptorEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDescriptorEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDescriptorEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pDescriptorInfo")] [NativeName(NativeNameType.Type, "const VkDescriptorGetInfoEXT*")] VkDescriptorGetInfoEXT* pDescriptorInfo, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pDescriptor")] [NativeName(NativeNameType.Type, "void*")] void* pDescriptor);
-
+		internal static void VkGetDescriptorEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pDescriptorInfo")] [NativeName(NativeNameType.Type, "const VkDescriptorGetInfoEXT*")] VkDescriptorGetInfoEXT* pDescriptorInfo, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pDescriptor")] [NativeName(NativeNameType.Type, "void*")] void* pDescriptor)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDescriptorGetInfoEXT*, ulong, void*, void>)vt[469])(device, pDescriptorInfo, dataSize, pDescriptor);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDescriptorEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDescriptorEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pDescriptorInfo")] [NativeName(NativeNameType.Type, "const VkDescriptorGetInfoEXT*")] VkDescriptorGetInfoEXT* pDescriptorInfo, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pDescriptor")] [NativeName(NativeNameType.Type, "void*")] void* pDescriptor)
@@ -2940,10 +3208,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindDescriptorBuffersEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindDescriptorBuffersEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindDescriptorBuffersEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "bufferCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bufferCount, [NativeName(NativeNameType.Param, "pBindingInfos")] [NativeName(NativeNameType.Type, "const VkDescriptorBufferBindingInfoEXT*")] VkDescriptorBufferBindingInfoEXT* pBindingInfos);
-
+		internal static void VkCmdBindDescriptorBuffersEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "bufferCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bufferCount, [NativeName(NativeNameType.Param, "pBindingInfos")] [NativeName(NativeNameType.Type, "const VkDescriptorBufferBindingInfoEXT*")] VkDescriptorBufferBindingInfoEXT* pBindingInfos)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkDescriptorBufferBindingInfoEXT*, void>)vt[470])(commandBuffer, bufferCount, pBindingInfos);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindDescriptorBuffersEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindDescriptorBuffersEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "bufferCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint bufferCount, [NativeName(NativeNameType.Param, "pBindingInfos")] [NativeName(NativeNameType.Type, "const VkDescriptorBufferBindingInfoEXT*")] VkDescriptorBufferBindingInfoEXT* pBindingInfos)
@@ -2963,10 +3231,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDescriptorBufferOffsetsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDescriptorBufferOffsetsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDescriptorBufferOffsetsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "firstSet")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstSet, [NativeName(NativeNameType.Param, "setCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint setCount, [NativeName(NativeNameType.Param, "pBufferIndices")] [NativeName(NativeNameType.Type, "const uint32_t*")] uint* pBufferIndices, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets);
-
+		internal static void VkCmdSetDescriptorBufferOffsetsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "firstSet")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstSet, [NativeName(NativeNameType.Param, "setCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint setCount, [NativeName(NativeNameType.Param, "pBufferIndices")] [NativeName(NativeNameType.Type, "const uint32_t*")] uint* pBufferIndices, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, uint, uint*, ulong*, void>)vt[471])(commandBuffer, pipelineBindPoint, layout, firstSet, setCount, pBufferIndices, pOffsets);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDescriptorBufferOffsetsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDescriptorBufferOffsetsEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "firstSet")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstSet, [NativeName(NativeNameType.Param, "setCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint setCount, [NativeName(NativeNameType.Param, "pBufferIndices")] [NativeName(NativeNameType.Type, "const uint32_t*")] uint* pBufferIndices, [NativeName(NativeNameType.Param, "pOffsets")] [NativeName(NativeNameType.Type, "const VkDeviceSize*")] ulong* pOffsets)
@@ -3009,10 +3277,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindDescriptorBufferEmbeddedSamplersEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindDescriptorBufferEmbeddedSamplersEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindDescriptorBufferEmbeddedSamplersEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "uint32_t")] uint set);
-
+		internal static void VkCmdBindDescriptorBufferEmbeddedSamplersEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "uint32_t")] uint set)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPipelineBindPoint, VkPipelineLayout, uint, void>)vt[472])(commandBuffer, pipelineBindPoint, layout, set);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindDescriptorBufferEmbeddedSamplersEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindDescriptorBufferEmbeddedSamplersEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pipelineBindPoint")] [NativeName(NativeNameType.Type, "VkPipelineBindPoint")] VkPipelineBindPoint pipelineBindPoint, [NativeName(NativeNameType.Param, "layout")] [NativeName(NativeNameType.Type, "VkPipelineLayout")] VkPipelineLayout layout, [NativeName(NativeNameType.Param, "set")] [NativeName(NativeNameType.Type, "uint32_t")] uint set)
@@ -3022,10 +3290,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetBufferOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetBufferOpaqueCaptureDescriptorDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetBufferOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferCaptureDescriptorDataInfoEXT*")] VkBufferCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetBufferOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferCaptureDescriptorDataInfoEXT*")] VkBufferCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkBufferCaptureDescriptorDataInfoEXT*, void*, VkResult>)vt[473])(device, pInfo, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetBufferOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetBufferOpaqueCaptureDescriptorDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkBufferCaptureDescriptorDataInfoEXT*")] VkBufferCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -3047,10 +3315,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetImageOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetImageOpaqueCaptureDescriptorDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetImageOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageCaptureDescriptorDataInfoEXT*")] VkImageCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetImageOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageCaptureDescriptorDataInfoEXT*")] VkImageCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkImageCaptureDescriptorDataInfoEXT*, void*, VkResult>)vt[474])(device, pInfo, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetImageOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetImageOpaqueCaptureDescriptorDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageCaptureDescriptorDataInfoEXT*")] VkImageCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -3072,10 +3340,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetImageViewOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetImageViewOpaqueCaptureDescriptorDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetImageViewOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageViewCaptureDescriptorDataInfoEXT*")] VkImageViewCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetImageViewOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageViewCaptureDescriptorDataInfoEXT*")] VkImageViewCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkImageViewCaptureDescriptorDataInfoEXT*, void*, VkResult>)vt[475])(device, pInfo, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetImageViewOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetImageViewOpaqueCaptureDescriptorDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkImageViewCaptureDescriptorDataInfoEXT*")] VkImageViewCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -3097,10 +3365,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetSamplerOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetSamplerOpaqueCaptureDescriptorDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetSamplerOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkSamplerCaptureDescriptorDataInfoEXT*")] VkSamplerCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetSamplerOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkSamplerCaptureDescriptorDataInfoEXT*")] VkSamplerCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkSamplerCaptureDescriptorDataInfoEXT*, void*, VkResult>)vt[476])(device, pInfo, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetSamplerOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetSamplerOpaqueCaptureDescriptorDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkSamplerCaptureDescriptorDataInfoEXT*")] VkSamplerCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -3122,10 +3390,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetAccelerationStructureOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCaptureDescriptorDataInfoEXT*")] VkAccelerationStructureCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData);
-
+		internal static VkResult VkGetAccelerationStructureOpaqueCaptureDescriptorDataEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCaptureDescriptorDataInfoEXT*")] VkAccelerationStructureCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureCaptureDescriptorDataInfoEXT*, void*, VkResult>)vt[477])(device, pInfo, pData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkAccelerationStructureCaptureDescriptorDataInfoEXT*")] VkAccelerationStructureCaptureDescriptorDataInfoEXT* pInfo, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData)
@@ -3147,10 +3415,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetFragmentShadingRateEnumNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetFragmentShadingRateEnumNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetFragmentShadingRateEnumNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRate")] [NativeName(NativeNameType.Type, "VkFragmentShadingRateNV")] VkFragmentShadingRateNV shadingRate, [NativeName(NativeNameType.Param, "combinerOps")] [NativeName(NativeNameType.Type, "const VkFragmentShadingRateCombinerOpKHR[2]")] VkFragmentShadingRateCombinerOpKHR* combinerOps);
-
+		internal static void VkCmdSetFragmentShadingRateEnumNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRate")] [NativeName(NativeNameType.Type, "VkFragmentShadingRateNV")] VkFragmentShadingRateNV shadingRate, [NativeName(NativeNameType.Param, "combinerOps")] [NativeName(NativeNameType.Type, "const VkFragmentShadingRateCombinerOpKHR[2]")] VkFragmentShadingRateCombinerOpKHR* combinerOps)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkFragmentShadingRateNV, VkFragmentShadingRateCombinerOpKHR*, void>)vt[478])(commandBuffer, shadingRate, combinerOps);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetFragmentShadingRateEnumNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetFragmentShadingRateEnumNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRate")] [NativeName(NativeNameType.Type, "VkFragmentShadingRateNV")] VkFragmentShadingRateNV shadingRate, [NativeName(NativeNameType.Param, "combinerOps")] [NativeName(NativeNameType.Type, "const VkFragmentShadingRateCombinerOpKHR[2]")] VkFragmentShadingRateCombinerOpKHR* combinerOps)
@@ -3170,10 +3438,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetImageSubresourceLayout2EXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetImageSubresourceLayout2EXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetImageSubresourceLayout2EXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pSubresource")] [NativeName(NativeNameType.Type, "const VkImageSubresource2EXT*")] VkImageSubresource2EXT* pSubresource, [NativeName(NativeNameType.Param, "pLayout")] [NativeName(NativeNameType.Type, "VkSubresourceLayout2EXT*")] VkSubresourceLayout2EXT* pLayout);
-
+		internal static void VkGetImageSubresourceLayout2EXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pSubresource")] [NativeName(NativeNameType.Type, "const VkImageSubresource2EXT*")] VkImageSubresource2EXT* pSubresource, [NativeName(NativeNameType.Param, "pLayout")] [NativeName(NativeNameType.Type, "VkSubresourceLayout2EXT*")] VkSubresourceLayout2EXT* pLayout)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkImage, VkImageSubresource2EXT*, VkSubresourceLayout2EXT*, void>)vt[479])(device, image, pSubresource, pLayout);
+		}
 		[NativeName(NativeNameType.Func, "vkGetImageSubresourceLayout2EXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetImageSubresourceLayout2EXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "image")] [NativeName(NativeNameType.Type, "VkImage")] VkImage image, [NativeName(NativeNameType.Param, "pSubresource")] [NativeName(NativeNameType.Type, "const VkImageSubresource2EXT*")] VkImageSubresource2EXT* pSubresource, [NativeName(NativeNameType.Param, "pLayout")] [NativeName(NativeNameType.Type, "VkSubresourceLayout2EXT*")] VkSubresourceLayout2EXT* pLayout)
@@ -3216,10 +3484,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceFaultInfoEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDeviceFaultInfoEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetDeviceFaultInfoEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pFaultCounts")] [NativeName(NativeNameType.Type, "VkDeviceFaultCountsEXT*")] VkDeviceFaultCountsEXT* pFaultCounts, [NativeName(NativeNameType.Param, "pFaultInfo")] [NativeName(NativeNameType.Type, "VkDeviceFaultInfoEXT*")] VkDeviceFaultInfoEXT* pFaultInfo);
-
+		internal static VkResult VkGetDeviceFaultInfoEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pFaultCounts")] [NativeName(NativeNameType.Type, "VkDeviceFaultCountsEXT*")] VkDeviceFaultCountsEXT* pFaultCounts, [NativeName(NativeNameType.Param, "pFaultInfo")] [NativeName(NativeNameType.Type, "VkDeviceFaultInfoEXT*")] VkDeviceFaultInfoEXT* pFaultInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDeviceFaultCountsEXT*, VkDeviceFaultInfoEXT*, VkResult>)vt[480])(device, pFaultCounts, pFaultInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDeviceFaultInfoEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetDeviceFaultInfoEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pFaultCounts")] [NativeName(NativeNameType.Type, "VkDeviceFaultCountsEXT*")] VkDeviceFaultCountsEXT* pFaultCounts, [NativeName(NativeNameType.Param, "pFaultInfo")] [NativeName(NativeNameType.Type, "VkDeviceFaultInfoEXT*")] VkDeviceFaultInfoEXT* pFaultInfo)
@@ -3266,10 +3534,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetVertexInputEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetVertexInputEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetVertexInputEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "vertexBindingDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexBindingDescriptionCount, [NativeName(NativeNameType.Param, "pVertexBindingDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputBindingDescription2EXT*")] VkVertexInputBindingDescription2EXT* pVertexBindingDescriptions, [NativeName(NativeNameType.Param, "vertexAttributeDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexAttributeDescriptionCount, [NativeName(NativeNameType.Param, "pVertexAttributeDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputAttributeDescription2EXT*")] VkVertexInputAttributeDescription2EXT* pVertexAttributeDescriptions);
-
+		internal static void VkCmdSetVertexInputEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "vertexBindingDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexBindingDescriptionCount, [NativeName(NativeNameType.Param, "pVertexBindingDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputBindingDescription2EXT*")] VkVertexInputBindingDescription2EXT* pVertexBindingDescriptions, [NativeName(NativeNameType.Param, "vertexAttributeDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexAttributeDescriptionCount, [NativeName(NativeNameType.Param, "pVertexAttributeDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputAttributeDescription2EXT*")] VkVertexInputAttributeDescription2EXT* pVertexAttributeDescriptions)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkVertexInputBindingDescription2EXT*, uint, VkVertexInputAttributeDescription2EXT*, void>)vt[481])(commandBuffer, vertexBindingDescriptionCount, pVertexBindingDescriptions, vertexAttributeDescriptionCount, pVertexAttributeDescriptions);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetVertexInputEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetVertexInputEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "vertexBindingDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexBindingDescriptionCount, [NativeName(NativeNameType.Param, "pVertexBindingDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputBindingDescription2EXT*")] VkVertexInputBindingDescription2EXT* pVertexBindingDescriptions, [NativeName(NativeNameType.Param, "vertexAttributeDescriptionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint vertexAttributeDescriptionCount, [NativeName(NativeNameType.Param, "pVertexAttributeDescriptions")] [NativeName(NativeNameType.Type, "const VkVertexInputAttributeDescription2EXT*")] VkVertexInputAttributeDescription2EXT* pVertexAttributeDescriptions)
@@ -3312,10 +3580,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEINative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "renderpass")] [NativeName(NativeNameType.Type, "VkRenderPass")] VkRenderPass renderpass, [NativeName(NativeNameType.Param, "pMaxWorkgroupSize")] [NativeName(NativeNameType.Type, "VkExtent2D*")] VkExtent2D* pMaxWorkgroupSize);
-
+		internal static VkResult VkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEINative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "renderpass")] [NativeName(NativeNameType.Type, "VkRenderPass")] VkRenderPass renderpass, [NativeName(NativeNameType.Param, "pMaxWorkgroupSize")] [NativeName(NativeNameType.Type, "VkExtent2D*")] VkExtent2D* pMaxWorkgroupSize)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkRenderPass, VkExtent2D*, VkResult>)vt[482])(device, renderpass, pMaxWorkgroupSize);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "renderpass")] [NativeName(NativeNameType.Type, "VkRenderPass")] VkRenderPass renderpass, [NativeName(NativeNameType.Param, "pMaxWorkgroupSize")] [NativeName(NativeNameType.Type, "VkExtent2D*")] VkExtent2D* pMaxWorkgroupSize)
@@ -3337,10 +3605,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSubpassShadingHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSubpassShadingHUAWEI")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSubpassShadingHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer);
-
+		internal static void VkCmdSubpassShadingHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, void>)vt[483])(commandBuffer);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSubpassShadingHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSubpassShadingHUAWEI([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer)
@@ -3350,10 +3618,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBindInvocationMaskHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBindInvocationMaskHUAWEI")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBindInvocationMaskHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout);
-
+		internal static void VkCmdBindInvocationMaskHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkImageView, VkImageLayout, void>)vt[484])(commandBuffer, imageView, imageLayout);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBindInvocationMaskHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBindInvocationMaskHUAWEI([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "imageView")] [NativeName(NativeNameType.Type, "VkImageView")] VkImageView imageView, [NativeName(NativeNameType.Param, "imageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout imageLayout)
@@ -3363,10 +3631,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetMemoryRemoteAddressNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetMemoryRemoteAddressNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetMemoryRemoteAddressNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pMemoryGetRemoteAddressInfo")] [NativeName(NativeNameType.Type, "const VkMemoryGetRemoteAddressInfoNV*")] VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, [NativeName(NativeNameType.Param, "pAddress")] [NativeName(NativeNameType.Type, "VkRemoteAddressNV*")] VkRemoteAddressNV* pAddress);
-
+		internal static VkResult VkGetMemoryRemoteAddressNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pMemoryGetRemoteAddressInfo")] [NativeName(NativeNameType.Type, "const VkMemoryGetRemoteAddressInfoNV*")] VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, [NativeName(NativeNameType.Param, "pAddress")] [NativeName(NativeNameType.Type, "VkRemoteAddressNV*")] VkRemoteAddressNV* pAddress)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkMemoryGetRemoteAddressInfoNV*, VkRemoteAddressNV*, VkResult>)vt[485])(device, pMemoryGetRemoteAddressInfo, pAddress);
+		}
 		[NativeName(NativeNameType.Func, "vkGetMemoryRemoteAddressNV")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetMemoryRemoteAddressNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pMemoryGetRemoteAddressInfo")] [NativeName(NativeNameType.Type, "const VkMemoryGetRemoteAddressInfoNV*")] VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, [NativeName(NativeNameType.Param, "pAddress")] [NativeName(NativeNameType.Type, "VkRemoteAddressNV*")] VkRemoteAddressNV* pAddress)
@@ -3413,10 +3681,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetPipelinePropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPipelinePropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPipelinePropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pPipelineInfo")] [NativeName(NativeNameType.Type, "const VkPipelineInfoEXT*")] VkPipelineInfoKHR* pPipelineInfo, [NativeName(NativeNameType.Param, "pPipelineProperties")] [NativeName(NativeNameType.Type, "VkBaseOutStructure*")] VkBaseOutStructure* pPipelineProperties);
-
+		internal static VkResult VkGetPipelinePropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pPipelineInfo")] [NativeName(NativeNameType.Type, "const VkPipelineInfoEXT*")] VkPipelineInfoKHR* pPipelineInfo, [NativeName(NativeNameType.Param, "pPipelineProperties")] [NativeName(NativeNameType.Type, "VkBaseOutStructure*")] VkBaseOutStructure* pPipelineProperties)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkPipelineInfoKHR*, VkBaseOutStructure*, VkResult>)vt[486])(device, pPipelineInfo, pPipelineProperties);
+		}
 		[NativeName(NativeNameType.Func, "vkGetPipelinePropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkGetPipelinePropertiesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pPipelineInfo")] [NativeName(NativeNameType.Type, "const VkPipelineInfoEXT*")] VkPipelineInfoKHR* pPipelineInfo, [NativeName(NativeNameType.Param, "pPipelineProperties")] [NativeName(NativeNameType.Type, "VkBaseOutStructure*")] VkBaseOutStructure* pPipelineProperties)
@@ -3463,10 +3731,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPatchControlPointsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPatchControlPointsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetPatchControlPointsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "patchControlPoints")] [NativeName(NativeNameType.Type, "uint32_t")] uint patchControlPoints);
-
+		internal static void VkCmdSetPatchControlPointsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "patchControlPoints")] [NativeName(NativeNameType.Type, "uint32_t")] uint patchControlPoints)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[487])(commandBuffer, patchControlPoints);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPatchControlPointsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetPatchControlPointsEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "patchControlPoints")] [NativeName(NativeNameType.Type, "uint32_t")] uint patchControlPoints)
@@ -3476,10 +3744,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizerDiscardEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetRasterizerDiscardEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetRasterizerDiscardEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizerDiscardEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint rasterizerDiscardEnable);
-
+		internal static void VkCmdSetRasterizerDiscardEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizerDiscardEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint rasterizerDiscardEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[488])(commandBuffer, rasterizerDiscardEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizerDiscardEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetRasterizerDiscardEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizerDiscardEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint rasterizerDiscardEnable)
@@ -3489,10 +3757,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthBiasEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthBiasEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthBiasEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBiasEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBiasEnable);
-
+		internal static void VkCmdSetDepthBiasEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBiasEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBiasEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[489])(commandBuffer, depthBiasEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthBiasEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthBiasEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthBiasEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthBiasEnable)
@@ -3502,10 +3770,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetLogicOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetLogicOpEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetLogicOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOp")] [NativeName(NativeNameType.Type, "VkLogicOp")] VkLogicOp logicOp);
-
+		internal static void VkCmdSetLogicOpEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOp")] [NativeName(NativeNameType.Type, "VkLogicOp")] VkLogicOp logicOp)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkLogicOp, void>)vt[490])(commandBuffer, logicOp);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetLogicOpEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetLogicOpEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOp")] [NativeName(NativeNameType.Type, "VkLogicOp")] VkLogicOp logicOp)
@@ -3515,10 +3783,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPrimitiveRestartEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPrimitiveRestartEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetPrimitiveRestartEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveRestartEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint primitiveRestartEnable);
-
+		internal static void VkCmdSetPrimitiveRestartEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveRestartEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint primitiveRestartEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[491])(commandBuffer, primitiveRestartEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPrimitiveRestartEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetPrimitiveRestartEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "primitiveRestartEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint primitiveRestartEnable)
@@ -3528,10 +3796,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetColorWriteEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetColorWriteEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetColorWriteEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorWriteEnables);
-
+		internal static void VkCmdSetColorWriteEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorWriteEnables)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint*, void>)vt[492])(commandBuffer, attachmentCount, pColorWriteEnables);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetColorWriteEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetColorWriteEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorWriteEnables)
@@ -3551,10 +3819,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawMultiEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawMultiEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawMultiEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pVertexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawInfoEXT*")] VkMultiDrawInfoEXT* pVertexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride);
-
+		internal static void VkCmdDrawMultiEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pVertexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawInfoEXT*")] VkMultiDrawInfoEXT* pVertexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkMultiDrawInfoEXT*, uint, uint, uint, void>)vt[493])(commandBuffer, drawCount, pVertexInfo, instanceCount, firstInstance, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawMultiEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawMultiEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pVertexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawInfoEXT*")] VkMultiDrawInfoEXT* pVertexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
@@ -3574,10 +3842,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawMultiIndexedEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawMultiIndexedEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawMultiIndexedEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pIndexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawIndexedInfoEXT*")] VkMultiDrawIndexedInfoEXT* pIndexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "pVertexOffset")] [NativeName(NativeNameType.Type, "const int32_t*")] int* pVertexOffset);
-
+		internal static void VkCmdDrawMultiIndexedEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pIndexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawIndexedInfoEXT*")] VkMultiDrawIndexedInfoEXT* pIndexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "pVertexOffset")] [NativeName(NativeNameType.Type, "const int32_t*")] int* pVertexOffset)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkMultiDrawIndexedInfoEXT*, uint, uint, uint, int*, void>)vt[494])(commandBuffer, drawCount, pIndexInfo, instanceCount, firstInstance, stride, pVertexOffset);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawMultiIndexedEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawMultiIndexedEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "drawCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint drawCount, [NativeName(NativeNameType.Param, "pIndexInfo")] [NativeName(NativeNameType.Type, "const VkMultiDrawIndexedInfoEXT*")] VkMultiDrawIndexedInfoEXT* pIndexInfo, [NativeName(NativeNameType.Param, "instanceCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint instanceCount, [NativeName(NativeNameType.Param, "firstInstance")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstInstance, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "pVertexOffset")] [NativeName(NativeNameType.Type, "const int32_t*")] int* pVertexOffset)
@@ -3620,10 +3888,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCreateMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkMicromapCreateInfoEXT*")] VkMicromapCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMicromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT*")] VkMicromapEXT* pMicromap);
-
+		internal static VkResult VkCreateMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkMicromapCreateInfoEXT*")] VkMicromapCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMicromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT*")] VkMicromapEXT* pMicromap)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkMicromapCreateInfoEXT*, VkAllocationCallbacks*, VkMicromapEXT*, VkResult>)vt[495])(device, pCreateInfo, pAllocator, pMicromap);
+		}
 		[NativeName(NativeNameType.Func, "vkCreateMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCreateMicromapEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkMicromapCreateInfoEXT*")] VkMicromapCreateInfoEXT* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pMicromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT*")] VkMicromapEXT* pMicromap)
@@ -3726,10 +3994,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkDestroyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkDestroyMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkDestroyMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT")] VkMicromapEXT micromap, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator);
-
+		internal static void VkDestroyMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT")] VkMicromapEXT micromap, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkMicromapEXT, VkAllocationCallbacks*, void>)vt[496])(device, micromap, pAllocator);
+		}
 		[NativeName(NativeNameType.Func, "vkDestroyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkDestroyMicromapEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromap")] [NativeName(NativeNameType.Type, "VkMicromapEXT")] VkMicromapEXT micromap, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator)
@@ -3749,10 +4017,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdBuildMicromapsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdBuildMicromapsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdBuildMicromapsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos);
-
+		internal static void VkCmdBuildMicromapsEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkMicromapBuildInfoEXT*, void>)vt[497])(commandBuffer, infoCount, pInfos);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdBuildMicromapsEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdBuildMicromapsEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos)
@@ -3772,10 +4040,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkBuildMicromapsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkBuildMicromapsEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkBuildMicromapsEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos);
-
+		internal static VkResult VkBuildMicromapsEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDeferredOperationKHR, uint, VkMicromapBuildInfoEXT*, VkResult>)vt[498])(device, deferredOperation, infoCount, pInfos);
+		}
 		[NativeName(NativeNameType.Func, "vkBuildMicromapsEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkBuildMicromapsEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "infoCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint infoCount, [NativeName(NativeNameType.Param, "pInfos")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pInfos)
@@ -3797,10 +4065,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCopyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCopyMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCopyMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo);
-
+		internal static VkResult VkCopyMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapInfoEXT*, VkResult>)vt[499])(device, deferredOperation, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCopyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCopyMicromapEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo)
@@ -3822,10 +4090,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCopyMicromapToMemoryEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCopyMicromapToMemoryEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCopyMicromapToMemoryEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo);
-
+		internal static VkResult VkCopyMicromapToMemoryEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDeferredOperationKHR, VkCopyMicromapToMemoryInfoEXT*, VkResult>)vt[500])(device, deferredOperation, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCopyMicromapToMemoryEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCopyMicromapToMemoryEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo)
@@ -3847,10 +4115,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCopyMemoryToMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCopyMemoryToMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCopyMemoryToMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo);
-
+		internal static VkResult VkCopyMemoryToMicromapEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, VkDeferredOperationKHR, VkCopyMemoryToMicromapInfoEXT*, VkResult>)vt[501])(device, deferredOperation, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCopyMemoryToMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkCopyMemoryToMicromapEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "deferredOperation")] [NativeName(NativeNameType.Type, "VkDeferredOperationKHR")] VkDeferredOperationKHR deferredOperation, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo)
@@ -3872,10 +4140,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkWriteMicromapsPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkWriteMicromapsPropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkWriteMicromapsPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "size_t")] ulong stride);
-
+		internal static VkResult VkWriteMicromapsPropertiesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "size_t")] ulong stride)
+		{
+			return ((delegate* unmanaged[Cdecl]<VkDevice, uint, VkMicromapEXT*, VkQueryType, ulong, void*, ulong, VkResult>)vt[502])(device, micromapCount, pMicromaps, queryType, dataSize, pData, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkWriteMicromapsPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "VkResult")]
 		public static VkResult VkWriteMicromapsPropertiesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "dataSize")] [NativeName(NativeNameType.Type, "size_t")] ulong dataSize, [NativeName(NativeNameType.Param, "pData")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "size_t")] ulong stride)
@@ -3954,10 +4222,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyMicromapEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo);
-
+		internal static void VkCmdCopyMicromapEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCopyMicromapInfoEXT*, void>)vt[503])(commandBuffer, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyMicromapEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapInfoEXT*")] VkCopyMicromapInfoEXT* pInfo)
@@ -3977,10 +4245,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyMicromapToMemoryEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyMicromapToMemoryEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyMicromapToMemoryEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo);
-
+		internal static void VkCmdCopyMicromapToMemoryEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCopyMicromapToMemoryInfoEXT*, void>)vt[504])(commandBuffer, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyMicromapToMemoryEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyMicromapToMemoryEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMicromapToMemoryInfoEXT*")] VkCopyMicromapToMemoryInfoEXT* pInfo)
@@ -4000,10 +4268,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryToMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyMemoryToMicromapEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyMemoryToMicromapEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo);
-
+		internal static void VkCmdCopyMemoryToMicromapEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCopyMemoryToMicromapInfoEXT*, void>)vt[505])(commandBuffer, pInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryToMicromapEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyMemoryToMicromapEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "pInfo")] [NativeName(NativeNameType.Type, "const VkCopyMemoryToMicromapInfoEXT*")] VkCopyMemoryToMicromapInfoEXT* pInfo)
@@ -4023,10 +4291,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdWriteMicromapsPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdWriteMicromapsPropertiesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdWriteMicromapsPropertiesEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery);
-
+		internal static void VkCmdWriteMicromapsPropertiesEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkMicromapEXT*, VkQueryType, VkQueryPool, uint, void>)vt[506])(commandBuffer, micromapCount, pMicromaps, queryType, queryPool, firstQuery);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdWriteMicromapsPropertiesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdWriteMicromapsPropertiesEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "micromapCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint micromapCount, [NativeName(NativeNameType.Param, "pMicromaps")] [NativeName(NativeNameType.Type, "const VkMicromapEXT*")] VkMicromapEXT* pMicromaps, [NativeName(NativeNameType.Param, "queryType")] [NativeName(NativeNameType.Type, "VkQueryType")] VkQueryType queryType, [NativeName(NativeNameType.Param, "queryPool")] [NativeName(NativeNameType.Type, "VkQueryPool")] VkQueryPool queryPool, [NativeName(NativeNameType.Param, "firstQuery")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstQuery)
@@ -4046,10 +4314,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceMicromapCompatibilityEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDeviceMicromapCompatibilityEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDeviceMicromapCompatibilityEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pVersionInfo")] [NativeName(NativeNameType.Type, "const VkMicromapVersionInfoEXT*")] VkMicromapVersionInfoEXT* pVersionInfo, [NativeName(NativeNameType.Param, "pCompatibility")] [NativeName(NativeNameType.Type, "VkAccelerationStructureCompatibilityKHR*")] VkAccelerationStructureCompatibilityKHR* pCompatibility);
-
+		internal static void VkGetDeviceMicromapCompatibilityEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pVersionInfo")] [NativeName(NativeNameType.Type, "const VkMicromapVersionInfoEXT*")] VkMicromapVersionInfoEXT* pVersionInfo, [NativeName(NativeNameType.Param, "pCompatibility")] [NativeName(NativeNameType.Type, "VkAccelerationStructureCompatibilityKHR*")] VkAccelerationStructureCompatibilityKHR* pCompatibility)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkMicromapVersionInfoEXT*, VkAccelerationStructureCompatibilityKHR*, void>)vt[507])(device, pVersionInfo, pCompatibility);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDeviceMicromapCompatibilityEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDeviceMicromapCompatibilityEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pVersionInfo")] [NativeName(NativeNameType.Type, "const VkMicromapVersionInfoEXT*")] VkMicromapVersionInfoEXT* pVersionInfo, [NativeName(NativeNameType.Param, "pCompatibility")] [NativeName(NativeNameType.Type, "VkAccelerationStructureCompatibilityKHR*")] VkAccelerationStructureCompatibilityKHR* pCompatibility)
@@ -4092,10 +4360,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetMicromapBuildSizesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetMicromapBuildSizesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetMicromapBuildSizesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "buildType")] [NativeName(NativeNameType.Type, "VkAccelerationStructureBuildTypeKHR")] VkAccelerationStructureBuildTypeKHR buildType, [NativeName(NativeNameType.Param, "pBuildInfo")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pBuildInfo, [NativeName(NativeNameType.Param, "pSizeInfo")] [NativeName(NativeNameType.Type, "VkMicromapBuildSizesInfoEXT*")] VkMicromapBuildSizesInfoEXT* pSizeInfo);
-
+		internal static void VkGetMicromapBuildSizesEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "buildType")] [NativeName(NativeNameType.Type, "VkAccelerationStructureBuildTypeKHR")] VkAccelerationStructureBuildTypeKHR buildType, [NativeName(NativeNameType.Param, "pBuildInfo")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pBuildInfo, [NativeName(NativeNameType.Param, "pSizeInfo")] [NativeName(NativeNameType.Type, "VkMicromapBuildSizesInfoEXT*")] VkMicromapBuildSizesInfoEXT* pSizeInfo)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkAccelerationStructureBuildTypeKHR, VkMicromapBuildInfoEXT*, VkMicromapBuildSizesInfoEXT*, void>)vt[508])(device, buildType, pBuildInfo, pSizeInfo);
+		}
 		[NativeName(NativeNameType.Func, "vkGetMicromapBuildSizesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetMicromapBuildSizesEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "buildType")] [NativeName(NativeNameType.Type, "VkAccelerationStructureBuildTypeKHR")] VkAccelerationStructureBuildTypeKHR buildType, [NativeName(NativeNameType.Param, "pBuildInfo")] [NativeName(NativeNameType.Type, "const VkMicromapBuildInfoEXT*")] VkMicromapBuildInfoEXT* pBuildInfo, [NativeName(NativeNameType.Param, "pSizeInfo")] [NativeName(NativeNameType.Type, "VkMicromapBuildSizesInfoEXT*")] VkMicromapBuildSizesInfoEXT* pSizeInfo)
@@ -4138,10 +4406,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawClusterHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawClusterHUAWEI")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawClusterHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "groupCountX")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountX, [NativeName(NativeNameType.Param, "groupCountY")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountY, [NativeName(NativeNameType.Param, "groupCountZ")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountZ);
-
+		internal static void VkCmdDrawClusterHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "groupCountX")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountX, [NativeName(NativeNameType.Param, "groupCountY")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountY, [NativeName(NativeNameType.Param, "groupCountZ")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountZ)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, uint, void>)vt[509])(commandBuffer, groupCountX, groupCountY, groupCountZ);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawClusterHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawClusterHUAWEI([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "groupCountX")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountX, [NativeName(NativeNameType.Param, "groupCountY")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountY, [NativeName(NativeNameType.Param, "groupCountZ")] [NativeName(NativeNameType.Type, "uint32_t")] uint groupCountZ)
@@ -4151,10 +4419,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDrawClusterIndirectHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDrawClusterIndirectHUAWEI")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDrawClusterIndirectHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset);
-
+		internal static void VkCmdDrawClusterIndirectHUAWEINative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkBuffer, ulong, void>)vt[510])(commandBuffer, buffer, offset);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDrawClusterIndirectHUAWEI")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDrawClusterIndirectHUAWEI([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "buffer")] [NativeName(NativeNameType.Type, "VkBuffer")] VkBuffer buffer, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "VkDeviceSize")] ulong offset)
@@ -4164,10 +4432,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkSetDeviceMemoryPriorityEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkSetDeviceMemoryPriorityEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkSetDeviceMemoryPriorityEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "memory")] [NativeName(NativeNameType.Type, "VkDeviceMemory")] VkDeviceMemory memory, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "float")] float priority);
-
+		internal static void VkSetDeviceMemoryPriorityEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "memory")] [NativeName(NativeNameType.Type, "VkDeviceMemory")] VkDeviceMemory memory, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "float")] float priority)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDeviceMemory, float, void>)vt[511])(device, memory, priority);
+		}
 		[NativeName(NativeNameType.Func, "vkSetDeviceMemoryPriorityEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkSetDeviceMemoryPriorityEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "memory")] [NativeName(NativeNameType.Type, "VkDeviceMemory")] VkDeviceMemory memory, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "float")] float priority)
@@ -4177,10 +4445,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutHostMappingInfoVALVE")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDescriptorSetLayoutHostMappingInfoVALVE")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDescriptorSetLayoutHostMappingInfoVALVENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pBindingReference")] [NativeName(NativeNameType.Type, "const VkDescriptorSetBindingReferenceVALVE*")] VkDescriptorSetBindingReferenceVALVE* pBindingReference, [NativeName(NativeNameType.Param, "pHostMapping")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayoutHostMappingInfoVALVE*")] VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
-
+		internal static void VkGetDescriptorSetLayoutHostMappingInfoVALVENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pBindingReference")] [NativeName(NativeNameType.Type, "const VkDescriptorSetBindingReferenceVALVE*")] VkDescriptorSetBindingReferenceVALVE* pBindingReference, [NativeName(NativeNameType.Param, "pHostMapping")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayoutHostMappingInfoVALVE*")] VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDescriptorSetBindingReferenceVALVE*, VkDescriptorSetLayoutHostMappingInfoVALVE*, void>)vt[512])(device, pBindingReference, pHostMapping);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetLayoutHostMappingInfoVALVE")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDescriptorSetLayoutHostMappingInfoVALVE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pBindingReference")] [NativeName(NativeNameType.Type, "const VkDescriptorSetBindingReferenceVALVE*")] VkDescriptorSetBindingReferenceVALVE* pBindingReference, [NativeName(NativeNameType.Param, "pHostMapping")] [NativeName(NativeNameType.Type, "VkDescriptorSetLayoutHostMappingInfoVALVE*")] VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping)
@@ -4223,10 +4491,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetHostMappingVALVE")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetDescriptorSetHostMappingVALVE")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetDescriptorSetHostMappingVALVENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "descriptorSet")] [NativeName(NativeNameType.Type, "VkDescriptorSet")] VkDescriptorSet descriptorSet, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "void**")] void** ppData);
-
+		internal static void VkGetDescriptorSetHostMappingVALVENative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "descriptorSet")] [NativeName(NativeNameType.Type, "VkDescriptorSet")] VkDescriptorSet descriptorSet, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "void**")] void** ppData)
+		{
+			((delegate* unmanaged[Cdecl]<VkDevice, VkDescriptorSet, void**, void>)vt[513])(device, descriptorSet, ppData);
+		}
 		[NativeName(NativeNameType.Func, "vkGetDescriptorSetHostMappingVALVE")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkGetDescriptorSetHostMappingVALVE([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "descriptorSet")] [NativeName(NativeNameType.Type, "VkDescriptorSet")] VkDescriptorSet descriptorSet, [NativeName(NativeNameType.Param, "ppData")] [NativeName(NativeNameType.Type, "void**")] void** ppData)
@@ -4236,10 +4504,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyMemoryIndirectNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyMemoryIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride);
-
+		internal static void VkCmdCopyMemoryIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, ulong, uint, uint, void>)vt[514])(commandBuffer, copyBufferAddress, copyCount, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyMemoryIndirectNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
@@ -4249,10 +4517,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryToImageIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdCopyMemoryToImageIndirectNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdCopyMemoryToImageIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "dstImage")] [NativeName(NativeNameType.Type, "VkImage")] VkImage dstImage, [NativeName(NativeNameType.Param, "dstImageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout dstImageLayout, [NativeName(NativeNameType.Param, "pImageSubresources")] [NativeName(NativeNameType.Type, "const VkImageSubresourceLayers*")] VkImageSubresourceLayers* pImageSubresources);
-
+		internal static void VkCmdCopyMemoryToImageIndirectNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "dstImage")] [NativeName(NativeNameType.Type, "VkImage")] VkImage dstImage, [NativeName(NativeNameType.Param, "dstImageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout dstImageLayout, [NativeName(NativeNameType.Param, "pImageSubresources")] [NativeName(NativeNameType.Type, "const VkImageSubresourceLayers*")] VkImageSubresourceLayers* pImageSubresources)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, ulong, uint, uint, VkImage, VkImageLayout, VkImageSubresourceLayers*, void>)vt[515])(commandBuffer, copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdCopyMemoryToImageIndirectNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdCopyMemoryToImageIndirectNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "copyBufferAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong copyBufferAddress, [NativeName(NativeNameType.Param, "copyCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint copyCount, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride, [NativeName(NativeNameType.Param, "dstImage")] [NativeName(NativeNameType.Type, "VkImage")] VkImage dstImage, [NativeName(NativeNameType.Param, "dstImageLayout")] [NativeName(NativeNameType.Type, "VkImageLayout")] VkImageLayout dstImageLayout, [NativeName(NativeNameType.Param, "pImageSubresources")] [NativeName(NativeNameType.Type, "const VkImageSubresourceLayers*")] VkImageSubresourceLayers* pImageSubresources)
@@ -4272,10 +4540,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDecompressMemoryNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDecompressMemoryNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDecompressMemoryNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "decompressRegionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint decompressRegionCount, [NativeName(NativeNameType.Param, "pDecompressMemoryRegions")] [NativeName(NativeNameType.Type, "const VkDecompressMemoryRegionNV*")] VkDecompressMemoryRegionNV* pDecompressMemoryRegions);
-
+		internal static void VkCmdDecompressMemoryNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "decompressRegionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint decompressRegionCount, [NativeName(NativeNameType.Param, "pDecompressMemoryRegions")] [NativeName(NativeNameType.Type, "const VkDecompressMemoryRegionNV*")] VkDecompressMemoryRegionNV* pDecompressMemoryRegions)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, VkDecompressMemoryRegionNV*, void>)vt[516])(commandBuffer, decompressRegionCount, pDecompressMemoryRegions);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDecompressMemoryNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDecompressMemoryNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "decompressRegionCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint decompressRegionCount, [NativeName(NativeNameType.Param, "pDecompressMemoryRegions")] [NativeName(NativeNameType.Type, "const VkDecompressMemoryRegionNV*")] VkDecompressMemoryRegionNV* pDecompressMemoryRegions)
@@ -4295,10 +4563,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdDecompressMemoryIndirectCountNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdDecompressMemoryIndirectCountNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdDecompressMemoryIndirectCountNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "indirectCommandsAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsAddress, [NativeName(NativeNameType.Param, "indirectCommandsCountAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsCountAddress, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride);
-
+		internal static void VkCmdDecompressMemoryIndirectCountNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "indirectCommandsAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsAddress, [NativeName(NativeNameType.Param, "indirectCommandsCountAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsCountAddress, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, ulong, ulong, uint, void>)vt[517])(commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdDecompressMemoryIndirectCountNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdDecompressMemoryIndirectCountNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "indirectCommandsAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsAddress, [NativeName(NativeNameType.Param, "indirectCommandsCountAddress")] [NativeName(NativeNameType.Type, "VkDeviceAddress")] ulong indirectCommandsCountAddress, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "uint32_t")] uint stride)
@@ -4308,10 +4576,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetTessellationDomainOriginEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetTessellationDomainOriginEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetTessellationDomainOriginEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "domainOrigin")] [NativeName(NativeNameType.Type, "VkTessellationDomainOrigin")] VkTessellationDomainOrigin domainOrigin);
-
+		internal static void VkCmdSetTessellationDomainOriginEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "domainOrigin")] [NativeName(NativeNameType.Type, "VkTessellationDomainOrigin")] VkTessellationDomainOrigin domainOrigin)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkTessellationDomainOrigin, void>)vt[518])(commandBuffer, domainOrigin);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetTessellationDomainOriginEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetTessellationDomainOriginEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "domainOrigin")] [NativeName(NativeNameType.Type, "VkTessellationDomainOrigin")] VkTessellationDomainOrigin domainOrigin)
@@ -4321,10 +4589,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClampEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthClampEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthClampEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClampEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClampEnable);
-
+		internal static void VkCmdSetDepthClampEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClampEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClampEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[519])(commandBuffer, depthClampEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClampEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthClampEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClampEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClampEnable)
@@ -4334,10 +4602,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetPolygonModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetPolygonModeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetPolygonModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "polygonMode")] [NativeName(NativeNameType.Type, "VkPolygonMode")] VkPolygonMode polygonMode);
-
+		internal static void VkCmdSetPolygonModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "polygonMode")] [NativeName(NativeNameType.Type, "VkPolygonMode")] VkPolygonMode polygonMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkPolygonMode, void>)vt[520])(commandBuffer, polygonMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetPolygonModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetPolygonModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "polygonMode")] [NativeName(NativeNameType.Type, "VkPolygonMode")] VkPolygonMode polygonMode)
@@ -4347,10 +4615,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizationSamplesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetRasterizationSamplesEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetRasterizationSamplesEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationSamples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits rasterizationSamples);
-
+		internal static void VkCmdSetRasterizationSamplesEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationSamples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits rasterizationSamples)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkSampleCountFlagBits, void>)vt[521])(commandBuffer, rasterizationSamples);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizationSamplesEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetRasterizationSamplesEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationSamples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits rasterizationSamples)
@@ -4360,10 +4628,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleMaskEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetSampleMaskEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetSampleMaskEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pSampleMask")] [NativeName(NativeNameType.Type, "const VkSampleMask*")] uint* pSampleMask);
-
+		internal static void VkCmdSetSampleMaskEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pSampleMask")] [NativeName(NativeNameType.Type, "const VkSampleMask*")] uint* pSampleMask)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkSampleCountFlagBits, uint*, void>)vt[522])(commandBuffer, samples, pSampleMask);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleMaskEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetSampleMaskEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "samples")] [NativeName(NativeNameType.Type, "VkSampleCountFlagBits")] VkSampleCountFlagBits samples, [NativeName(NativeNameType.Param, "pSampleMask")] [NativeName(NativeNameType.Type, "const VkSampleMask*")] uint* pSampleMask)
@@ -4383,10 +4651,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetAlphaToCoverageEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetAlphaToCoverageEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetAlphaToCoverageEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToCoverageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToCoverageEnable);
-
+		internal static void VkCmdSetAlphaToCoverageEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToCoverageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToCoverageEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[523])(commandBuffer, alphaToCoverageEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetAlphaToCoverageEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetAlphaToCoverageEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToCoverageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToCoverageEnable)
@@ -4396,10 +4664,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetAlphaToOneEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetAlphaToOneEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetAlphaToOneEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToOneEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToOneEnable);
-
+		internal static void VkCmdSetAlphaToOneEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToOneEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToOneEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[524])(commandBuffer, alphaToOneEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetAlphaToOneEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetAlphaToOneEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "alphaToOneEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint alphaToOneEnable)
@@ -4409,10 +4677,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetLogicOpEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetLogicOpEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetLogicOpEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOpEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint logicOpEnable);
-
+		internal static void VkCmdSetLogicOpEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOpEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint logicOpEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[525])(commandBuffer, logicOpEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetLogicOpEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetLogicOpEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "logicOpEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint logicOpEnable)
@@ -4422,10 +4690,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetColorBlendEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetColorBlendEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorBlendEnables);
-
+		internal static void VkCmdSetColorBlendEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorBlendEnables)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, uint*, void>)vt[526])(commandBuffer, firstAttachment, attachmentCount, pColorBlendEnables);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetColorBlendEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEnables")] [NativeName(NativeNameType.Type, "const VkBool32*")] uint* pColorBlendEnables)
@@ -4445,10 +4713,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendEquationEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetColorBlendEquationEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetColorBlendEquationEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEquations")] [NativeName(NativeNameType.Type, "const VkColorBlendEquationEXT*")] VkColorBlendEquationEXT* pColorBlendEquations);
-
+		internal static void VkCmdSetColorBlendEquationEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEquations")] [NativeName(NativeNameType.Type, "const VkColorBlendEquationEXT*")] VkColorBlendEquationEXT* pColorBlendEquations)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkColorBlendEquationEXT*, void>)vt[527])(commandBuffer, firstAttachment, attachmentCount, pColorBlendEquations);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendEquationEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetColorBlendEquationEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendEquations")] [NativeName(NativeNameType.Type, "const VkColorBlendEquationEXT*")] VkColorBlendEquationEXT* pColorBlendEquations)
@@ -4468,10 +4736,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetColorWriteMaskEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetColorWriteMaskEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetColorWriteMaskEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteMasks")] [NativeName(NativeNameType.Type, "const VkColorComponentFlags*")] uint* pColorWriteMasks);
-
+		internal static void VkCmdSetColorWriteMaskEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteMasks")] [NativeName(NativeNameType.Type, "const VkColorComponentFlags*")] uint* pColorWriteMasks)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, uint*, void>)vt[528])(commandBuffer, firstAttachment, attachmentCount, pColorWriteMasks);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetColorWriteMaskEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetColorWriteMaskEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorWriteMasks")] [NativeName(NativeNameType.Type, "const VkColorComponentFlags*")] uint* pColorWriteMasks)
@@ -4491,10 +4759,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizationStreamEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetRasterizationStreamEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetRasterizationStreamEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationStream")] [NativeName(NativeNameType.Type, "uint32_t")] uint rasterizationStream);
-
+		internal static void VkCmdSetRasterizationStreamEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationStream")] [NativeName(NativeNameType.Type, "uint32_t")] uint rasterizationStream)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[529])(commandBuffer, rasterizationStream);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetRasterizationStreamEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetRasterizationStreamEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "rasterizationStream")] [NativeName(NativeNameType.Type, "uint32_t")] uint rasterizationStream)
@@ -4504,10 +4772,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetConservativeRasterizationModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetConservativeRasterizationModeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetConservativeRasterizationModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "conservativeRasterizationMode")] [NativeName(NativeNameType.Type, "VkConservativeRasterizationModeEXT")] VkConservativeRasterizationModeEXT conservativeRasterizationMode);
-
+		internal static void VkCmdSetConservativeRasterizationModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "conservativeRasterizationMode")] [NativeName(NativeNameType.Type, "VkConservativeRasterizationModeEXT")] VkConservativeRasterizationModeEXT conservativeRasterizationMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkConservativeRasterizationModeEXT, void>)vt[530])(commandBuffer, conservativeRasterizationMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetConservativeRasterizationModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetConservativeRasterizationModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "conservativeRasterizationMode")] [NativeName(NativeNameType.Type, "VkConservativeRasterizationModeEXT")] VkConservativeRasterizationModeEXT conservativeRasterizationMode)
@@ -4517,10 +4785,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetExtraPrimitiveOverestimationSizeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetExtraPrimitiveOverestimationSizeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetExtraPrimitiveOverestimationSizeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "extraPrimitiveOverestimationSize")] [NativeName(NativeNameType.Type, "float")] float extraPrimitiveOverestimationSize);
-
+		internal static void VkCmdSetExtraPrimitiveOverestimationSizeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "extraPrimitiveOverestimationSize")] [NativeName(NativeNameType.Type, "float")] float extraPrimitiveOverestimationSize)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, float, void>)vt[531])(commandBuffer, extraPrimitiveOverestimationSize);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetExtraPrimitiveOverestimationSizeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetExtraPrimitiveOverestimationSizeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "extraPrimitiveOverestimationSize")] [NativeName(NativeNameType.Type, "float")] float extraPrimitiveOverestimationSize)
@@ -4530,10 +4798,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClipEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthClipEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthClipEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClipEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClipEnable);
-
+		internal static void VkCmdSetDepthClipEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClipEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClipEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[532])(commandBuffer, depthClipEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClipEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthClipEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "depthClipEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint depthClipEnable)
@@ -4543,10 +4811,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleLocationsEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetSampleLocationsEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetSampleLocationsEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleLocationsEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint sampleLocationsEnable);
-
+		internal static void VkCmdSetSampleLocationsEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleLocationsEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint sampleLocationsEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[533])(commandBuffer, sampleLocationsEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetSampleLocationsEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetSampleLocationsEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "sampleLocationsEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint sampleLocationsEnable)
@@ -4556,10 +4824,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendAdvancedEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetColorBlendAdvancedEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetColorBlendAdvancedEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendAdvanced")] [NativeName(NativeNameType.Type, "const VkColorBlendAdvancedEXT*")] VkColorBlendAdvancedEXT* pColorBlendAdvanced);
-
+		internal static void VkCmdSetColorBlendAdvancedEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendAdvanced")] [NativeName(NativeNameType.Type, "const VkColorBlendAdvancedEXT*")] VkColorBlendAdvancedEXT* pColorBlendAdvanced)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkColorBlendAdvancedEXT*, void>)vt[534])(commandBuffer, firstAttachment, attachmentCount, pColorBlendAdvanced);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetColorBlendAdvancedEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetColorBlendAdvancedEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstAttachment")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstAttachment, [NativeName(NativeNameType.Param, "attachmentCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint attachmentCount, [NativeName(NativeNameType.Param, "pColorBlendAdvanced")] [NativeName(NativeNameType.Type, "const VkColorBlendAdvancedEXT*")] VkColorBlendAdvancedEXT* pColorBlendAdvanced)
@@ -4579,10 +4847,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetProvokingVertexModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetProvokingVertexModeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetProvokingVertexModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "provokingVertexMode")] [NativeName(NativeNameType.Type, "VkProvokingVertexModeEXT")] VkProvokingVertexModeEXT provokingVertexMode);
-
+		internal static void VkCmdSetProvokingVertexModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "provokingVertexMode")] [NativeName(NativeNameType.Type, "VkProvokingVertexModeEXT")] VkProvokingVertexModeEXT provokingVertexMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkProvokingVertexModeEXT, void>)vt[535])(commandBuffer, provokingVertexMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetProvokingVertexModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetProvokingVertexModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "provokingVertexMode")] [NativeName(NativeNameType.Type, "VkProvokingVertexModeEXT")] VkProvokingVertexModeEXT provokingVertexMode)
@@ -4592,10 +4860,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetLineRasterizationModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetLineRasterizationModeEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetLineRasterizationModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineRasterizationMode")] [NativeName(NativeNameType.Type, "VkLineRasterizationModeEXT")] VkLineRasterizationModeEXT lineRasterizationMode);
-
+		internal static void VkCmdSetLineRasterizationModeEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineRasterizationMode")] [NativeName(NativeNameType.Type, "VkLineRasterizationModeEXT")] VkLineRasterizationModeEXT lineRasterizationMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkLineRasterizationModeEXT, void>)vt[536])(commandBuffer, lineRasterizationMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetLineRasterizationModeEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetLineRasterizationModeEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "lineRasterizationMode")] [NativeName(NativeNameType.Type, "VkLineRasterizationModeEXT")] VkLineRasterizationModeEXT lineRasterizationMode)
@@ -4605,10 +4873,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetLineStippleEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetLineStippleEnableEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetLineStippleEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stippledLineEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stippledLineEnable);
-
+		internal static void VkCmdSetLineStippleEnableEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stippledLineEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stippledLineEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[537])(commandBuffer, stippledLineEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetLineStippleEnableEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetLineStippleEnableEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "stippledLineEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint stippledLineEnable)
@@ -4618,10 +4886,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClipNegativeOneToOneEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetDepthClipNegativeOneToOneEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetDepthClipNegativeOneToOneEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "negativeOneToOne")] [NativeName(NativeNameType.Type, "VkBool32")] uint negativeOneToOne);
-
+		internal static void VkCmdSetDepthClipNegativeOneToOneEXTNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "negativeOneToOne")] [NativeName(NativeNameType.Type, "VkBool32")] uint negativeOneToOne)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[538])(commandBuffer, negativeOneToOne);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetDepthClipNegativeOneToOneEXT")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetDepthClipNegativeOneToOneEXT([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "negativeOneToOne")] [NativeName(NativeNameType.Type, "VkBool32")] uint negativeOneToOne)
@@ -4631,10 +4899,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportWScalingEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetViewportWScalingEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetViewportWScalingEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportWScalingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint viewportWScalingEnable);
-
+		internal static void VkCmdSetViewportWScalingEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportWScalingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint viewportWScalingEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[539])(commandBuffer, viewportWScalingEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportWScalingEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetViewportWScalingEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "viewportWScalingEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint viewportWScalingEnable)
@@ -4644,10 +4912,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportSwizzleNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetViewportSwizzleNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetViewportSwizzleNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewportSwizzles")] [NativeName(NativeNameType.Type, "const VkViewportSwizzleNV*")] VkViewportSwizzleNV* pViewportSwizzles);
-
+		internal static void VkCmdSetViewportSwizzleNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewportSwizzles")] [NativeName(NativeNameType.Type, "const VkViewportSwizzleNV*")] VkViewportSwizzleNV* pViewportSwizzles)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, uint, VkViewportSwizzleNV*, void>)vt[540])(commandBuffer, firstViewport, viewportCount, pViewportSwizzles);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetViewportSwizzleNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetViewportSwizzleNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "firstViewport")] [NativeName(NativeNameType.Type, "uint32_t")] uint firstViewport, [NativeName(NativeNameType.Param, "viewportCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint viewportCount, [NativeName(NativeNameType.Param, "pViewportSwizzles")] [NativeName(NativeNameType.Type, "const VkViewportSwizzleNV*")] VkViewportSwizzleNV* pViewportSwizzles)
@@ -4667,10 +4935,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageToColorEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageToColorEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageToColorEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageToColorEnable);
-
+		internal static void VkCmdSetCoverageToColorEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageToColorEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[541])(commandBuffer, coverageToColorEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageToColorEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoverageToColorEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageToColorEnable)
@@ -4680,10 +4948,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageToColorLocationNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageToColorLocationNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageToColorLocationNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorLocation")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageToColorLocation);
-
+		internal static void VkCmdSetCoverageToColorLocationNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorLocation")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageToColorLocation)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[542])(commandBuffer, coverageToColorLocation);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageToColorLocationNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoverageToColorLocationNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageToColorLocation")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageToColorLocation)
@@ -4693,10 +4961,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationModeNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageModulationModeNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageModulationModeNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationMode")] [NativeName(NativeNameType.Type, "VkCoverageModulationModeNV")] VkCoverageModulationModeNV coverageModulationMode);
-
+		internal static void VkCmdSetCoverageModulationModeNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationMode")] [NativeName(NativeNameType.Type, "VkCoverageModulationModeNV")] VkCoverageModulationModeNV coverageModulationMode)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, VkCoverageModulationModeNV, void>)vt[543])(commandBuffer, coverageModulationMode);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationModeNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoverageModulationModeNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationMode")] [NativeName(NativeNameType.Type, "VkCoverageModulationModeNV")] VkCoverageModulationModeNV coverageModulationMode)
@@ -4706,10 +4974,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationTableEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageModulationTableEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageModulationTableEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageModulationTableEnable);
-
+		internal static void VkCmdSetCoverageModulationTableEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageModulationTableEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[544])(commandBuffer, coverageModulationTableEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationTableEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoverageModulationTableEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint coverageModulationTableEnable)
@@ -4719,10 +4987,10 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationTableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageModulationTableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageModulationTableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageModulationTableCount, [NativeName(NativeNameType.Param, "pCoverageModulationTable")] [NativeName(NativeNameType.Type, "const float*")] float* pCoverageModulationTable);
-
+		internal static void VkCmdSetCoverageModulationTableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageModulationTableCount, [NativeName(NativeNameType.Param, "pCoverageModulationTable")] [NativeName(NativeNameType.Type, "const float*")] float* pCoverageModulationTable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, float*, void>)vt[545])(commandBuffer, coverageModulationTableCount, pCoverageModulationTable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetCoverageModulationTableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetCoverageModulationTableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageModulationTableCount")] [NativeName(NativeNameType.Type, "uint32_t")] uint coverageModulationTableCount, [NativeName(NativeNameType.Param, "pCoverageModulationTable")] [NativeName(NativeNameType.Type, "const float*")] float* pCoverageModulationTable)
@@ -4742,291 +5010,15 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkCmdSetShadingRateImageEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetShadingRateImageEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetShadingRateImageEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRateImageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint shadingRateImageEnable);
-
+		internal static void VkCmdSetShadingRateImageEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRateImageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint shadingRateImageEnable)
+		{
+			((delegate* unmanaged[Cdecl]<VkCommandBuffer, uint, void>)vt[546])(commandBuffer, shadingRateImageEnable);
+		}
 		[NativeName(NativeNameType.Func, "vkCmdSetShadingRateImageEnableNV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void VkCmdSetShadingRateImageEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "shadingRateImageEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint shadingRateImageEnable)
 		{
 			VkCmdSetShadingRateImageEnableNVNative(commandBuffer, shadingRateImageEnable);
-		}
-
-		[NativeName(NativeNameType.Func, "vkCmdSetRepresentativeFragmentTestEnableNV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetRepresentativeFragmentTestEnableNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetRepresentativeFragmentTestEnableNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "representativeFragmentTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint representativeFragmentTestEnable);
-
-		[NativeName(NativeNameType.Func, "vkCmdSetRepresentativeFragmentTestEnableNV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkCmdSetRepresentativeFragmentTestEnableNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "representativeFragmentTestEnable")] [NativeName(NativeNameType.Type, "VkBool32")] uint representativeFragmentTestEnable)
-		{
-			VkCmdSetRepresentativeFragmentTestEnableNVNative(commandBuffer, representativeFragmentTestEnable);
-		}
-
-		[NativeName(NativeNameType.Func, "vkCmdSetCoverageReductionModeNV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkCmdSetCoverageReductionModeNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkCmdSetCoverageReductionModeNVNative([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageReductionMode")] [NativeName(NativeNameType.Type, "VkCoverageReductionModeNV")] VkCoverageReductionModeNV coverageReductionMode);
-
-		[NativeName(NativeNameType.Func, "vkCmdSetCoverageReductionModeNV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkCmdSetCoverageReductionModeNV([NativeName(NativeNameType.Param, "commandBuffer")] [NativeName(NativeNameType.Type, "VkCommandBuffer")] VkCommandBuffer commandBuffer, [NativeName(NativeNameType.Param, "coverageReductionMode")] [NativeName(NativeNameType.Type, "VkCoverageReductionModeNV")] VkCoverageReductionModeNV coverageReductionMode)
-		{
-			VkCmdSetCoverageReductionModeNVNative(commandBuffer, coverageReductionMode);
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetShaderModuleIdentifierEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetShaderModuleIdentifierEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "shaderModule")] [NativeName(NativeNameType.Type, "VkShaderModule")] VkShaderModule shaderModule, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] VkShaderModuleIdentifierEXT* pIdentifier);
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "shaderModule")] [NativeName(NativeNameType.Type, "VkShaderModule")] VkShaderModule shaderModule, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] VkShaderModuleIdentifierEXT* pIdentifier)
-		{
-			VkGetShaderModuleIdentifierEXTNative(device, shaderModule, pIdentifier);
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "shaderModule")] [NativeName(NativeNameType.Type, "VkShaderModule")] VkShaderModule shaderModule, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] ref VkShaderModuleIdentifierEXT pIdentifier)
-		{
-			fixed (VkShaderModuleIdentifierEXT* ppIdentifier = &pIdentifier)
-			{
-				VkGetShaderModuleIdentifierEXTNative(device, shaderModule, (VkShaderModuleIdentifierEXT*)ppIdentifier);
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void VkGetShaderModuleCreateInfoIdentifierEXTNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkShaderModuleCreateInfo*")] VkShaderModuleCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] VkShaderModuleIdentifierEXT* pIdentifier);
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleCreateInfoIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkShaderModuleCreateInfo*")] VkShaderModuleCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] VkShaderModuleIdentifierEXT* pIdentifier)
-		{
-			VkGetShaderModuleCreateInfoIdentifierEXTNative(device, pCreateInfo, pIdentifier);
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleCreateInfoIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkShaderModuleCreateInfo*")] ref VkShaderModuleCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] VkShaderModuleIdentifierEXT* pIdentifier)
-		{
-			fixed (VkShaderModuleCreateInfo* ppCreateInfo = &pCreateInfo)
-			{
-				VkGetShaderModuleCreateInfoIdentifierEXTNative(device, (VkShaderModuleCreateInfo*)ppCreateInfo, pIdentifier);
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleCreateInfoIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkShaderModuleCreateInfo*")] VkShaderModuleCreateInfo* pCreateInfo, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] ref VkShaderModuleIdentifierEXT pIdentifier)
-		{
-			fixed (VkShaderModuleIdentifierEXT* ppIdentifier = &pIdentifier)
-			{
-				VkGetShaderModuleCreateInfoIdentifierEXTNative(device, pCreateInfo, (VkShaderModuleIdentifierEXT*)ppIdentifier);
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetShaderModuleCreateInfoIdentifierEXT")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void VkGetShaderModuleCreateInfoIdentifierEXT([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkShaderModuleCreateInfo*")] ref VkShaderModuleCreateInfo pCreateInfo, [NativeName(NativeNameType.Param, "pIdentifier")] [NativeName(NativeNameType.Type, "VkShaderModuleIdentifierEXT*")] ref VkShaderModuleIdentifierEXT pIdentifier)
-		{
-			fixed (VkShaderModuleCreateInfo* ppCreateInfo = &pCreateInfo)
-			{
-				fixed (VkShaderModuleIdentifierEXT* ppIdentifier = &pIdentifier)
-				{
-					VkGetShaderModuleCreateInfoIdentifierEXTNative(device, (VkShaderModuleCreateInfo*)ppCreateInfo, (VkShaderModuleIdentifierEXT*)ppIdentifier);
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] VkOpticalFlowImageFormatInfoNV* pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] VkOpticalFlowImageFormatPropertiesNV* pImageFormatProperties);
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] VkOpticalFlowImageFormatInfoNV* pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] VkOpticalFlowImageFormatPropertiesNV* pImageFormatProperties)
-		{
-			VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, pOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] ref VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] VkOpticalFlowImageFormatPropertiesNV* pImageFormatProperties)
-		{
-			fixed (VkOpticalFlowImageFormatInfoNV* ppOpticalFlowImageFormatInfo = &pOpticalFlowImageFormatInfo)
-			{
-				VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, (VkOpticalFlowImageFormatInfoNV*)ppOpticalFlowImageFormatInfo, pFormatCount, pImageFormatProperties);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] VkOpticalFlowImageFormatInfoNV* pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] VkOpticalFlowImageFormatPropertiesNV* pImageFormatProperties)
-		{
-			fixed (uint* ppFormatCount = &pFormatCount)
-			{
-				VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, pOpticalFlowImageFormatInfo, (uint*)ppFormatCount, pImageFormatProperties);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] ref VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] VkOpticalFlowImageFormatPropertiesNV* pImageFormatProperties)
-		{
-			fixed (VkOpticalFlowImageFormatInfoNV* ppOpticalFlowImageFormatInfo = &pOpticalFlowImageFormatInfo)
-			{
-				fixed (uint* ppFormatCount = &pFormatCount)
-				{
-					VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, (VkOpticalFlowImageFormatInfoNV*)ppOpticalFlowImageFormatInfo, (uint*)ppFormatCount, pImageFormatProperties);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] VkOpticalFlowImageFormatInfoNV* pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] ref VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties)
-		{
-			fixed (VkOpticalFlowImageFormatPropertiesNV* ppImageFormatProperties = &pImageFormatProperties)
-			{
-				VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, pOpticalFlowImageFormatInfo, pFormatCount, (VkOpticalFlowImageFormatPropertiesNV*)ppImageFormatProperties);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] ref VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] uint* pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] ref VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties)
-		{
-			fixed (VkOpticalFlowImageFormatInfoNV* ppOpticalFlowImageFormatInfo = &pOpticalFlowImageFormatInfo)
-			{
-				fixed (VkOpticalFlowImageFormatPropertiesNV* ppImageFormatProperties = &pImageFormatProperties)
-				{
-					VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, (VkOpticalFlowImageFormatInfoNV*)ppOpticalFlowImageFormatInfo, pFormatCount, (VkOpticalFlowImageFormatPropertiesNV*)ppImageFormatProperties);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] VkOpticalFlowImageFormatInfoNV* pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] ref VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties)
-		{
-			fixed (uint* ppFormatCount = &pFormatCount)
-			{
-				fixed (VkOpticalFlowImageFormatPropertiesNV* ppImageFormatProperties = &pImageFormatProperties)
-				{
-					VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, pOpticalFlowImageFormatInfo, (uint*)ppFormatCount, (VkOpticalFlowImageFormatPropertiesNV*)ppImageFormatProperties);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkGetPhysicalDeviceOpticalFlowImageFormatsNV([NativeName(NativeNameType.Param, "physicalDevice")] [NativeName(NativeNameType.Type, "VkPhysicalDevice")] VkPhysicalDevice physicalDevice, [NativeName(NativeNameType.Param, "pOpticalFlowImageFormatInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowImageFormatInfoNV*")] ref VkOpticalFlowImageFormatInfoNV pOpticalFlowImageFormatInfo, [NativeName(NativeNameType.Param, "pFormatCount")] [NativeName(NativeNameType.Type, "uint32_t*")] ref uint pFormatCount, [NativeName(NativeNameType.Param, "pImageFormatProperties")] [NativeName(NativeNameType.Type, "VkOpticalFlowImageFormatPropertiesNV*")] ref VkOpticalFlowImageFormatPropertiesNV pImageFormatProperties)
-		{
-			fixed (VkOpticalFlowImageFormatInfoNV* ppOpticalFlowImageFormatInfo = &pOpticalFlowImageFormatInfo)
-			{
-				fixed (uint* ppFormatCount = &pFormatCount)
-				{
-					fixed (VkOpticalFlowImageFormatPropertiesNV* ppImageFormatProperties = &pImageFormatProperties)
-					{
-						VkResult ret = VkGetPhysicalDeviceOpticalFlowImageFormatsNVNative(physicalDevice, (VkOpticalFlowImageFormatInfoNV*)ppOpticalFlowImageFormatInfo, (uint*)ppFormatCount, (VkOpticalFlowImageFormatPropertiesNV*)ppImageFormatProperties);
-						return ret;
-					}
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		[LibraryImport(LibName, EntryPoint = "vkCreateOpticalFlowSessionNV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial VkResult VkCreateOpticalFlowSessionNVNative([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] VkOpticalFlowSessionCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] VkOpticalFlowSessionNV* pSession);
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] VkOpticalFlowSessionCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] VkOpticalFlowSessionNV* pSession)
-		{
-			VkResult ret = VkCreateOpticalFlowSessionNVNative(device, pCreateInfo, pAllocator, pSession);
-			return ret;
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] ref VkOpticalFlowSessionCreateInfoNV pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] VkOpticalFlowSessionNV* pSession)
-		{
-			fixed (VkOpticalFlowSessionCreateInfoNV* ppCreateInfo = &pCreateInfo)
-			{
-				VkResult ret = VkCreateOpticalFlowSessionNVNative(device, (VkOpticalFlowSessionCreateInfoNV*)ppCreateInfo, pAllocator, pSession);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] VkOpticalFlowSessionCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] VkOpticalFlowSessionNV* pSession)
-		{
-			fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
-			{
-				VkResult ret = VkCreateOpticalFlowSessionNVNative(device, pCreateInfo, (VkAllocationCallbacks*)ppAllocator, pSession);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] ref VkOpticalFlowSessionCreateInfoNV pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] ref VkAllocationCallbacks pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] VkOpticalFlowSessionNV* pSession)
-		{
-			fixed (VkOpticalFlowSessionCreateInfoNV* ppCreateInfo = &pCreateInfo)
-			{
-				fixed (VkAllocationCallbacks* ppAllocator = &pAllocator)
-				{
-					VkResult ret = VkCreateOpticalFlowSessionNVNative(device, (VkOpticalFlowSessionCreateInfoNV*)ppCreateInfo, (VkAllocationCallbacks*)ppAllocator, pSession);
-					return ret;
-				}
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] VkOpticalFlowSessionCreateInfoNV* pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] ref VkOpticalFlowSessionNV pSession)
-		{
-			fixed (VkOpticalFlowSessionNV* ppSession = &pSession)
-			{
-				VkResult ret = VkCreateOpticalFlowSessionNVNative(device, pCreateInfo, pAllocator, (VkOpticalFlowSessionNV*)ppSession);
-				return ret;
-			}
-		}
-
-		[NativeName(NativeNameType.Func, "vkCreateOpticalFlowSessionNV")]
-		[return: NativeName(NativeNameType.Type, "VkResult")]
-		public static VkResult VkCreateOpticalFlowSessionNV([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pCreateInfo")] [NativeName(NativeNameType.Type, "const VkOpticalFlowSessionCreateInfoNV*")] ref VkOpticalFlowSessionCreateInfoNV pCreateInfo, [NativeName(NativeNameType.Param, "pAllocator")] [NativeName(NativeNameType.Type, "const VkAllocationCallbacks*")] VkAllocationCallbacks* pAllocator, [NativeName(NativeNameType.Param, "pSession")] [NativeName(NativeNameType.Type, "VkOpticalFlowSessionNV*")] ref VkOpticalFlowSessionNV pSession)
-		{
-			fixed (VkOpticalFlowSessionCreateInfoNV* ppCreateInfo = &pCreateInfo)
-			{
-				fixed (VkOpticalFlowSessionNV* ppSession = &pSession)
-				{
-					VkResult ret = VkCreateOpticalFlowSessionNVNative(device, (VkOpticalFlowSessionCreateInfoNV*)ppCreateInfo, pAllocator, (VkOpticalFlowSessionNV*)ppSession);
-					return ret;
-				}
-			}
 		}
 	}
 }

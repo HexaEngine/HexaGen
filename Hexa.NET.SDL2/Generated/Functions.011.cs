@@ -17,6 +17,118 @@ namespace Hexa.NET.SDL2
 	public unsafe partial class SDL
 	{
 
+		/// <summary>
+		/// Free an enumeration Linked List<br/>
+		/// This function frees a linked list created by SDL_hid_enumerate().<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void SDLHidFreeEnumerationNative([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs)
+		{
+			((delegate* unmanaged[Cdecl]<SDLHidDeviceInfo*, void>)vt[674])(devs);
+		}
+		/// <summary>/// Free an enumeration Linked List<br/>/// This function frees a linked list created by SDL_hid_enumerate().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLHidFreeEnumeration([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] SDLHidDeviceInfo* devs)
+		{
+			SDLHidFreeEnumerationNative(devs);
+		}
+
+		/// <summary>/// Free an enumeration Linked List<br/>/// This function frees a linked list created by SDL_hid_enumerate().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_free_enumeration")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void SDLHidFreeEnumeration([NativeName(NativeNameType.Param, "devs")] [NativeName(NativeNameType.Type, "SDL_hid_device_info*")] ref SDLHidDeviceInfo devs)
+		{
+			fixed (SDLHidDeviceInfo* pdevs = &devs)
+			{
+				SDLHidFreeEnumerationNative((SDLHidDeviceInfo*)pdevs);
+			}
+		}
+
+		/// <summary>
+		/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>
+		/// a serial number.<br/>
+		/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>
+		/// is opened.<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_hid_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		internal static SDLHidDevice* SDLHidOpenNative([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber)
+		{
+			return ((delegate* unmanaged[Cdecl]<ushort, ushort, char*, SDLHidDevice*>)vt[675])(vendorId, productId, serialNumber);
+		}
+		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] char* serialNumber)
+		{
+			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, serialNumber);
+			return ret;
+		}
+
+		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] ref char serialNumber)
+		{
+			fixed (char* pserialNumber = &serialNumber)
+			{
+				SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, (char*)pserialNumber);
+				return ret;
+			}
+		}
+
+		/// <summary>/// Open a HID device using a Vendor ID (VID), Product ID (PID) and optionally<br/>/// a serial number.<br/>/// If `serial_number` is NULL, the first device with the specified VID and PID<br/>/// is opened.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		public static SDLHidDevice* SDLHidOpen([NativeName(NativeNameType.Param, "vendor_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort vendorId, [NativeName(NativeNameType.Param, "product_id")] [NativeName(NativeNameType.Type, "unsigned short")] ushort productId, [NativeName(NativeNameType.Param, "serial_number")] [NativeName(NativeNameType.Type, "const wchar*")] string serialNumber)
+		{
+			char* pStr0 = null;
+			int pStrSize0 = 0;
+			if (serialNumber != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF16(serialNumber);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<char>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = (char*)pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF16(serialNumber, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = '\0';
+			}
+			SDLHidDevice* ret = SDLHidOpenNative(vendorId, productId, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// Open a HID device by its path name.<br/>
+		/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>
+		/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>
+		/// <br/>
+		/// <br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		internal static SDLHidDevice* SDLHidOpenPathNative([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int, SDLHidDevice*>)vt[676])(path, bExclusive);
+		}
+		/// <summary>/// Open a HID device by its path name.<br/>/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
+		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
+		public static SDLHidDevice* SDLHidOpenPath([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive)
+		{
+			SDLHidDevice* ret = SDLHidOpenPathNative(path, bExclusive);
+			return ret;
+		}
+
 		/// <summary>/// Open a HID device by its path name.<br/>/// The path name be determined by calling SDL_hid_enumerate(), or a<br/>/// platform-specific path name can be used (eg: /dev/hidraw0 on Linux).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_open_path")]
 		[return: NativeName(NativeNameType.Type, "SDL_hid_device*")]
 		public static SDLHidDevice* SDLHidOpenPath([NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] ref byte path, [NativeName(NativeNameType.Param, "bExclusive")] [NativeName(NativeNameType.Type, "int")] int bExclusive)
@@ -75,10 +187,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_write")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_write")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidWriteNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
+		internal static int SDLHidWriteNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, byte*, ulong, int>)vt[677])(dev, data, length);
+		}
 		/// <summary>/// Write an Output report to a HID device.<br/>/// The first byte of `data` must contain the Report ID. For devices which only<br/>/// support a single report, this must be set to 0x0. The remaining bytes<br/>/// contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_write() will always contain one more byte than the report contains.<br/>/// For example, if a hid report is 16 bytes long, 17 bytes must be passed to<br/>/// SDL_hid_write(), the Report ID (or 0x0, for devices with a single report),<br/>/// followed by the report data (16 bytes). In this example, the length passed<br/>/// in would be 17.<br/>/// SDL_hid_write() will send the data on the first OUT endpoint, if one<br/>/// exists. If it does not, it will send the data through the Control Endpoint<br/>/// (Endpoint 0).<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_write")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidWrite([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
@@ -177,10 +289,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_read_timeout")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidReadTimeoutNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds);
-
+		internal static int SDLHidReadTimeoutNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, byte*, ulong, int, int>)vt[678])(dev, data, length, milliseconds);
+		}
 		/// <summary>/// Read an Input report from a HID device with timeout.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read_timeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidReadTimeout([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length, [NativeName(NativeNameType.Param, "milliseconds")] [NativeName(NativeNameType.Type, "int")] int milliseconds)
@@ -279,10 +391,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_read")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_read")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidReadNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
+		internal static int SDLHidReadNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, byte*, ulong, int>)vt[679])(dev, data, length);
+		}
 		/// <summary>/// Read an Input report from a HID device.<br/>/// Input reports are returned to the host through the INTERRUPT IN endpoint.<br/>/// The first byte will contain the Report number if the device uses numbered<br/>/// reports.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_read")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidRead([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
@@ -382,10 +494,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_set_nonblocking")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_set_nonblocking")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidSetNonblockingNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "nonblock")] [NativeName(NativeNameType.Type, "int")] int nonblock);
-
+		internal static int SDLHidSetNonblockingNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "nonblock")] [NativeName(NativeNameType.Type, "int")] int nonblock)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, int, int>)vt[680])(dev, nonblock);
+		}
 		/// <summary>/// Set the device handle to be non-blocking.<br/>/// In non-blocking mode calls to SDL_hid_read() will return immediately with a<br/>/// value of 0 if there is no data to be read. In blocking mode, SDL_hid_read()<br/>/// will wait (block) until there is data to read before returning.<br/>/// Nonblocking can be turned on and off at any time.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_set_nonblocking")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidSetNonblocking([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "nonblock")] [NativeName(NativeNameType.Type, "int")] int nonblock)
@@ -421,10 +533,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_send_feature_report")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidSendFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
+		internal static int SDLHidSendFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, byte*, ulong, int>)vt[681])(dev, data, length);
+		}
 		/// <summary>/// Send a Feature report to the device.<br/>/// Feature reports are sent over the Control endpoint as a Set_Report<br/>/// transfer. The first byte of `data` must contain the Report ID. For devices<br/>/// which only support a single report, this must be set to 0x0. The remaining<br/>/// bytes contain the report data. Since the Report ID is mandatory, calls to<br/>/// SDL_hid_send_feature_report() will always contain one more byte than the<br/>/// report contains. For example, if a hid report is 16 bytes long, 17 bytes<br/>/// must be passed to SDL_hid_send_feature_report(): the Report ID (or 0x0, for<br/>/// devices which do not use numbered reports), followed by the report data (16<br/>/// bytes). In this example, the length passed in would be 17.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_send_feature_report")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidSendFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
@@ -524,10 +636,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_feature_report")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length);
-
+		internal static int SDLHidGetFeatureReportNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, byte*, ulong, int>)vt[682])(dev, data, length);
+		}
 		/// <summary>/// Get a feature report from a HID device.<br/>/// Set the first byte of `data` to the Report ID of the report to be read.<br/>/// Make sure to allow space for this extra byte in `data`. Upon return, the<br/>/// first byte will still contain the Report ID, and the report data will start<br/>/// in data[1].<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_feature_report")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetFeatureReport([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "unsigned char*")] byte* data, [NativeName(NativeNameType.Param, "length")] [NativeName(NativeNameType.Type, "size_t")] ulong length)
@@ -623,10 +735,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_close")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_close")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidCloseNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev);
-
+		internal static void SDLHidCloseNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev)
+		{
+			((delegate* unmanaged[Cdecl]<SDLHidDevice*, void>)vt[683])(dev);
+		}
 		/// <summary>/// Close a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_close")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLHidClose([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev)
@@ -651,10 +763,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_manufacturer_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetManufacturerStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static int SDLHidGetManufacturerStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, char*, ulong, int>)vt[684])(dev, str, maxlen);
+		}
 		/// <summary>/// Get The Manufacturer String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_manufacturer_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetManufacturerString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -876,10 +988,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_product_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetProductStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static int SDLHidGetProductStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, char*, ulong, int>)vt[685])(dev, str, maxlen);
+		}
 		/// <summary>/// Get The Product String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_product_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetProductString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -1101,10 +1213,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_serial_number_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetSerialNumberStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static int SDLHidGetSerialNumberStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, char*, ulong, int>)vt[686])(dev, str, maxlen);
+		}
 		/// <summary>/// Get The Serial Number String from a HID device.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_serial_number_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetSerialNumberString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -1326,10 +1438,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_get_indexed_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLHidGetIndexedStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen);
-
+		internal static int SDLHidGetIndexedStringNative([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLHidDevice*, int, char*, ulong, int>)vt[687])(dev, stringIndex, str, maxlen);
+		}
 		/// <summary>/// Get a string from a HID device, based on its string index.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_get_indexed_string")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLHidGetIndexedString([NativeName(NativeNameType.Param, "dev")] [NativeName(NativeNameType.Type, "SDL_hid_device*")] SDLHidDevice* dev, [NativeName(NativeNameType.Param, "string_index")] [NativeName(NativeNameType.Type, "int")] int stringIndex, [NativeName(NativeNameType.Param, "string")] [NativeName(NativeNameType.Type, "wchar*")] char* str, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "size_t")] ulong maxlen)
@@ -1551,10 +1663,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_hid_ble_scan")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_hid_ble_scan")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLHidBleScanNative([NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool active);
-
+		internal static void SDLHidBleScanNative([NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool active)
+		{
+			((delegate* unmanaged[Cdecl]<SDLBool, void>)vt[688])(active);
+		}
 		/// <summary>/// Start or stop a BLE scan on iOS and tvOS to pair Steam Controllers<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_hid_ble_scan")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLHidBleScan([NativeName(NativeNameType.Param, "active")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool active)
@@ -1573,10 +1685,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetHintWithPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLSetHintWithPriorityNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority);
-
+		internal static SDLBool SDLSetHintWithPriorityNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, SDLHintPriority, SDLBool>)vt[689])(name, value, priority);
+		}
 		/// <summary>/// Set a hint with a specific priority.<br/>/// The priority controls the behavior when setting a hint that already has a<br/>/// value. Hints will replace existing hints of their priority and lower.<br/>/// Environment variables are considered to have override priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHintWithPriority")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLSetHintWithPriority([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_HintPriority")] SDLHintPriority priority)
@@ -1740,10 +1852,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetHint")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLSetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value);
-
+		internal static SDLBool SDLSetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, SDLBool>)vt[690])(name, value);
+		}
 		/// <summary>/// Set a hint with normal priority.<br/>/// Hints will not be set if there is an existing override hint or environment<br/>/// variable that takes precedence. You can use SDL_SetHintWithPriority() to<br/>/// set the hint with override priority instead.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetHint")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLSetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "value")] [NativeName(NativeNameType.Type, "const char*")] byte* value)
@@ -1907,10 +2019,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ResetHint")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLResetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
+		internal static SDLBool SDLResetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, SDLBool>)vt[691])(name);
+		}
 		/// <summary>/// Reset a hint to the default value.<br/>/// This will reset a hint to the value of the environment variable, or NULL if<br/>/// the environment isn't set. Callbacks will be called normally with this<br/>/// change.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetHint")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLResetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
@@ -1969,10 +2081,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ResetHints")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetHints")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLResetHintsNative();
-
+		internal static void SDLResetHintsNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[692])();
+		}
 		/// <summary>/// Reset all hints to the default values.<br/>/// This will reset all hints to the value of the associated environment<br/>/// variable, or NULL if the environment isn't set. Callbacks will be called<br/>/// normally with this change.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetHints")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLResetHints()
@@ -1988,10 +2100,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetHint")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetHint")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
+		internal static byte* SDLGetHintNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[693])(name);
+		}
 		/// <summary>/// Get the value of a hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetHint")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetHint([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
@@ -2096,10 +2208,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetHintBoolean")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetHintBoolean")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLGetHintBooleanNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool defaultValue);
-
+		internal static SDLBool SDLGetHintBooleanNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool defaultValue)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, SDLBool, SDLBool>)vt[694])(name, defaultValue);
+		}
 		/// <summary>/// Get the boolean value of a hint variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetHintBoolean")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLGetHintBoolean([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "SDL_bool")] SDLBool defaultValue)
@@ -2156,20 +2268,20 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AddHintCallback")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAddHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLAddHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, delegate*<void*, byte*, byte*, byte*, void>, void*, void>)vt[695])(name, callback, userdata);
+		}
 		/// <summary>/// Add a function to watch a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLAddHintCallbackNative(name, callback, userdata);
 		}
 
 		/// <summary>/// Add a function to watch a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -2179,7 +2291,7 @@ namespace Hexa.NET.SDL2
 
 		/// <summary>/// Add a function to watch a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AddHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLAddHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2213,20 +2325,20 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DelHintCallback")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDelHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLDelHintCallbackNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, delegate*<void*, byte*, byte*, byte*, void>, void*, void>)vt[696])(name, callback, userdata);
+		}
 		/// <summary>/// Remove a function watching a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLDelHintCallbackNative(name, callback, userdata);
 		}
 
 		/// <summary>/// Remove a function watching a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -2236,7 +2348,7 @@ namespace Hexa.NET.SDL2
 
 		/// <summary>/// Remove a function watching a particular hint.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DelHintCallback")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] SdlHintcallback callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLDelHintCallback([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_HintCallback")] delegate*<void*, byte*, byte*, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -2274,10 +2386,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ClearHints")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearHints")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearHintsNative();
-
+		internal static void SDLClearHintsNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[697])();
+		}
 		/// <summary>/// Clear all hints.<br/>/// This function is automatically called during SDL_Quit(), and deletes all<br/>/// callbacks without calling them and frees all memory associated with hints.<br/>/// If you're calling this from application code you probably want to call<br/>/// SDL_ResetHints() instead.<br/>/// This function will be removed from the API the next time we rev the ABI.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearHints")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLClearHints()
@@ -2293,10 +2405,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LoadObject")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadObject")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLLoadObjectNative([NativeName(NativeNameType.Param, "sofile")] [NativeName(NativeNameType.Type, "const char*")] byte* sofile);
-
+		internal static void* SDLLoadObjectNative([NativeName(NativeNameType.Param, "sofile")] [NativeName(NativeNameType.Type, "const char*")] byte* sofile)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, void*>)vt[698])(sofile);
+		}
 		/// <summary>/// Dynamically load a shared object.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadObject")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLLoadObject([NativeName(NativeNameType.Param, "sofile")] [NativeName(NativeNameType.Type, "const char*")] byte* sofile)
@@ -2361,10 +2473,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LoadFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLLoadFunctionNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
-
+		internal static void* SDLLoadFunctionNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
+		{
+			return ((delegate* unmanaged[Cdecl]<void*, byte*, void*>)vt[699])(handle, name);
+		}
 		/// <summary>/// Look up the address of the named function in a shared object.<br/>/// This function pointer is no longer valid after calling SDL_UnloadObject().<br/>/// This function can only look up C function names. Other languages may have<br/>/// name mangling and intrinsic language support that varies from compiler to<br/>/// compiler.<br/>/// Make sure you declare your function pointers with the same calling<br/>/// convention as the actual library function. Your code will crash<br/>/// mysteriously if you do not do this.<br/>/// If the requested function doesn't exist, NULL is returned.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LoadFunction")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLLoadFunction([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name)
@@ -2421,10 +2533,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_UnloadObject")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnloadObject")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnloadObjectNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle);
-
+		internal static void SDLUnloadObjectNative([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle)
+		{
+			((delegate* unmanaged[Cdecl]<void*, void>)vt[700])(handle);
+		}
 		/// <summary>/// Unload a shared object from memory.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnloadObject")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLUnloadObject([NativeName(NativeNameType.Param, "handle")] [NativeName(NativeNameType.Type, "void*")] void* handle)
@@ -2440,10 +2552,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogSetAllPriority")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetAllPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetAllPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority);
-
+		internal static void SDLLogSetAllPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
+		{
+			((delegate* unmanaged[Cdecl]<SDLLogPriority, void>)vt[701])(priority);
+		}
 		/// <summary>/// Set the priority of all log categories.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetAllPriority")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogSetAllPriority([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
@@ -2459,10 +2571,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogSetPriority")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority);
-
+		internal static void SDLLogSetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
+		{
+			((delegate* unmanaged[Cdecl]<int, SDLLogPriority, void>)vt[702])(category, priority);
+		}
 		/// <summary>/// Set the priority of a particular log category.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetPriority")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogSetPriority([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority)
@@ -2478,10 +2590,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogGetPriority")]
 		[return: NativeName(NativeNameType.Type, "SDL_LogPriority")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogGetPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLLogPriority SDLLogGetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category);
-
+		internal static SDLLogPriority SDLLogGetPriorityNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, SDLLogPriority>)vt[703])(category);
+		}
 		/// <summary>/// Get the priority of a particular log category.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogGetPriority")]
 		[return: NativeName(NativeNameType.Type, "SDL_LogPriority")]
 		public static SDLLogPriority SDLLogGetPriority([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category)
@@ -2498,10 +2610,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogResetPriorities")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogResetPriorities")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogResetPrioritiesNative();
-
+		internal static void SDLLogResetPrioritiesNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[704])();
+		}
 		/// <summary>/// Reset all priorities to default.<br/>/// This is called by SDL_Quit().<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogResetPriorities")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogResetPriorities()
@@ -2518,10 +2630,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Log")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Log")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<byte*, void>)vt[705])(fmt);
+		}
 		[NativeName(NativeNameType.Func, "SDL_Log")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLog([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2575,10 +2687,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogVerbose")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogVerboseNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogVerboseNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[706])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_VERBOSE.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogVerbose")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogVerbose([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2632,10 +2744,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogDebug")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogDebugNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogDebugNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[707])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_DEBUG.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogDebug")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogDebug([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2689,10 +2801,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogInfo")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogInfoNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogInfoNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[708])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_INFO.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogInfo")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogInfo([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2746,10 +2858,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogWarn")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogWarnNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogWarnNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[709])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_WARN.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogWarn")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogWarn([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2803,10 +2915,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogError")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogErrorNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogErrorNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[710])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_ERROR.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogError")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogError([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2860,10 +2972,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogCritical")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogCriticalNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogCriticalNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, byte*, void>)vt[711])(category, fmt);
+		}
 		/// <summary>/// Log a message with SDL_LOG_PRIORITY_CRITICAL.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogCritical")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogCritical([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2917,10 +3029,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogMessage")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogMessageNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static void SDLLogMessageNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			((delegate* unmanaged[Cdecl]<int, SDLLogPriority, byte*, void>)vt[712])(category, priority, fmt);
+		}
 		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessage")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogMessage([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2974,10 +3086,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogMessageV")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogMessageVNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap);
-
+		internal static void SDLLogMessageVNative([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap)
+		{
+			((delegate* unmanaged[Cdecl]<int, SDLLogPriority, byte*, nint, void>)vt[713])(category, priority, fmt, ap);
+		}
 		/// <summary>/// Log a message with the specified category and priority.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogMessageV")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLLogMessageV([NativeName(NativeNameType.Param, "category")] [NativeName(NativeNameType.Type, "int")] int category, [NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_LogPriority")] SDLLogPriority priority, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "ap")] [NativeName(NativeNameType.Type, "va_list")] nint ap)
@@ -3031,13 +3143,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogGetOutputFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogGetOutputFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogGetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata);
-
+		internal static void SDLLogGetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] delegate*<void*, int, SDLLogPriority, byte*, void>* callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, int, SDLLogPriority, byte*, void>*, void**, void>)vt[714])(callback, userdata);
+		}
 		/// <summary>/// Get the current log output function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogGetOutputFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogGetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
+		public static void SDLLogGetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction*")] delegate*<void*, int, SDLLogPriority, byte*, void>* callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void**")] void** userdata)
 		{
 			SDLLogGetOutputFunctionNative(callback, userdata);
 		}
@@ -3050,13 +3162,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LogSetOutputFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LogSetOutputFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLLogSetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLLogSetOutputFunctionNative([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] delegate*<void*, int, SDLLogPriority, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<void*, int, SDLLogPriority, byte*, void>, void*, void>)vt[715])(callback, userdata);
+		}
 		/// <summary>/// Replace the default log output function with one of your own.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LogSetOutputFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLLogSetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] SdlLogoutputfunction callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLLogSetOutputFunction([NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "SDL_LogOutputFunction")] delegate*<void*, int, SDLLogPriority, byte*, void> callback, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLLogSetOutputFunctionNative(callback, userdata);
 		}
@@ -3084,10 +3196,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ShowMessageBox")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowMessageBox")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLShowMessageBoxNative([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] int* buttonid);
-
+		internal static int SDLShowMessageBoxNative([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] int* buttonid)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLMessageBoxData*, int*, int>)vt[716])(messageboxdata, buttonid);
+		}
 		/// <summary>/// Create a modal message box.<br/>/// If your needs aren't complex, it might be easier to use<br/>/// SDL_ShowSimpleMessageBox.<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowMessageBox")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLShowMessageBox([NativeName(NativeNameType.Param, "messageboxdata")] [NativeName(NativeNameType.Type, "const SDL_MessageBoxData*")] SDLMessageBoxData* messageboxdata, [NativeName(NativeNameType.Param, "buttonid")] [NativeName(NativeNameType.Type, "int*")] int* buttonid)
@@ -3159,10 +3271,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ShowSimpleMessageBox")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLShowSimpleMessageBoxNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window);
-
+		internal static int SDLShowSimpleMessageBoxNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, byte*, byte*, SDLWindow*, int>)vt[717])(flags, title, message, window);
+		}
 		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] SDLWindow* window)
@@ -3337,84 +3449,6 @@ namespace Hexa.NET.SDL2
 					int ret = SDLShowSimpleMessageBoxNative(flags, (byte*)ptitle, message, (SDLWindow*)pwindow);
 					return ret;
 				}
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] string title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] byte* message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (title != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(title);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(title, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (SDLWindow* pwindow = &window)
-			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, pStr0, message, (SDLWindow*)pwindow);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] ref byte message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			fixed (byte* pmessage = &message)
-			{
-				fixed (SDLWindow* pwindow = &window)
-				{
-					int ret = SDLShowSimpleMessageBoxNative(flags, title, (byte*)pmessage, (SDLWindow*)pwindow);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>/// Display a simple modal message box.<br/>/// If your needs aren't complex, this function is preferred over<br/>/// SDL_ShowMessageBox.<br/>/// `flags` may be any of the following:<br/>/// - `SDL_MESSAGEBOX_ERROR`: error dialog<br/>/// - `SDL_MESSAGEBOX_WARNING`: warning dialog<br/>/// - `SDL_MESSAGEBOX_INFORMATION`: informational dialog<br/>/// This function should be called on the thread that created the parent<br/>/// window, or on the main thread if the messagebox has no parent. It will<br/>/// block execution of that thread until the user clicks a button or closes the<br/>/// messagebox.<br/>/// This function may be called at any time, even before SDL_Init(). This makes<br/>/// it useful for reporting errors like a failure to create a renderer or<br/>/// OpenGL context.<br/>/// On X11, SDL rolls its own dialog box with X11 primitives instead of a<br/>/// formal toolkit like GTK+ or Qt.<br/>/// Note that if SDL_Init() would fail because there isn't any available video<br/>/// target, this function is likely to fail for the same reasons. If this is a<br/>/// concern, check the return value from this function and fall back to writing<br/>/// to stderr if you can.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ShowSimpleMessageBox")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int SDLShowSimpleMessageBox([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "Uint32")] uint flags, [NativeName(NativeNameType.Param, "title")] [NativeName(NativeNameType.Type, "const char*")] byte* title, [NativeName(NativeNameType.Param, "message")] [NativeName(NativeNameType.Type, "const char*")] string message, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "SDL_Window*")] ref SDLWindow window)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (message != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(message);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(message, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (SDLWindow* pwindow = &window)
-			{
-				int ret = SDLShowSimpleMessageBoxNative(flags, title, pStr0, (SDLWindow*)pwindow);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
 			}
 		}
 	}

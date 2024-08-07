@@ -9,15 +9,16 @@
     public enum ParameterFlags
     {
         None = 0,
-        Default = 1,
-        Out = 2,
-        Ref = 4,
-        Pointer = 8,
-        String = 16,
-        Array = 32,
-        Bool = 64,
-        IID = 128,
-        COMPtr = 256,
+        Default = 1 << 0,
+        Out = 1 << 1,
+        Ref = 1 << 2,
+        Span = 1 << 3,
+        Pointer = 1 << 4,
+        String = 1 << 5,
+        Array = 1 << 6,
+        Bool = 1 << 7,
+        IID = 1 << 8,
+        COMPtr = 1 << 9,
     }
 
     public class CsParameterInfo : ICloneable<CsParameterInfo>
@@ -94,6 +95,7 @@
                 result |= DefaultValue != null ? ParameterFlags.Default : ParameterFlags.None;
                 result |= Type.IsOut ? ParameterFlags.Out : ParameterFlags.None;
                 result |= Type.IsRef ? ParameterFlags.Ref : ParameterFlags.None;
+                result |= Type.IsSpan ? ParameterFlags.Span : ParameterFlags.None;
                 result |= Type.IsPointer ? ParameterFlags.Pointer : ParameterFlags.None;
                 result |= Type.IsString ? ParameterFlags.String : ParameterFlags.None;
                 result |= Type.IsArray ? ParameterFlags.Array : ParameterFlags.None;

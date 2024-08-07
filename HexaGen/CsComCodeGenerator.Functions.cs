@@ -20,7 +20,7 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
@@ -82,10 +82,10 @@
                         writer.WriteLine();
                     }
 
-                    var function = CreateCsFunction(cppFunction, csName, functions, out var overload);
+                    var function = CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
                     overload.Modifiers.Add("public");
                     overload.Modifiers.Add("static");
-                    funcGen.GenerateCOMVariations(cppFunction.Parameters, overload, false);
+                    funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
                     WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
                 }
             }

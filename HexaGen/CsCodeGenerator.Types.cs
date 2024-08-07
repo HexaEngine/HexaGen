@@ -23,7 +23,7 @@
             return usings;
         }
 
-        protected virtual bool FilterType(GenContext context, CppClass cppClass, out TypeMapping? mapping, [NotNullWhen(false)] out string? csName, bool bypassDef = false)
+        protected virtual bool FilterType(GenContext? context, CppClass cppClass, out TypeMapping? mapping, [NotNullWhen(false)] out string? csName, bool bypassDef = false)
         {
             csName = null;
             mapping = null;
@@ -36,7 +36,7 @@
 
             if (DefinedTypes.Contains(cppClass.Name) && !bypassDef)
             {
-                LogWarn($"{context.FilePath}: {cppClass} is already defined!");
+                LogWarn($"{context?.FilePath}: {cppClass} is already defined!");
                 return true;
             }
 
@@ -57,30 +57,60 @@
 
         protected virtual void GenerateTypes(CppCompilation compilation, string outputPath)
         {
-            MemberFunctions.Clear();
-            string filePath = Path.Combine(outputPath, "Structures.cs");
-
-            // Generate Structures
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), 1);
-            GenContext context = new(compilation, filePath, writer);
-
-            // Print All classes, structs
-            for (int i = 0; i < compilation.Classes.Count; i++)
+            string folder = Path.Combine(outputPath, "Structs");
+            if (Directory.Exists(folder))
             {
-                WriteClass(context, compilation.Classes[i]);
-                if (settings.WrapPointersAsHandle)
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+
+            MemberFunctions.Clear();
+
+            if (settings.OneFilePerType)
+            {
+                // Generate Structures
+
+                // Print All classes, structs
+                for (int i = 0; i < compilation.Classes.Count; i++)
                 {
-                    WriteHandle(context, compilation.Classes[i]);
+                    CppClass cppClass = compilation.Classes[i];
+                    if (FilterType(null, cppClass, out var mapping, out var csNameDefault))
+                        continue;
+                    string filePath = Path.Combine(folder, $"{csNameDefault}.cs");
+                    using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector);
+                    GenContext context = new(compilation, filePath, writer);
+
+                    WriteClass(context, cppClass, mapping, csNameDefault);
+
+                    if (settings.WrapPointersAsHandle)
+                    {
+                        WriteHandle(context, compilation.Classes[i]);
+                    }
                 }
             }
-        }
+            else
+            {
+                string filePath = Path.Combine(folder, "Structs.cs");
 
-        protected virtual void WriteClass(GenContext context, CppClass cppClass)
-        {
-            if (FilterType(context, cppClass, out var mapping, out var csNameDefault))
-                return;
+                // Generate Structures
+                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector, 1);
+                GenContext context = new(compilation, filePath, writer);
 
-            WriteClass(context, cppClass, mapping, csNameDefault);
+                // Print All classes, structs
+                for (int i = 0; i < compilation.Classes.Count; i++)
+                {
+                    CppClass cppClass = compilation.Classes[i];
+                    if (FilterType(context, cppClass, out var mapping, out var csNameDefault))
+                        continue;
+
+                    WriteClass(context, cppClass, mapping, csNameDefault);
+
+                    if (settings.WrapPointersAsHandle)
+                    {
+                        WriteHandle(context, compilation.Classes[i]);
+                    }
+                }
+            }
         }
 
         protected virtual void WriteClass(GenContext context, CppClass cppClass, TypeMapping? mapping, string csName)
@@ -91,15 +121,22 @@
             string modifier = "partial";
 
             LogInfo("defined struct " + csName);
-            var commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
-            if (!commentWritten)
+
+            bool commentWritten = false;
+            if (mapping != null && mapping.Comment != null)
             {
-                commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
+                commentWritten = settings.WriteCsSummary(mapping.Comment, writer);
             }
+            else
+            {
+                commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
+            }
+
             if (settings.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.FullName}\")]");
             }
+
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
 
             if (isUnion)
@@ -218,58 +255,12 @@
                 writer.WriteLine();
 
                 HashSet<string> definedConstructors = new();
-                if (settings.KnownConstructors.TryGetValue(cppClass.Name, out var constructors))
-                {
-                    writer.WriteLine();
-                    List<CsFunction> commands = new();
-                    for (int i = 0; i < constructors.Count; i++)
-                    {
-                        CppFunction cppFunction = FindFunction(context.Compilation, constructors[i]);
-                        var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-
-                        CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
-
-                        for (int j = 0; j < overload.Parameters.Count; j++)
-                        {
-                            var param = overload.Parameters[j];
-                            var subClass = subClasses.First(x => x.CppType == param.CppType);
-                            param.Type = subClass.Type;
-
-                            int depth = 0;
-                            var subClass1 = subClasses.FirstOrDefault(x => x.CppType.IsPointerOf(param.CppType, ref depth));
-                            if (subClass1 != null)
-                            {
-                                param.Type = new CsType(subClass1.Name + new string('*', depth), CppPrimitiveKind.Void);
-                            }
-                        }
-
-                        overload.StructName = csName;
-                        funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
-
-                        bool useThisRef = false;
-                        if (cppFunction.Parameters.Count > 0 && cppClass.IsPointerOf(cppFunction.Parameters[0].Type))
-                        {
-                            useThisRef = true;
-                        }
-
-                        bool useThis = false;
-                        if (cppFunction.Parameters.Count > 0 && cppClass.IsType(cppFunction.Parameters[0].Type))
-                        {
-                            useThis = true;
-                        }
-
-                        if (useThis || useThisRef)
-                        {
-                            WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, subClasses, "public unsafe");
-                        }
-                    }
-                }
 
                 if (settings.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
                 {
                     settings.WriteCsSummary((string?)null, out string? comment);
                     CsFunction function = new(csName, comment);
-                    CsFunctionOverload overload = new(string.Empty, csName, comment, csName, true, true, false, new(string.Empty, CppPrimitiveKind.Void));
+                    CsFunctionOverload overload = new(string.Empty, csName, comment, csName, CsFunctionKind.Constructor, new(string.Empty, CppPrimitiveKind.Void));
                     function.Overloads.Add(overload);
                     for (int j = 0; j < cppClass.Fields.Count; j++)
                     {
@@ -376,7 +367,7 @@
             return false;
         }
 
-        private void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
+        protected virtual void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
@@ -384,7 +375,7 @@
             }
         }
 
-        private void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
+        protected virtual void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType returnType = variation.ReturnType;
@@ -414,6 +405,7 @@
                 {
                     var cppParameter = overload.Parameters[i];
                     var cppField = fields[i];
+
                     ParameterFlags paramFlags = ParameterFlags.None;
 
                     if (variation.TryGetParameter(cppParameter.Name, out var param))
@@ -426,7 +418,8 @@
 
                     if (string.IsNullOrEmpty(fieldName))
                     {
-                        fieldName = subClasses.First(x => x.CppType == cppField.Type).Name;
+                        var subClass = subClasses.First(x => x.CppType == cppField.Type);
+                        fieldName = subClass.Name;
                     }
 
                     if (fieldName == cppParameter.Name)
@@ -438,7 +431,7 @@
                     // TODO: Add support for array field types.
                     if (cppField.Type is CppArrayType arrayType)
                     {
-                        using (writer.PushBlock($"if ({cppParameter.Name} != default)"))
+                        using (writer.PushBlock($"if ({cppParameter.Name} != default({cppParameter.Type.Name}))"))
                         {
                             for (int j = 0; j < arrayType.Size; j++)
                             {
@@ -457,7 +450,7 @@
                             writer.WriteLine($"{fieldName} = (void*)Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
                         }
                     }
-                    else if (paramFlags.HasFlag(ParameterFlags.Bool))
+                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
                         writer.WriteLine($"{fieldName} = {cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0;");
                     }
@@ -494,19 +487,11 @@
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = settings.GetCsTypeName(arrayType.ElementType);
 
                 if (arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType && settings.DelegatesAsVoidPointer)
                 {
                     csFieldType = "nint";
-                }
-
-                if (arrayType.ElementType is CppTypedef typedef)
-                {
-                    if (typedef.IsPrimitive(out var primitive))
-                    {
-                        csFieldType = settings.GetCsTypeName(primitive, false);
-                    }
                 }
 
                 string unsafePrefix = string.Empty;
@@ -795,7 +780,9 @@
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
             }
+            writer.WriteLine("#if NET5_0_OR_GREATER");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
+            writer.WriteLine("#endif");
             using (writer.PushBlock($"public unsafe struct {csName} : IEquatable<{csName}>"))
             {
                 string nullValue = "null";
@@ -807,6 +794,8 @@
                 writer.WriteLine($"public bool IsNull => Handle == null;");
                 writer.WriteLine();
                 writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
+                writer.WriteLine();
+                writer.WriteLine($"public {handleType.AsSpan().TrimEndFirstOccurrence('*')} this[int index] {{ get => Handle[index]; set => Handle[index] = value; }}");
                 writer.WriteLine();
                 writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
                 writer.WriteLine();
@@ -828,7 +817,9 @@
                 writer.WriteLine("/// <inheritdoc/>");
                 writer.WriteLine($"public override int GetHashCode() => ((nuint)Handle).GetHashCode();");
                 writer.WriteLine();
+                writer.WriteLine("#if NET5_0_OR_GREATER");
                 writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", ((nuint)Handle).ToString(\"X\"));");
+                writer.WriteLine("#endif");
                 var pCount = handleType.Count(x => x == '*');
                 if (pCount == 1)
                 {
@@ -844,13 +835,6 @@
                         WriteMemberFunctions(context, cppClass, functions, WriteFunctionFlags.UseHandle);
                     }
                 }
-                else
-                {
-                    using (writer.PushBlock($"public {csName[..^3]} this[int index]"))
-                    {
-                        writer.WriteLine($"get => Handle[index]; set => Handle[index] = value;");
-                    }
-                }
             }
             writer.WriteLine();
         }
@@ -864,8 +848,8 @@
                 CppFunction cppFunction = FindFunction(context.Compilation, functions[i]);
                 var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
 
-                CsFunction function = CreateCsFunction(cppFunction, csFunctionName, commands, out var overload);
-                funcGen.GenerateVariations(cppFunction.Parameters, overload, true);
+                CsFunction function = CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
+                funcGen.GenerateVariations(cppFunction.Parameters, overload);
 
                 bool useThisRef = false;
                 if (cppFunction.Parameters.Count > 0 && cppClass.IsPointerOf(cppFunction.Parameters[0].Type))

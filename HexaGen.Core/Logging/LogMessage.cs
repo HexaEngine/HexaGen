@@ -2,25 +2,25 @@
 {
     public struct LogMessage
     {
-        public LogSevertiy Severtiy;
+        public LogSeverity Severtiy;
         public string Message;
 
-        public LogMessage(LogSevertiy severtiy, string message)
+        public LogMessage(LogSeverity severtiy, string message)
         {
             Severtiy = severtiy;
             Message = message;
         }
 
-        private static string GetServertiyString(LogSevertiy severtiy)
+        private static string GetServertiyString(LogSeverity severtiy)
         {
             return severtiy switch
             {
-                LogSevertiy.Trace => "[Trc]",
-                LogSevertiy.Debug => "[Dbg]",
-                LogSevertiy.Information => "[Inf]",
-                LogSevertiy.Warning => "[Wrn]",
-                LogSevertiy.Error => "[Err]",
-                LogSevertiy.Critical => "[Crt]",
+                LogSeverity.Trace => "[Trc]",
+                LogSeverity.Debug => "[Dbg]",
+                LogSeverity.Information => "[Inf]",
+                LogSeverity.Warning => "[Wrn]",
+                LogSeverity.Error => "[Err]",
+                LogSeverity.Critical => "[Crt]",
                 _ => throw new NotImplementedException(),
             };
         }

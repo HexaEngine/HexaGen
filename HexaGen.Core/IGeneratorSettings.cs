@@ -35,7 +35,7 @@
         BoolType BoolType { get; set; }
         List<TypeMapping> ClassMappings { get; set; }
         List<ConstantMapping> ConstantMappings { get; set; }
-        LogSevertiy CppLogLevel { get; set; }
+        LogSeverity CppLogLevel { get; set; }
         List<DelegateMapping> DelegateMappings { get; set; }
         bool DelegatesAsVoidPointer { get; set; }
         List<EnumMapping> EnumMappings { get; set; }
@@ -67,7 +67,7 @@
         Dictionary<string, string> KnownExtensionPrefixes { get; set; }
         Dictionary<string, List<string>> KnownMemberFunctions { get; set; }
         string LibName { get; set; }
-        LogSevertiy LogLevel { get; set; }
+        LogSeverity LogLevel { get; set; }
         Dictionary<string, string> NameMappings { get; set; }
         string Namespace { get; set; }
 
@@ -102,11 +102,11 @@
 
         FunctionMapping? GetFunctionMapping(string functionName);
 
-        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut);
+        string GetNamelessParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool delegateType = false, bool compatibility = false);
 
         string GetParameterName(int paramIdx, string name);
 
-        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false);
+        string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false, bool compatibility = false);
 
         string GetConstantName(string value);
 

@@ -21,12 +21,12 @@
             index++;
         }
 
-        public bool Equals(Iterator<T> other)
+        public readonly bool Equals(Iterator<T> other)
         {
             return ptr == other.ptr && index == other.index;
         }
 
-        public override bool Equals(object obj)
+        public override readonly bool Equals(object? obj)
         {
             if (obj is Iterator<T> other)
             {
@@ -35,7 +35,7 @@
             return false;
         }
 
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
             return ((IntPtr)ptr).GetHashCode() ^ index.GetHashCode();
         }

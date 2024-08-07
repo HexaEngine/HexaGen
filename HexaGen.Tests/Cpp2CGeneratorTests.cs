@@ -20,17 +20,17 @@
                 var msg = messages[i];
                 switch (msg.Severtiy)
                 {
-                    case LogSevertiy.Warning:
+                    case LogSeverity.Warning:
                         Assert.Warn(messages[i].Message);
                         warns++;
                         break;
 
-                    case LogSevertiy.Error:
+                    case LogSeverity.Error:
                         Assert.Warn(messages[i].Message);
                         errors++;
                         break;
 
-                    case LogSevertiy.Critical:
+                    case LogSeverity.Critical:
                         Assert.Warn(messages[i].Message);
                         errors++;
                         break;

@@ -53,7 +53,7 @@ namespace Hexa.NET.Vulkan
 	[NativeName(NativeNameType.Delegate, "pfnGetInstanceProcAddr")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction PfnGetInstanceProcAddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> PfnGetInstanceProcAddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	[NativeName(NativeNameType.Delegate, "PFN_vkAllocationFunction")]
 	[return: NativeName(NativeNameType.Type, "void*")]
@@ -133,12 +133,12 @@ namespace Hexa.NET.Vulkan
 	[NativeName(NativeNameType.Delegate, "PFN_vkGetInstanceProcAddr")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction PfnVkgetinstanceprocaddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> PfnVkgetinstanceprocaddr([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	[NativeName(NativeNameType.Delegate, "PFN_vkGetDeviceProcAddr")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction PfnVkgetdeviceprocaddr([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> PfnVkgetdeviceprocaddr([NativeName(NativeNameType.Param, "device")] [NativeName(NativeNameType.Type, "VkDevice")] VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	[NativeName(NativeNameType.Delegate, "PFN_vkCreateDevice")]
 	[return: NativeName(NativeNameType.Type, "VkResult")]
@@ -2848,7 +2848,7 @@ namespace Hexa.NET.Vulkan
 	[NativeName(NativeNameType.Delegate, "PFN_vkGetInstanceProcAddrLUNARG")]
 	[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-	public unsafe delegate PFNVkVoidFunction PFNVkGetInstanceProcAddrLUNARG([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
+	public unsafe delegate delegate*<void> PFNVkGetInstanceProcAddrLUNARG([NativeName(NativeNameType.Param, "instance")] [NativeName(NativeNameType.Type, "VkInstance")] VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName);
 
 	[NativeName(NativeNameType.Delegate, "PFN_vkGetShaderModuleIdentifierEXT")]
 	[return: NativeName(NativeNameType.Type, "void")]

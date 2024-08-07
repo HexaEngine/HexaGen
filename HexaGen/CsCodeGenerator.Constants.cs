@@ -49,9 +49,15 @@
 
         protected virtual void GenerateConstants(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Constants.cs");
+            string folder = Path.Combine(outputPath, "Constants");
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+            string filePath = Path.Combine(folder, "Constants.cs");
 
-            using CsSplitCodeWriter writer = new(filePath, settings.Namespace, SetupConstantUsings());
+            using CsSplitCodeWriter writer = new(filePath, settings.Namespace, SetupConstantUsings(), settings.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
             using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
             {

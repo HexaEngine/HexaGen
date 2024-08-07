@@ -1,6 +1,9 @@
 ﻿namespace HexaGen
 {
     using HexaGen.Core;
+    using System.Text;
+
+    public delegate void HeaderInjectionDelegate(ICodeWriter writer, StringBuilder headerBuilder);
 
     public sealed class CodeWriter : ICodeWriter, IDisposable
     {
@@ -21,7 +24,7 @@
 
         public string FileName { get; }
 
-        public CodeWriter(string fileName, string template)
+        public CodeWriter(string fileName, string template, HeaderInjectionDelegate? headerInjector)
         {
             FileName = fileName;
 
@@ -34,7 +37,11 @@
             _writer = File.CreateText(fileName);
             _writer.NewLine = Environment.NewLine;
 
-            _writer.Write(template);
+            StringBuilder stringBuilder = new(template);
+
+            headerInjector?.Invoke(this, stringBuilder);
+
+            _writer.Write(stringBuilder.ToString());
         }
 
         public long Length => _writer.BaseStream.Length;
@@ -71,7 +78,7 @@
             lines++;
         }
 
-        public void WriteLines(string? @string, bool newLineAtEnd = false)
+        public void WriteLines(string? @string)
         {
             if (@string == null)
                 return;

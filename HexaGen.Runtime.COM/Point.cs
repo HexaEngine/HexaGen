@@ -20,7 +20,11 @@
 
         public override readonly int GetHashCode()
         {
+#if NET5_0_OR_GREATER
             return HashCode.Combine(X, Y);
+#else
+            return X.GetHashCode() ^ Y.GetHashCode();
+#endif
         }
 
         public static bool operator ==(Point32 left, Point32 right)
@@ -56,7 +60,11 @@
 
         public override readonly int GetHashCode()
         {
+#if NET5_0_OR_GREATER
             return HashCode.Combine(X, Y, Width, Height);
+#else
+            return X.GetHashCode() ^ Y.GetHashCode() ^ Width.GetHashCode() ^ Height.GetHashCode();
+#endif
         }
 
         public static bool operator ==(Rect32 left, Rect32 right)

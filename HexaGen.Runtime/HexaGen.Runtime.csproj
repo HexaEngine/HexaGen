@@ -1,15 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net7.0;netstandard2.0;netstandard2.1;net472</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>12</LangVersion>
+		
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
 
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.0.0</PackageVersion>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<PackageVersion>1.1.5</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
@@ -17,10 +19,16 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<None Update="README.md" Pack="true" PackagePath="\" />
-		<None Update="LICENSE.txt" Pack="true" PackagePath="\" />
+		<Content Include="../README.md" Pack="true" PackagePath="/" />
+		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard2.1' OR '$(TargetFramework)' == 'net472'">
+		<PackageReference Include="System.Memory" Version="4.5.5" />
 	</ItemGroup>
 </Project>

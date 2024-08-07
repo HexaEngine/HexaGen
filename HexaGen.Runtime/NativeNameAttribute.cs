@@ -33,6 +33,6 @@
 
         public NativeNameType Type { get; }
 
-        public string Name { get; init; }
+        public string Name { get; set; }
     }
 }

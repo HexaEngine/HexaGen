@@ -460,12 +460,12 @@ namespace Hexa.NET.Vulkan
 		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* PUserData;
 
-		public unsafe VkDebugReportCallbackCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, PFNVkDebugReportCallbackEXT pfnCallback = default, void* pUserData = default)
+		public unsafe VkDebugReportCallbackCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, delegate*<uint, VkDebugReportObjectTypeEXT, ulong, ulong, int, byte*, byte*, void*, uint> pfnCallback = default, void* pUserData = default)
 		{
 			SType = sType;
 			PNext = pNext;
 			Flags = flags;
-			PfnCallback = (void*)Marshal.GetFunctionPointerForDelegate(pfnCallback);
+			PfnCallback = (void*)pfnCallback;
 			PUserData = pUserData;
 		}
 
@@ -2303,14 +2303,14 @@ namespace Hexa.NET.Vulkan
 		[NativeName(NativeNameType.Type, "void*")]
 		public unsafe void* PUserData;
 
-		public unsafe VkDebugUtilsMessengerCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, uint messageSeverity = default, uint messageType = default, PFNVkDebugUtilsMessengerCallbackEXT pfnUserCallback = default, void* pUserData = default)
+		public unsafe VkDebugUtilsMessengerCreateInfoEXT(VkStructureType sType = default, void* pNext = default, uint flags = default, uint messageSeverity = default, uint messageType = default, delegate*<VkDebugUtilsMessageSeverityFlagBitsEXT, uint, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback = default, void* pUserData = default)
 		{
 			SType = sType;
 			PNext = pNext;
 			Flags = flags;
 			MessageSeverity = messageSeverity;
 			MessageType = messageType;
-			PfnUserCallback = (void*)Marshal.GetFunctionPointerForDelegate(pfnUserCallback);
+			PfnUserCallback = (void*)pfnUserCallback;
 			PUserData = pUserData;
 		}
 
@@ -3796,6 +3796,17 @@ namespace Hexa.NET.Vulkan
 		}
 
 
+		public unsafe Span<Pointer<float>> Matrix
+		
+		{
+			get
+			{
+				fixed (float** p = &this.Matrix_0)
+				{
+					return new Span<Pointer<float>>(p, 3);
+				}
+			}
+		}
 	}
 
 	[NativeName(NativeNameType.StructOrClass, "VkAabbPositionsKHR")]

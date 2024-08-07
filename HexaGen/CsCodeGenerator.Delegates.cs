@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Core;
     using System.IO;
     using System.Security.Cryptography;
 
@@ -51,10 +52,16 @@
 
         protected virtual void GenerateDelegates(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Delegates.cs");
+            string folder = Path.Combine(outputPath, "Delegates");
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+            string filePath = Path.Combine(folder, "Delegates.cs");
 
             // Generate Delegates
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupDelegateUsings(), 1);
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupDelegateUsings(), settings.HeaderInjector, 1);
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -125,15 +132,29 @@
             }
         }
 
-        protected virtual void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType, bool isReadOnly = false) where T : class, ICppDeclaration, ICppMember
+        private void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType, bool isReadOnly = false) where T : class, ICppDeclaration, ICppMember
         {
             if (FilterDelegate(context, field))
+            {
                 return;
+            }
 
             var writer = context.Writer;
-            string csFieldName = settings.GetDelegateName(field.Name);
+
+            string csFieldName = settings.GetFieldName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-            string signature = settings.GetParameterSignature(functionType.Parameters, false, settings.GenerateMetadata, delegateType: true);
+
+            writer.WriteLine("#if NET5_0_OR_GREATER");
+            WriteFinal(writer, field, functionType, csFieldName, fieldPrefix);
+            writer.WriteLine("#else");
+            WriteFinal(writer, field, functionType, csFieldName, fieldPrefix, compatibility: true);
+            writer.WriteLine("#endif");
+            writer.WriteLine();
+        }
+
+        private void WriteFinal<T>(ICodeWriter writer, T field, CppFunctionType functionType, string csFieldName, string fieldPrefix, bool compatibility = false) where T : class, ICppDeclaration, ICppMember
+        {
+            string signature = settings.GetParameterSignature(functionType.Parameters, canUseOut: false, delegateType: true, compatibility: compatibility);
             string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
             returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
 
@@ -141,12 +162,17 @@
             {
                 if (cppFunction.Parameters.Count == 0)
                 {
-                    returnCsName = $"delegate*<{settings.GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    returnCsName = $"delegate*<{settings.GetCsTypeName(cppFunction.ReturnType)}>";
                 }
                 else
                 {
-                    returnCsName = $"delegate*<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false)}, {settings.GetCsTypeNameInternal(cppFunction.ReturnType)}>";
+                    returnCsName = $"delegate*<{settings.GetNamelessParameterSignature(cppFunction.Parameters, canUseOut: false, delegateType: true, compatibility)}, {settings.GetCsTypeName(cppFunction.ReturnType)}>";
                 }
+            }
+
+            if (compatibility && returnCsName.Contains('*'))
+            {
+                returnCsName = "nint";
             }
 
             if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
@@ -156,13 +182,8 @@
             }
 
             string header = $"{returnCsName} {csFieldName}({signature})";
-            LogInfo("defined delegate " + header);
+
             settings.WriteCsSummary(field.Comment, writer);
-            if (settings.GenerateMetadata)
-            {
-                writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
-                writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
-            }
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
             writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
             writer.WriteLine();

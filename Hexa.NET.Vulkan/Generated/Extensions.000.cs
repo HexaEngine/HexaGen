@@ -79,26 +79,26 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetInstanceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName)
+		public static delegate*<void> GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName)
 		{
-			PFNVkVoidFunction ret = Vulkan.VkGetInstanceProcAddrNative(instance, pName);
+			delegate*<void> ret = Vulkan.VkGetInstanceProcAddrNative(instance, pName);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "vkGetInstanceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] ref byte pName)
+		public static delegate*<void> GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] ref byte pName)
 		{
 			fixed (byte* ppName = &pName)
 			{
-				PFNVkVoidFunction ret = Vulkan.VkGetInstanceProcAddrNative(instance, (byte*)ppName);
+				delegate*<void> ret = Vulkan.VkGetInstanceProcAddrNative(instance, (byte*)ppName);
 				return ret;
 			}
 		}
 
 		[NativeName(NativeNameType.Func, "vkGetInstanceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] string pName)
+		public static delegate*<void> GetInstanceProcAddr(this VkInstance instance, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] string pName)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -117,7 +117,7 @@ namespace Hexa.NET.Vulkan
 				int pStrOffset0 = Utils.EncodeStringUTF8(pName, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			PFNVkVoidFunction ret = Vulkan.VkGetInstanceProcAddrNative(instance, pStr0);
+			delegate*<void> ret = Vulkan.VkGetInstanceProcAddrNative(instance, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
@@ -3763,26 +3763,26 @@ namespace Hexa.NET.Vulkan
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName)
+		public static delegate*<void> GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] byte* pName)
 		{
-			PFNVkVoidFunction ret = Vulkan.VkGetDeviceProcAddrNative(device, pName);
+			delegate*<void> ret = Vulkan.VkGetDeviceProcAddrNative(device, pName);
 			return ret;
 		}
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] ref byte pName)
+		public static delegate*<void> GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] ref byte pName)
 		{
 			fixed (byte* ppName = &pName)
 			{
-				PFNVkVoidFunction ret = Vulkan.VkGetDeviceProcAddrNative(device, (byte*)ppName);
+				delegate*<void> ret = Vulkan.VkGetDeviceProcAddrNative(device, (byte*)ppName);
 				return ret;
 			}
 		}
 
 		[NativeName(NativeNameType.Func, "vkGetDeviceProcAddr")]
 		[return: NativeName(NativeNameType.Type, "PFN_vkVoidFunction")]
-		public static PFNVkVoidFunction GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] string pName)
+		public static delegate*<void> GetDeviceProcAddr(this VkDevice device, [NativeName(NativeNameType.Param, "pName")] [NativeName(NativeNameType.Type, "const char*")] string pName)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -3801,7 +3801,7 @@ namespace Hexa.NET.Vulkan
 				int pStrOffset0 = Utils.EncodeStringUTF8(pName, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			PFNVkVoidFunction ret = Vulkan.VkGetDeviceProcAddrNative(device, pStr0);
+			delegate*<void> ret = Vulkan.VkGetDeviceProcAddrNative(device, pStr0);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);

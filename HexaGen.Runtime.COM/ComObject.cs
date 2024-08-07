@@ -10,6 +10,8 @@
         {
         }
 
+#if NET5_0_OR_GREATER
+
         [SupportedOSPlatform("windows")]
         public unsafe ComObject(object o)
         {
@@ -22,6 +24,18 @@
         [SupportedOSPlatform("windows")]
         public unsafe object UniqueValue => Marshal.GetUniqueObjectForIUnknown((nint)Handle);
 
+#else
+
+        public unsafe ComObject(object o)
+        {
+            Handle = (IUnknown*)(void*)Marshal.GetIUnknownForObject(o);
+        }
+
+        public unsafe object Value => Marshal.GetObjectForIUnknown((nint)Handle);
+
+        public unsafe object UniqueValue => Marshal.GetUniqueObjectForIUnknown((nint)Handle);
+
+#endif
         public unsafe IUnknown* Handle { get; set; }
 
         public static unsafe ComObject? FromPtr(IUnknown* ptr)

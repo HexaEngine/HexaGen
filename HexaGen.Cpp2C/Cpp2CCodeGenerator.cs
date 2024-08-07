@@ -16,8 +16,6 @@
             var options = new CppParserOptions
             {
                 ParseMacros = true,
-                ParseTokenAttributes = false,
-                ParseCommentAttribute = false,
                 ParseComments = true,
                 ParseSystemIncludes = true,
                 ParseAsCpp = true,
@@ -75,15 +73,15 @@
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSevertiy.Error)
+                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSeverity.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSevertiy.Warning)
+                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSeverity.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSevertiy.Information)
+                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSeverity.Information)
                 {
                     LogInfo(message.ToString());
                 }

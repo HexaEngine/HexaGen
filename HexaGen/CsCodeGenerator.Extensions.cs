@@ -40,8 +40,10 @@
 
         protected virtual bool FilterExtensionFunction(GenContext context, CppFunction cppFunction, CppTypedef typedef, bool isCustomHandle)
         {
+#if CPPAST_15_OR_GREATER
             if (cppFunction.IsFunctionTemplate)
                 return true;
+#endif
             if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
                 return true;
             if (settings.IgnoredFunctions.Contains(cppFunction.Name))
@@ -79,10 +81,16 @@
 
         protected virtual void GenerateExtensions(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Extensions.cs");
+            string folder = Path.Combine(outputPath, "Extensions");
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+            string filePath = Path.Combine(folder, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings());
+            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings(), settings.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe partial class Extensions"))
@@ -114,8 +122,8 @@
                 var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
                 var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
 
-                CreateCsFunction(cppFunction, csName, functions, out var overload);
-                funcGen.GenerateVariations(cppFunction.Parameters, overload, false);
+                CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, functions, out var overload);
+                funcGen.GenerateVariations(cppFunction.Parameters, overload);
                 WriteExtensions(context, DefinedVariationsFunctions, csFunctionName, overload, "public static");
             }
         }

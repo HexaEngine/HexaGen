@@ -1,23 +1,25 @@
 ﻿namespace HexaGen.Core.Mapping
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Text.Json.Serialization;
 
     public class EnumMapping
     {
-        public EnumMapping(string exportedName, string? friendlyName, string? comment, List<EnumItemMapping> values)
-        {
-            ExportedName = exportedName;
-            FriendlyName = friendlyName;
-            Comment = comment;
-            ItemMappings = values;
-        }
-
         public EnumMapping(string exportedName, string? friendlyName, string? comment)
         {
             ExportedName = exportedName;
             FriendlyName = friendlyName;
             Comment = comment;
             ItemMappings = new();
+        }
+
+        [JsonConstructor]
+        public EnumMapping(string exportedName, string? friendlyName, string? comment, List<EnumItemMapping> itemMappings)
+        {
+            ExportedName = exportedName;
+            FriendlyName = friendlyName;
+            Comment = comment;
+            ItemMappings = itemMappings;
         }
 
         public string ExportedName { get; set; }

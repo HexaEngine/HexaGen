@@ -82,14 +82,17 @@
 
     public class CsEnumMetadata : IHasIdentifier
     {
-        public CsEnumMetadata(string cppName)
+        public CsEnumMetadata(string cppName, string name, string? comment, string baseType, List<CsEnumItemMetadata> items)
         {
-            Identifier = cppName;
             CppName = cppName;
-            BaseType = "int";
+            Name = name;
+            Comment = comment;
+            Items = items;
+            BaseType = baseType;
+            Items = items;
         }
 
-        public CsEnumMetadata(string identifier, string cppName, string? name, string? comment, List<CsEnumItemMetadata> items) : this(identifier)
+        public CsEnumMetadata(string cppName, string name, string? comment, List<CsEnumItemMetadata> items)
         {
             CppName = cppName;
             Name = name;
@@ -98,7 +101,7 @@
             BaseType = "int";
         }
 
-        public CsEnumMetadata(string identifier, string cppName, string? name, string? comment) : this(identifier)
+        public CsEnumMetadata(string cppName, string name, string? comment)
         {
             CppName = cppName;
             Name = name;
@@ -107,11 +110,11 @@
             BaseType = "int";
         }
 
-        public string Identifier { get; set; }
+        public string Identifier => CppName;
 
         public string CppName { get; set; }
 
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         public string? Comment { get; set; }
 
@@ -129,7 +132,6 @@
     {
         public CsEnumItemMetadata(string cppName, string cppValue)
         {
-            Identifier = cppName;
             CppName = cppName;
             CppValue = cppValue;
         }
@@ -142,7 +144,7 @@
             Comment = comment;
         }
 
-        public string Identifier { get; set; }
+        public string Identifier => CppName;
 
         public string CppName { get; set; }
 
@@ -164,6 +166,8 @@
 
     public class CsCodeGeneratorMetadata
     {
+        public CsCodeGeneratorSettings Settings { get; set; }
+
         public List<CsConstantMetadata> DefinedConstants { get; set; } = new();
 
         public List<CsEnumMetadata> DefinedEnums { get; set; } = new();
@@ -178,12 +182,15 @@
 
         public List<string> DefinedDelegates { get; set; } = new();
 
+        public int VTableLength { get; set; }
+
         public void CopyFrom(CsCodeGenerator generator)
         {
+            Settings = generator.Settings;
             var constants = generator.DefinedConstants.ToArray();
             var enums = generator.DefinedEnums.ToArray();
             var extensions = generator.DefinedExtensions.ToArray();
-            var functions = generator.DefinedFunctions.ToArray();
+            var functions = generator.CppDefinedFunctions.ToArray();
             var typedefs = generator.DefinedTypedefs.ToArray();
             var types = generator.DefinedTypes.ToArray();
             var delegates = generator.DefinedDelegates.ToArray();
@@ -215,6 +222,7 @@
             {
                 DefinedDelegates.Add(delegates[i]);
             }
+            VTableLength = generator.VTableLength;
         }
     }
 

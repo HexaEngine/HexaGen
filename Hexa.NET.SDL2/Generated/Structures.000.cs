@@ -400,7 +400,7 @@ namespace Hexa.NET.SDL2
 		public unsafe void* Userdata;
 
 
-		public unsafe SDLAudioSpec(int freq = default, ushort format = default, byte channels = default, byte silence = default, ushort samples = default, ushort padding = default, uint size = default, SDLAudioCallback callback = default, void* userdata = default)
+		public unsafe SDLAudioSpec(int freq = default, ushort format = default, byte channels = default, byte silence = default, ushort samples = default, ushort padding = default, uint size = default, delegate*<void*, byte*, int, void> callback = default, void* userdata = default)
 		{
 			Freq = freq;
 			Format = format;
@@ -409,7 +409,7 @@ namespace Hexa.NET.SDL2
 			Samples = samples;
 			Padding = padding;
 			Size = size;
-			Callback = (void*)Marshal.GetFunctionPointerForDelegate(callback);
+			Callback = (void*)callback;
 			Userdata = userdata;
 		}
 

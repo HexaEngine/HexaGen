@@ -3,18 +3,26 @@
     using HexaGen.Core.Collections;
     using System.Collections.Generic;
 
+    public enum CsFunctionKind
+    {
+        Default,
+        Constructor,
+        Destructor,
+        Operator,
+        Member,
+        Extension,
+    }
+
     public class CsFunctionOverload : ICsFunction, ICloneable<CsFunctionOverload>
     {
-        public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations, List<string> modifiers, List<string> attributes)
+        public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, CsFunctionKind kind, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations, List<string> modifiers, List<string> attributes)
         {
             ExportedName = exportedName;
             Name = name;
             Comment = comment;
             DefaultValues = defaultValues;
             StructName = structName;
-            IsMember = isMember;
-            IsConstructor = isConstructor;
-            IsDestructor = isDestructor;
+            Kind = kind;
             ReturnType = returnType;
             Parameters = parameters;
             Variations = new(variations);
@@ -22,16 +30,14 @@
             Attributes = attributes;
         }
 
-        public CsFunctionOverload(string exportedName, string name, string? comment, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType)
+        public CsFunctionOverload(string exportedName, string name, string? comment, string structName, CsFunctionKind kind, CsType returnType)
         {
             ExportedName = exportedName;
             Name = name;
             Comment = comment;
             DefaultValues = new();
             StructName = structName;
-            IsMember = isMember;
-            IsConstructor = isConstructor;
-            IsDestructor = isDestructor;
+            Kind = kind;
             ReturnType = returnType;
             Parameters = new();
             Variations = new();
@@ -49,11 +55,7 @@
 
         public string StructName { get; set; }
 
-        public bool IsMember { get; set; }
-
-        public bool IsConstructor { get; set; }
-
-        public bool IsDestructor { get; set; }
+        public CsFunctionKind Kind { get; set; }
 
         public CsType ReturnType { get; set; }
 
@@ -156,12 +158,12 @@
 
         public CsFunctionVariation CreateVariationWith()
         {
-            return new(ExportedName, Name, StructName, IsMember, IsConstructor, IsDestructor, ReturnType);
+            return new(ExportedName, Name, StructName, Kind, ReturnType);
         }
 
         public CsFunctionOverload Clone()
         {
-            return new CsFunctionOverload(ExportedName, Name, Comment, DefaultValues.Clone(), StructName, IsMember, IsConstructor, IsDestructor, ReturnType.Clone(), Parameters.CloneValues(), Variations.CloneValues(), Modifiers.Clone(), Attributes.Clone());
+            return new CsFunctionOverload(ExportedName, Name, Comment, DefaultValues.Clone(), StructName, Kind, ReturnType.Clone(), Parameters.CloneValues(), Variations.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
     }
 }

@@ -31,6 +31,26 @@
             }
         }
 
+        public static nint LoadLibrary()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return LoadLocalLibrary("vulkan-1");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return LoadLocalLibrary("libvulkan");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return LoadLocalLibrary("libvulkan");
+            }
+            else
+            {
+                return LoadLocalLibrary("libvulkan");
+            }
+        }
+
         public static string GetExtension()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

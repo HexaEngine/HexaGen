@@ -1,8 +1,32 @@
 ﻿namespace HexaGen
 {
+    using ClangSharp;
     using CppAst;
     using System.Collections.Generic;
     using System.IO;
+    using System.Text.Json.Serialization;
+    using System.Xml.Serialization;
+
+    public class CsHandleMetadata
+    {
+        public CsHandleMetadata(string name, CppTypedef cppType, string? comment, bool isDispatchable)
+        {
+            Name = name;
+            CppType = cppType;
+            Comment = comment;
+            IsDispatchable = isDispatchable;
+        }
+
+        public string Name { get; set; }
+
+        [XmlIgnore]
+        [JsonIgnore]
+        public CppTypedef CppType { get; set; }
+
+        public string? Comment { get; set; }
+
+        public bool IsDispatchable { get; set; }
+    }
 
     public partial class CsCodeGenerator
     {
@@ -11,13 +35,13 @@
 
         protected virtual List<string> SetupHandleUsings()
         {
-            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            List<string> usings = ["System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime", .. settings.Usings];
             return usings;
         }
 
-        protected virtual bool FilterHandle(GenContext context, CppTypedef typedef)
+        protected virtual bool FilterHandle(GenContext? context, CsHandleMetadata csHandle)
         {
+            var typedef = csHandle.CppType;
             if (settings.AllowedTypedefs.Count != 0 && !settings.AllowedTypedefs.Contains(typedef.Name))
                 return true;
 
@@ -27,13 +51,13 @@
             if (LibDefinedTypedefs.Contains(typedef.Name))
                 return true;
 
-            if (DefinedTypedefs.Contains(typedef.Name))
+            if (DefinedTypedefs.Contains(csHandle.Name))
             {
-                LogWarn($"{context.FilePath}: {typedef} is already defined!");
+                LogWarn($"{context?.FilePath}: {typedef} is already defined!");
                 return true;
             }
 
-            DefinedTypedefs.Add(typedef.Name);
+            DefinedTypedefs.Add(csHandle.Name);
 
             if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is not CppFunctionType)
             {
@@ -45,56 +69,110 @@
 
         protected virtual void GenerateHandles(CppCompilation compilation, string outputPath)
         {
-            string filePath = Path.Combine(outputPath, "Handles.cs");
-
-            // Generate Functions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), 1);
-            GenContext context = new(compilation, filePath, writer);
-
-            for (int i = 0; i < compilation.Typedefs.Count; i++)
+            string folder = Path.Combine(outputPath, "Handles");
+            if (Directory.Exists(folder))
             {
-                WriteHandle(context, compilation.Typedefs[i], true);
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
+
+            if (settings.OneFilePerType)
+            {
+                for (int i = 0; i < compilation.Typedefs.Count; i++)
+                {
+                    var typedef = compilation.Typedefs[i];
+                    var handle = ParseHandle(typedef);
+                    if (FilterHandle(null, handle))
+                        continue;
+
+                    string filePath = Path.Combine(folder, $"{handle.Name}.cs");
+                    using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), settings.HeaderInjector);
+                    GenContext context = new(compilation, filePath, writer);
+                    WriteHandle(context, handle);
+                }
+            }
+            else
+            {
+                string filePath = Path.Combine(folder, "Handles.cs");
+                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), settings.HeaderInjector, 1);
+                GenContext context = new(compilation, filePath, writer);
+
+                for (int i = 0; i < compilation.Typedefs.Count; i++)
+                {
+                    var typedef = compilation.Typedefs[i];
+                    var handle = ParseHandle(typedef);
+                    if (FilterHandle(context, handle))
+                        continue;
+                    WriteHandle(context, handle);
+                    if (i + 1 != compilation.Typedefs.Count)
+                    {
+                        writer.WriteLine();
+                    }
+                }
             }
         }
 
-        protected virtual void WriteHandle(GenContext context, CppTypedef typedef, bool isDispatchable)
+        protected virtual CsHandleMetadata ParseHandle(CppTypedef typedef)
         {
-            if (FilterHandle(context, typedef))
-                return;
-
-            var writer = context.Writer;
             var csName = settings.GetCsCleanName(typedef.Name);
+            CsHandleMetadata metadata = new(csName, typedef, null, true);
 
-            LogInfo("defined handle " + csName);
-            settings.WriteCsSummary(typedef.Comment, writer);
+            settings.TryGetHandleMapping(typedef.Name, out var mapping);
+
+            metadata.Comment = settings.WriteCsSummary(typedef.Comment);
+            if (mapping != null)
+            {
+                if (mapping.Comment != null)
+                {
+                    metadata.Comment = settings.WriteCsSummary(mapping.Comment);
+                }
+                if (mapping.FriendlyName != null)
+                {
+                    metadata.Name = mapping.FriendlyName;
+                }
+            }
+
+            return metadata;
+        }
+
+        protected virtual void WriteHandle(GenContext context, CsHandleMetadata csHandle)
+        {
+            var writer = context.Writer;
+
+            LogInfo("defined handle " + (string?)csHandle.Name);
+
+            writer.WriteLines(csHandle.Comment);
             if (settings.GenerateMetadata)
             {
-                writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{typedef.Name}\")]");
+                writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{csHandle.CppType.Name}\")]");
             }
+            writer.WriteLine("#if NET5_0_OR_GREATER");
             writer.WriteLine($"[DebuggerDisplay(\"{{DebuggerDisplay,nq}}\")]");
-            using (writer.PushBlock($"public readonly partial struct {csName} : IEquatable<{csName}>"))
+            writer.WriteLine("#endif");
+            using (writer.PushBlock($"public readonly partial struct {csHandle.Name} : IEquatable<{csHandle.Name}>"))
             {
-                string handleType = isDispatchable ? "nint" : "ulong";
+                string handleType = csHandle.IsDispatchable ? "nint" : "ulong";
                 string nullValue = "0";
 
-                writer.WriteLine($"public {csName}({handleType} handle) {{ Handle = handle; }}");
+                writer.WriteLine($"public {csHandle.Name}({handleType} handle) {{ Handle = handle; }}");
                 writer.WriteLine($"public {handleType} Handle {{ get; }}");
                 writer.WriteLine($"public bool IsNull => Handle == 0;");
 
-                writer.WriteLine($"public static {csName} Null => new {csName}({nullValue});");
-                writer.WriteLine($"public static implicit operator {csName}({handleType} handle) => new {csName}(handle);");
-                writer.WriteLine($"public static bool operator ==({csName} left, {csName} right) => left.Handle == right.Handle;");
-                writer.WriteLine($"public static bool operator !=({csName} left, {csName} right) => left.Handle != right.Handle;");
-                writer.WriteLine($"public static bool operator ==({csName} left, {handleType} right) => left.Handle == right;");
-                writer.WriteLine($"public static bool operator !=({csName} left, {handleType} right) => left.Handle != right;");
-                writer.WriteLine($"public bool Equals({csName} other) => Handle == other.Handle;");
+                writer.WriteLine($"public static {csHandle.Name} Null => new {csHandle.Name}({nullValue});");
+                writer.WriteLine($"public static implicit operator {csHandle.Name}({handleType} handle) => new {csHandle.Name}(handle);");
+                writer.WriteLine($"public static bool operator ==({csHandle.Name} left, {csHandle.Name} right) => left.Handle == right.Handle;");
+                writer.WriteLine($"public static bool operator !=({csHandle.Name} left, {csHandle.Name} right) => left.Handle != right.Handle;");
+                writer.WriteLine($"public static bool operator ==({csHandle.Name} left, {handleType} right) => left.Handle == right;");
+                writer.WriteLine($"public static bool operator !=({csHandle.Name} left, {handleType} right) => left.Handle != right;");
+                writer.WriteLine($"public bool Equals({csHandle.Name} other) => Handle == other.Handle;");
                 writer.WriteLine("/// <inheritdoc/>");
-                writer.WriteLine($"public override bool Equals(object obj) => obj is {csName} handle && Equals(handle);");
+                writer.WriteLine($"public override bool Equals(object obj) => obj is {csHandle.Name} handle && Equals(handle);");
                 writer.WriteLine("/// <inheritdoc/>");
                 writer.WriteLine($"public override int GetHashCode() => Handle.GetHashCode();");
-                writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csName} [0x{{0}}]\", Handle.ToString(\"X\"));");
+                writer.WriteLine("#if NET5_0_OR_GREATER");
+                writer.WriteLine($"private string DebuggerDisplay => string.Format(\"{csHandle.Name} [0x{{0}}]\", Handle.ToString(\"X\"));");
+                writer.WriteLine("#endif");
             }
-            writer.WriteLine();
         }
     }
 }

@@ -6,15 +6,13 @@
 
     public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>
     {
-        public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters, List<string> modifiers, List<string> attributes)
+        public CsFunctionVariation(string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters, List<string> modifiers, List<string> attributes)
         {
             ExportedName = exportedName;
             Name = name;
 
             StructName = structName;
-            IsMember = isMember;
-            IsConstructor = isConstructor;
-            IsDestructor = isDestructor;
+            Kind = kind;
             ReturnType = returnType;
             Parameters = parameters;
             GenericParameters = genericParameters;
@@ -22,14 +20,12 @@
             Attributes = attributes;
         }
 
-        public CsFunctionVariation(string exportedName, string name, string structName, bool isMember, bool isConstructor, bool isDestructor, CsType returnType)
+        public CsFunctionVariation(string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType)
         {
             ExportedName = exportedName;
             Name = name;
             StructName = structName;
-            IsMember = isMember;
-            IsConstructor = isConstructor;
-            IsDestructor = isDestructor;
+            Kind = kind;
             ReturnType = returnType;
             Parameters = new();
             GenericParameters = new();
@@ -43,11 +39,7 @@
 
         public string StructName { get; set; }
 
-        public bool IsMember { get; set; }
-
-        public bool IsConstructor { get; set; }
-
-        public bool IsDestructor { get; set; }
+        public CsFunctionKind Kind { get; set; }
 
         public bool IsGeneric => GenericParameters.Count > 0;
 
@@ -236,9 +228,14 @@
             return parameter != null;
         }
 
+        public CsFunctionVariation ShallowClone()
+        {
+            return new CsFunctionVariation(ExportedName, Name, StructName, Kind, ReturnType.Clone());
+        }
+
         public CsFunctionVariation Clone()
         {
-            return new CsFunctionVariation(ExportedName, Name, StructName, IsMember, IsConstructor, IsDestructor, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
+            return new CsFunctionVariation(ExportedName, Name, StructName, Kind, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
     }
 }

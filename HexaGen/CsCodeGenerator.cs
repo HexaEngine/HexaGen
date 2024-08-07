@@ -3,28 +3,41 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using HexaGen.Patching;
     using System.Text.Json;
 
     public partial class CsCodeGenerator : BaseGenerator
     {
-        private readonly FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen;
+        protected PatchEngine patchEngine = new();
 
-        public CsCodeGenerator(CsCodeGeneratorSettings settings) : base(settings)
+        public static CsCodeGenerator Create(string configPath)
         {
-            funcGen = new(settings);
+            return new(CsCodeGeneratorSettings.Load(configPath));
         }
+
+        public CsCodeGenerator(CsCodeGeneratorSettings settings) : this(settings, new(settings))
+        {
+        }
+
+        public CsCodeGenerator(CsCodeGeneratorSettings settings, FunctionGenerator functionGenerator) : base(settings)
+        {
+            funcGen = functionGenerator;
+        }
+
+        public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
+
+        public PatchEngine PatchEngine => patchEngine;
 
         protected virtual CppParserOptions PrepareSettings()
         {
             var options = new CppParserOptions
             {
                 ParseMacros = true,
-                ParseTokenAttributes = false,
-                ParseCommentAttribute = false,
                 ParseComments = true,
                 ParseSystemIncludes = true,
                 ParseAsCpp = true,
-                AutoSquashTypedef = true,
+                AutoSquashTypedef = settings.AutoSquashTypedef,
             };
 
             for (int i = 0; i < settings.AdditionalArguments.Count; i++)
@@ -47,46 +60,46 @@
                 options.Defines.Add(settings.Defines[i]);
             }
 
-            options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
-            options.AdditionalArguments.Add("-std=c++17");
+            // options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
+            //options.AdditionalArguments.Add("-std=c++17");
 
             return options;
         }
 
-        public virtual void Generate(string headerFile, string outputPath)
+        public virtual bool Generate(string headerFile, string outputPath)
         {
             var options = PrepareSettings();
 
             var compilation = CppParser.ParseFile(headerFile, options);
 
-            Generate(compilation, outputPath);
+            return Generate(compilation, [headerFile], outputPath);
         }
 
-        public virtual void Generate(List<string> headerFiles, string outputPath)
+        public virtual bool Generate(List<string> headerFiles, string outputPath)
         {
             var options = PrepareSettings();
 
             var compilation = CppParser.ParseFiles(headerFiles, options);
 
-            Generate(compilation, outputPath);
+            return Generate(compilation, headerFiles, outputPath);
         }
 
-        public virtual void Generate(CppCompilation compilation, string outputPath)
+        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
         {
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSevertiy.Error)
+                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSeverity.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSevertiy.Warning)
+                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSeverity.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSevertiy.Information)
+                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSeverity.Information)
                 {
                     LogInfo(message.ToString());
                 }
@@ -94,61 +107,51 @@
 
             if (compilation.HasErrors)
             {
-                return;
+                return false;
             }
 
-            List<Task> tasks = new();
+            patchEngine.ApplyPrePatches(settings, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+
+            settings.DefinedCppEnums = DefinedCppEnums;
 
             if (settings.GenerateEnums)
             {
-                Task taskEnums = new(() => GenerateEnums(compilation, outputPath));
-                tasks.Add(taskEnums);
-                taskEnums.Start();
+                GenerateEnums(compilation, outputPath);
             }
 
             if (settings.GenerateConstants)
             {
-                Task taskConstants = new(() => GenerateConstants(compilation, outputPath));
-                tasks.Add(taskConstants);
-                taskConstants.Start();
+                GenerateConstants(compilation, outputPath);
             }
 
             if (settings.GenerateHandles)
             {
-                Task taskHandles = new(() => GenerateHandles(compilation, outputPath));
-                tasks.Add(taskHandles);
-                taskHandles.RunSynchronously();
+                GenerateHandles(compilation, outputPath);
             }
 
             if (settings.GenerateTypes)
             {
-                Task taskTypes = new(() => GenerateTypes(compilation, outputPath));
-                tasks.Add(taskTypes);
-                taskTypes.RunSynchronously();
+                GenerateTypes(compilation, outputPath);
             }
 
             if (settings.GenerateFunctions)
             {
-                Task taskFuncs = new(() => GenerateFunctions(compilation, outputPath));
-                tasks.Add(taskFuncs);
-                taskFuncs.Start();
+                GenerateFunctions(compilation, outputPath);
             }
 
             if (settings.GenerateExtensions)
             {
-                Task taskExtensions = new(() => GenerateExtensions(compilation, outputPath));
-                tasks.Add(taskExtensions);
-                taskExtensions.Start();
+                GenerateExtensions(compilation, outputPath);
             }
 
             if (settings.GenerateDelegates)
             {
-                Task taskDelegates = new(() => GenerateDelegates(compilation, outputPath));
-                tasks.Add(taskDelegates);
-                taskDelegates.Start();
+                GenerateDelegates(compilation, outputPath);
             }
 
-            Task.WaitAll(tasks.ToArray());
+            patchEngine.ApplyPostPatches(GetMetadata(), outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
+
+            return true;
         }
 
         public virtual void Reset()
@@ -207,9 +210,10 @@
             {
                 LibDefinedConstants.Add(constants[i]);
             }
-            for (int i = 0; i < enums.Count; i++)
+            foreach (var enumMeta in enums)
             {
-                LibDefinedEnums.Add(enums[i]);
+                LibDefinedEnums.Add(enumMeta);
+                DefinedCppEnums.Add(enumMeta.Identifier, enumMeta);
             }
             for (int i = 0; i < extensions.Count; i++)
             {
@@ -250,6 +254,13 @@
             CopyFrom(metadata);
         }
 
+        public CsCodeGeneratorMetadata GetMetadata()
+        {
+            CsCodeGeneratorMetadata metadata = new();
+            metadata.CopyFrom(this);
+            return metadata;
+        }
+
         protected static CppFunction FindFunction(CppCompilation compilation, string name)
         {
             for (int i = 0; i < compilation.Functions.Count; i++)
@@ -279,8 +290,10 @@
             }
         }
 
-        protected virtual CsFunction CreateCsFunction(CppFunction cppFunction, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
+        protected virtual CsFunction CreateCsFunction(CppFunction cppFunction, CsFunctionKind kind, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
         {
+            settings.TryGetFunctionMapping(cppFunction.Name, out var mapping);
+
             string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
             CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
@@ -297,11 +310,15 @@
             if (function == null)
             {
                 settings.WriteCsSummary(cppFunction.Comment, out string? comment);
+                if (mapping != null && mapping.Comment != null)
+                {
+                    comment = settings.WriteCsSummary(mapping.Comment);
+                }
                 function = new(csName, comment);
                 functions.Add(function);
             }
 
-            overload = new(cppFunction.Name, csName, function.Comment, "", false, false, false, new(returnCsName, returnKind));
+            overload = new(cppFunction.Name, csName, function.Comment, "", kind, new(returnCsName, returnKind));
             overload.Attributes.Add($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
             overload.Attributes.Add($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
             for (int j = 0; j < cppFunction.Parameters.Count; j++)
@@ -310,9 +327,9 @@
                 var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
                 var paramCsName = settings.GetParameterName(j, cppParameter.Name);
                 var direction = cppParameter.Type.GetDirection();
-                var kind = cppParameter.Type.GetPrimitiveKind();
+                var primKind = cppParameter.Type.GetPrimitiveKind();
 
-                CsType csType = new(paramCsTypeName, kind);
+                CsType csType = new(paramCsTypeName, primKind);
 
                 CsParameterInfo csParameter = new(paramCsName, cppParameter.Type, csType, direction);
                 csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");

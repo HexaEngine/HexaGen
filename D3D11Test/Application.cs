@@ -72,7 +72,7 @@
                             var windowEvent = sdlEvent.Window;
                             if (windowEvent.WindowID == mainWindow.Id)
                             {
-                                if ((SDLWindowEventID)windowEvent.Event == SDLWindowEventID.WindoweventClose)
+                                if ((SDLWindowEventID)windowEvent.Event == SDLWindowEventID.Close)
                                 {
                                     exiting = true;
                                 }
@@ -97,6 +97,8 @@
 
             Console.WriteLine("Exit");
             SDL.SDLQuit();
+
+            SDL.FreeApi();
         }
     }
 }

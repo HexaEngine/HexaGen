@@ -283,7 +283,7 @@ namespace Hexa.NET.Vulkan
 		PrimitiveRestartEnable = unchecked(1000377004),
 		[NativeName(NativeNameType.EnumItem, "VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV")]
 		[NativeName(NativeNameType.Value, "1000087000")]
-		ViewportwScalingNv = unchecked(1000087000),
+		ViewportWScalingNv = unchecked(1000087000),
 		[NativeName(NativeNameType.EnumItem, "VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT")]
 		[NativeName(NativeNameType.Value, "1000099000")]
 		DiscardRectangleExt = unchecked(1000099000),
@@ -394,7 +394,7 @@ namespace Hexa.NET.Vulkan
 		DepthClipNegativeOneToOneExt = unchecked(1000455022),
 		[NativeName(NativeNameType.EnumItem, "VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV")]
 		[NativeName(NativeNameType.Value, "1000455023")]
-		ViewportwScalingEnableNv = unchecked(1000455023),
+		ViewportWScalingEnableNv = unchecked(1000455023),
 		[NativeName(NativeNameType.EnumItem, "VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV")]
 		[NativeName(NativeNameType.Value, "1000455024")]
 		ViewportSwizzleNv = unchecked(1000455024),
@@ -1884,16 +1884,16 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_COMPONENT_R_BIT")]
 		[NativeName(NativeNameType.Value, "1")]
-		ComponentrBit = unchecked(1),
+		RBit = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_COMPONENT_G_BIT")]
 		[NativeName(NativeNameType.Value, "2")]
-		ComponentgBit = unchecked(2),
+		GBit = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_COMPONENT_B_BIT")]
 		[NativeName(NativeNameType.Value, "4")]
-		ComponentbBit = unchecked(4),
+		BBit = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_COMPONENT_A_BIT")]
 		[NativeName(NativeNameType.Value, "8")]
-		ComponentaBit = unchecked(8),
+		ABit = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_COMPONENT_FLAG_BITS_MAX_ENUM")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnum = unchecked(2147483647),
@@ -2334,7 +2334,7 @@ namespace Hexa.NET.Vulkan
 		PerViewAttributesBitNvx = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX")]
 		[NativeName(NativeNameType.Value, "2")]
-		PerViewPositionxOnlyBitNvx = unchecked(2),
+		PerViewPositionXOnlyBitNvx = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM")]
 		[NativeName(NativeNameType.Value, "4")]
 		FragmentRegionBitQcom = unchecked(4),
@@ -2696,16 +2696,16 @@ namespace Hexa.NET.Vulkan
 		OpaqueWin32KmtBit = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT")]
 		[NativeName(NativeNameType.Value, "8")]
-		Typed3D11TextureBit = unchecked(8),
+		D3D11TextureBit = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT")]
 		[NativeName(NativeNameType.Value, "16")]
-		Typed3D11TextureKmtBit = unchecked(16),
+		D3D11TextureKmtBit = unchecked(16),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT")]
 		[NativeName(NativeNameType.Value, "32")]
-		Typed3D12HeapBit = unchecked(32),
+		D3D12HeapBit = unchecked(32),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT")]
 		[NativeName(NativeNameType.Value, "64")]
-		Typed3D12ResourceBit = unchecked(64),
+		D3D12ResourceBit = unchecked(64),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT")]
 		[NativeName(NativeNameType.Value, "512")]
 		DmaBufBitExt = unchecked(512),
@@ -2735,16 +2735,16 @@ namespace Hexa.NET.Vulkan
 		OpaqueWin32KmtBitKhr = OpaqueWin32KmtBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_BIT")]
-		Typed3D11TextureBitKhr = Typed3D11TextureBit,
+		D3D11TextureBitKhr = D3D11TextureBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_TEXTURE_KMT_BIT")]
-		Typed3D11TextureKmtBitKhr = Typed3D11TextureKmtBit,
+		D3D11TextureKmtBitKhr = D3D11TextureKmtBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP_BIT")]
-		Typed3D12HeapBitKhr = Typed3D12HeapBit,
+		D3D12HeapBitKhr = D3D12HeapBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE_BIT")]
-		Typed3D12ResourceBitKhr = Typed3D12ResourceBit,
+		D3D12ResourceBitKhr = D3D12ResourceBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_FLAG_BITS_MAX_ENUM")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnum = unchecked(2147483647),
@@ -2870,7 +2870,7 @@ namespace Hexa.NET.Vulkan
 		OpaqueWin32KmtBit = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT")]
 		[NativeName(NativeNameType.Value, "8")]
-		Typed3D12FenceBit = unchecked(8),
+		D3D12FenceBit = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT")]
 		[NativeName(NativeNameType.Value, "16")]
 		SyncFdBit = unchecked(16),
@@ -2879,7 +2879,7 @@ namespace Hexa.NET.Vulkan
 		ZirconEventBitFuchsia = unchecked(128),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D11_FENCE_BIT")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT")]
-		Typed3D11FenceBit = Typed3D12FenceBit,
+		D3D11FenceBit = D3D12FenceBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD_BIT")]
 		OpaqueFdBitKhr = OpaqueFdBit,
@@ -2891,7 +2891,7 @@ namespace Hexa.NET.Vulkan
 		OpaqueWin32KmtBitKhr = OpaqueWin32KmtBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE_BIT")]
-		Typed3D12FenceBitKhr = Typed3D12FenceBit,
+		D3D12FenceBitKhr = D3D12FenceBit,
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "VK_EXTERNAL_SEMAPHORE_HANDLE_TYPE_SYNC_FD_BIT")]
 		SyncFdBitKhr = SyncFdBit,
@@ -2979,7 +2979,7 @@ namespace Hexa.NET.Vulkan
 		MesaTurnip = unchecked(18),
 		[NativeName(NativeNameType.EnumItem, "VK_DRIVER_ID_MESA_V3DV")]
 		[NativeName(NativeNameType.Value, "19")]
-		Mesav3Dv = unchecked(19),
+		MesaV3Dv = unchecked(19),
 		[NativeName(NativeNameType.EnumItem, "VK_DRIVER_ID_MESA_PANVK")]
 		[NativeName(NativeNameType.Value, "20")]
 		MesaPanvk = unchecked(20),
@@ -3342,16 +3342,16 @@ namespace Hexa.NET.Vulkan
 		SrgbNonlinearKhr = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "1000104001")]
-		Displayp3NonlinearExt = unchecked(1000104001),
+		DisplayP3NonlinearExt = unchecked(1000104001),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_EXTENDED_SRGB_LINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "1000104002")]
 		ExtendedSrgbLinearExt = unchecked(1000104002),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "1000104003")]
-		Displayp3LinearExt = unchecked(1000104003),
+		DisplayP3LinearExt = unchecked(1000104003),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_DCI_P3_NONLINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "1000104004")]
-		Dcip3NonlinearExt = unchecked(1000104004),
+		DciP3NonlinearExt = unchecked(1000104004),
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_BT709_LINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "1000104005")]
 		Bt709LinearExt = unchecked(1000104005),
@@ -3387,10 +3387,10 @@ namespace Hexa.NET.Vulkan
 		DisplayNativeAmd = unchecked(1000213000),
 		[NativeName(NativeNameType.EnumItem, "VK_COLORSPACE_SRGB_NONLINEAR_KHR")]
 		[NativeName(NativeNameType.Value, "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR")]
-		ColorspaceSrgbNonlinearKhr = SrgbNonlinearKhr,
+		ColorSpaceSrgbNonlinearKhr = SrgbNonlinearKhr,
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_DCI_P3_LINEAR_EXT")]
 		[NativeName(NativeNameType.Value, "VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT")]
-		Dcip3LinearExt = Displayp3LinearExt,
+		DciP3LinearExt = DisplayP3LinearExt,
 		[NativeName(NativeNameType.EnumItem, "VK_COLOR_SPACE_MAX_ENUM_KHR")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnumKhr = unchecked(2147483647),
@@ -3536,10 +3536,10 @@ namespace Hexa.NET.Vulkan
 		NoneKhr = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "1")]
-		Decodeh264BitKhr = unchecked(1),
+		DecodeH264BitKhr = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR")]
 		[NativeName(NativeNameType.Value, "2")]
-		Decodeh265BitKhr = unchecked(2),
+		DecodeH265BitKhr = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_VIDEO_CODEC_OPERATION_FLAG_BITS_MAX_ENUM_KHR")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnumKhr = unchecked(2147483647),
@@ -4073,10 +4073,10 @@ namespace Hexa.NET.Vulkan
 		OpaqueWin32KmtBitNv = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_BIT_NV")]
 		[NativeName(NativeNameType.Value, "4")]
-		Typed3D11ImageBitNv = unchecked(4),
+		D3D11ImageBitNv = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_D3D11_IMAGE_KMT_BIT_NV")]
 		[NativeName(NativeNameType.Value, "8")]
-		Typed3D11ImageKmtBitNv = unchecked(8),
+		D3D11ImageKmtBitNv = unchecked(8),
 		[NativeName(NativeNameType.EnumItem, "VK_EXTERNAL_MEMORY_HANDLE_TYPE_FLAG_BITS_MAX_ENUM_NV")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnumNv = unchecked(2147483647),
@@ -4222,28 +4222,28 @@ namespace Hexa.NET.Vulkan
 	{
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV")]
 		[NativeName(NativeNameType.Value, "0")]
-		PositivexNv = unchecked(0),
+		PositiveXNv = unchecked(0),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV")]
 		[NativeName(NativeNameType.Value, "1")]
-		NegativexNv = unchecked(1),
+		NegativeXNv = unchecked(1),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Y_NV")]
 		[NativeName(NativeNameType.Value, "2")]
-		PositiveyNv = unchecked(2),
+		PositiveYNv = unchecked(2),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Y_NV")]
 		[NativeName(NativeNameType.Value, "3")]
-		NegativeyNv = unchecked(3),
+		NegativeYNv = unchecked(3),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_Z_NV")]
 		[NativeName(NativeNameType.Value, "4")]
-		PositivezNv = unchecked(4),
+		PositiveZNv = unchecked(4),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_Z_NV")]
 		[NativeName(NativeNameType.Value, "5")]
-		NegativezNv = unchecked(5),
+		NegativeZNv = unchecked(5),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_W_NV")]
 		[NativeName(NativeNameType.Value, "6")]
-		PositivewNv = unchecked(6),
+		PositiveWNv = unchecked(6),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_W_NV")]
 		[NativeName(NativeNameType.Value, "7")]
-		NegativewNv = unchecked(7),
+		NegativeWNv = unchecked(7),
 		[NativeName(NativeNameType.EnumItem, "VK_VIEWPORT_COORDINATE_SWIZZLE_MAX_ENUM_NV")]
 		[NativeName(NativeNameType.Value, "2147483647")]
 		MaxEnumNv = unchecked(2147483647),

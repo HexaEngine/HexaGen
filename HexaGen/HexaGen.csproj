@@ -5,13 +5,24 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<PackageVersion>1.0.0</PackageVersion>
+		<Description></Description>
+		<PackageTags></PackageTags>
+		<Authors>Juna Meinhold</Authors>
+		<Copyright>Copyright (c) 2023 Juna Meinhold</Copyright>
+		<PackageProjectUrl>https://github.com/HexaEngine/HexaGen</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/HexaEngine/HexaGen</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CppAst" Version="0.15.0" />
 		<PackageReference Include="Humanizer" Version="2.14.1" />
-		<PackageReference Include="libclang.runtime.win-x64" Version="17.0.4" />
-		<PackageReference Include="libClangSharp.runtime.win-x64" Version="17.0.4" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
 	</ItemGroup>
 
@@ -19,5 +30,9 @@
 		<ProjectReference Include="..\HexaGen.Core\HexaGen.Core.csproj" />
 		<ProjectReference Include="..\HexaGen.Language\HexaGen.Language.csproj" />
 	</ItemGroup>
-
+	
+	<ItemGroup>
+		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+		<Content Include="../README.md" Pack="true" PackagePath="/" />
+	</ItemGroup>
 </Project>

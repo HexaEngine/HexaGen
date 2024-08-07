@@ -163,10 +163,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_iconv_close")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLIconvCloseNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd);
-
+		internal static int SDLIconvCloseNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLIconv, int>)vt[124])(cd);
+		}
 		[NativeName(NativeNameType.Func, "SDL_iconv_close")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLIconvClose([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd)
@@ -177,10 +177,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
-		[LibraryImport(LibName, EntryPoint = "SDL_iconv")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial ulong SDLIconvNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft);
-
+		internal static ulong SDLIconvNative([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLIconv, byte**, ulong*, byte**, ulong*, ulong>)vt[125])(cd, inbuf, inbytesleft, outbuf, outbytesleft);
+		}
 		[NativeName(NativeNameType.Func, "SDL_iconv")]
 		[return: NativeName(NativeNameType.Type, "size_t")]
 		public static ulong SDLIconv([NativeName(NativeNameType.Param, "cd")] [NativeName(NativeNameType.Type, "SDL_iconv_t")] SDLIconv cd, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char**")] byte** inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* inbytesleft, [NativeName(NativeNameType.Param, "outbuf")] [NativeName(NativeNameType.Type, "char**")] byte** outbuf, [NativeName(NativeNameType.Param, "outbytesleft")] [NativeName(NativeNameType.Type, "size_t*")] ulong* outbytesleft)
@@ -412,10 +412,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_iconv_string")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLIconvStringNative([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft);
-
+		internal static byte* SDLIconvStringNative([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*, ulong, byte*>)vt[126])(tocode, fromcode, inbuf, inbytesleft);
+		}
 		/// <summary>/// This function converts a buffer or string between encodings in one pass,<br/>/// returning a string that must be freed with SDL_free() or NULL on error.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_iconv_string")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLIconvString([NativeName(NativeNameType.Param, "tocode")] [NativeName(NativeNameType.Type, "const char*")] byte* tocode, [NativeName(NativeNameType.Param, "fromcode")] [NativeName(NativeNameType.Type, "const char*")] byte* fromcode, [NativeName(NativeNameType.Param, "inbuf")] [NativeName(NativeNameType.Type, "const char*")] byte* inbuf, [NativeName(NativeNameType.Param, "inbytesleft")] [NativeName(NativeNameType.Type, "size_t")] ulong inbytesleft)
@@ -2050,10 +2050,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_main")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_main")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLMainNative([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv);
-
+		internal static int SDLMainNative([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv)
+		{
+			return ((delegate* unmanaged[Cdecl]<int, byte**, int>)vt[127])(argc, argv);
+		}
 		[NativeName(NativeNameType.Func, "SDL_main")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLMain([NativeName(NativeNameType.Param, "argc")] [NativeName(NativeNameType.Type, "int")] int argc, [NativeName(NativeNameType.Param, "argv")] [NativeName(NativeNameType.Type, "char*[-1]")] byte** argv)
@@ -2108,10 +2108,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetMainReady")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetMainReady")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetMainReadyNative();
-
+		internal static void SDLSetMainReadyNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[128])();
+		}
 		/// <summary>/// Circumvent failure of SDL_Init() when not using SDL_main() as an entry<br/>/// point.<br/>/// This function is defined in SDL_main.h, along with the preprocessor rule to<br/>/// redefine main() as SDL_main(). Thus to ensure that your main() function<br/>/// will not be changed it is necessary to define SDL_MAIN_HANDLED before<br/>/// including SDL.h.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetMainReady")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLSetMainReady()
@@ -2133,10 +2133,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_RegisterApp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLRegisterAppNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst);
-
+		internal static int SDLRegisterAppNative([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, uint, void*, int>)vt[129])(name, style, hInst);
+		}
 		/// <summary>/// Register a win32 window class for SDL's use.<br/>/// This can be called to set the application window class at startup. It is<br/>/// safe to call this multiple times, as long as every call is eventually<br/>/// paired with a call to SDL_UnregisterApp, but a second registration attempt<br/>/// while a previous registration is still active will be ignored, other than<br/>/// to increment a counter.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when initializing the video subsystem.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_RegisterApp")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLRegisterApp([NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "style")] [NativeName(NativeNameType.Type, "Uint32")] uint style, [NativeName(NativeNameType.Param, "hInst")] [NativeName(NativeNameType.Type, "void*")] void* hInst)
@@ -2198,10 +2198,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_UnregisterApp")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnregisterApp")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLUnregisterAppNative();
-
+		internal static void SDLUnregisterAppNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[130])();
+		}
 		/// <summary>/// Deregister the win32 window class from an SDL_RegisterApp call.<br/>/// This can be called to undo the effects of SDL_RegisterApp.<br/>/// Most applications do not need to, and should not, call this directly; SDL<br/>/// will call it when deinitializing the video subsystem.<br/>/// It is safe to call this multiple times, as long as every call is eventually<br/>/// paired with a prior call to SDL_RegisterApp. The window class will only be<br/>/// deregistered when the registration counter in SDL_RegisterApp decrements to<br/>/// zero through calls to this function.<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnregisterApp")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLUnregisterApp()
@@ -2214,10 +2214,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "__debugbreak")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "__debugbreak")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void DebugbreakNative();
-
+		internal static void DebugbreakNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[131])();
+		}
 		/// <summary>/// Don't include intrin.h here because it contains C++ code <br/>/// </summary>		[NativeName(NativeNameType.Func, "__debugbreak")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void Debugbreak()
@@ -2240,13 +2240,13 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetAssertionHandler")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLSetAssertionHandlerNative([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] SdlAssertionhandler handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata);
-
+		internal static void SDLSetAssertionHandlerNative([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] delegate*<SDLAssertData*, void*, SDLAssertState> handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		{
+			((delegate* unmanaged[Cdecl]<delegate*<SDLAssertData*, void*, SDLAssertState>, void*, void>)vt[132])(handler, userdata);
+		}
 		/// <summary>/// Set an application-defined assertion handler.<br/>/// This function allows an application to show its own assertion UI and/or<br/>/// force the response to an assertion failure. If the application doesn't<br/>/// provide this, SDL will try to do the right thing, popping up a<br/>/// system-specific GUI dialog, and probably minimizing any fullscreen windows.<br/>/// This callback may fire from any thread, but it runs wrapped in a mutex, so<br/>/// it will only fire from one thread at a time.<br/>/// This callback is NOT reset to SDL's internal handler upon SDL_Quit()!<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLSetAssertionHandler([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] SdlAssertionhandler handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
+		public static void SDLSetAssertionHandler([NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "SDL_AssertionHandler")] delegate*<SDLAssertData*, void*, SDLAssertState> handler, [NativeName(NativeNameType.Param, "userdata")] [NativeName(NativeNameType.Type, "void*")] void* userdata)
 		{
 			SDLSetAssertionHandlerNative(handler, userdata);
 		}
@@ -2263,15 +2263,15 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetDefaultAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetDefaultAssertionHandler")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SdlAssertionhandler SDLGetDefaultAssertionHandlerNative();
-
+		internal static delegate*<SDLAssertData*, void*, SDLAssertState> SDLGetDefaultAssertionHandlerNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<delegate*<SDLAssertData*, void*, SDLAssertState>>)vt[133])();
+		}
 		/// <summary>/// Get the default assertion handler.<br/>/// This returns the function pointer that is called by default when an<br/>/// assertion is triggered. This is an internal function provided by SDL, that<br/>/// is used for assertions when SDL_SetAssertionHandler() hasn't been used to<br/>/// provide a different function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetDefaultAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
-		public static SdlAssertionhandler SDLGetDefaultAssertionHandler()
+		public static delegate*<SDLAssertData*, void*, SDLAssertState> SDLGetDefaultAssertionHandler()
 		{
-			SdlAssertionhandler ret = SDLGetDefaultAssertionHandlerNative();
+			delegate*<SDLAssertData*, void*, SDLAssertState> ret = SDLGetDefaultAssertionHandlerNative();
 			return ret;
 		}
 
@@ -2291,15 +2291,15 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetAssertionHandler")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SdlAssertionhandler SDLGetAssertionHandlerNative([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata);
-
+		internal static delegate*<SDLAssertData*, void*, SDLAssertState> SDLGetAssertionHandlerNative([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata)
+		{
+			return ((delegate* unmanaged[Cdecl]<void**, delegate*<SDLAssertData*, void*, SDLAssertState>>)vt[134])(puserdata);
+		}
 		/// <summary>/// Get the current assertion handler.<br/>/// This returns the function pointer that is called when an assertion is<br/>/// triggered. This is either the value last passed to<br/>/// SDL_SetAssertionHandler(), or if no application-specified function is set,<br/>/// is equivalent to calling SDL_GetDefaultAssertionHandler().<br/>/// The parameter `puserdata` is a pointer to a void*, which will store the<br/>/// "userdata" pointer that was passed to SDL_SetAssertionHandler(). This value<br/>/// will always be NULL for the default handler. If you don't care about this<br/>/// data, it is safe to pass a NULL pointer to this function to ignore it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetAssertionHandler")]
 		[return: NativeName(NativeNameType.Type, "SDL_AssertionHandler")]
-		public static SdlAssertionhandler SDLGetAssertionHandler([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata)
+		public static delegate*<SDLAssertData*, void*, SDLAssertState> SDLGetAssertionHandler([NativeName(NativeNameType.Param, "puserdata")] [NativeName(NativeNameType.Type, "void**")] void** puserdata)
 		{
-			SdlAssertionhandler ret = SDLGetAssertionHandlerNative(puserdata);
+			delegate*<SDLAssertData*, void*, SDLAssertState> ret = SDLGetAssertionHandlerNative(puserdata);
 			return ret;
 		}
 
@@ -2324,10 +2324,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetAssertionReport")]
 		[return: NativeName(NativeNameType.Type, "const SDL_AssertData*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetAssertionReport")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLAssertData* SDLGetAssertionReportNative();
-
+		internal static SDLAssertData* SDLGetAssertionReportNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAssertData*>)vt[135])();
+		}
 		/// <summary>/// Get a list of all assertion failures.<br/>/// This function gets all assertions triggered since the last call to<br/>/// SDL_ResetAssertionReport(), or the start of the program.<br/>/// The proper way to examine this data looks something like this:<br/>/// ```c<br/>/// const SDL_AssertData *item = SDL_GetAssertionReport();<br/>/// while (item) {<br/>/// printf("'%s', %s (%s:%d), triggered %u times, always ignore: %s.\\n",<br/>/// item->condition, item->function, item->filename,<br/>/// item->linenum, item->trigger_count,<br/>/// item->always_ignore ? "yes" : "no");<br/>/// item = item->next;<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetAssertionReport")]
 		[return: NativeName(NativeNameType.Type, "const SDL_AssertData*")]
 		public static SDLAssertData* SDLGetAssertionReport()
@@ -2347,10 +2347,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ResetAssertionReport")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ResetAssertionReport")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLResetAssertionReportNative();
-
+		internal static void SDLResetAssertionReportNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[136])();
+		}
 		/// <summary>/// Clear the list of all assertion failures.<br/>/// This function will clear the list of all assertions triggered up to that<br/>/// point. Immediately following this call, SDL_GetAssertionReport will return<br/>/// no items. In addition, any previously-triggered assertions will be reset to<br/>/// a trigger_count of zero, and their always_ignore state will be false.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ResetAssertionReport")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLResetAssertionReport()
@@ -2368,10 +2368,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicTryLock")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicTryLock")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLAtomicTryLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
-
+		internal static SDLBool SDLAtomicTryLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
+		{
+			return ((delegate* unmanaged[Cdecl]<int*, SDLBool>)vt[137])(lock0);
+		}
 		/// <summary>/// Try to lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicTryLock")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLAtomicTryLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
@@ -2401,10 +2401,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicLock")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicLock")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAtomicLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
-
+		internal static void SDLAtomicLockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
+		{
+			((delegate* unmanaged[Cdecl]<int*, void>)vt[138])(lock0);
+		}
 		/// <summary>/// Lock a spin lock by setting it to a non-zero value.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicLock")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLAtomicLock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
@@ -2433,10 +2433,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicUnlock")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicUnlock")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLAtomicUnlockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0);
-
+		internal static void SDLAtomicUnlockNative([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
+		{
+			((delegate* unmanaged[Cdecl]<int*, void>)vt[139])(lock0);
+		}
 		/// <summary>/// Unlock a spin lock by setting it to 0.<br/>/// Always returns immediately.<br/>/// ***Please note that spinlocks are dangerous if you don't know what you're<br/>/// doing. Please be careful using any sort of spinlock!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicUnlock")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLAtomicUnlock([NativeName(NativeNameType.Param, "lock")] [NativeName(NativeNameType.Type, "SDL_SpinLock*")] int* lock0)
@@ -2473,10 +2473,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierReleaseFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MemoryBarrierReleaseFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMemoryBarrierReleaseFunctionNative();
-
+		internal static void SDLMemoryBarrierReleaseFunctionNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[140])();
+		}
 		/// <summary>/// Memory barriers are designed to prevent reads and writes from being<br/>/// reordered by the compiler and being seen out of order on multi-core CPUs.<br/>/// A typical pattern would be for thread A to write some data and a flag, and<br/>/// for thread B to read the flag and get the data. In this case you would<br/>/// insert a release barrier between writing the data and the flag,<br/>/// guaranteeing that the data write completes no later than the flag is<br/>/// written, and you would insert an acquire barrier between reading the flag<br/>/// and reading the data, to ensure that all the reads associated with the flag<br/>/// have completed.<br/>/// In this pattern you should always see a release barrier paired with an<br/>/// acquire barrier and you should gate the data reads/writes with a single<br/>/// flag variable.<br/>/// For more information on these semantics, take a look at the blog post:<br/>/// http://preshing.com/20120913/acquire-and-release-semantics<br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierReleaseFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLMemoryBarrierReleaseFunction()
@@ -2486,10 +2486,10 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierAcquireFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_MemoryBarrierAcquireFunction")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLMemoryBarrierAcquireFunctionNative();
-
+		internal static void SDLMemoryBarrierAcquireFunctionNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[141])();
+		}
 		[NativeName(NativeNameType.Func, "SDL_MemoryBarrierAcquireFunction")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLMemoryBarrierAcquireFunction()
@@ -2507,10 +2507,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicCAS")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicCAS")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLAtomicCASNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval);
-
+		internal static SDLBool SDLAtomicCASNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAtomic*, int, int, SDLBool>)vt[142])(a, oldval, newval);
+		}
 		/// <summary>/// Set an atomic variable to a new value if it is currently an old value.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicCAS")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLAtomicCAS([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "int")] int oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "int")] int newval)
@@ -2541,10 +2541,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicSet")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicSet")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAtomicSetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v);
-
+		internal static int SDLAtomicSetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAtomic*, int, int>)vt[143])(a, v);
+		}
 		/// <summary>/// Set an atomic variable to a value.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicSet")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAtomicSet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
@@ -2574,10 +2574,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicGet")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicGet")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAtomicGetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a);
-
+		internal static int SDLAtomicGetNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAtomic*, int>)vt[144])(a);
+		}
 		/// <summary>/// Get the value of an atomic variable.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicGet")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAtomicGet([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a)
@@ -2608,10 +2608,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicAdd")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicAdd")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLAtomicAddNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v);
-
+		internal static int SDLAtomicAddNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLAtomic*, int, int>)vt[145])(a, v);
+		}
 		/// <summary>/// Add to an atomic variable.<br/>/// This function also acts as a full memory barrier.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicAdd")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLAtomicAdd([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "SDL_atomic_t*")] SDLAtomic* a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int")] int v)
@@ -2641,10 +2641,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicCASPtr")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicCASPtr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLBool SDLAtomicCASPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "void*")] void* oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "void*")] void* newval);
-
+		internal static SDLBool SDLAtomicCASPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "void*")] void* oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "void*")] void* newval)
+		{
+			return ((delegate* unmanaged[Cdecl]<void**, void*, void*, SDLBool>)vt[146])(a, oldval, newval);
+		}
 		/// <summary>/// Set a pointer to a new value if it is currently an old value.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicCASPtr")]
 		[return: NativeName(NativeNameType.Type, "SDL_bool")]
 		public static SDLBool SDLAtomicCASPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "oldval")] [NativeName(NativeNameType.Type, "void*")] void* oldval, [NativeName(NativeNameType.Param, "newval")] [NativeName(NativeNameType.Type, "void*")] void* newval)
@@ -2663,10 +2663,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicSetPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicSetPtr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLAtomicSetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "void*")] void* v);
-
+		internal static void* SDLAtomicSetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "void*")] void* v)
+		{
+			return ((delegate* unmanaged[Cdecl]<void**, void*, void*>)vt[147])(a, v);
+		}
 		/// <summary>/// Set a pointer to a value atomically.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicSetPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLAtomicSetPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "void*")] void* v)
@@ -2685,10 +2685,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_AtomicGetPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_AtomicGetPtr")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void* SDLAtomicGetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a);
-
+		internal static void* SDLAtomicGetPtrNative([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a)
+		{
+			return ((delegate* unmanaged[Cdecl]<void**, void*>)vt[148])(a);
+		}
 		/// <summary>/// Get the value of a pointer atomically.<br/>/// ***Note: If you don't know what this function is for, you shouldn't use<br/>/// it!***<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_AtomicGetPtr")]
 		[return: NativeName(NativeNameType.Type, "void*")]
 		public static void* SDLAtomicGetPtr([NativeName(NativeNameType.Param, "a")] [NativeName(NativeNameType.Type, "void**")] void** a)
@@ -2713,10 +2713,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetError")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetErrorNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
-
+		internal static int SDLSetErrorNative([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int>)vt[149])(fmt);
+		}
 		/// <summary>/// Set the SDL error message for the current thread.<br/>/// Calling this function will replace any previous error message that was set.<br/>/// This function always returns -1, since SDL frequently uses -1 to signify an<br/>/// failing result, leading to this idiom:<br/>/// ```c<br/>/// if (error_code) {<br/>/// return SDL_SetError("This operation has failed: %d", error_code);<br/>/// }<br/>/// ```<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetError")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetError([NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt)
@@ -2788,10 +2788,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetError")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetErrorNative();
-
+		internal static byte* SDLGetErrorNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*>)vt[150])();
+		}
 		/// <summary>/// Retrieve a message about the last error that occurred on the current<br/>/// thread.<br/>/// It is possible for multiple errors to occur before calling SDL_GetError().<br/>/// Only the last error is returned.<br/>/// The message is only applicable when an SDL function has signaled an error.<br/>/// You must check the return values of SDL function calls to determine when to<br/>/// appropriately call SDL_GetError(). You should *not* use the results of<br/>/// SDL_GetError() to decide if an error has occurred! Sometimes SDL will set<br/>/// an error string even when reporting success.<br/>/// SDL will *not* clear the error string for successful API calls. You *must*<br/>/// check return values for failure cases before you can assume the error<br/>/// string applies.<br/>/// Error strings are set per-thread, so an error set in a different thread<br/>/// will not interfere with the current thread's operation.<br/>/// The returned string is internally allocated and must not be freed by the<br/>/// application.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetError")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetError()
@@ -2818,10 +2818,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
 		[return: NativeName(NativeNameType.Type, "char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetErrorMsg")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetErrorMsgNative([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen);
-
+		internal static byte* SDLGetErrorMsgNative([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
+		{
+			return ((delegate* unmanaged[Cdecl]<byte*, int, byte*>)vt[151])(errstr, maxlen);
+		}
 		/// <summary>/// Get the last error message that was set for the current thread.<br/>/// This allows the caller to copy the error string into a provided buffer, but<br/>/// otherwise operates exactly the same as SDL_GetError().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetErrorMsg")]
 		[return: NativeName(NativeNameType.Type, "char*")]
 		public static byte* SDLGetErrorMsg([NativeName(NativeNameType.Param, "errstr")] [NativeName(NativeNameType.Type, "char*")] byte* errstr, [NativeName(NativeNameType.Param, "maxlen")] [NativeName(NativeNameType.Type, "int")] int maxlen)
@@ -2927,10 +2927,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ClearError")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ClearError")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLClearErrorNative();
-
+		internal static void SDLClearErrorNative()
+		{
+			((delegate* unmanaged[Cdecl]<void>)vt[152])();
+		}
 		/// <summary>/// Clear any previous error message for this thread.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ClearError")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLClearError()
@@ -2943,10 +2943,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_Error")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_Error")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLErrorNative([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code);
-
+		internal static int SDLErrorNative([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLErrorcode, int>)vt[153])(code);
+		}
 		/// <summary>/// SDL_Error() unconditionally returns -1. <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_Error")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLError([NativeName(NativeNameType.Param, "code")] [NativeName(NativeNameType.Type, "SDL_errorcode")] SDLErrorcode code)
@@ -2967,10 +2967,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CreateMutex")]
 		[return: NativeName(NativeNameType.Type, "SDL_mutex*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateMutex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLMutex* SDLCreateMutexNative();
-
+		internal static SDLMutex* SDLCreateMutexNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLMutex*>)vt[154])();
+		}
 		/// <summary>/// Create a new mutex.<br/>/// All newly-created mutexes begin in the _unlocked_ state.<br/>/// Calls to SDL_LockMutex() will not return while the mutex is locked by<br/>/// another thread. See SDL_TryLockMutex() to attempt to lock without blocking.<br/>/// SDL mutexes are reentrant.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateMutex")]
 		[return: NativeName(NativeNameType.Type, "SDL_mutex*")]
 		public static SDLMutex* SDLCreateMutex()
@@ -2992,10 +2992,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_LockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_LockMutex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
-
+		internal static int SDLLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLMutex*, int>)vt[155])(mutex);
+		}
 		/// <summary>/// Lock the mutex.<br/>/// This will block until the mutex is available, which is to say it is in the<br/>/// unlocked state and the OS has chosen the caller as the next thread to lock<br/>/// it. Of all threads waiting to lock the mutex, only one may do so at a time.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_LockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
@@ -3027,10 +3027,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_TryLockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_TryLockMutex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLTryLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
-
+		internal static int SDLTryLockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLMutex*, int>)vt[156])(mutex);
+		}
 		/// <summary>/// Try to lock a mutex without blocking.<br/>/// This works just like SDL_LockMutex(), but if the mutex is not available,<br/>/// this function returns `SDL_MUTEX_TIMEOUT` immediately.<br/>/// This technique is useful if you need exclusive access to a resource but<br/>/// don't want to wait for it, and will return to it to try again later.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_TryLockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLTryLockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
@@ -3063,10 +3063,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_UnlockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_UnlockMutex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLUnlockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
-
+		internal static int SDLUnlockMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLMutex*, int>)vt[157])(mutex);
+		}
 		/// <summary>/// Unlock the mutex.<br/>/// It is legal for the owning thread to lock an already-locked mutex. It must<br/>/// unlock it the same number of times before it is actually made available for<br/>/// other threads in the system (this is known as a "recursive mutex").<br/>/// It is an error to unlock a mutex that has not been locked by the current<br/>/// thread, and doing so results in undefined behavior.<br/>/// It is also an error to unlock a mutex that isn't locked at all.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_UnlockMutex")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLUnlockMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
@@ -3099,10 +3099,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DestroyMutex")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DestroyMutex")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDestroyMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
-
+		internal static void SDLDestroyMutexNative([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			((delegate* unmanaged[Cdecl]<SDLMutex*, void>)vt[158])(mutex);
+		}
 		/// <summary>/// Destroy a mutex created with SDL_CreateMutex().<br/>/// This function must be called on any mutex that is no longer needed. Failure<br/>/// to destroy a mutex will result in a system memory or resource leak. While<br/>/// it is safe to destroy a mutex that is _unlocked_, it is not safe to attempt<br/>/// to destroy a locked mutex, and may result in undefined behavior depending<br/>/// on the platform.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyMutex")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLDestroyMutex([NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
@@ -3133,10 +3133,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CreateSemaphore")]
 		[return: NativeName(NativeNameType.Type, "SDL_sem*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateSemaphore")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLSemaphore* SDLCreateSemaphoreNative([NativeName(NativeNameType.Param, "initial_value")] [NativeName(NativeNameType.Type, "Uint32")] uint initialValue);
-
+		internal static SDLSemaphore* SDLCreateSemaphoreNative([NativeName(NativeNameType.Param, "initial_value")] [NativeName(NativeNameType.Type, "Uint32")] uint initialValue)
+		{
+			return ((delegate* unmanaged[Cdecl]<uint, SDLSemaphore*>)vt[159])(initialValue);
+		}
 		/// <summary>/// Create a semaphore.<br/>/// This function creates a new semaphore and initializes it with the value<br/>/// `initial_value`. Each wait operation on the semaphore will atomically<br/>/// decrement the semaphore value and potentially block if the semaphore value<br/>/// is 0. Each post operation will atomically increment the semaphore value and<br/>/// wake waiting threads and allow them to retry the wait operation.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateSemaphore")]
 		[return: NativeName(NativeNameType.Type, "SDL_sem*")]
 		public static SDLSemaphore* SDLCreateSemaphore([NativeName(NativeNameType.Param, "initial_value")] [NativeName(NativeNameType.Type, "Uint32")] uint initialValue)
@@ -3155,10 +3155,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DestroySemaphore")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DestroySemaphore")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDestroySemaphoreNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
-
+		internal static void SDLDestroySemaphoreNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			((delegate* unmanaged[Cdecl]<SDLSemaphore*, void>)vt[160])(sem);
+		}
 		/// <summary>/// Destroy a semaphore.<br/>/// It is not safe to destroy a semaphore if there are threads currently<br/>/// waiting on it.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroySemaphore")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLDestroySemaphore([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
@@ -3190,10 +3190,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SemWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SemWait")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSemWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
-
+		internal static int SDLSemWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSemaphore*, int>)vt[161])(sem);
+		}
 		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value or the call is interrupted by a<br/>/// signal or error. If the call is successful it will atomically decrement the<br/>/// semaphore value.<br/>/// This function is the equivalent of calling SDL_SemWaitTimeout() with a time<br/>/// length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSemWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
@@ -3225,10 +3225,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SemTryWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SemTryWait")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSemTryWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
-
+		internal static int SDLSemTryWaitNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSemaphore*, int>)vt[162])(sem);
+		}
 		/// <summary>/// See if a semaphore has a positive value and decrement it if it does.<br/>/// This function checks to see if the semaphore pointed to by `sem` has a<br/>/// positive value and atomically decrements the semaphore value if it does. If<br/>/// the semaphore doesn't have a positive value, the function immediately<br/>/// returns SDL_MUTEX_TIMEDOUT.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemTryWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSemTryWait([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
@@ -3260,10 +3260,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SemWaitTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SemWaitTimeout")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSemWaitTimeoutNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout);
-
+		internal static int SDLSemWaitTimeoutNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSemaphore*, uint, int>)vt[163])(sem, timeout);
+		}
 		/// <summary>/// Wait until a semaphore has a positive value and then decrements it.<br/>/// This function suspends the calling thread until either the semaphore<br/>/// pointed to by `sem` has a positive value, the call is interrupted by a<br/>/// signal or error, or the specified time has elapsed. If the call is<br/>/// successful it will atomically decrement the semaphore value.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemWaitTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSemWaitTimeout([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem, [NativeName(NativeNameType.Param, "timeout")] [NativeName(NativeNameType.Type, "Uint32")] uint timeout)
@@ -3291,10 +3291,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SemPost")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SemPost")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSemPostNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
-
+		internal static int SDLSemPostNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSemaphore*, int>)vt[164])(sem);
+		}
 		/// <summary>/// Atomically increment a semaphore's value and wake waiting threads.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemPost")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSemPost([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
@@ -3322,10 +3322,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SemValue")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SemValue")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLSemValueNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem);
-
+		internal static uint SDLSemValueNative([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLSemaphore*, uint>)vt[165])(sem);
+		}
 		/// <summary>/// Get the current value of a semaphore.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SemValue")]
 		[return: NativeName(NativeNameType.Type, "Uint32")]
 		public static uint SDLSemValue([NativeName(NativeNameType.Param, "sem")] [NativeName(NativeNameType.Type, "SDL_sem*")] SDLSemaphore* sem)
@@ -3353,10 +3353,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CreateCond")]
 		[return: NativeName(NativeNameType.Type, "SDL_cond*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateCond")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLCond* SDLCreateCondNative();
-
+		internal static SDLCond* SDLCreateCondNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLCond*>)vt[166])();
+		}
 		/// <summary>/// Create a condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CreateCond")]
 		[return: NativeName(NativeNameType.Type, "SDL_cond*")]
 		public static SDLCond* SDLCreateCond()
@@ -3373,10 +3373,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_DestroyCond")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_DestroyCond")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLDestroyCondNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
-
+		internal static void SDLDestroyCondNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			((delegate* unmanaged[Cdecl]<SDLCond*, void>)vt[167])(cond);
+		}
 		/// <summary>/// Destroy a condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_DestroyCond")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void SDLDestroyCond([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
@@ -3402,10 +3402,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CondSignal")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CondSignal")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCondSignalNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
-
+		internal static int SDLCondSignalNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLCond*, int>)vt[168])(cond);
+		}
 		/// <summary>/// Restart one of the threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondSignal")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLCondSignal([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
@@ -3433,10 +3433,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CondBroadcast")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CondBroadcast")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCondBroadcastNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond);
-
+		internal static int SDLCondBroadcastNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLCond*, int>)vt[169])(cond);
+		}
 		/// <summary>/// Restart all threads that are waiting on the condition variable.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondBroadcast")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLCondBroadcast([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond)
@@ -3471,10 +3471,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CondWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CondWait")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCondWaitNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex);
-
+		internal static int SDLCondWaitNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLCond*, SDLMutex*, int>)vt[170])(cond, mutex);
+		}
 		/// <summary>/// Wait until a condition variable is signaled.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`. Once the condition variable is signaled, the mutex is re-locked and<br/>/// the function returns.<br/>/// The mutex must be locked before calling this function.<br/>/// This function is the equivalent of calling SDL_CondWaitTimeout() with a<br/>/// time length of `SDL_MUTEX_MAXWAIT`.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWait")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLCondWait([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex)
@@ -3533,10 +3533,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CondWaitTimeout")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLCondWaitTimeoutNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms);
-
+		internal static int SDLCondWaitTimeoutNative([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLCond*, SDLMutex*, uint, int>)vt[171])(cond, mutex, ms);
+		}
 		/// <summary>/// Wait until a condition variable is signaled or a certain time has passed.<br/>/// This function unlocks the specified `mutex` and waits for another thread to<br/>/// call SDL_CondSignal() or SDL_CondBroadcast() on the condition variable<br/>/// `cond`, or for the specified time to elapse. Once the condition variable is<br/>/// signaled or the time elapsed, the mutex is re-locked and the function<br/>/// returns.<br/>/// The mutex must be locked before calling this function.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_CondWaitTimeout")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLCondWaitTimeout([NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "SDL_cond*")] SDLCond* cond, [NativeName(NativeNameType.Param, "mutex")] [NativeName(NativeNameType.Type, "SDL_mutex*")] SDLMutex* mutex, [NativeName(NativeNameType.Param, "ms")] [NativeName(NativeNameType.Type, "Uint32")] uint ms)
@@ -3583,13 +3583,13 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateThread")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLThread* SDL_CreateThreadNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread);
-
+		internal static SDLThread* SDL_CreateThreadNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
+		{
+			return ((delegate* unmanaged[Cdecl]<delegate*<void*, int>, byte*, void*, delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong>, delegate*<uint, void>, SDLThread*>)vt[172])(fn, name, data, pfnBeginThread, pfnEndThread);
+		}
 		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			SDLThread* ret = SDL_CreateThreadNative(fn, name, data, pfnBeginThread, pfnEndThread);
 			return ret;
@@ -3597,7 +3597,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -3608,7 +3608,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThread")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThread([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -3637,13 +3637,13 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_CreateThreadWithStackSize")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial SDLThread* SDL_CreateThreadWithStackSizeNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread);
-
+		internal static SDLThread* SDL_CreateThreadWithStackSizeNative([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
+		{
+			return ((delegate* unmanaged[Cdecl]<delegate*<void*, int>, byte*, ulong, void*, delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong>, delegate*<uint, void>, SDLThread*>)vt[173])(fn, name, stacksize, data, pfnBeginThread, pfnEndThread);
+		}
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, name, stacksize, data, pfnBeginThread, pfnEndThread);
 			return ret;
@@ -3651,7 +3651,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -3662,7 +3662,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] ulong stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -3691,7 +3691,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			SDLThread* ret = SDL_CreateThreadWithStackSizeNative(fn, name, stacksize, data, pfnBeginThread, pfnEndThread);
 			return ret;
@@ -3699,7 +3699,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] ref byte name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			fixed (byte* pname = &name)
 			{
@@ -3710,7 +3710,7 @@ namespace Hexa.NET.SDL2
 
 		[NativeName(NativeNameType.Func, "SDL_CreateThreadWithStackSize")]
 		[return: NativeName(NativeNameType.Type, "SDL_Thread*")]
-		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] SdlThreadfunction fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] PfnsdlCurrentbeginthread pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] PfnsdlCurrentendthread pfnEndThread)
+		public static SDLThread* SDL_CreateThreadWithStackSize([NativeName(NativeNameType.Param, "fn")] [NativeName(NativeNameType.Type, "SDL_ThreadFunction")] delegate*<void*, int> fn, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] string name, [NativeName(NativeNameType.Param, "stacksize")] [NativeName(NativeNameType.Type, "const size_t")] nuint stacksize, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "pfnBeginThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentBeginThread")] delegate*<void*, uint, delegate*<void*, uint>, void*, uint, uint*, ulong> pfnBeginThread, [NativeName(NativeNameType.Param, "pfnEndThread")] [NativeName(NativeNameType.Type, "pfnSDL_CurrentEndThread")] delegate*<uint, void> pfnEndThread)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -3747,10 +3747,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetThreadName")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial byte* SDLGetThreadNameNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread);
-
+		internal static byte* SDLGetThreadNameNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLThread*, byte*>)vt[174])(thread);
+		}
 		/// <summary>/// Get the thread name as it was specified in SDL_CreateThread().<br/>/// This is internal memory, not to be freed by the caller, and remains valid<br/>/// until the specified thread is cleaned up by SDL_WaitThread().<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadName")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* SDLGetThreadName([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
@@ -3802,10 +3802,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_ThreadID")]
 		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_ThreadID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLThreadIDNative();
-
+		internal static uint SDLThreadIDNative()
+		{
+			return ((delegate* unmanaged[Cdecl]<uint>)vt[175])();
+		}
 		/// <summary>/// Get the thread identifier for the current thread.<br/>/// This thread identifier is as reported by the underlying operating system.<br/>/// If SDL is running on a platform that does not support threads the return<br/>/// value will always be zero.<br/>/// This function also returns a valid thread ID when called from the main<br/>/// thread.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_ThreadID")]
 		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
 		public static uint SDLThreadID()
@@ -3825,10 +3825,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_GetThreadID")]
 		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
-		[LibraryImport(LibName, EntryPoint = "SDL_GetThreadID")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial uint SDLGetThreadIDNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread);
-
+		internal static uint SDLGetThreadIDNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLThread*, uint>)vt[176])(thread);
+		}
 		/// <summary>/// Get the thread identifier for the specified thread.<br/>/// This thread identifier is as reported by the underlying operating system.<br/>/// If SDL is running on a platform that does not support threads the return<br/>/// value will always be zero.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_GetThreadID")]
 		[return: NativeName(NativeNameType.Type, "SDL_threadID")]
 		public static uint SDLGetThreadID([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread)
@@ -3858,10 +3858,10 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_SetThreadPriority")]
 		[return: NativeName(NativeNameType.Type, "int")]
-		[LibraryImport(LibName, EntryPoint = "SDL_SetThreadPriority")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial int SDLSetThreadPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_ThreadPriority")] SDLThreadPriority priority);
-
+		internal static int SDLSetThreadPriorityNative([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_ThreadPriority")] SDLThreadPriority priority)
+		{
+			return ((delegate* unmanaged[Cdecl]<SDLThreadPriority, int>)vt[177])(priority);
+		}
 		/// <summary>/// Set the priority for the current thread.<br/>/// Note that some platforms will not let you alter the priority (or at least,<br/>/// promote the thread to a higher priority) at all, and some require you to be<br/>/// an administrator account. Be prepared for this to fail.<br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_SetThreadPriority")]
 		[return: NativeName(NativeNameType.Type, "int")]
 		public static int SDLSetThreadPriority([NativeName(NativeNameType.Param, "priority")] [NativeName(NativeNameType.Type, "SDL_ThreadPriority")] SDLThreadPriority priority)
@@ -3891,15 +3891,9 @@ namespace Hexa.NET.SDL2
 		/// </summary>
 		[NativeName(NativeNameType.Func, "SDL_WaitThread")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		[LibraryImport(LibName, EntryPoint = "SDL_WaitThread")]
-		[UnmanagedCallConv(CallConvs = new Type[] {typeof(System.Runtime.CompilerServices.CallConvCdecl)})]
-		internal static partial void SDLWaitThreadNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread, [NativeName(NativeNameType.Param, "status")] [NativeName(NativeNameType.Type, "int*")] int* status);
-
-		/// <summary>/// Wait for a thread to finish.<br/>/// Threads that haven't been detached will remain (as a "zombie") until this<br/>/// function cleans them up. Not doing so is a resource leak.<br/>/// Once a thread has been cleaned up through this function, the SDL_Thread<br/>/// that references it becomes invalid and should not be referenced again. As<br/>/// such, only one thread may call SDL_WaitThread() on another.<br/>/// The return code for the thread function is placed in the area pointed to by<br/>/// `status`, if `status` is not NULL.<br/>/// You may not wait on a thread that has been used in a call to<br/>/// SDL_DetachThread(). Use either that function or this one, but not both, or<br/>/// behavior is undefined.<br/>/// It is safe to pass a NULL thread to this function; it is a no-op.<br/>/// Note that the thread pointer is freed by this function and is not valid<br/>/// afterward.<br/>/// <br/>/// <br/>/// <br/>/// </summary>		[NativeName(NativeNameType.Func, "SDL_WaitThread")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SDLWaitThread([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread, [NativeName(NativeNameType.Param, "status")] [NativeName(NativeNameType.Type, "int*")] int* status)
+		internal static void SDLWaitThreadNative([NativeName(NativeNameType.Param, "thread")] [NativeName(NativeNameType.Type, "SDL_Thread*")] SDLThread* thread, [NativeName(NativeNameType.Param, "status")] [NativeName(NativeNameType.Type, "int*")] int* status)
 		{
-			SDLWaitThreadNative(thread, status);
+			((delegate* unmanaged[Cdecl]<SDLThread*, int*, void>)vt[178])(thread, status);
 		}
 	}
 }

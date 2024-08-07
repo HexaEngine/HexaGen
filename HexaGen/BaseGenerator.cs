@@ -3,9 +3,8 @@
     using HexaGen.Core.Logging;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+
+    public delegate void LogEventHandler(LogSeverity severity, string message);
 
     public class BaseGenerator
     {
@@ -18,42 +17,47 @@
             settings.TypeMappings.Add("HRESULT", "HResult");
         }
 
+        public CsCodeGeneratorSettings Settings => settings;
+
         public IReadOnlyList<LogMessage> Messages => messages;
 
-        public void Log(LogSevertiy severtiy, string message)
+        public event LogEventHandler? LogEvent;
+
+        public void Log(LogSeverity severtiy, string message)
         {
             if (severtiy >= settings.LogLevel)
                 messages.Add(new LogMessage(severtiy, message));
+            LogEvent?.Invoke(severtiy, message);
         }
 
         public void LogTrace(string message)
         {
-            Log(LogSevertiy.Trace, message);
+            Log(LogSeverity.Trace, message);
         }
 
         public void LogDebug(string message)
         {
-            Log(LogSevertiy.Debug, message);
+            Log(LogSeverity.Debug, message);
         }
 
         public void LogInfo(string message)
         {
-            Log(LogSevertiy.Information, message);
+            Log(LogSeverity.Information, message);
         }
 
         public void LogWarn(string message)
         {
-            Log(LogSevertiy.Warning, message);
+            Log(LogSeverity.Warning, message);
         }
 
         public void LogError(string message)
         {
-            Log(LogSevertiy.Error, message);
+            Log(LogSeverity.Error, message);
         }
 
         public void LogCritical(string message)
         {
-            Log(LogSevertiy.Critical, message);
+            Log(LogSeverity.Critical, message);
         }
 
         public void DisplayMessages()
@@ -65,29 +69,29 @@
                 var msg = messages[i];
                 switch (msg.Severtiy)
                 {
-                    case LogSevertiy.Trace:
+                    case LogSeverity.Trace:
                         Console.ForegroundColor = ConsoleColor.Gray;
                         break;
 
-                    case LogSevertiy.Debug:
+                    case LogSeverity.Debug:
                         Console.ForegroundColor = ConsoleColor.Gray;
                         break;
 
-                    case LogSevertiy.Information:
+                    case LogSeverity.Information:
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
 
-                    case LogSevertiy.Warning:
+                    case LogSeverity.Warning:
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         warns++;
                         break;
 
-                    case LogSevertiy.Error:
+                    case LogSeverity.Error:
                         Console.ForegroundColor = ConsoleColor.Red;
                         errors++;
                         break;
 
-                    case LogSevertiy.Critical:
+                    case LogSeverity.Critical:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         errors++;
                         break;

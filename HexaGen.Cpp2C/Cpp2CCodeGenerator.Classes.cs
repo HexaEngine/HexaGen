@@ -61,8 +61,8 @@
         {
             string filePathHeader = Path.Combine(outputPath, "Classes.h");
             string filePathCpp = Path.Combine(outputPath, "Classes.cpp");
-            using var headerWriter = new CodeWriter(filePathHeader, templateHeader);
-            using var cppWriter = new CodeWriter(filePathCpp, templateCpp);
+            using var headerWriter = new CodeWriter(filePathHeader, templateHeader, null);
+            using var cppWriter = new CodeWriter(filePathCpp, templateCpp, null);
 
             for (int i = 0; i < compilation.Classes.Count; i++)
             {

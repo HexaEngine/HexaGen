@@ -1270,70 +1270,6 @@ namespace Hexa.NET.Vulkan
 
 	}
 
-	[NativeName(NativeNameType.StructOrClass, "VkMicromapBuildInfoEXT")]
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkMicromapBuildInfoEXT
-	{
-		[NativeName(NativeNameType.Field, "sType")]
-		[NativeName(NativeNameType.Type, "VkStructureType")]
-		public VkStructureType SType;
-		[NativeName(NativeNameType.Field, "pNext")]
-		[NativeName(NativeNameType.Type, "const void*")]
-		public unsafe void* PNext;
-		[NativeName(NativeNameType.Field, "type")]
-		[NativeName(NativeNameType.Type, "VkMicromapTypeEXT")]
-		public VkMicromapTypeEXT Type;
-		[NativeName(NativeNameType.Field, "flags")]
-		[NativeName(NativeNameType.Type, "VkBuildMicromapFlagsEXT")]
-		public uint Flags;
-		[NativeName(NativeNameType.Field, "mode")]
-		[NativeName(NativeNameType.Type, "VkBuildMicromapModeEXT")]
-		public VkBuildMicromapModeEXT Mode;
-		[NativeName(NativeNameType.Field, "dstMicromap")]
-		[NativeName(NativeNameType.Type, "VkMicromapEXT")]
-		public VkMicromapEXT DstMicromap;
-		[NativeName(NativeNameType.Field, "usageCountsCount")]
-		[NativeName(NativeNameType.Type, "uint32_t")]
-		public uint UsageCountsCount;
-		[NativeName(NativeNameType.Field, "pUsageCounts")]
-		[NativeName(NativeNameType.Type, "const VkMicromapUsageEXT*")]
-		public unsafe VkMicromapUsageEXT* PUsageCounts;
-		[NativeName(NativeNameType.Field, "ppUsageCounts")]
-		[NativeName(NativeNameType.Type, "const const VkMicromapUsageEXT**")]
-		public unsafe VkMicromapUsageEXT** PpUsageCounts;
-		[NativeName(NativeNameType.Field, "data")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressConstKHR")]
-		public VkDeviceOrHostAddressConstKHR Data;
-		[NativeName(NativeNameType.Field, "scratchData")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressKHR")]
-		public VkDeviceOrHostAddressKHR ScratchData;
-		[NativeName(NativeNameType.Field, "triangleArray")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressConstKHR")]
-		public VkDeviceOrHostAddressConstKHR TriangleArray;
-		[NativeName(NativeNameType.Field, "triangleArrayStride")]
-		[NativeName(NativeNameType.Type, "VkDeviceSize")]
-		public ulong TriangleArrayStride;
-
-		public unsafe VkMicromapBuildInfoEXT(VkStructureType sType = default, void* pNext = default, VkMicromapTypeEXT type = default, uint flags = default, VkBuildMicromapModeEXT mode = default, VkMicromapEXT dstMicromap = default, uint usageCountsCount = default, VkMicromapUsageEXT* pUsageCounts = default, VkMicromapUsageEXT** ppUsageCounts = default, VkDeviceOrHostAddressConstKHR data = default, VkDeviceOrHostAddressKHR scratchdata = default, VkDeviceOrHostAddressConstKHR trianglearray = default, ulong triangleArrayStride = default)
-		{
-			SType = sType;
-			PNext = pNext;
-			Type = type;
-			Flags = flags;
-			Mode = mode;
-			DstMicromap = dstMicromap;
-			UsageCountsCount = usageCountsCount;
-			PUsageCounts = pUsageCounts;
-			PpUsageCounts = ppUsageCounts;
-			Data = data;
-			ScratchData = scratchdata;
-			TriangleArray = trianglearray;
-			TriangleArrayStride = triangleArrayStride;
-		}
-
-
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "VkMicromapCreateInfoEXT")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkMicromapCreateInfoEXT
@@ -3639,12 +3575,12 @@ namespace Hexa.NET.Vulkan
 		[NativeName(NativeNameType.Type, "PFN_vkGetInstanceProcAddrLUNARG")]
 		public unsafe void* PfnGetInstanceProcAddr;
 
-		public unsafe VkDirectDriverLoadingInfoLUNARG(VkStructureType sType = default, void* pNext = default, uint flags = default, PFNVkGetInstanceProcAddrLUNARG pfnGetInstanceProcAddr = default)
+		public unsafe VkDirectDriverLoadingInfoLUNARG(VkStructureType sType = default, void* pNext = default, uint flags = default, delegate*<VkInstance, byte*, PFNVkVoidFunction> pfnGetInstanceProcAddr = default)
 		{
 			SType = sType;
 			PNext = pNext;
 			Flags = flags;
-			PfnGetInstanceProcAddr = (void*)Marshal.GetFunctionPointerForDelegate(pfnGetInstanceProcAddr);
+			PfnGetInstanceProcAddr = (void*)pfnGetInstanceProcAddr;
 		}
 
 
@@ -4798,54 +4734,6 @@ namespace Hexa.NET.Vulkan
 
 	}
 
-	[NativeName(NativeNameType.StructOrClass, "VkAccelerationStructureGeometryTrianglesDataKHR")]
-	[StructLayout(LayoutKind.Sequential)]
-	public partial struct VkAccelerationStructureGeometryTrianglesDataKHR
-	{
-		[NativeName(NativeNameType.Field, "sType")]
-		[NativeName(NativeNameType.Type, "VkStructureType")]
-		public VkStructureType SType;
-		[NativeName(NativeNameType.Field, "pNext")]
-		[NativeName(NativeNameType.Type, "const void*")]
-		public unsafe void* PNext;
-		[NativeName(NativeNameType.Field, "vertexFormat")]
-		[NativeName(NativeNameType.Type, "VkFormat")]
-		public VkFormat VertexFormat;
-		[NativeName(NativeNameType.Field, "vertexData")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressConstKHR")]
-		public VkDeviceOrHostAddressConstKHR VertexData;
-		[NativeName(NativeNameType.Field, "vertexStride")]
-		[NativeName(NativeNameType.Type, "VkDeviceSize")]
-		public ulong VertexStride;
-		[NativeName(NativeNameType.Field, "maxVertex")]
-		[NativeName(NativeNameType.Type, "uint32_t")]
-		public uint MaxVertex;
-		[NativeName(NativeNameType.Field, "indexType")]
-		[NativeName(NativeNameType.Type, "VkIndexType")]
-		public VkIndexType IndexType;
-		[NativeName(NativeNameType.Field, "indexData")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressConstKHR")]
-		public VkDeviceOrHostAddressConstKHR IndexData;
-		[NativeName(NativeNameType.Field, "transformData")]
-		[NativeName(NativeNameType.Type, "VkDeviceOrHostAddressConstKHR")]
-		public VkDeviceOrHostAddressConstKHR TransformData;
-
-		public unsafe VkAccelerationStructureGeometryTrianglesDataKHR(VkStructureType sType = default, void* pNext = default, VkFormat vertexFormat = default, VkDeviceOrHostAddressConstKHR vertexdata = default, ulong vertexStride = default, uint maxVertex = default, VkIndexType indexType = default, VkDeviceOrHostAddressConstKHR indexdata = default, VkDeviceOrHostAddressConstKHR transformdata = default)
-		{
-			SType = sType;
-			PNext = pNext;
-			VertexFormat = vertexFormat;
-			VertexData = vertexdata;
-			VertexStride = vertexStride;
-			MaxVertex = maxVertex;
-			IndexType = indexType;
-			IndexData = indexdata;
-			TransformData = transformdata;
-		}
-
-
-	}
-
 	[NativeName(NativeNameType.StructOrClass, "VkAccelerationStructureGeometryAabbsDataKHR")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct VkAccelerationStructureGeometryAabbsDataKHR
@@ -5012,6 +4900,118 @@ namespace Hexa.NET.Vulkan
 			PGeometries = pGeometries;
 			PpGeometries = ppGeometries;
 			ScratchData = scratchdata;
+		}
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "VkAccelerationStructureCreateInfoKHR")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkAccelerationStructureCreateInfoKHR
+	{
+		[NativeName(NativeNameType.Field, "sType")]
+		[NativeName(NativeNameType.Type, "VkStructureType")]
+		public VkStructureType SType;
+		[NativeName(NativeNameType.Field, "pNext")]
+		[NativeName(NativeNameType.Type, "const void*")]
+		public unsafe void* PNext;
+		[NativeName(NativeNameType.Field, "createFlags")]
+		[NativeName(NativeNameType.Type, "VkAccelerationStructureCreateFlagsKHR")]
+		public uint CreateFlags;
+		[NativeName(NativeNameType.Field, "buffer")]
+		[NativeName(NativeNameType.Type, "VkBuffer")]
+		public VkBuffer Buffer;
+		[NativeName(NativeNameType.Field, "offset")]
+		[NativeName(NativeNameType.Type, "VkDeviceSize")]
+		public ulong Offset;
+		[NativeName(NativeNameType.Field, "size")]
+		[NativeName(NativeNameType.Type, "VkDeviceSize")]
+		public ulong Size;
+		[NativeName(NativeNameType.Field, "type")]
+		[NativeName(NativeNameType.Type, "VkAccelerationStructureTypeKHR")]
+		public VkAccelerationStructureTypeKHR Type;
+		[NativeName(NativeNameType.Field, "deviceAddress")]
+		[NativeName(NativeNameType.Type, "VkDeviceAddress")]
+		public ulong DeviceAddress;
+
+		public unsafe VkAccelerationStructureCreateInfoKHR(VkStructureType sType = default, void* pNext = default, uint createFlags = default, VkBuffer buffer = default, ulong offset = default, ulong size = default, VkAccelerationStructureTypeKHR type = default, ulong deviceAddress = default)
+		{
+			SType = sType;
+			PNext = pNext;
+			CreateFlags = createFlags;
+			Buffer = buffer;
+			Offset = offset;
+			Size = size;
+			Type = type;
+			DeviceAddress = deviceAddress;
+		}
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "VkWriteDescriptorSetAccelerationStructureKHR")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkWriteDescriptorSetAccelerationStructureKHR
+	{
+		[NativeName(NativeNameType.Field, "sType")]
+		[NativeName(NativeNameType.Type, "VkStructureType")]
+		public VkStructureType SType;
+		[NativeName(NativeNameType.Field, "pNext")]
+		[NativeName(NativeNameType.Type, "const void*")]
+		public unsafe void* PNext;
+		[NativeName(NativeNameType.Field, "accelerationStructureCount")]
+		[NativeName(NativeNameType.Type, "uint32_t")]
+		public uint AccelerationStructureCount;
+		[NativeName(NativeNameType.Field, "pAccelerationStructures")]
+		[NativeName(NativeNameType.Type, "const VkAccelerationStructureKHR*")]
+		public unsafe VkAccelerationStructureKHR* PAccelerationStructures;
+
+		public unsafe VkWriteDescriptorSetAccelerationStructureKHR(VkStructureType sType = default, void* pNext = default, uint accelerationStructureCount = default, VkAccelerationStructureKHR* pAccelerationStructures = default)
+		{
+			SType = sType;
+			PNext = pNext;
+			AccelerationStructureCount = accelerationStructureCount;
+			PAccelerationStructures = pAccelerationStructures;
+		}
+
+
+	}
+
+	[NativeName(NativeNameType.StructOrClass, "VkPhysicalDeviceAccelerationStructureFeaturesKHR")]
+	[StructLayout(LayoutKind.Sequential)]
+	public partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR
+	{
+		[NativeName(NativeNameType.Field, "sType")]
+		[NativeName(NativeNameType.Type, "VkStructureType")]
+		public VkStructureType SType;
+		[NativeName(NativeNameType.Field, "pNext")]
+		[NativeName(NativeNameType.Type, "void*")]
+		public unsafe void* PNext;
+		[NativeName(NativeNameType.Field, "accelerationStructure")]
+		[NativeName(NativeNameType.Type, "VkBool32")]
+		public uint AccelerationStructure;
+		[NativeName(NativeNameType.Field, "accelerationStructureCaptureReplay")]
+		[NativeName(NativeNameType.Type, "VkBool32")]
+		public uint AccelerationStructureCaptureReplay;
+		[NativeName(NativeNameType.Field, "accelerationStructureIndirectBuild")]
+		[NativeName(NativeNameType.Type, "VkBool32")]
+		public uint AccelerationStructureIndirectBuild;
+		[NativeName(NativeNameType.Field, "accelerationStructureHostCommands")]
+		[NativeName(NativeNameType.Type, "VkBool32")]
+		public uint AccelerationStructureHostCommands;
+		[NativeName(NativeNameType.Field, "descriptorBindingAccelerationStructureUpdateAfterBind")]
+		[NativeName(NativeNameType.Type, "VkBool32")]
+		public uint DescriptorBindingAccelerationStructureUpdateAfterBind;
+
+		public unsafe VkPhysicalDeviceAccelerationStructureFeaturesKHR(VkStructureType sType = default, void* pNext = default, uint accelerationStructure = default, uint accelerationStructureCaptureReplay = default, uint accelerationStructureIndirectBuild = default, uint accelerationStructureHostCommands = default, uint descriptorBindingAccelerationStructureUpdateAfterBind = default)
+		{
+			SType = sType;
+			PNext = pNext;
+			AccelerationStructure = accelerationStructure;
+			AccelerationStructureCaptureReplay = accelerationStructureCaptureReplay;
+			AccelerationStructureIndirectBuild = accelerationStructureIndirectBuild;
+			AccelerationStructureHostCommands = accelerationStructureHostCommands;
+			DescriptorBindingAccelerationStructureUpdateAfterBind = descriptorBindingAccelerationStructureUpdateAfterBind;
 		}
 
 

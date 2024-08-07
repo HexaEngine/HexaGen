@@ -28,7 +28,7 @@
 
         public override readonly int GetHashCode()
         {
-            return HashCode.Combine(Value);
+            return Value;
         }
 
         public static bool operator ==(Bool32 left, Bool32 right)

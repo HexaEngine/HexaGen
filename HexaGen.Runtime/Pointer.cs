@@ -22,6 +22,12 @@
             Handle = (T*)handle;
         }
 
+        public T this[int index]
+        {
+            get => Handle[index];
+            set => Handle[index] = value;
+        }
+
         public override readonly bool Equals(object? obj)
         {
             return obj is Pointer<T> pointer && Equals(pointer);
@@ -105,6 +111,26 @@
         public static implicit operator Pointer<T>(nuint pointer)
         {
             return new(pointer);
+        }
+
+        public static Pointer<T> operator +(Pointer<T> pointer, int offset)
+        {
+            return new(pointer.Handle + offset);
+        }
+
+        public static Pointer<T> operator -(Pointer<T> pointer, int offset)
+        {
+            return new(pointer.Handle - offset);
+        }
+
+        public static Pointer<T> operator ++(Pointer<T> pointer)
+        {
+            return new(pointer.Handle + 1);
+        }
+
+        public static Pointer<T> operator --(Pointer<T> pointer)
+        {
+            return new(pointer.Handle - 1);
         }
 
         private readonly string DebuggerDisplay => string.Format("[0x{0}]", ((nint)Handle).ToString("X"));

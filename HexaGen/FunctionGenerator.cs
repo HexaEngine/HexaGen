@@ -20,7 +20,7 @@
 
         public CsSubClass(CppType type, string name, string cppFieldName, string fieldName)
         {
-            Type = new(name, name, false, false, false, false, false, false, false, false, false, CsStringType.None, CsPrimitiveType.Unknown);
+            Type = new(name, name, false, false, false, false, false, false, false, false, false, false, CsStringType.None, CsPrimitiveType.Unknown);
             CppType = type;
             Name = name;
             CppFieldName = cppFieldName;
@@ -28,16 +28,420 @@
         }
     }
 
+    public abstract class FunctionGenRule
+    {
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+
+        public virtual CsParameterInfo CreateDefaultParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            return new(csParamName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+        }
+
+        public virtual CsParameterInfo CreateDefaultWrapperParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+        }
+    }
+
+    public abstract class FunctionGenRuleMatch<T> : FunctionGenRule where T : ICppElement
+    {
+        public abstract bool IsMatch(CppParameter cppParameter, T type);
+
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            if (cppParameter.Type is T t && IsMatch(cppParameter, t))
+            {
+                return CreateParameter(cppParameter, t, csParamName, kind, direction, settings);
+            }
+
+            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+        }
+
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, T type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+    }
+
+    public abstract class FunctionGenRuleMatch : FunctionGenRule
+    {
+        public abstract bool IsMatch(CppParameter cppParameter, CppType type);
+
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            if (IsMatch(cppParameter, cppParameter.Type))
+            {
+                return CreateParameter(cppParameter, cppParameter.Type, csParamName, kind, direction, settings);
+            }
+
+            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+        }
+
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, CppType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+    }
+
+    public class FunctionGenRuleRef : FunctionGenRuleMatch<CppArrayType>
+    {
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, CppArrayType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            return new(csParamName, cppParameter.Type, new("ref " + settings.GetCsTypeName(type.ElementType, false), kind), direction);
+        }
+
+        public override bool IsMatch(CppParameter cppParameter, CppArrayType type)
+        {
+            return type.Size > 0;
+        }
+    }
+
+    public class FunctionGenRuleSpan : FunctionGenRule
+    {
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            if (cppParameter.Type is CppArrayType arrayType)
+            {
+                if (arrayType.Size > 0)
+                {
+                    return new(csParamName, cppParameter.Type, new($"ReadOnlySpan<{settings.GetCsTypeName(arrayType.ElementType, false)}>", kind), direction);
+                }
+            }
+            else if (cppParameter.Type.IsString())
+            {
+                switch (kind)
+                {
+                    case CppPrimitiveKind.Char:
+                        if (direction == Direction.InOut || direction == Direction.Out) break;
+                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<byte>", kind), direction);
+
+                    case CppPrimitiveKind.WChar:
+                        if (direction == Direction.InOut || direction == Direction.Out) break;
+                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<char>", kind), direction);
+                }
+            }
+
+            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+        }
+    }
+
+    public class FunctionGenRuleString : FunctionGenRule
+    {
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        {
+            if (cppParameter.Type is CppArrayType arrayType && arrayType.ElementType.IsString())
+            {
+                return new(csParamName, cppParameter.Type, new("string[]", kind), direction);
+            }
+
+            if (cppParameter.Type.IsString())
+            {
+                return new(csParamName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
+            }
+
+            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+        }
+    }
+
+    /// <summary>
+    /// Represents an abstract base class for function generation steps,
+    /// providing methods to generate variations of functions and
+    /// execute sub-steps.
+    /// </summary>
+    public abstract class FunctionGenStep
+    {
+        /// <summary>
+        /// Gets or sets the list of function generation steps.
+        /// </summary>
+        public List<FunctionGenStep> GenSteps = []; // default to empty list, to avoid problems later with null checks
+
+        /// <summary>
+        /// Determines whether to skip the given function and variation.
+        /// </summary>
+        /// <param name="function">The function to check.</param>
+        /// <param name="variation">The variation to check.</param>
+        /// <returns>
+        /// True if the function should be skipped; otherwise, false.
+        /// </returns>
+        public virtual bool ShouldSkip(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Generates variations of the specified function and variation.
+        /// Must be implemented by derived classes.
+        /// </summary>
+        /// <param name="function">The function to generate variations for.</param>
+        /// <param name="variation">The variation to generate variations for.</param>
+        public abstract void GenerateVariations(CsFunctionOverload function, CsFunctionVariation variation);
+
+        /// <summary>
+        /// Executes sub-steps of the specified type for the given function and variation.
+        /// </summary>
+        /// <typeparam name="T">The type of sub-step to execute.</typeparam>
+        /// <param name="function">The function to process with sub-steps.</param>
+        /// <param name="variation">The variation to process with sub-steps.</param>
+        public void DoSubStep<T>(CsFunctionOverload function, CsFunctionVariation variation) where T : FunctionGenStep
+        {
+            foreach (var step in GenSteps)
+            {
+                if (step.ShouldSkip(function, variation)) continue;
+                if (step is T t)
+                {
+                    t.GenerateVariations(function, variation);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executes all sub-steps for the given function and variation.
+        /// </summary>
+        /// <param name="function">The function to process with sub-steps.</param>
+        /// <param name="variation">The variation to process with sub-steps.</param>
+        public void DoSubStep(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            foreach (var step in GenSteps)
+            {
+                if (step.ShouldSkip(function, variation)) continue;
+                step.GenerateVariations(function, variation);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Represents a generator step that produces variations of functions
+    /// by applying default values to parameters.
+    /// </summary>
+    public class DefaultValueGenStep : FunctionGenStep
+    {
+        /// <summary>
+        /// Generates variations of the specified function and variation
+        /// by applying default values to parameters.
+        /// </summary>
+        /// <param name="function">The function to generate variations for.</param>
+        /// <param name="variation">The variation to generate variations for.</param>
+        public override void GenerateVariations(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            if (function.DefaultValues.Count == 0)
+                return;
+
+            for (int i = variation.Parameters.Count - 1; i >= 0; i--)
+            {
+                var param = variation.Parameters[i];
+
+                if (!function.DefaultValues.TryGetValue(param.Name, out var defaultValue))
+                {
+                    continue;
+                }
+
+                TransformDefaultValue(function, variation, param, ref defaultValue);
+
+                CsFunctionVariation defaultVariation = variation.ShallowClone();
+                defaultVariation.GenericParameters.AddRange(variation.GenericParameters);
+                for (int j = 0; j < variation.Parameters.Count; j++)
+                {
+                    var variationParameter = variation.Parameters[j];
+                    if (param != variationParameter)
+                    {
+                        defaultVariation.Parameters.Add(variationParameter);
+                    }
+                    else
+                    {
+                        var cloned = variationParameter.Clone();
+                        cloned.DefaultValue = defaultValue;
+                        defaultVariation.Parameters.Add(cloned);
+                    }
+                }
+
+                if (!function.TryAddVariation(defaultVariation))
+                    continue;
+
+                if (function.Kind != CsFunctionKind.Constructor)
+                {
+                    DoSubStep(function, defaultVariation);
+                }
+                else
+                {
+                    DoSubStep<DefaultValueGenStep>(function, defaultVariation);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Transforms the default value of a parameter before applying it to a variation.
+        /// </summary>
+        /// <param name="function">The function being processed.</param>
+        /// <param name="variation">The variation being processed.</param>
+        /// <param name="parameter">The parameter whose default value is being transformed.</param>
+        /// <param name="defaultValue">The default value to transform.</param>
+        protected virtual void TransformDefaultValue(CsFunctionOverload function, CsFunctionVariation variation, CsParameterInfo parameter, ref string defaultValue)
+        {
+        }
+    }
+
+    /// <summary>
+    /// Represents a generator step that produces variations of functions
+    /// based on return type and parameter conditions.
+    /// </summary>
+    public class ReturnVariationGenStep : FunctionGenStep
+    {
+        /// <summary>
+        /// Determines whether to skip the given function and variation.
+        /// </summary>
+        /// <param name="function">The function to check.</param>
+        /// <param name="variation">The variation to check.</param>
+        /// <returns>
+        /// True if the function should be skipped; otherwise, false.
+        /// </returns>
+        public override bool ShouldSkip(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            return function.Kind == CsFunctionKind.Member;
+        }
+
+        /// <summary>
+        /// Gets the set of allowed parameter names.
+        /// </summary>
+        public virtual HashSet<string> AllowedParameterNames { get; } = ["output"];
+
+        /// <summary>
+        /// Determines whether the specified parameter is allowed.
+        /// </summary>
+        /// <param name="parameter">The parameter to check.</param>
+        /// <returns>
+        /// True if the parameter is allowed; otherwise, false.
+        /// </returns>
+        protected virtual bool IsParameterAllowed(CsParameterInfo parameter)
+        {
+            return AllowedParameterNames.Contains(parameter.Name) && parameter.Type.IsPointer;
+        }
+
+        /// <summary>
+        /// Generates variations of the specified function and variation.
+        /// </summary>
+        /// <param name="function">The function to generate variations for.</param>
+        /// <param name="variation">The variation to generate variations for.</param>
+        public override void GenerateVariations(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            if (variation.ReturnType.IsVoid && !variation.ReturnType.IsPointer && variation.Parameters.Count > 0)
+            {
+                var param = variation.Parameters[0];
+                if (IsParameterAllowed(param))
+                {
+                    CsFunctionVariation returnVariation = variation.ShallowClone();
+                    CreateVariation(function, variation, param, returnVariation);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates a new variation of the function with updated return type
+        /// based on the specified parameter.
+        /// </summary>
+        /// <param name="function">The original function.</param>
+        /// <param name="variation">The original variation.</param>
+        /// <param name="parameter">The parameter to base the new variation on.</param>
+        /// <param name="returnVariation">The new function variation to be updated.</param>
+        protected virtual void CreateVariation(CsFunctionOverload function, CsFunctionVariation variation, CsParameterInfo parameter, CsFunctionVariation returnVariation)
+        {
+            returnVariation.GenericParameters.AddRange(variation.GenericParameters);
+            returnVariation.Parameters = variation.Parameters.Skip(1).ToList();
+            if (function.TryUpdateVariation(variation, returnVariation))
+            {
+                returnVariation.ReturnType = new(parameter.Type.Name[..^1], parameter.Type.PrimitiveType);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Represents a generator step that produces variations of functions
+    /// with string pointer return types.
+    /// </summary>
+    public class StringReturnGenStep : FunctionGenStep
+    {
+        /// <summary>
+        /// Determines whether the specified return type is allowed.
+        /// </summary>
+        /// <param name="function">The function to check.</param>
+        /// <param name="variation">The variation to check.</param>
+        /// <param name="returnType">The return type to check.</param>
+        /// <returns>
+        /// True if the return type is allowed; otherwise, false.
+        /// </returns>
+        protected virtual bool AllowReturnType(CsFunctionOverload function, CsFunctionVariation variation, CsType returnType)
+        {
+            return returnType.IsPointer && (returnType.PrimitiveType == CsPrimitiveType.Byte || returnType.PrimitiveType == CsPrimitiveType.Char);
+        }
+
+        /// <summary>
+        /// Generates variations of the specified function and variation
+        /// with string pointer return types.
+        /// </summary>
+        /// <param name="function">The function to generate variations for.</param>
+        /// <param name="variation">The variation to generate variations for.</param>
+        public override void GenerateVariations(CsFunctionOverload function, CsFunctionVariation variation)
+        {
+            if (AllowReturnType(function, variation, variation.ReturnType))
+            {
+                CsFunctionVariation returnVariation = variation.ShallowClone();
+                CreateVariation(function, variation, returnVariation);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new variation of the function with an updated return type of string.
+        /// </summary>
+        /// <param name="function">The original function.</param>
+        /// <param name="variation">The original variation.</param>
+        /// <param name="returnVariation">The new function variation to be updated.</param>
+        protected virtual void CreateVariation(CsFunctionOverload function, CsFunctionVariation variation, CsFunctionVariation returnVariation)
+        {
+            returnVariation.Name += "S";
+            returnVariation.GenericParameters.AddRange(variation.GenericParameters);
+            returnVariation.Parameters = variation.Parameters.ToList();
+            if (function.TryAddVariation(returnVariation))
+            {
+                returnVariation.ReturnType = new("string", variation.ReturnType.PrimitiveType);
+            }
+        }
+    }
+
     public class FunctionGenerator
     {
         private readonly CsCodeGeneratorSettings settings;
+        private readonly List<FunctionGenRule> rules = new();
+        private readonly List<FunctionGenStep> steps = new();
 
         public FunctionGenerator(CsCodeGeneratorSettings settings)
         {
             this.settings = settings;
+            rules.Add(new FunctionGenRuleRef());
+            rules.Add(new FunctionGenRuleSpan());
+            rules.Add(new FunctionGenRuleString());
+            steps.Add(new DefaultValueGenStep());
+            steps.Add(new ReturnVariationGenStep());
+            steps.Add(new StringReturnGenStep());
         }
 
-        public void GenerateConstructorVariations(CppClass cppClass, List<CsSubClass> subClasses, string csName, CsFunctionOverload function)
+        public void OverwriteStep<T>(FunctionGenStep step) where T : FunctionGenStep
+        {
+            for (int i = 0; i < steps.Count; i++)
+            {
+                if (steps[i] is T)
+                {
+                    steps[i] = step;
+                    return;
+                }
+            }
+        }
+
+        public void OverwriteRule<T>(FunctionGenRule rule) where T : FunctionGenRule
+        {
+            for (int i = 0; i < rules.Count; i++)
+            {
+                if (rules[i] is T)
+                {
+                    rules[i] = rule;
+                    return;
+                }
+            }
+        }
+
+        public virtual void GenerateConstructorVariations(CppClass cppClass, List<CsSubClass> subClasses, string csName, CsFunctionOverload function)
         {
             settings.TryGetFunctionMapping(function.ExportedName, out var mapping);
 
@@ -114,146 +518,112 @@
             function.TryAddVariation(spanVariation);
         }
 
-        public void GenerateVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)
+        public virtual void GenerateVariations(IList<CppParameter> parameters, CsFunctionOverload function)
         {
             settings.TryGetFunctionMapping(function.ExportedName, out var mapping);
 
-            if (mapping != null)
+            if (mapping != null && mapping.Comment != null)
             {
-                function.Comment = mapping.Comment;
+                function.Comment = settings.WriteCsSummary(mapping.Comment);
             }
 
             long maxVariations = (long)Math.Pow(2L, parameters.Count);
             for (long ix = 0; ix < maxVariations; ix++)
             {
+                CsParameterInfo[][] parameterLists = new CsParameterInfo[rules.Count][];
+                for (int i = 0; i < rules.Count; i++)
                 {
-                    CsParameterInfo[] refParameterList = new CsParameterInfo[parameters.Count];
-                    CsParameterInfo[] stringParameterList = new CsParameterInfo[parameters.Count];
-                    CsParameterInfo[][] customParameterList = new CsParameterInfo[mapping?.CustomVariations.Count ?? 0][];
-                    for (int i = 0; i < (mapping?.CustomVariations.Count ?? 0); i++)
+                    parameterLists[i] = new CsParameterInfo[parameters.Count];
+                }
+
+                CsParameterInfo[][]? customParameterList = mapping != null ? new CsParameterInfo[mapping.CustomVariations.Count][] : null;
+
+                if (customParameterList != null)
+                {
+                    for (int i = 0; i < customParameterList.Length; i++)
                     {
                         customParameterList[i] = new CsParameterInfo[parameters.Count];
                     }
-                    for (int j = 0; j < parameters.Count; j++)
+                }
+
+                for (int j = 0; j < parameters.Count; j++)
+                {
+                    var bit = (ix & (1 << (j - 64))) != 0;
+                    CppParameter cppParameter = parameters[j];
+                    CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
+
+                    var paramCsName = settings.GetParameterName(j, cppParameter.Name);
+                    var direction = cppParameter.Type.GetDirection();
+
+                    for (int i = 0; i < rules.Count; i++)
                     {
-                        var bit = (ix & (1 << j - 64)) != 0;
-                        CppParameter cppParameter = parameters[j];
-                        CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
+                        var rule = rules[i];
+                        parameterLists[i][j] = bit
+                            ? rule.CreateParameter(cppParameter, paramCsName, kind, direction, settings)
+                            : rule.CreateDefaultParameter(cppParameter, paramCsName, kind, direction, settings);
+                    }
 
-                        var paramCsName = settings.GetParameterName(j, cppParameter.Name);
-                        var direction = cppParameter.Type.GetDirection();
-
-                        if (bit)
+                    if (customParameterList != null)
+                    {
+                        for (int i = 0; i < customParameterList.Length; i++)
                         {
-                            if (cppParameter.Type is CppArrayType arrayType)
-                            {
-                                if (arrayType.Size > 0)
-                                {
-                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new("ref " + settings.GetCsTypeName(arrayType.ElementType, false), kind), direction);
-                                }
-                                else
-                                {
-                                    refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-
-                                if (arrayType.ElementType.IsString())
-                                {
-                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new("string[]", kind), direction);
-                                }
-                                else
-                                {
-                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-                            else
-                            {
-                                refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-
-                                if (cppParameter.Type.IsString())
-                                {
-                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
-                                }
-                                else
-                                {
-                                    stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-
-                            if (mapping != null)
-                            {
-                                for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                                {
-                                    if (mapping.CustomVariations[i].TryGetValue(paramCsName, out var paramType))
-                                    {
-                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(paramType, kind), direction);
-                                    }
-                                    else
-                                    {
-                                        customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            refParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            stringParameterList[j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                            if (mapping != null)
-                            {
-                                for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                                {
-                                    customParameterList[i][j] = new(paramCsName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
-                                }
-                            }
-                        }
-
-                        string paramAttr = $"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]";
-                        string typeAttr = $"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]";
-                        refParameterList[j].Attributes.Add(paramAttr);
-                        refParameterList[j].Attributes.Add(typeAttr);
-                        stringParameterList[j].Attributes.Add(paramAttr);
-                        stringParameterList[j].Attributes.Add(typeAttr);
-
-                        if (mapping != null)
-                        {
-                            for (int i = 0; i < mapping.CustomVariations.Count; i++)
-                            {
-                                customParameterList[i][j].Attributes.Add(paramAttr);
-                                customParameterList[i][j].Attributes.Add(typeAttr);
-                            }
+                            // mapping cant be null here, because customParameterList is only created if mapping is not null
+                            customParameterList[i][j] = mapping!.CustomVariations[i].TryGetValue(paramCsName, out var paramType)
+                                ? new CsParameterInfo(paramCsName, cppParameter.Type, new CsType(paramType, kind), direction)
+                                : new CsParameterInfo(paramCsName, cppParameter.Type, new CsType(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
                         }
                     }
 
-                    CsFunctionVariation refVariation = function.CreateVariationWith();
-                    refVariation.Parameters.AddRange(refParameterList);
-                    CsFunctionVariation stringVariation = function.CreateVariationWith();
-                    stringVariation.Parameters.AddRange(stringParameterList);
+                    for (int i = 0; i < rules.Count; i++)
+                    {
+                        var parameter = parameterLists[i][j];
+                        GenerateAttributes(cppParameter, direction, parameter, parameter.Attributes);
+                    }
 
-                    if (function.TryAddVariation(refVariation))
+                    if (customParameterList != null)
                     {
-                        GenerateDefaultValueVariations(parameters, function, refVariation, isMember);
-                        GenerateReturnVariations(function, refVariation, isMember);
+                        for (int i = 0; i < customParameterList.Length; i++)
+                        {
+                            var parameter = customParameterList[i][j];
+                            GenerateAttributes(cppParameter, direction, parameter, parameter.Attributes);
+                        }
                     }
-                    if (function.TryAddVariation(stringVariation))
+                }
+
+                for (int i = 0; i < rules.Count; i++)
+                {
+                    CsFunctionVariation ruleVariation = function.CreateVariationWith();
+                    ruleVariation.Parameters.AddRange(parameterLists[i]);
+                    if (function.TryAddVariation(ruleVariation))
                     {
-                        GenerateDefaultValueVariations(parameters, function, stringVariation, isMember);
-                        GenerateReturnVariations(function, stringVariation, isMember);
+                        ApplySteps(function, ruleVariation);
                     }
-                    for (int i = 0; i < (mapping?.CustomVariations.Count ?? 0); i++)
+                }
+
+                if (customParameterList != null)
+                {
+                    for (int i = 0; i < customParameterList.Length; i++)
                     {
                         CsFunctionVariation customVariation = function.CreateVariationWith();
                         customVariation.Parameters.AddRange(customParameterList[i]);
                         if (function.TryAddVariation(customVariation))
                         {
-                            GenerateDefaultValueVariations(parameters, function, customVariation, isMember);
-                            GenerateReturnVariations(function, customVariation, isMember);
+                            ApplySteps(function, customVariation);
                         }
                     }
                 }
             }
         }
 
-        public unsafe void GenerateCOMVariations(IList<CppParameter> parameters, CsFunctionOverload function, bool isMember)
+        public virtual void GenerateAttributes(CppParameter cppParameter, Direction direction, CsParameterInfo parameter, List<string> attributes)
+        {
+            string paramAttr = $"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]";
+            string typeAttr = $"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]";
+            attributes.Add(paramAttr);
+            attributes.Add(typeAttr);
+        }
+
+        public virtual unsafe void GenerateCOMVariations(IList<CppParameter> parameters, CsFunctionOverload function)
         {
             settings.TryGetFunctionMapping(function.ExportedName, out var mapping);
 
@@ -472,18 +842,15 @@
 
                     if (function.TryAddVariation(refVariation))
                     {
-                        GenerateDefaultValueVariations(parameters, function, refVariation, isMember);
-                        GenerateReturnVariations(function, refVariation, isMember);
+                        ApplySteps(function, refVariation);
                     }
                     if (function.TryAddVariation(stringVariation))
                     {
-                        GenerateDefaultValueVariations(parameters, function, stringVariation, isMember);
-                        GenerateReturnVariations(function, stringVariation, isMember);
+                        ApplySteps(function, stringVariation);
                     }
                     if (function.TryAddVariation(comVariation))
                     {
-                        GenerateDefaultValueVariations(parameters, function, comVariation, isMember);
-                        GenerateReturnVariations(function, comVariation, isMember);
+                        ApplySteps(function, comVariation);
                     }
                     for (int i = 0; i < (mapping?.CustomVariations.Count ?? 0); i++)
                     {
@@ -491,118 +858,32 @@
                         customVariation.Parameters.AddRange(customParameterList[i]);
                         if (function.TryAddVariation(customVariation))
                         {
-                            GenerateDefaultValueVariations(parameters, function, customVariation, isMember);
-                            GenerateReturnVariations(function, customVariation, isMember);
+                            ApplySteps(function, customVariation);
                         }
                     }
                 }
             }
         }
 
-        public static unsafe void GenerateDefaultValueVariations(IList<CppField> parameters, CsFunctionOverload function, CsFunctionVariation variation, bool isMember, bool isConstructor)
+        public virtual void ApplySteps(CsFunctionOverload function, CsFunctionVariation variation)
         {
-            if (function.DefaultValues.Count == 0)
-                return;
-
-            for (int i = variation.Parameters.Count - 1; i >= 0; i--)
+            foreach (var step in steps)
             {
-                var param = variation.Parameters[i];
-
-                if (!function.DefaultValues.TryGetValue(param.Name, out var defaultValue))
-                {
-                    continue;
-                }
-
-                CsFunctionVariation defaultVariation = new(variation.ExportedName, variation.Name, variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
-                defaultVariation.GenericParameters.AddRange(variation.GenericParameters);
-                for (int j = 0; j < variation.Parameters.Count; j++)
-                {
-                    var variationParameter = variation.Parameters[j];
-                    if (param != variationParameter)
-                    {
-                        defaultVariation.Parameters.Add(variationParameter);
-                    }
-                    else
-                    {
-                        var cloned = variationParameter.Clone();
-                        cloned.DefaultValue = defaultValue;
-                        defaultVariation.Parameters.Add(cloned);
-                    }
-                }
-
-                if (!function.TryAddVariation(defaultVariation))
-                    continue;
-
-                GenerateDefaultValueVariations(parameters, function, defaultVariation, isMember, isConstructor);
-                if (!isConstructor)
-                {
-                    GenerateReturnVariations(function, defaultVariation, isMember);
-                }
+                if (step.ShouldSkip(function, variation)) continue;
+                step.GenSteps = steps;
+                step.GenerateVariations(function, variation);
             }
         }
 
-        public static unsafe void GenerateDefaultValueVariations(IList<CppParameter> parameters, CsFunctionOverload function, CsFunctionVariation variation, bool isMember)
+        public virtual void ApplyStep<T>(CsFunctionOverload function, CsFunctionVariation variation) where T : FunctionGenStep
         {
-            if (function.DefaultValues.Count == 0)
-                return;
-
-            for (int i = variation.Parameters.Count - 1; i >= 0; i--)
+            foreach (var step in steps)
             {
-                var param = variation.Parameters[i];
-
-                if (!function.DefaultValues.TryGetValue(param.Name, out var defaultValue))
+                if (step.ShouldSkip(function, variation)) continue;
+                if (step is T t)
                 {
-                    continue;
-                }
-
-                CsFunctionVariation defaultVariation = new(variation.ExportedName, variation.Name, variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
-                defaultVariation.GenericParameters.AddRange(variation.GenericParameters);
-                for (int j = 0; j < variation.Parameters.Count; j++)
-                {
-                    var variationParameter = variation.Parameters[j];
-                    if (param != variationParameter)
-                    {
-                        defaultVariation.Parameters.Add(variationParameter);
-                    }
-                    else
-                    {
-                        var cloned = variationParameter.Clone();
-                        cloned.DefaultValue = defaultValue;
-                        defaultVariation.Parameters.Add(cloned);
-                    }
-                }
-
-                if (!function.TryAddVariation(defaultVariation))
-                    continue;
-
-                GenerateDefaultValueVariations(parameters, function, defaultVariation, isMember);
-                GenerateReturnVariations(function, defaultVariation, isMember);
-            }
-        }
-
-        public static void GenerateReturnVariations(CsFunctionOverload function, CsFunctionVariation variation, bool isMember)
-        {
-            if (!isMember && variation.ReturnType.IsVoid && !variation.ReturnType.IsPointer && variation.Parameters.Count > 0)
-            {
-                if (variation.Parameters[0].Name == "output" && variation.Parameters[0].Type.IsPointer)
-                {
-                    CsFunctionVariation returnVariation = new(variation.ExportedName, variation.Name, variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
-                    returnVariation.GenericParameters.AddRange(variation.GenericParameters);
-                    returnVariation.Parameters = variation.Parameters.Skip(1).ToList();
-                    if (function.TryUpdateVariation(variation, returnVariation))
-                    {
-                        returnVariation.ReturnType = new(variation.Parameters[0].Type.Name[..^1], variation.Parameters[0].Type.PrimitiveType);
-                    }
-                }
-            }
-            if (variation.ReturnType.IsPointer && variation.ReturnType.PrimitiveType == CsPrimitiveType.Byte || variation.ReturnType.PrimitiveType == CsPrimitiveType.Char)
-            {
-                CsFunctionVariation returnVariation = new(variation.ExportedName, variation.Name + "S", variation.StructName, variation.IsMember, variation.IsConstructor, variation.IsDestructor, variation.ReturnType);
-                returnVariation.GenericParameters.AddRange(variation.GenericParameters);
-                returnVariation.Parameters = variation.Parameters.ToList();
-                if (function.TryAddVariation(returnVariation))
-                {
-                    returnVariation.ReturnType = new("string", variation.ReturnType.PrimitiveType);
+                    t.GenSteps = steps;
+                    t.GenerateVariations(function, variation);
                 }
             }
         }

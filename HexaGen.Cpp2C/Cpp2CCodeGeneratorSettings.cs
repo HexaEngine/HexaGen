@@ -5,14 +5,14 @@
     public class Cpp2CCodeGeneratorSettings
     {
         /// <summary>
-        /// The log level of the generator. (Default <see cref="LogSevertiy.Warning"/>)
+        /// The log level of the generator. (Default <see cref="LogSeverity.Warning"/>)
         /// </summary>
-        public LogSevertiy LogLevel { get; set; } = LogSevertiy.Warning;
+        public LogSeverity LogLevel { get; set; } = LogSeverity.Warning;
 
         /// <summary>
-        /// The log level of the Clang Compiler. (Default <see cref="LogSevertiy.Error"/>)
+        /// The log level of the Clang Compiler. (Default <see cref="LogSeverity.Error"/>)
         /// </summary>
-        public LogSevertiy CppLogLevel { get; set; } = LogSevertiy.Error;
+        public LogSeverity CppLogLevel { get; set; } = LogSeverity.Error;
 
         /// <summary>
         /// List of the include folders. (Default: Empty)
