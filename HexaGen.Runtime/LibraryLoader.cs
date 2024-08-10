@@ -10,47 +10,102 @@
 
     public static class LibraryLoader
     {
-        public static nint LoadLibrary()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return LoadLocalLibrary("bgfx");
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                return LoadLocalLibrary("bgfx");
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                return LoadLocalLibrary("bgfx");
-            }
-            else
-            {
-                return LoadLocalLibrary("bgfx");
-            }
-        }
+        public static OSPlatform FreeBSD { get; } = OSPlatform.Create("FREEBSD");
 
-        public static string GetExtension()
+        public static OSPlatform Linux { get; } = OSPlatform.Create("LINUX");
+
+        public static OSPlatform OSX { get; } = OSPlatform.Create("OSX");
+
+        public static OSPlatform Windows { get; } = OSPlatform.Create("WINDOWS");
+
+        public static OSPlatform Android { get; } = OSPlatform.Create("ANDROID");
+
+        public static OSPlatform IOS { get; } = OSPlatform.Create("IOS");
+
+        public static OSPlatform Tizen { get; } = OSPlatform.Create("TIZEN");
+
+        public static OSPlatform ChromeOS { get; } = OSPlatform.Create("CHROMEOS");
+
+        public static OSPlatform WebAssembly { get; } = OSPlatform.Create("WEBASSEMBLY");
+
+        public static OSPlatform Solaris { get; } = OSPlatform.Create("SOLARIS");
+
+        public static OSPlatform WatchOS { get; } = OSPlatform.Create("WATCHOS");
+
+        public static OSPlatform TVOS { get; } = OSPlatform.Create("TVOS");
+
+        public static string GetExtension(IEnumerable<NativeLibraryExtensionAttribute> extensionAttributes)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            foreach (var extensionAttribute in extensionAttributes)
+            {
+                if (RuntimeInformation.IsOSPlatform(extensionAttribute.TargetPlatform))
+                {
+                    return extensionAttribute.Extension;
+                }
+            }
+
+            // Default extension based on platform
+            if (RuntimeInformation.IsOSPlatform(Windows))
             {
                 return ".dll";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (RuntimeInformation.IsOSPlatform(OSX))
             {
                 return ".dylib";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            else if (RuntimeInformation.IsOSPlatform(Linux))
+            {
+                return ".so";
+            }
+            else if (RuntimeInformation.IsOSPlatform(Android))
+            {
+                return ".so";
+            }
+            else if (RuntimeInformation.IsOSPlatform(IOS))
+            {
+                return ".dylib"; // iOS also uses .dylib for dynamic libraries
+            }
+            else if (RuntimeInformation.IsOSPlatform(FreeBSD))
+            {
+                return ".so";
+            }
+            else if (RuntimeInformation.IsOSPlatform(TVOS))
+            {
+                return ".dylib"; // tvOS uses the same dynamic library extension as iOS
+            }
+            else if (RuntimeInformation.IsOSPlatform(WatchOS))
+            {
+                return ".dylib"; // watchOS also uses .dylib
+            }
+            else if (RuntimeInformation.IsOSPlatform(Solaris))
+            {
+                return ".so";
+            }
+            else if (RuntimeInformation.IsOSPlatform(WebAssembly))
+            {
+                return ".wasm";
+            }
+            else if (RuntimeInformation.IsOSPlatform(Tizen))
+            {
+                return ".so";
+            }
+            else if (RuntimeInformation.IsOSPlatform(ChromeOS))
             {
                 return ".so";
             }
 
+            // Default to .so if no platform matches
             return ".so";
         }
 
-        public static nint LoadLocalLibrary(string libraryName)
+        public static nint LoadLibrary()
         {
-            var extension = GetExtension();
+            var libraryAttributes = Assembly.GetCallingAssembly().GetCustomAttributes<NativeLibraryAttribute>();
+            var extensionAttributes = Assembly.GetCallingAssembly().GetCustomAttributes<NativeLibraryExtensionAttribute>();
+
+            var libraryName = GetLibraryName(libraryAttributes);
+
+            var extension = GetExtension(extensionAttributes);
 
             if (!libraryName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
             {
@@ -59,63 +114,7 @@
 
             var osPlatform = GetOSPlatform();
             var architecture = GetArchitecture();
-
             var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
-
-            static string GetOSPlatform()
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    return "win";
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    return "linux";
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    return "osx";
-                }
-
-                throw new ArgumentException("Unsupported OS platform.");
-            }
-
-            static string GetArchitecture()
-            {
-                return RuntimeInformation.ProcessArchitecture switch
-                {
-                    Architecture.X86 => "x86",
-                    Architecture.X64 => "x64",
-                    Architecture.Arm => "arm",
-                    Architecture.Arm64 => "arm64",
-                    _ => throw new ArgumentException("Unsupported architecture."),
-                };
-            }
-
-            var attribute = Assembly.GetCallingAssembly().GetCustomAttribute<NativeLibraryAttribute>();
-            var methods = typeof(string).GetMethods();
-
-            static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
-            {
-                var assemblyLocation = AppContext.BaseDirectory;
-
-                var paths = new[]
-                {
-                    Path.Combine(assemblyLocation, libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
-                };
-
-                foreach (var path in paths)
-                {
-                    if (File.Exists(path))
-                    {
-                        return path;
-                    }
-                }
-
-                return libraryName;
-            }
 
             nint handle;
 
@@ -128,6 +127,121 @@
 
             return handle;
         }
+
+        private static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
+        {
+            var assemblyLocation = AppContext.BaseDirectory;
+
+            var paths = new[]
+            {
+                    Path.Combine(assemblyLocation, libraryName),
+                    Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
+                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "debug", libraryName), // allows debug builds sideload.
+                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
+                };
+
+            foreach (var path in paths)
+            {
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+
+            return libraryName;
+        }
+
+        private static string GetArchitecture()
+        {
+            return RuntimeInformation.ProcessArchitecture switch
+            {
+                Architecture.X86 => "x86",
+                Architecture.X64 => "x64",
+                Architecture.Arm => "arm",
+                Architecture.Arm64 => "arm64",
+                _ => throw new ArgumentException("Unsupported architecture."),
+            };
+        }
+
+        private static string GetOSPlatform()
+        {
+            if (RuntimeInformation.IsOSPlatform(Windows))
+            {
+                return "win";
+            }
+            else if (RuntimeInformation.IsOSPlatform(Linux))
+            {
+                return "linux";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSX))
+            {
+                return "osx";
+            }
+            else if (RuntimeInformation.IsOSPlatform(Android))
+            {
+                return "android";
+            }
+            else if (RuntimeInformation.IsOSPlatform(IOS))
+            {
+                return "ios";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("FREEBSD")))
+            {
+                return "freebsd";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("TVOS")))
+            {
+                return "tvos";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WATCHOS")))
+            {
+                return "watchos";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("SOLARIS")))
+            {
+                return "solaris";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")))
+            {
+                return "webassembly";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("TIZEN")))
+            {
+                return "tizen";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("CHROMEOS")))
+            {
+                return "chromeos";
+            }
+
+            throw new ArgumentException("Unsupported OS platform.");
+        }
+
+        private static string GetLibraryName(IEnumerable<NativeLibraryAttribute> nativeLibraries)
+        {
+            NativeLibraryAttribute? nativeLibrary = null;
+            foreach (NativeLibraryAttribute attri in nativeLibraries)
+            {
+                if (attri.TargetPlatform == null)
+                {
+                    nativeLibrary = attri; // Default
+                    continue;
+                }
+
+                if (RuntimeInformation.IsOSPlatform(attri.TargetPlatform.Value))
+                {
+                    nativeLibrary = attri;
+                    break;
+                }
+            }
+
+            if (nativeLibrary == null)
+            {
+                throw new Exception("Dll not specified for this platform");
+            }
+
+            return nativeLibrary.LibraryName;
+        }
     }
 
     [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
@@ -135,7 +249,6 @@
     {
         private readonly string extension;
         private readonly OSPlatform targetPlatform;
-
 
         public NativeLibraryExtensionAttribute(string extension, OSPlatform targetPlatform)
         {
@@ -152,24 +265,16 @@
     public sealed class NativeLibraryAttribute : Attribute
     {
         private readonly string libraryName;
-        private readonly OSPlatform targetPlatform;
+        private readonly OSPlatform? targetPlatform;
 
-        public NativeLibraryAttribute(string libraryName, OSPlatform targetPlatform)
+        public NativeLibraryAttribute(string libraryName, OSPlatform? targetPlatform = null)
         {
             this.libraryName = libraryName;
-            this.TargetPlatform = targetPlatform;
+            this.targetPlatform = targetPlatform;
         }
 
         public string LibraryName => libraryName;
 
-        public OSPlatform TargetPlatform => targetPlatform;
-    }
-
-    public enum TargetPlatform
-    {
-        Windows,
-        Linux,
-        OSX,
-        Android,
+        public OSPlatform? TargetPlatform => targetPlatform;
     }
 }
