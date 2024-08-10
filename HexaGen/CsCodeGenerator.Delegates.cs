@@ -184,6 +184,10 @@
             string header = $"{returnCsName} {csFieldName}({signature})";
 
             settings.WriteCsSummary(field.Comment, writer);
+            if (settings.GenerateMetadata)
+            {
+                writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
+            }
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
             writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
             writer.WriteLine();

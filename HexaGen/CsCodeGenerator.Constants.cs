@@ -70,6 +70,7 @@
 
         protected virtual CsConstantMetadata ParseConstant(CppMacro macro)
         {
+            macro.UpdateValueFromTokens();
             var name = settings.GetConstantName(macro.Name);
             var value = macro.Value.NormalizeConstantValue();
 
@@ -114,6 +115,20 @@
             }
             else if (!string.IsNullOrWhiteSpace(value))
             {
+                int start = 0;
+                bool capture = false;
+                for (int i = 0; i < value.Length; i++)
+                {
+                    var c = value[i];
+                    if (c == '(')
+                    {
+                        if (capture) // not supported early exit.
+                        {
+                            return;
+                        }
+                        capture = true;
+                    }
+                }
                 //var result = CppMacroParser.Default.Parse(value, "");
             }
         }

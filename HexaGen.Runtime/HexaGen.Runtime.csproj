@@ -21,6 +21,11 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+		<EnableAotAnalyzer>true</EnableAotAnalyzer>
+		<IsAotCompatible>true</IsAotCompatible>
 	</PropertyGroup>
 	
 	<ItemGroup>

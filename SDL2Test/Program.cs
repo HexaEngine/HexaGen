@@ -31,7 +31,7 @@ unsafe
                     var windowEvent = sdlEvent.Window;
                     if (windowEvent.WindowID == windowId)
                     {
-                        if ((SDLWindowEventID)windowEvent.Event == SDLWindowEventID.WindoweventClose)
+                        if ((SDLWindowEventID)windowEvent.Event == SDLWindowEventID.Close)
                         {
                             exiting = true;
                         }
