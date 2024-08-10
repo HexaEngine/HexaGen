@@ -93,6 +93,7 @@
             }
 
             var attribute = Assembly.GetCallingAssembly().GetCustomAttribute<NativeLibraryAttribute>();
+            var methods = typeof(string).GetMethods();
 
             static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
             {
@@ -129,17 +130,46 @@
         }
     }
 
-    [System.AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-    internal sealed class NativeLibraryAttribute : Attribute
+    [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
+    public sealed class NativeLibraryExtensionAttribute : Attribute
     {
-        readonly string positionalString;
+        private readonly string extension;
+        private readonly OSPlatform targetPlatform;
 
-        // This is a positional argument
-        public NativeLibraryAttribute(string positionalString)
+
+        public NativeLibraryExtensionAttribute(string extension, OSPlatform targetPlatform)
         {
-            this.positionalString = positionalString;
+            this.extension = extension;
+            this.targetPlatform = targetPlatform;
         }
 
-        public string PositionalString => positionalString;
+        public string Extension => extension;
+
+        public OSPlatform TargetPlatform => targetPlatform;
+    }
+
+    [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
+    public sealed class NativeLibraryAttribute : Attribute
+    {
+        private readonly string libraryName;
+        private readonly OSPlatform targetPlatform;
+
+        public NativeLibraryAttribute(string libraryName, OSPlatform targetPlatform)
+        {
+            this.libraryName = libraryName;
+            this.TargetPlatform = targetPlatform;
+        }
+
+        public string LibraryName => libraryName;
+
+        public OSPlatform TargetPlatform => targetPlatform;
+    }
+
+    public enum TargetPlatform
+    {
+        Windows,
+        Linux,
+        OSX,
+        Android,
     }
 }
