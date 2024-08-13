@@ -38,9 +38,11 @@ jobs:
       run: |
         wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O android-sdk-tools.zip
         unzip android-sdk-tools.zip -d android-sdk
-        sudo mv android-sdk /usr/src/android-sdk-linux
+        sudo mkdir -p /usr/src/android-sdk-linux/cmdline-tools/latest
+        sudo mv android-sdk/* /usr/src/android-sdk-linux/cmdline-tools/latest/
         echo "ANDROID_HOME=/usr/src/android-sdk-linux" >> $GITHUB_ENV
-        echo "PATH=$PATH:/usr/src/android-sdk-linux/cmdline-tools/bin:/usr/src/android-sdk-linux/platform-tools" >> $GITHUB_ENV
+        echo "PATH=$PATH:/usr/src/android-sdk-linux/cmdline-tools/latest/bin:/usr/src/android-sdk-linux/platform-tools" >> $GITHUB_ENV
+
 
     - name: Install Specific Android NDK Version 26.3.11579264
       run: |
