@@ -42,7 +42,7 @@ jobs:
         mkdir $HOME/android-sdk/cmdline-tools/
         mkdir $HOME/android-sdk/cmdline-tools/latest/
         mv ./tools/cmdline-tools/* $HOME/android-sdk/cmdline-tools/latest/
-        chmod +x ./android-sdk/cmdline-tools/latest/bin/*
+        chmod +x $HOME/android-sdk/cmdline-tools/latest/bin/*
         echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
         echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
         
