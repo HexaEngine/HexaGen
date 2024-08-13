@@ -38,6 +38,8 @@ jobs:
       run: |
         wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O android-sdk-tools.zip
         unzip android-sdk-tools.zip -d android-sdk
+        sudo mkdir /usr/src/android-sdk/
+        sudo mkdir /usr/src/android-sdk/cmdline-tools/
         sudo mkdir /usr/src/android-sdk/cmdline-tools/latest/
         sudo mv ./android-sdk/cmdline-tools/* /usr/src/android-sdk/cmdline-tools/latest/
         sudo chmod +x /usr/src/android-sdk/cmdline-tools/latest/bin/*
