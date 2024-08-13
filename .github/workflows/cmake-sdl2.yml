@@ -26,13 +26,13 @@ jobs:
     - uses: actions/checkout@v4.1.7
       with:
         repository: 'libsdl-org/SDL'
-        ref: 'release-2.30.5'
+        ref: 'release-2.30.6'
         path: 'SDL'
 
     - name: Checkout specific commit
       run: |
         cd SDL
-        git checkout 2eef7ca
+        git checkout ba2f78a
 
     - name: Install dependencies on Ubuntu
       if: matrix.os == 'ubuntu-latest'
