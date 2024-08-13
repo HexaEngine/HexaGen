@@ -37,8 +37,29 @@ jobs:
     - name: Install dependencies on Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential libasound2-dev libpulse-dev libx11-dev cmake
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            cmake \
+            libasound2-dev \
+            libpulse-dev \
+            libaudio-dev \
+            libx11-dev \
+            libxext-dev \
+            libxrandr-dev \
+            libxcursor-dev \
+            libxi-dev \
+            libxinerama-dev \
+            libxxf86vm-dev \
+            libxss-dev \
+            libgl1-mesa-dev \
+            libdbus-1-dev \
+            libudev-dev \
+            libgles2-mesa-dev \
+            libegl1-mesa-dev \
+            libwayland-dev \
+            libxkbcommon-dev \
+            wayland-protocols
 
     - name: Install dependencies on macOS
       if: matrix.os == 'macos-latest'
@@ -53,11 +74,11 @@ jobs:
 
     - name: Configure SDL2 with CMake for macOS ARM64
       if: matrix.arch == 'arm64' && matrix.os == 'macos-latest'
-      run: cmake -S SDL -B SDL/build -DCMAKE_OSX_ARCHITECTURES=arm64
+      run: cmake -S SDL -B SDL/build -DCMAKE_OSX_ARCHITECTURES=arm64 -DSDL_STATIC=OFF -DSDL_SHARED=ON
 
     - name: Configure SDL2 with CMake
       if: matrix.arch != 'arm64' || matrix.os != 'macos-latest'
-      run: cmake -S SDL -B SDL/build
+      run: cmake -S SDL -B SDL/build -DSDL_STATIC=OFF -DSDL_SHARED=ON
 
     - name: Build SDL2
       run: cmake --build SDL/build --config Release
