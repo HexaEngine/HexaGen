@@ -49,6 +49,7 @@ jobs:
                 -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang \
                 -DCMAKE_ANDROID_STL_TYPE=c++_shared \
                 -DCMAKE_ANDROID_API=21 \
+                -DANDROID_NDK=$ANDROID_NDK_HOME \
                 -DSDL_STATIC=OFF \
                 -DSDL_SHARED=ON \
                 -S SDL \
@@ -64,6 +65,7 @@ jobs:
                 -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang \
                 -DCMAKE_ANDROID_STL_TYPE=c++_shared \
                 -DCMAKE_ANDROID_API=21 \
+                -DANDROID_NDK=$ANDROID_NDK_HOME \
                 -DSDL_STATIC=OFF \
                 -DSDL_SHARED=ON \
                 -S SDL \
