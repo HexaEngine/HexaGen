@@ -35,7 +35,7 @@ jobs:
         java-version: 17
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v2.0.10
+      uses: android-actions/setup-android@v3
 
     - name: Install Android NDK
       run: sdkmanager --install "ndk;26.3.11579264"
