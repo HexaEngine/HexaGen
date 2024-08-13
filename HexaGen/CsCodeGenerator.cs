@@ -294,7 +294,7 @@
         {
             settings.TryGetFunctionMapping(cppFunction.Name, out var mapping);
 
-            string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
+            string returnCsName = settings.GetCsReturnType(cppFunction.ReturnType);
             CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
             CsFunction? function = null;

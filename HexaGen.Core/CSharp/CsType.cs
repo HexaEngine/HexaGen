@@ -153,9 +153,13 @@
             }
             if (IsSpan)
             {
-                var temp = Name.AsSpan().TrimStart("ReadOnlySpan<").TrimStart("Span<");
+                var temp = Name.AsSpan();
 
-                return temp[..^1].ToString();
+                temp = temp.StartsWith("ReadOnlySpan<") ? temp["ReadOnlySpan<".Length..] : temp;
+                temp = temp.StartsWith("Span<") ? temp["Span<".Length..] : temp;
+                temp = temp.TrimEndFirstOccurrence('>');
+
+                return temp.ToString();
             }
             else if (IsArray)
             {

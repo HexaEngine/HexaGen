@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
 
 		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.5</PackageVersion>
+		<PackageVersion>1.1.6</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>

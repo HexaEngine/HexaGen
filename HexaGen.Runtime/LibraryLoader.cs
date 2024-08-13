@@ -8,6 +8,57 @@
     using HexaGen.Runtime;
 #endif
 
+    public enum TargetPlatform
+    {
+        Unknown = 0,
+        FreeBSD = 1 << 0,
+        Linux = 1 << 1,
+        OSX = 1 << 2,
+        Windows = 1 << 3,
+        Android = 1 << 4,
+        IOS = 1 << 5,
+        Tizen = 1 << 6,
+        ChromeOS = 1 << 7,
+        WebAssembly = 1 << 8,
+        Solaris = 1 << 9,
+        WatchOS = 1 << 10,
+        TVO = 1 << 11,
+        Any = FreeBSD | Linux | OSX | Windows | Android | IOS | Tizen | ChromeOS | WebAssembly | Solaris | WatchOS | TVO
+    }
+
+    public struct LibraryName
+    {
+        public string Name;
+        public TargetPlatform TargetPlatform;
+    }
+
+    public struct LibraryExtension
+    {
+        public string Extension;
+        public TargetPlatform TargetPlatform;
+    }
+
+    public struct LibraryLoaderHints
+    {
+        public LibraryName[] Names;
+        public LibraryExtension[] Extensions;
+        public string[] Paths;
+
+        public LibraryLoaderHints(LibraryName[] names, LibraryExtension[] extensions, string[] paths)
+        {
+            Names = names;
+            Extensions = extensions;
+            Paths = paths;
+        }
+
+        public LibraryLoaderHints(LibraryName[] names, LibraryExtension[] extensions)
+        {
+            Names = names;
+            Extensions = extensions;
+            Paths = [];
+        }
+    }
+
     public static class LibraryLoader
     {
         public static OSPlatform FreeBSD { get; } = OSPlatform.Create("FREEBSD");
@@ -38,7 +89,7 @@
         {
             foreach (var extensionAttribute in extensionAttributes)
             {
-                if (RuntimeInformation.IsOSPlatform(extensionAttribute.TargetPlatform))
+                if (RuntimeInformation.IsOSPlatform(extensionAttribute.TargetPlatform.Convert()))
                 {
                     return extensionAttribute.Extension;
                 }
@@ -222,13 +273,13 @@
             NativeLibraryAttribute? nativeLibrary = null;
             foreach (NativeLibraryAttribute attri in nativeLibraries)
             {
-                if (attri.TargetPlatform == null)
+                if (attri.TargetPlatform == TargetPlatform.Any)
                 {
                     nativeLibrary = attri; // Default
                     continue;
                 }
 
-                if (RuntimeInformation.IsOSPlatform(attri.TargetPlatform.Value))
+                if (RuntimeInformation.IsOSPlatform(attri.TargetPlatform.Convert()))
                 {
                     nativeLibrary = attri;
                     break;
@@ -242,15 +293,60 @@
 
             return nativeLibrary.LibraryName;
         }
+
+        private static OSPlatform Convert(this TargetPlatform targetPlatform)
+        {
+            switch (targetPlatform)
+            {
+                case TargetPlatform.FreeBSD:
+                    return FreeBSD;
+
+                case TargetPlatform.Linux:
+                    return Linux;
+
+                case TargetPlatform.OSX:
+                    return OSX;
+
+                case TargetPlatform.Windows:
+                    return Windows;
+
+                case TargetPlatform.Android:
+                    return Android;
+
+                case TargetPlatform.IOS:
+                    return IOS;
+
+                case TargetPlatform.Tizen:
+                    return Tizen;
+
+                case TargetPlatform.ChromeOS:
+                    return ChromeOS;
+
+                case TargetPlatform.WebAssembly:
+                    return WebAssembly;
+
+                case TargetPlatform.Solaris:
+                    return Solaris;
+
+                case TargetPlatform.WatchOS:
+                    return WatchOS;
+
+                case TargetPlatform.TVO:
+                    return TVOS;
+
+                default:
+                    throw new PlatformNotSupportedException();
+            }
+        }
     }
 
     [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
     public sealed class NativeLibraryExtensionAttribute : Attribute
     {
         private readonly string extension;
-        private readonly OSPlatform targetPlatform;
+        private readonly TargetPlatform targetPlatform;
 
-        public NativeLibraryExtensionAttribute(string extension, OSPlatform targetPlatform)
+        public NativeLibraryExtensionAttribute(string extension, TargetPlatform targetPlatform = TargetPlatform.Any)
         {
             this.extension = extension;
             this.targetPlatform = targetPlatform;
@@ -258,16 +354,16 @@
 
         public string Extension => extension;
 
-        public OSPlatform TargetPlatform => targetPlatform;
+        public TargetPlatform TargetPlatform => targetPlatform;
     }
 
     [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
     public sealed class NativeLibraryAttribute : Attribute
     {
         private readonly string libraryName;
-        private readonly OSPlatform? targetPlatform;
+        private readonly TargetPlatform targetPlatform;
 
-        public NativeLibraryAttribute(string libraryName, OSPlatform? targetPlatform = null)
+        public NativeLibraryAttribute(string libraryName, TargetPlatform targetPlatform = TargetPlatform.Any)
         {
             this.libraryName = libraryName;
             this.targetPlatform = targetPlatform;
@@ -275,6 +371,6 @@
 
         public string LibraryName => libraryName;
 
-        public OSPlatform? TargetPlatform => targetPlatform;
+        public TargetPlatform TargetPlatform => targetPlatform;
     }
 }

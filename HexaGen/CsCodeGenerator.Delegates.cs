@@ -11,6 +11,8 @@
 
         public readonly HashSet<string> DefinedDelegates = new();
 
+        private readonly HashSet<string> CsNames = new();
+
         protected virtual List<string> SetupDelegateUsings()
         {
             List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
@@ -143,6 +145,13 @@
 
             string csFieldName = settings.GetFieldName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
+
+            int i = 1;
+            while (CsNames.Contains(csFieldName))
+            {
+                csFieldName += $"{i++}";
+            }
+            CsNames.Add(csFieldName);
 
             writer.WriteLine("#if NET5_0_OR_GREATER");
             WriteFinal(writer, field, functionType, csFieldName, fieldPrefix);

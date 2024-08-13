@@ -341,11 +341,11 @@
                 {
                     using (writer.PushBlock($"if ({varName}Size > Utils.MaxStackallocSize)"))
                     {
-                        writer.WriteLine($"{varName} = (byte**)Utils.Alloc<byte>({varName});");
+                        writer.WriteLine($"{varName} = (byte**)Utils.Alloc<byte>({varName}Size);");
                     }
                     using (writer.PushBlock("else"))
                     {
-                        writer.WriteLine($"byte* {varName}Stack = stackalloc byte[{varName}];");
+                        writer.WriteLine($"byte* {varName}Stack = stackalloc byte[{varName}Size];");
                         writer.WriteLine($"{varName} = (byte**){varName}Stack;");
                     }
                 }

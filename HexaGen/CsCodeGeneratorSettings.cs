@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Core;
+    using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using System;
@@ -777,6 +778,21 @@
         }
 
         #endregion Mapping Helpers
+
+        public string GetCsReturnType(CppType? type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (type.IsDelegate(out var outDelegate))
+            {
+                return MakeDelegatePointer(outDelegate);
+            }
+
+            var name = GetCsTypeNameInternal(type);
+
+            return name;
+        }
 
         public string GetCsTypeName(CppType? type, bool isPointer = false)
         {
