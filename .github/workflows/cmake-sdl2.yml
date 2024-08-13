@@ -61,9 +61,7 @@ jobs:
           libibus-1.0-dev \
           fcitx-libs-dev \
           libsamplerate0-dev \
-          libartsc0-dev \
           ccache \
-          libesd0-dev \
           libjack-jackd2-dev \
           libdrm-dev \
           libpipewire-0.3-dev \
