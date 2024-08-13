@@ -60,7 +60,16 @@ jobs:
           libgl1-mesa-dev \
           libibus-1.0-dev \
           fcitx-libs-dev \
-          libsamplerate0-dev
+          libsamplerate0-dev \
+          libartsc0-dev \
+          ccache \
+          libesd0-dev \
+          libjack-jackd2-dev \
+          libdrm-dev \
+          libpipewire-0.3-dev \
+          libvulkan-dev \
+          libdecor-0-dev \
+          qtwayland5
 
     - name: Install dependencies on macOS
       if: matrix.os == 'macos-latest'
