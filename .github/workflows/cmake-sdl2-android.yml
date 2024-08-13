@@ -51,7 +51,7 @@ jobs:
 
     - name: Install Specific Android NDK Version 26.3.11579264
       run: |
-        yes | /usr/src/android-sdk/cmdline-tools/latest/bin/sdkmanager –licenses --install "ndk;26.3.11579264"      
+        yes | /usr/src/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.3.11579264"      
         echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
         echo "PATH=$PATH:$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
 
