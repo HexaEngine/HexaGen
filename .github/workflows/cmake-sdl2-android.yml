@@ -50,12 +50,12 @@ jobs:
         
     - name: Accept Android SDK Licenses
       run: |
-        yes | sudo /usr/src/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --licenses
+        sudo yes | /usr/src/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --licenses
 
 
     - name: Install Specific Android NDK Version 26.3.11579264
       run: |
-        yes | sudo /usr/src/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.3.11579264"      
+        sudo yes | /usr/src/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.3.11579264"      
         echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
         echo "PATH=$PATH:$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
         sudo chmod 777 /usr/src/android-sdk/ -R
