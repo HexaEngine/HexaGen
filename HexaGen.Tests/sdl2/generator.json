@@ -5,7 +5,6 @@
   "EnableExperimentalOptions": true,
   "GenerateConstructorsForStructs": true,
   "GenerateSizeOfStructs": false,
-  "DelegatesAsVoidPointer": true,
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": true,
   "ImportType": "VTable",
@@ -43,8 +42,10 @@
     "event",
     "lock"
   ],
-  "IgnoredTypes": [ "SDL_SysWMinfo", "SDL_SysWMmsg" ],
+
+  "IgnoredTypes": [ "SDL_SysWMinfo", "SDL_SysWMmsg", "SDL_AudioCVT" ],
   "TypeMappings": {
+    "PFNGLGETTRANSFORMFEEDBACKI_VPROC": "PFNGLGETTRANSFORMFEEDBACKI_VPROC",
     "SDL_SysWMinfo": "SDLSysWMInfo",
     "SDL_SysWMmsg": "SDLSysWMMsg",
     "uint8_t": "byte",
@@ -95,6 +96,7 @@
     "GLsizeiptrARB": "nint",
     "GLint64EXT": "long",
     "GLintptrARB": "nint",
+    "GLdouble": "double",
     "EGLint": "int",
     "EGLNativePixmapType": "nint",
     "EGLNativeWindowType": "nint",

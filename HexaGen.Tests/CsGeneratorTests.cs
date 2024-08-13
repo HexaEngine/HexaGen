@@ -3,6 +3,7 @@ namespace HexaGen.Tests
     using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using HexaGen.Patching;
     using System;
     using System.Text;
     using Test;
@@ -577,6 +578,34 @@ namespace HexaGen.Tests
             generator.Generate(headerFile, "../../../../Hexa.NET.Daxa/Generated");
             EvaluateResult(generator);
             Assert.Pass();
+        }
+
+        [Test]
+        public void Bgfx()
+        {
+            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("bgfx/generator.json");
+
+            string headerFile = "bgfx/main.h";
+
+            CsCodeGenerator generator = new(settings);
+
+            generator.PatchEngine.RegisterPrePatch(new BgfxMappingPatcher());
+
+            generator.Generate(headerFile, "../../../../Hexa.NET.Bgfx/Generated");
+            EvaluateResult(generator);
+            Assert.Pass();
+        }
+
+        private class BgfxMappingPatcher : PrePatch
+        {
+            protected override void PatchClass(CsCodeGeneratorSettings settings, CppClass cppClass)
+            {
+                if (cppClass.Name.EndsWith("_s")) // removes type_s suffix
+                {
+                    var csName = settings.GetCsCleanName(cppClass.Name)[..^1];
+                    settings.TypeMappings.Add(cppClass.Name, csName);
+                }
+            }
         }
     }
 }

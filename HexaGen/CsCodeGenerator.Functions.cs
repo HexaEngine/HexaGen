@@ -132,7 +132,7 @@
                     }
 
                     string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
-                    string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
+                    string returnCsName = settings.GetCsReturnType(cppFunction.ReturnType);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
                     bool boolReturn = returnCsName == "bool";
@@ -171,6 +171,7 @@
                             break;
 
                         case ImportType.VTable:
+
                             if (boolReturn)
                             {
                                 writer.BeginBlock($"internal static {settings.GetBoolType()} {csName}Native({argumentsString})");
@@ -180,7 +181,11 @@
                                 writer.BeginBlock($"internal static {header}");
                             }
 
-                            string returnType = settings.GetCsTypeName(cppFunction.ReturnType);
+                            string returnType = settings.GetCsReturnType(cppFunction.ReturnType);
+                            if (cppFunction.ReturnType.IsDelegate(out var outDelegate))
+                            {
+                                returnType = settings.MakeDelegatePointer(outDelegate);
+                            }
                             if (returnType == "bool")
                             {
                                 returnType = settings.GetBoolType();
@@ -212,7 +217,7 @@
 
                             writer.WriteLine("#else");
 
-                            string returnTypeOld = settings.GetCsTypeName(cppFunction.ReturnType);
+                            string returnTypeOld = settings.GetCsReturnType(cppFunction.ReturnType);
                             if (returnTypeOld == "bool")
                             {
                                 returnTypeOld = settings.GetBoolType();
@@ -281,7 +286,7 @@
                     writerVt.WriteLine();
                     using (writerVt.PushBlock("public static void InitApi()"))
                     {
-                        writerVt.WriteLine($"vt = new VTable(GetLibraryName(), {count});");
+                        writerVt.WriteLine($"vt = new VTable(LibraryLoader.LoadLibrary(), {count});");
                         writerVt.WriteLines(initString);
                     }
                     writerVt.WriteLine();

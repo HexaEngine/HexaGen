@@ -49,6 +49,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="bgfx\c99\bgfx.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\main.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\bgfx.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\defines.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\embedded_shader.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\generator.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="bgfx\platform.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="cimgui\cimgui.h">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Core;
+    using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using System;
@@ -777,6 +778,21 @@
         }
 
         #endregion Mapping Helpers
+
+        public string GetCsReturnType(CppType? type)
+        {
+            if (type == null)
+                return string.Empty;
+
+            if (type.IsDelegate(out var outDelegate))
+            {
+                return MakeDelegatePointer(outDelegate);
+            }
+
+            var name = GetCsTypeNameInternal(type);
+
+            return name;
+        }
 
         public string GetCsTypeName(CppType? type, bool isPointer = false)
         {
@@ -2333,7 +2349,7 @@
         public bool WriteCsSummary(CppComment? comment, ICodeWriter writer)
         {
             bool result = false;
-            if (comment is CppCommentFull full)
+            if (comment is CppCommentFull full && full.Children != null)
             {
                 writer.WriteLine("/// <summary>");
                 for (int i = 0; i < full.Children.Count; i++)
@@ -2402,7 +2418,7 @@
         {
             comment = null;
             StringBuilder sb = new();
-            if (cppComment is CppCommentFull full)
+            if (cppComment is CppCommentFull full && full.Children != null)
             {
                 sb.AppendLine("/// <summary>");
                 for (int i = 0; i < full.Children.Count; i++)
