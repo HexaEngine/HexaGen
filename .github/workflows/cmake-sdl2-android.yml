@@ -40,13 +40,15 @@ jobs:
         unzip android-sdk-tools.zip -d android-sdk
         sudo mkdir -p /usr/src/android-sdk-linux/cmdline-tools/latest
         sudo mv android-sdk/* /usr/src/android-sdk-linux/cmdline-tools/latest/
+        sudo chmod +x /usr/src/android-sdk-linux/cmdline-tools/latest/bin/*
         echo "ANDROID_HOME=/usr/src/android-sdk-linux" >> $GITHUB_ENV
         echo "PATH=$PATH:/usr/src/android-sdk-linux/cmdline-tools/latest/bin:/usr/src/android-sdk-linux/platform-tools" >> $GITHUB_ENV
+        
 
 
     - name: Install Specific Android NDK Version 26.3.11579264
       run: |
-        yes | /usr/src/android-sdk-linux/cmdline-tools/bin/sdkmanager --install "ndk;26.3.11579264"
+        yes | /usr/src/android-sdk-linux/cmdline-tools/latest/bin/sdkmanager --install "ndk;26.3.11579264"
         echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
         echo "PATH=$PATH:$ANDROID_HOME/ndk/26.3.11579264" >> $GITHUB_ENV
 
