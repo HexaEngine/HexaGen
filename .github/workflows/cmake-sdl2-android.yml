@@ -26,18 +26,19 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential cmake ninja-build openjdk-8-jdk ant android-sdk-platform-tools-common
+        sudo apt-get install -y build-essential cmake ninja-build
+
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: 17
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2.0.10
 
-    - name: Download and Install Android NDK r10e
-      run: |
-        wget https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip
-        unzip android-ndk-r10e-linux-x86_64.zip
-        sudo mv android-ndk-r10e /usr/src/android-ndk-r10e
-        echo "ANDROID_NDK_HOME=/usr/src/android-ndk-r10e" >> $GITHUB_ENV
-        echo "PATH=$PATH:/usr/src/android-ndk-r10e" >> $GITHUB_ENV
+    - name: Install Android NDK
+      run: sdkmanager --install "ndk-bundle;26.3.11579264"
 
     - name: Build for arm64-v8a
       run: |
