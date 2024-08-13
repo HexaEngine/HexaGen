@@ -37,7 +37,7 @@ jobs:
         unzip android-ndk-r10e-linux-x86_64.zip
         sudo mv android-ndk-r10e /usr/src/android-ndk-r10e
         echo "ANDROID_NDK_HOME=/usr/src/android-ndk-r10e" >> $GITHUB_ENV
-        echo "PATH=/usr/src/android-ndk-r10e:\$PATH" >> $GITHUB_ENV
+        echo "PATH=$PATH:/usr/src/android-ndk-r10e" >> $GITHUB_ENV
 
     - name: Build for arm64-v8a
       run: |
