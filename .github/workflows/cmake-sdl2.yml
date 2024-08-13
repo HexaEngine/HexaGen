@@ -37,7 +37,7 @@ jobs:
     - name: Install dependencies on Ubuntu
       if: matrix.os == 'ubuntu-latest'
       run: |
-        sudo apt-get update && sudo apt-get install -y \
+          sudo apt-get update && sudo apt-get install -y \
           build-essential \
           cmake \
           libasound2-dev \
@@ -67,7 +67,9 @@ jobs:
           libpipewire-0.3-dev \
           libvulkan-dev \
           libdecor-0-dev \
-          qtwayland5
+          qtwayland5 \
+          libxkbcommon-dev \
+          libsndio-dev
 
     - name: Install dependencies on macOS
       if: matrix.os == 'macos-latest'
