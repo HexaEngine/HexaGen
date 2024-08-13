@@ -36,7 +36,7 @@ jobs:
 
     - name: Install Android SDK Command-Line Tools
       run: |
-        wget https://dl.google.com/android/repository/commandlinetools-linux-XXXX_latest.zip -O android-sdk-tools.zip
+        wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O android-sdk-tools.zip
         unzip android-sdk-tools.zip -d android-sdk
         sudo mv android-sdk /usr/src/android-sdk-linux
         echo "ANDROID_HOME=/usr/src/android-sdk-linux" >> $GITHUB_ENV
