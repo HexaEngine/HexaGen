@@ -5,8 +5,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.0.0</PackageVersion>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<PackageVersion>1.1.0</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>

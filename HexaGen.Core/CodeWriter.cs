@@ -26,6 +26,7 @@
 
         public CodeWriter(string fileName, string template, HeaderInjectionDelegate? headerInjector)
         {
+            fileName = FileNameHelper.SanitizeFileName(fileName);
             FileName = fileName;
 
             _indentStrings = new string[10];

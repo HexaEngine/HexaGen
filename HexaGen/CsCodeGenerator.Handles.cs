@@ -35,17 +35,17 @@
 
         protected virtual List<string> SetupHandleUsings()
         {
-            List<string> usings = ["System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime", .. settings.Usings];
+            List<string> usings = ["System", "System.Diagnostics", "System.Runtime.InteropServices", "HexaGen.Runtime", .. config.Usings];
             return usings;
         }
 
         protected virtual bool FilterHandle(GenContext? context, CsHandleMetadata csHandle)
         {
             var typedef = csHandle.CppType;
-            if (settings.AllowedTypedefs.Count != 0 && !settings.AllowedTypedefs.Contains(typedef.Name))
+            if (config.AllowedTypedefs.Count != 0 && !config.AllowedTypedefs.Contains(typedef.Name))
                 return true;
 
-            if (settings.IgnoredTypedefs.Contains(typedef.Name))
+            if (config.IgnoredTypedefs.Contains(typedef.Name))
                 return true;
 
             if (LibDefinedTypedefs.Contains(typedef.Name))
@@ -76,7 +76,7 @@
             }
             Directory.CreateDirectory(folder);
 
-            if (settings.OneFilePerType)
+            if (config.OneFilePerType)
             {
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
@@ -86,7 +86,7 @@
                         continue;
 
                     string filePath = Path.Combine(folder, $"{handle.Name}.cs");
-                    using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), settings.HeaderInjector);
+                    using var writer = new CsCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector);
                     GenContext context = new(compilation, filePath, writer);
                     WriteHandle(context, handle);
                 }
@@ -94,7 +94,7 @@
             else
             {
                 string filePath = Path.Combine(folder, "Handles.cs");
-                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupHandleUsings(), settings.HeaderInjector, 1);
+                using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector, 1);
                 GenContext context = new(compilation, filePath, writer);
 
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -114,17 +114,17 @@
 
         protected virtual CsHandleMetadata ParseHandle(CppTypedef typedef)
         {
-            var csName = settings.GetCsCleanName(typedef.Name);
+            var csName = config.GetCsCleanName(typedef.Name);
             CsHandleMetadata metadata = new(csName, typedef, null, true);
 
-            settings.TryGetHandleMapping(typedef.Name, out var mapping);
+            config.TryGetHandleMapping(typedef.Name, out var mapping);
 
-            metadata.Comment = settings.WriteCsSummary(typedef.Comment);
+            metadata.Comment = config.WriteCsSummary(typedef.Comment);
             if (mapping != null)
             {
                 if (mapping.Comment != null)
                 {
-                    metadata.Comment = settings.WriteCsSummary(mapping.Comment);
+                    metadata.Comment = config.WriteCsSummary(mapping.Comment);
                 }
                 if (mapping.FriendlyName != null)
                 {
@@ -142,7 +142,7 @@
             LogInfo("defined handle " + (string?)csHandle.Name);
 
             writer.WriteLines(csHandle.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{csHandle.CppType.Name}\")]");
             }

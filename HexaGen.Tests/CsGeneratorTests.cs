@@ -49,7 +49,7 @@ namespace HexaGen.Tests
         [Test]
         public void XAudio2()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xaudio2/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("xaudio2/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate(Directory.GetFiles("xaudio2", "*.h").ToList(), "../../../../Hexa.NET.XAudio2/Generated");
             EvaluateResult(generator1);
@@ -59,7 +59,7 @@ namespace HexaGen.Tests
         [Test]
         public void X3DAudio()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("xd3audio/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("xd3audio/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate("xd3audio/main.h", "../../../../Hexa.NET.X3DAudio/Generated");
             EvaluateResult(generator1);
@@ -69,7 +69,7 @@ namespace HexaGen.Tests
         [Test]
         public void D3DCommon()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcommon/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3dcommon/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate("d3dcommon/d3dcommon.h", "../../../../Hexa.NET.D3DCommon/Generated");
             EvaluateResult(generator1);
@@ -79,7 +79,7 @@ namespace HexaGen.Tests
         [Test]
         public void D3DCompiler()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3dcompiler/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3dcompiler/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate("d3dcompiler/d3dcompiler.h", "../../../../Hexa.NET.D3DCompiler/Generated");
             EvaluateResult(generator1);
@@ -89,7 +89,7 @@ namespace HexaGen.Tests
         [Test]
         public void DXC()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxc/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("dxc/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate("dxc/main.h", "../../../../Hexa.NET.DXC/Generated");
             EvaluateResult(generator1);
@@ -99,7 +99,7 @@ namespace HexaGen.Tests
         [Test]
         public void DXGI()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("dxgi/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("dxgi/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate(Directory.GetFiles("dxgi", "*.h").ToList(), "../../../../Hexa.NET.DXGI/Generated");
             EvaluateResult(generator1);
@@ -109,7 +109,7 @@ namespace HexaGen.Tests
         [Test]
         public void D3D11()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d11/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3d11/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate(Directory.GetFiles("d3d11", "*.h").ToList(), "../../../../Hexa.NET.D3D11/Generated");
             EvaluateResult(generator1);
@@ -119,7 +119,7 @@ namespace HexaGen.Tests
         [Test]
         public void D3D12()
         {
-            CsCodeGeneratorSettings generatorSettings = CsCodeGeneratorSettings.Load("d3d12/generator.json");
+            CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3d12/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
             generator1.Generate(Directory.GetFiles("d3d12", "*.h").ToList(), "../../../../Hexa.NET.D3D12/Generated");
             EvaluateResult(generator1);
@@ -129,7 +129,7 @@ namespace HexaGen.Tests
         [Test]
         public void CImGui()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("cimgui/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("cimgui/generator.json");
             ImguiDefinitions imguiDefinitions = new("cimgui");
 
             for (int i = 0; i < imguiDefinitions.Functions.Length; i++)
@@ -208,7 +208,7 @@ namespace HexaGen.Tests
         [Test]
         public void Shaderc()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("shaderc/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("shaderc/generator.json");
             string headerFile = "shaderc/shaderc.h";
 
             CsCodeGenerator generator = new(settings);
@@ -221,7 +221,7 @@ namespace HexaGen.Tests
         [Test]
         public void SPIRVCross()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("spirvcross/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("spirvcross/generator.json");
             string headerFile = "spirvcross/spirv_cross_c.h";
 
             CsCodeGenerator generator = new(settings);
@@ -234,7 +234,7 @@ namespace HexaGen.Tests
         [Test]
         public void SPIRVReflect()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("spirvreflect/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("spirvreflect/generator.json");
             string headerFile = "spirvreflect/spirv_reflect.h";
 
             CsCodeGenerator generator = new(settings);
@@ -247,7 +247,7 @@ namespace HexaGen.Tests
         [Test]
         public void SDL2()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("sdl2/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("sdl2/generator.json");
             settings.CustomEnumItemMapper = SDL2EnumMapper;
             CsCodeGenerator generator = new(settings);
             generator.Generate(new List<string>() { "sdl2/main.h" }, "../../../../Hexa.NET.SDL2/Generated");
@@ -263,7 +263,7 @@ namespace HexaGen.Tests
         [Test]
         public void OpenAL()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("openal/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("openal/generator.json");
             string headerFile = "openal/main.h";
 
             CsCodeGenerator generator = new(settings);
@@ -276,7 +276,7 @@ namespace HexaGen.Tests
         [Test]
         public void OpenGL()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("opengl/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("opengl/generator.json");
             string headerFile = "opengl/main.h";
 
             CsCodeGenerator generator = new(settings);
@@ -290,7 +290,7 @@ namespace HexaGen.Tests
         [Test]
         public void OpenGLExt()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("opengl/glext/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("opengl/glext/generator.json");
             string headerFile = "opengl/glext/main.h";
 
             CsCodeGenerator generator = new(settings);
@@ -304,7 +304,7 @@ namespace HexaGen.Tests
         [Test]
         public void PhysX()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("physx/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("physx/generator.json");
             string headerFile = "physx/physx_generated.hpp";
 
             CsCodeGenerator generator = new(settings);
@@ -317,7 +317,7 @@ namespace HexaGen.Tests
         [Test]
         public void FreeType()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("freetype/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("freetype/generator.json");
 
             EnumMapping enumMappingFTGlyphFormat = new("FT_Glyph_Format_", null, null);
             enumMappingFTGlyphFormat.ItemMappings.Add(new("FT_GLYPH_FORMAT_NONE", null, null, "0"));
@@ -360,7 +360,7 @@ namespace HexaGen.Tests
         [Test]
         public void Vulkan()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("vulkan/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("vulkan/generator.json");
 
             settings.CustomEnumItemMapper = VulkanCustomEnumItemMapper;
 
@@ -555,7 +555,7 @@ namespace HexaGen.Tests
         [Test]
         public void VMA()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("vma/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("vma/generator.json");
 
             string headerFile = "vma/main.h";
 
@@ -569,7 +569,7 @@ namespace HexaGen.Tests
         [Test]
         public void Daxa()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("daxa/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("daxa/generator.json");
 
             string headerFile = "daxa/daxa.h";
 
@@ -583,7 +583,7 @@ namespace HexaGen.Tests
         [Test]
         public void Bgfx()
         {
-            CsCodeGeneratorSettings settings = CsCodeGeneratorSettings.Load("bgfx/generator.json");
+            CsCodeGeneratorConfig settings = CsCodeGeneratorConfig.Load("bgfx/generator.json");
 
             string headerFile = "bgfx/main.h";
 
@@ -598,7 +598,7 @@ namespace HexaGen.Tests
 
         private class BgfxMappingPatcher : PrePatch
         {
-            protected override void PatchClass(CsCodeGeneratorSettings settings, CppClass cppClass)
+            protected override void PatchClass(CsCodeGeneratorConfig settings, CppClass cppClass)
             {
                 if (cppClass.Name.EndsWith("_s")) // removes type_s suffix
                 {

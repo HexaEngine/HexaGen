@@ -10,17 +10,18 @@
     {
         protected FunctionGenerator funcGen;
         protected PatchEngine patchEngine = new();
+        protected ConfigComposer configComposer = new();
 
         public static CsCodeGenerator Create(string configPath)
         {
-            return new(CsCodeGeneratorSettings.Load(configPath));
+            return new(CsCodeGeneratorConfig.Load(configPath));
         }
 
-        public CsCodeGenerator(CsCodeGeneratorSettings settings) : this(settings, new(settings))
+        public CsCodeGenerator(CsCodeGeneratorConfig config) : this(config, new(config))
         {
         }
 
-        public CsCodeGenerator(CsCodeGeneratorSettings settings, FunctionGenerator functionGenerator) : base(settings)
+        public CsCodeGenerator(CsCodeGeneratorConfig config, FunctionGenerator functionGenerator) : base(config)
         {
             funcGen = functionGenerator;
         }
@@ -28,6 +29,8 @@
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
 
         public PatchEngine PatchEngine => patchEngine;
+
+        public ConfigComposer ConfigComposer => configComposer;
 
         protected virtual CppParserOptions PrepareSettings()
         {
@@ -37,27 +40,27 @@
                 ParseComments = true,
                 ParseSystemIncludes = true,
                 ParseAsCpp = true,
-                AutoSquashTypedef = settings.AutoSquashTypedef,
+                AutoSquashTypedef = config.AutoSquashTypedef,
             };
 
-            for (int i = 0; i < settings.AdditionalArguments.Count; i++)
+            for (int i = 0; i < config.AdditionalArguments.Count; i++)
             {
-                options.AdditionalArguments.Add(settings.AdditionalArguments[i]);
+                options.AdditionalArguments.Add(config.AdditionalArguments[i]);
             }
 
-            for (int i = 0; i < settings.IncludeFolders.Count; i++)
+            for (int i = 0; i < config.IncludeFolders.Count; i++)
             {
-                options.IncludeFolders.Add(settings.IncludeFolders[i]);
+                options.IncludeFolders.Add(config.IncludeFolders[i]);
             }
 
-            for (int i = 0; i < settings.SystemIncludeFolders.Count; i++)
+            for (int i = 0; i < config.SystemIncludeFolders.Count; i++)
             {
-                options.SystemIncludeFolders.Add(settings.SystemIncludeFolders[i]);
+                options.SystemIncludeFolders.Add(config.SystemIncludeFolders[i]);
             }
 
-            for (int i = 0; i < settings.Defines.Count; i++)
+            for (int i = 0; i < config.Defines.Count; i++)
             {
-                options.Defines.Add(settings.Defines[i]);
+                options.Defines.Add(config.Defines[i]);
             }
 
             // options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
@@ -91,15 +94,15 @@
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSeverity.Error)
+                if (message.Type == CppLogMessageType.Error && config.CppLogLevel <= LogSeverity.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSeverity.Warning)
+                if (message.Type == CppLogMessageType.Warning && config.CppLogLevel <= LogSeverity.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSeverity.Information)
+                if (message.Type == CppLogMessageType.Info && config.CppLogLevel <= LogSeverity.Information)
                 {
                     LogInfo(message.ToString());
                 }
@@ -110,41 +113,44 @@
                 return false;
             }
 
-            patchEngine.ApplyPrePatches(settings, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+            configComposer.LogEvent += Log;
+            configComposer.Compose(config);
+            configComposer.LogEvent -= Log;
+            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
 
-            settings.DefinedCppEnums = DefinedCppEnums;
+            config.DefinedCppEnums = DefinedCppEnums;
 
-            if (settings.GenerateEnums)
+            if (config.GenerateEnums)
             {
                 GenerateEnums(compilation, outputPath);
             }
 
-            if (settings.GenerateConstants)
+            if (config.GenerateConstants)
             {
                 GenerateConstants(compilation, outputPath);
             }
 
-            if (settings.GenerateHandles)
+            if (config.GenerateHandles)
             {
                 GenerateHandles(compilation, outputPath);
             }
 
-            if (settings.GenerateTypes)
+            if (config.GenerateTypes)
             {
                 GenerateTypes(compilation, outputPath);
             }
 
-            if (settings.GenerateFunctions)
+            if (config.GenerateFunctions)
             {
                 GenerateFunctions(compilation, outputPath);
             }
 
-            if (settings.GenerateExtensions)
+            if (config.GenerateExtensions)
             {
                 GenerateExtensions(compilation, outputPath);
             }
 
-            if (settings.GenerateDelegates)
+            if (config.GenerateDelegates)
             {
                 GenerateDelegates(compilation, outputPath);
             }
@@ -292,9 +298,9 @@
 
         protected virtual CsFunction CreateCsFunction(CppFunction cppFunction, CsFunctionKind kind, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
         {
-            settings.TryGetFunctionMapping(cppFunction.Name, out var mapping);
+            config.TryGetFunctionMapping(cppFunction.Name, out var mapping);
 
-            string returnCsName = settings.GetCsReturnType(cppFunction.ReturnType);
+            string returnCsName = config.GetCsReturnType(cppFunction.ReturnType);
             CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
             CsFunction? function = null;
@@ -309,10 +315,10 @@
 
             if (function == null)
             {
-                settings.WriteCsSummary(cppFunction.Comment, out string? comment);
+                config.WriteCsSummary(cppFunction.Comment, out string? comment);
                 if (mapping != null && mapping.Comment != null)
                 {
-                    comment = settings.WriteCsSummary(mapping.Comment);
+                    comment = config.WriteCsSummary(mapping.Comment);
                 }
                 function = new(csName, comment);
                 functions.Add(function);
@@ -324,8 +330,8 @@
             for (int j = 0; j < cppFunction.Parameters.Count; j++)
             {
                 var cppParameter = cppFunction.Parameters[j];
-                var paramCsTypeName = settings.GetCsTypeName(cppParameter.Type, false);
-                var paramCsName = settings.GetParameterName(j, cppParameter.Name);
+                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type, false);
+                var paramCsName = config.GetParameterName(j, cppParameter.Name);
                 var direction = cppParameter.Type.GetDirection();
                 var primKind = cppParameter.Type.GetPrimitiveKind();
 
@@ -335,7 +341,7 @@
                 csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
                 csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
                 overload.Parameters.Add(csParameter);
-                if (settings.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
+                if (config.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                 {
                     overload.DefaultValues.Add(paramCsName, defaultValue);
                 }

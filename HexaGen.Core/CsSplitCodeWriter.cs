@@ -32,6 +32,7 @@
 
         public CsSplitCodeWriter(string fileName, string @namespace, IList<string> usings, HeaderInjectionDelegate? headerInjector, int baseIndentLevel = 2)
         {
+            fileName = FileNameHelper.SanitizeFileName(fileName);
             this.baseIndentLevel = baseIndentLevel;
             _indentStrings = new string[10];
             for (int i = 0; i < _indentStrings.Length; i++)

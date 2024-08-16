@@ -18,12 +18,12 @@
 
         protected virtual bool FilterCOMFunction(GenContext context, CppFunction cppFunction)
         {
-            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+            if (config.AllowedFunctions.Count != 0 && !config.AllowedFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
 
-            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+            if (config.IgnoredFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
@@ -50,7 +50,7 @@
             string filePath = Path.Combine(outputPath, "Structures.cs");
 
             // Generate Structures
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector, 1);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector, 1);
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -58,12 +58,12 @@
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
                 CppClass? cppClass = compilation.Classes[i];
-                if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+                if (config.AllowedTypes.Count != 0 && !config.AllowedTypes.Contains(cppClass.Name))
                 {
                     continue;
                 }
 
-                if (settings.IgnoredTypes.Contains(cppClass.Name))
+                if (config.IgnoredTypes.Contains(cppClass.Name))
                 {
                     continue;
                 }
@@ -81,9 +81,9 @@
 
                 DefinedTypes.Add(cppClass.Name);
 
-                string csName = settings.GetCsCleanName(cppClass.Name);
+                string csName = config.GetCsCleanName(cppClass.Name);
 
-                var mapping = settings.GetTypeMapping(cppClass.Name);
+                var mapping = config.GetTypeMapping(cppClass.Name);
 
                 csName = mapping?.FriendlyName ?? csName;
 
@@ -117,17 +117,17 @@
             string modifier = "partial";
 
             LogInfo("defined struct " + csName);
-            var commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
+            var commentWritten = config.WriteCsSummary(cppClass.Comment, writer);
             if (!commentWritten)
             {
-                commentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
+                commentWritten = config.WriteCsSummary(mapping?.Comment, writer);
             }
             if (guid != null)
             {
                 writer.WriteLine($"[Guid(\"{guid}\")]");
             }
 
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.Name}\")]");
             }
@@ -144,7 +144,7 @@
                     var current = baseTypes.Dequeue();
                     if (current.Type is CppClass baseClass)
                     {
-                        string csNameBaseClass = settings.GetCsCleanName(baseClass.Name);
+                        string csNameBaseClass = config.GetCsCleanName(baseClass.Name);
                         sb.Append($", IComObject<{csNameBaseClass}>");
 
                         for (int i = 0; i < baseClass.BaseTypes.Count; i++)
@@ -223,7 +223,7 @@
                     continue;
                 }
 
-                string? csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
+                string? csFunctionName = config.GetCsFunctionName(cppFunction.Name);
 
                 CsFunction? function = CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
@@ -252,7 +252,7 @@
 
         private void WriteCOMBaseTypeCast(ICodeWriter writer, string csName, CppClass baseClass)
         {
-            string csNameBaseClass = settings.GetCsCleanName(baseClass.Name);
+            string csNameBaseClass = config.GetCsCleanName(baseClass.Name);
             using (writer.PushBlock($"public unsafe static implicit operator {csNameBaseClass} ({csName} value)"))
             {
                 writer.WriteLine($"return Unsafe.As<{csName}, {csNameBaseClass}>(ref value);");
@@ -285,8 +285,8 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = variation.BuildFullSignatureForCOM(settings.GenerateMetadata);
-            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
+            string header = variation.BuildFullSignatureForCOM(config.GenerateMetadata);
+            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, config);
 
             string identifier = variation.BuildSignatureIdentifierForCOM();
             if (FilterCOMMemberFunction(context, definedFunctions, identifier))
@@ -299,7 +299,7 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -313,7 +313,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -326,7 +326,7 @@
                     WriteStringConvertToManaged(sb, variation.ReturnType);
                 }
 
-                var retType = csReturnType.IsBool ? settings.GetBoolType() : csReturnType.Name;
+                var retType = csReturnType.IsBool ? config.GetBoolType() : csReturnType.Name;
                 var ptr = index == 0 ? "*LpVtbl" : $"LpVtbl[{index}]";
                 var tail = variation.Parameters.Count > 0 ? ", " : string.Empty;
 
@@ -358,7 +358,7 @@
                         }
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
+                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
                         }
                         else if (rootParam.Type.IsEnum)
                         {
@@ -419,7 +419,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()} )1 : ( {settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()} )1 : ( {config.GetBoolType()})0");
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {

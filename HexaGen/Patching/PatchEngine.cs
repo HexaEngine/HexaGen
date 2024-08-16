@@ -108,7 +108,7 @@
 
         private JsonSerializerOptions options = new() { WriteIndented = true };
 
-        public void ApplyPrePatches(CsCodeGeneratorSettings settings, string outputDir, List<string> files, CppCompilation compilation)
+        public void ApplyPrePatches(CsCodeGeneratorConfig settings, string outputDir, List<string> files, CppCompilation compilation)
         {
             PatchContext? last = null;
             for (int i = 0; i < preGenerationPatches.Count; i++)
@@ -159,7 +159,7 @@
 
     public interface IPrePatch : IPatch
     {
-        void Apply(PatchContext context, CsCodeGeneratorSettings settings, List<string> files, CppCompilation compilation);
+        void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, CppCompilation compilation);
     }
 
     public interface IPostPatch : IPatch
@@ -176,14 +176,14 @@
             regexPatches.Add(patch);
         }
 
-        public virtual void Apply(PatchContext context, CsCodeGeneratorSettings settings, List<string> files, CppCompilation compilation)
+        public virtual void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, CppCompilation compilation)
         {
             PatchFiles(context, settings, compilation, files);
 
             PatchCompilation(settings, compilation);
         }
 
-        protected virtual void PatchFiles(PatchContext context, CsCodeGeneratorSettings settings, CppCompilation compilation, List<string> files)
+        protected virtual void PatchFiles(PatchContext context, CsCodeGeneratorConfig settings, CppCompilation compilation, List<string> files)
         {
             foreach (var file in files)
             {
@@ -191,7 +191,7 @@
             }
         }
 
-        protected virtual void PatchFile(PatchContext context, CsCodeGeneratorSettings settings, CppCompilation compilation, string file)
+        protected virtual void PatchFile(PatchContext context, CsCodeGeneratorConfig settings, CppCompilation compilation, string file)
         {
             var text = File.ReadAllText(file);
 
@@ -203,7 +203,7 @@
             File.WriteAllText(file, text);
         }
 
-        protected virtual void PatchCompilation(CsCodeGeneratorSettings settings, CppCompilation compilation)
+        protected virtual void PatchCompilation(CsCodeGeneratorConfig settings, CppCompilation compilation)
         {
             foreach (var type in compilation.Classes)
             {
@@ -226,19 +226,19 @@
             }
         }
 
-        protected virtual void PatchClass(CsCodeGeneratorSettings settings, CppClass cppClass)
+        protected virtual void PatchClass(CsCodeGeneratorConfig settings, CppClass cppClass)
         {
         }
 
-        protected virtual void PatchTypedef(CsCodeGeneratorSettings settings, CppTypedef cppTypedef)
+        protected virtual void PatchTypedef(CsCodeGeneratorConfig settings, CppTypedef cppTypedef)
         {
         }
 
-        protected virtual void PatchFunction(CsCodeGeneratorSettings settings, CppFunction cppFunction)
+        protected virtual void PatchFunction(CsCodeGeneratorConfig settings, CppFunction cppFunction)
         {
         }
 
-        protected virtual void PatchEnum(CsCodeGeneratorSettings settings, CppEnum cppEnum)
+        protected virtual void PatchEnum(CsCodeGeneratorConfig settings, CppEnum cppEnum)
         {
         }
     }
@@ -271,7 +271,7 @@
             this.targetFile = targetFile;
         }
 
-        public virtual void PrePatch(CsCodeGeneratorSettings settings, CppCompilation compilation, string file, ref string text)
+        public virtual void PrePatch(CsCodeGeneratorConfig settings, CppCompilation compilation, string file, ref string text)
         {
             if (targetFile != null && file != targetFile)
             {
@@ -286,7 +286,7 @@
             }
         }
 
-        protected virtual void PrePatchMatch(CsCodeGeneratorSettings settings, CppCompilation compilation, ref string text, Match match)
+        protected virtual void PrePatchMatch(CsCodeGeneratorConfig settings, CppCompilation compilation, ref string text, Match match)
         {
         }
 

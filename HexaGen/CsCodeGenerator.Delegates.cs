@@ -16,16 +16,16 @@
         protected virtual List<string> SetupDelegateUsings()
         {
             List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
         protected virtual bool FilterIgnoredType(GenContext context, CppClass cppClass)
         {
-            if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+            if (config.AllowedTypes.Count != 0 && !config.AllowedTypes.Contains(cppClass.Name))
                 return true;
 
-            if (settings.IgnoredTypes.Contains(cppClass.Name))
+            if (config.IgnoredTypes.Contains(cppClass.Name))
                 return true;
 
             return false;
@@ -33,9 +33,9 @@
 
         protected virtual bool FilterDelegate(GenContext context, ICppMember member)
         {
-            if (settings.AllowedDelegates.Count != 0 && !settings.AllowedDelegates.Contains(member.Name))
+            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(member.Name))
                 return true;
-            if (settings.IgnoredDelegates.Contains(member.Name))
+            if (config.IgnoredDelegates.Contains(member.Name))
                 return true;
 
             if (LibDefinedDelegates.Contains(member.Name))
@@ -63,7 +63,7 @@
             string filePath = Path.Combine(folder, "Delegates.cs");
 
             // Generate Delegates
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupDelegateUsings(), settings.HeaderInjector, 1);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupDelegateUsings(), config.HeaderInjector, 1);
 
             GenContext context = new(compilation, filePath, writer);
 
@@ -95,7 +95,7 @@
 
         protected virtual void WriteClassDelegates(GenContext context, CppClass cppClass, string? csName = null)
         {
-            csName ??= settings.GetDelegateName(cppClass.Name);
+            csName ??= config.GetDelegateName(cppClass.Name);
 
             if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
             {
@@ -113,7 +113,7 @@
                 }
                 else
                 {
-                    csSubName = settings.GetDelegateName(subClass.Name);
+                    csSubName = config.GetDelegateName(subClass.Name);
                 }
 
                 WriteClassDelegates(context, subClass, csSubName);
@@ -143,7 +143,7 @@
 
             var writer = context.Writer;
 
-            string csFieldName = settings.GetFieldName(field.Name);
+            string csFieldName = config.GetFieldName(field.Name);
             string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
             int i = 1;
@@ -163,19 +163,19 @@
 
         private void WriteFinal<T>(ICodeWriter writer, T field, CppFunctionType functionType, string csFieldName, string fieldPrefix, bool compatibility = false) where T : class, ICppDeclaration, ICppMember
         {
-            string signature = settings.GetParameterSignature(functionType.Parameters, canUseOut: false, delegateType: true, compatibility: compatibility);
-            string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-            returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
+            string signature = config.GetParameterSignature(functionType.Parameters, canUseOut: false, delegateType: true, compatibility: compatibility);
+            string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+            returnCsName = returnCsName.Replace("bool", config.GetBoolType());
 
             if (functionType.ReturnType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !returnCsName.Contains('*'))
             {
                 if (cppFunction.Parameters.Count == 0)
                 {
-                    returnCsName = $"delegate*<{settings.GetCsTypeName(cppFunction.ReturnType)}>";
+                    returnCsName = $"delegate*<{config.GetCsTypeName(cppFunction.ReturnType)}>";
                 }
                 else
                 {
-                    returnCsName = $"delegate*<{settings.GetNamelessParameterSignature(cppFunction.Parameters, canUseOut: false, delegateType: true, compatibility)}, {settings.GetCsTypeName(cppFunction.ReturnType)}>";
+                    returnCsName = $"delegate*<{config.GetNamelessParameterSignature(cppFunction.Parameters, canUseOut: false, delegateType: true, compatibility)}, {config.GetCsTypeName(cppFunction.ReturnType)}>";
                 }
             }
 
@@ -184,7 +184,7 @@
                 returnCsName = "nint";
             }
 
-            if (settings.TryGetDelegateMapping(csFieldName, out var mapping))
+            if (config.TryGetDelegateMapping(csFieldName, out var mapping))
             {
                 returnCsName = mapping.ReturnType;
                 signature = mapping.Signature;
@@ -192,8 +192,8 @@
 
             string header = $"{returnCsName} {csFieldName}({signature})";
 
-            settings.WriteCsSummary(field.Comment, writer);
-            if (settings.GenerateMetadata)
+            config.WriteCsSummary(field.Comment, writer);
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
             }

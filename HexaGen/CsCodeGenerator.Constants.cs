@@ -13,16 +13,16 @@
         protected virtual List<string> SetupConstantUsings()
         {
             List<string> usings = new() { "System", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
         protected virtual bool FilterConstant(GenContext context, CsConstantMetadata metadata)
         {
-            if (settings.AllowedConstants.Count != 0 && !settings.AllowedConstants.Contains(metadata.Identifier))
+            if (config.AllowedConstants.Count != 0 && !config.AllowedConstants.Contains(metadata.Identifier))
                 return true;
 
-            if (settings.IgnoredConstants.Contains(metadata.Identifier))
+            if (config.IgnoredConstants.Contains(metadata.Identifier))
                 return true;
 
             if (LibDefinedConstants.Contains(metadata))
@@ -57,9 +57,9 @@
             Directory.CreateDirectory(folder);
             string filePath = Path.Combine(folder, "Constants.cs");
 
-            using CsSplitCodeWriter writer = new(filePath, settings.Namespace, SetupConstantUsings(), settings.HeaderInjector);
+            using CsSplitCodeWriter writer = new(filePath, config.Namespace, SetupConstantUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
-            using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
+            using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
             {
                 for (int i = 0; i < compilation.Macros.Count; i++)
                 {
@@ -71,7 +71,7 @@
         protected virtual CsConstantMetadata ParseConstant(CppMacro macro)
         {
             macro.UpdateValueFromTokens();
-            var name = settings.GetConstantName(macro.Name);
+            var name = config.GetConstantName(macro.Name);
             var value = macro.Value.NormalizeConstantValue();
 
             return new(macro.Name, macro.Value, name, value, null);
@@ -93,7 +93,7 @@
 
             if (value.IsNumeric(out var type))
             {
-                if (settings.GenerateMetadata)
+                if (config.GenerateMetadata)
                 {
                     writer.WriteLine($"[NativeName(NativeNameType.Const, \"{csConstant.CppName}\")]");
                     writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csConstant.EscapedCppValue}\")]");
@@ -104,7 +104,7 @@
             }
             else if (value.IsString())
             {
-                if (settings.GenerateMetadata)
+                if (config.GenerateMetadata)
                 {
                     writer.WriteLine($"[NativeName(NativeNameType.Const, \"{csConstant.CppName}\")]");
                     writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csConstant.EscapedCppValue}\")]");

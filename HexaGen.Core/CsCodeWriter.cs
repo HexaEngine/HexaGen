@@ -28,6 +28,7 @@
 
         public CsCodeWriter(string fileName, string @namespace, IEnumerable<string> usings, HeaderInjectionDelegate? headerInjector)
         {
+            fileName = FileNameHelper.SanitizeFileName(fileName);
             FileName = fileName;
             this.@namespace = @namespace;
             this.usings = usings;

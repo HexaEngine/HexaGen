@@ -30,14 +30,14 @@
 
     public abstract class FunctionGenRule
     {
-        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings);
 
-        public virtual CsParameterInfo CreateDefaultParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public virtual CsParameterInfo CreateDefaultParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             return new(csParamName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
         }
 
-        public virtual CsParameterInfo CreateDefaultWrapperParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public virtual CsParameterInfo CreateDefaultWrapperParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
         }
@@ -47,7 +47,7 @@
     {
         public abstract bool IsMatch(CppParameter cppParameter, T type);
 
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             if (cppParameter.Type is T t && IsMatch(cppParameter, t))
             {
@@ -57,14 +57,14 @@
             return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
         }
 
-        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, T type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, T type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings);
     }
 
     public abstract class FunctionGenRuleMatch : FunctionGenRule
     {
         public abstract bool IsMatch(CppParameter cppParameter, CppType type);
 
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             if (IsMatch(cppParameter, cppParameter.Type))
             {
@@ -74,12 +74,12 @@
             return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
         }
 
-        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, CppType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings);
+        public abstract CsParameterInfo CreateParameter(CppParameter cppParameter, CppType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings);
     }
 
     public class FunctionGenRuleRef : FunctionGenRuleMatch<CppArrayType>
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, CppArrayType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, CppArrayType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             return new(csParamName, cppParameter.Type, new("ref " + settings.GetCsTypeName(type.ElementType, false), kind), direction);
         }
@@ -92,7 +92,7 @@
 
     public class FunctionGenRuleSpan : FunctionGenRule
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             if (cppParameter.Type is CppArrayType arrayType)
             {
@@ -121,7 +121,7 @@
 
     public class FunctionGenRuleString : FunctionGenRule
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorSettings settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             if (cppParameter.Type is CppArrayType arrayType && arrayType.ElementType.IsString())
             {
@@ -402,11 +402,11 @@
 
     public class FunctionGenerator
     {
-        private readonly CsCodeGeneratorSettings settings;
+        private readonly CsCodeGeneratorConfig settings;
         private readonly List<FunctionGenRule> rules = new();
         private readonly List<FunctionGenStep> steps = new();
 
-        public FunctionGenerator(CsCodeGeneratorSettings settings)
+        public FunctionGenerator(CsCodeGeneratorConfig settings)
         {
             this.settings = settings;
             rules.Add(new FunctionGenRuleRef());

@@ -13,13 +13,13 @@
         protected virtual List<string> SetupExtensionUsings()
         {
             List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
         protected virtual bool FilterExtensionType(GenContext context, CppTypedef typedef)
         {
-            if (settings.IgnoredTypedefs.Contains(typedef.Name))
+            if (config.IgnoredTypedefs.Contains(typedef.Name))
                 return true;
 
             if (LibDefinedExtensions.Contains(typedef.Name))
@@ -44,9 +44,9 @@
             if (cppFunction.IsFunctionTemplate)
                 return true;
 #endif
-            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+            if (config.AllowedFunctions.Count != 0 && !config.AllowedFunctions.Contains(cppFunction.Name))
                 return true;
-            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+            if (config.IgnoredFunctions.Contains(cppFunction.Name))
                 return true;
             if (cppFunction.Parameters.Count == 0 || cppFunction.Parameters[0].Type.TypeKind == CppTypeKind.Pointer && !isCustomHandle)
                 return true;
@@ -90,7 +90,7 @@
             string filePath = Path.Combine(folder, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings(), settings.HeaderInjector);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupExtensionUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe partial class Extensions"))
@@ -117,10 +117,10 @@
                 if (FilterExtensionFunction(context, cppFunction, typedef, isCustomHandle))
                     continue;
 
-                var extensionPrefix = settings.GetExtensionNamePrefix(handleName);
+                var extensionPrefix = config.GetExtensionNamePrefix(handleName);
 
-                var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
+                var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
+                var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
                 CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, functions, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
@@ -142,7 +142,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, settings.GenerateMetadata);
+            string header = BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, WriteFunctionFlags.Extension);
 
             if (FilterExtension(context, definedExtensions, id))
@@ -155,7 +155,7 @@
             LogInfo("defined extension " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -168,7 +168,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -181,7 +181,7 @@
                     WriteStringConvertToManaged(sb, variation.ReturnType);
                 }
 
-                sb.Append($"{settings.ApiName}.");
+                sb.Append($"{config.ApiName}.");
 
                 if (hasManaged)
                     sb.Append($"{originalFunction}(");
@@ -212,7 +212,7 @@
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                             sb.Append($"(string){paramCsDefault}");
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
-                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
+                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
                         else if (rootParam.Type.IsEnum)
                             sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
                         else if (cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
@@ -254,7 +254,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0");
                     }
                     else
                     {

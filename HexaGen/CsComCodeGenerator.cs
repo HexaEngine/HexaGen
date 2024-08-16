@@ -11,7 +11,7 @@
     {
         private FunctionGenerator funcGen;
 
-        public CsComCodeGenerator(CsCodeGeneratorSettings settings) : base(settings)
+        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings)
         {
             funcGen = new(settings);
         }
@@ -62,7 +62,7 @@
                 var j = byte.Parse(parts[10].AsSpan(2), NumberStyles.HexNumber);
                 var k = byte.Parse(parts[11].AsSpan(2), NumberStyles.HexNumber);
 
-                if (settings.IIDMappings.ContainsKey(name))
+                if (config.IIDMappings.ContainsKey(name))
                     continue;
 
                 Guid guid = new(a, b, c, d, e, f, g, h, i, j, k);
@@ -84,7 +84,7 @@
                 }
             }
 
-            foreach (var item in settings.IIDMappings)
+            foreach (var item in config.IIDMappings)
             {
                 if (!_guidMap.ContainsKey(item.Key))
                 {
@@ -128,15 +128,15 @@
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
                 CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && settings.CppLogLevel <= LogSeverity.Error)
+                if (message.Type == CppLogMessageType.Error && config.CppLogLevel <= LogSeverity.Error)
                 {
                     LogError(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Warning && settings.CppLogLevel <= LogSeverity.Warning)
+                if (message.Type == CppLogMessageType.Warning && config.CppLogLevel <= LogSeverity.Warning)
                 {
                     LogWarn(message.ToString());
                 }
-                if (message.Type == CppLogMessageType.Info && settings.CppLogLevel <= LogSeverity.Information)
+                if (message.Type == CppLogMessageType.Info && config.CppLogLevel <= LogSeverity.Information)
                 {
                     LogInfo(message.ToString());
                 }
@@ -149,49 +149,49 @@
 
             List<Task> tasks = new();
 
-            if (settings.GenerateEnums)
+            if (config.GenerateEnums)
             {
                 Task taskEnums = new(() => GenerateEnums(compilation, outputPath));
                 tasks.Add(taskEnums);
                 taskEnums.Start();
             }
 
-            if (settings.GenerateConstants)
+            if (config.GenerateConstants)
             {
                 Task taskConstants = new(() => GenerateConstants(compilation, outputPath));
                 tasks.Add(taskConstants);
                 taskConstants.Start();
             }
 
-            if (settings.GenerateHandles)
+            if (config.GenerateHandles)
             {
                 Task taskHandles = new(() => GenerateHandles(compilation, outputPath));
                 tasks.Add(taskHandles);
                 taskHandles.RunSynchronously();
             }
 
-            if (settings.GenerateTypes)
+            if (config.GenerateTypes)
             {
                 Task taskTypes = new(() => GenerateTypes(compilation, outputPath));
                 tasks.Add(taskTypes);
                 taskTypes.RunSynchronously();
             }
 
-            if (settings.GenerateFunctions)
+            if (config.GenerateFunctions)
             {
                 Task taskFuncs = new(() => GenerateFunctions(compilation, outputPath));
                 tasks.Add(taskFuncs);
                 taskFuncs.Start();
             }
 
-            if (settings.GenerateExtensions)
+            if (config.GenerateExtensions)
             {
                 Task taskExtensions = new(() => GenerateExtensions(compilation, outputPath));
                 tasks.Add(taskExtensions);
                 taskExtensions.Start();
             }
 
-            if (settings.GenerateDelegates)
+            if (config.GenerateDelegates)
             {
                 Task taskDelegates = new(() => GenerateDelegates(compilation, outputPath));
                 tasks.Add(taskDelegates);

@@ -16,12 +16,12 @@
 
         protected virtual bool FilterCOMClassType(GenContext context, CppClass cppClass)
         {
-            if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+            if (config.AllowedTypes.Count != 0 && !config.AllowedTypes.Contains(cppClass.Name))
             {
                 return true;
             }
 
-            if (settings.IgnoredTypes.Contains(cppClass.Name))
+            if (config.IgnoredTypes.Contains(cppClass.Name))
             {
                 return true;
             }
@@ -41,12 +41,12 @@
 
         protected virtual bool FilterCOMExtensionFunction(GenContext context, CppFunction cppFunction)
         {
-            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+            if (config.AllowedFunctions.Count != 0 && !config.AllowedFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
 
-            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+            if (config.IgnoredFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
@@ -59,7 +59,7 @@
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
             // Generate Extensions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupExtensionUsings(), settings.HeaderInjector);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupExtensionUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe partial class Extensions"))
@@ -81,8 +81,8 @@
             if (FilterCOMClassType(context, cppClass))
                 return;
 
-            string csName = settings.GetCsCleanName(cppClass.Name);
-            var mapping = settings.GetTypeMapping(cppClass.Name);
+            string csName = config.GetCsCleanName(cppClass.Name);
+            var mapping = config.GetTypeMapping(cppClass.Name);
             csName = mapping?.FriendlyName ?? csName;
 
             int vTableIndex = 0;
@@ -123,10 +123,10 @@
                     continue;
                 }
 
-                var extensionPrefix = settings.GetExtensionNamePrefix(cppClass.Name);
+                var extensionPrefix = config.GetExtensionNamePrefix(cppClass.Name);
 
-                var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
-                var csName = settings.GetExtensionName(csFunctionName, extensionPrefix);
+                var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
+                var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
                 CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, commands, out var overload);
                 funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
@@ -162,8 +162,8 @@
             PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
-            string header = variation.BuildFullExtensionSignatureForCOM(className, settings.GenerateMetadata);
-            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, settings);
+            string header = variation.BuildFullExtensionSignatureForCOM(className, config.GenerateMetadata);
+            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, config);
 
             string id = variation.BuildExtensionSignatureIdentifierForCOM(className);
             if (FilterExtension(context, definedExtensions, id))
@@ -175,7 +175,7 @@
 
             writer.WriteLines(overload.Comment);
 
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -209,7 +209,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -222,7 +222,7 @@
                     WriteStringConvertToManaged(sb, variation.ReturnType);
                 }
 
-                var retType = csReturnType.IsBool ? settings.GetBoolType() : csReturnType.Name;
+                var retType = csReturnType.IsBool ? config.GetBoolType() : csReturnType.Name;
                 var ptr = index == 0 ? "*handle->LpVtbl" : $"handle->LpVtbl[{index}]";
                 var tail = variation.Parameters.Count > 0 ? ", " : string.Empty;
 
@@ -254,7 +254,7 @@
                         }
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
+                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
                         }
                         else if (rootParam.Type.IsEnum)
                         {
@@ -315,7 +315,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0");
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {

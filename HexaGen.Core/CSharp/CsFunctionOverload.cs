@@ -136,7 +136,7 @@
             return string.Join(", ", Parameters.Select(p => $"{p.Name}"));
         }
 
-        public string BuildSignatureNamelessForCOM(string comObject, IGeneratorSettings settings)
+        public string BuildSignatureNamelessForCOM(string comObject, IGeneratorConfig settings)
         {
             return $"{comObject}*{(Parameters.Count > 0 ? ", " : string.Empty)}{string.Join(", ", Parameters.Select(x => $"{(x.Type.IsBool ? settings.GetBoolType() : x.Type.Name)}"))}";
         }

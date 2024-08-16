@@ -15,16 +15,16 @@
         protected virtual List<string> SetupEnumUsings()
         {
             List<string> usings = new() { "System", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
         protected virtual bool FilterEnum(GenContext? context, CsEnumMetadata metadata)
         {
-            if (settings.AllowedEnums.Count != 0 && !settings.AllowedEnums.Contains(metadata.Identifier))
+            if (config.AllowedEnums.Count != 0 && !config.AllowedEnums.Contains(metadata.Identifier))
                 return true;
 
-            if (settings.IgnoredEnums.Contains(metadata.Identifier))
+            if (config.IgnoredEnums.Contains(metadata.Identifier))
                 return true;
 
             if (LibDefinedEnums.Contains(metadata))
@@ -74,7 +74,7 @@
             Directory.CreateDirectory(folder);
             string filePath = Path.Combine(folder, "Enums.cs");
 
-            if (settings.OneFilePerType)
+            if (config.OneFilePerType)
             {
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
@@ -105,7 +105,7 @@
             }
             else
             {
-                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupEnumUsings(), settings.HeaderInjector, 1);
+                using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupEnumUsings(), config.HeaderInjector, 1);
                 GenContext context = new(compilation, filePath, writer);
 
                 List<CsEnumMetadata> enums = new();
@@ -149,7 +149,7 @@
 
         private void WriteEnumFile(CppCompilation compilation, string folder, string filePath, CsEnumMetadata csEnum)
         {
-            using var writer = new CsCodeWriter(Path.Combine(folder, $"{csEnum.Name}.cs"), settings.Namespace, SetupEnumUsings(), settings.HeaderInjector);
+            using var writer = new CsCodeWriter(Path.Combine(folder, $"{csEnum.Name}.cs"), config.Namespace, SetupEnumUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
             WriteEnum(context, csEnum);
         }
@@ -158,7 +158,7 @@
 
         protected virtual CsEnumMetadata ParseEnum(CppEnum cppEnum, ICppMember cppMember)
         {
-            string csName = settings.GetCsCleanName(cppEnum.Name);
+            string csName = config.GetCsCleanName(cppEnum.Name);
 
             if (csName.StartsWith("(unnamed enum at ") && csName.EndsWith(')'))
             {
@@ -166,18 +166,18 @@
                 csName = $"UnknownEnum{unknownEnumCounter++}";
             }
 
-            EnumPrefix enumNamePrefix = settings.GetEnumNamePrefixEx(cppMember.Name);
+            EnumPrefix enumNamePrefix = config.GetEnumNamePrefixEx(cppMember.Name);
 
             if (csName.EndsWith("_"))
             {
                 csName = csName.Remove(csName.Length - 1);
             }
 
-            var mapping = settings.GetEnumMapping(cppEnum.Name);
+            var mapping = config.GetEnumMapping(cppEnum.Name);
             csName = mapping?.FriendlyName ?? csName;
 
-            CsEnumMetadata csEnum = new(cppEnum.Name, csName, settings.WriteCsSummary(cppEnum.Comment));
-            csEnum.BaseType = settings.GetCsTypeName(cppEnum.IntegerType);
+            CsEnumMetadata csEnum = new(cppEnum.Name, csName, config.WriteCsSummary(cppEnum.Comment));
+            csEnum.BaseType = config.GetCsTypeName(cppEnum.IntegerType);
 
             bool noneAdded = false;
             for (int j = 0; j < cppEnum.Items.Count; j++)
@@ -185,7 +185,7 @@
                 var item = ParseEnumItem(mapping, cppEnum.Items[j], j, enumNamePrefix, ref noneAdded);
                 if (item != null)
                 {
-                    settings.CustomEnumItemMapper?.Invoke(cppEnum, cppEnum.Items[j], csEnum, item);
+                    config.CustomEnumItemMapper?.Invoke(cppEnum, cppEnum.Items[j], csEnum, item);
                     csEnum.Items.Add(item);
                 }
             }
@@ -196,7 +196,7 @@
         protected virtual CsEnumItemMetadata? ParseEnumItem(EnumMapping? mapping, CppEnumItem enumItem, int enumIndex, EnumPrefix enumNamePrefix, ref bool noneAdded)
         {
             var itemMapping = mapping?.GetItemMapping(enumItem.Name);
-            var enumItemName = settings.GetEnumNameEx(enumItem.Name, enumNamePrefix);
+            var enumItemName = config.GetEnumNameEx(enumItem.Name, enumNamePrefix);
 
             enumItemName = itemMapping?.FriendlyName ?? enumItemName;
 
@@ -205,10 +205,10 @@
                 return null;
             }
 
-            var commentWritten = settings.WriteCsSummary(enumItem.Comment);
+            var commentWritten = config.WriteCsSummary(enumItem.Comment);
             if (itemMapping?.Comment != null)
             {
-                commentWritten = settings.WriteCsSummary(itemMapping?.Comment);
+                commentWritten = config.WriteCsSummary(itemMapping?.Comment);
             }
 
             string cppValue;
@@ -216,9 +216,9 @@
             if (enumItem.ValueExpression is CppRawExpression rawExpression && !string.IsNullOrEmpty(rawExpression.Text))
             {
                 cppValue = rawExpression.Text;
-                string enumValueName = settings.GetEnumNameEx(rawExpression.Text, enumNamePrefix);
+                string enumValueName = config.GetEnumNameEx(rawExpression.Text, enumNamePrefix);
 
-                if (settings.KnownEnumValueNames.TryGetValue(rawExpression.Text, out string? knownName))
+                if (config.KnownEnumValueNames.TryGetValue(rawExpression.Text, out string? knownName))
                 {
                     enumValueName = knownName;
                 }
@@ -261,7 +261,7 @@
             LogInfo("defined enum " + csEnum.Name);
 
             writer.WriteLines(csEnum.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{csEnum.CppName.Replace("\\", "\\\\")}\")]");
             }
@@ -285,7 +285,7 @@
         {
             var writer = context.Writer;
             writer.WriteLines(csEnumItem.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{csEnumItem.CppName}\")]");
                 writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csEnumItem.EscapedCppValue}\")]");

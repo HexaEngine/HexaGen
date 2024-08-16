@@ -20,12 +20,12 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
-            using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
+            using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
             {
-                writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
+                writer.WriteLine($"internal const string LibName = \"{config.LibName}\";\n");
                 List<CsFunction> functions = new();
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
@@ -35,23 +35,23 @@
                         continue;
                     }
 
-                    string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
-                    string returnCsName = settings.GetCsTypeName(cppFunction.ReturnType, false);
+                    string? csName = config.GetCsFunctionName(cppFunction.Name);
+                    string returnCsName = config.GetCsTypeName(cppFunction.ReturnType, false);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut, settings.GenerateMetadata);
+                    var argumentsString = config.GetParameterSignature(cppFunction.Parameters, canUseOut, config.GenerateMetadata);
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
-                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
+                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
 
                     if (FilterNativeFunction(context, cppFunction, headerId))
                     {
                         continue;
                     }
 
-                    settings.WriteCsSummary(cppFunction.Comment, writer);
-                    if (settings.GenerateMetadata)
+                    config.WriteCsSummary(cppFunction.Comment, writer);
+                    if (config.GenerateMetadata)
                     {
                         writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
                         writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
@@ -59,7 +59,7 @@
 
                     string modifiers;
 
-                    if (settings.UseLibraryImport)
+                    if (config.UseLibraryImport)
                     {
                         writer.WriteLine($"[LibraryImport(LibName, EntryPoint = \"{cppFunction.Name}\")]");
                         writer.WriteLine($"[UnmanagedCallConv(CallConvs = new Type[] {{typeof({cppFunction.CallingConvention.GetCallingConventionLibrary()})}})]");
@@ -73,7 +73,7 @@
 
                     if (boolReturn)
                     {
-                        writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
+                        writer.WriteLine($"{modifiers} {config.GetBoolType()} {csName}Native({argumentsString});");
                         writer.WriteLine();
                     }
                     else
@@ -97,7 +97,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = variation.BuildFullSignatureForCOM(settings.GenerateMetadata);// BuildFunctionHeader(variation, csReturnType, flags);
+            string header = variation.BuildFullSignatureForCOM(config.GenerateMetadata);// BuildFunctionHeader(variation, csReturnType, flags);
             string id = BuildFunctionHeaderId(variation, flags);
 
             if (FilterFunction(context, definedFunctions, id))
@@ -110,7 +110,7 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -123,7 +123,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -138,7 +138,7 @@
 
                 if (flags != WriteFunctionFlags.None)
                 {
-                    sb.Append($"{settings.ApiName}.");
+                    sb.Append($"{config.ApiName}.");
                 }
 
                 if (hasManaged)
@@ -194,7 +194,7 @@
                         }
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
+                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
                         }
                         else if (rootParam.Type.IsEnum || cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
                         {
@@ -251,7 +251,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0");
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {

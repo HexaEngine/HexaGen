@@ -31,7 +31,7 @@
         protected virtual List<string> SetupFunctionUsings()
         {
             List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
@@ -54,12 +54,12 @@
                 return true;
             }
 
-            if (settings.AllowedFunctions.Count != 0 && !settings.AllowedFunctions.Contains(cppFunction.Name))
+            if (config.AllowedFunctions.Count != 0 && !config.AllowedFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
 
-            if (settings.IgnoredFunctions.Contains(cppFunction.Name))
+            if (config.IgnoredFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
@@ -111,15 +111,15 @@
             DefinedVariationsFunctions.Clear();
 
             // Generate Functions
-            using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
+            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
-            VTableBuilder vTableBuilder = new(settings.VTableStart);
-            using (writer.PushBlock($"public unsafe partial class {settings.ApiName}"))
+            VTableBuilder vTableBuilder = new(config.VTableStart);
+            using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
             {
-                if (!settings.UseVTable)
+                if (!config.UseVTable)
                 {
-                    writer.WriteLine($"internal const string LibName = \"{settings.LibName}\";\n");
+                    writer.WriteLine($"internal const string LibName = \"{config.LibName}\";\n");
                 }
 
                 List<CsFunction> functions = new();
@@ -131,14 +131,14 @@
                         continue;
                     }
 
-                    string? csName = settings.GetPrettyFunctionName(cppFunction.Name);
-                    string returnCsName = settings.GetCsReturnType(cppFunction.ReturnType);
+                    string? csName = config.GetCsFunctionName(cppFunction.Name);
+                    string returnCsName = config.GetCsReturnType(cppFunction.ReturnType);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                    var argumentsString = settings.GetParameterSignature(cppFunction.Parameters, canUseOut, settings.GenerateMetadata);
-                    var headerId = $"{csName}({settings.GetParameterSignature(cppFunction.Parameters, canUseOut, false)})";
+                    var argumentsString = config.GetParameterSignature(cppFunction.Parameters, canUseOut, config.GenerateMetadata);
+                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, canUseOut, false)})";
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
                     if (FilterNativeFunction(context, cppFunction, headerId))
@@ -149,7 +149,7 @@
                     var function = CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
 
                     writer.WriteLines(function.Comment);
-                    if (settings.GenerateMetadata)
+                    if (config.GenerateMetadata)
                     {
                         writer.WriteLine($"[NativeName(NativeNameType.Func, \"{cppFunction.Name}\")]");
                         writer.WriteLine($"[return: NativeName(NativeNameType.Type, \"{cppFunction.ReturnType.GetDisplayName()}\")]");
@@ -157,7 +157,7 @@
 
                     string? modifiers = null;
 
-                    switch (settings.ImportType)
+                    switch (config.ImportType)
                     {
                         case ImportType.DllImport:
                             writer.WriteLine($"[DllImport(LibName, CallingConvention = CallingConvention.{cppFunction.CallingConvention.GetCallingConvention()}, EntryPoint = \"{cppFunction.Name}\")]");
@@ -174,21 +174,21 @@
 
                             if (boolReturn)
                             {
-                                writer.BeginBlock($"internal static {settings.GetBoolType()} {csName}Native({argumentsString})");
+                                writer.BeginBlock($"internal static {config.GetBoolType()} {csName}Native({argumentsString})");
                             }
                             else
                             {
                                 writer.BeginBlock($"internal static {header}");
                             }
 
-                            string returnType = settings.GetCsReturnType(cppFunction.ReturnType);
+                            string returnType = config.GetCsReturnType(cppFunction.ReturnType);
                             if (cppFunction.ReturnType.IsDelegate(out var outDelegate))
                             {
-                                returnType = settings.MakeDelegatePointer(outDelegate);
+                                returnType = config.MakeDelegatePointer(outDelegate);
                             }
                             if (returnType == "bool")
                             {
-                                returnType = settings.GetBoolType();
+                                returnType = config.GetBoolType();
                             }
                             string delegateType;
                             if (cppFunction.Parameters.Count == 0)
@@ -197,12 +197,12 @@
                             }
                             else
                             {
-                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
+                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
                             }
 
                             writer.WriteLine("#if NET5_0_OR_GREATER");
                             // isolates the argument names
-                            string argumentNames = settings.WriteFunctionMarshalling(cppFunction.Parameters);
+                            string argumentNames = config.WriteFunctionMarshalling(cppFunction.Parameters);
 
                             int vTableIndex = vTableBuilder.Add(cppFunction.Name);
 
@@ -217,10 +217,10 @@
 
                             writer.WriteLine("#else");
 
-                            string returnTypeOld = settings.GetCsReturnType(cppFunction.ReturnType);
+                            string returnTypeOld = config.GetCsReturnType(cppFunction.ReturnType);
                             if (returnTypeOld == "bool")
                             {
-                                returnTypeOld = settings.GetBoolType();
+                                returnTypeOld = config.GetBoolType();
                             }
                             if (returnTypeOld.Contains('*'))
                             {
@@ -233,10 +233,10 @@
                             }
                             else
                             {
-                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{settings.GetNamelessParameterSignature(cppFunction.Parameters, false, true, compatibility: true)}, {returnTypeOld}>";
+                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true, compatibility: true)}, {returnTypeOld}>";
                             }
 
-                            string argumentNamesOld = settings.WriteFunctionMarshalling(cppFunction.Parameters, compatibility: true);
+                            string argumentNamesOld = config.WriteFunctionMarshalling(cppFunction.Parameters, compatibility: true);
 
                             if (returnCsName == "void")
                             {
@@ -259,7 +259,7 @@
                     {
                         if (boolReturn)
                         {
-                            writer.WriteLine($"{modifiers} {settings.GetBoolType()} {csName}Native({argumentsString});");
+                            writer.WriteLine($"{modifiers} {config.GetBoolType()} {csName}Native({argumentsString});");
                         }
                         else
                         {
@@ -275,12 +275,12 @@
                 }
             }
 
-            if (settings.UseVTable)
+            if (config.UseVTable)
             {
                 var initString = vTableBuilder.Finish(out var count);
                 string filePathVT = Path.Combine(outputPath, "Functions.VT.cs");
-                using var writerVt = new CsCodeWriter(filePathVT, settings.Namespace, SetupFunctionUsings(), settings.HeaderInjector);
-                using (writerVt.PushBlock($"public unsafe partial class {settings.ApiName}"))
+                using var writerVt = new CsCodeWriter(filePathVT, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
+                using (writerVt.PushBlock($"public unsafe partial class {config.ApiName}"))
                 {
                     writerVt.WriteLine("internal static VTable vt;");
                     writerVt.WriteLine();
@@ -374,7 +374,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, flags, settings.GenerateMetadata);
+            string header = BuildFunctionHeader(variation, csReturnType, flags, config.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, flags);
 
             if (FilterFunction(context, definedFunctions, id))
@@ -387,7 +387,7 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -399,7 +399,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -414,7 +414,7 @@
 
                 if (flags != WriteFunctionFlags.None)
                 {
-                    sb.Append($"{settings.ApiName}.");
+                    sb.Append($"{config.ApiName}.");
                 }
 
                 if (hasManaged)
@@ -470,7 +470,7 @@
                         }
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({settings.GetBoolType()})({paramCsDefault})");
+                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
                         }
                         else if (rootParam.Type.IsEnum || cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
                         {
@@ -521,7 +521,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
+                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0");
                     }
                     else
                     {
@@ -593,7 +593,7 @@
             CsType csReturnType = variation.ReturnType;
             PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, flags, settings.GenerateMetadata);
+            string header = BuildFunctionHeader(variation, csReturnType, flags, config.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, flags);
 
             if (FilterFunction(context, definedFunctions, id))
@@ -606,7 +606,7 @@
             LogInfo("defined function " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -618,7 +618,7 @@
                 {
                     if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
                     {
-                        sb.Append($"{settings.GetBoolType()} ret = ");
+                        sb.Append($"{config.GetBoolType()} ret = ");
                     }
                     else
                     {
@@ -633,7 +633,7 @@
 
                 if (flags != WriteFunctionFlags.None)
                 {
-                    sb.Append($"{settings.ApiName}.");
+                    sb.Append($"{config.ApiName}.");
                 }
 
                 if (hasManaged)
@@ -649,7 +649,7 @@
                     sb.Append($"{overload.Name}Native(");
                 }
 
-                FunctionWriterContext writerContext = new(context.Writer, settings, sb, overload, variation, flags);
+                FunctionWriterContext writerContext = new(context.Writer, config, sb, overload, variation, flags);
                 List<IParameterWriter> parameterWriters =
                 [
                     new HandleParameterWriter(),

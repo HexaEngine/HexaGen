@@ -166,7 +166,7 @@
 
     public class CsCodeGeneratorMetadata
     {
-        public CsCodeGeneratorSettings Settings { get; set; }
+        public CsCodeGeneratorConfig Settings { get; set; }
 
         public List<CsConstantMetadata> DefinedConstants { get; set; } = new();
 

@@ -11,7 +11,7 @@
     {
         public ICodeWriter Writer { get; }
 
-        public IGeneratorSettings Settings { get; }
+        public IGeneratorConfig Settings { get; }
 
         public StringBuilder StringBuilder { get; }
 
@@ -26,7 +26,7 @@
         private int stringCounter = 0;
         private int blockCounter = 0;
 
-        public FunctionWriterContext(ICodeWriter writer, IGeneratorSettings settings, StringBuilder stringBuilder, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags)
+        public FunctionWriterContext(ICodeWriter writer, IGeneratorConfig settings, StringBuilder stringBuilder, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags)
         {
             Writer = writer;
             Settings = settings;

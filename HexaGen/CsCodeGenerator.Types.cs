@@ -19,7 +19,7 @@
         protected virtual List<string> SetupTypeUsings()
         {
             List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(settings.Usings);
+            usings.AddRange(config.Usings);
             return usings;
         }
 
@@ -27,9 +27,9 @@
         {
             csName = null;
             mapping = null;
-            if (settings.AllowedTypes.Count != 0 && !settings.AllowedTypes.Contains(cppClass.Name))
+            if (config.AllowedTypes.Count != 0 && !config.AllowedTypes.Contains(cppClass.Name))
                 return true;
-            if (settings.IgnoredTypes.Contains(cppClass.Name))
+            if (config.IgnoredTypes.Contains(cppClass.Name))
                 return true;
             if (LibDefinedTypes.Contains(cppClass.Name))
                 return true;
@@ -43,8 +43,8 @@
             if (!bypassDef)
                 DefinedTypes.Add(cppClass.Name);
 
-            csName = settings.GetCsCleanName(cppClass.Name);
-            mapping = settings.GetTypeMapping(cppClass.Name);
+            csName = config.GetCsCleanName(cppClass.Name);
+            mapping = config.GetTypeMapping(cppClass.Name);
             csName = mapping?.FriendlyName ?? csName;
 
             if (cppClass.ClassKind == CppClassKind.Class || cppClass.Name.EndsWith("_T") || csName == "void")
@@ -66,7 +66,7 @@
 
             MemberFunctions.Clear();
 
-            if (settings.OneFilePerType)
+            if (config.OneFilePerType)
             {
                 // Generate Structures
 
@@ -77,12 +77,12 @@
                     if (FilterType(null, cppClass, out var mapping, out var csNameDefault))
                         continue;
                     string filePath = Path.Combine(folder, $"{csNameDefault}.cs");
-                    using var writer = new CsCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector);
+                    using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
                     GenContext context = new(compilation, filePath, writer);
 
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
-                    if (settings.WrapPointersAsHandle)
+                    if (config.WrapPointersAsHandle)
                     {
                         WriteHandle(context, compilation.Classes[i]);
                     }
@@ -93,7 +93,7 @@
                 string filePath = Path.Combine(folder, "Structs.cs");
 
                 // Generate Structures
-                using var writer = new CsSplitCodeWriter(filePath, settings.Namespace, SetupTypeUsings(), settings.HeaderInjector, 1);
+                using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector, 1);
                 GenContext context = new(compilation, filePath, writer);
 
                 // Print All classes, structs
@@ -105,7 +105,7 @@
 
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
-                    if (settings.WrapPointersAsHandle)
+                    if (config.WrapPointersAsHandle)
                     {
                         WriteHandle(context, compilation.Classes[i]);
                     }
@@ -125,14 +125,14 @@
             bool commentWritten = false;
             if (mapping != null && mapping.Comment != null)
             {
-                commentWritten = settings.WriteCsSummary(mapping.Comment, writer);
+                commentWritten = config.WriteCsSummary(mapping.Comment, writer);
             }
             else
             {
-                commentWritten = settings.WriteCsSummary(cppClass.Comment, writer);
+                commentWritten = config.WriteCsSummary(cppClass.Comment, writer);
             }
 
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.FullName}\")]");
             }
@@ -150,7 +150,7 @@
 
             using (writer.PushBlock($"public {modifier} struct {csName}"))
             {
-                if (settings.GenerateSizeOfStructs && cppClass.SizeOf > 0)
+                if (config.GenerateSizeOfStructs && cppClass.SizeOf > 0)
                 {
                     writer.WriteLine("/// <summary>");
                     writer.WriteLine($"/// The size of the <see cref=\"{csName}\"/> type, in bytes.");
@@ -163,8 +163,8 @@
                 for (int j = 0; j < cppClass.Classes.Count; j++)
                 {
                     var subClass = cppClass.Classes[j];
-                    var csSubName = settings.GetCsSubTypeName(cppClass, csName, subClass, j);
-                    var subClassMapping = settings.GetTypeMapping(subClass.FullName);
+                    var csSubName = config.GetCsSubTypeName(cppClass, csName, subClass, j);
+                    var subClassMapping = config.GetTypeMapping(subClass.FullName);
 
                     csSubName = subClassMapping?.FriendlyName ?? csSubName;
 
@@ -178,13 +178,13 @@
                     var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
                     if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                     {
-                        var fieldCommentWritten = settings.WriteCsSummary(cppField.Comment, writer);
+                        var fieldCommentWritten = config.WriteCsSummary(cppField.Comment, writer);
                         if (!fieldCommentWritten)
                         {
-                            fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
+                            fieldCommentWritten = config.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
 
-                        if (settings.GenerateMetadata)
+                        if (config.GenerateMetadata)
                         {
                             writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                             writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
@@ -198,8 +198,8 @@
                         }
                         if (subClass == null)
                         {
-                            string csFieldName = settings.GetFieldName(cppField.Name);
-                            string csFieldType = settings.GetCsCleanName(cppClass1.Name);
+                            string csFieldName = config.GetFieldName(cppField.Name);
+                            string csFieldType = config.GetCsCleanName(cppClass1.Name);
                             subClasses.Add(new(cppField.Type, csFieldType, cppField.Name, csFieldName));
 
                             writer.WriteLine($"public {csFieldType} {csFieldName};");
@@ -218,23 +218,23 @@
                     }
                     else if (cppField.Type is CppPointerType cppPointer && cppPointer.IsDelegate(out var cppFunctionType))
                     {
-                        var fieldCommentWritten = settings.WriteCsSummary(cppField.Comment, writer);
+                        var fieldCommentWritten = config.WriteCsSummary(cppField.Comment, writer);
                         if (!fieldCommentWritten)
                         {
-                            fieldCommentWritten = settings.WriteCsSummary(fieldMapping?.Comment, writer);
+                            fieldCommentWritten = config.WriteCsSummary(fieldMapping?.Comment, writer);
                         }
 
-                        if (settings.GenerateMetadata)
+                        if (config.GenerateMetadata)
                         {
                             writer.WriteLine($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                             writer.WriteLine($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
                         }
 
-                        string csFieldName = settings.GetFieldName(cppField.Name);
-                        string returnCsName = settings.GetCsTypeName(cppFunctionType.ReturnType, false);
-                        string signature = settings.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
-                        returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
-                        if (settings.DelegatesAsVoidPointer)
+                        string csFieldName = config.GetFieldName(cppField.Name);
+                        string returnCsName = config.GetCsTypeName(cppFunctionType.ReturnType, false);
+                        string signature = config.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
+                        returnCsName = returnCsName.Replace("bool", config.GetBoolType());
+                        if (config.DelegatesAsVoidPointer)
                         {
                             writer.WriteLine($"public unsafe void* {csFieldName};");
                         }
@@ -256,18 +256,18 @@
 
                 HashSet<string> definedConstructors = new();
 
-                if (settings.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
+                if (config.GenerateConstructorsForStructs && cppClass.Fields.Count > 0)
                 {
-                    settings.WriteCsSummary((string?)null, out string? comment);
+                    config.WriteCsSummary((string?)null, out string? comment);
                     CsFunction function = new(csName, comment);
                     CsFunctionOverload overload = new(string.Empty, csName, comment, csName, CsFunctionKind.Constructor, new(string.Empty, CppPrimitiveKind.Void));
                     function.Overloads.Add(overload);
                     for (int j = 0; j < cppClass.Fields.Count; j++)
                     {
                         var cppField = cppClass.Fields[j];
-                        var csFieldName = settings.GetFieldName(cppField.Name);
-                        var paramCsTypeName = settings.GetCsTypeName(cppField.Type, false);
-                        var paramCsName = settings.GetParameterName(j, cppField.Name);
+                        var csFieldName = config.GetFieldName(cppField.Name);
+                        var paramCsTypeName = config.GetCsTypeName(cppField.Type, false);
+                        var paramCsName = config.GetParameterName(j, cppField.Name);
                         var direction = cppField.Type.GetDirection();
                         var kind = cppField.Type.GetPrimitiveKind();
 
@@ -281,7 +281,7 @@
                             csFieldName = subClass.FieldName;
                         }
 
-                        if (cppField.Type is CppArrayType arrayType && arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType && settings.DelegatesAsVoidPointer)
+                        if (cppField.Type is CppArrayType arrayType && arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType && config.DelegatesAsVoidPointer)
                         {
                             paramCsTypeName = "nint*";
                         }
@@ -320,7 +320,7 @@
                     }
                 }
 
-                if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
+                if (config.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
                 {
                     WriteMemberFunctions(context, cppClass, functions, WriteFunctionFlags.UseThis);
                 }
@@ -381,7 +381,7 @@
             CsType returnType = variation.ReturnType;
             PrepareArgs(variation, returnType);
 
-            string header = variation.BuildFullConstructorSignature(settings.GenerateMetadata);
+            string header = variation.BuildFullConstructorSignature(config.GenerateMetadata);
             string id = variation.BuildConstructorSignatureIdentifier();
 
             if (FilterConstructor(context, definedFunctions, id))
@@ -394,7 +394,7 @@
             LogInfo("defined constructor " + header);
 
             writer.WriteLines(overload.Comment);
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLines(overload.Attributes);
             }
@@ -452,7 +452,7 @@
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        writer.WriteLine($"{fieldName} = {cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0;");
+                        writer.WriteLine($"{fieldName} = {cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0;");
                     }
                     else
                     {
@@ -466,15 +466,15 @@
 
         private void WriteField(ICodeWriter writer, CppField field, TypeFieldMapping? mapping, List<CsSubClass> subClasses, bool isUnion = false, bool isReadOnly = false)
         {
-            string csFieldName = settings.GetFieldName(field.Name);
+            string csFieldName = config.GetFieldName(field.Name);
 
-            var fieldCommentWritten = settings.WriteCsSummary(field.Comment, writer);
+            var fieldCommentWritten = config.WriteCsSummary(field.Comment, writer);
             if (!fieldCommentWritten)
             {
-                fieldCommentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
+                fieldCommentWritten = config.WriteCsSummary(mapping?.Comment, writer);
             }
 
-            if (settings.GenerateMetadata)
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Field, \"{field.Name}\")]");
                 writer.WriteLine($"[NativeName(NativeNameType.Type, \"{field.Type.GetDisplayName()}\")]");
@@ -487,9 +487,9 @@
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = settings.GetCsTypeName(arrayType.ElementType);
+                string csFieldType = config.GetCsTypeName(arrayType.ElementType);
 
-                if (arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType && settings.DelegatesAsVoidPointer)
+                if (arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType && config.DelegatesAsVoidPointer)
                 {
                     csFieldType = "nint";
                 }
@@ -512,7 +512,7 @@
             }
             else
             {
-                string csFieldType = settings.GetCsTypeName(field.Type, false);
+                string csFieldType = config.GetCsTypeName(field.Type, false);
 
                 var subClass = subClasses.Find(x => x.CppType == field.Type);
                 if (subClass != null)
@@ -530,7 +530,7 @@
                 string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
 
                 if (csFieldType == "bool")
-                    csFieldType = settings.GetBoolType();
+                    csFieldType = config.GetBoolType();
 
                 if (field.Type is CppTypedef typedef &&
                     typedef.ElementType is CppPointerType pointerType &&
@@ -540,7 +540,7 @@
                     for (int i = 0; i < functionType.Parameters.Count; i++)
                     {
                         CppParameter parameter = functionType.Parameters[i];
-                        string paramCsType = settings.GetCsTypeName(parameter.Type, false);
+                        string paramCsType = config.GetCsTypeName(parameter.Type, false);
                         // Otherwise we get interop issues with non blittable types
 
                         builder.Append(paramCsType);
@@ -548,11 +548,11 @@
                         builder.Append(", ");
                     }
 
-                    string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
+                    string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+                    returnCsName = returnCsName.Replace("bool", config.GetBoolType());
                     builder.Append(returnCsName);
 
-                    if (settings.DelegatesAsVoidPointer)
+                    if (config.DelegatesAsVoidPointer)
                     {
                         writer.WriteLine($"public {fieldPrefix}unsafe void* {csFieldName};");
                     }
@@ -578,21 +578,21 @@
 
         private void WriteProperty(ICodeWriter writer, CppClass cppClass, string classCsName, CppField field, TypeFieldMapping? mapping, bool isUnion = false, bool isReadOnly = false)
         {
-            string csFieldName = settings.GetFieldName(field.Name);
+            string csFieldName = config.GetFieldName(field.Name);
 
-            var fieldCommentWritten = settings.WriteCsSummary(field.Comment, writer);
+            var fieldCommentWritten = config.WriteCsSummary(field.Comment, writer);
             if (!fieldCommentWritten)
             {
-                fieldCommentWritten = settings.WriteCsSummary(mapping?.Comment, writer);
+                fieldCommentWritten = config.WriteCsSummary(mapping?.Comment, writer);
             }
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = config.GetCsTypeName(arrayType.ElementType, false);
 
                 if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
                 {
-                    csFieldType = settings.GetCsTypeName(primitive, false);
+                    csFieldType = config.GetCsTypeName(primitive, false);
                 }
 
                 if (csFieldType.EndsWith('*'))
@@ -618,17 +618,17 @@
                     int index = cppClass.Classes.IndexOf(subClass);
                     if (index != -1)
                     {
-                        csFieldType = classCsName.Replace("*", "") + "." + settings.GetCsSubTypeName(cppClass, classCsName.Replace("*", ""), subClass, index);
+                        csFieldType = classCsName.Replace("*", "") + "." + config.GetCsSubTypeName(cppClass, classCsName.Replace("*", ""), subClass, index);
                         csFieldName = $"Union{(cppClass.Classes.Count == 1 ? "" : index.ToString())}";
                     }
                     else
                     {
-                        csFieldType = settings.GetCsTypeName(field.Type, false);
+                        csFieldType = config.GetCsTypeName(field.Type, false);
                     }
                 }
                 else
                 {
-                    csFieldType = settings.GetCsTypeName(field.Type, false);
+                    csFieldType = config.GetCsTypeName(field.Type, false);
                 }
 
                 if (field.Type.IsDelegate(out var functionType))
@@ -637,7 +637,7 @@
                     for (int i = 0; i < functionType.Parameters.Count; i++)
                     {
                         CppParameter parameter = functionType.Parameters[i];
-                        string paramCsType = settings.GetCsTypeName(parameter.Type, false);
+                        string paramCsType = config.GetCsTypeName(parameter.Type, false);
                         // Otherwise we get interop issues with non blittable types
 
                         builder.Append(paramCsType);
@@ -645,11 +645,11 @@
                         builder.Append(", ");
                     }
 
-                    string returnCsName = settings.GetCsTypeName(functionType.ReturnType, false);
-                    returnCsName = returnCsName.Replace("bool", settings.GetBoolType());
+                    string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+                    returnCsName = returnCsName.Replace("bool", config.GetBoolType());
                     builder.Append(returnCsName);
 
-                    if (settings.DelegatesAsVoidPointer)
+                    if (config.DelegatesAsVoidPointer)
                     {
                         if (isReadOnly)
                         {
@@ -719,11 +719,11 @@
 
         private void WriteProperty(ICodeWriter writer, CppField field)
         {
-            string csFieldName = settings.GetFieldName(field.Name);
+            string csFieldName = config.GetFieldName(field.Name);
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = settings.GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = config.GetCsTypeName(arrayType.ElementType, false);
                 string spanType = csFieldType;
                 bool canUseFixed = false;
                 if (arrayType.ElementType is CppPrimitiveType)
@@ -732,7 +732,7 @@
                 }
                 else if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
                 {
-                    csFieldType = settings.GetCsTypeName(primitive, false);
+                    csFieldType = config.GetCsTypeName(primitive, false);
                     canUseFixed = true;
                 }
 
@@ -743,7 +743,7 @@
                 {
                     if (csFieldType.Contains("delegate*"))
                     {
-                        if (settings.DelegatesAsVoidPointer)
+                        if (config.DelegatesAsVoidPointer)
                         {
                             csFieldType = "nint";
                         }
@@ -754,7 +754,7 @@
                         spanType = $"Pointer<{csFieldType.Replace("*", "")}>";
                     }
 
-                    settings.WriteCsSummary(field.Comment, writer);
+                    config.WriteCsSummary(field.Comment, writer);
                     writer.WriteLine($"public unsafe Span<{spanType}> {csFieldName}");
                     using (writer.PushBlock(""))
                     {
@@ -775,8 +775,8 @@
             var writer = context.Writer;
             bool isUnion = cppClass.ClassKind == CppClassKind.Union;
             LogInfo("defined handle " + csName);
-            settings.WriteCsSummary(cppClass.Comment, writer);
-            if (settings.GenerateMetadata)
+            config.WriteCsSummary(cppClass.Comment, writer);
+            if (config.GenerateMetadata)
             {
                 writer.WriteLine($"[NativeName(NativeNameType.Typedef, \"{cppClass.Name}\")]");
             }
@@ -830,7 +830,7 @@
                         WriteProperty(writer, cppClass, handleType, cppField, fieldMapping, isUnion, false);
                     }
 
-                    if (settings.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
+                    if (config.KnownMemberFunctions.TryGetValue(cppClass.Name, out var functions))
                     {
                         WriteMemberFunctions(context, cppClass, functions, WriteFunctionFlags.UseHandle);
                     }
@@ -846,7 +846,7 @@
             for (int i = 0; i < functions.Count; i++)
             {
                 CppFunction cppFunction = FindFunction(context.Compilation, functions[i]);
-                var csFunctionName = settings.GetPrettyFunctionName(cppFunction.Name);
+                var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
 
                 CsFunction function = CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
