@@ -23,6 +23,171 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igInputFloat")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
+		{
+			fixed (float* pv = &v)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (format != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(format);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte ret = InputFloatNative(label, (float*)pv, (float)(0.0f), (float)(0.0f), pStr0, (ImGuiInputTextFlags)(0));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "float")] float step, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (float* pv = &v)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (format != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(format);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte ret = InputFloatNative(label, (float*)pv, step, (float)(0.0f), pStr0, flags);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (float* pv = &v)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (format != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(format);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte ret = InputFloatNative(label, (float*)pv, (float)(0.0f), (float)(0.0f), pStr0, flags);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "float")] float step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "float")] float stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pv = &v)
+				{
+					fixed (byte* pformat = &format)
+					{
+						byte ret = InputFloatNative((byte*)plabel, (float*)pv, step, stepFast, (byte*)pformat, flags);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "float")] float step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "float")] float stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pv = &v)
+				{
+					fixed (byte* pformat = &format)
+					{
+						byte ret = InputFloatNative((byte*)plabel, (float*)pv, step, stepFast, (byte*)pformat, (ImGuiInputTextFlags)(0));
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "float")] float step, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pv = &v)
+				{
+					fixed (byte* pformat = &format)
+					{
+						byte ret = InputFloatNative((byte*)plabel, (float*)pv, step, (float)(0.0f), (byte*)pformat, (ImGuiInputTextFlags)(0));
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputFloat")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool InputFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
 		{
 			fixed (byte* plabel = &label)
@@ -4864,180 +5029,6 @@ namespace Hexa.NET.ImGui
 				byte ret = InputIntNative((byte*)plabel, v, step, (int)(100), flags);
 				return ret != 0;
 			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = InputIntNative((byte*)plabel, v, (int)(1), (int)(100), flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "int")] int step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "int")] int stepFast, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = InputIntNative(pStr0, v, step, stepFast, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "int")] int step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "int")] int stepFast)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = InputIntNative(pStr0, v, step, stepFast, (ImGuiInputTextFlags)(0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "int")] int step)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = InputIntNative(pStr0, v, step, (int)(100), (ImGuiInputTextFlags)(0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = InputIntNative(pStr0, v, (int)(1), (int)(100), (ImGuiInputTextFlags)(0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igInputInt")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool InputInt([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int*")] int* v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "int")] int step, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = InputIntNative(pStr0, v, step, (int)(100), flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
 		}
 	}
 }

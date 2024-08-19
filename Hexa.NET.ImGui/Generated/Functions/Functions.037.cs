@@ -21,6 +21,210 @@ namespace Hexa.NET.ImGui
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker3")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ReadOnlySpan<float> col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (float* pcol = col)
+				{
+					byte ret = ColorPicker3Native((byte*)plabel, (float*)pcol, flags);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker3")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ReadOnlySpan<float> col)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (float* pcol = col)
+				{
+					byte ret = ColorPicker3Native((byte*)plabel, (float*)pcol, (ImGuiColorEditFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker3")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ref Vector3 col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector3* pcol = &col)
+			{
+				byte ret = ColorPicker3Native(pStr0, (float*)pcol, flags);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker3")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ref Vector3 col)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector3* pcol = &col)
+			{
+				byte ret = ColorPicker3Native(pStr0, (float*)pcol, (ImGuiColorEditFlags)(0));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte ColorPicker4Native([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<byte*, float*, ImGuiColorEditFlags, float*, byte>)vt[203])(label, col, flags, refCol);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, ImGuiColorEditFlags, nint, byte>)vt[203])((nint)label, (nint)col, flags, (nint)refCol);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
+		{
+			byte ret = ColorPicker4Native(label, col, flags, refCol);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
+		{
+			byte ret = ColorPicker4Native(label, col, flags, (float*)(default));
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col)
+		{
+			byte ret = ColorPicker4Native(label, col, (ImGuiColorEditFlags)(0), (float*)(default));
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
+		{
+			byte ret = ColorPicker4Native(label, col, (ImGuiColorEditFlags)(0), refCol);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
+		{
+			fixed (byte* plabel = &label)
+			{
+				byte ret = ColorPicker4Native((byte*)plabel, col, flags, refCol);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				byte ret = ColorPicker4Native((byte*)plabel, col, flags, (float*)(default));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igColorPicker4")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col)
+		{
+			fixed (byte* plabel = &label)
+			{
+				byte ret = ColorPicker4Native((byte*)plabel, col, (ImGuiColorEditFlags)(0), (float*)(default));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "igColorPicker4")]
 		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
@@ -4813,219 +5017,6 @@ namespace Hexa.NET.ImGui
 				{
 					Utils.Free(pStr0);
 				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		internal static ImGuiMultiSelectIO* BeginMultiSelectNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiMultiSelectFlags")] ImGuiMultiSelectFlags flags, [NativeName(NativeNameType.Param, "selection_size")] [NativeName(NativeNameType.Type, "int")] int selectionSize, [NativeName(NativeNameType.Param, "items_count")] [NativeName(NativeNameType.Type, "int")] int itemsCount)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiMultiSelectFlags, int, int, ImGuiMultiSelectIO*>)vt[226])(flags, selectionSize, itemsCount);
-			#else
-			return (ImGuiMultiSelectIO*)((delegate* unmanaged[Cdecl]<ImGuiMultiSelectFlags, int, int, nint>)vt[226])(flags, selectionSize, itemsCount);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		public static ImGuiMultiSelectIO* BeginMultiSelect([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiMultiSelectFlags")] ImGuiMultiSelectFlags flags, [NativeName(NativeNameType.Param, "selection_size")] [NativeName(NativeNameType.Type, "int")] int selectionSize, [NativeName(NativeNameType.Param, "items_count")] [NativeName(NativeNameType.Type, "int")] int itemsCount)
-		{
-			ImGuiMultiSelectIO* ret = BeginMultiSelectNative(flags, selectionSize, itemsCount);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		public static ImGuiMultiSelectIO* BeginMultiSelect([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiMultiSelectFlags")] ImGuiMultiSelectFlags flags, [NativeName(NativeNameType.Param, "selection_size")] [NativeName(NativeNameType.Type, "int")] int selectionSize)
-		{
-			ImGuiMultiSelectIO* ret = BeginMultiSelectNative(flags, selectionSize, (int)(-1));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		public static ImGuiMultiSelectIO* BeginMultiSelect([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiMultiSelectFlags")] ImGuiMultiSelectFlags flags)
-		{
-			ImGuiMultiSelectIO* ret = BeginMultiSelectNative(flags, (int)(-1), (int)(-1));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igEndMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		internal static ImGuiMultiSelectIO* EndMultiSelectNative()
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiMultiSelectIO*>)vt[227])();
-			#else
-			return (ImGuiMultiSelectIO*)((delegate* unmanaged[Cdecl]<nint>)vt[227])();
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igEndMultiSelect")]
-		[return: NativeName(NativeNameType.Type, "ImGuiMultiSelectIO*")]
-		public static ImGuiMultiSelectIO* EndMultiSelect()
-		{
-			ImGuiMultiSelectIO* ret = EndMultiSelectNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetNextItemSelectionUserData")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SetNextItemSelectionUserDataNative([NativeName(NativeNameType.Param, "selection_user_data")] [NativeName(NativeNameType.Type, "ImGuiSelectionUserData")] long selectionUserData)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<long, void>)vt[228])(selectionUserData);
-			#else
-			((delegate* unmanaged[Cdecl]<long, void>)vt[228])(selectionUserData);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetNextItemSelectionUserData")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SetNextItemSelectionUserData([NativeName(NativeNameType.Param, "selection_user_data")] [NativeName(NativeNameType.Type, "ImGuiSelectionUserData")] long selectionUserData)
-		{
-			SetNextItemSelectionUserDataNative(selectionUserData);
-		}
-
-		/// <summary>
-		/// Was the last item selection state toggled? Useful if you need the per-item information _before_ reaching EndMultiSelect(). We only returns toggle _event_ in order to handle clipping correctly.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igIsItemToggledSelection")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte IsItemToggledSelectionNative()
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte>)vt[229])();
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<byte>)vt[229])();
-			#endif
-		}
-
-		/// <summary>
-		/// Was the last item selection state toggled? Useful if you need the per-item information _before_ reaching EndMultiSelect(). We only returns toggle _event_ in order to handle clipping correctly.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igIsItemToggledSelection")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsItemToggledSelection()
-		{
-			byte ret = IsItemToggledSelectionNative();
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte BeginListBoxNative([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, Vector2, byte>)vt[230])(label, size);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, Vector2, byte>)vt[230])((nint)label, size);
-			#endif
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			byte ret = BeginListBoxNative(label, size);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label)
-		{
-			byte ret = BeginListBoxNative(label, (Vector2)(new Vector2(0,0)));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = BeginListBoxNative((byte*)plabel, size);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = BeginListBoxNative((byte*)plabel, (Vector2)(new Vector2(0,0)));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = BeginListBoxNative((byte*)plabel, size);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// open a framed scrolling region<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginListBox")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginListBox([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = BeginListBoxNative((byte*)plabel, (Vector2)(new Vector2(0,0)));
 				return ret != 0;
 			}
 		}

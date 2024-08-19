@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiWindowRefreshFlags_")]
+	[Flags]
 	public enum ImGuiWindowRefreshFlags : int
 	{
 		/// <summary>

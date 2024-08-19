@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiSortDirection")]
+	[Flags]
 	public enum ImGuiSortDirection : int
 	{
 		/// <summary>

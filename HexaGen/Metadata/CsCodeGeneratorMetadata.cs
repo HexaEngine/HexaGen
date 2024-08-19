@@ -82,29 +82,32 @@
 
     public class CsEnumMetadata : IHasIdentifier
     {
-        public CsEnumMetadata(string cppName, string name, string? comment, string baseType, List<CsEnumItemMetadata> items)
+        public CsEnumMetadata(string cppName, string name, List<string> attributes, string? comment, string baseType, List<CsEnumItemMetadata> items)
         {
             CppName = cppName;
             Name = name;
+            Attributes = attributes;
             Comment = comment;
             Items = items;
             BaseType = baseType;
             Items = items;
         }
 
-        public CsEnumMetadata(string cppName, string name, string? comment, List<CsEnumItemMetadata> items)
+        public CsEnumMetadata(string cppName, string name, List<string> attributes, string? comment, List<CsEnumItemMetadata> items)
         {
             CppName = cppName;
             Name = name;
+            Attributes = attributes;
             Comment = comment;
             Items = items;
             BaseType = "int";
         }
 
-        public CsEnumMetadata(string cppName, string name, string? comment)
+        public CsEnumMetadata(string cppName, string name, List<string> attributes, string? comment)
         {
             CppName = cppName;
             Name = name;
+            Attributes = attributes;
             Comment = comment;
             Items = new();
             BaseType = "int";
@@ -115,6 +118,8 @@
         public string CppName { get; set; }
 
         public string Name { get; set; }
+
+        public List<string> Attributes { get; set; }
 
         public string? Comment { get; set; }
 
@@ -134,13 +139,16 @@
         {
             CppName = cppName;
             CppValue = cppValue;
+            Attributes = new();
         }
 
-        public CsEnumItemMetadata(string cppName, string cppValue, string? name, string? value, string? comment) : this(cppName, cppValue)
+        public CsEnumItemMetadata(string cppName, string cppValue, string? name, string? value, List<string> attributes, string? comment)
         {
+            CppName = cppName;
             CppValue = cppValue;
             Name = name;
             Value = value;
+            Attributes = attributes;
             Comment = comment;
         }
 
@@ -150,11 +158,11 @@
 
         public string CppValue { get; set; }
 
-        public string EscapedCppValue => CppValue.ToLiteral();
-
         public string? Name { get; set; }
 
         public string? Value { get; set; }
+
+        public List<string> Attributes { get; set; }
 
         public string? Comment { get; set; }
 

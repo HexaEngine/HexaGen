@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiPopupPositionPolicy")]
+	[Flags]
 	public enum ImGuiPopupPositionPolicy : int
 	{
 		/// <summary>

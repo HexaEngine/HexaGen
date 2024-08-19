@@ -19,6 +19,1624 @@ namespace Hexa.NET.ImGui
 	{
 
 		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (filename != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(filename);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (char* pglyphRanges = &glyphRanges)
+			{
+				ImFont* ret = AddFontFromFileTTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = &filename)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, fontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = &filename)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = filename)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, fontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = filename)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (filename != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(filename);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, (char*)pglyphRanges);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (filename != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(filename);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] byte* filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromFileTTFNative(self, filename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] byte* filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, filename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (byte* pfilename = &filename)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative(self, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (byte* pfilename = filename)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative(self, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (filename != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(filename);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromFileTTFNative(self, pStr0, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = &filename)
+				{
+					fixed (ImFontConfig* pfontCfg = &fontCfg)
+					{
+						fixed (char* pglyphRanges = &glyphRanges)
+						{
+							ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pfilename = filename)
+				{
+					fixed (ImFontConfig* pfontCfg = &fontCfg)
+					{
+						fixed (char* pglyphRanges = &glyphRanges)
+						{
+							ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+							return ret;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (filename != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(filename);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						if (pStrSize0 >= Utils.MaxStackallocSize)
+						{
+							Utils.Free(pStr0);
+						}
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		internal static ImFont* AddFontFromMemoryTTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, void*, int, float, ImFontConfig*, char*, ImFont*>)vt[624])(self, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
+			#else
+			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, int, float, nint, nint, nint>)vt[624])((nint)self, (nint)fontData, fontDataSize, sizePixels, (nint)fontCfg, (nint)glyphRanges);
+			#endif
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (char* pglyphRanges = &glyphRanges)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (char* pglyphRanges = &glyphRanges)
+			{
+				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		internal static ImFont* AddFontFromMemoryCompressedTTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, void*, int, float, ImFontConfig*, char*, ImFont*>)vt[625])(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
+			#else
+			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, int, float, nint, nint, nint>)vt[625])((nint)self, (nint)compressedFontData, compressedFontDataSize, sizePixels, (nint)fontCfg, (nint)glyphRanges);
+			#endif
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (char* pglyphRanges = &glyphRanges)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (char* pglyphRanges = &glyphRanges)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				fixed (char* pglyphRanges = &glyphRanges)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					fixed (char* pglyphRanges = &glyphRanges)
+					{
+						ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		internal static ImFont* AddFontFromMemoryCompressedBase85TTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, byte*, float, ImFontConfig*, char*, ImFont*>)vt[626])(self, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+			#else
+			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, float, nint, nint, nint>)vt[626])((nint)self, (nint)compressedFontDatabase85, sizePixels, (nint)fontCfg, (nint)glyphRanges);
+			#endif
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (compressedFontDatabase85 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, fontCfg, glyphRanges);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (compressedFontDatabase85 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, fontCfg, (char*)(default));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (compressedFontDatabase85 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), (char*)(default));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (compressedFontDatabase85 != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), glyphRanges);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (compressedFontDatabase85 != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, glyphRanges);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (compressedFontDatabase85 != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, (char*)(default));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (compressedFontDatabase85 != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), (char*)(default));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (compressedFontDatabase85 != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), glyphRanges);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
+		{
+			fixed (ImFontConfig* pfontCfg = &fontCfg)
+			{
+				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontConfig* pfontCfg = &fontCfg)
+				{
+					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
 		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
@@ -3400,1629 +5018,6 @@ namespace Hexa.NET.ImGui
 			{
 				CalcCustomRectUVNative((ImFontAtlas*)pself, rect, outUvMin, outUvMax);
 			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (ImFontAtlasCustomRect* prect = &rect)
-			{
-				CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, outUvMin, outUvMax);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontAtlasCustomRect* prect = &rect)
-				{
-					CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, outUvMin, outUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (Vector2* poutUvMin = &outUvMin)
-			{
-				CalcCustomRectUVNative(self, rect, (Vector2*)poutUvMin, outUvMax);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvMin = &outUvMin)
-				{
-					CalcCustomRectUVNative((ImFontAtlas*)pself, rect, (Vector2*)poutUvMin, outUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (ImFontAtlasCustomRect* prect = &rect)
-			{
-				fixed (Vector2* poutUvMin = &outUvMin)
-				{
-					CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, outUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontAtlasCustomRect* prect = &rect)
-				{
-					fixed (Vector2* poutUvMin = &outUvMin)
-					{
-						CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, outUvMax);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (Vector2* poutUvMax = &outUvMax)
-			{
-				CalcCustomRectUVNative(self, rect, outUvMin, (Vector2*)poutUvMax);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvMax = &outUvMax)
-				{
-					CalcCustomRectUVNative((ImFontAtlas*)pself, rect, outUvMin, (Vector2*)poutUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlasCustomRect* prect = &rect)
-			{
-				fixed (Vector2* poutUvMax = &outUvMax)
-				{
-					CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, outUvMin, (Vector2*)poutUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontAtlasCustomRect* prect = &rect)
-				{
-					fixed (Vector2* poutUvMax = &outUvMax)
-					{
-						CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, outUvMin, (Vector2*)poutUvMax);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (Vector2* poutUvMin = &outUvMin)
-			{
-				fixed (Vector2* poutUvMax = &outUvMax)
-				{
-					CalcCustomRectUVNative(self, rect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvMin = &outUvMin)
-				{
-					fixed (Vector2* poutUvMax = &outUvMax)
-					{
-						CalcCustomRectUVNative((ImFontAtlas*)pself, rect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlasCustomRect* prect = &rect)
-			{
-				fixed (Vector2* poutUvMin = &outUvMin)
-				{
-					fixed (Vector2* poutUvMax = &outUvMax)
-					{
-						CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontAtlasCustomRect* prect = &rect)
-				{
-					fixed (Vector2* poutUvMin = &outUvMin)
-					{
-						fixed (Vector2* poutUvMax = &outUvMax)
-						{
-							CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte GetMouseCursorTexDataNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, ImGuiMouseCursor, Vector2*, Vector2*, Vector2*, Vector2*, byte>)vt[649])(self, cursor, outOffset, outSize, outUvBorder, outUvFill);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiMouseCursor, nint, nint, nint, nint, byte>)vt[649])((nint)self, cursor, (nint)outOffset, (nint)outSize, (nint)outUvBorder, (nint)outUvFill);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, outUvFill);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, outUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, outUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutUvBorder = &outUvBorder)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutUvBorder = outUvBorder)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvBorder = &outUvBorder)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvBorder = outUvBorder)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutUvFill = &outUvFill)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutUvFill = outUvFill)
-			{
-				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvFill = &outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvFill = outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvFill = &outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvFill = outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvFill = &outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvFill = outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvFill = &outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvFill = outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutUvBorder = &outUvBorder)
-			{
-				fixed (Vector2* poutUvFill = &outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutUvBorder = outUvBorder)
-			{
-				fixed (Vector2* poutUvFill = outUvFill)
-				{
-					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = &outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvBorder = &outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = &outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutSize = &outSize)
-			{
-				fixed (Vector2* poutUvBorder = outUvBorder)
-				{
-					fixed (Vector2* poutUvFill = outUvFill)
-					{
-						byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = &outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = &outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = &outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (Vector2* poutOffset = &outOffset)
-			{
-				fixed (Vector2* poutSize = &outSize)
-				{
-					fixed (Vector2* poutUvBorder = outUvBorder)
-					{
-						fixed (Vector2* poutUvFill = outUvFill)
-						{
-							byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvBorder = &outUvBorder)
-						{
-							fixed (Vector2* poutUvFill = &outUvFill)
-							{
-								byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-								return ret != 0;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (Vector2* poutOffset = &outOffset)
-				{
-					fixed (Vector2* poutSize = &outSize)
-					{
-						fixed (Vector2* poutUvBorder = outUvBorder)
-						{
-							fixed (Vector2* poutUvFill = outUvFill)
-							{
-								byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
-								return ret != 0;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_ImFont")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		internal static ImFont* ImFontNative()
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*>)vt[650])();
-			#else
-			return (ImFont*)((delegate* unmanaged[Cdecl]<nint>)vt[650])();
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_ImFont")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* ImFont()
-		{
-			ImFont* ret = ImFontNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DestroyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImFont*, void>)vt[651])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[651])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			DestroyNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				DestroyNative((ImFont*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		internal static ImFontGlyph* FindGlyphNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, char, ImFontGlyph*>)vt[652])(self, c);
-			#else
-			return (ImFontGlyph*)((delegate* unmanaged[Cdecl]<nint, char, nint>)vt[652])((nint)self, c);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		public static ImFontGlyph* FindGlyph([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			ImFontGlyph* ret = FindGlyphNative(self, c);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		public static ImFontGlyph* FindGlyph([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				ImFontGlyph* ret = FindGlyphNative((ImFont*)pself, c);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		internal static ImFontGlyph* FindGlyphNoFallbackNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, char, ImFontGlyph*>)vt[653])(self, c);
-			#else
-			return (ImFontGlyph*)((delegate* unmanaged[Cdecl]<nint, char, nint>)vt[653])((nint)self, c);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		public static ImFontGlyph* FindGlyphNoFallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			ImFontGlyph* ret = FindGlyphNoFallbackNative(self, c);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
-		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
-		public static ImFontGlyph* FindGlyphNoFallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				ImFontGlyph* ret = FindGlyphNoFallbackNative((ImFont*)pself, c);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		internal static float GetCharAdvanceNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, char, float>)vt[654])(self, c);
-			#else
-			return (float)((delegate* unmanaged[Cdecl]<nint, char, float>)vt[654])((nint)self, c);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetCharAdvance([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			float ret = GetCharAdvanceNative(self, c);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
-		[return: NativeName(NativeNameType.Type, "float")]
-		public static float GetCharAdvance([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				float ret = GetCharAdvanceNative((ImFont*)pself, c);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte IsLoadedNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, byte>)vt[655])(self);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[655])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsLoaded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			byte ret = IsLoadedNative(self);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsLoaded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte ret = IsLoadedNative((ImFont*)pself);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* GetDebugNameNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, byte*>)vt[656])(self);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[656])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetDebugName([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			byte* ret = GetDebugNameNative(self);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetDebugNameS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
-		{
-			string ret = Utils.DecodeStringUTF8(GetDebugNameNative(self));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* GetDebugName([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* ret = GetDebugNameNative((ImFont*)pself);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string GetDebugNameS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				string ret = Utils.DecodeStringUTF8(GetDebugNameNative((ImFont*)pself));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void CalcTextSizeANative([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<Vector2*, ImFont*, float, float, float, byte*, byte*, byte**, void>)vt[657])(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, float, float, float, nint, nint, nint, void>)vt[657])((nint)pOut, (nint)self, size, maxWidth, wrapWidth, (nint)textBegin, (nint)textEnd, (nint)remaining);
-			#endif
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
-		{
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)(default));
 		}
 	}
 }

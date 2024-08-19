@@ -2533,6 +2533,18 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igGetWindowPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetWindowPos()
+		{
+			Vector2 ret;
+			GetWindowPosNative(&ret);
+			return ret;
+		}
+
+		/// <summary>
+		/// get current window position in screen space (IT IS UNLIKELY YOU EVER NEED TO USE THIS. Consider always using GetCursorScreenPos() and GetContentRegionAvail() instead)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetWindowPos")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetWindowPos([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut)
 		{
 			GetWindowPosNative(pOut);
@@ -2563,6 +2575,18 @@ namespace Hexa.NET.ImGui
 			#else
 			((delegate* unmanaged[Cdecl]<nint, void>)vt[41])((nint)pOut);
 			#endif
+		}
+
+		/// <summary>
+		/// get current window size (IT IS UNLIKELY YOU EVER NEED TO USE THIS. Consider always using GetCursorScreenPos() and GetContentRegionAvail() instead)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetWindowSize")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetWindowSize()
+		{
+			Vector2 ret;
+			GetWindowSizeNative(&ret);
+			return ret;
 		}
 
 		/// <summary>
@@ -4415,6 +4439,18 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igGetFontTexUvWhitePixel")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetFontTexUvWhitePixel()
+		{
+			Vector2 ret;
+			GetFontTexUvWhitePixelNative(&ret);
+			return ret;
+		}
+
+		/// <summary>
+		/// get UV coordinate for a while pixel, useful to draw custom shapes via the ImDrawList API<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetFontTexUvWhitePixel")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetFontTexUvWhitePixel([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut)
 		{
 			GetFontTexUvWhitePixelNative(pOut);
@@ -4574,6 +4610,18 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igGetCursorScreenPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetCursorScreenPos()
+		{
+			Vector2 ret;
+			GetCursorScreenPosNative(&ret);
+			return ret;
+		}
+
+		/// <summary>
+		/// cursor position, absolute coordinates. THIS IS YOUR BEST FRIEND (prefer using this rather than GetCursorPos(), also more useful to work with ImDrawList API).<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetCursorScreenPos")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetCursorScreenPos([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut)
 		{
 			GetCursorScreenPosNative(pOut);
@@ -4635,6 +4683,18 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igGetContentRegionAvail")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetContentRegionAvail()
+		{
+			Vector2 ret;
+			GetContentRegionAvailNative(&ret);
+			return ret;
+		}
+
+		/// <summary>
+		/// available space from current position. THIS IS YOUR BEST FRIEND.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetContentRegionAvail")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetContentRegionAvail([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut)
 		{
 			GetContentRegionAvailNative(pOut);
@@ -4665,6 +4725,18 @@ namespace Hexa.NET.ImGui
 			#else
 			((delegate* unmanaged[Cdecl]<nint, void>)vt[99])((nint)pOut);
 			#endif
+		}
+
+		/// <summary>
+		/// [window-local] cursor position in window-local coordinates. This is not your best friend.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetCursorPos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetCursorPos()
+		{
+			Vector2 ret;
+			GetCursorPosNative(&ret);
+			return ret;
 		}
 
 		/// <summary>
@@ -4831,6 +4903,18 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igGetCursorStartPos")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 GetCursorStartPos()
+		{
+			Vector2 ret;
+			GetCursorStartPosNative(&ret);
+			return ret;
+		}
+
+		/// <summary>
+		/// [window-local] initial cursor position, in window-local coordinates. Call GetCursorScreenPos() after Begin() to get the absolute coordinates version.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igGetCursorStartPos")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void GetCursorStartPos([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut)
 		{
 			GetCursorStartPosNative(pOut);
@@ -4929,98 +5013,6 @@ namespace Hexa.NET.ImGui
 			#else
 			((delegate* unmanaged[Cdecl]<void>)vt[108])();
 			#endif
-		}
-
-		/// <summary>
-		/// undo a SameLine() or force a new line when in a horizontal-layout context.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igNewLine")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void NewLine()
-		{
-			NewLineNative();
-		}
-
-		/// <summary>
-		/// add vertical spacing.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSpacing")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SpacingNative()
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<void>)vt[109])();
-			#else
-			((delegate* unmanaged[Cdecl]<void>)vt[109])();
-			#endif
-		}
-
-		/// <summary>
-		/// add vertical spacing.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSpacing")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Spacing()
-		{
-			SpacingNative();
-		}
-
-		/// <summary>
-		/// add a dummy item of given size. unlike InvisibleButton(), Dummy() won't take the mouse click or be navigable into.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDummy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DummyNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<Vector2, void>)vt[110])(size);
-			#else
-			((delegate* unmanaged[Cdecl]<Vector2, void>)vt[110])(size);
-			#endif
-		}
-
-		/// <summary>
-		/// add a dummy item of given size. unlike InvisibleButton(), Dummy() won't take the mouse click or be navigable into.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDummy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Dummy([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
-		{
-			DummyNative(size);
-		}
-
-		/// <summary>
-		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igIndent")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void IndentNative([NativeName(NativeNameType.Param, "indent_w")] [NativeName(NativeNameType.Type, "float")] float indentW)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<float, void>)vt[111])(indentW);
-			#else
-			((delegate* unmanaged[Cdecl]<float, void>)vt[111])(indentW);
-			#endif
-		}
-
-		/// <summary>
-		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igIndent")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Indent([NativeName(NativeNameType.Param, "indent_w")] [NativeName(NativeNameType.Type, "float")] float indentW)
-		{
-			IndentNative(indentW);
-		}
-
-		/// <summary>
-		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igIndent")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Indent()
-		{
-			IndentNative((float)(0.0f));
 		}
 	}
 }

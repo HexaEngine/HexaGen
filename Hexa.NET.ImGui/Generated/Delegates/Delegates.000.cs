@@ -20,6 +20,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "UserCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void UserCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] ImDrawList* parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] ImDrawCmd* cmd);
 
@@ -27,6 +28,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "UserCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void UserCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] nint parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] nint cmd);
 
@@ -36,6 +38,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "FontBuilder_Build")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte FontBuilderBuild([NativeName(NativeNameType.Param, "atlas")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* atlas);
 
@@ -43,6 +46,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "FontBuilder_Build")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte FontBuilderBuild([NativeName(NativeNameType.Param, "atlas")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] nint atlas);
 
@@ -52,6 +56,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "DockNodeWindowMenuHandler")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void DockNodeWindowMenuHandler([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] ImGuiDockNode* node, [NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar);
 
@@ -59,6 +64,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "DockNodeWindowMenuHandler")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void DockNodeWindowMenuHandler([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] nint node, [NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] nint tabBar);
 
@@ -68,6 +74,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "GetClipboardTextFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte* GetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
 
@@ -75,6 +82,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "GetClipboardTextFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate nint GetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] nint userData);
 
@@ -84,6 +92,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "SetClipboardTextFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text);
 
@@ -91,6 +100,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "SetClipboardTextFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SetClipboardTextFn([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] nint userData, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] nint text);
 
@@ -100,6 +110,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "PlatformOpenInShellFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformOpenInShellFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] byte* path);
 
@@ -107,6 +118,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "PlatformOpenInShellFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformOpenInShellFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "path")] [NativeName(NativeNameType.Type, "const char*")] nint path);
 
@@ -116,6 +128,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "PlatformSetImeDataFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetImeDataFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "viewport")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* viewport, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiPlatformImeData*")] ImGuiPlatformImeData* data);
 
@@ -123,6 +136,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "PlatformSetImeDataFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetImeDataFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "viewport")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint viewport, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiPlatformImeData*")] nint data);
 
@@ -132,6 +146,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_CreateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformCreateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -139,6 +154,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_CreateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformCreateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -148,6 +164,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_DestroyWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformDestroyWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -155,6 +172,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_DestroyWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformDestroyWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -164,6 +182,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_ShowWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformShowWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -171,6 +190,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_ShowWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformShowWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -180,6 +200,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowPos")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowPos([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos);
 
@@ -187,6 +208,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowPos")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowPos([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos);
 
@@ -196,6 +218,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowPos")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate Vector2* PlatformGetWindowPos(Vector2* pos, ImGuiViewport* viewport);
 
@@ -203,6 +226,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowPos")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate Vector2* PlatformGetWindowPos(Vector2* pos, ImGuiViewport* viewport);
 
@@ -212,6 +236,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowSize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
 
@@ -219,6 +244,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowSize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
 
@@ -228,6 +254,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate Vector2* PlatformGetWindowSize(Vector2* size, ImGuiViewport* viewport);
 
@@ -235,6 +262,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate Vector2* PlatformGetWindowSize(Vector2* size, ImGuiViewport* viewport);
 
@@ -244,6 +272,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowFocus")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowFocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -251,6 +280,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowFocus")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowFocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -260,6 +290,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowFocus")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformGetWindowFocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -267,6 +298,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowFocus")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformGetWindowFocus([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -276,6 +308,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowMinimized")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformGetWindowMinimized([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -283,6 +316,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowMinimized")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate byte PlatformGetWindowMinimized([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -292,6 +326,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowTitle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowTitle([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str);
 
@@ -299,6 +334,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowTitle")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowTitle([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] nint str);
 
@@ -308,6 +344,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowAlpha")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowAlpha([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "float")] float alpha);
 
@@ -315,6 +352,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SetWindowAlpha")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSetWindowAlpha([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "alpha")] [NativeName(NativeNameType.Type, "float")] float alpha);
 
@@ -324,6 +362,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_UpdateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformUpdateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -331,6 +370,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_UpdateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformUpdateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -340,6 +380,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_RenderWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformRenderWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
 
@@ -347,6 +388,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_RenderWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformRenderWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] nint renderArg);
 
@@ -356,6 +398,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SwapBuffers")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSwapBuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
 
@@ -363,6 +406,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_SwapBuffers")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformSwapBuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] nint renderArg);
 
@@ -372,6 +416,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowDpiScale")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate float PlatformGetWindowDpiScale([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -379,6 +424,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_GetWindowDpiScale")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate float PlatformGetWindowDpiScale([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -388,6 +434,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_OnChangedViewport")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformOnChangedViewport([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -395,6 +442,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_OnChangedViewport")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void PlatformOnChangedViewport([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -404,6 +452,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_CreateVkSurface")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate int PlatformCreateVkSurface([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "vk_inst")] [NativeName(NativeNameType.Type, "ImU64")] ulong vkInst, [NativeName(NativeNameType.Param, "vk_allocators")] [NativeName(NativeNameType.Type, "const void*")] void* vkAllocators, [NativeName(NativeNameType.Param, "out_vk_surface")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* outVkSurface);
 
@@ -411,6 +460,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Platform_CreateVkSurface")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate int PlatformCreateVkSurface([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "vk_inst")] [NativeName(NativeNameType.Type, "ImU64")] ulong vkInst, [NativeName(NativeNameType.Param, "vk_allocators")] [NativeName(NativeNameType.Type, "const void*")] nint vkAllocators, [NativeName(NativeNameType.Param, "out_vk_surface")] [NativeName(NativeNameType.Type, "ImU64*")] nint outVkSurface);
 
@@ -420,6 +470,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_CreateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererCreateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -427,6 +478,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_CreateWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererCreateWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -436,6 +488,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_DestroyWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererDestroyWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp);
 
@@ -443,6 +496,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_DestroyWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererDestroyWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp);
 
@@ -452,6 +506,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_SetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererSetWindowSize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
 
@@ -459,6 +514,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_SetWindowSize")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererSetWindowSize([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 size);
 
@@ -468,6 +524,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_RenderWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererRenderWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
 
@@ -475,6 +532,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_RenderWindow")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererRenderWindow([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] nint renderArg);
 
@@ -484,6 +542,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_SwapBuffers")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererSwapBuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] ImGuiViewport* vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] void* renderArg);
 
@@ -491,6 +550,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Renderer_SwapBuffers")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void RendererSwapBuffers([NativeName(NativeNameType.Param, "vp")] [NativeName(NativeNameType.Type, "ImGuiViewport*")] nint vp, [NativeName(NativeNameType.Param, "render_arg")] [NativeName(NativeNameType.Type, "void*")] nint renderArg);
 
@@ -500,6 +560,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "SizeCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] ImGuiSizeCallbackData* data);
 
@@ -507,6 +568,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "SizeCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void SizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] nint data);
 
@@ -516,6 +578,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ClearAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ClearAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
 
@@ -523,6 +586,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ClearAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ClearAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler);
 
@@ -532,6 +596,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadInitFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ReadInitFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
 
@@ -539,6 +604,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadInitFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ReadInitFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler);
 
@@ -548,6 +614,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadOpenFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void* ReadOpenFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] byte* name);
 
@@ -555,6 +622,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadOpenFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate nint ReadOpenFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler, [NativeName(NativeNameType.Param, "name")] [NativeName(NativeNameType.Type, "const char*")] nint name);
 
@@ -564,6 +632,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadLineFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ReadLineFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "entry")] [NativeName(NativeNameType.Type, "void*")] void* entry, [NativeName(NativeNameType.Param, "line")] [NativeName(NativeNameType.Type, "const char*")] byte* line);
 
@@ -571,6 +640,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ReadLineFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ReadLineFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler, [NativeName(NativeNameType.Param, "entry")] [NativeName(NativeNameType.Type, "void*")] nint entry, [NativeName(NativeNameType.Param, "line")] [NativeName(NativeNameType.Type, "const char*")] nint line);
 
@@ -580,6 +650,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ApplyAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ApplyAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler);
 
@@ -587,6 +658,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ApplyAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ApplyAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler);
 
@@ -596,6 +668,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "WriteAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void WriteAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] ImGuiSettingsHandler* handler, [NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* outBuf);
 
@@ -603,6 +676,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "WriteAllFn")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void WriteAllFn([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "handler")] [NativeName(NativeNameType.Type, "ImGuiSettingsHandler*")] nint handler, [NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] nint outBuf);
 
@@ -612,6 +686,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Callback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void Callback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] ImGuiContextHook* hook);
 
@@ -619,6 +694,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "Callback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void Callback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] nint hook);
 
@@ -628,6 +704,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "AdapterIndexToStorageId")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate uint AdapterIndexToStorageId([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiSelectionBasicStorage*")] ImGuiSelectionBasicStorage* self, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "int")] int idx);
 
@@ -635,6 +712,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "AdapterIndexToStorageId")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate uint AdapterIndexToStorageId([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiSelectionBasicStorage*")] nint self, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "int")] int idx);
 
@@ -644,6 +722,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "AdapterSetItemSelected")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void AdapterSetItemSelected([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiSelectionExternalStorage*")] ImGuiSelectionExternalStorage* self, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "int")] int idx, [NativeName(NativeNameType.Param, "selected")] [NativeName(NativeNameType.Type, "bool")] byte selected);
 
@@ -651,6 +730,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "AdapterSetItemSelected")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void AdapterSetItemSelected([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiSelectionExternalStorage*")] nint self, [NativeName(NativeNameType.Param, "idx")] [NativeName(NativeNameType.Type, "int")] int idx, [NativeName(NativeNameType.Param, "selected")] [NativeName(NativeNameType.Type, "bool")] byte selected);
 
@@ -660,6 +740,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImDrawCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImDrawCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] ImDrawList* parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] ImDrawCmd* cmd);
 
@@ -667,6 +748,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImDrawCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImDrawCallback([NativeName(NativeNameType.Param, "parent_list")] [NativeName(NativeNameType.Type, "const ImDrawList*")] nint parentList, [NativeName(NativeNameType.Param, "cmd")] [NativeName(NativeNameType.Type, "const ImDrawCmd*")] nint cmd);
 
@@ -676,6 +758,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiSizeCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiSizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] ImGuiSizeCallbackData* data);
 
@@ -683,6 +766,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiSizeCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiSizeCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiSizeCallbackData*")] nint data);
 
@@ -692,6 +776,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiContextHookCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiContextHookCallback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] ImGuiContext* ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] ImGuiContextHook* hook);
 
@@ -699,6 +784,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiContextHookCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiContextHookCallback([NativeName(NativeNameType.Param, "ctx")] [NativeName(NativeNameType.Type, "ImGuiContext*")] nint ctx, [NativeName(NativeNameType.Param, "hook")] [NativeName(NativeNameType.Type, "ImGuiContextHook*")] nint hook);
 
@@ -708,6 +794,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiInputTextCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate int ImGuiInputTextCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiInputTextCallbackData*")] ImGuiInputTextCallbackData* data);
 
@@ -715,6 +802,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiInputTextCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate int ImGuiInputTextCallback([NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "ImGuiInputTextCallbackData*")] nint data);
 
@@ -724,6 +812,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiMemAllocFunc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void* ImGuiMemAllocFunc([NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
 
@@ -731,6 +820,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiMemAllocFunc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate nint ImGuiMemAllocFunc([NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] nint userData);
 
@@ -740,6 +830,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiMemFreeFunc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiMemFreeFunc([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] void* ptr, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData);
 
@@ -747,6 +838,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiMemFreeFunc")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiMemFreeFunc([NativeName(NativeNameType.Param, "ptr")] [NativeName(NativeNameType.Type, "void*")] nint ptr, [NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] nint userData);
 
@@ -756,6 +848,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiErrorLogCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiErrorLogCallback([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] void* userData, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt);
 
@@ -763,6 +856,7 @@ namespace Hexa.NET.ImGui
 	/// <summary>
 	/// To be documented.
 	/// </summary>
+	[NativeName(NativeNameType.Delegate, "ImGuiErrorLogCallback")]
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	public unsafe delegate void ImGuiErrorLogCallback([NativeName(NativeNameType.Param, "user_data")] [NativeName(NativeNameType.Type, "void*")] nint userData, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] nint fmt);
 

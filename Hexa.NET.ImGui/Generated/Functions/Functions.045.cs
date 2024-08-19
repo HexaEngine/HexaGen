@@ -23,6 +23,197 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] string overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (overlayText != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(overlayText);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(overlayText, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			PlotHistogramNative(label, valuesGetter, data, valuesCount, (int)(0), pStr0, scaleMin, scaleMax, graphSize);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, scaleMax, graphSize);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, (int)(0), (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, (float)(float.MaxValue), graphSize);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, valuesOffset, (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), graphSize);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (byte* poverlayText = &overlayText)
+				{
+					PlotHistogramNative((byte*)plabel, valuesGetter, data, valuesCount, (int)(0), (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), graphSize);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotHistogram_FnFloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void PlotHistogram([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values_getter")] [NativeName(NativeNameType.Type, "float (*)(const char* label, float (*)(void* data, int idx)* values_getter, void* data, int values_count, int values_offset, const char* overlay_text, float scale_min, float scale_max, ImVec2 graph_size)*")] delegate*<byte*, delegate*<void*, int, float>, void*, int, int, byte*, float, float, Vector2, float> valuesGetter, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "void*")] void* data, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
 		{
 			fixed (byte* plabel = &label)
@@ -4830,192 +5021,6 @@ namespace Hexa.NET.ImGui
 			fixed (byte* pstrId = strId)
 			{
 				OpenPopupOnItemClickNative((byte*)pstrId, (ImGuiPopupFlags)(1));
-			}
-		}
-
-		/// <summary>
-		/// helper to open popup when clicked on last item. Default to ImGuiPopupFlags_MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igOpenPopupOnItemClick")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void OpenPopupOnItemClick([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			OpenPopupOnItemClickNative(pStr0, popupFlags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// helper to open popup when clicked on last item. Default to ImGuiPopupFlags_MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igOpenPopupOnItemClick")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void OpenPopupOnItemClick([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			OpenPopupOnItemClickNative(pStr0, (ImGuiPopupFlags)(1));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// manually close the popup we have begin-ed into.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCloseCurrentPopup")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void CloseCurrentPopupNative()
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<void>)vt[263])();
-			#else
-			((delegate* unmanaged[Cdecl]<void>)vt[263])();
-			#endif
-		}
-
-		/// <summary>
-		/// manually close the popup we have begin-ed into.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCloseCurrentPopup")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CloseCurrentPopup()
-		{
-			CloseCurrentPopupNative();
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte BeginPopupContextItemNative([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, ImGuiPopupFlags, byte>)vt[264])(strId, popupFlags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiPopupFlags, byte>)vt[264])((nint)strId, popupFlags);
-			#endif
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			byte ret = BeginPopupContextItemNative(strId, popupFlags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId)
-		{
-			byte ret = BeginPopupContextItemNative(strId, (ImGuiPopupFlags)(1));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem()
-		{
-			byte ret = BeginPopupContextItemNative((byte*)(default), (ImGuiPopupFlags)(1));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			byte ret = BeginPopupContextItemNative((byte*)(default), popupFlags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ref byte strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			fixed (byte* pstrId = &strId)
-			{
-				byte ret = BeginPopupContextItemNative((byte*)pstrId, popupFlags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ref byte strId)
-		{
-			fixed (byte* pstrId = &strId)
-			{
-				byte ret = BeginPopupContextItemNative((byte*)pstrId, (ImGuiPopupFlags)(1));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
-		{
-			fixed (byte* pstrId = strId)
-			{
-				byte ret = BeginPopupContextItemNative((byte*)pstrId, popupFlags);
-				return ret != 0;
 			}
 		}
 	}

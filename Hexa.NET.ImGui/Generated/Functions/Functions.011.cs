@@ -23,6 +23,125 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, vMin, vMax, format, (byte*)pformatMax, flags);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, vMin, vMax, format, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, vMin, (float)(0.0f), format, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, (float)(0.0f), (float)(0.0f), format, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, (float)(1.0f), (float)(0.0f), (float)(0.0f), format, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, vMin, (float)(0.0f), format, (byte*)pformatMax, flags);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pvCurrentMax = &vCurrentMax)
+			{
+				fixed (byte* pformatMax = formatMax)
+				{
+					byte ret = DragFloatRange2Native(label, vCurrentMin, (float*)pvCurrentMax, vSpeed, (float)(0.0f), (float)(0.0f), format, (byte*)pformatMax, flags);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
 		{
 			fixed (float* pvCurrentMax = &vCurrentMax)
@@ -4920,121 +5039,6 @@ namespace Hexa.NET.ImGui
 					Utils.Free(pStr0);
 				}
 				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvCurrentMin = &vCurrentMin)
-				{
-					fixed (byte* pformat = &format)
-					{
-						fixed (byte* pformatMax = &formatMax)
-						{
-							byte ret = DragFloatRange2Native((byte*)plabel, (float*)pvCurrentMin, vCurrentMax, vSpeed, vMin, vMax, (byte*)pformat, (byte*)pformatMax, flags);
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvCurrentMin = &vCurrentMin)
-				{
-					fixed (byte* pformat = &format)
-					{
-						fixed (byte* pformatMax = &formatMax)
-						{
-							byte ret = DragFloatRange2Native((byte*)plabel, (float*)pvCurrentMin, vCurrentMax, vSpeed, vMin, vMax, (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvCurrentMin = &vCurrentMin)
-				{
-					fixed (byte* pformat = &format)
-					{
-						fixed (byte* pformatMax = &formatMax)
-						{
-							byte ret = DragFloatRange2Native((byte*)plabel, (float*)pvCurrentMin, vCurrentMax, vSpeed, vMin, (float)(0.0f), (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvCurrentMin = &vCurrentMin)
-				{
-					fixed (byte* pformat = &format)
-					{
-						fixed (byte* pformatMax = &formatMax)
-						{
-							byte ret = DragFloatRange2Native((byte*)plabel, (float*)pvCurrentMin, vCurrentMax, vSpeed, (float)(0.0f), (float)(0.0f), (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
-							return ret != 0;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloatRange2")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloatRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "float*")] ref float vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "float*")] float* vCurrentMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvCurrentMin = &vCurrentMin)
-				{
-					fixed (byte* pformat = &format)
-					{
-						fixed (byte* pformatMax = &formatMax)
-						{
-							byte ret = DragFloatRange2Native((byte*)plabel, (float*)pvCurrentMin, vCurrentMax, (float)(1.0f), (float)(0.0f), (float)(0.0f), (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
-							return ret != 0;
-						}
-					}
-				}
 			}
 		}
 	}

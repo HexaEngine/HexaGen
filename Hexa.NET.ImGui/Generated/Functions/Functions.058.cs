@@ -21,6 +21,3778 @@ namespace Hexa.NET.ImGui
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pstr = &str)
+			{
+				byte* ret = ImStrdupcpyNative(dst, pDstSize, (byte*)pstr);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pstr = &str)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, pDstSize, (byte*)pstr));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pstr = str)
+			{
+				byte* ret = ImStrdupcpyNative(dst, pDstSize, (byte*)pstr);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pstr = str)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, pDstSize, (byte*)pstr));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStrdupcpyNative(dst, pDstSize, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, pDstSize, pStr0));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (byte* pstr = &str)
+				{
+					byte* ret = ImStrdupcpyNative((byte*)pdst, pDstSize, (byte*)pstr);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (byte* pstr = &str)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative((byte*)pdst, pDstSize, (byte*)pstr));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (byte* pstr = str)
+				{
+					byte* ret = ImStrdupcpyNative((byte*)pdst, pDstSize, (byte*)pstr);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (byte* pstr = str)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative((byte*)pdst, pDstSize, (byte*)pstr));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref string dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(str);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(str, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStrdupcpyNative(pStr0, pDstSize, pStr1);
+			dst = Utils.DecodeStringUTF8(pStr0);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref string dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ulong* pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (str != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(str);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(str, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(pStr0, pDstSize, pStr1));
+			dst = Utils.DecodeStringUTF8(pStr0);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				fixed (byte* pstr = &str)
+				{
+					byte* ret = ImStrdupcpyNative(dst, (ulong*)ppDstSize, (byte*)pstr);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				fixed (byte* pstr = &str)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, (ulong*)ppDstSize, (byte*)pstr));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				fixed (byte* pstr = str)
+				{
+					byte* ret = ImStrdupcpyNative(dst, (ulong*)ppDstSize, (byte*)pstr);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				fixed (byte* pstr = str)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, (ulong*)ppDstSize, (byte*)pstr));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte* ret = ImStrdupcpyNative(dst, (ulong*)ppDstSize, pStr0);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] byte* dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (str != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(str);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(dst, (ulong*)ppDstSize, pStr0));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (nuint* ppDstSize = &pDstSize)
+				{
+					fixed (byte* pstr = &str)
+					{
+						byte* ret = ImStrdupcpyNative((byte*)pdst, (ulong*)ppDstSize, (byte*)pstr);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (nuint* ppDstSize = &pDstSize)
+				{
+					fixed (byte* pstr = &str)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative((byte*)pdst, (ulong*)ppDstSize, (byte*)pstr));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (nuint* ppDstSize = &pDstSize)
+				{
+					fixed (byte* pstr = str)
+					{
+						byte* ret = ImStrdupcpyNative((byte*)pdst, (ulong*)ppDstSize, (byte*)pstr);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref byte dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str)
+		{
+			fixed (byte* pdst = &dst)
+			{
+				fixed (nuint* ppDstSize = &pDstSize)
+				{
+					fixed (byte* pstr = str)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative((byte*)pdst, (ulong*)ppDstSize, (byte*)pstr));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static byte* ImStrdupcpy([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref string dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				byte* pStr1 = null;
+				int pStrSize1 = 0;
+				if (str != null)
+				{
+					pStrSize1 = Utils.GetByteCountUTF8(str);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+					}
+					else
+					{
+						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+						pStr1 = pStrStack1;
+					}
+					int pStrOffset1 = Utils.EncodeStringUTF8(str, pStr1, pStrSize1);
+					pStr1[pStrOffset1] = 0;
+				}
+				byte* ret = ImStrdupcpyNative(pStr0, (ulong*)ppDstSize, pStr1);
+				dst = Utils.DecodeStringUTF8(pStr0);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrdupcpy")]
+		[return: NativeName(NativeNameType.Type, "char*")]
+		public static string ImStrdupcpyS([NativeName(NativeNameType.Param, "dst")] [NativeName(NativeNameType.Type, "char*")] ref string dst, [NativeName(NativeNameType.Param, "p_dst_size")] [NativeName(NativeNameType.Type, "size_t*")] ref nuint pDstSize, [NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (dst != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(dst);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(dst, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (nuint* ppDstSize = &pDstSize)
+			{
+				byte* pStr1 = null;
+				int pStrSize1 = 0;
+				if (str != null)
+				{
+					pStrSize1 = Utils.GetByteCountUTF8(str);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+					}
+					else
+					{
+						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+						pStr1 = pStrStack1;
+					}
+					int pStrOffset1 = Utils.EncodeStringUTF8(str, pStr1, pStrSize1);
+					pStr1[pStrOffset1] = 0;
+				}
+				string ret = Utils.DecodeStringUTF8(ImStrdupcpyNative(pStr0, (ulong*)ppDstSize, pStr1));
+				dst = Utils.DecodeStringUTF8(pStr0);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		internal static byte* ImStrchrRangeNative([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte, byte*>)vt[690])(strBegin, strEnd, c);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, byte, nint>)vt[690])((nint)strBegin, (nint)strEnd, c);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* ret = ImStrchrRangeNative(strBegin, strEnd, c);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(strBegin, strEnd, c));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = &strBegin)
+			{
+				byte* ret = ImStrchrRangeNative((byte*)pstrBegin, strEnd, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = &strBegin)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative((byte*)pstrBegin, strEnd, c));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = strBegin)
+			{
+				byte* ret = ImStrchrRangeNative((byte*)pstrBegin, strEnd, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = strBegin)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative((byte*)pstrBegin, strEnd, c));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] string strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStrchrRangeNative(pStr0, strEnd, c);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] string strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(pStr0, strEnd, c));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrEnd = &strEnd)
+			{
+				byte* ret = ImStrchrRangeNative(strBegin, (byte*)pstrEnd, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrEnd = &strEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(strBegin, (byte*)pstrEnd, c));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrEnd = strEnd)
+			{
+				byte* ret = ImStrchrRangeNative(strBegin, (byte*)pstrEnd, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrEnd = strEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(strBegin, (byte*)pstrEnd, c));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStrchrRangeNative(strBegin, pStr0, c);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(strBegin, pStr0, c));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = &strBegin)
+			{
+				fixed (byte* pstrEnd = &strEnd)
+				{
+					byte* ret = ImStrchrRangeNative((byte*)pstrBegin, (byte*)pstrEnd, c);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = &strBegin)
+			{
+				fixed (byte* pstrEnd = &strEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative((byte*)pstrBegin, (byte*)pstrEnd, c));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = strBegin)
+			{
+				fixed (byte* pstrEnd = strEnd)
+				{
+					byte* ret = ImStrchrRangeNative((byte*)pstrBegin, (byte*)pstrEnd, c);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			fixed (byte* pstrBegin = strBegin)
+			{
+				fixed (byte* pstrEnd = strEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative((byte*)pstrBegin, (byte*)pstrEnd, c));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStrchrRange([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] string strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (strEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(strEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStrchrRangeNative(pStr0, pStr1, c);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStrchrRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStrchrRangeS([NativeName(NativeNameType.Param, "str_begin")] [NativeName(NativeNameType.Type, "const char*")] string strBegin, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "char")] byte c)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (strEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(strEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStrchrRangeNative(pStr0, pStr1, c));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		internal static byte* ImStreolRangeNative([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[691])(str, strEnd);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, nint>)vt[691])((nint)str, (nint)strEnd);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			byte* ret = ImStreolRangeNative(str, strEnd);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(str, strEnd));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			fixed (byte* pstr = &str)
+			{
+				byte* ret = ImStreolRangeNative((byte*)pstr, strEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			fixed (byte* pstr = &str)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStreolRangeNative((byte*)pstr, strEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			fixed (byte* pstr = str)
+			{
+				byte* ret = ImStreolRangeNative((byte*)pstr, strEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			fixed (byte* pstr = str)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStreolRangeNative((byte*)pstr, strEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStreolRangeNative(pStr0, strEnd);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] byte* strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(pStr0, strEnd));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd)
+		{
+			fixed (byte* pstrEnd = &strEnd)
+			{
+				byte* ret = ImStreolRangeNative(str, (byte*)pstrEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd)
+		{
+			fixed (byte* pstrEnd = &strEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(str, (byte*)pstrEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd)
+		{
+			fixed (byte* pstrEnd = strEnd)
+			{
+				byte* ret = ImStreolRangeNative(str, (byte*)pstrEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd)
+		{
+			fixed (byte* pstrEnd = strEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(str, (byte*)pstrEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStreolRangeNative(str, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] byte* str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(str, pStr0));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd)
+		{
+			fixed (byte* pstr = &str)
+			{
+				fixed (byte* pstrEnd = &strEnd)
+				{
+					byte* ret = ImStreolRangeNative((byte*)pstr, (byte*)pstrEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ref byte str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte strEnd)
+		{
+			fixed (byte* pstr = &str)
+			{
+				fixed (byte* pstrEnd = &strEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStreolRangeNative((byte*)pstr, (byte*)pstrEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd)
+		{
+			fixed (byte* pstr = str)
+			{
+				fixed (byte* pstrEnd = strEnd)
+				{
+					byte* ret = ImStreolRangeNative((byte*)pstr, (byte*)pstrEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strEnd)
+		{
+			fixed (byte* pstr = str)
+			{
+				fixed (byte* pstrEnd = strEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStreolRangeNative((byte*)pstr, (byte*)pstrEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStreolRange([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (strEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(strEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStreolRangeNative(pStr0, pStr1);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStreolRange")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStreolRangeS([NativeName(NativeNameType.Param, "str")] [NativeName(NativeNameType.Type, "const char*")] string str, [NativeName(NativeNameType.Param, "str_end")] [NativeName(NativeNameType.Type, "const char*")] string strEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (str != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(str);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(str, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (strEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(strEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(strEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStreolRangeNative(pStr0, pStr1));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		internal static byte* ImStristrNative([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*, byte*, byte*>)vt[692])(haystack, haystackEnd, needle, needleEnd);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, nint, nint, nint>)vt[692])((nint)haystack, (nint)haystackEnd, (nint)needle, (nint)needleEnd);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* ret = ImStristrNative(haystack, haystackEnd, needle, needleEnd);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, needle, needleEnd));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, needle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, needle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, needle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, needle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, haystackEnd, needle, needleEnd);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, haystackEnd, needle, needleEnd));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, needle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, needle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, needle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, needle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, pStr0, needle, needleEnd);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, pStr0, needle, needleEnd));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, pStr1, needle, needleEnd);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, pStr1, needle, needleEnd));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* pneedle = &needle)
+			{
+				byte* ret = ImStristrNative(haystack, haystackEnd, (byte*)pneedle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* pneedle = &needle)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, (byte*)pneedle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* pneedle = needle)
+			{
+				byte* ret = ImStristrNative(haystack, haystackEnd, (byte*)pneedle, needleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* pneedle = needle)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, (byte*)pneedle, needleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, haystackEnd, pStr0, needleEnd);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, pStr0, needleEnd));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, haystackEnd, pStr1, needleEnd);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, haystackEnd, pStr1, needleEnd));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, pStr0, pStr1, needleEnd);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, pStr0, pStr1, needleEnd));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					fixed (byte* pneedle = &needle)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					fixed (byte* pneedle = &needle)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					fixed (byte* pneedle = needle)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					fixed (byte* pneedle = needle)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, (byte*)pneedle, needleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needle != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needle, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, pStr1, pStr2, needleEnd);
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] byte* needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needle != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needle, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, pStr1, pStr2, needleEnd));
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* pneedleEnd = &needleEnd)
+			{
+				byte* ret = ImStristrNative(haystack, haystackEnd, needle, (byte*)pneedleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* pneedleEnd = &needleEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, needle, (byte*)pneedleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* pneedleEnd = needleEnd)
+			{
+				byte* ret = ImStristrNative(haystack, haystackEnd, needle, (byte*)pneedleEnd);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* pneedleEnd = needleEnd)
+			{
+				string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, needle, (byte*)pneedleEnd));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needleEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, haystackEnd, needle, pStr0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needleEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, needle, pStr0));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, needle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, needle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, needle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, needle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, haystackEnd, needle, pStr1);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, haystackEnd, needle, pStr1));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystackEnd = &haystackEnd)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					byte* ret = ImStristrNative(haystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystackEnd = haystackEnd)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, pStr0, needle, pStr1);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystackEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, pStr0, needle, pStr1));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					fixed (byte* pneedleEnd = &needleEnd)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* phaystackEnd = &haystackEnd)
+				{
+					fixed (byte* pneedleEnd = &needleEnd)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					fixed (byte* pneedleEnd = needleEnd)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* phaystackEnd = haystackEnd)
+				{
+					fixed (byte* pneedleEnd = needleEnd)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, (byte*)phaystackEnd, needle, (byte*)pneedleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needleEnd, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, pStr1, needle, pStr2);
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] string haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] byte* needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (haystackEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(haystackEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(haystackEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needleEnd, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, pStr1, needle, pStr2));
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* pneedle = &needle)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					byte* ret = ImStristrNative(haystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* pneedle = &needle)
+			{
+				fixed (byte* pneedleEnd = &needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* pneedle = needle)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					byte* ret = ImStristrNative(haystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* pneedle = needle)
+			{
+				fixed (byte* pneedleEnd = needleEnd)
+				{
+					string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* ret = ImStristrNative(haystack, haystackEnd, pStr0, pStr1);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (needle != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(needle, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needleEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(haystack, haystackEnd, pStr0, pStr1));
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					fixed (byte* pneedleEnd = &needleEnd)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
+		{
+			fixed (byte* phaystack = &haystack)
+			{
+				fixed (byte* pneedle = &needle)
+				{
+					fixed (byte* pneedleEnd = &needleEnd)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					fixed (byte* pneedleEnd = needleEnd)
+					{
+						byte* ret = ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd);
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> needleEnd)
+		{
+			fixed (byte* phaystack = haystack)
+			{
+				fixed (byte* pneedle = needle)
+				{
+					fixed (byte* pneedleEnd = needleEnd)
+					{
+						string ret = Utils.DecodeStringUTF8(ImStristrNative((byte*)phaystack, haystackEnd, (byte*)pneedle, (byte*)pneedleEnd));
+						return ret;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needleEnd, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			byte* ret = ImStristrNative(pStr0, haystackEnd, pStr1, pStr2);
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImStristr")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string ImStristrS([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] string haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] byte* haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] string needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] string needleEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (haystack != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(haystack);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(haystack, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (needle != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(needle);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(needle, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			byte* pStr2 = null;
+			int pStrSize2 = 0;
+			if (needleEnd != null)
+			{
+				pStrSize2 = Utils.GetByteCountUTF8(needleEnd);
+				if (pStrSize2 >= Utils.MaxStackallocSize)
+				{
+					pStr2 = Utils.Alloc<byte>(pStrSize2 + 1);
+				}
+				else
+				{
+					byte* pStrStack2 = stackalloc byte[pStrSize2 + 1];
+					pStr2 = pStrStack2;
+				}
+				int pStrOffset2 = Utils.EncodeStringUTF8(needleEnd, pStr2, pStrSize2);
+				pStr2[pStrOffset2] = 0;
+			}
+			string ret = Utils.DecodeStringUTF8(ImStristrNative(pStr0, haystackEnd, pStr1, pStr2));
+			if (pStrSize2 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr2);
+			}
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "igImStristr")]
 		[return: NativeName(NativeNameType.Type, "const char*")]
 		public static byte* ImStristr([NativeName(NativeNameType.Param, "haystack")] [NativeName(NativeNameType.Type, "const char*")] byte* haystack, [NativeName(NativeNameType.Param, "haystack_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte haystackEnd, [NativeName(NativeNameType.Param, "needle")] [NativeName(NativeNameType.Type, "const char*")] ref byte needle, [NativeName(NativeNameType.Param, "needle_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte needleEnd)
@@ -1253,3804 +5025,6 @@ namespace Hexa.NET.ImGui
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBuffer")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBuffer([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte** poutBufEnd = &outBufEnd)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (fmt != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(fmt);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					ImFormatStringToTempBufferNative((byte**)poutBuf, (byte**)poutBufEnd, pStr0);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ImFormatStringToTempBufferVNative([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<byte**, byte**, byte*, nint, void>)vt[702])(outBuf, outBufEnd, fmt, args);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, nint, nint, void>)vt[702])((nint)outBuf, (nint)outBufEnd, (nint)fmt, args);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			ImFormatStringToTempBufferVNative(outBuf, outBufEnd, fmt, args);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				ImFormatStringToTempBufferVNative((byte**)poutBuf, outBufEnd, fmt, args);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBufEnd = &outBufEnd)
-			{
-				ImFormatStringToTempBufferVNative(outBuf, (byte**)poutBufEnd, fmt, args);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] byte* fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte** poutBufEnd = &outBufEnd)
-				{
-					ImFormatStringToTempBufferVNative((byte**)poutBuf, (byte**)poutBufEnd, fmt, args);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte* pfmt = &fmt)
-			{
-				ImFormatStringToTempBufferVNative(outBuf, outBufEnd, (byte*)pfmt, args);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte* pfmt = fmt)
-			{
-				ImFormatStringToTempBufferVNative(outBuf, outBufEnd, (byte*)pfmt, args);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmt != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmt);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImFormatStringToTempBufferVNative(outBuf, outBufEnd, pStr0, args);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte* pfmt = &fmt)
-				{
-					ImFormatStringToTempBufferVNative((byte**)poutBuf, outBufEnd, (byte*)pfmt, args);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte* pfmt = fmt)
-				{
-					ImFormatStringToTempBufferVNative((byte**)poutBuf, outBufEnd, (byte*)pfmt, args);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] byte** outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (fmt != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(fmt);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFormatStringToTempBufferVNative((byte**)poutBuf, outBufEnd, pStr0, args);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBufEnd = &outBufEnd)
-			{
-				fixed (byte* pfmt = &fmt)
-				{
-					ImFormatStringToTempBufferVNative(outBuf, (byte**)poutBufEnd, (byte*)pfmt, args);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBufEnd = &outBufEnd)
-			{
-				fixed (byte* pfmt = fmt)
-				{
-					ImFormatStringToTempBufferVNative(outBuf, (byte**)poutBufEnd, (byte*)pfmt, args);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] byte** outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBufEnd = &outBufEnd)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (fmt != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(fmt);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFormatStringToTempBufferVNative(outBuf, (byte**)poutBufEnd, pStr0, args);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte** poutBufEnd = &outBufEnd)
-				{
-					fixed (byte* pfmt = &fmt)
-					{
-						ImFormatStringToTempBufferVNative((byte**)poutBuf, (byte**)poutBufEnd, (byte*)pfmt, args);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte** poutBufEnd = &outBufEnd)
-				{
-					fixed (byte* pfmt = fmt)
-					{
-						ImFormatStringToTempBufferVNative((byte**)poutBuf, (byte**)poutBufEnd, (byte*)pfmt, args);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImFormatStringToTempBufferV")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImFormatStringToTempBufferV([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBuf, [NativeName(NativeNameType.Param, "out_buf_end")] [NativeName(NativeNameType.Type, "const char**")] ref byte* outBufEnd, [NativeName(NativeNameType.Param, "fmt")] [NativeName(NativeNameType.Type, "const char*")] string fmt, [NativeName(NativeNameType.Param, "args")] [NativeName(NativeNameType.Type, "va_list")] nint args)
-		{
-			fixed (byte** poutBuf = &outBuf)
-			{
-				fixed (byte** poutBufEnd = &outBufEnd)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (fmt != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(fmt);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(fmt, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					ImFormatStringToTempBufferVNative((byte**)poutBuf, (byte**)poutBufEnd, pStr0, args);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* ImParseFormatFindStartNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[703])(format);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[703])((nint)format);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindStart([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte* ret = ImParseFormatFindStartNative(format);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindStartS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			string ret = Utils.DecodeStringUTF8(ImParseFormatFindStartNative(format));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindStart([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
-		{
-			fixed (byte* pformat = &format)
-			{
-				byte* ret = ImParseFormatFindStartNative((byte*)pformat);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindStartS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
-		{
-			fixed (byte* pformat = &format)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatFindStartNative((byte*)pformat));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindStart([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
-		{
-			fixed (byte* pformat = format)
-			{
-				byte* ret = ImParseFormatFindStartNative((byte*)pformat);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindStartS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
-		{
-			fixed (byte* pformat = format)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatFindStartNative((byte*)pformat));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindStart([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatFindStartNative(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindStart")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindStartS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatFindStartNative(pStr0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* ImParseFormatFindEndNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*>)vt[704])(format);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[704])((nint)format);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindEnd([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte* ret = ImParseFormatFindEndNative(format);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindEndS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			string ret = Utils.DecodeStringUTF8(ImParseFormatFindEndNative(format));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindEnd([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
-		{
-			fixed (byte* pformat = &format)
-			{
-				byte* ret = ImParseFormatFindEndNative((byte*)pformat);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindEndS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format)
-		{
-			fixed (byte* pformat = &format)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatFindEndNative((byte*)pformat));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindEnd([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
-		{
-			fixed (byte* pformat = format)
-			{
-				byte* ret = ImParseFormatFindEndNative((byte*)pformat);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindEndS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
-		{
-			fixed (byte* pformat = format)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatFindEndNative((byte*)pformat));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatFindEnd([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatFindEndNative(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatFindEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatFindEndS([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatFindEndNative(pStr0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ImParseFormatSanitizeForPrintingNative([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<byte*, byte*, ulong, void>)vt[705])(fmtIn, fmtOut, fmtOutSize);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, ulong, void>)vt[705])((nint)fmtIn, (nint)fmtOut, fmtOutSize);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			ImParseFormatSanitizeForPrintingNative(fmtIn, fmtOut, fmtOutSize);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(pStr0, fmtOut, fmtOutSize);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				ImParseFormatSanitizeForPrintingNative(fmtIn, (byte*)pfmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(fmtIn, pStr0, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(pStr0, pStr1, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			ImParseFormatSanitizeForPrintingNative(fmtIn, fmtOut, fmtOutSize);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(pStr0, fmtOut, fmtOutSize);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				ImParseFormatSanitizeForPrintingNative(fmtIn, (byte*)pfmtOut, fmtOutSize);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(fmtIn, pStr0, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					ImParseFormatSanitizeForPrintingNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForPrinting")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void ImParseFormatSanitizeForPrinting([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			ImParseFormatSanitizeForPrintingNative(pStr0, pStr1, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* ImParseFormatSanitizeForScanningNative([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, ulong, byte*>)vt[706])(fmtIn, fmtOut, fmtOutSize);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, ulong, nint>)vt[706])((nint)fmtIn, (nint)fmtOut, fmtOutSize);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, fmtOut, fmtOutSize);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, fmtOut, fmtOutSize));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(pStr0, fmtOut, fmtOutSize);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(pStr0, fmtOut, fmtOutSize));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, (byte*)pfmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, (byte*)pfmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, pStr0, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, pStr0, fmtOutSize));
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(pStr0, pStr1, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] ulong fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(pStr0, pStr1, fmtOutSize));
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, fmtOut, fmtOutSize);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, fmtOut, fmtOutSize));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, fmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(pStr0, fmtOut, fmtOutSize);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] byte* fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(pStr0, fmtOut, fmtOutSize));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, (byte*)pfmtOut, fmtOutSize);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtOut = &fmtOut)
-			{
-				string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, (byte*)pfmtOut, fmtOutSize));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(fmtIn, pStr0, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] byte* fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtOut, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(fmtIn, pStr0, fmtOutSize));
-			fmtOut = Utils.DecodeStringUTF8(pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ref byte fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = &fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					byte* ret = ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref byte fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			fixed (byte* pfmtIn = fmtIn)
-			{
-				fixed (byte* pfmtOut = &fmtOut)
-				{
-					string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative((byte*)pfmtIn, (byte*)pfmtOut, fmtOutSize));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImParseFormatSanitizeForScanning([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte* ret = ImParseFormatSanitizeForScanningNative(pStr0, pStr1, fmtOutSize);
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatSanitizeForScanning")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImParseFormatSanitizeForScanningS([NativeName(NativeNameType.Param, "fmt_in")] [NativeName(NativeNameType.Type, "const char*")] string fmtIn, [NativeName(NativeNameType.Param, "fmt_out")] [NativeName(NativeNameType.Type, "char*")] ref string fmtOut, [NativeName(NativeNameType.Param, "fmt_out_size")] [NativeName(NativeNameType.Type, "size_t")] nuint fmtOutSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (fmtIn != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(fmtIn);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(fmtIn, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (fmtOut != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(fmtOut);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(fmtOut, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImParseFormatSanitizeForScanningNative(pStr0, pStr1, fmtOutSize));
-			fmtOut = Utils.DecodeStringUTF8(pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatPrecision")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImParseFormatPrecisionNative([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "int")] int defaultValue)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, int, int>)vt[707])(format, defaultValue);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int, int>)vt[707])((nint)format, defaultValue);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatPrecision")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImParseFormatPrecision([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "int")] int defaultValue)
-		{
-			int ret = ImParseFormatPrecisionNative(format, defaultValue);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatPrecision")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImParseFormatPrecision([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "int")] int defaultValue)
-		{
-			fixed (byte* pformat = &format)
-			{
-				int ret = ImParseFormatPrecisionNative((byte*)pformat, defaultValue);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatPrecision")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImParseFormatPrecision([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "int")] int defaultValue)
-		{
-			fixed (byte* pformat = format)
-			{
-				int ret = ImParseFormatPrecisionNative((byte*)pformat, defaultValue);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImParseFormatPrecision")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImParseFormatPrecision([NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "default_value")] [NativeName(NativeNameType.Type, "int")] int defaultValue)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImParseFormatPrecisionNative(pStr0, defaultValue);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* ImTextCharToUtf8Native([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] byte* outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, uint, byte*>)vt[708])(outBuf, c);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, uint, nint>)vt[708])((nint)outBuf, c);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextCharToUtf8([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] byte* outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			byte* ret = ImTextCharToUtf8Native(outBuf, c);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextCharToUtf8S([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] byte* outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			string ret = Utils.DecodeStringUTF8(ImTextCharToUtf8Native(outBuf, c));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextCharToUtf8([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] ref byte outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			fixed (byte* poutBuf = &outBuf)
-			{
-				byte* ret = ImTextCharToUtf8Native((byte*)poutBuf, c);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextCharToUtf8S([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] ref byte outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			fixed (byte* poutBuf = &outBuf)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextCharToUtf8Native((byte*)poutBuf, c));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextCharToUtf8([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] ReadOnlySpan<byte> outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			fixed (byte* poutBuf = outBuf)
-			{
-				byte* ret = ImTextCharToUtf8Native((byte*)poutBuf, c);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharToUtf8")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextCharToUtf8S([NativeName(NativeNameType.Param, "out_buf")] [NativeName(NativeNameType.Type, "char[5]")] ReadOnlySpan<byte> outBuf, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "unsigned int")] uint c)
-		{
-			fixed (byte* poutBuf = outBuf)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextCharToUtf8Native((byte*)poutBuf, c));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImTextCharFromUtf8Native([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint*, byte*, byte*, int>)vt[709])(outChar, inText, inTextEnd);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, nint, nint, int>)vt[709])((nint)outChar, (nint)inText, (nint)inTextEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			int ret = ImTextCharFromUtf8Native(outChar, inText, inTextEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				int ret = ImTextCharFromUtf8Native((uint*)poutChar, inText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				int ret = ImTextCharFromUtf8Native(outChar, (byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				int ret = ImTextCharFromUtf8Native(outChar, (byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCharFromUtf8Native(outChar, pStr0, inTextEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinText = &inText)
-				{
-					int ret = ImTextCharFromUtf8Native((uint*)poutChar, (byte*)pinText, inTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinText = inText)
-				{
-					int ret = ImTextCharFromUtf8Native((uint*)poutChar, (byte*)pinText, inTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (inText != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(inText);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				int ret = ImTextCharFromUtf8Native((uint*)poutChar, pStr0, inTextEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinTextEnd = &inTextEnd)
-			{
-				int ret = ImTextCharFromUtf8Native(outChar, inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinTextEnd = inTextEnd)
-			{
-				int ret = ImTextCharFromUtf8Native(outChar, inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCharFromUtf8Native(outChar, inText, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCharFromUtf8Native((uint*)poutChar, inText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinTextEnd = inTextEnd)
-				{
-					int ret = ImTextCharFromUtf8Native((uint*)poutChar, inText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (inTextEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(inTextEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(inTextEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				int ret = ImTextCharFromUtf8Native((uint*)poutChar, inText, pStr0);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				fixed (byte* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCharFromUtf8Native(outChar, (byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				fixed (byte* pinTextEnd = inTextEnd)
-				{
-					int ret = ImTextCharFromUtf8Native(outChar, (byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] uint* outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			int ret = ImTextCharFromUtf8Native(outChar, pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinText = &inText)
-				{
-					fixed (byte* pinTextEnd = &inTextEnd)
-					{
-						int ret = ImTextCharFromUtf8Native((uint*)poutChar, (byte*)pinText, (byte*)pinTextEnd);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				fixed (byte* pinText = inText)
-				{
-					fixed (byte* pinTextEnd = inTextEnd)
-					{
-						int ret = ImTextCharFromUtf8Native((uint*)poutChar, (byte*)pinText, (byte*)pinTextEnd);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCharFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCharFromUtf8([NativeName(NativeNameType.Param, "out_char")] [NativeName(NativeNameType.Type, "unsigned int*")] ref uint outChar, [NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			fixed (uint* poutChar = &outChar)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (inText != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(inText);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (inTextEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(inTextEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(inTextEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				int ret = ImTextCharFromUtf8Native((uint*)poutChar, pStr0, pStr1);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImTextCountCharsFromUtf8Native([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, int>)vt[710])(inText, inTextEnd);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, nint, int>)vt[710])((nint)inText, (nint)inTextEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			int ret = ImTextCountCharsFromUtf8Native(inText, inTextEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				int ret = ImTextCountCharsFromUtf8Native((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				int ret = ImTextCountCharsFromUtf8Native((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountCharsFromUtf8Native(pStr0, inTextEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinTextEnd = &inTextEnd)
-			{
-				int ret = ImTextCountCharsFromUtf8Native(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinTextEnd = inTextEnd)
-			{
-				int ret = ImTextCountCharsFromUtf8Native(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountCharsFromUtf8Native(inText, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				fixed (byte* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCountCharsFromUtf8Native((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				fixed (byte* pinTextEnd = inTextEnd)
-				{
-					int ret = ImTextCountCharsFromUtf8Native((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountCharsFromUtf8")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountCharsFromUtf8([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			int ret = ImTextCountCharsFromUtf8Native(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImTextCountUtf8BytesFromCharNative([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, int>)vt[711])(inText, inTextEnd);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, nint, int>)vt[711])((nint)inText, (nint)inTextEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			int ret = ImTextCountUtf8BytesFromCharNative(inText, inTextEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				int ret = ImTextCountUtf8BytesFromCharNative((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				int ret = ImTextCountUtf8BytesFromCharNative((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountUtf8BytesFromCharNative(pStr0, inTextEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinTextEnd = &inTextEnd)
-			{
-				int ret = ImTextCountUtf8BytesFromCharNative(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinTextEnd = inTextEnd)
-			{
-				int ret = ImTextCountUtf8BytesFromCharNative(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountUtf8BytesFromCharNative(inText, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				fixed (byte* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCountUtf8BytesFromCharNative((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				fixed (byte* pinTextEnd = inTextEnd)
-				{
-					int ret = ImTextCountUtf8BytesFromCharNative((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromChar")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFromChar([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			int ret = ImTextCountUtf8BytesFromCharNative(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromStr")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImTextCountUtf8BytesFromNative([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inTextEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<char*, char*, int>)vt[712])(inText, inTextEnd);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, nint, int>)vt[712])((nint)inText, (nint)inTextEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromStr")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFrom([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inTextEnd)
-		{
-			int ret = ImTextCountUtf8BytesFromNative(inText, inTextEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromStr")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFrom([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inTextEnd)
-		{
-			fixed (char* pinText = &inText)
-			{
-				int ret = ImTextCountUtf8BytesFromNative((char*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromStr")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFrom([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char inTextEnd)
-		{
-			fixed (char* pinTextEnd = &inTextEnd)
-			{
-				int ret = ImTextCountUtf8BytesFromNative(inText, (char*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountUtf8BytesFromStr")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountUtf8BytesFrom([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char inTextEnd)
-		{
-			fixed (char* pinText = &inText)
-			{
-				fixed (char* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCountUtf8BytesFromNative((char*)pinText, (char*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* ImTextFindPreviousUtf8CodepointNative([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[713])(inTextStart, inTextCurr);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, nint>)vt[713])((nint)inTextStart, (nint)inTextCurr);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			byte* ret = ImTextFindPreviousUtf8CodepointNative(inTextStart, inTextCurr);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(inTextStart, inTextCurr));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			fixed (byte* pinTextStart = &inTextStart)
-			{
-				byte* ret = ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, inTextCurr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			fixed (byte* pinTextStart = &inTextStart)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, inTextCurr));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			fixed (byte* pinTextStart = inTextStart)
-			{
-				byte* ret = ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, inTextCurr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			fixed (byte* pinTextStart = inTextStart)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, inTextCurr));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] string inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextStart != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextStart);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextStart, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImTextFindPreviousUtf8CodepointNative(pStr0, inTextCurr);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] string inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextStart != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextStart);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextStart, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(pStr0, inTextCurr));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextCurr)
-		{
-			fixed (byte* pinTextCurr = &inTextCurr)
-			{
-				byte* ret = ImTextFindPreviousUtf8CodepointNative(inTextStart, (byte*)pinTextCurr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextCurr)
-		{
-			fixed (byte* pinTextCurr = &inTextCurr)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(inTextStart, (byte*)pinTextCurr));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextCurr)
-		{
-			fixed (byte* pinTextCurr = inTextCurr)
-			{
-				byte* ret = ImTextFindPreviousUtf8CodepointNative(inTextStart, (byte*)pinTextCurr);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextCurr)
-		{
-			fixed (byte* pinTextCurr = inTextCurr)
-			{
-				string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(inTextStart, (byte*)pinTextCurr));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] string inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextCurr != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextCurr);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextCurr, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = ImTextFindPreviousUtf8CodepointNative(inTextStart, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] string inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextCurr != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextCurr);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextCurr, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(inTextStart, pStr0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextCurr)
-		{
-			fixed (byte* pinTextStart = &inTextStart)
-			{
-				fixed (byte* pinTextCurr = &inTextCurr)
-				{
-					byte* ret = ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, (byte*)pinTextCurr);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextCurr)
-		{
-			fixed (byte* pinTextStart = &inTextStart)
-			{
-				fixed (byte* pinTextCurr = &inTextCurr)
-				{
-					string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, (byte*)pinTextCurr));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextCurr)
-		{
-			fixed (byte* pinTextStart = inTextStart)
-			{
-				fixed (byte* pinTextCurr = inTextCurr)
-				{
-					byte* ret = ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, (byte*)pinTextCurr);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextCurr)
-		{
-			fixed (byte* pinTextStart = inTextStart)
-			{
-				fixed (byte* pinTextCurr = inTextCurr)
-				{
-					string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative((byte*)pinTextStart, (byte*)pinTextCurr));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* ImTextFindPreviousUtf8Codepoint([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] string inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] string inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextStart != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextStart);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextStart, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextCurr != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextCurr);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextCurr, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte* ret = ImTextFindPreviousUtf8CodepointNative(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextFindPreviousUtf8Codepoint")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string ImTextFindPreviousUtf8CodepointS([NativeName(NativeNameType.Param, "in_text_start")] [NativeName(NativeNameType.Type, "const char*")] string inTextStart, [NativeName(NativeNameType.Param, "in_text_curr")] [NativeName(NativeNameType.Type, "const char*")] string inTextCurr)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextStart != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextStart);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextStart, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextCurr != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextCurr);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextCurr, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(ImTextFindPreviousUtf8CodepointNative(pStr0, pStr1));
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int ImTextCountLinesNative([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, int>)vt[714])(inText, inTextEnd);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, nint, int>)vt[714])((nint)inText, (nint)inTextEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			int ret = ImTextCountLinesNative(inText, inTextEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				int ret = ImTextCountLinesNative((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				int ret = ImTextCountLinesNative((byte*)pinText, inTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountLinesNative(pStr0, inTextEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinTextEnd = &inTextEnd)
-			{
-				int ret = ImTextCountLinesNative(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinTextEnd = inTextEnd)
-			{
-				int ret = ImTextCountLinesNative(inText, (byte*)pinTextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] byte* inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inTextEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			int ret = ImTextCountLinesNative(inText, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ref byte inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte inTextEnd)
-		{
-			fixed (byte* pinText = &inText)
-			{
-				fixed (byte* pinTextEnd = &inTextEnd)
-				{
-					int ret = ImTextCountLinesNative((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> inTextEnd)
-		{
-			fixed (byte* pinText = inText)
-			{
-				fixed (byte* pinTextEnd = inTextEnd)
-				{
-					int ret = ImTextCountLinesNative((byte*)pinText, (byte*)pinTextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImTextCountLines")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int ImTextCountLines([NativeName(NativeNameType.Param, "in_text")] [NativeName(NativeNameType.Type, "const char*")] string inText, [NativeName(NativeNameType.Param, "in_text_end")] [NativeName(NativeNameType.Type, "const char*")] string inTextEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (inText != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(inText);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(inText, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (inTextEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(inTextEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(inTextEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			int ret = ImTextCountLinesNative(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
 		}
 	}
 }

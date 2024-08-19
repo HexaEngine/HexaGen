@@ -19,6 +19,1645 @@ namespace Hexa.NET.ImGui
 	{
 
 		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddBezierQuadratic")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddBezierQuadratic([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			AddBezierQuadraticNative(self, p1, p2, p3, col, thickness, (int)(0));
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddBezierQuadratic")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddBezierQuadratic([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddBezierQuadraticNative((ImDrawList*)pself, p1, p2, p3, col, thickness, numSegments);
+			}
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddBezierQuadratic")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddBezierQuadratic([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddBezierQuadraticNative((ImDrawList*)pself, p1, p2, p3, col, thickness, (int)(0));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddPolyline")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddPolylineNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2*, int, uint, ImDrawFlags, float, void>)vt[557])(self, points, numPoints, col, flags, thickness);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, int, uint, ImDrawFlags, float, void>)vt[557])((nint)self, (nint)points, numPoints, col, flags, thickness);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddPolyline")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddPolyline([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			AddPolylineNative(self, points, numPoints, col, flags, thickness);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddPolyline")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddPolyline([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddPolylineNative((ImDrawList*)pself, points, numPoints, col, flags, thickness);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddPolyline")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddPolyline([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (Vector2* ppoints = &points)
+			{
+				AddPolylineNative(self, (Vector2*)ppoints, numPoints, col, flags, thickness);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddPolyline")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddPolyline([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				fixed (Vector2* ppoints = &points)
+				{
+					AddPolylineNative((ImDrawList*)pself, (Vector2*)ppoints, numPoints, col, flags, thickness);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConvexPolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddConvexPolyFilledNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2*, int, uint, void>)vt[558])(self, points, numPoints, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, int, uint, void>)vt[558])((nint)self, (nint)points, numPoints, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConvexPolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConvexPolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddConvexPolyFilledNative(self, points, numPoints, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConvexPolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConvexPolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddConvexPolyFilledNative((ImDrawList*)pself, points, numPoints, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConvexPolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConvexPolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (Vector2* ppoints = &points)
+			{
+				AddConvexPolyFilledNative(self, (Vector2*)ppoints, numPoints, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConvexPolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConvexPolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				fixed (Vector2* ppoints = &points)
+				{
+					AddConvexPolyFilledNative((ImDrawList*)pself, (Vector2*)ppoints, numPoints, col);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConcavePolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddConcavePolyFilledNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2*, int, uint, void>)vt[559])(self, points, numPoints, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, int, uint, void>)vt[559])((nint)self, (nint)points, numPoints, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConcavePolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConcavePolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddConcavePolyFilledNative(self, points, numPoints, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConcavePolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConcavePolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddConcavePolyFilledNative((ImDrawList*)pself, points, numPoints, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConcavePolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConcavePolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (Vector2* ppoints = &points)
+			{
+				AddConcavePolyFilledNative(self, (Vector2*)ppoints, numPoints, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddConcavePolyFilled")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddConcavePolyFilled([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "points")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 points, [NativeName(NativeNameType.Param, "num_points")] [NativeName(NativeNameType.Type, "int")] int numPoints, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				fixed (Vector2* ppoints = &points)
+				{
+					AddConcavePolyFilledNative((ImDrawList*)pself, (Vector2*)ppoints, numPoints, col);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddImageNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, ImTextureID, Vector2, Vector2, Vector2, Vector2, uint, void>)vt[560])(self, userTextureId, pMin, pMax, uvMin, uvMax, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImTextureID, Vector2, Vector2, Vector2, Vector2, uint, void>)vt[560])((nint)self, userTextureId, pMin, pMax, uvMin, uvMax, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, uvMin, uvMax, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, uvMin, uvMax, (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, uvMin, (Vector2)(new Vector2(1,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, uvMin, (Vector2)(new Vector2(1,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageNative(self, userTextureId, pMin, pMax, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, uvMax, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, uvMax, (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, (Vector2)(new Vector2(1,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, (Vector2)(new Vector2(1,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImage")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImage([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageNative((ImDrawList*)pself, userTextureId, pMin, pMax, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddImageQuadNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "uv4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv4, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, ImTextureID, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, uint, void>)vt[561])(self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImTextureID, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, Vector2, uint, void>)vt[561])((nint)self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "uv4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv4, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "uv4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv4)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, (Vector2)(new Vector2(0,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, uv2, (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, uv1, (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			AddImageQuadNative(self, userTextureId, p1, p2, p3, p4, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "uv4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv4, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "uv4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv4)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), (uint)(4294967295));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "uv3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv3, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, (Vector2)(new Vector2(0,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "uv2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv2, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, uv2, (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, uv1, (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageQuad")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageQuad([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p1, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageQuadNative((ImDrawList*)pself, userTextureId, p1, p2, p3, p4, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,0)), (Vector2)(new Vector2(1,1)), (Vector2)(new Vector2(0,1)), col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageRounded")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddImageRoundedNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, ImTextureID, Vector2, Vector2, Vector2, Vector2, uint, float, ImDrawFlags, void>)vt[562])(self, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImTextureID, Vector2, Vector2, Vector2, Vector2, uint, float, ImDrawFlags, void>)vt[562])((nint)self, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageRounded")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageRounded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			AddImageRoundedNative(self, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageRounded")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageRounded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
+		{
+			AddImageRoundedNative(self, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, (ImDrawFlags)(0));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageRounded")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageRounded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageRoundedNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddImageRounded")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddImageRounded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "uv_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMin, [NativeName(NativeNameType.Param, "uv_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uvMax, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddImageRoundedNative((ImDrawList*)pself, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, (ImDrawFlags)(0));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathClearNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, void>)vt[563])(self);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)vt[563])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathClear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			PathClearNative(self);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathClear")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathClear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathClearNative((ImDrawList*)pself);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathLineToNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, void>)vt[564])(self, pos);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, void>)vt[564])((nint)self, pos);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathLineTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			PathLineToNative(self, pos);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathLineTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathLineToNative((ImDrawList*)pself, pos);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineToMergeDuplicate")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathLineToMergeDuplicateNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, void>)vt[565])(self, pos);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, void>)vt[565])((nint)self, pos);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineToMergeDuplicate")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathLineToMergeDuplicate([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			PathLineToMergeDuplicateNative(self, pos);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathLineToMergeDuplicate")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathLineToMergeDuplicate([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathLineToMergeDuplicateNative((ImDrawList*)pself, pos);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConvex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathFillConvexNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, uint, void>)vt[566])(self, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, uint, void>)vt[566])((nint)self, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConvex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathFillConvex([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			PathFillConvexNative(self, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConvex")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathFillConvex([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathFillConvexNative((ImDrawList*)pself, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConcave")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathFillConcaveNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, uint, void>)vt[567])(self, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, uint, void>)vt[567])((nint)self, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConcave")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathFillConcave([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			PathFillConcaveNative(self, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathFillConcave")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathFillConcave([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathFillConcaveNative((ImDrawList*)pself, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathStrokeNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, uint, ImDrawFlags, float, void>)vt[568])(self, col, flags, thickness);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, uint, ImDrawFlags, float, void>)vt[568])((nint)self, col, flags, thickness);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			PathStrokeNative(self, col, flags, thickness);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			PathStrokeNative(self, col, flags, (float)(1.0f));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			PathStrokeNative(self, col, (ImDrawFlags)(0), (float)(1.0f));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			PathStrokeNative(self, col, (ImDrawFlags)(0), thickness);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathStrokeNative((ImDrawList*)pself, col, flags, thickness);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathStrokeNative((ImDrawList*)pself, col, flags, (float)(1.0f));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathStrokeNative((ImDrawList*)pself, col, (ImDrawFlags)(0), (float)(1.0f));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathStroke")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathStroke([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathStrokeNative((ImDrawList*)pself, col, (ImDrawFlags)(0), thickness);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathArcToNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, float, float, float, int, void>)vt[569])(self, center, radius, aMin, aMax, numSegments);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, float, float, float, int, void>)vt[569])((nint)self, center, radius, aMin, aMax, numSegments);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			PathArcToNative(self, center, radius, aMin, aMax, numSegments);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax)
+		{
+			PathArcToNative(self, center, radius, aMin, aMax, (int)(0));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathArcToNative((ImDrawList*)pself, center, radius, aMin, aMax, numSegments);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathArcToNative((ImDrawList*)pself, center, radius, aMin, aMax, (int)(0));
+			}
+		}
+
+		/// <summary>
+		/// Use precomputed angles for a 12 steps circle<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcToFast")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathArcToFastNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min_of_12")] [NativeName(NativeNameType.Type, "int")] int aMinOf12, [NativeName(NativeNameType.Param, "a_max_of_12")] [NativeName(NativeNameType.Type, "int")] int aMaxOf12)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, float, int, int, void>)vt[570])(self, center, radius, aMinOf12, aMaxOf12);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, float, int, int, void>)vt[570])((nint)self, center, radius, aMinOf12, aMaxOf12);
+			#endif
+		}
+
+		/// <summary>
+		/// Use precomputed angles for a 12 steps circle<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcToFast")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcToFast([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min_of_12")] [NativeName(NativeNameType.Type, "int")] int aMinOf12, [NativeName(NativeNameType.Param, "a_max_of_12")] [NativeName(NativeNameType.Type, "int")] int aMaxOf12)
+		{
+			PathArcToFastNative(self, center, radius, aMinOf12, aMaxOf12);
+		}
+
+		/// <summary>
+		/// Use precomputed angles for a 12 steps circle<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathArcToFast")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathArcToFast([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "float")] float radius, [NativeName(NativeNameType.Param, "a_min_of_12")] [NativeName(NativeNameType.Type, "int")] int aMinOf12, [NativeName(NativeNameType.Param, "a_max_of_12")] [NativeName(NativeNameType.Type, "int")] int aMaxOf12)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathArcToFastNative((ImDrawList*)pself, center, radius, aMinOf12, aMaxOf12);
+			}
+		}
+
+		/// <summary>
+		/// Ellipse<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathEllipticalArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathEllipticalArcToNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 radius, [NativeName(NativeNameType.Param, "rot")] [NativeName(NativeNameType.Type, "float")] float rot, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, float, float, float, int, void>)vt[571])(self, center, radius, rot, aMin, aMax, numSegments);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, float, float, float, int, void>)vt[571])((nint)self, center, radius, rot, aMin, aMax, numSegments);
+			#endif
+		}
+
+		/// <summary>
+		/// Ellipse<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathEllipticalArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathEllipticalArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 radius, [NativeName(NativeNameType.Param, "rot")] [NativeName(NativeNameType.Type, "float")] float rot, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			PathEllipticalArcToNative(self, center, radius, rot, aMin, aMax, numSegments);
+		}
+
+		/// <summary>
+		/// Ellipse<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathEllipticalArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathEllipticalArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 radius, [NativeName(NativeNameType.Param, "rot")] [NativeName(NativeNameType.Type, "float")] float rot, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax)
+		{
+			PathEllipticalArcToNative(self, center, radius, rot, aMin, aMax, (int)(0));
+		}
+
+		/// <summary>
+		/// Ellipse<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathEllipticalArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathEllipticalArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 radius, [NativeName(NativeNameType.Param, "rot")] [NativeName(NativeNameType.Type, "float")] float rot, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathEllipticalArcToNative((ImDrawList*)pself, center, radius, rot, aMin, aMax, numSegments);
+			}
+		}
+
+		/// <summary>
+		/// Ellipse<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathEllipticalArcTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathEllipticalArcTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "center")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 center, [NativeName(NativeNameType.Param, "radius")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 radius, [NativeName(NativeNameType.Param, "rot")] [NativeName(NativeNameType.Type, "float")] float rot, [NativeName(NativeNameType.Param, "a_min")] [NativeName(NativeNameType.Type, "float")] float aMin, [NativeName(NativeNameType.Param, "a_max")] [NativeName(NativeNameType.Type, "float")] float aMax)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathEllipticalArcToNative((ImDrawList*)pself, center, radius, rot, aMin, aMax, (int)(0));
+			}
+		}
+
+		/// <summary>
+		/// Cubic Bezier (4 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierCubicCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathBezierCubicCurveToNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, Vector2, int, void>)vt[572])(self, p2, p3, p4, numSegments);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, Vector2, int, void>)vt[572])((nint)self, p2, p3, p4, numSegments);
+			#endif
+		}
+
+		/// <summary>
+		/// Cubic Bezier (4 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierCubicCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierCubicCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			PathBezierCubicCurveToNative(self, p2, p3, p4, numSegments);
+		}
+
+		/// <summary>
+		/// Cubic Bezier (4 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierCubicCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierCubicCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4)
+		{
+			PathBezierCubicCurveToNative(self, p2, p3, p4, (int)(0));
+		}
+
+		/// <summary>
+		/// Cubic Bezier (4 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierCubicCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierCubicCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathBezierCubicCurveToNative((ImDrawList*)pself, p2, p3, p4, numSegments);
+			}
+		}
+
+		/// <summary>
+		/// Cubic Bezier (4 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierCubicCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierCubicCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "p4")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p4)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathBezierCubicCurveToNative((ImDrawList*)pself, p2, p3, p4, (int)(0));
+			}
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierQuadraticCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathBezierQuadraticCurveToNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, int, void>)vt[573])(self, p2, p3, numSegments);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, int, void>)vt[573])((nint)self, p2, p3, numSegments);
+			#endif
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierQuadraticCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierQuadraticCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			PathBezierQuadraticCurveToNative(self, p2, p3, numSegments);
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierQuadraticCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierQuadraticCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3)
+		{
+			PathBezierQuadraticCurveToNative(self, p2, p3, (int)(0));
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierQuadraticCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierQuadraticCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3, [NativeName(NativeNameType.Param, "num_segments")] [NativeName(NativeNameType.Type, "int")] int numSegments)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathBezierQuadraticCurveToNative((ImDrawList*)pself, p2, p3, numSegments);
+			}
+		}
+
+		/// <summary>
+		/// Quadratic Bezier (3 control points)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathBezierQuadraticCurveTo")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathBezierQuadraticCurveTo([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "p2")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p2, [NativeName(NativeNameType.Param, "p3")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 p3)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathBezierQuadraticCurveToNative((ImDrawList*)pself, p2, p3, (int)(0));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PathRectNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, float, ImDrawFlags, void>)vt[574])(self, rectMin, rectMax, rounding, flags);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, float, ImDrawFlags, void>)vt[574])((nint)self, rectMin, rectMax, rounding, flags);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			PathRectNative(self, rectMin, rectMax, rounding, flags);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
+		{
+			PathRectNative(self, rectMin, rectMax, rounding, (ImDrawFlags)(0));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax)
+		{
+			PathRectNative(self, rectMin, rectMax, (float)(0.0f), (ImDrawFlags)(0));
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			PathRectNative(self, rectMin, rectMax, (float)(0.0f), flags);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathRectNative((ImDrawList*)pself, rectMin, rectMax, rounding, flags);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathRectNative((ImDrawList*)pself, rectMin, rectMax, rounding, (ImDrawFlags)(0));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathRectNative((ImDrawList*)pself, rectMin, rectMax, (float)(0.0f), (ImDrawFlags)(0));
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PathRect")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PathRect([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "rect_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMin, [NativeName(NativeNameType.Param, "rect_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 rectMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PathRectNative((ImDrawList*)pself, rectMin, rectMax, (float)(0.0f), flags);
+			}
+		}
+
+		/// <summary>
+		/// Your rendering function must check for 'UserCallback' in ImDrawCmd and call the function instead of rendering triangles.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddCallbackNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "ImDrawCallback")] ImDrawCallback callback, [NativeName(NativeNameType.Param, "callback_data")] [NativeName(NativeNameType.Type, "void*")] void* callbackData)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, delegate*<ImDrawList*, ImDrawCmd*, void>, void*, void>)vt[575])(self, (delegate*<ImDrawList*, ImDrawCmd*, void>)Utils.GetFunctionPointerForDelegate(callback), callbackData);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, nint, void>)vt[575])((nint)self, (nint)Utils.GetFunctionPointerForDelegate(callback), (nint)callbackData);
+			#endif
+		}
+
+		/// <summary>
+		/// Your rendering function must check for 'UserCallback' in ImDrawCmd and call the function instead of rendering triangles.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddCallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "ImDrawCallback")] ImDrawCallback callback, [NativeName(NativeNameType.Param, "callback_data")] [NativeName(NativeNameType.Type, "void*")] void* callbackData)
+		{
+			AddCallbackNative(self, callback, callbackData);
+		}
+
+		/// <summary>
+		/// Your rendering function must check for 'UserCallback' in ImDrawCmd and call the function instead of rendering triangles.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddCallback")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddCallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "callback")] [NativeName(NativeNameType.Type, "ImDrawCallback")] ImDrawCallback callback, [NativeName(NativeNameType.Param, "callback_data")] [NativeName(NativeNameType.Type, "void*")] void* callbackData)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddCallbackNative((ImDrawList*)pself, callback, callbackData);
+			}
+		}
+
+		/// <summary>
+		/// This is useful if you need to forcefully create a new draw call (to allow for dependent rendering  blending). Otherwise primitives are merged into the same draw-call as much as possible<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddDrawCmd")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void AddDrawCmdNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, void>)vt[576])(self);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)vt[576])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// This is useful if you need to forcefully create a new draw call (to allow for dependent rendering  blending). Otherwise primitives are merged into the same draw-call as much as possible<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddDrawCmd")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddDrawCmd([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			AddDrawCmdNative(self);
+		}
+
+		/// <summary>
+		/// This is useful if you need to forcefully create a new draw call (to allow for dependent rendering  blending). Otherwise primitives are merged into the same draw-call as much as possible<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_AddDrawCmd")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void AddDrawCmd([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				AddDrawCmdNative((ImDrawList*)pself);
+			}
+		}
+
+		/// <summary>
+		/// Create a clone of the CmdBufferIdxBufferVtxBuffer.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_CloneOutput")]
+		[return: NativeName(NativeNameType.Type, "ImDrawList*")]
+		internal static ImDrawList* CloneOutputNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImDrawList*, ImDrawList*>)vt[577])(self);
+			#else
+			return (ImDrawList*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[577])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// Create a clone of the CmdBufferIdxBufferVtxBuffer.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_CloneOutput")]
+		[return: NativeName(NativeNameType.Type, "ImDrawList*")]
+		public static ImDrawList* CloneOutput([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			ImDrawList* ret = CloneOutputNative(self);
+			return ret;
+		}
+
+		/// <summary>
+		/// Create a clone of the CmdBufferIdxBufferVtxBuffer.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_CloneOutput")]
+		[return: NativeName(NativeNameType.Type, "ImDrawList*")]
+		public static ImDrawList* CloneOutput([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				ImDrawList* ret = CloneOutputNative((ImDrawList*)pself);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSplit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void ChannelsSplitNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, int, void>)vt[578])(self, count);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, int, void>)vt[578])((nint)self, count);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSplit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsSplit([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count)
+		{
+			ChannelsSplitNative(self, count);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSplit")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsSplit([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "count")] [NativeName(NativeNameType.Type, "int")] int count)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				ChannelsSplitNative((ImDrawList*)pself, count);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsMerge")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void ChannelsMergeNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, void>)vt[579])(self);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)vt[579])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsMerge")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsMerge([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self)
+		{
+			ChannelsMergeNative(self);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsMerge")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsMerge([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				ChannelsMergeNative((ImDrawList*)pself);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSetCurrent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void ChannelsSetCurrentNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, int, void>)vt[580])(self, n);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, int, void>)vt[580])((nint)self, n);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSetCurrent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsSetCurrent([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
+		{
+			ChannelsSetCurrentNative(self, n);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_ChannelsSetCurrent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void ChannelsSetCurrent([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				ChannelsSetCurrentNative((ImDrawList*)pself, n);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PrimReserve")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PrimReserveNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "idx_count")] [NativeName(NativeNameType.Type, "int")] int idxCount, [NativeName(NativeNameType.Param, "vtx_count")] [NativeName(NativeNameType.Type, "int")] int vtxCount)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, int, int, void>)vt[581])(self, idxCount, vtxCount);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, int, int, void>)vt[581])((nint)self, idxCount, vtxCount);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PrimReserve")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrimReserve([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "idx_count")] [NativeName(NativeNameType.Type, "int")] int idxCount, [NativeName(NativeNameType.Param, "vtx_count")] [NativeName(NativeNameType.Type, "int")] int vtxCount)
+		{
+			PrimReserveNative(self, idxCount, vtxCount);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PrimReserve")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PrimReserve([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList self, [NativeName(NativeNameType.Param, "idx_count")] [NativeName(NativeNameType.Type, "int")] int idxCount, [NativeName(NativeNameType.Param, "vtx_count")] [NativeName(NativeNameType.Type, "int")] int vtxCount)
+		{
+			fixed (ImDrawList* pself = &self)
+			{
+				PrimReserveNative((ImDrawList*)pself, idxCount, vtxCount);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImDrawList_PrimUnreserve")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void PrimUnreserveNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* self, [NativeName(NativeNameType.Param, "idx_count")] [NativeName(NativeNameType.Type, "int")] int idxCount, [NativeName(NativeNameType.Param, "vtx_count")] [NativeName(NativeNameType.Type, "int")] int vtxCount)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, int, int, void>)vt[582])(self, idxCount, vtxCount);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, int, int, void>)vt[582])((nint)self, idxCount, vtxCount);
+			#endif
+		}
+
+		/// <summary>
 		/// To be documented.
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImDrawList_PrimUnreserve")]
@@ -3410,1624 +5049,6 @@ namespace Hexa.NET.ImGui
 					Utils.Free(pStr0);
 				}
 				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (filename != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(filename);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (char* pglyphRanges = &glyphRanges)
-			{
-				ImFont* ret = AddFontFromFileTTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = &filename)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, fontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = &filename)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = filename)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, fontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = filename)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (filename != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(filename);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, (char*)pglyphRanges);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (filename != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(filename);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] byte* filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromFileTTFNative(self, filename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] byte* filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, filename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (byte* pfilename = &filename)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative(self, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (byte* pfilename = filename)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative(self, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (filename != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(filename);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromFileTTFNative(self, pStr0, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ref byte filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = &filename)
-				{
-					fixed (ImFontConfig* pfontCfg = &fontCfg)
-					{
-						fixed (char* pglyphRanges = &glyphRanges)
-						{
-							ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pfilename = filename)
-				{
-					fixed (ImFontConfig* pfontCfg = &fontCfg)
-					{
-						fixed (char* pglyphRanges = &glyphRanges)
-						{
-							ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, (byte*)pfilename, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-							return ret;
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromFileTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromFileTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "filename")] [NativeName(NativeNameType.Type, "const char*")] string filename, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (filename != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(filename);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(filename, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromFileTTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		internal static ImFont* AddFontFromMemoryTTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, void*, int, float, ImFontConfig*, char*, ImFont*>)vt[624])(self, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
-			#else
-			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, int, float, nint, nint, nint>)vt[624])((nint)self, (nint)fontData, fontDataSize, sizePixels, (nint)fontCfg, (nint)glyphRanges);
-			#endif
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (char* pglyphRanges = &glyphRanges)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (char* pglyphRanges = &glyphRanges)
-			{
-				ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryTTFNative(self, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// Note: Transfer ownership of 'ttf_data' to ImFontAtlas! Will be deleted after destruction of the atlas. Set font_cfg-&gt;FontDataOwnedByAtlas=false to keep ownership of your data and it won't be freed.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "font_data")] [NativeName(NativeNameType.Type, "void*")] void* fontData, [NativeName(NativeNameType.Param, "font_data_size")] [NativeName(NativeNameType.Type, "int")] int fontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromMemoryTTFNative((ImFontAtlas*)pself, fontData, fontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		internal static ImFont* AddFontFromMemoryCompressedTTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, void*, int, float, ImFontConfig*, char*, ImFont*>)vt[625])(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
-			#else
-			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, int, float, nint, nint, nint>)vt[625])((nint)self, (nint)compressedFontData, compressedFontDataSize, sizePixels, (nint)fontCfg, (nint)glyphRanges);
-			#endif
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (char* pglyphRanges = &glyphRanges)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (char* pglyphRanges = &glyphRanges)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, fontCfg, (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)(default), (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				fixed (char* pglyphRanges = &glyphRanges)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedTTFNative(self, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data' still owned by caller. Compress with binary_to_compressed_c.cpp.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedTTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedTTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data")] [NativeName(NativeNameType.Type, "const void*")] void* compressedFontData, [NativeName(NativeNameType.Param, "compressed_font_data_size")] [NativeName(NativeNameType.Type, "int")] int compressedFontDataSize, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] ref char glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					fixed (char* pglyphRanges = &glyphRanges)
-					{
-						ImFont* ret = AddFontFromMemoryCompressedTTFNative((ImFontAtlas*)pself, compressedFontData, compressedFontDataSize, sizePixels, (ImFontConfig*)pfontCfg, (char*)pglyphRanges);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		internal static ImFont* AddFontFromMemoryCompressedBase85TTFNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, byte*, float, ImFontConfig*, char*, ImFont*>)vt[626])(self, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-			#else
-			return (ImFont*)((delegate* unmanaged[Cdecl]<nint, nint, float, nint, nint, nint>)vt[626])((nint)self, (nint)compressedFontDatabase85, sizePixels, (nint)fontCfg, (nint)glyphRanges);
-			#endif
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (compressedFontDatabase85 != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, fontCfg, glyphRanges);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (compressedFontDatabase85 != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, fontCfg, (char*)(default));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (compressedFontDatabase85 != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), (char*)(default));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (compressedFontDatabase85 != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, pStr0, sizePixels, (ImFontConfig*)(default), glyphRanges);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ref byte compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = &compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, fontCfg, (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), (char*)(default));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (byte* pcompressedFontDatabase85 = compressedFontDatabase85)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, (byte*)pcompressedFontDatabase85, sizePixels, (ImFontConfig*)(default), glyphRanges);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (compressedFontDatabase85 != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, glyphRanges);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ImFontConfig* fontCfg)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (compressedFontDatabase85 != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, fontCfg, (char*)(default));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (compressedFontDatabase85 != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), (char*)(default));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] string compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (compressedFontDatabase85 != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(compressedFontDatabase85);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(compressedFontDatabase85, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, pStr0, sizePixels, (ImFontConfig*)(default), glyphRanges);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg)
-		{
-			fixed (ImFontConfig* pfontCfg = &fontCfg)
-			{
-				ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative(self, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, (char*)(default));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// 'compressed_font_data_base85' still owned by caller. Compress with binary_to_compressed_c.cpp with -base85 parameter.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFontAtlas_AddFontFromMemoryCompressedBase85TTF")]
-		[return: NativeName(NativeNameType.Type, "ImFont*")]
-		public static ImFont* AddFontFromMemoryCompressedBase85TTF([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "compressed_font_data_base85")] [NativeName(NativeNameType.Type, "const char*")] byte* compressedFontDatabase85, [NativeName(NativeNameType.Param, "size_pixels")] [NativeName(NativeNameType.Type, "float")] float sizePixels, [NativeName(NativeNameType.Param, "font_cfg")] [NativeName(NativeNameType.Type, "const ImFontConfig*")] ref ImFontConfig fontCfg, [NativeName(NativeNameType.Param, "glyph_ranges")] [NativeName(NativeNameType.Type, "const ImWchar*")] char* glyphRanges)
-		{
-			fixed (ImFontAtlas* pself = &self)
-			{
-				fixed (ImFontConfig* pfontCfg = &fontCfg)
-				{
-					ImFont* ret = AddFontFromMemoryCompressedBase85TTFNative((ImFontAtlas*)pself, compressedFontDatabase85, sizePixels, (ImFontConfig*)pfontCfg, glyphRanges);
-					return ret;
-				}
 			}
 		}
 	}

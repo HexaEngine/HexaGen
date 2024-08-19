@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiMouseCursor_")]
+	[Flags]
 	public enum ImGuiMouseCursor : int
 	{
 		/// <summary>

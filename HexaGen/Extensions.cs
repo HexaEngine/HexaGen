@@ -9,6 +9,15 @@
 
     internal static class Extensions
     {
+        public static string FormatLocationAttribute(this CppElement element)
+        {
+            // TODO: refactor escape string etc.
+            var start = element.Span.Start;
+            var end = element.Span.End;
+            var file = element.SourceFile;
+            return $"[SourceLocation(\"{file}\", \"{start}\", \"{end}\")]";
+        }
+
         public static CallingConvention GetCallingConvention(this CppCallingConvention convention)
         {
             return convention switch

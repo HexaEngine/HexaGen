@@ -23,6 +23,194 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igSliderFloat2")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (float* pv = &v)
+			{
+				byte ret = SliderFloat2Native(label, (float*)pv, vMin, vMax, format, (ImGuiSliderFlags)(0));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax)
+		{
+			fixed (float* pv = &v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", (ImGuiSliderFlags)(0));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pv = &v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", flags);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ReadOnlySpan<float> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pv = v)
+			{
+				byte ret = SliderFloat2Native(label, (float*)pv, vMin, vMax, format, flags);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ReadOnlySpan<float> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (float* pv = v)
+			{
+				byte ret = SliderFloat2Native(label, (float*)pv, vMin, vMax, format, (ImGuiSliderFlags)(0));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ReadOnlySpan<float> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax)
+		{
+			fixed (float* pv = v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", (ImGuiSliderFlags)(0));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ReadOnlySpan<float> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (float* pv = v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", flags);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref Vector2 v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (Vector2* pv = &v)
+			{
+				byte ret = SliderFloat2Native(label, (float*)pv, vMin, vMax, format, flags);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref Vector2 v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (Vector2* pv = &v)
+			{
+				byte ret = SliderFloat2Native(label, (float*)pv, vMin, vMax, format, (ImGuiSliderFlags)(0));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref Vector2 v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax)
+		{
+			fixed (Vector2* pv = &v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", (ImGuiSliderFlags)(0));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref Vector2 v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (Vector2* pv = &v)
+			{
+				bool ret = SliderFloat2(label, (float*)pv, vMin, vMax, (string)"%.3f", flags);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pv = &v)
+				{
+					byte ret = SliderFloat2Native((byte*)plabel, (float*)pv, vMin, vMax, format, flags);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pv = &v)
+				{
+					byte ret = SliderFloat2Native((byte*)plabel, (float*)pv, vMin, vMax, format, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSliderFloat2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool SliderFloat2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float[2]")] ref float v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "float")] float vMax)
 		{
 			fixed (byte* plabel = &label)
@@ -4833,193 +5021,6 @@ namespace Hexa.NET.ImGui
 				{
 					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, vDegreesMin, (float)(+360.0f), format, flags);
 					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, (float)(-360.0f), (float)(+360.0f), format, flags);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "v_degrees_max")] [NativeName(NativeNameType.Type, "float")] float vDegreesMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, vDegreesMin, vDegreesMax, format, flags);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "v_degrees_max")] [NativeName(NativeNameType.Type, "float")] float vDegreesMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, vDegreesMin, vDegreesMax, format, (ImGuiSliderFlags)(0));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "v_degrees_max")] [NativeName(NativeNameType.Type, "float")] float vDegreesMax)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, vDegreesMin, vDegreesMax, (string)"%.0f deg", (ImGuiSliderFlags)(0));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, vDegreesMin, (float)(+360.0f), (string)"%.0f deg", (ImGuiSliderFlags)(0));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, (float)(-360.0f), (float)(+360.0f), (string)"%.0f deg", (ImGuiSliderFlags)(0));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, vDegreesMin, (float)(+360.0f), format, (ImGuiSliderFlags)(0));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					byte ret = SliderAngleNative((byte*)plabel, (float*)pvRad, (float)(-360.0f), (float)(+360.0f), format, (ImGuiSliderFlags)(0));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "v_degrees_max")] [NativeName(NativeNameType.Type, "float")] float vDegreesMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, vDegreesMin, vDegreesMax, (string)"%.0f deg", flags);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "v_degrees_min")] [NativeName(NativeNameType.Type, "float")] float vDegreesMin, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, vDegreesMin, (float)(+360.0f), (string)"%.0f deg", flags);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderAngle")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderAngle([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v_rad")] [NativeName(NativeNameType.Type, "float*")] ref float vRad, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pvRad = &vRad)
-				{
-					bool ret = SliderAngle((byte*)plabel, (float*)pvRad, (float)(-360.0f), (float)(+360.0f), (string)"%.0f deg", flags);
-					return ret;
 				}
 			}
 		}

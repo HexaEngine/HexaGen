@@ -19,6 +19,98 @@ namespace Hexa.NET.ImGui
 	{
 
 		/// <summary>
+		/// undo a SameLine() or force a new line when in a horizontal-layout context.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igNewLine")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void NewLine()
+		{
+			NewLineNative();
+		}
+
+		/// <summary>
+		/// add vertical spacing.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSpacing")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void SpacingNative()
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<void>)vt[109])();
+			#else
+			((delegate* unmanaged[Cdecl]<void>)vt[109])();
+			#endif
+		}
+
+		/// <summary>
+		/// add vertical spacing.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igSpacing")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Spacing()
+		{
+			SpacingNative();
+		}
+
+		/// <summary>
+		/// add a dummy item of given size. unlike InvisibleButton(), Dummy() won't take the mouse click or be navigable into.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDummy")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void DummyNative([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2, void>)vt[110])(size);
+			#else
+			((delegate* unmanaged[Cdecl]<Vector2, void>)vt[110])(size);
+			#endif
+		}
+
+		/// <summary>
+		/// add a dummy item of given size. unlike InvisibleButton(), Dummy() won't take the mouse click or be navigable into.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDummy")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Dummy([NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 size)
+		{
+			DummyNative(size);
+		}
+
+		/// <summary>
+		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igIndent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void IndentNative([NativeName(NativeNameType.Param, "indent_w")] [NativeName(NativeNameType.Type, "float")] float indentW)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<float, void>)vt[111])(indentW);
+			#else
+			((delegate* unmanaged[Cdecl]<float, void>)vt[111])(indentW);
+			#endif
+		}
+
+		/// <summary>
+		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igIndent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Indent([NativeName(NativeNameType.Param, "indent_w")] [NativeName(NativeNameType.Type, "float")] float indentW)
+		{
+			IndentNative(indentW);
+		}
+
+		/// <summary>
+		/// move content position toward the right, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igIndent")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Indent()
+		{
+			IndentNative((float)(0.0f));
+		}
+
+		/// <summary>
 		/// move content position back to the left, by indent_w, or style.IndentSpacing if indent_w &lt;= 0<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igUnindent")]
@@ -4921,102 +5013,6 @@ namespace Hexa.NET.ImGui
 				pStr0[pStrOffset0] = 0;
 			}
 			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, uv0, uv1, bgCol, (Vector4)(new Vector4(1,1,1,1)));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImageButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, uv0, uv1, (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImageButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, uv0, (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImageButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);

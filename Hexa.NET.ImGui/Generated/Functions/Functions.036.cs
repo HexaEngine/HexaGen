@@ -23,6 +23,202 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igInputDouble")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = &format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, (double)(0.0), (double)(0.0), (byte*)pformat, flags);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "double")] double stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, step, stepFast, (byte*)pformat, flags);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "double")] double stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, step, stepFast, (byte*)pformat, (ImGuiInputTextFlags)(0));
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, step, (double)(0.0), (byte*)pformat, (ImGuiInputTextFlags)(0));
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, (double)(0.0), (double)(0.0), (byte*)pformat, (ImGuiInputTextFlags)(0));
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, step, (double)(0.0), (byte*)pformat, flags);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (double* pv = &v)
+				{
+					fixed (byte* pformat = format)
+					{
+						byte ret = InputDoubleNative((byte*)plabel, (double*)pv, (double)(0.0), (double)(0.0), (byte*)pformat, flags);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "double")] double stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiInputTextFlags")] ImGuiInputTextFlags flags)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (double* pv = &v)
+			{
+				byte* pStr1 = null;
+				int pStrSize1 = 0;
+				if (format != null)
+				{
+					pStrSize1 = Utils.GetByteCountUTF8(format);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+					}
+					else
+					{
+						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+						pStr1 = pStrStack1;
+					}
+					int pStrOffset1 = Utils.EncodeStringUTF8(format, pStr1, pStrSize1);
+					pStr1[pStrOffset1] = 0;
+				}
+				byte ret = InputDoubleNative(pStr0, (double*)pv, step, stepFast, pStr1, flags);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igInputDouble")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool InputDouble([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "double*")] ref double v, [NativeName(NativeNameType.Param, "step")] [NativeName(NativeNameType.Type, "double")] double step, [NativeName(NativeNameType.Param, "step_fast")] [NativeName(NativeNameType.Type, "double")] double stepFast, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format)
 		{
 			byte* pStr0 = null;
@@ -4821,210 +5017,6 @@ namespace Hexa.NET.ImGui
 					byte ret = ColorPicker3Native((byte*)plabel, (float*)pcol, (ImGuiColorEditFlags)(0));
 					return ret != 0;
 				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ReadOnlySpan<float> col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pcol = col)
-				{
-					byte ret = ColorPicker3Native((byte*)plabel, (float*)pcol, flags);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ReadOnlySpan<float> col)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (float* pcol = col)
-				{
-					byte ret = ColorPicker3Native((byte*)plabel, (float*)pcol, (ImGuiColorEditFlags)(0));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ref Vector3 col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector3* pcol = &col)
-			{
-				byte ret = ColorPicker3Native(pStr0, (float*)pcol, flags);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[3]")] ref Vector3 col)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector3* pcol = &col)
-			{
-				byte ret = ColorPicker3Native(pStr0, (float*)pcol, (ImGuiColorEditFlags)(0));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ColorPicker4Native([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, float*, ImGuiColorEditFlags, float*, byte>)vt[203])(label, col, flags, refCol);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, ImGuiColorEditFlags, nint, byte>)vt[203])((nint)label, (nint)col, flags, (nint)refCol);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
-		{
-			byte ret = ColorPicker4Native(label, col, flags, refCol);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
-		{
-			byte ret = ColorPicker4Native(label, col, flags, (float*)(default));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col)
-		{
-			byte ret = ColorPicker4Native(label, col, (ImGuiColorEditFlags)(0), (float*)(default));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
-		{
-			byte ret = ColorPicker4Native(label, col, (ImGuiColorEditFlags)(0), refCol);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags, [NativeName(NativeNameType.Param, "ref_col")] [NativeName(NativeNameType.Type, "const float*")] float* refCol)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = ColorPicker4Native((byte*)plabel, col, flags, refCol);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiColorEditFlags")] ImGuiColorEditFlags flags)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = ColorPicker4Native((byte*)plabel, col, flags, (float*)(default));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igColorPicker4")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ColorPicker4([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "float[4]")] float* col)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = ColorPicker4Native((byte*)plabel, col, (ImGuiColorEditFlags)(0), (float*)(default));
-				return ret != 0;
 			}
 		}
 	}

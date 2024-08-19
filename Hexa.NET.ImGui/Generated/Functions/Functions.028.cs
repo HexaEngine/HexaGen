@@ -23,6 +23,188 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igDragIntRange2")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, (float)(1.0f), (int)(0), (int)(0), (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, (float)(1.0f), vMin, (int)(0), (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "int")] int vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, (float)(1.0f), vMin, vMax, (byte*)pformat, (byte*)pformatMax, (ImGuiSliderFlags)(0));
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, vSpeed, vMin, (int)(0), (byte*)pformat, (byte*)pformatMax, flags);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, vSpeed, (int)(0), (int)(0), (byte*)pformat, (byte*)pformatMax, flags);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, (float)(1.0f), (int)(0), (int)(0), (byte*)pformat, (byte*)pformatMax, flags);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (int* pvCurrentMin = &vCurrentMin)
+				{
+					fixed (int* pvCurrentMax = &vCurrentMax)
+					{
+						fixed (byte* pformat = &format)
+						{
+							fixed (byte* pformatMax = &formatMax)
+							{
+								byte ret = DragIntRange2Native((byte*)plabel, (int*)pvCurrentMin, (int*)pvCurrentMax, (float)(1.0f), vMin, (int)(0), (byte*)pformat, (byte*)pformatMax, flags);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragIntRange2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool DragIntRange2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "v_current_min")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMin, [NativeName(NativeNameType.Param, "v_current_max")] [NativeName(NativeNameType.Type, "int*")] ref int vCurrentMax, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "int")] int vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "format_max")] [NativeName(NativeNameType.Type, "const char*")] ref byte formatMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
 		{
 			fixed (byte* plabel = &label)
@@ -4842,182 +5024,6 @@ namespace Hexa.NET.ImGui
 		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax)
 		{
 			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, pMin, pMax, (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, pMin, (void*)(default), (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, (void*)(default), (void*)(default), (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), (void*)(default), (void*)(default), (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, (void*)(default), (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, pMax, (byte*)(default), (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, pMin, (void*)(default), format, (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, (void*)(default), (void*)(default), format, (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), (void*)(default), (void*)(default), format, (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, (void*)(default), format, (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, pMax, format, (ImGuiSliderFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, pMin, pMax, (byte*)(default), flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, pMin, (void*)(default), (byte*)(default), flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, vSpeed, (void*)(default), (void*)(default), (byte*)(default), flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), (void*)(default), (void*)(default), (byte*)(default), flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, (void*)(default), (byte*)(default), flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragScalarN")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragScalarN([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "components")] [NativeName(NativeNameType.Type, "int")] int components, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragScalarNNative(label, dataType, pData, components, (float)(1.0f), pMin, pMax, (byte*)(default), flags);
 			return ret != 0;
 		}
 	}

@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiTreeNodeFlags_")]
+	[Flags]
 	public enum ImGuiTreeNodeFlags : int
 	{
 		/// <summary>

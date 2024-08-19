@@ -23,6 +23,91 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igDragInt2")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (int* pv = v)
+				{
+					byte ret = DragInt2Native((byte*)plabel, (int*)pv, (float)(1.0f), (int)(0), (int)(0), format, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragInt2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (int* pv = v)
+				{
+					byte ret = DragInt2Native((byte*)plabel, (int*)pv, (float)(1.0f), vMin, (int)(0), format, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragInt2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "int")] int vMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (int* pv = v)
+				{
+					byte ret = DragInt2Native((byte*)plabel, (int*)pv, (float)(1.0f), vMin, vMax, format, (ImGuiSliderFlags)(0));
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragInt2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "int")] int vMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (int* pv = v)
+				{
+					bool ret = DragInt2((byte*)plabel, (int*)pv, vSpeed, vMin, vMax, (string)"%d", flags);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragInt2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (int* pv = v)
+				{
+					bool ret = DragInt2((byte*)plabel, (int*)pv, vSpeed, vMin, (int)(0), (string)"%d", flags);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDragInt2")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool DragInt2([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[2]")] ReadOnlySpan<int> v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
 		{
 			fixed (byte* plabel = label)
@@ -4932,94 +5017,6 @@ namespace Hexa.NET.ImGui
 		{
 			bool ret = DragInt3(label, v, vSpeed, vMin, (int)(0), (string)"%d", flags);
 			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			bool ret = DragInt3(label, v, vSpeed, (int)(0), (int)(0), (string)"%d", flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			bool ret = DragInt3(label, v, (float)(1.0f), (int)(0), (int)(0), (string)"%d", flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			bool ret = DragInt3(label, v, (float)(1.0f), vMin, (int)(0), (string)"%d", flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "v_max")] [NativeName(NativeNameType.Type, "int")] int vMax, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			bool ret = DragInt3(label, v, (float)(1.0f), vMin, vMax, (string)"%d", flags);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragInt3Native(label, v, vSpeed, vMin, (int)(0), format, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragInt3Native(label, v, vSpeed, (int)(0), (int)(0), format, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragInt3Native(label, v, (float)(1.0f), (int)(0), (int)(0), format, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragInt3")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragInt3([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "int[3]")] int* v, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "int")] int vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragInt3Native(label, v, (float)(1.0f), vMin, (int)(0), format, flags);
-			return ret != 0;
 		}
 	}
 }

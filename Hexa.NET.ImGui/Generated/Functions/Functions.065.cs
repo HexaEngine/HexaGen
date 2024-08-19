@@ -21,6 +21,4847 @@ namespace Hexa.NET.ImGui
 		/// <summary>
 		/// To be documented.
 		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarFindMostRecentlySelectedTabForActiveWindow")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		internal static ImGuiTabItem* TabBarFindMostRecentlySelectedTabForActiveWindowNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*>)vt[1282])(tabBar);
+			#else
+			return (ImGuiTabItem*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[1282])((nint)tabBar);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarFindMostRecentlySelectedTabForActiveWindow")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		public static ImGuiTabItem* TabBarFindMostRecentlySelectedTabForActiveWindow([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			ImGuiTabItem* ret = TabBarFindMostRecentlySelectedTabForActiveWindowNative(tabBar);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarFindMostRecentlySelectedTabForActiveWindow")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		public static ImGuiTabItem* TabBarFindMostRecentlySelectedTabForActiveWindow([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				ImGuiTabItem* ret = TabBarFindMostRecentlySelectedTabForActiveWindowNative((ImGuiTabBar*)ptabBar);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetCurrentTab")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		internal static ImGuiTabItem* TabBarGetCurrentTabNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*>)vt[1283])(tabBar);
+			#else
+			return (ImGuiTabItem*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[1283])((nint)tabBar);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetCurrentTab")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		public static ImGuiTabItem* TabBarGetCurrentTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			ImGuiTabItem* ret = TabBarGetCurrentTabNative(tabBar);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetCurrentTab")]
+		[return: NativeName(NativeNameType.Type, "ImGuiTabItem*")]
+		public static ImGuiTabItem* TabBarGetCurrentTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				ImGuiTabItem* ret = TabBarGetCurrentTabNative((ImGuiTabBar*)ptabBar);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabOrder")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		internal static int TabBarGetTabOrderNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, int>)vt[1284])(tabBar, tab);
+			#else
+			return (int)((delegate* unmanaged[Cdecl]<nint, nint, int>)vt[1284])((nint)tabBar, (nint)tab);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabOrder")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int TabBarGetTabOrder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			int ret = TabBarGetTabOrderNative(tabBar, tab);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabOrder")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int TabBarGetTabOrder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				int ret = TabBarGetTabOrderNative((ImGuiTabBar*)ptabBar, tab);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabOrder")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int TabBarGetTabOrder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				int ret = TabBarGetTabOrderNative(tabBar, (ImGuiTabItem*)ptab);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabOrder")]
+		[return: NativeName(NativeNameType.Type, "int")]
+		public static int TabBarGetTabOrder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					int ret = TabBarGetTabOrderNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		internal static byte* TabBarGetTabNameNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, byte*>)vt[1285])(tabBar, tab);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, nint>)vt[1285])((nint)tabBar, (nint)tab);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* TabBarGetTabName([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			byte* ret = TabBarGetTabNameNative(tabBar, tab);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string TabBarGetTabNameS([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			string ret = Utils.DecodeStringUTF8(TabBarGetTabNameNative(tabBar, tab));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* TabBarGetTabName([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte* ret = TabBarGetTabNameNative((ImGuiTabBar*)ptabBar, tab);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string TabBarGetTabNameS([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				string ret = Utils.DecodeStringUTF8(TabBarGetTabNameNative((ImGuiTabBar*)ptabBar, tab));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* TabBarGetTabName([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				byte* ret = TabBarGetTabNameNative(tabBar, (ImGuiTabItem*)ptab);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string TabBarGetTabNameS([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				string ret = Utils.DecodeStringUTF8(TabBarGetTabNameNative(tabBar, (ImGuiTabItem*)ptab));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* TabBarGetTabName([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					byte* ret = TabBarGetTabNameNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarGetTabName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string TabBarGetTabNameS([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					string ret = Utils.DecodeStringUTF8(TabBarGetTabNameNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarAddTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarAddTabNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab_flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags tabFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItemFlags, ImGuiWindow*, void>)vt[1286])(tabBar, tabFlags, window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImGuiTabItemFlags, nint, void>)vt[1286])((nint)tabBar, tabFlags, (nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarAddTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarAddTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab_flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags tabFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			TabBarAddTabNative(tabBar, tabFlags, window);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarAddTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarAddTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab_flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags tabFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarAddTabNative((ImGuiTabBar*)ptabBar, tabFlags, window);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarAddTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarAddTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab_flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags tabFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window)
+		{
+			fixed (ImGuiWindow* pwindow = &window)
+			{
+				TabBarAddTabNative(tabBar, tabFlags, (ImGuiWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarAddTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarAddTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab_flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags tabFlags, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiWindow* pwindow = &window)
+				{
+					TabBarAddTabNative((ImGuiTabBar*)ptabBar, tabFlags, (ImGuiWindow*)pwindow);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarRemoveTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarRemoveTabNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, uint, void>)vt[1287])(tabBar, tabId);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, uint, void>)vt[1287])((nint)tabBar, tabId);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarRemoveTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarRemoveTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId)
+		{
+			TabBarRemoveTabNative(tabBar, tabId);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarRemoveTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarRemoveTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarRemoveTabNative((ImGuiTabBar*)ptabBar, tabId);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarCloseTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarCloseTabNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, void>)vt[1288])(tabBar, tab);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, void>)vt[1288])((nint)tabBar, (nint)tab);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarCloseTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarCloseTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			TabBarCloseTabNative(tabBar, tab);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarCloseTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarCloseTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarCloseTabNative((ImGuiTabBar*)ptabBar, tab);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarCloseTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarCloseTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				TabBarCloseTabNative(tabBar, (ImGuiTabItem*)ptab);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarCloseTab")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarCloseTab([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					TabBarCloseTabNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueFocus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarQueueFocusNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, void>)vt[1289])(tabBar, tab);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, void>)vt[1289])((nint)tabBar, (nint)tab);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueFocus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueFocus([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			TabBarQueueFocusNative(tabBar, tab);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueFocus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueFocus([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarQueueFocusNative((ImGuiTabBar*)ptabBar, tab);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueFocus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueFocus([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				TabBarQueueFocusNative(tabBar, (ImGuiTabItem*)ptab);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueFocus")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueFocus([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					TabBarQueueFocusNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorder")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarQueueReorderNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "int")] int offset)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, int, void>)vt[1290])(tabBar, tab, offset);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, int, void>)vt[1290])((nint)tabBar, (nint)tab, offset);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorder")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "int")] int offset)
+		{
+			TabBarQueueReorderNative(tabBar, tab, offset);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorder")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "int")] int offset)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarQueueReorderNative((ImGuiTabBar*)ptabBar, tab, offset);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorder")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "int")] int offset)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				TabBarQueueReorderNative(tabBar, (ImGuiTabItem*)ptab, offset);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorder")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab, [NativeName(NativeNameType.Param, "offset")] [NativeName(NativeNameType.Type, "int")] int offset)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					TabBarQueueReorderNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab, offset);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorderFromMousePos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabBarQueueReorderFromMousePosNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "mouse_pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 mousePos)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImGuiTabBar*, ImGuiTabItem*, Vector2, void>)vt[1291])(tabBar, tab, mousePos);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, Vector2, void>)vt[1291])((nint)tabBar, (nint)tab, mousePos);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorderFromMousePos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorderFromMousePos([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "mouse_pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 mousePos)
+		{
+			TabBarQueueReorderFromMousePosNative(tabBar, tab, mousePos);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorderFromMousePos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorderFromMousePos([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ImGuiTabItem* tab, [NativeName(NativeNameType.Param, "mouse_pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 mousePos)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				TabBarQueueReorderFromMousePosNative((ImGuiTabBar*)ptabBar, tab, mousePos);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorderFromMousePos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorderFromMousePos([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab, [NativeName(NativeNameType.Param, "mouse_pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 mousePos)
+		{
+			fixed (ImGuiTabItem* ptab = &tab)
+			{
+				TabBarQueueReorderFromMousePosNative(tabBar, (ImGuiTabItem*)ptab, mousePos);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarQueueReorderFromMousePos")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabBarQueueReorderFromMousePos([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "tab")] [NativeName(NativeNameType.Type, "ImGuiTabItem*")] ref ImGuiTabItem tab, [NativeName(NativeNameType.Param, "mouse_pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 mousePos)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiTabItem* ptab = &tab)
+				{
+					TabBarQueueReorderFromMousePosNative((ImGuiTabBar*)ptabBar, (ImGuiTabItem*)ptab, mousePos);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarProcessReorder")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte TabBarProcessReorderNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, byte>)vt[1292])(tabBar);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[1292])((nint)tabBar);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarProcessReorder")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabBarProcessReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar)
+		{
+			byte ret = TabBarProcessReorderNative(tabBar);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabBarProcessReorder")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabBarProcessReorder([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte ret = TabBarProcessReorderNative((ImGuiTabBar*)ptabBar);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte TabItemExNative([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImGuiTabBar*, byte*, bool*, ImGuiTabItemFlags, ImGuiWindow*, byte>)vt[1293])(tabBar, label, pOpen, flags, dockedWindow);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, nint, ImGuiTabItemFlags, nint, byte>)vt[1293])((nint)tabBar, (nint)label, (nint)pOpen, flags, (nint)dockedWindow);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			byte ret = TabItemExNative(tabBar, label, pOpen, flags, dockedWindow);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, label, pOpen, flags, dockedWindow);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (byte* plabel = &label)
+			{
+				byte ret = TabItemExNative(tabBar, (byte*)plabel, pOpen, flags, dockedWindow);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (byte* plabel = label)
+			{
+				byte ret = TabItemExNative(tabBar, (byte*)plabel, pOpen, flags, dockedWindow);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = TabItemExNative(tabBar, pStr0, pOpen, flags, dockedWindow);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = &label)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, pOpen, flags, dockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = label)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, pOpen, flags, dockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, pStr0, pOpen, flags, dockedWindow);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (bool* ppOpen = &pOpen)
+			{
+				byte ret = TabItemExNative(tabBar, label, (bool*)ppOpen, flags, dockedWindow);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, label, (bool*)ppOpen, flags, dockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					byte ret = TabItemExNative(tabBar, (byte*)plabel, (bool*)ppOpen, flags, dockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					byte ret = TabItemExNative(tabBar, (byte*)plabel, (bool*)ppOpen, flags, dockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (bool* ppOpen = &pOpen)
+			{
+				byte ret = TabItemExNative(tabBar, pStr0, (bool*)ppOpen, flags, dockedWindow);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (bool* ppOpen = &pOpen)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, (bool*)ppOpen, flags, dockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (bool* ppOpen = &pOpen)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, (bool*)ppOpen, flags, dockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (bool* ppOpen = &pOpen)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, pStr0, (bool*)ppOpen, flags, dockedWindow);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+			{
+				byte ret = TabItemExNative(tabBar, label, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, label, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative(tabBar, (byte*)plabel, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative(tabBar, (byte*)plabel, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+			{
+				byte ret = TabItemExNative(tabBar, pStr0, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] bool* pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, pStr0, pOpen, flags, (ImGuiWindow*)pdockedWindow);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (bool* ppOpen = &pOpen)
+			{
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative(tabBar, label, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, label, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative(tabBar, (byte*)plabel, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (bool* ppOpen = &pOpen)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative(tabBar, (byte*)plabel, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ImGuiTabBar* tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (bool* ppOpen = &pOpen)
+			{
+				fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+				{
+					byte ret = TabItemExNative(tabBar, pStr0, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (bool* ppOpen = &pOpen)
+					{
+						fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+						{
+							byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (bool* ppOpen = &pOpen)
+					{
+						fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+						{
+							byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, (byte*)plabel, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemEx")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool TabItemEx([NativeName(NativeNameType.Param, "tab_bar")] [NativeName(NativeNameType.Type, "ImGuiTabBar*")] ref ImGuiTabBar tabBar, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "p_open")] [NativeName(NativeNameType.Type, "bool*")] ref bool pOpen, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "docked_window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow dockedWindow)
+		{
+			fixed (ImGuiTabBar* ptabBar = &tabBar)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (bool* ppOpen = &pOpen)
+				{
+					fixed (ImGuiWindow* pdockedWindow = &dockedWindow)
+					{
+						byte ret = TabItemExNative((ImGuiTabBar*)ptabBar, pStr0, (bool*)ppOpen, flags, (ImGuiWindow*)pdockedWindow);
+						if (pStrSize0 >= Utils.MaxStackallocSize)
+						{
+							Utils.Free(pStr0);
+						}
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabItemCalcSizeNative([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] byte hasCloseButtonOrUnsavedMarker)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2*, byte*, byte, void>)vt[1294])(pOut, label, hasCloseButtonOrUnsavedMarker);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, byte, void>)vt[1294])((nint)pOut, (nint)label, hasCloseButtonOrUnsavedMarker);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSize([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			Vector2 ret;
+			TabItemCalcSizeNative(&ret, label, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			TabItemCalcSizeNative(pOut, label, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				TabItemCalcSizeNative((Vector2*)ppOut, label, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSize([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (byte* plabel = &label)
+			{
+				Vector2 ret;
+				TabItemCalcSizeNative(&ret, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSize([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (byte* plabel = label)
+			{
+				Vector2 ret;
+				TabItemCalcSizeNative(&ret, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSize([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			Vector2 ret;
+			TabItemCalcSizeNative(&ret, pStr0, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				fixed (byte* plabel = &label)
+				{
+					TabItemCalcSizeNative((Vector2*)ppOut, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				fixed (byte* plabel = label)
+				{
+					TabItemCalcSizeNative((Vector2*)ppOut, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				TabItemCalcSizeNative((Vector2*)ppOut, pStr0, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (byte* plabel = &label)
+			{
+				TabItemCalcSizeNative(pOut, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			fixed (byte* plabel = label)
+			{
+				TabItemCalcSizeNative(pOut, (byte*)plabel, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_Str")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSize([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "has_close_button_or_unsaved_marker")] [NativeName(NativeNameType.Type, "bool")] bool hasCloseButtonOrUnsavedMarker)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			TabItemCalcSizeNative(pOut, pStr0, hasCloseButtonOrUnsavedMarker ? (byte)1 : (byte)0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabItemCalcSizeWindowPtrNative([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2*, ImGuiWindow*, void>)vt[1295])(pOut, window);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, void>)vt[1295])((nint)pOut, (nint)window);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			Vector2 ret;
+			TabItemCalcSizeWindowPtrNative(&ret, window);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			TabItemCalcSizeWindowPtrNative(pOut, window);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				TabItemCalcSizeWindowPtrNative((Vector2*)ppOut, window);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window)
+		{
+			fixed (ImGuiWindow* pwindow = &window)
+			{
+				Vector2 ret;
+				TabItemCalcSizeWindowPtrNative(&ret, (ImGuiWindow*)pwindow);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window)
+		{
+			fixed (ImGuiWindow* pwindow = &window)
+			{
+				TabItemCalcSizeWindowPtrNative(pOut, (ImGuiWindow*)pwindow);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemCalcSize_WindowPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemCalcSizeWindowPtr([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window)
+		{
+			fixed (Vector2* ppOut = &pOut)
+			{
+				fixed (ImGuiWindow* pwindow = &window)
+				{
+					TabItemCalcSizeWindowPtrNative((Vector2*)ppOut, (ImGuiWindow*)pwindow);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemBackground")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabItemBackgroundNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, ImRect, ImGuiTabItemFlags, uint, void>)vt[1296])(drawList, bb, flags, col);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImRect, ImGuiTabItemFlags, uint, void>)vt[1296])((nint)drawList, bb, flags, col);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemBackground")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemBackground([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			TabItemBackgroundNative(drawList, bb, flags, col);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemBackground")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemBackground([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				TabItemBackgroundNative((ImDrawList*)pdrawList, bb, flags, col);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void TabItemLabelAndCloseButtonNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] byte isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, ImRect, ImGuiTabItemFlags, Vector2, byte*, uint, uint, byte, bool*, bool*, void>)vt[1297])(drawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible, outJustClosed, outTextClipped);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, ImRect, ImGuiTabItemFlags, Vector2, nint, uint, uint, byte, nint, nint, void>)vt[1297])((nint)drawList, bb, flags, framePadding, (nint)label, tabId, closeButtonId, isContentsVisible, (nint)outJustClosed, (nint)outTextClipped);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (byte* plabel = &label)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (byte* plabel = label)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = &label)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = label)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, outTextClipped);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (bool* poutJustClosed = &outJustClosed)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (bool* poutJustClosed = &outJustClosed)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (bool* poutJustClosed = &outJustClosed)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (bool* poutJustClosed = &outJustClosed)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] bool* outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, outTextClipped);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (bool* poutTextClipped = &outTextClipped)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (bool* poutTextClipped = &outTextClipped)
+			{
+				TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] bool* outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, outJustClosed, (bool*)poutTextClipped);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (bool* poutJustClosed = &outJustClosed)
+			{
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, label, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (byte* plabel = label)
+			{
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (label != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(label);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (bool* poutJustClosed = &outJustClosed)
+			{
+				fixed (bool* poutTextClipped = &outTextClipped)
+				{
+					TabItemLabelAndCloseButtonNative(drawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = &label)
+				{
+					fixed (bool* poutJustClosed = &outJustClosed)
+					{
+						fixed (bool* poutTextClipped = &outTextClipped)
+						{
+							TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* plabel = label)
+				{
+					fixed (bool* poutJustClosed = &outJustClosed)
+					{
+						fixed (bool* poutTextClipped = &outTextClipped)
+						{
+							TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, (byte*)plabel, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igTabItemLabelAndCloseButton")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void TabItemLabelAndCloseButton([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTabItemFlags")] ImGuiTabItemFlags flags, [NativeName(NativeNameType.Param, "frame_padding")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 framePadding, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "tab_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint tabId, [NativeName(NativeNameType.Param, "close_button_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint closeButtonId, [NativeName(NativeNameType.Param, "is_contents_visible")] [NativeName(NativeNameType.Type, "bool")] bool isContentsVisible, [NativeName(NativeNameType.Param, "out_just_closed")] [NativeName(NativeNameType.Type, "bool*")] ref bool outJustClosed, [NativeName(NativeNameType.Param, "out_text_clipped")] [NativeName(NativeNameType.Type, "bool*")] ref bool outTextClipped)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (label != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(label);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (bool* poutJustClosed = &outJustClosed)
+				{
+					fixed (bool* poutTextClipped = &outTextClipped)
+					{
+						TabItemLabelAndCloseButtonNative((ImDrawList*)pdrawList, bb, flags, framePadding, pStr0, tabId, closeButtonId, isContentsVisible ? (byte)1 : (byte)0, (bool*)poutJustClosed, (bool*)poutTextClipped);
+						if (pStrSize0 >= Utils.MaxStackallocSize)
+						{
+							Utils.Free(pStr0);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void RenderTextNative([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] byte hideTextAfterHash)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2, byte*, byte*, byte, void>)vt[1298])(pos, text, textEnd, hideTextAfterHash);
+			#else
+			((delegate* unmanaged[Cdecl]<Vector2, nint, nint, byte, void>)vt[1298])(pos, (nint)text, (nint)textEnd, hideTextAfterHash);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			RenderTextNative(pos, text, textEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptext = &text)
+			{
+				RenderTextNative(pos, (byte*)ptext, textEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptext = text)
+			{
+				RenderTextNative(pos, (byte*)ptext, textEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextNative(pos, pStr0, textEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				RenderTextNative(pos, text, (byte*)ptextEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				RenderTextNative(pos, text, (byte*)ptextEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextNative(pos, text, pStr0, hideTextAfterHash ? (byte)1 : (byte)0);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					RenderTextNative(pos, (byte*)ptext, (byte*)ptextEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					RenderTextNative(pos, (byte*)ptext, (byte*)ptextEnd, hideTextAfterHash ? (byte)1 : (byte)0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderText")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderText([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "hide_text_after_hash")] [NativeName(NativeNameType.Type, "bool")] bool hideTextAfterHash)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			RenderTextNative(pos, pStr0, pStr1, hideTextAfterHash ? (byte)1 : (byte)0);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void RenderTextWrappedNative([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2, byte*, byte*, float, void>)vt[1299])(pos, text, textEnd, wrapWidth);
+			#else
+			((delegate* unmanaged[Cdecl]<Vector2, nint, nint, float, void>)vt[1299])(pos, (nint)text, (nint)textEnd, wrapWidth);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			RenderTextWrappedNative(pos, text, textEnd, wrapWidth);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptext = &text)
+			{
+				RenderTextWrappedNative(pos, (byte*)ptext, textEnd, wrapWidth);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptext = text)
+			{
+				RenderTextWrappedNative(pos, (byte*)ptext, textEnd, wrapWidth);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextWrappedNative(pos, pStr0, textEnd, wrapWidth);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				RenderTextWrappedNative(pos, text, (byte*)ptextEnd, wrapWidth);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				RenderTextWrappedNative(pos, text, (byte*)ptextEnd, wrapWidth);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextWrappedNative(pos, text, pStr0, wrapWidth);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					RenderTextWrappedNative(pos, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					RenderTextWrappedNative(pos, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextWrapped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextWrapped([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			RenderTextWrappedNative(pos, pStr0, pStr1, wrapWidth);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void RenderTextClippedNative([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2, Vector2, byte*, byte*, Vector2*, Vector2, ImRect*, void>)vt[1300])(posMin, posMax, text, textEnd, textSizeIfKnown, align, clipRect);
+			#else
+			((delegate* unmanaged[Cdecl]<Vector2, Vector2, nint, nint, nint, Vector2, nint, void>)vt[1300])(posMin, posMax, (nint)text, (nint)textEnd, (nint)textSizeIfKnown, align, (nint)clipRect);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			RenderTextClippedNative(posMin, posMax, text, textEnd, textSizeIfKnown, align, clipRect);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextClippedNative(posMin, posMax, pStr0, textEnd, textSizeIfKnown, align, clipRect);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextClippedNative(posMin, posMax, text, pStr0, textSizeIfKnown, align, clipRect);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			RenderTextClippedNative(posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, clipRect);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedNative(posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedNative(posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedNative(posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedNative(posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (ImRect* pclipRect = &clipRect)
+			{
+				RenderTextClippedNative(posMin, posMax, text, textEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (ImRect* pclipRect = &clipRect)
+			{
+				RenderTextClippedNative(posMin, posMax, pStr0, textEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (ImRect* pclipRect = &clipRect)
+			{
+				RenderTextClippedNative(posMin, posMax, text, pStr0, textSizeIfKnown, align, (ImRect*)pclipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			fixed (ImRect* pclipRect = &clipRect)
+			{
+				RenderTextClippedNative(posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, (ImRect*)pclipRect);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					fixed (ImRect* pclipRect = &clipRect)
+					{
+						RenderTextClippedNative(posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						fixed (ImRect* pclipRect = &clipRect)
+						{
+							RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						fixed (ImRect* pclipRect = &clipRect)
+						{
+							RenderTextClippedNative(posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClipped")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClipped([NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				fixed (ImRect* pclipRect = &clipRect)
+				{
+					RenderTextClippedNative(posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr1);
+					}
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void RenderTextClippedExNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, byte*, byte*, Vector2*, Vector2, ImRect*, void>)vt[1301])(drawList, posMin, posMax, text, textEnd, textSizeIfKnown, align, clipRect);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, nint, nint, nint, Vector2, nint, void>)vt[1301])((nint)drawList, posMin, posMax, (nint)text, (nint)textEnd, (nint)textSizeIfKnown, align, (nint)clipRect);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			RenderTextClippedExNative(drawList, posMin, posMax, text, textEnd, textSizeIfKnown, align, clipRect);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, textEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextClippedExNative(drawList, posMin, posMax, pStr0, textEnd, textSizeIfKnown, align, clipRect);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = &text)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = text)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (text != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(text);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, textEnd, textSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			RenderTextClippedExNative(drawList, posMin, posMax, text, pStr0, textSizeIfKnown, align, clipRect);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textEnd != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, pStr0, textSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			RenderTextClippedExNative(drawList, posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, clipRect);
+			if (pStrSize1 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr1);
+			}
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = &text)
+				{
+					fixed (byte* ptextEnd = &textEnd)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = text)
+				{
+					fixed (byte* ptextEnd = textEnd)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (text != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(text);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte* pStr1 = null;
+				int pStrSize1 = 0;
+				if (textEnd != null)
+				{
+					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+					}
+					else
+					{
+						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+						pStr1 = pStrStack1;
+					}
+					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+					pStr1[pStrOffset1] = 0;
+				}
+				RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, clipRect);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = &text)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = text)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (text != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(text);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textEnd != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = &text)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (byte* ptext = text)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+					{
+						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (text != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(text);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte* pStr1 = null;
+			int pStrSize1 = 0;
+			if (textEnd != null)
+			{
+				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+				}
+				else
+				{
+					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+					pStr1 = pStrStack1;
+				}
+				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+				pStr1[pStrOffset1] = 0;
+			}
+			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+			{
+				RenderTextClippedExNative(drawList, posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, clipRect);
+				if (pStrSize1 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr1);
+				}
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = &text)
+				{
+					fixed (byte* ptextEnd = &textEnd)
+					{
+						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+						{
+							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				fixed (byte* ptext = text)
+				{
+					fixed (byte* ptextEnd = textEnd)
+					{
+						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+						{
+							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, clipRect);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ImRect* clipRect)
+		{
+			fixed (ImDrawList* pdrawList = &drawList)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (text != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(text);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				byte* pStr1 = null;
+				int pStrSize1 = 0;
+				if (textEnd != null)
+				{
+					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
+					}
+					else
+					{
+						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
+						pStr1 = pStrStack1;
+					}
+					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
+					pStr1[pStrOffset1] = 0;
+				}
+				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
+				{
+					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, clipRect);
+					if (pStrSize1 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr1);
+					}
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						Utils.Free(pStr0);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
 		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
 		[return: NativeName(NativeNameType.Type, "void")]
 		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
@@ -186,4836 +5027,6 @@ namespace Hexa.NET.ImGui
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (ImRect* pclipRect = &clipRect)
-			{
-				RenderTextClippedExNative(drawList, posMin, posMax, text, pStr0, textSizeIfKnown, align, (ImRect*)pclipRect);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, pStr0, textSizeIfKnown, align, (ImRect*)pclipRect);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			fixed (ImRect* pclipRect = &clipRect)
-			{
-				RenderTextClippedExNative(drawList, posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, (ImRect*)pclipRect);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, pStr1, textSizeIfKnown, align, (ImRect*)pclipRect);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, textEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative(drawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, text, pStr0, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						fixed (ImRect* pclipRect = &clipRect)
-						{
-							RenderTextClippedExNative(drawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				fixed (ImRect* pclipRect = &clipRect)
-				{
-					RenderTextClippedExNative(drawList, posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-						{
-							fixed (ImRect* pclipRect = &clipRect)
-							{
-								RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-						{
-							fixed (ImRect* pclipRect = &clipRect)
-							{
-								RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextClippedEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextClippedEx([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown, [NativeName(NativeNameType.Param, "align")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 align, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImRect*")] ref ImRect clipRect)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					fixed (ImRect* pclipRect = &clipRect)
-					{
-						RenderTextClippedExNative((ImDrawList*)pdrawList, posMin, posMax, pStr0, pStr1, (Vector2*)ptextSizeIfKnown, align, (ImRect*)pclipRect);
-						if (pStrSize1 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr1);
-						}
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderTextEllipsisNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, float, float, byte*, byte*, Vector2*, void>)vt[1302])(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, textEnd, textSizeIfKnown);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, float, float, nint, nint, nint, void>)vt[1302])((nint)drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (nint)text, (nint)textEnd, (nint)textSizeIfKnown);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, textEnd, textSizeIfKnown);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, textEnd, textSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptext = &text)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, textSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptext = text)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, textSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, textEnd, textSizeIfKnown);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, textEnd, textSizeIfKnown);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, textSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, textSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, pStr0, textSizeIfKnown);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, pStr0, textSizeIfKnown);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, pStr1, textSizeIfKnown);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, textSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] Vector2* textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, pStr1, textSizeIfKnown);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, textEnd, (Vector2*)ptextSizeIfKnown);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, textEnd, (Vector2*)ptextSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, textEnd, (Vector2*)ptextSizeIfKnown);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, textEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, textEnd, (Vector2*)ptextSizeIfKnown);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, pStr0, (Vector2*)ptextSizeIfKnown);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, text, pStr0, (Vector2*)ptextSizeIfKnown);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-					{
-						RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-			{
-				RenderTextEllipsisNative(drawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, pStr1, (Vector2*)ptextSizeIfKnown);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-						{
-							RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-						{
-							RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, (byte*)ptext, (byte*)ptextEnd, (Vector2*)ptextSizeIfKnown);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderTextEllipsis")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderTextEllipsis([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos_min")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMin, [NativeName(NativeNameType.Param, "pos_max")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 posMax, [NativeName(NativeNameType.Param, "clip_max_x")] [NativeName(NativeNameType.Type, "float")] float clipMaxX, [NativeName(NativeNameType.Param, "ellipsis_max_x")] [NativeName(NativeNameType.Type, "float")] float ellipsisMaxX, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "text_size_if_known")] [NativeName(NativeNameType.Type, "const ImVec2*")] ref Vector2 textSizeIfKnown)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				fixed (Vector2* ptextSizeIfKnown = &textSizeIfKnown)
-				{
-					RenderTextEllipsisNative((ImDrawList*)pdrawList, posMin, posMax, clipMaxX, ellipsisMaxX, pStr0, pStr1, (Vector2*)ptextSizeIfKnown);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderFrame")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderFrameNative([NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "fill_col")] [NativeName(NativeNameType.Type, "ImU32")] uint fillCol, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "bool")] byte border, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<Vector2, Vector2, uint, byte, float, void>)vt[1303])(pMin, pMax, fillCol, border, rounding);
-			#else
-			((delegate* unmanaged[Cdecl]<Vector2, Vector2, uint, byte, float, void>)vt[1303])(pMin, pMax, fillCol, border, rounding);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderFrame")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderFrame([NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "fill_col")] [NativeName(NativeNameType.Type, "ImU32")] uint fillCol, [NativeName(NativeNameType.Param, "border")] [NativeName(NativeNameType.Type, "bool")] bool border, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			RenderFrameNative(pMin, pMax, fillCol, border ? (byte)1 : (byte)0, rounding);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderFrameBorder")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderFrameBorderNative([NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<Vector2, Vector2, float, void>)vt[1304])(pMin, pMax, rounding);
-			#else
-			((delegate* unmanaged[Cdecl]<Vector2, Vector2, float, void>)vt[1304])(pMin, pMax, rounding);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderFrameBorder")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderFrameBorder([NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			RenderFrameBorderNative(pMin, pMax, rounding);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderColorRectWithAlphaCheckerboard")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderColorRectWithAlphaCheckerboardNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "fill_col")] [NativeName(NativeNameType.Type, "ImU32")] uint fillCol, [NativeName(NativeNameType.Param, "grid_step")] [NativeName(NativeNameType.Type, "float")] float gridStep, [NativeName(NativeNameType.Param, "grid_off")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 gridOff, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, uint, float, Vector2, float, ImDrawFlags, void>)vt[1305])(drawList, pMin, pMax, fillCol, gridStep, gridOff, rounding, flags);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, uint, float, Vector2, float, ImDrawFlags, void>)vt[1305])((nint)drawList, pMin, pMax, fillCol, gridStep, gridOff, rounding, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderColorRectWithAlphaCheckerboard")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderColorRectWithAlphaCheckerboard([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "fill_col")] [NativeName(NativeNameType.Type, "ImU32")] uint fillCol, [NativeName(NativeNameType.Param, "grid_step")] [NativeName(NativeNameType.Type, "float")] float gridStep, [NativeName(NativeNameType.Param, "grid_off")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 gridOff, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			RenderColorRectWithAlphaCheckerboardNative(drawList, pMin, pMax, fillCol, gridStep, gridOff, rounding, flags);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderColorRectWithAlphaCheckerboard")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderColorRectWithAlphaCheckerboard([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMax, [NativeName(NativeNameType.Param, "fill_col")] [NativeName(NativeNameType.Type, "ImU32")] uint fillCol, [NativeName(NativeNameType.Param, "grid_step")] [NativeName(NativeNameType.Type, "float")] float gridStep, [NativeName(NativeNameType.Param, "grid_off")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 gridOff, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderColorRectWithAlphaCheckerboardNative((ImDrawList*)pdrawList, pMin, pMax, fillCol, gridStep, gridOff, rounding, flags);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderNavHighlight")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderNavHighlightNative([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiNavHighlightFlags")] ImGuiNavHighlightFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiNavHighlightFlags, void>)vt[1306])(bb, id, flags);
-			#else
-			((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiNavHighlightFlags, void>)vt[1306])(bb, id, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderNavHighlight")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderNavHighlight([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiNavHighlightFlags")] ImGuiNavHighlightFlags flags)
-		{
-			RenderNavHighlightNative(bb, id, flags);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* FindRenderedTextEndNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, byte*>)vt[1307])(text, textEnd);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint, nint>)vt[1307])((nint)text, (nint)textEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			byte* ret = FindRenderedTextEndNative(text, textEnd);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(text, textEnd));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				byte* ret = FindRenderedTextEndNative((byte*)ptext, textEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative((byte*)ptext, textEnd));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				byte* ret = FindRenderedTextEndNative((byte*)ptext, textEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative((byte*)ptext, textEnd));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = FindRenderedTextEndNative(pStr0, textEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(pStr0, textEnd));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				byte* ret = FindRenderedTextEndNative(text, (byte*)ptextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(text, (byte*)ptextEnd));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				byte* ret = FindRenderedTextEndNative(text, (byte*)ptextEnd);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(text, (byte*)ptextEnd));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = FindRenderedTextEndNative(text, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(text, pStr0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					byte* ret = FindRenderedTextEndNative((byte*)ptext, (byte*)ptextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative((byte*)ptext, (byte*)ptextEnd));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					byte* ret = FindRenderedTextEndNative((byte*)ptext, (byte*)ptextEnd);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative((byte*)ptext, (byte*)ptextEnd));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* FindRenderedTextEnd([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte* ret = FindRenderedTextEndNative(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igFindRenderedTextEnd")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string FindRenderedTextEndS([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(FindRenderedTextEndNative(pStr0, pStr1));
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderMouseCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderMouseCursorNative([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "mouse_cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor mouseCursor, [NativeName(NativeNameType.Param, "col_fill")] [NativeName(NativeNameType.Type, "ImU32")] uint colFill, [NativeName(NativeNameType.Param, "col_border")] [NativeName(NativeNameType.Type, "ImU32")] uint colBorder, [NativeName(NativeNameType.Param, "col_shadow")] [NativeName(NativeNameType.Type, "ImU32")] uint colShadow)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<Vector2, float, ImGuiMouseCursor, uint, uint, uint, void>)vt[1308])(pos, scale, mouseCursor, colFill, colBorder, colShadow);
-			#else
-			((delegate* unmanaged[Cdecl]<Vector2, float, ImGuiMouseCursor, uint, uint, uint, void>)vt[1308])(pos, scale, mouseCursor, colFill, colBorder, colShadow);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderMouseCursor")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderMouseCursor([NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "mouse_cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor mouseCursor, [NativeName(NativeNameType.Param, "col_fill")] [NativeName(NativeNameType.Type, "ImU32")] uint colFill, [NativeName(NativeNameType.Param, "col_border")] [NativeName(NativeNameType.Type, "ImU32")] uint colBorder, [NativeName(NativeNameType.Param, "col_shadow")] [NativeName(NativeNameType.Type, "ImU32")] uint colShadow)
-		{
-			RenderMouseCursorNative(pos, scale, mouseCursor, colFill, colBorder, colShadow);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderArrowNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, uint, ImGuiDir, float, void>)vt[1309])(drawList, pos, col, dir, scale);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, uint, ImGuiDir, float, void>)vt[1309])((nint)drawList, pos, col, dir, scale);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrow([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale)
-		{
-			RenderArrowNative(drawList, pos, col, dir, scale);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrow")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrow([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderArrowNative((ImDrawList*)pdrawList, pos, col, dir, scale);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderBullet")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderBulletNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, uint, void>)vt[1310])(drawList, pos, col);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, uint, void>)vt[1310])((nint)drawList, pos, col);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderBullet")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderBullet([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			RenderBulletNative(drawList, pos, col);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderBullet")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderBullet([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderBulletNative((ImDrawList*)pdrawList, pos, col);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderCheckMark")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderCheckMarkNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, uint, float, void>)vt[1311])(drawList, pos, col, sz);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, uint, float, void>)vt[1311])((nint)drawList, pos, col, sz);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderCheckMark")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderCheckMark([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz)
-		{
-			RenderCheckMarkNative(drawList, pos, col, sz);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderCheckMark")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderCheckMark([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderCheckMarkNative((ImDrawList*)pdrawList, pos, col, sz);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowPointingAt")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderArrowPointingAtNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "half_sz")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 halfSz, [NativeName(NativeNameType.Param, "direction")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir direction, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, Vector2, ImGuiDir, uint, void>)vt[1312])(drawList, pos, halfSz, direction, col);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, Vector2, ImGuiDir, uint, void>)vt[1312])((nint)drawList, pos, halfSz, direction, col);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowPointingAt")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrowPointingAt([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "half_sz")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 halfSz, [NativeName(NativeNameType.Param, "direction")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir direction, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			RenderArrowPointingAtNative(drawList, pos, halfSz, direction, col);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowPointingAt")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrowPointingAt([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "half_sz")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 halfSz, [NativeName(NativeNameType.Param, "direction")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir direction, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderArrowPointingAtNative((ImDrawList*)pdrawList, pos, halfSz, direction, col);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowDockMenu")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderArrowDockMenuNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, Vector2, float, uint, void>)vt[1313])(drawList, pMin, sz, col);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, Vector2, float, uint, void>)vt[1313])((nint)drawList, pMin, sz, col);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowDockMenu")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrowDockMenu([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			RenderArrowDockMenuNative(drawList, pMin, sz, col);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderArrowDockMenu")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderArrowDockMenu([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 pMin, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "float")] float sz, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderArrowDockMenuNative((ImDrawList*)pdrawList, pMin, sz, col);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledRangeH")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderRectFilledRangeHNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rect, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "x_start_norm")] [NativeName(NativeNameType.Type, "float")] float xStartNorm, [NativeName(NativeNameType.Param, "x_end_norm")] [NativeName(NativeNameType.Type, "float")] float xEndNorm, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, ImRect, uint, float, float, float, void>)vt[1314])(drawList, rect, col, xStartNorm, xEndNorm, rounding);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, ImRect, uint, float, float, float, void>)vt[1314])((nint)drawList, rect, col, xStartNorm, xEndNorm, rounding);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledRangeH")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderRectFilledRangeH([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rect, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "x_start_norm")] [NativeName(NativeNameType.Type, "float")] float xStartNorm, [NativeName(NativeNameType.Param, "x_end_norm")] [NativeName(NativeNameType.Type, "float")] float xEndNorm, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			RenderRectFilledRangeHNative(drawList, rect, col, xStartNorm, xEndNorm, rounding);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledRangeH")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderRectFilledRangeH([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rect, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "x_start_norm")] [NativeName(NativeNameType.Type, "float")] float xStartNorm, [NativeName(NativeNameType.Param, "x_end_norm")] [NativeName(NativeNameType.Type, "float")] float xEndNorm, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderRectFilledRangeHNative((ImDrawList*)pdrawList, rect, col, xStartNorm, xEndNorm, rounding);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledWithHole")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderRectFilledWithHoleNative([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "outer")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect outer, [NativeName(NativeNameType.Param, "inner")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect inner, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImDrawList*, ImRect, ImRect, uint, float, void>)vt[1315])(drawList, outer, inner, col, rounding);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, ImRect, ImRect, uint, float, void>)vt[1315])((nint)drawList, outer, inner, col, rounding);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledWithHole")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderRectFilledWithHole([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "outer")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect outer, [NativeName(NativeNameType.Param, "inner")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect inner, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			RenderRectFilledWithHoleNative(drawList, outer, inner, col, rounding);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igRenderRectFilledWithHole")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderRectFilledWithHole([NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "outer")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect outer, [NativeName(NativeNameType.Param, "inner")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect inner, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "rounding")] [NativeName(NativeNameType.Type, "float")] float rounding)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderRectFilledWithHoleNative((ImDrawList*)pdrawList, outer, inner, col, rounding);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCalcRoundingFlagsForRectInRect")]
-		[return: NativeName(NativeNameType.Type, "ImDrawFlags")]
-		internal static ImDrawFlags CalcRoundingFlagsForRectInRectNative([NativeName(NativeNameType.Param, "r_in")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rIn, [NativeName(NativeNameType.Param, "r_outer")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rOuter, [NativeName(NativeNameType.Param, "threshold")] [NativeName(NativeNameType.Type, "float")] float threshold)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImRect, ImRect, float, ImDrawFlags>)vt[1316])(rIn, rOuter, threshold);
-			#else
-			return (ImDrawFlags)((delegate* unmanaged[Cdecl]<ImRect, ImRect, float, ImDrawFlags>)vt[1316])(rIn, rOuter, threshold);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCalcRoundingFlagsForRectInRect")]
-		[return: NativeName(NativeNameType.Type, "ImDrawFlags")]
-		public static ImDrawFlags CalcRoundingFlagsForRectInRect([NativeName(NativeNameType.Param, "r_in")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rIn, [NativeName(NativeNameType.Param, "r_outer")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect rOuter, [NativeName(NativeNameType.Param, "threshold")] [NativeName(NativeNameType.Type, "float")] float threshold)
-		{
-			ImDrawFlags ret = CalcRoundingFlagsForRectInRectNative(rIn, rOuter, threshold);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void TextExNative([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<byte*, byte*, ImGuiTextFlags, void>)vt[1317])(text, textEnd, flags);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, ImGuiTextFlags, void>)vt[1317])((nint)text, (nint)textEnd, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			TextExNative(text, textEnd, flags);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptext = &text)
-			{
-				TextExNative((byte*)ptext, textEnd, flags);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptext = text)
-			{
-				TextExNative((byte*)ptext, textEnd, flags);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			TextExNative(pStr0, textEnd, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				TextExNative(text, (byte*)ptextEnd, flags);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				TextExNative(text, (byte*)ptextEnd, flags);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			TextExNative(text, pStr0, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					TextExNative((byte*)ptext, (byte*)ptextEnd, flags);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					TextExNative((byte*)ptext, (byte*)ptextEnd, flags);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TextEx([NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTextFlags")] ImGuiTextFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			TextExNative(pStr0, pStr1, flags);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ButtonExNative([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, Vector2, ImGuiButtonFlags, byte>)vt[1318])(label, sizeArg, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, Vector2, ImGuiButtonFlags, byte>)vt[1318])((nint)label, sizeArg, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonEx([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte ret = ButtonExNative(label, sizeArg, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonEx([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = ButtonExNative((byte*)plabel, sizeArg, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonEx([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = ButtonExNative((byte*)plabel, sizeArg, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonEx([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = ButtonExNative(pStr0, sizeArg, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igArrowButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ArrowButtonExNative([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, ImGuiDir, Vector2, ImGuiButtonFlags, byte>)vt[1319])(strId, dir, sizeArg, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiDir, Vector2, ImGuiButtonFlags, byte>)vt[1319])((nint)strId, dir, sizeArg, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igArrowButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ArrowButtonEx([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte ret = ArrowButtonExNative(strId, dir, sizeArg, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igArrowButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ArrowButtonEx([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ref byte strId, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (byte* pstrId = &strId)
-			{
-				byte ret = ArrowButtonExNative((byte*)pstrId, dir, sizeArg, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igArrowButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ArrowButtonEx([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strId, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (byte* pstrId = strId)
-			{
-				byte ret = ArrowButtonExNative((byte*)pstrId, dir, sizeArg, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igArrowButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ArrowButtonEx([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir, [NativeName(NativeNameType.Param, "size_arg")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 sizeArg, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (strId != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(strId);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = ArrowButtonExNative(pStr0, dir, sizeArg, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImageButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ImageButtonExNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID textureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 bgCol, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, ImTextureID, Vector2, Vector2, Vector2, Vector4, Vector4, ImGuiButtonFlags, byte>)vt[1320])(id, textureId, imageSize, uv0, uv1, bgCol, tintCol, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, ImTextureID, Vector2, Vector2, Vector2, Vector4, Vector4, ImGuiButtonFlags, byte>)vt[1320])(id, textureId, imageSize, uv0, uv1, bgCol, tintCol, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igImageButtonEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ImageButtonEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID textureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 bgCol, [NativeName(NativeNameType.Param, "tint_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 tintCol, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte ret = ImageButtonExNative(id, textureId, imageSize, uv0, uv1, bgCol, tintCol, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SeparatorExNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSeparatorFlags")] ImGuiSeparatorFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiSeparatorFlags, float, void>)vt[1321])(flags, thickness);
-			#else
-			((delegate* unmanaged[Cdecl]<ImGuiSeparatorFlags, float, void>)vt[1321])(flags, thickness);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorEx([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSeparatorFlags")] ImGuiSeparatorFlags flags, [NativeName(NativeNameType.Param, "thickness")] [NativeName(NativeNameType.Type, "float")] float thickness)
-		{
-			SeparatorExNative(flags, thickness);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void SeparatorTextExNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<uint, byte*, byte*, float, void>)vt[1322])(id, label, labelEnd, extraWidth);
-			#else
-			((delegate* unmanaged[Cdecl]<uint, nint, nint, float, void>)vt[1322])(id, (nint)label, (nint)labelEnd, extraWidth);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			SeparatorTextExNative(id, label, labelEnd, extraWidth);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabel = &label)
-			{
-				SeparatorTextExNative(id, (byte*)plabel, labelEnd, extraWidth);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabel = label)
-			{
-				SeparatorTextExNative(id, (byte*)plabel, labelEnd, extraWidth);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SeparatorTextExNative(id, pStr0, labelEnd, extraWidth);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabelEnd = &labelEnd)
-			{
-				SeparatorTextExNative(id, label, (byte*)plabelEnd, extraWidth);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabelEnd = labelEnd)
-			{
-				SeparatorTextExNative(id, label, (byte*)plabelEnd, extraWidth);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] string labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (labelEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(labelEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(labelEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			SeparatorTextExNative(id, label, pStr0, extraWidth);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (byte* plabelEnd = &labelEnd)
-				{
-					SeparatorTextExNative(id, (byte*)plabel, (byte*)plabelEnd, extraWidth);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* plabelEnd = labelEnd)
-				{
-					SeparatorTextExNative(id, (byte*)plabel, (byte*)plabelEnd, extraWidth);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSeparatorTextEx")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void SeparatorTextEx([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] string labelEnd, [NativeName(NativeNameType.Param, "extra_width")] [NativeName(NativeNameType.Type, "float")] float extraWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (labelEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(labelEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(labelEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			SeparatorTextExNative(id, pStr0, pStr1, extraWidth);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte CheckboxFlagsS64PtrNative([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] long* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, long*, long, byte>)vt[1323])(label, flags, flagsValue);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, long, byte>)vt[1323])((nint)label, (nint)flags, flagsValue);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] long* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			byte ret = CheckboxFlagsS64PtrNative(label, flags, flagsValue);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] long* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = CheckboxFlagsS64PtrNative((byte*)plabel, flags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] long* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = CheckboxFlagsS64PtrNative((byte*)plabel, flags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] long* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = CheckboxFlagsS64PtrNative(pStr0, flags, flagsValue);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] ref long flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			fixed (long* pflags = &flags)
-			{
-				byte ret = CheckboxFlagsS64PtrNative(label, (long*)pflags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] ref long flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (long* pflags = &flags)
-				{
-					byte ret = CheckboxFlagsS64PtrNative((byte*)plabel, (long*)pflags, flagsValue);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] ref long flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (long* pflags = &flags)
-				{
-					byte ret = CheckboxFlagsS64PtrNative((byte*)plabel, (long*)pflags, flagsValue);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_S64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsS64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImS64*")] ref long flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImS64")] long flagsValue)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (long* pflags = &flags)
-			{
-				byte ret = CheckboxFlagsS64PtrNative(pStr0, (long*)pflags, flagsValue);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte CheckboxFlagsU64PtrNative([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, ulong*, ulong, byte>)vt[1324])(label, flags, flagsValue);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, ulong, byte>)vt[1324])((nint)label, (nint)flags, flagsValue);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			byte ret = CheckboxFlagsU64PtrNative(label, flags, flagsValue);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = CheckboxFlagsU64PtrNative((byte*)plabel, flags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = CheckboxFlagsU64PtrNative((byte*)plabel, flags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ulong* flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = CheckboxFlagsU64PtrNative(pStr0, flags, flagsValue);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ref ulong flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			fixed (ulong* pflags = &flags)
-			{
-				byte ret = CheckboxFlagsU64PtrNative(label, (ulong*)pflags, flagsValue);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ref ulong flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (ulong* pflags = &flags)
-				{
-					byte ret = CheckboxFlagsU64PtrNative((byte*)plabel, (ulong*)pflags, flagsValue);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ref ulong flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (ulong* pflags = &flags)
-				{
-					byte ret = CheckboxFlagsU64PtrNative((byte*)plabel, (ulong*)pflags, flagsValue);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCheckboxFlags_U64Ptr")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CheckboxFlagsU64Ptr([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImU64*")] ref ulong flags, [NativeName(NativeNameType.Param, "flags_value")] [NativeName(NativeNameType.Type, "ImU64")] ulong flagsValue)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (ulong* pflags = &flags)
-			{
-				byte ret = CheckboxFlagsU64PtrNative(pStr0, (ulong*)pflags, flagsValue);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCloseButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte CloseButtonNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, Vector2, byte>)vt[1325])(id, pos);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, Vector2, byte>)vt[1325])(id, pos);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCloseButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CloseButton([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos)
-		{
-			byte ret = CloseButtonNative(id, pos);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCollapseButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte CollapseButtonNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "dock_node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] ImGuiDockNode* dockNode)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, Vector2, ImGuiDockNode*, byte>)vt[1326])(id, pos, dockNode);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, Vector2, nint, byte>)vt[1326])(id, pos, (nint)dockNode);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCollapseButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CollapseButton([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "dock_node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] ImGuiDockNode* dockNode)
-		{
-			byte ret = CollapseButtonNative(id, pos, dockNode);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igCollapseButton")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool CollapseButton([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "dock_node")] [NativeName(NativeNameType.Type, "ImGuiDockNode*")] ref ImGuiDockNode dockNode)
-		{
-			fixed (ImGuiDockNode* pdockNode = &dockNode)
-			{
-				byte ret = CollapseButtonNative(id, pos, (ImGuiDockNode*)pdockNode);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igScrollbar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ScrollbarNative([NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiAxis, void>)vt[1327])(axis);
-			#else
-			((delegate* unmanaged[Cdecl]<ImGuiAxis, void>)vt[1327])(axis);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igScrollbar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Scrollbar([NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			ScrollbarNative(axis);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igScrollbarEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ScrollbarExNative([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "p_scroll_v")] [NativeName(NativeNameType.Type, "ImS64*")] long* pScrollV, [NativeName(NativeNameType.Param, "avail_v")] [NativeName(NativeNameType.Type, "ImS64")] long availV, [NativeName(NativeNameType.Param, "contents_v")] [NativeName(NativeNameType.Type, "ImS64")] long contentsV, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiAxis, long*, long, long, ImDrawFlags, byte>)vt[1328])(bb, id, axis, pScrollV, availV, contentsV, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiAxis, nint, long, long, ImDrawFlags, byte>)vt[1328])(bb, id, axis, (nint)pScrollV, availV, contentsV, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igScrollbarEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ScrollbarEx([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "p_scroll_v")] [NativeName(NativeNameType.Type, "ImS64*")] long* pScrollV, [NativeName(NativeNameType.Param, "avail_v")] [NativeName(NativeNameType.Type, "ImS64")] long availV, [NativeName(NativeNameType.Param, "contents_v")] [NativeName(NativeNameType.Type, "ImS64")] long contentsV, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			byte ret = ScrollbarExNative(bb, id, axis, pScrollV, availV, contentsV, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igScrollbarEx")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ScrollbarEx([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "p_scroll_v")] [NativeName(NativeNameType.Type, "ImS64*")] ref long pScrollV, [NativeName(NativeNameType.Param, "avail_v")] [NativeName(NativeNameType.Type, "ImS64")] long availV, [NativeName(NativeNameType.Param, "contents_v")] [NativeName(NativeNameType.Type, "ImS64")] long contentsV, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImDrawFlags")] ImDrawFlags flags)
-		{
-			fixed (long* ppScrollV = &pScrollV)
-			{
-				byte ret = ScrollbarExNative(bb, id, axis, (long*)ppScrollV, availV, contentsV, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void GetWindowScrollbarRectNative([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImRect*, ImGuiWindow*, ImGuiAxis, void>)vt[1329])(pOut, window, axis);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, ImGuiAxis, void>)vt[1329])((nint)pOut, (nint)window, axis);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowScrollbarRect([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			GetWindowScrollbarRectNative(pOut, window, axis);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowScrollbarRect([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			fixed (ImRect* ppOut = &pOut)
-			{
-				GetWindowScrollbarRectNative((ImRect*)ppOut, window, axis);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowScrollbarRect([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			fixed (ImGuiWindow* pwindow = &window)
-			{
-				GetWindowScrollbarRectNative(pOut, (ImGuiWindow*)pwindow, axis);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarRect")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void GetWindowScrollbarRect([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect pOut, [NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			fixed (ImRect* ppOut = &pOut)
-			{
-				fixed (ImGuiWindow* pwindow = &window)
-				{
-					GetWindowScrollbarRectNative((ImRect*)ppOut, (ImGuiWindow*)pwindow, axis);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		internal static uint GetWindowScrollbarIDNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiWindow*, ImGuiAxis, uint>)vt[1330])(window, axis);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<nint, ImGuiAxis, uint>)vt[1330])((nint)window, axis);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowScrollbarID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			uint ret = GetWindowScrollbarIDNative(window, axis);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowScrollbarID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowScrollbarID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis)
-		{
-			fixed (ImGuiWindow* pwindow = &window)
-			{
-				uint ret = GetWindowScrollbarIDNative((ImGuiWindow*)pwindow, axis);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeCornerID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		internal static uint GetWindowResizeCornerIDNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiWindow*, int, uint>)vt[1331])(window, n);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<nint, int, uint>)vt[1331])((nint)window, n);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeCornerID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowResizeCornerID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
-		{
-			uint ret = GetWindowResizeCornerIDNative(window, n);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeCornerID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowResizeCornerID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window, [NativeName(NativeNameType.Param, "n")] [NativeName(NativeNameType.Type, "int")] int n)
-		{
-			fixed (ImGuiWindow* pwindow = &window)
-			{
-				uint ret = GetWindowResizeCornerIDNative((ImGuiWindow*)pwindow, n);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeBorderID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		internal static uint GetWindowResizeBorderIDNative([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiWindow*, ImGuiDir, uint>)vt[1332])(window, dir);
-			#else
-			return (uint)((delegate* unmanaged[Cdecl]<nint, ImGuiDir, uint>)vt[1332])((nint)window, dir);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeBorderID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowResizeBorderID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ImGuiWindow* window, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir)
-		{
-			uint ret = GetWindowResizeBorderIDNative(window, dir);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igGetWindowResizeBorderID")]
-		[return: NativeName(NativeNameType.Type, "ImGuiID")]
-		public static uint GetWindowResizeBorderID([NativeName(NativeNameType.Param, "window")] [NativeName(NativeNameType.Type, "ImGuiWindow*")] ref ImGuiWindow window, [NativeName(NativeNameType.Param, "dir")] [NativeName(NativeNameType.Type, "ImGuiDir")] ImGuiDir dir)
-		{
-			fixed (ImGuiWindow* pwindow = &window)
-			{
-				uint ret = GetWindowResizeBorderIDNative((ImGuiWindow*)pwindow, dir);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte ButtonBehaviorNative([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "out_hovered")] [NativeName(NativeNameType.Type, "bool*")] bool* outHovered, [NativeName(NativeNameType.Param, "out_held")] [NativeName(NativeNameType.Type, "bool*")] bool* outHeld, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImRect, uint, bool*, bool*, ImGuiButtonFlags, byte>)vt[1333])(bb, id, outHovered, outHeld, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<ImRect, uint, nint, nint, ImGuiButtonFlags, byte>)vt[1333])(bb, id, (nint)outHovered, (nint)outHeld, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "out_hovered")] [NativeName(NativeNameType.Type, "bool*")] bool* outHovered, [NativeName(NativeNameType.Param, "out_held")] [NativeName(NativeNameType.Type, "bool*")] bool* outHeld, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			byte ret = ButtonBehaviorNative(bb, id, outHovered, outHeld, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "out_hovered")] [NativeName(NativeNameType.Type, "bool*")] ref bool outHovered, [NativeName(NativeNameType.Param, "out_held")] [NativeName(NativeNameType.Type, "bool*")] bool* outHeld, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (bool* poutHovered = &outHovered)
-			{
-				byte ret = ButtonBehaviorNative(bb, id, (bool*)poutHovered, outHeld, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "out_hovered")] [NativeName(NativeNameType.Type, "bool*")] bool* outHovered, [NativeName(NativeNameType.Param, "out_held")] [NativeName(NativeNameType.Type, "bool*")] ref bool outHeld, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (bool* poutHeld = &outHeld)
-			{
-				byte ret = ButtonBehaviorNative(bb, id, outHovered, (bool*)poutHeld, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igButtonBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool ButtonBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "out_hovered")] [NativeName(NativeNameType.Type, "bool*")] ref bool outHovered, [NativeName(NativeNameType.Param, "out_held")] [NativeName(NativeNameType.Type, "bool*")] ref bool outHeld, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiButtonFlags")] ImGuiButtonFlags flags)
-		{
-			fixed (bool* poutHovered = &outHovered)
-			{
-				fixed (bool* poutHeld = &outHeld)
-				{
-					byte ret = ButtonBehaviorNative(bb, id, (bool*)poutHovered, (bool*)poutHeld, flags);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte DragBehaviorNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, ImGuiDataType, void*, float, void*, void*, byte*, ImGuiSliderFlags, byte>)vt[1334])(id, dataType, pV, vSpeed, pMin, pMax, format, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, ImGuiDataType, nint, float, nint, nint, nint, ImGuiSliderFlags, byte>)vt[1334])(id, dataType, (nint)pV, vSpeed, (nint)pMin, (nint)pMax, (nint)format, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte ret = DragBehaviorNative(id, dataType, pV, vSpeed, pMin, pMax, format, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* pformat = &format)
-			{
-				byte ret = DragBehaviorNative(id, dataType, pV, vSpeed, pMin, pMax, (byte*)pformat, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			fixed (byte* pformat = format)
-			{
-				byte ret = DragBehaviorNative(id, dataType, pV, vSpeed, pMin, pMax, (byte*)pformat, flags);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = DragBehaviorNative(id, dataType, pV, vSpeed, pMin, pMax, pStr0, flags);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte SliderBehaviorNative([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* outGrabBb)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiDataType, void*, void*, void*, byte*, ImGuiSliderFlags, ImRect*, byte>)vt[1335])(bb, id, dataType, pV, pMin, pMax, format, flags, outGrabBb);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiDataType, nint, nint, nint, nint, ImGuiSliderFlags, nint, byte>)vt[1335])(bb, id, dataType, (nint)pV, (nint)pMin, (nint)pMax, (nint)format, flags, (nint)outGrabBb);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* outGrabBb)
-		{
-			byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, format, flags, outGrabBb);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* outGrabBb)
-		{
-			fixed (byte* pformat = &format)
-			{
-				byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, (byte*)pformat, flags, outGrabBb);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* outGrabBb)
-		{
-			fixed (byte* pformat = format)
-			{
-				byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, (byte*)pformat, flags, outGrabBb);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ImRect* outGrabBb)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, pStr0, flags, outGrabBb);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect outGrabBb)
-		{
-			fixed (ImRect* poutGrabBb = &outGrabBb)
-			{
-				byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, format, flags, (ImRect*)poutGrabBb);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ref byte format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect outGrabBb)
-		{
-			fixed (byte* pformat = &format)
-			{
-				fixed (ImRect* poutGrabBb = &outGrabBb)
-				{
-					byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, (byte*)pformat, flags, (ImRect*)poutGrabBb);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect outGrabBb)
-		{
-			fixed (byte* pformat = format)
-			{
-				fixed (ImRect* poutGrabBb = &outGrabBb)
-				{
-					byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, (byte*)pformat, flags, (ImRect*)poutGrabBb);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSliderBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SliderBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_v")] [NativeName(NativeNameType.Type, "void*")] void* pV, [NativeName(NativeNameType.Param, "p_min")] [NativeName(NativeNameType.Type, "const void*")] void* pMin, [NativeName(NativeNameType.Param, "p_max")] [NativeName(NativeNameType.Type, "const void*")] void* pMax, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] string format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags, [NativeName(NativeNameType.Param, "out_grab_bb")] [NativeName(NativeNameType.Type, "ImRect*")] ref ImRect outGrabBb)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (format != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(format);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(format, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (ImRect* poutGrabBb = &outGrabBb)
-			{
-				byte ret = SliderBehaviorNative(bb, id, dataType, pV, pMin, pMax, pStr0, flags, (ImRect*)poutGrabBb);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSplitterBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte SplitterBehaviorNative([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "size1")] [NativeName(NativeNameType.Type, "float*")] float* size1, [NativeName(NativeNameType.Param, "size2")] [NativeName(NativeNameType.Type, "float*")] float* size2, [NativeName(NativeNameType.Param, "min_size1")] [NativeName(NativeNameType.Type, "float")] float minsize1, [NativeName(NativeNameType.Param, "min_size2")] [NativeName(NativeNameType.Type, "float")] float minsize2, [NativeName(NativeNameType.Param, "hover_extend")] [NativeName(NativeNameType.Type, "float")] float hoverExtend, [NativeName(NativeNameType.Param, "hover_visibility_delay")] [NativeName(NativeNameType.Type, "float")] float hoverVisibilityDelay, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "ImU32")] uint bgCol)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiAxis, float*, float*, float, float, float, float, uint, byte>)vt[1336])(bb, id, axis, size1, size2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<ImRect, uint, ImGuiAxis, nint, nint, float, float, float, float, uint, byte>)vt[1336])(bb, id, axis, (nint)size1, (nint)size2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSplitterBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SplitterBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "size1")] [NativeName(NativeNameType.Type, "float*")] float* size1, [NativeName(NativeNameType.Param, "size2")] [NativeName(NativeNameType.Type, "float*")] float* size2, [NativeName(NativeNameType.Param, "min_size1")] [NativeName(NativeNameType.Type, "float")] float minsize1, [NativeName(NativeNameType.Param, "min_size2")] [NativeName(NativeNameType.Type, "float")] float minsize2, [NativeName(NativeNameType.Param, "hover_extend")] [NativeName(NativeNameType.Type, "float")] float hoverExtend, [NativeName(NativeNameType.Param, "hover_visibility_delay")] [NativeName(NativeNameType.Type, "float")] float hoverVisibilityDelay, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "ImU32")] uint bgCol)
-		{
-			byte ret = SplitterBehaviorNative(bb, id, axis, size1, size2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSplitterBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SplitterBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "size1")] [NativeName(NativeNameType.Type, "float*")] ref float size1, [NativeName(NativeNameType.Param, "size2")] [NativeName(NativeNameType.Type, "float*")] float* size2, [NativeName(NativeNameType.Param, "min_size1")] [NativeName(NativeNameType.Type, "float")] float minsize1, [NativeName(NativeNameType.Param, "min_size2")] [NativeName(NativeNameType.Type, "float")] float minsize2, [NativeName(NativeNameType.Param, "hover_extend")] [NativeName(NativeNameType.Type, "float")] float hoverExtend, [NativeName(NativeNameType.Param, "hover_visibility_delay")] [NativeName(NativeNameType.Type, "float")] float hoverVisibilityDelay, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "ImU32")] uint bgCol)
-		{
-			fixed (float* psize1 = &size1)
-			{
-				byte ret = SplitterBehaviorNative(bb, id, axis, (float*)psize1, size2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSplitterBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SplitterBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "size1")] [NativeName(NativeNameType.Type, "float*")] float* size1, [NativeName(NativeNameType.Param, "size2")] [NativeName(NativeNameType.Type, "float*")] ref float size2, [NativeName(NativeNameType.Param, "min_size1")] [NativeName(NativeNameType.Type, "float")] float minsize1, [NativeName(NativeNameType.Param, "min_size2")] [NativeName(NativeNameType.Type, "float")] float minsize2, [NativeName(NativeNameType.Param, "hover_extend")] [NativeName(NativeNameType.Type, "float")] float hoverExtend, [NativeName(NativeNameType.Param, "hover_visibility_delay")] [NativeName(NativeNameType.Type, "float")] float hoverVisibilityDelay, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "ImU32")] uint bgCol)
-		{
-			fixed (float* psize2 = &size2)
-			{
-				byte ret = SplitterBehaviorNative(bb, id, axis, size1, (float*)psize2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSplitterBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SplitterBehavior([NativeName(NativeNameType.Param, "bb")] [NativeName(NativeNameType.Type, "const ImRect")] ImRect bb, [NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "axis")] [NativeName(NativeNameType.Type, "ImGuiAxis")] ImGuiAxis axis, [NativeName(NativeNameType.Param, "size1")] [NativeName(NativeNameType.Type, "float*")] ref float size1, [NativeName(NativeNameType.Param, "size2")] [NativeName(NativeNameType.Type, "float*")] ref float size2, [NativeName(NativeNameType.Param, "min_size1")] [NativeName(NativeNameType.Type, "float")] float minsize1, [NativeName(NativeNameType.Param, "min_size2")] [NativeName(NativeNameType.Type, "float")] float minsize2, [NativeName(NativeNameType.Param, "hover_extend")] [NativeName(NativeNameType.Type, "float")] float hoverExtend, [NativeName(NativeNameType.Param, "hover_visibility_delay")] [NativeName(NativeNameType.Type, "float")] float hoverVisibilityDelay, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "ImU32")] uint bgCol)
-		{
-			fixed (float* psize1 = &size1)
-			{
-				fixed (float* psize2 = &size2)
-				{
-					byte ret = SplitterBehaviorNative(bb, id, axis, (float*)psize1, (float*)psize2, minsize1, minsize2, hoverExtend, hoverVisibilityDelay, bgCol);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte TreeNodeBehaviorNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, ImGuiTreeNodeFlags, byte*, byte*, byte>)vt[1337])(id, flags, label, labelEnd);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, ImGuiTreeNodeFlags, nint, nint, byte>)vt[1337])(id, flags, (nint)label, (nint)labelEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd)
-		{
-			byte ret = TreeNodeBehaviorNative(id, flags, label, labelEnd);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd)
-		{
-			fixed (byte* plabel = &label)
-			{
-				byte ret = TreeNodeBehaviorNative(id, flags, (byte*)plabel, labelEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd)
-		{
-			fixed (byte* plabel = label)
-			{
-				byte ret = TreeNodeBehaviorNative(id, flags, (byte*)plabel, labelEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] byte* labelEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = TreeNodeBehaviorNative(id, flags, pStr0, labelEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte labelEnd)
-		{
-			fixed (byte* plabelEnd = &labelEnd)
-			{
-				byte ret = TreeNodeBehaviorNative(id, flags, label, (byte*)plabelEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> labelEnd)
-		{
-			fixed (byte* plabelEnd = labelEnd)
-			{
-				byte ret = TreeNodeBehaviorNative(id, flags, label, (byte*)plabelEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] string labelEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (labelEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(labelEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(labelEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = TreeNodeBehaviorNative(id, flags, label, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte labelEnd)
-		{
-			fixed (byte* plabel = &label)
-			{
-				fixed (byte* plabelEnd = &labelEnd)
-				{
-					byte ret = TreeNodeBehaviorNative(id, flags, (byte*)plabel, (byte*)plabelEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> labelEnd)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* plabelEnd = labelEnd)
-				{
-					byte ret = TreeNodeBehaviorNative(id, flags, (byte*)plabel, (byte*)plabelEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeBehavior")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeBehavior([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags, [NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "label_end")] [NativeName(NativeNameType.Type, "const char*")] string labelEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (labelEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(labelEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(labelEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte ret = TreeNodeBehaviorNative(id, flags, pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreePushOverrideID")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void TreePushOverrideIDNative([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<uint, void>)vt[1338])(id);
-			#else
-			((delegate* unmanaged[Cdecl]<uint, void>)vt[1338])(id);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreePushOverrideID")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TreePushOverrideID([NativeName(NativeNameType.Param, "id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint id)
-		{
-			TreePushOverrideIDNative(id);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeGetOpen")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte TreeNodeGetOpenNative([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, byte>)vt[1339])(storageId);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, byte>)vt[1339])(storageId);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeGetOpen")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeGetOpen([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId)
-		{
-			byte ret = TreeNodeGetOpenNative(storageId);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeSetOpen")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void TreeNodeSetOpenNative([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId, [NativeName(NativeNameType.Param, "open")] [NativeName(NativeNameType.Type, "bool")] byte open)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<uint, byte, void>)vt[1340])(storageId, open);
-			#else
-			((delegate* unmanaged[Cdecl]<uint, byte, void>)vt[1340])(storageId, open);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeSetOpen")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void TreeNodeSetOpen([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId, [NativeName(NativeNameType.Param, "open")] [NativeName(NativeNameType.Type, "bool")] bool open)
-		{
-			TreeNodeSetOpenNative(storageId, open ? (byte)1 : (byte)0);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeUpdateNextOpen")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte TreeNodeUpdateNextOpenNative([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<uint, ImGuiTreeNodeFlags, byte>)vt[1341])(storageId, flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<uint, ImGuiTreeNodeFlags, byte>)vt[1341])(storageId, flags);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igTreeNodeUpdateNextOpen")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool TreeNodeUpdateNextOpen([NativeName(NativeNameType.Param, "storage_id")] [NativeName(NativeNameType.Type, "ImGuiID")] uint storageId, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiTreeNodeFlags")] ImGuiTreeNodeFlags flags)
-		{
-			byte ret = TreeNodeUpdateNextOpenNative(storageId, flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDataTypeGetInfo")]
-		[return: NativeName(NativeNameType.Type, "const ImGuiDataTypeInfo*")]
-		internal static ImGuiDataTypeInfo* DataTypeGetInfoNative([NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiDataType, ImGuiDataTypeInfo*>)vt[1342])(dataType);
-			#else
-			return (ImGuiDataTypeInfo*)((delegate* unmanaged[Cdecl]<ImGuiDataType, nint>)vt[1342])(dataType);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDataTypeGetInfo")]
-		[return: NativeName(NativeNameType.Type, "const ImGuiDataTypeInfo*")]
-		public static ImGuiDataTypeInfo* DataTypeGetInfo([NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType)
-		{
-			ImGuiDataTypeInfo* ret = DataTypeGetInfoNative(dataType);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDataTypeApplyOp")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DataTypeApplyOpNative([NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "op")] [NativeName(NativeNameType.Type, "int")] int op, [NativeName(NativeNameType.Param, "output")] [NativeName(NativeNameType.Type, "void*")] void* output, [NativeName(NativeNameType.Param, "arg_1")] [NativeName(NativeNameType.Type, "const void*")] void* arg1, [NativeName(NativeNameType.Param, "arg_2")] [NativeName(NativeNameType.Type, "const void*")] void* arg2)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiDataType, int, void*, void*, void*, void>)vt[1343])(dataType, op, output, arg1, arg2);
-			#else
-			((delegate* unmanaged[Cdecl]<ImGuiDataType, int, nint, nint, nint, void>)vt[1343])(dataType, op, (nint)output, (nint)arg1, (nint)arg2);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDataTypeApplyOp")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void DataTypeApplyOp([NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "op")] [NativeName(NativeNameType.Type, "int")] int op, [NativeName(NativeNameType.Param, "output")] [NativeName(NativeNameType.Type, "void*")] void* output, [NativeName(NativeNameType.Param, "arg_1")] [NativeName(NativeNameType.Type, "const void*")] void* arg1, [NativeName(NativeNameType.Param, "arg_2")] [NativeName(NativeNameType.Type, "const void*")] void* arg2)
-		{
-			DataTypeApplyOpNative(dataType, op, output, arg1, arg2);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDataTypeApplyFromText")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte DataTypeApplyFromTextNative([NativeName(NativeNameType.Param, "buf")] [NativeName(NativeNameType.Type, "const char*")] byte* buf, [NativeName(NativeNameType.Param, "data_type")] [NativeName(NativeNameType.Type, "ImGuiDataType")] ImGuiDataType dataType, [NativeName(NativeNameType.Param, "p_data")] [NativeName(NativeNameType.Type, "void*")] void* pData, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "p_data_when_empty")] [NativeName(NativeNameType.Type, "void*")] void* pDataWhenEmpty)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, ImGuiDataType, void*, byte*, void*, byte>)vt[1344])(buf, dataType, pData, format, pDataWhenEmpty);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiDataType, nint, nint, nint, byte>)vt[1344])((nint)buf, dataType, (nint)pData, (nint)format, (nint)pDataWhenEmpty);
-			#endif
 		}
 	}
 }

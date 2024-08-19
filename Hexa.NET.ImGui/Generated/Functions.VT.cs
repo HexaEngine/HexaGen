@@ -21,7 +21,7 @@ namespace Hexa.NET.ImGui
 
 		public static void InitApi()
 		{
-			vt = new VTable(GetLibraryName(), 1420);
+			vt = new VTable(LibraryLoader.LoadLibrary(), 1420);
 			vt.Load(0, "ImVec2_ImVec2_Nil");
 			vt.Load(1, "ImVec2_destroy");
 			vt.Load(2, "ImVec2_ImVec2_Float");

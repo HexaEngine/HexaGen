@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiWindowDockStyleCol")]
+	[Flags]
 	public enum ImGuiWindowDockStyleCol : int
 	{
 		/// <summary>

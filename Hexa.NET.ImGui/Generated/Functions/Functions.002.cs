@@ -23,6 +23,102 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igImageButton")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "uv1")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv1)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strId != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strId);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, uv0, uv1, (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImageButton")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strId != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strId);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, uv0, (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImageButton")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strId != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strId);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = ImageButtonNative(pStr0, userTextureId, imageSize, (Vector2)(new Vector2(0,0)), (Vector2)(new Vector2(1,1)), (Vector4)(new Vector4(0,0,0,0)), (Vector4)(new Vector4(1,1,1,1)));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igImageButton")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool ImageButton([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "user_texture_id")] [NativeName(NativeNameType.Type, "ImTextureID")] ImTextureID userTextureId, [NativeName(NativeNameType.Param, "image_size")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 imageSize, [NativeName(NativeNameType.Param, "uv0")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 uv0, [NativeName(NativeNameType.Param, "bg_col")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 bgCol)
 		{
 			byte* pStr0 = null;
@@ -955,11 +1051,11 @@ namespace Hexa.NET.ImGui
 			{
 				if (pStrArray0Size > Utils.MaxStackallocSize)
 				{
-					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 				}
 				else
 				{
-					byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+					byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 					pStrArray0 = (byte**)pStrArray0Stack;
 				}
 			}
@@ -992,11 +1088,11 @@ namespace Hexa.NET.ImGui
 			{
 				if (pStrArray0Size > Utils.MaxStackallocSize)
 				{
-					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 				}
 				else
 				{
-					byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+					byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 					pStrArray0 = (byte**)pStrArray0Stack;
 				}
 			}
@@ -1046,11 +1142,11 @@ namespace Hexa.NET.ImGui
 			{
 				if (pStrArray0Size > Utils.MaxStackallocSize)
 				{
-					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 				}
 				else
 				{
-					byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+					byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 					pStrArray0 = (byte**)pStrArray0Stack;
 				}
 			}
@@ -1104,11 +1200,11 @@ namespace Hexa.NET.ImGui
 			{
 				if (pStrArray0Size > Utils.MaxStackallocSize)
 				{
-					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+					pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 				}
 				else
 				{
-					byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+					byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 					pStrArray0 = (byte**)pStrArray0Stack;
 				}
 			}
@@ -1147,11 +1243,11 @@ namespace Hexa.NET.ImGui
 				{
 					if (pStrArray0Size > Utils.MaxStackallocSize)
 					{
-						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 					}
 					else
 					{
-						byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+						byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 						pStrArray0 = (byte**)pStrArray0Stack;
 					}
 				}
@@ -1187,11 +1283,11 @@ namespace Hexa.NET.ImGui
 				{
 					if (pStrArray0Size > Utils.MaxStackallocSize)
 					{
-						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 					}
 					else
 					{
-						byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+						byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 						pStrArray0 = (byte**)pStrArray0Stack;
 					}
 				}
@@ -1244,11 +1340,11 @@ namespace Hexa.NET.ImGui
 				{
 					if (pStrArray0Size > Utils.MaxStackallocSize)
 					{
-						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 					}
 					else
 					{
-						byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+						byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 						pStrArray0 = (byte**)pStrArray0Stack;
 					}
 				}
@@ -1305,11 +1401,11 @@ namespace Hexa.NET.ImGui
 				{
 					if (pStrArray0Size > Utils.MaxStackallocSize)
 					{
-						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0);
+						pStrArray0 = (byte**)Utils.Alloc<byte>(pStrArray0Size);
 					}
 					else
 					{
-						byte* pStrArray0Stack = stackalloc byte[pStrArray0];
+						byte* pStrArray0Stack = stackalloc byte[pStrArray0Size];
 						pStrArray0 = (byte**)pStrArray0Stack;
 					}
 				}
@@ -4937,111 +5033,6 @@ namespace Hexa.NET.ImGui
 					Utils.Free(pStr0);
 				}
 				return ret;
-			}
-		}
-
-		/// <summary>
-		/// If v_min &gt;= v_max we have no bound<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloat")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (float* pv = &v)
-			{
-				bool ret = DragFloat(pStr0, (float*)pv, (float)(1.0f), (float)(0.0f), (float)(0.0f), (string)"%.3f", flags);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// If v_min &gt;= v_max we have no bound<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloat")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "v_min")] [NativeName(NativeNameType.Type, "float")] float vMin, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (float* pv = &v)
-			{
-				byte ret = DragFloatNative(pStr0, (float*)pv, vSpeed, vMin, (float)(0.0f), format, flags);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// If v_min &gt;= v_max we have no bound<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igDragFloat")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool DragFloat([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] string label, [NativeName(NativeNameType.Param, "v")] [NativeName(NativeNameType.Type, "float*")] ref float v, [NativeName(NativeNameType.Param, "v_speed")] [NativeName(NativeNameType.Type, "float")] float vSpeed, [NativeName(NativeNameType.Param, "format")] [NativeName(NativeNameType.Type, "const char*")] byte* format, [NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiSliderFlags")] ImGuiSliderFlags flags)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (label != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(label);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(label, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (float* pv = &v)
-			{
-				byte ret = DragFloatNative(pStr0, (float*)pv, vSpeed, (float)(0.0f), (float)(0.0f), format, flags);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
 			}
 		}
 	}

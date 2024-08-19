@@ -23,6 +23,1557 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
 		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] ulong szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] nuint szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] ulong szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ref byte versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = &versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			fixed (byte* pversionStr = versionStr)
+			{
+				byte ret = DebugCheckVersionAndDataLayoutNative((byte*)pversionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] string versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] ulong szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (versionStr != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(versionStr);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(versionStr, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			byte ret = DebugCheckVersionAndDataLayoutNative(pStr0, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// This is called by IMGUI_CHECKVERSION() macro.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igDebugCheckVersionAndDataLayout")]
+		[return: NativeName(NativeNameType.Type, "bool")]
 		public static bool DebugCheckVersionAndDataLayout([NativeName(NativeNameType.Param, "version_str")] [NativeName(NativeNameType.Type, "const char*")] byte* versionStr, [NativeName(NativeNameType.Param, "sz_io")] [NativeName(NativeNameType.Type, "size_t")] nuint szIo, [NativeName(NativeNameType.Param, "sz_style")] [NativeName(NativeNameType.Type, "size_t")] ulong szStyle, [NativeName(NativeNameType.Param, "sz_vec2")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec2, [NativeName(NativeNameType.Param, "sz_vec4")] [NativeName(NativeNameType.Type, "size_t")] nuint szvec4, [NativeName(NativeNameType.Param, "sz_drawvert")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawvert, [NativeName(NativeNameType.Param, "sz_drawidx")] [NativeName(NativeNameType.Type, "size_t")] nuint szDrawidx)
 		{
 			byte ret = DebugCheckVersionAndDataLayoutNative(versionStr, szIo, szStyle, szvec2, szvec4, szDrawvert, szDrawidx);
@@ -3490,1544 +5041,6 @@ namespace Hexa.NET.ImGui
 					Utils.Free(pStr0);
 				}
 				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte PassFilterNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextFilter*, byte*, byte*, byte>)vt[453])(self, text, textEnd);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, nint, byte>)vt[453])((nint)self, (nint)text, (nint)textEnd);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			byte ret = PassFilterNative(self, text, textEnd);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
-		{
-			byte ret = PassFilterNative(self, text, (byte*)(default));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, text, textEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, text, (byte*)(default));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				byte ret = PassFilterNative(self, (byte*)ptext, textEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text)
-		{
-			fixed (byte* ptext = &text)
-			{
-				byte ret = PassFilterNative(self, (byte*)ptext, (byte*)(default));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				byte ret = PassFilterNative(self, (byte*)ptext, textEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text)
-		{
-			fixed (byte* ptext = text)
-			{
-				byte ret = PassFilterNative(self, (byte*)ptext, (byte*)(default));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = PassFilterNative(self, pStr0, textEnd);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = PassFilterNative(self, pStr0, (byte*)(default));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, textEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, (byte*)(default));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, textEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, (byte*)(default));
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, pStr0, textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, pStr0, (byte*)(default));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				byte ret = PassFilterNative(self, text, (byte*)ptextEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				byte ret = PassFilterNative(self, text, (byte*)ptextEnd);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = PassFilterNative(self, text, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, text, (byte*)ptextEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					byte ret = PassFilterNative((ImGuiTextFilter*)pself, text, (byte*)ptextEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, text, pStr0);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					byte ret = PassFilterNative(self, (byte*)ptext, (byte*)ptextEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					byte ret = PassFilterNative(self, (byte*)ptext, (byte*)ptextEnd);
-					return ret != 0;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte ret = PassFilterNative(self, pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, (byte*)ptextEnd);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						byte ret = PassFilterNative((ImGuiTextFilter*)pself, (byte*)ptext, (byte*)ptextEnd);
-						return ret != 0;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_PassFilter")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool PassFilter([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				byte ret = PassFilterNative((ImGuiTextFilter*)pself, pStr0, pStr1);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Build")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void BuildNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextFilter*, void>)vt[454])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[454])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Build")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Build([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			BuildNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Build")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Build([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				BuildNative((ImGuiTextFilter*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void ClearNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextFilter*, void>)vt[455])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[455])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Clear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			ClearNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_Clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Clear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				ClearNative((ImGuiTextFilter*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_IsActive")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte IsActiveNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextFilter*, byte>)vt[456])(self);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[456])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_IsActive")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsActive([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ImGuiTextFilter* self)
-		{
-			byte ret = IsActiveNative(self);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextFilter_IsActive")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool IsActive([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextFilter*")] ref ImGuiTextFilter self)
-		{
-			fixed (ImGuiTextFilter* pself = &self)
-			{
-				byte ret = IsActiveNative((ImGuiTextFilter*)pself);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Nil")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		internal static ImGuiTextRange* ImGuiTextRangeNative()
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextRange*>)vt[457])();
-			#else
-			return (ImGuiTextRange*)((delegate* unmanaged[Cdecl]<nint>)vt[457])();
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Nil")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange()
-		{
-			ImGuiTextRange* ret = ImGuiTextRangeNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DestroyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextRange*, void>)vt[458])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[458])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self)
-		{
-			DestroyNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ref ImGuiTextRange self)
-		{
-			fixed (ImGuiTextRange* pself = &self)
-			{
-				DestroyNative((ImGuiTextRange*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		internal static ImGuiTextRange* ImGuiTextRangeNative([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] byte* b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] byte* e)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, byte*, ImGuiTextRange*>)vt[459])(b, e);
-			#else
-			return (ImGuiTextRange*)((delegate* unmanaged[Cdecl]<nint, nint, nint>)vt[459])((nint)b, (nint)e);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] byte* b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] byte* e)
-		{
-			ImGuiTextRange* ret = ImGuiTextRangeNative(b, e);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] ref byte b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] byte* e)
-		{
-			fixed (byte* pb = &b)
-			{
-				ImGuiTextRange* ret = ImGuiTextRangeNative((byte*)pb, e);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] byte* e)
-		{
-			fixed (byte* pb = b)
-			{
-				ImGuiTextRange* ret = ImGuiTextRangeNative((byte*)pb, e);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] string b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] byte* e)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (b != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(b);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(b, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImGuiTextRange* ret = ImGuiTextRangeNative(pStr0, e);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] byte* b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] ref byte e)
-		{
-			fixed (byte* pe = &e)
-			{
-				ImGuiTextRange* ret = ImGuiTextRangeNative(b, (byte*)pe);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] byte* b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> e)
-		{
-			fixed (byte* pe = e)
-			{
-				ImGuiTextRange* ret = ImGuiTextRangeNative(b, (byte*)pe);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] byte* b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] string e)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (e != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(e);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(e, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			ImGuiTextRange* ret = ImGuiTextRangeNative(b, pStr0);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] ref byte b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] ref byte e)
-		{
-			fixed (byte* pb = &b)
-			{
-				fixed (byte* pe = &e)
-				{
-					ImGuiTextRange* ret = ImGuiTextRangeNative((byte*)pb, (byte*)pe);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> e)
-		{
-			fixed (byte* pb = b)
-			{
-				fixed (byte* pe = e)
-				{
-					ImGuiTextRange* ret = ImGuiTextRangeNative((byte*)pb, (byte*)pe);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_ImGuiTextRange_Str")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextRange*")]
-		public static ImGuiTextRange* ImGuiTextRange([NativeName(NativeNameType.Param, "_b")] [NativeName(NativeNameType.Type, "const char*")] string b, [NativeName(NativeNameType.Param, "_e")] [NativeName(NativeNameType.Type, "const char*")] string e)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (b != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(b);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(b, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (e != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(e);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(e, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			ImGuiTextRange* ret = ImGuiTextRangeNative(pStr0, pStr1);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte emptyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextRange*, byte>)vt[460])(self);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[460])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool empty([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self)
-		{
-			byte ret = emptyNative(self);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool empty([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ref ImGuiTextRange self)
-		{
-			fixed (ImGuiTextRange* pself = &self)
-			{
-				byte ret = emptyNative((ImGuiTextRange*)pself);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_split")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void splitNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self, [NativeName(NativeNameType.Param, "separator")] [NativeName(NativeNameType.Type, "char")] byte separator, [NativeName(NativeNameType.Param, "out")] [NativeName(NativeNameType.Type, "ImVector_ImGuiTextRange*")] ImVectorImGuiTextRange* output)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextRange*, byte, ImVectorImGuiTextRange*, void>)vt[461])(self, separator, output);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, byte, nint, void>)vt[461])((nint)self, separator, (nint)output);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_split")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void split([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self, [NativeName(NativeNameType.Param, "separator")] [NativeName(NativeNameType.Type, "char")] byte separator, [NativeName(NativeNameType.Param, "out")] [NativeName(NativeNameType.Type, "ImVector_ImGuiTextRange*")] ImVectorImGuiTextRange* output)
-		{
-			splitNative(self, separator, output);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_split")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void split([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ref ImGuiTextRange self, [NativeName(NativeNameType.Param, "separator")] [NativeName(NativeNameType.Type, "char")] byte separator, [NativeName(NativeNameType.Param, "out")] [NativeName(NativeNameType.Type, "ImVector_ImGuiTextRange*")] ImVectorImGuiTextRange* output)
-		{
-			fixed (ImGuiTextRange* pself = &self)
-			{
-				splitNative((ImGuiTextRange*)pself, separator, output);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_split")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void split([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ImGuiTextRange* self, [NativeName(NativeNameType.Param, "separator")] [NativeName(NativeNameType.Type, "char")] byte separator, [NativeName(NativeNameType.Param, "out")] [NativeName(NativeNameType.Type, "ImVector_ImGuiTextRange*")] ref ImVectorImGuiTextRange output)
-		{
-			fixed (ImVectorImGuiTextRange* poutput = &output)
-			{
-				splitNative(self, separator, (ImVectorImGuiTextRange*)poutput);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextRange_split")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void split([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextRange*")] ref ImGuiTextRange self, [NativeName(NativeNameType.Param, "separator")] [NativeName(NativeNameType.Type, "char")] byte separator, [NativeName(NativeNameType.Param, "out")] [NativeName(NativeNameType.Type, "ImVector_ImGuiTextRange*")] ref ImVectorImGuiTextRange output)
-		{
-			fixed (ImGuiTextRange* pself = &self)
-			{
-				fixed (ImVectorImGuiTextRange* poutput = &output)
-				{
-					splitNative((ImGuiTextRange*)pself, separator, (ImVectorImGuiTextRange*)poutput);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_ImGuiTextBuffer")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextBuffer*")]
-		internal static ImGuiTextBuffer* ImGuiTextBufferNative()
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*>)vt[462])();
-			#else
-			return (ImGuiTextBuffer*)((delegate* unmanaged[Cdecl]<nint>)vt[462])();
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_ImGuiTextBuffer")]
-		[return: NativeName(NativeNameType.Type, "ImGuiTextBuffer*")]
-		public static ImGuiTextBuffer* ImGuiTextBuffer()
-		{
-			ImGuiTextBuffer* ret = ImGuiTextBufferNative();
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void DestroyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, void>)vt[463])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[463])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			DestroyNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_destroy")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				DestroyNative((ImGuiTextBuffer*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_begin")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* beginNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, byte*>)vt[464])(self);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[464])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_begin")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* begin([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			byte* ret = beginNative(self);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_begin")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string beginS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			string ret = Utils.DecodeStringUTF8(beginNative(self));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_begin")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* begin([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				byte* ret = beginNative((ImGuiTextBuffer*)pself);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_begin")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string beginS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				string ret = Utils.DecodeStringUTF8(beginNative((ImGuiTextBuffer*)pself));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Buf is zero-terminated, so end() will point on the zero-terminator<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_end")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* endNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, byte*>)vt[465])(self);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[465])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// Buf is zero-terminated, so end() will point on the zero-terminator<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_end")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* end([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			byte* ret = endNative(self);
-			return ret;
-		}
-
-		/// <summary>
-		/// Buf is zero-terminated, so end() will point on the zero-terminator<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_end")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string endS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			string ret = Utils.DecodeStringUTF8(endNative(self));
-			return ret;
-		}
-
-		/// <summary>
-		/// Buf is zero-terminated, so end() will point on the zero-terminator<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_end")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* end([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				byte* ret = endNative((ImGuiTextBuffer*)pself);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// Buf is zero-terminated, so end() will point on the zero-terminator<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_end")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string endS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				string ret = Utils.DecodeStringUTF8(endNative((ImGuiTextBuffer*)pself));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_size")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		internal static int sizeNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, int>)vt[466])(self);
-			#else
-			return (int)((delegate* unmanaged[Cdecl]<nint, int>)vt[466])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_size")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int size([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			int ret = sizeNative(self);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_size")]
-		[return: NativeName(NativeNameType.Type, "int")]
-		public static int size([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				int ret = sizeNative((ImGuiTextBuffer*)pself);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte emptyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, byte>)vt[467])(self);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[467])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool empty([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			byte ret = emptyNative(self);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_empty")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool empty([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				byte ret = emptyNative((ImGuiTextBuffer*)pself);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void clearNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, void>)vt[468])(self);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, void>)vt[468])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void clear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			clearNative(self);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_clear")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void clear([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				clearNative((ImGuiTextBuffer*)pself);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_reserve")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void reserveNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, int, void>)vt[469])(self, capacity);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, int, void>)vt[469])((nint)self, capacity);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_reserve")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void reserve([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
-		{
-			reserveNative(self, capacity);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_reserve")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void reserve([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self, [NativeName(NativeNameType.Param, "capacity")] [NativeName(NativeNameType.Type, "int")] int capacity)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				reserveNative((ImGuiTextBuffer*)pself, capacity);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_c_str")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* c_strNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiTextBuffer*, byte*>)vt[470])(self);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[470])((nint)self);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_c_str")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* c_str([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			byte* ret = c_strNative(self);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_c_str")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string c_strS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ImGuiTextBuffer* self)
-		{
-			string ret = Utils.DecodeStringUTF8(c_strNative(self));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImGuiTextBuffer_c_str")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* c_str([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImGuiTextBuffer*")] ref ImGuiTextBuffer self)
-		{
-			fixed (ImGuiTextBuffer* pself = &self)
-			{
-				byte* ret = c_strNative((ImGuiTextBuffer*)pself);
-				return ret;
 			}
 		}
 	}

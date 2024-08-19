@@ -19,6 +19,192 @@ namespace Hexa.NET.ImGui
 	{
 
 		/// <summary>
+		/// helper to open popup when clicked on last item. Default to ImGuiPopupFlags_MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igOpenPopupOnItemClick")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void OpenPopupOnItemClick([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strId != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strId);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			OpenPopupOnItemClickNative(pStr0, popupFlags);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// helper to open popup when clicked on last item. Default to ImGuiPopupFlags_MouseButtonRight == 1. (note: actually triggers on the mouse _released_ event to be consistent with popup behaviors)<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igOpenPopupOnItemClick")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void OpenPopupOnItemClick([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] string strId)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (strId != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(strId);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(strId, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			OpenPopupOnItemClickNative(pStr0, (ImGuiPopupFlags)(1));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// manually close the popup we have begin-ed into.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igCloseCurrentPopup")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void CloseCurrentPopupNative()
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<void>)vt[263])();
+			#else
+			((delegate* unmanaged[Cdecl]<void>)vt[263])();
+			#endif
+		}
+
+		/// <summary>
+		/// manually close the popup we have begin-ed into.<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igCloseCurrentPopup")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CloseCurrentPopup()
+		{
+			CloseCurrentPopupNative();
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte BeginPopupContextItemNative([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<byte*, ImGuiPopupFlags, byte>)vt[264])(strId, popupFlags);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiPopupFlags, byte>)vt[264])((nint)strId, popupFlags);
+			#endif
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			byte ret = BeginPopupContextItemNative(strId, popupFlags);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] byte* strId)
+		{
+			byte ret = BeginPopupContextItemNative(strId, (ImGuiPopupFlags)(1));
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem()
+		{
+			byte ret = BeginPopupContextItemNative((byte*)(default), (ImGuiPopupFlags)(1));
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			byte ret = BeginPopupContextItemNative((byte*)(default), popupFlags);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ref byte strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			fixed (byte* pstrId = &strId)
+			{
+				byte ret = BeginPopupContextItemNative((byte*)pstrId, popupFlags);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ref byte strId)
+		{
+			fixed (byte* pstrId = &strId)
+			{
+				byte ret = BeginPopupContextItemNative((byte*)pstrId, (ImGuiPopupFlags)(1));
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool BeginPopupContextItem([NativeName(NativeNameType.Param, "str_id")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> strId, [NativeName(NativeNameType.Param, "popup_flags")] [NativeName(NativeNameType.Type, "ImGuiPopupFlags")] ImGuiPopupFlags popupFlags)
+		{
+			fixed (byte* pstrId = strId)
+			{
+				byte ret = BeginPopupContextItemNative((byte*)pstrId, popupFlags);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
 		/// open+begin popup when clicked on last item. Use str_id==NULL to associate the popup to previous item. If you want to use that on a non-interactive item such as Text() you need to pass in an explicit ID here. read comments in .cpp!<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igBeginPopupContextItem")]
@@ -4843,198 +5029,6 @@ namespace Hexa.NET.ImGui
 			{
 				Utils.Free(pStr0);
 			}
-		}
-
-		/// <summary>
-		/// call after submitting an item which may be dragged. when this return true, you can call SetDragDropPayload() + EndDragDropSource()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginDragDropSource")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte BeginDragDropSourceNative([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiDragDropFlags")] ImGuiDragDropFlags flags)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImGuiDragDropFlags, byte>)vt[313])(flags);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<ImGuiDragDropFlags, byte>)vt[313])(flags);
-			#endif
-		}
-
-		/// <summary>
-		/// call after submitting an item which may be dragged. when this return true, you can call SetDragDropPayload() + EndDragDropSource()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginDragDropSource")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginDragDropSource([NativeName(NativeNameType.Param, "flags")] [NativeName(NativeNameType.Type, "ImGuiDragDropFlags")] ImGuiDragDropFlags flags)
-		{
-			byte ret = BeginDragDropSourceNative(flags);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// call after submitting an item which may be dragged. when this return true, you can call SetDragDropPayload() + EndDragDropSource()<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igBeginDragDropSource")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool BeginDragDropSource()
-		{
-			byte ret = BeginDragDropSourceNative((ImGuiDragDropFlags)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		internal static byte SetDragDropPayloadNative([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] byte* type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "ImGuiCond")] ImGuiCond cond)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<byte*, void*, ulong, ImGuiCond, byte>)vt[314])(type, data, sz, cond);
-			#else
-			return (byte)((delegate* unmanaged[Cdecl]<nint, nint, ulong, ImGuiCond, byte>)vt[314])((nint)type, (nint)data, sz, cond);
-			#endif
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] byte* type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "ImGuiCond")] ImGuiCond cond)
-		{
-			byte ret = SetDragDropPayloadNative(type, data, sz, cond);
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] byte* type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz)
-		{
-			byte ret = SetDragDropPayloadNative(type, data, sz, (ImGuiCond)(0));
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] ref byte type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "ImGuiCond")] ImGuiCond cond)
-		{
-			fixed (byte* ptype = &type)
-			{
-				byte ret = SetDragDropPayloadNative((byte*)ptype, data, sz, cond);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] ref byte type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz)
-		{
-			fixed (byte* ptype = &type)
-			{
-				byte ret = SetDragDropPayloadNative((byte*)ptype, data, sz, (ImGuiCond)(0));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "ImGuiCond")] ImGuiCond cond)
-		{
-			fixed (byte* ptype = type)
-			{
-				byte ret = SetDragDropPayloadNative((byte*)ptype, data, sz, cond);
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz)
-		{
-			fixed (byte* ptype = type)
-			{
-				byte ret = SetDragDropPayloadNative((byte*)ptype, data, sz, (ImGuiCond)(0));
-				return ret != 0;
-			}
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] string type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz, [NativeName(NativeNameType.Param, "cond")] [NativeName(NativeNameType.Type, "ImGuiCond")] ImGuiCond cond)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (type != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(type);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(type, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = SetDragDropPayloadNative(pStr0, data, sz, cond);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
-		}
-
-		/// <summary>
-		/// type is a user defined string of maximum 32 characters. Strings starting with '_' are reserved for dear imgui internal types. Data is copied and held by imgui. Return true when payload has been accepted.<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igSetDragDropPayload")]
-		[return: NativeName(NativeNameType.Type, "bool")]
-		public static bool SetDragDropPayload([NativeName(NativeNameType.Param, "type")] [NativeName(NativeNameType.Type, "const char*")] string type, [NativeName(NativeNameType.Param, "data")] [NativeName(NativeNameType.Type, "const void*")] void* data, [NativeName(NativeNameType.Param, "sz")] [NativeName(NativeNameType.Type, "size_t")] ulong sz)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (type != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(type);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(type, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte ret = SetDragDropPayloadNative(pStr0, data, sz, (ImGuiCond)(0));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret != 0;
 		}
 	}
 }

@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiSliderFlagsPrivate_")]
+	[Flags]
 	public enum ImGuiSliderFlagsPrivate : int
 	{
 		/// <summary>

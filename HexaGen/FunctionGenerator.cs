@@ -296,7 +296,7 @@
         /// <summary>
         /// Gets the set of allowed parameter names.
         /// </summary>
-        public virtual HashSet<string> AllowedParameterNames { get; } = ["output"];
+        public virtual HashSet<string> AllowedParameterNames { get; } = ["pOut"];
 
         /// <summary>
         /// Determines whether the specified parameter is allowed.

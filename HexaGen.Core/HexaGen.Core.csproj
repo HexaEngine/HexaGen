@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.0</PackageVersion>
+		<AssemblyVersion>1.1.1</AssemblyVersion>
+		<PackageVersion>1.1.2</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>

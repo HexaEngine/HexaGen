@@ -13,8 +13,6 @@
             { '|', "Pipe" },
             { '?', "QuestionMark" },
             { '"', "Quote" },
-            { '/', "Slash" },
-            { '\\', "Backslash" }
         };
 
         private static readonly string[] reservedNames = [
@@ -36,7 +34,7 @@
                 {
                     sb.Append(replacement);
                 }
-                else if (!invalidChars.Contains(c))
+                else if (!invalidChars.Contains(c) || c == '/' || c == '\\')
                 {
                     sb.Append(c);
                 }

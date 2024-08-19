@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiSelectionRequestType")]
+	[Flags]
 	public enum ImGuiSelectionRequestType : int
 	{
 		/// <summary>

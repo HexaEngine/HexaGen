@@ -677,9 +677,9 @@
 
                     foreach (var parameterWriter in parameterWriters)
                     {
-                        if (parameterWriter.CanWrite(writerContext, overload.Parameters[i], cppParameter, paramFlags, i, offset))
+                        if (parameterWriter.CanWrite(writerContext, overload.Parameters[i + offset], cppParameter, paramFlags, i, offset))
                         {
-                            parameterWriter.Write(writerContext, overload.Parameters[i], cppParameter, paramFlags, i, offset);
+                            parameterWriter.Write(writerContext, overload.Parameters[i + offset], cppParameter, paramFlags, i, offset);
                             break;
                         }
                     }

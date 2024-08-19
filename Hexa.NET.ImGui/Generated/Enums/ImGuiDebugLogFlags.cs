@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiDebugLogFlags_")]
+	[Flags]
 	public enum ImGuiDebugLogFlags : int
 	{
 		/// <summary>

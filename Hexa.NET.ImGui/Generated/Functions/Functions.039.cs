@@ -23,6 +23,222 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), (byte*)(default), (float)(float.MaxValue), (float)(float.MaxValue), graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), overlayText, (float)(float.MaxValue), (float)(float.MaxValue), graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, valuesOffset, (byte*)(default), scaleMin, (float)(float.MaxValue), graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), (byte*)(default), scaleMin, (float)(float.MaxValue), graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), overlayText, scaleMin, (float)(float.MaxValue), graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, valuesOffset, (byte*)(default), scaleMin, scaleMax, graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), (byte*)(default), scaleMin, scaleMax, graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] byte* label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (float* pvalues = &values)
+			{
+				PlotLinesNative(label, (float*)pvalues, valuesCount, (int)(0), overlayText, scaleMin, scaleMax, graphSize, stride);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, graphSize, stride);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, graphSize, (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, overlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, overlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, overlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, valuesOffset, (byte*)(default), (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount)
+		{
+			fixed (byte* plabel = &label)
+			{
+				fixed (float* pvalues = &values)
+				{
+					PlotLinesNative((byte*)plabel, (float*)pvalues, valuesCount, (int)(0), (byte*)(default), (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ref byte label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] ref float values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] byte* overlayText)
 		{
 			fixed (byte* plabel = &label)
@@ -4804,230 +5020,6 @@ namespace Hexa.NET.ImGui
 				fixed (byte* poverlayText = overlayText)
 				{
 					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)), (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, (float)(float.MaxValue), graphSize, (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), graphSize, (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), graphSize, (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, (float)(float.MaxValue), graphSize, (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "graph_size")] [NativeName(NativeNameType.Type, "ImVec2")] Vector2 graphSize)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, scaleMin, scaleMax, graphSize, (int)(sizeof(float)));
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "scale_max")] [NativeName(NativeNameType.Type, "float")] float scaleMax, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, scaleMax, (Vector2)(new Vector2(0,0)), stride);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "scale_min")] [NativeName(NativeNameType.Type, "float")] float scaleMin, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, scaleMin, (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), stride);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "values_offset")] [NativeName(NativeNameType.Type, "int")] int valuesOffset, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, valuesOffset, (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), stride);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "igPlotLines_FloatPtr")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void PlotLines([NativeName(NativeNameType.Param, "label")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> label, [NativeName(NativeNameType.Param, "values")] [NativeName(NativeNameType.Type, "const float*")] float* values, [NativeName(NativeNameType.Param, "values_count")] [NativeName(NativeNameType.Type, "int")] int valuesCount, [NativeName(NativeNameType.Param, "overlay_text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> overlayText, [NativeName(NativeNameType.Param, "stride")] [NativeName(NativeNameType.Type, "int")] int stride)
-		{
-			fixed (byte* plabel = label)
-			{
-				fixed (byte* poverlayText = overlayText)
-				{
-					PlotLinesNative((byte*)plabel, values, valuesCount, (int)(0), (byte*)poverlayText, (float)(float.MaxValue), (float)(float.MaxValue), (Vector2)(new Vector2(0,0)), stride);
 				}
 			}
 		}

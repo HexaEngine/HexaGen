@@ -19,6 +19,1633 @@ namespace Hexa.NET.ImGui
 	{
 
 		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (ImFontAtlasCustomRect* prect = &rect)
+			{
+				CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, outUvMin, outUvMax);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontAtlasCustomRect* prect = &rect)
+				{
+					CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, outUvMin, outUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (Vector2* poutUvMin = &outUvMin)
+			{
+				CalcCustomRectUVNative(self, rect, (Vector2*)poutUvMin, outUvMax);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvMin = &outUvMin)
+				{
+					CalcCustomRectUVNative((ImFontAtlas*)pself, rect, (Vector2*)poutUvMin, outUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (ImFontAtlasCustomRect* prect = &rect)
+			{
+				fixed (Vector2* poutUvMin = &outUvMin)
+				{
+					CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, outUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontAtlasCustomRect* prect = &rect)
+				{
+					fixed (Vector2* poutUvMin = &outUvMin)
+					{
+						CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, outUvMax);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (Vector2* poutUvMax = &outUvMax)
+			{
+				CalcCustomRectUVNative(self, rect, outUvMin, (Vector2*)poutUvMax);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvMax = &outUvMax)
+				{
+					CalcCustomRectUVNative((ImFontAtlas*)pself, rect, outUvMin, (Vector2*)poutUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlasCustomRect* prect = &rect)
+			{
+				fixed (Vector2* poutUvMax = &outUvMax)
+				{
+					CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, outUvMin, (Vector2*)poutUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontAtlasCustomRect* prect = &rect)
+				{
+					fixed (Vector2* poutUvMax = &outUvMax)
+					{
+						CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, outUvMin, (Vector2*)poutUvMax);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (Vector2* poutUvMin = &outUvMin)
+			{
+				fixed (Vector2* poutUvMax = &outUvMax)
+				{
+					CalcCustomRectUVNative(self, rect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ImFontAtlasCustomRect* rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvMin = &outUvMin)
+				{
+					fixed (Vector2* poutUvMax = &outUvMax)
+					{
+						CalcCustomRectUVNative((ImFontAtlas*)pself, rect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlasCustomRect* prect = &rect)
+			{
+				fixed (Vector2* poutUvMin = &outUvMin)
+				{
+					fixed (Vector2* poutUvMax = &outUvMax)
+					{
+						CalcCustomRectUVNative(self, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_CalcCustomRectUV")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcCustomRectUV([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "rect")] [NativeName(NativeNameType.Type, "const ImFontAtlasCustomRect*")] ref ImFontAtlasCustomRect rect, [NativeName(NativeNameType.Param, "out_uv_min")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMin, [NativeName(NativeNameType.Param, "out_uv_max")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outUvMax)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (ImFontAtlasCustomRect* prect = &rect)
+				{
+					fixed (Vector2* poutUvMin = &outUvMin)
+					{
+						fixed (Vector2* poutUvMax = &outUvMax)
+						{
+							CalcCustomRectUVNative((ImFontAtlas*)pself, (ImFontAtlasCustomRect*)prect, (Vector2*)poutUvMin, (Vector2*)poutUvMax);
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte GetMouseCursorTexDataNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFontAtlas*, ImGuiMouseCursor, Vector2*, Vector2*, Vector2*, Vector2*, byte>)vt[649])(self, cursor, outOffset, outSize, outUvBorder, outUvFill);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, ImGuiMouseCursor, nint, nint, nint, nint, byte>)vt[649])((nint)self, cursor, (nint)outOffset, (nint)outSize, (nint)outUvBorder, (nint)outUvFill);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, outUvFill);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, outUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, outUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutUvBorder = &outUvBorder)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutUvBorder = outUvBorder)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvBorder = &outUvBorder)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvBorder = outUvBorder)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, outUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutUvFill = &outUvFill)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutUvFill = outUvFill)
+			{
+				byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvFill = &outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvFill = outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvFill = &outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvFill = outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvFill = &outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvFill = outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvFill = &outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] Vector2* outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvFill = outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, outUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutUvBorder = &outUvBorder)
+			{
+				fixed (Vector2* poutUvFill = &outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutUvBorder = outUvBorder)
+			{
+				fixed (Vector2* poutUvFill = outUvFill)
+				{
+					byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+					return ret != 0;
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = &outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, outSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvBorder = &outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = &outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutSize = &outSize)
+			{
+				fixed (Vector2* poutUvBorder = outUvBorder)
+				{
+					fixed (Vector2* poutUvFill = outUvFill)
+					{
+						byte ret = GetMouseCursorTexDataNative(self, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+						return ret != 0;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = &outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, outOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = &outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = &outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ImFontAtlas* self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (Vector2* poutOffset = &outOffset)
+			{
+				fixed (Vector2* poutSize = &outSize)
+				{
+					fixed (Vector2* poutUvBorder = outUvBorder)
+					{
+						fixed (Vector2* poutUvFill = outUvFill)
+						{
+							byte ret = GetMouseCursorTexDataNative(self, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+							return ret != 0;
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ref Vector2 outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvBorder = &outUvBorder)
+						{
+							fixed (Vector2* poutUvFill = &outUvFill)
+							{
+								byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFontAtlas_GetMouseCursorTexData")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool GetMouseCursorTexData([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFontAtlas*")] ref ImFontAtlas self, [NativeName(NativeNameType.Param, "cursor")] [NativeName(NativeNameType.Type, "ImGuiMouseCursor")] ImGuiMouseCursor cursor, [NativeName(NativeNameType.Param, "out_offset")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outOffset, [NativeName(NativeNameType.Param, "out_size")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 outSize, [NativeName(NativeNameType.Param, "out_uv_border")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvBorder, [NativeName(NativeNameType.Param, "out_uv_fill")] [NativeName(NativeNameType.Type, "ImVec2[2]")] ReadOnlySpan<Vector2> outUvFill)
+		{
+			fixed (ImFontAtlas* pself = &self)
+			{
+				fixed (Vector2* poutOffset = &outOffset)
+				{
+					fixed (Vector2* poutSize = &outSize)
+					{
+						fixed (Vector2* poutUvBorder = outUvBorder)
+						{
+							fixed (Vector2* poutUvFill = outUvFill)
+							{
+								byte ret = GetMouseCursorTexDataNative((ImFontAtlas*)pself, cursor, (Vector2*)poutOffset, (Vector2*)poutSize, (Vector2*)poutUvBorder, (Vector2*)poutUvFill);
+								return ret != 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_ImFont")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		internal static ImFont* ImFontNative()
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*>)vt[650])();
+			#else
+			return (ImFont*)((delegate* unmanaged[Cdecl]<nint>)vt[650])();
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_ImFont")]
+		[return: NativeName(NativeNameType.Type, "ImFont*")]
+		public static ImFont* ImFont()
+		{
+			ImFont* ret = ImFontNative();
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_destroy")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void DestroyNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<ImFont*, void>)vt[651])(self);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, void>)vt[651])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_destroy")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			DestroyNative(self);
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_destroy")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void Destroy([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				DestroyNative((ImFont*)pself);
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		internal static ImFontGlyph* FindGlyphNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*, char, ImFontGlyph*>)vt[652])(self, c);
+			#else
+			return (ImFontGlyph*)((delegate* unmanaged[Cdecl]<nint, char, nint>)vt[652])((nint)self, c);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		public static ImFontGlyph* FindGlyph([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			ImFontGlyph* ret = FindGlyphNative(self, c);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyph")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		public static ImFontGlyph* FindGlyph([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				ImFontGlyph* ret = FindGlyphNative((ImFont*)pself, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		internal static ImFontGlyph* FindGlyphNoFallbackNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*, char, ImFontGlyph*>)vt[653])(self, c);
+			#else
+			return (ImFontGlyph*)((delegate* unmanaged[Cdecl]<nint, char, nint>)vt[653])((nint)self, c);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		public static ImFontGlyph* FindGlyphNoFallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			ImFontGlyph* ret = FindGlyphNoFallbackNative(self, c);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_FindGlyphNoFallback")]
+		[return: NativeName(NativeNameType.Type, "const ImFontGlyph*")]
+		public static ImFontGlyph* FindGlyphNoFallback([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				ImFontGlyph* ret = FindGlyphNoFallbackNative((ImFont*)pself, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		internal static float GetCharAdvanceNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*, char, float>)vt[654])(self, c);
+			#else
+			return (float)((delegate* unmanaged[Cdecl]<nint, char, float>)vt[654])((nint)self, c);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float GetCharAdvance([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			float ret = GetCharAdvanceNative(self, c);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetCharAdvance")]
+		[return: NativeName(NativeNameType.Type, "float")]
+		public static float GetCharAdvance([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				float ret = GetCharAdvanceNative((ImFont*)pself, c);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		internal static byte IsLoadedNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*, byte>)vt[655])(self);
+			#else
+			return (byte)((delegate* unmanaged[Cdecl]<nint, byte>)vt[655])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool IsLoaded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			byte ret = IsLoadedNative(self);
+			return ret != 0;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_IsLoaded")]
+		[return: NativeName(NativeNameType.Type, "bool")]
+		public static bool IsLoaded([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte ret = IsLoadedNative((ImFont*)pself);
+				return ret != 0;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		internal static byte* GetDebugNameNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			#if NET5_0_OR_GREATER
+			return ((delegate* unmanaged[Cdecl]<ImFont*, byte*>)vt[656])(self);
+			#else
+			return (byte*)((delegate* unmanaged[Cdecl]<nint, nint>)vt[656])((nint)self);
+			#endif
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* GetDebugName([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			byte* ret = GetDebugNameNative(self);
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string GetDebugNameS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self)
+		{
+			string ret = Utils.DecodeStringUTF8(GetDebugNameNative(self));
+			return ret;
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static byte* GetDebugName([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* ret = GetDebugNameNative((ImFont*)pself);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// To be documented.
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_GetDebugName")]
+		[return: NativeName(NativeNameType.Type, "const char*")]
+		public static string GetDebugNameS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				string ret = Utils.DecodeStringUTF8(GetDebugNameNative((ImFont*)pself));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		internal static void CalcTextSizeANative([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			#if NET5_0_OR_GREATER
+			((delegate* unmanaged[Cdecl]<Vector2*, ImFont*, float, float, float, byte*, byte*, byte**, void>)vt[657])(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
+			#else
+			((delegate* unmanaged[Cdecl]<nint, nint, float, float, float, nint, nint, nint, void>)vt[657])((nint)pOut, (nint)self, size, maxWidth, wrapWidth, (nint)textBegin, (nint)textEnd, (nint)remaining);
+			#endif
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin)
+		{
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)(default));
+			return ret;
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)(default));
+			return ret;
+		}
+
+		/// <summary>
 		/// utf8<br/>
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
@@ -26,6 +1653,50 @@ namespace Hexa.NET.ImGui
 		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin)
 		{
 			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)(default));
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)(default), remaining);
+			return ret;
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
+			return ret;
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)(default));
 		}
 
 		/// <summary>
@@ -95,6 +1766,79 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)(default));
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), remaining);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, textEnd, remaining);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
 		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
@@ -113,19 +1857,6 @@ namespace Hexa.NET.ImGui
 			fixed (ImFont* pself = &self)
 			{
 				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)(default));
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)(default));
 			}
 		}
 
@@ -211,11 +1942,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin)
 		{
 			fixed (byte* ptextBegin = &textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)(default));
+				return ret;
 			}
 		}
 
@@ -224,11 +1957,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
 		{
 			fixed (byte* ptextBegin = &textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				return ret;
 			}
 		}
 
@@ -250,11 +1985,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextBegin = &textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				return ret;
 			}
 		}
 
@@ -263,11 +2000,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
-			fixed (byte* ptextBegin = textBegin)
+			fixed (byte* ptextBegin = &textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				return ret;
 			}
 		}
 
@@ -276,11 +2015,28 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin)
 		{
 			fixed (byte* ptextBegin = textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)(default));
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (byte* ptextBegin = textBegin)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				return ret;
 			}
 		}
 
@@ -302,11 +2058,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextBegin = textBegin)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				return ret;
 			}
 		}
 
@@ -315,7 +2073,22 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextBegin = textBegin)
+			{
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -334,11 +2107,13 @@ namespace Hexa.NET.ImGui
 				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)(default));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -346,7 +2121,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -365,11 +2140,13 @@ namespace Hexa.NET.ImGui
 				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -408,7 +2185,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -427,11 +2204,46 @@ namespace Hexa.NET.ImGui
 				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+			return ret;
 		}
 
 		/// <summary>
@@ -703,13 +2515,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextBegin = &textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -719,13 +2533,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextBegin = &textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -751,13 +2567,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextBegin = &textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+					return ret;
 				}
 			}
 		}
@@ -767,13 +2585,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
-				fixed (byte* ptextBegin = textBegin)
+				fixed (byte* ptextBegin = &textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+					return ret;
 				}
 			}
 		}
@@ -783,13 +2603,33 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextBegin = textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)(default));
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = textBegin)
+				{
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -815,13 +2655,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextBegin = textBegin)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+					return ret;
 				}
 			}
 		}
@@ -831,7 +2673,25 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = textBegin)
+				{
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+					return ret;
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -852,11 +2712,13 @@ namespace Hexa.NET.ImGui
 					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 					pStr0[pStrOffset0] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)(default));
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -865,7 +2727,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -886,11 +2748,13 @@ namespace Hexa.NET.ImGui
 					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 					pStr0[pStrOffset0] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -933,7 +2797,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -954,11 +2818,49 @@ namespace Hexa.NET.ImGui
 					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
 					pStr0[pStrOffset0] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textBegin != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+				return ret;
 			}
 		}
 
@@ -1267,11 +3169,382 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextBegin = &textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (byte* ptextBegin = &textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextBegin = &textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextBegin = textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (byte* ptextBegin = textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextBegin = textBegin)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textBegin != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = &textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = &textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = &textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)(default));
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextBegin = textBegin)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textBegin != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, remaining);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textBegin != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)(default));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textBegin != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), remaining);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
 		{
 			fixed (byte* ptextEnd = &textEnd)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				return ret;
 			}
 		}
 
@@ -1280,11 +3553,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextEnd = &textEnd)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				return ret;
 			}
 		}
 
@@ -1293,11 +3568,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
 		{
 			fixed (byte* ptextEnd = textEnd)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				return ret;
 			}
 		}
 
@@ -1306,11 +3583,13 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextEnd = textEnd)
 			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				return ret;
 			}
 		}
 
@@ -1319,7 +3598,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1338,11 +3617,13 @@ namespace Hexa.NET.ImGui
 				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -1350,7 +3631,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1369,11 +3650,13 @@ namespace Hexa.NET.ImGui
 				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
 				pStr0[pStrOffset0] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
 			if (pStrSize0 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -1513,13 +3796,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextEnd = &textEnd)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -1529,13 +3814,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextEnd = &textEnd)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+					return ret;
 				}
 			}
 		}
@@ -1545,13 +3832,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextEnd = textEnd)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -1561,13 +3850,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
 				fixed (byte* ptextEnd = textEnd)
 				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+					return ret;
 				}
 			}
 		}
@@ -1577,7 +3868,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -1598,11 +3889,13 @@ namespace Hexa.NET.ImGui
 					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
 					pStr0[pStrOffset0] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -1611,7 +3904,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -1632,11 +3925,13 @@ namespace Hexa.NET.ImGui
 					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
 					pStr0[pStrOffset0] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
 				if (pStrSize0 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -1795,13 +4090,261 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		{
+			fixed (byte* ptextEnd = &textEnd)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		{
+			fixed (byte* ptextEnd = textEnd)
+			{
+				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		{
+			byte* pStr0 = null;
+			int pStrSize0 = 0;
+			if (textEnd != null)
+			{
+				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+				}
+				else
+				{
+					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+					pStr0 = pStrStack0;
+				}
+				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+				pStr0[pStrOffset0] = 0;
+			}
+			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
+			if (pStrSize0 >= Utils.MaxStackallocSize)
+			{
+				Utils.Free(pStr0);
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextEnd = &textEnd)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, remaining);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				fixed (byte* ptextEnd = textEnd)
+				{
+					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)(default));
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textEnd != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, remaining);
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		{
+			fixed (ImFont* pself = &self)
+			{
+				byte* pStr0 = null;
+				int pStrSize0 = 0;
+				if (textEnd != null)
+				{
+					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
+					if (pStrSize0 >= Utils.MaxStackallocSize)
+					{
+						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
+					}
+					else
+					{
+						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
+						pStr0 = pStrStack0;
+					}
+					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
+					pStr0[pStrOffset0] = 0;
+				}
+				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)(default));
+				if (pStrSize0 >= Utils.MaxStackallocSize)
+				{
+					Utils.Free(pStr0);
+				}
+			}
+		}
+
+		/// <summary>
+		/// utf8<br/>
+		/// </summary>
+		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
+		[return: NativeName(NativeNameType.Type, "void")]
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
 		{
 			fixed (byte* ptextBegin = &textBegin)
 			{
 				fixed (byte* ptextEnd = &textEnd)
 				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -1811,13 +4354,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextBegin = &textBegin)
 			{
 				fixed (byte* ptextEnd = &textEnd)
 				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+					return ret;
 				}
 			}
 		}
@@ -1827,13 +4372,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
 		{
 			fixed (byte* ptextBegin = textBegin)
 			{
 				fixed (byte* ptextEnd = textEnd)
 				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+					Vector2 ret;
+					CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+					return ret;
 				}
 			}
 		}
@@ -1843,13 +4390,15 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (byte* ptextBegin = textBegin)
 			{
 				fixed (byte* ptextEnd = textEnd)
 				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+					Vector2 ret;
+					CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+					return ret;
 				}
 			}
 		}
@@ -1859,7 +4408,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1895,7 +4444,8 @@ namespace Hexa.NET.ImGui
 				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
 				pStr1[pStrOffset1] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, pStr1, remaining);
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)(default));
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr1);
@@ -1904,6 +4454,7 @@ namespace Hexa.NET.ImGui
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -1911,7 +4462,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			byte* pStr0 = null;
 			int pStrSize0 = 0;
@@ -1947,7 +4498,8 @@ namespace Hexa.NET.ImGui
 				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
 				pStr1[pStrOffset1] = 0;
 			}
-			CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)(default));
+			Vector2 ret;
+			CalcTextSizeANative(&ret, self, size, maxWidth, wrapWidth, pStr0, pStr1, remaining);
 			if (pStrSize1 >= Utils.MaxStackallocSize)
 			{
 				Utils.Free(pStr1);
@@ -1956,6 +4508,7 @@ namespace Hexa.NET.ImGui
 			{
 				Utils.Free(pStr0);
 			}
+			return ret;
 		}
 
 		/// <summary>
@@ -2149,7 +4702,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2157,7 +4710,9 @@ namespace Hexa.NET.ImGui
 				{
 					fixed (byte* ptextEnd = &textEnd)
 					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+						Vector2 ret;
+						CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+						return ret;
 					}
 				}
 			}
@@ -2168,7 +4723,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2176,7 +4731,9 @@ namespace Hexa.NET.ImGui
 				{
 					fixed (byte* ptextEnd = &textEnd)
 					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+						Vector2 ret;
+						CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+						return ret;
 					}
 				}
 			}
@@ -2187,7 +4744,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2195,7 +4752,9 @@ namespace Hexa.NET.ImGui
 				{
 					fixed (byte* ptextEnd = textEnd)
 					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+						Vector2 ret;
+						CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+						return ret;
 					}
 				}
 			}
@@ -2206,7 +4765,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2214,7 +4773,9 @@ namespace Hexa.NET.ImGui
 				{
 					fixed (byte* ptextEnd = textEnd)
 					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)(default));
+						Vector2 ret;
+						CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, remaining);
+						return ret;
 					}
 				}
 			}
@@ -2225,7 +4786,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2263,7 +4824,8 @@ namespace Hexa.NET.ImGui
 					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
 					pStr1[pStrOffset1] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, remaining);
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)(default));
 				if (pStrSize1 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr1);
@@ -2272,6 +4834,7 @@ namespace Hexa.NET.ImGui
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -2280,7 +4843,7 @@ namespace Hexa.NET.ImGui
 		/// </summary>
 		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
 		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
+		public static Vector2 CalcTextSizeA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] byte** remaining)
 		{
 			fixed (ImFont* pself = &self)
 			{
@@ -2318,7 +4881,8 @@ namespace Hexa.NET.ImGui
 					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
 					pStr1[pStrOffset1] = 0;
 				}
-				CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)(default));
+				Vector2 ret;
+				CalcTextSizeANative(&ret, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, remaining);
 				if (pStrSize1 >= Utils.MaxStackallocSize)
 				{
 					Utils.Free(pStr1);
@@ -2327,6 +4891,7 @@ namespace Hexa.NET.ImGui
 				{
 					Utils.Free(pStr0);
 				}
+				return ret;
 			}
 		}
 
@@ -2474,2556 +5039,6 @@ namespace Hexa.NET.ImGui
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (textBegin != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					byte* pStr1 = null;
-					int pStrSize1 = 0;
-					if (textEnd != null)
-					{
-						pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-						if (pStrSize1 >= Utils.MaxStackallocSize)
-						{
-							pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-						}
-						else
-						{
-							byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-							pStr1 = pStrStack1;
-						}
-						int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-						pStr1[pStrOffset1] = 0;
-					}
-					CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)(default));
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)premaining);
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)premaining);
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, textEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)(default), (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = &textBegin)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = &textBegin)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = textBegin)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = textBegin)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textBegin != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)premaining);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textBegin != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)premaining);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = &textBegin)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = &textBegin)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = textBegin)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, textEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = textBegin)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)(default), (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (textBegin != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, textEnd, (byte**)premaining);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (textBegin != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, (byte*)(default), (byte**)premaining);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)premaining);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)premaining);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (textEnd != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, textBegin, pStr0, (byte**)premaining);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = &textBegin)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (byte* ptextBegin = textBegin)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textBegin != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			fixed (byte** premaining = &remaining)
-			{
-				CalcTextSizeANative(pOut, self, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)premaining);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative((Vector2*)ppOut, self, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)premaining);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = &textBegin)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextBegin = textBegin)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						fixed (byte** premaining = &remaining)
-						{
-							CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] Vector2* pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textBegin != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				fixed (byte** premaining = &remaining)
-				{
-					CalcTextSizeANative(pOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)premaining);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr1);
-					}
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						Utils.Free(pStr0);
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ref byte textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = &textBegin)
-					{
-						fixed (byte* ptextEnd = &textEnd)
-						{
-							fixed (byte** premaining = &remaining)
-							{
-								CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					fixed (byte* ptextBegin = textBegin)
-					{
-						fixed (byte* ptextEnd = textEnd)
-						{
-							fixed (byte** premaining = &remaining)
-							{
-								CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, (byte*)ptextBegin, (byte*)ptextEnd, (byte**)premaining);
-							}
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// utf8<br/>
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcTextSizeA")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void CalcTextSizeA([NativeName(NativeNameType.Param, "pOut")] [NativeName(NativeNameType.Type, "ImVec2*")] ref Vector2 pOut, [NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "max_width")] [NativeName(NativeNameType.Type, "float")] float maxWidth, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] string textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "remaining")] [NativeName(NativeNameType.Type, "const char**")] ref byte* remaining)
-		{
-			fixed (Vector2* ppOut = &pOut)
-			{
-				fixed (ImFont* pself = &self)
-				{
-					byte* pStr0 = null;
-					int pStrSize0 = 0;
-					if (textBegin != null)
-					{
-						pStrSize0 = Utils.GetByteCountUTF8(textBegin);
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-						}
-						else
-						{
-							byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-							pStr0 = pStrStack0;
-						}
-						int pStrOffset0 = Utils.EncodeStringUTF8(textBegin, pStr0, pStrSize0);
-						pStr0[pStrOffset0] = 0;
-					}
-					byte* pStr1 = null;
-					int pStrSize1 = 0;
-					if (textEnd != null)
-					{
-						pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-						if (pStrSize1 >= Utils.MaxStackallocSize)
-						{
-							pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-						}
-						else
-						{
-							byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-							pStr1 = pStrStack1;
-						}
-						int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-						pStr1[pStrOffset1] = 0;
-					}
-					fixed (byte** premaining = &remaining)
-					{
-						CalcTextSizeANative((Vector2*)ppOut, (ImFont*)pself, size, maxWidth, wrapWidth, pStr0, pStr1, (byte**)premaining);
-						if (pStrSize1 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr1);
-						}
-						if (pStrSize0 >= Utils.MaxStackallocSize)
-						{
-							Utils.Free(pStr0);
-						}
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		internal static byte* CalcWordWrapPositionANative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			#if NET5_0_OR_GREATER
-			return ((delegate* unmanaged[Cdecl]<ImFont*, float, byte*, byte*, float, byte*>)vt[658])(self, scale, text, textEnd, wrapWidth);
-			#else
-			return (byte*)((delegate* unmanaged[Cdecl]<nint, float, nint, nint, float, nint>)vt[658])((nint)self, scale, (nint)text, (nint)textEnd, wrapWidth);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* ret = CalcWordWrapPositionANative(self, scale, text, textEnd, wrapWidth);
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, text, textEnd, wrapWidth));
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, text, textEnd, wrapWidth);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, text, textEnd, wrapWidth));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = &text)
-			{
-				byte* ret = CalcWordWrapPositionANative(self, scale, (byte*)ptext, textEnd, wrapWidth);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = &text)
-			{
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, (byte*)ptext, textEnd, wrapWidth));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = text)
-			{
-				byte* ret = CalcWordWrapPositionANative(self, scale, (byte*)ptext, textEnd, wrapWidth);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = text)
-			{
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, (byte*)ptext, textEnd, wrapWidth));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = CalcWordWrapPositionANative(self, scale, pStr0, textEnd, wrapWidth);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, pStr0, textEnd, wrapWidth));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, textEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, textEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, textEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, textEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, pStr0, textEnd, wrapWidth);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, pStr0, textEnd, wrapWidth));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				byte* ret = CalcWordWrapPositionANative(self, scale, text, (byte*)ptextEnd, wrapWidth);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptextEnd = &textEnd)
-			{
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, text, (byte*)ptextEnd, wrapWidth));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				byte* ret = CalcWordWrapPositionANative(self, scale, text, (byte*)ptextEnd, wrapWidth);
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptextEnd = textEnd)
-			{
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, text, (byte*)ptextEnd, wrapWidth));
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* ret = CalcWordWrapPositionANative(self, scale, text, pStr0, wrapWidth);
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (textEnd != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, text, pStr0, wrapWidth));
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, text, (byte*)ptextEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, text, (byte*)ptextEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, text, (byte*)ptextEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, text, (byte*)ptextEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, text, pStr0, wrapWidth);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] byte* text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (textEnd != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(textEnd, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, text, pStr0, wrapWidth));
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					byte* ret = CalcWordWrapPositionANative(self, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = &text)
-			{
-				fixed (byte* ptextEnd = &textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					byte* ret = CalcWordWrapPositionANative(self, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (byte* ptext = text)
-			{
-				fixed (byte* ptextEnd = textEnd)
-				{
-					string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth));
-					return ret;
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			byte* ret = CalcWordWrapPositionANative(self, scale, pStr0, pStr1, wrapWidth);
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			byte* pStr0 = null;
-			int pStrSize0 = 0;
-			if (text != null)
-			{
-				pStrSize0 = Utils.GetByteCountUTF8(text);
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-				}
-				else
-				{
-					byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-					pStr0 = pStrStack0;
-				}
-				int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-				pStr0[pStrOffset0] = 0;
-			}
-			byte* pStr1 = null;
-			int pStrSize1 = 0;
-			if (textEnd != null)
-			{
-				pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-				}
-				else
-				{
-					byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-					pStr1 = pStrStack1;
-				}
-				int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-				pStr1[pStrOffset1] = 0;
-			}
-			string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative(self, scale, pStr0, pStr1, wrapWidth));
-			if (pStrSize1 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr1);
-			}
-			if (pStrSize0 >= Utils.MaxStackallocSize)
-			{
-				Utils.Free(pStr0);
-			}
-			return ret;
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ref byte text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ref byte textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = &text)
-				{
-					fixed (byte* ptextEnd = &textEnd)
-					{
-						string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth));
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth);
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] ReadOnlySpan<byte> textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (byte* ptext = text)
-				{
-					fixed (byte* ptextEnd = textEnd)
-					{
-						string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, (byte*)ptext, (byte*)ptextEnd, wrapWidth));
-						return ret;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static byte* CalcWordWrapPositionA([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				byte* ret = CalcWordWrapPositionANative((ImFont*)pself, scale, pStr0, pStr1, wrapWidth);
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_CalcWordWrapPositionA")]
-		[return: NativeName(NativeNameType.Type, "const char*")]
-		public static string CalcWordWrapPositionAS([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "scale")] [NativeName(NativeNameType.Type, "float")] float scale, [NativeName(NativeNameType.Param, "text")] [NativeName(NativeNameType.Type, "const char*")] string text, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] string textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				byte* pStr0 = null;
-				int pStrSize0 = 0;
-				if (text != null)
-				{
-					pStrSize0 = Utils.GetByteCountUTF8(text);
-					if (pStrSize0 >= Utils.MaxStackallocSize)
-					{
-						pStr0 = Utils.Alloc<byte>(pStrSize0 + 1);
-					}
-					else
-					{
-						byte* pStrStack0 = stackalloc byte[pStrSize0 + 1];
-						pStr0 = pStrStack0;
-					}
-					int pStrOffset0 = Utils.EncodeStringUTF8(text, pStr0, pStrSize0);
-					pStr0[pStrOffset0] = 0;
-				}
-				byte* pStr1 = null;
-				int pStrSize1 = 0;
-				if (textEnd != null)
-				{
-					pStrSize1 = Utils.GetByteCountUTF8(textEnd);
-					if (pStrSize1 >= Utils.MaxStackallocSize)
-					{
-						pStr1 = Utils.Alloc<byte>(pStrSize1 + 1);
-					}
-					else
-					{
-						byte* pStrStack1 = stackalloc byte[pStrSize1 + 1];
-						pStr1 = pStrStack1;
-					}
-					int pStrOffset1 = Utils.EncodeStringUTF8(textEnd, pStr1, pStrSize1);
-					pStr1[pStrOffset1] = 0;
-				}
-				string ret = Utils.DecodeStringUTF8(CalcWordWrapPositionANative((ImFont*)pself, scale, pStr0, pStr1, wrapWidth));
-				if (pStrSize1 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr1);
-				}
-				if (pStrSize0 >= Utils.MaxStackallocSize)
-				{
-					Utils.Free(pStr0);
-				}
-				return ret;
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderChar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderCharNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImFont*, ImDrawList*, float, Vector2, uint, char, void>)vt[659])(self, drawList, size, pos, col, c);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, float, Vector2, uint, char, void>)vt[659])((nint)self, (nint)drawList, size, pos, col, c);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderChar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderChar([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			RenderCharNative(self, drawList, size, pos, col, c);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderChar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderChar([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				RenderCharNative((ImFont*)pself, drawList, size, pos, col, c);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderChar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderChar([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImDrawList* pdrawList = &drawList)
-			{
-				RenderCharNative(self, (ImDrawList*)pdrawList, size, pos, col, c);
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderChar")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderChar([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ref ImFont self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ref ImDrawList drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "c")] [NativeName(NativeNameType.Type, "ImWchar")] char c)
-		{
-			fixed (ImFont* pself = &self)
-			{
-				fixed (ImDrawList* pdrawList = &drawList)
-				{
-					RenderCharNative((ImFont*)pself, (ImDrawList*)pdrawList, size, pos, col, c);
-				}
-			}
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderText")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		internal static void RenderTextNative([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 clipRect, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "cpu_fine_clip")] [NativeName(NativeNameType.Type, "bool")] byte cpuFineClip)
-		{
-			#if NET5_0_OR_GREATER
-			((delegate* unmanaged[Cdecl]<ImFont*, ImDrawList*, float, Vector2, uint, Vector4, byte*, byte*, float, byte, void>)vt[660])(self, drawList, size, pos, col, clipRect, textBegin, textEnd, wrapWidth, cpuFineClip);
-			#else
-			((delegate* unmanaged[Cdecl]<nint, nint, float, Vector2, uint, Vector4, nint, nint, float, byte, void>)vt[660])((nint)self, (nint)drawList, size, pos, col, clipRect, (nint)textBegin, (nint)textEnd, wrapWidth, cpuFineClip);
-			#endif
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderText")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderText([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 clipRect, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth, [NativeName(NativeNameType.Param, "cpu_fine_clip")] [NativeName(NativeNameType.Type, "bool")] bool cpuFineClip)
-		{
-			RenderTextNative(self, drawList, size, pos, col, clipRect, textBegin, textEnd, wrapWidth, cpuFineClip ? (byte)1 : (byte)0);
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderText")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderText([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 clipRect, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd, [NativeName(NativeNameType.Param, "wrap_width")] [NativeName(NativeNameType.Type, "float")] float wrapWidth)
-		{
-			RenderTextNative(self, drawList, size, pos, col, clipRect, textBegin, textEnd, wrapWidth, (byte)(0));
-		}
-
-		/// <summary>
-		/// To be documented.
-		/// </summary>
-		[NativeName(NativeNameType.Func, "ImFont_RenderText")]
-		[return: NativeName(NativeNameType.Type, "void")]
-		public static void RenderText([NativeName(NativeNameType.Param, "self")] [NativeName(NativeNameType.Type, "ImFont*")] ImFont* self, [NativeName(NativeNameType.Param, "draw_list")] [NativeName(NativeNameType.Type, "ImDrawList*")] ImDrawList* drawList, [NativeName(NativeNameType.Param, "size")] [NativeName(NativeNameType.Type, "float")] float size, [NativeName(NativeNameType.Param, "pos")] [NativeName(NativeNameType.Type, "const ImVec2")] Vector2 pos, [NativeName(NativeNameType.Param, "col")] [NativeName(NativeNameType.Type, "ImU32")] uint col, [NativeName(NativeNameType.Param, "clip_rect")] [NativeName(NativeNameType.Type, "const ImVec4")] Vector4 clipRect, [NativeName(NativeNameType.Param, "text_begin")] [NativeName(NativeNameType.Type, "const char*")] byte* textBegin, [NativeName(NativeNameType.Param, "text_end")] [NativeName(NativeNameType.Type, "const char*")] byte* textEnd)
-		{
-			RenderTextNative(self, drawList, size, pos, col, clipRect, textBegin, textEnd, (float)(0.0f), (byte)(0));
 		}
 	}
 }

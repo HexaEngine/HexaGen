@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Core.Mapping;
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text.RegularExpressions;
@@ -79,7 +80,7 @@
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
                     CppEnum cppEnum = compilation.Enums[i];
-                    var canon = cppEnum.GetCanonicalType();
+
                     var csEnum = ParseEnum(cppEnum, cppEnum);
                     if (FilterEnum(null, csEnum))
                     {
@@ -176,9 +177,14 @@
             var mapping = config.GetEnumMapping(cppEnum.Name);
             csName = mapping?.FriendlyName ?? csName;
 
-            CsEnumMetadata csEnum = new(cppEnum.Name, csName, config.WriteCsSummary(cppEnum.Comment));
+            List<string> attributes = [];
+            if (config.GenerateMetadata)
+            {
+                attributes.AddRange([$"[NativeName(NativeNameType.Enum, \"{cppEnum.Name.Replace("\\", "\\\\")}\")]"]);
+            }
+            CsEnumMetadata csEnum = new(cppEnum.Name, csName, attributes, config.WriteCsSummary(cppEnum.Comment));
             csEnum.BaseType = config.GetCsTypeName(cppEnum.IntegerType);
-
+            bool flags = true;
             bool noneAdded = false;
             for (int j = 0; j < cppEnum.Items.Count; j++)
             {
@@ -188,6 +194,30 @@
                     config.CustomEnumItemMapper?.Invoke(cppEnum, cppEnum.Items[j], csEnum, item);
                     csEnum.Items.Add(item);
                 }
+
+                if (item?.Value == null) continue; // skip on null.
+                // do Flags check post mapper, cuz value could change.
+                if (long.TryParse(item.Value, out var numLong))
+                {
+                    if (!(numLong == 0 || (numLong > 0 && (numLong & (numLong - 1)) == 0)))
+                    {
+                        flags = false;
+                    }
+                }
+                if (ulong.TryParse(item.Value, out ulong numULong))
+                {
+                    if (!(numULong == 0 || (numULong > 0 && (numULong & (numULong - 1)) == 0)))
+                    {
+                        flags = false;
+                    }
+                }
+            }
+
+            flags |= cppEnum.Name.Contains("flag", StringComparison.OrdinalIgnoreCase); // another heuristric for flags.
+
+            if (flags)
+            {
+                attributes.Add("[Flags]");
             }
 
             return csEnum;
@@ -251,7 +281,12 @@
                 csValue = itemMapping.Value;
             }
 
-            return new CsEnumItemMetadata(enumItem.Name, cppValue, enumItemName, csValue, commentWritten);
+            List<string> attributes = new();
+            if (config.GenerateMetadata)
+            {
+                attributes.AddRange([$"[NativeName(NativeNameType.EnumItem, \"{enumItem.Name}\")]", $"[NativeName(NativeNameType.Value, \"{cppValue.ToLiteral()}\")]"]);
+            }
+            return new CsEnumItemMetadata(enumItem.Name, cppValue, enumItemName, csValue, attributes, commentWritten);
         }
 
         protected virtual void WriteEnum(GenContext context, CsEnumMetadata csEnum)
@@ -261,10 +296,7 @@
             LogInfo("defined enum " + csEnum.Name);
 
             writer.WriteLines(csEnum.Comment);
-            if (config.GenerateMetadata)
-            {
-                writer.WriteLine($"[NativeName(NativeNameType.Enum, \"{csEnum.CppName.Replace("\\", "\\\\")}\")]");
-            }
+            writer.WriteLines(csEnum.Attributes);
 
             using (writer.PushBlock($"public enum {csEnum.Name} : {csEnum.BaseType}"))
             {
@@ -285,11 +317,7 @@
         {
             var writer = context.Writer;
             writer.WriteLines(csEnumItem.Comment);
-            if (config.GenerateMetadata)
-            {
-                writer.WriteLine($"[NativeName(NativeNameType.EnumItem, \"{csEnumItem.CppName}\")]");
-                writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csEnumItem.EscapedCppValue}\")]");
-            }
+            writer.WriteLines(csEnumItem.Attributes);
             writer.WriteLine($"{csEnumItem.Name} = {csEnumItem.Value},");
         }
     }

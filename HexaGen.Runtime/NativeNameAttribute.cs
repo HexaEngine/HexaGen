@@ -35,4 +35,21 @@
 
         public string Name { get; set; }
     }
+
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
+    public class SourceLocationAttribute : Attribute
+    {
+        public SourceLocationAttribute(string file, string start, string end)
+        {
+            File = file;
+            Start = start;
+            End = end;
+        }
+
+        public string File { get; set; }
+
+        public string Start { get; }
+
+        public string End { get; }
+    }
 }

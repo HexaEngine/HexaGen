@@ -17,6 +17,7 @@ namespace Hexa.NET.ImGui
 	/// To be documented.
 	/// </summary>
 	[NativeName(NativeNameType.Enum, "ImGuiFocusRequestFlags_")]
+	[Flags]
 	public enum ImGuiFocusRequestFlags : int
 	{
 		/// <summary>
