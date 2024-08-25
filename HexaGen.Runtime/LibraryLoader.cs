@@ -8,6 +8,10 @@
     using HexaGen.Runtime;
 #endif
 
+#if ANDROID
+    using Android.Content.PM;
+#endif
+
     public enum TargetPlatform
     {
         Unknown = 0,
@@ -181,7 +185,16 @@
 
         private static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
         {
-            var assemblyLocation = AppContext.BaseDirectory;
+#if ANDROID
+            // Get the application info
+            ApplicationInfo appInfo = Application.Context.ApplicationInfo!;
+
+            // Get the native library directory path
+            string assemblyLocation = appInfo.NativeLibraryDir!;
+
+#else
+            string assemblyLocation = AppContext.BaseDirectory;
+#endif
 
             var paths = new[]
             {
