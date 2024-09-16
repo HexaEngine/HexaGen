@@ -2,6 +2,7 @@
 {
     using Microsoft.CodeAnalysis.CSharp;
     using System.Diagnostics.CodeAnalysis;
+    using System.Text.Json.Serialization;
 
     public interface IHasIdentifier
     {
@@ -47,8 +48,10 @@
             CppValue = cppValue;
         }
 
+        [JsonConstructor]
         public CsConstantMetadata(string cppName, string cppValue, string? name, string? value, string? comment) : this(cppName, cppValue)
         {
+            Identifier = cppName;
             CppValue = cppValue;
             Name = name;
             Value = value;
@@ -82,6 +85,7 @@
 
     public class CsEnumMetadata : IHasIdentifier
     {
+        [JsonConstructor]
         public CsEnumMetadata(string cppName, string name, List<string> attributes, string? comment, string baseType, List<CsEnumItemMetadata> items)
         {
             CppName = cppName;
@@ -142,6 +146,7 @@
             Attributes = new();
         }
 
+        [JsonConstructor]
         public CsEnumItemMetadata(string cppName, string cppValue, string? name, string? value, List<string> attributes, string? comment)
         {
             CppName = cppName;
