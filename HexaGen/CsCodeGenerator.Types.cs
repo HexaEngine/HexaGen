@@ -13,13 +13,16 @@
     {
         protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
-        protected readonly Dictionary<string, string> WrappedPointers = new();
-        protected readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
+        public readonly Dictionary<string, string> WrappedPointers = new();
+        public readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
 
         protected virtual List<string> SetupTypeUsings()
         {
-            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings =
+            [
+                "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime",
+                .. config.Usings,
+            ];
             return usings;
         }
 

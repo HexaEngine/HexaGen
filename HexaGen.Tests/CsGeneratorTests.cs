@@ -3,6 +3,7 @@ namespace HexaGen.Tests
     using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using HexaGen.Metadata;
     using HexaGen.Patching;
     using System;
     using System.Text;

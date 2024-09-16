@@ -12,8 +12,7 @@
 
         protected virtual List<string> SetupExtensionUsings()
         {
-            List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings = ["System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime", .. config.Usings];
             return usings;
         }
 

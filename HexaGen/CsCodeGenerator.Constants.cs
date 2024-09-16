@@ -1,7 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
-    using HexaGen.Language.Cpp;
+    using HexaGen.Metadata;
     using System.Collections.Generic;
 
     public unsafe partial class CsCodeGenerator
@@ -12,8 +12,7 @@
 
         protected virtual List<string> SetupConstantUsings()
         {
-            List<string> usings = new() { "System", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings = ["System", "HexaGen.Runtime", .. config.Usings];
             return usings;
         }
 

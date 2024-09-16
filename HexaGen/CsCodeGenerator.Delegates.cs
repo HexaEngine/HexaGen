@@ -15,8 +15,11 @@
 
         protected virtual List<string> SetupDelegateUsings()
         {
-            List<string> usings = new() { "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings =
+            [
+                "System", "System.Diagnostics", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime",
+                .. config.Usings,
+            ];
             return usings;
         }
 

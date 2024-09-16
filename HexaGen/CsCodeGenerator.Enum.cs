@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Core.Mapping;
+    using HexaGen.Metadata;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -15,8 +16,7 @@
 
         protected virtual List<string> SetupEnumUsings()
         {
-            List<string> usings = new() { "System", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings = ["System", "HexaGen.Runtime", .. config.Usings];
             return usings;
         }
 

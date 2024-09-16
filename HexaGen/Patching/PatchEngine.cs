@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.Patching
 {
     using CppAst;
+    using HexaGen.Metadata;
     using System.Collections.Generic;
     using System.Text.Json;
     using System.Text.RegularExpressions;

@@ -5,8 +5,6 @@
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
     using System.IO;
-    using System.Runtime.InteropServices;
-    using System.Security.Cryptography;
     using System.Text;
 
     public enum WriteFunctionFlags
@@ -30,8 +28,7 @@
 
         protected virtual List<string> SetupFunctionUsings()
         {
-            List<string> usings = new() { "System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime" };
-            usings.AddRange(config.Usings);
+            List<string> usings = ["System", "System.Runtime.CompilerServices", "System.Runtime.InteropServices", "HexaGen.Runtime", .. config.Usings];
             return usings;
         }
 
@@ -587,6 +584,46 @@
             writer.WriteLine();
         }
 
+        private readonly List<IParameterWriter> parameterWriters =
+        [
+            new HandleParameterWriter(),
+            new UseThisParameterWriter(),
+            new DefaultValueParameterWriter(),
+            new StringParameterWriter(),
+            new RefParameterWriter(),
+            new SpanParameterWriter(),
+            new ArrayParameterWriter(),
+            new BoolParameterWriter(),
+            new FallthroughParameterWriter(),
+        ];
+
+        public IReadOnlyList<IParameterWriter> ParameterWriters => parameterWriters;
+
+        public void AddParamterWriter(IParameterWriter writer)
+        {
+            parameterWriters.Add(writer);
+            parameterWriters.Sort(new ParameterPriorityComparer());
+        }
+
+        public void RemoveParamterWriter(IParameterWriter writer)
+        {
+            parameterWriters.Remove(writer);
+        }
+
+        public void OverwriteParameterWriter<T>(IParameterWriter newWriter) where T : IParameterWriter
+        {
+            for (int i = 0; i < parameterWriters.Count; i++)
+            {
+                var writer = parameterWriters[i];
+                if (writer is T)
+                {
+                    parameterWriters[i] = newWriter;
+                    break;
+                }
+            }
+            parameterWriters.Sort(new ParameterPriorityComparer());
+        }
+
         protected virtual void WriteFunctionEx(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
         {
             var writer = context.Writer;
@@ -650,19 +687,6 @@
                 }
 
                 FunctionWriterContext writerContext = new(context.Writer, config, sb, overload, variation, flags);
-                List<IParameterWriter> parameterWriters =
-                [
-                    new HandleParameterWriter(),
-                    new UseThisParameterWriter(),
-                    new DefaultValueParameterWriter(),
-                    new StringParameterWriter(),
-                    new RefParameterWriter(),
-                    new SpanParameterWriter(),
-                    new ArrayParameterWriter(),
-                    new BoolParameterWriter(),
-                    new FallthroughParameterWriter(),
-                ];
-                parameterWriters.Sort(new ParameterPriorityComparer());
 
                 for (int i = 0; i < overload.Parameters.Count - offset; i++)
                 {

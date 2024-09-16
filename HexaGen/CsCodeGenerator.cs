@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using HexaGen.Metadata;
     using HexaGen.Patching;
     using System.Text.Json;
 
@@ -212,6 +213,7 @@
             var typedefs = metadata.DefinedTypes;
             var types = metadata.DefinedTypes;
             var delegates = metadata.DefinedDelegates;
+            var wrappedPointers = metadata.WrappedPointers;
             for (int i = 0; i < constants.Count; i++)
             {
                 LibDefinedConstants.Add(constants[i]);
@@ -240,6 +242,10 @@
             for (int i = 0; i < delegates.Count; i++)
             {
                 LibDefinedDelegates.Add(delegates[i]);
+            }
+            foreach (var item in wrappedPointers)
+            {
+                WrappedPointers[item.Key] = item.Value;
             }
         }
 

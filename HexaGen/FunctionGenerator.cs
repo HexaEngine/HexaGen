@@ -417,6 +417,10 @@
             steps.Add(new StringReturnGenStep());
         }
 
+        public IReadOnlyList<FunctionGenRule> Rules => rules;
+
+        public IReadOnlyList<FunctionGenStep> Steps => steps;
+
         public void OverwriteStep<T>(FunctionGenStep step) where T : FunctionGenStep
         {
             for (int i = 0; i < steps.Count; i++)
@@ -439,6 +443,26 @@
                     return;
                 }
             }
+        }
+
+        public void AddRule(FunctionGenRule rule)
+        {
+            rules.Add(rule);
+        }
+
+        public void RemoveRule(FunctionGenRule rule)
+        {
+            rules.Remove(rule);
+        }
+
+        public void AddStep(FunctionGenStep step)
+        {
+            steps.Add(step);
+        }
+
+        public void RemoveStep(FunctionGenStep step)
+        {
+            steps.Remove(step);
         }
 
         public virtual void GenerateConstructorVariations(CppClass cppClass, List<CsSubClass> subClasses, string csName, CsFunctionOverload function)

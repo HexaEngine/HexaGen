@@ -5,7 +5,8 @@ namespace HexaGen.Patching
     public enum NamingPatchOptions
     {
         None,
-        MultiplePrefixes,
+        MultiplePrefixes = 1 << 0,
+        OverwriteNames = 1 << 1,
     }
 
     public class NamingPatch : PrePatch
@@ -35,7 +36,20 @@ namespace HexaGen.Patching
                 }
             }
 
-            config.FunctionMappings.Add(new(cppFunction.Name, name, null, [], []));
+            if (!config.TryGetFunctionMapping(name, out var mapping))
+            {
+                mapping = new(cppFunction.Name, name, null, [], []);
+                config.FunctionMappings.Add(mapping);
+            }
+
+            if ((options & NamingPatchOptions.OverwriteNames) != 0)
+            {
+                mapping.FriendlyName = name;
+            }
+            else
+            {
+                mapping.FriendlyName ??= name;
+            }
         }
     }
 }
