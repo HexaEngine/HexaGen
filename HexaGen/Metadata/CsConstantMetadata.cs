@@ -43,5 +43,10 @@
         {
             return $"Constant: {CppName} = {CppValue}";
         }
+
+        public CsConstantMetadata Clone()
+        {
+            return new CsConstantMetadata(CppName, CppValue, Name, Value, Comment);
+        }
     }
 }

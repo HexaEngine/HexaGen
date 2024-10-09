@@ -54,5 +54,11 @@
         {
             return Identifier.GetHashCode();
         }
+
+        public CsEnumMetadata Clone()
+        {
+            return new CsEnumMetadata(CppName, Name, new List<string>(Attributes), Comment, BaseType, Items.Select(item => item.Clone()).ToList()
+            );
+        }
     }
 }

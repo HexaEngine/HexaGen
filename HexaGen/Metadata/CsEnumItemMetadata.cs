@@ -40,5 +40,10 @@
         {
             return Identifier.GetHashCode();
         }
+
+        public CsEnumItemMetadata Clone()
+        {
+            return new CsEnumItemMetadata(CppName, CppValue, Name, Value, new List<string>(Attributes), Comment);
+        }
     }
 }

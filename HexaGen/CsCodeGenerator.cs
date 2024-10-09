@@ -12,6 +12,7 @@
         protected FunctionGenerator funcGen;
         protected PatchEngine patchEngine = new();
         protected ConfigComposer configComposer = new();
+        private CsCodeGeneratorMetadata? metadata;
 
         public static CsCodeGenerator Create(string configPath)
         {
@@ -268,8 +269,12 @@
 
         public CsCodeGeneratorMetadata GetMetadata()
         {
-            CsCodeGeneratorMetadata metadata = new();
-            metadata.CopyFrom(this);
+            if (metadata == null)
+            {
+                metadata = new();
+                metadata.CopyFrom(this);
+            }
+
             return metadata;
         }
 

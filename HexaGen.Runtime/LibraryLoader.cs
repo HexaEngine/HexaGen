@@ -183,6 +183,37 @@
             return handle;
         }
 
+        public delegate string LibraryNameCallback();
+
+        public delegate string LibraryExtensionCallback();
+
+        public static nint LoadLibrary(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback)
+        {
+            var libraryName = libraryNameCallback();
+
+            var extension = libraryExtensionCallback != null ? libraryExtensionCallback() : GetExtension([]);
+
+            if (!libraryName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
+            {
+                libraryName += extension;
+            }
+
+            var osPlatform = GetOSPlatform();
+            var architecture = GetArchitecture();
+            var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
+
+            nint handle;
+
+            handle = NativeLibrary.Load(libraryPath);
+
+            if (handle == IntPtr.Zero)
+            {
+                throw new DllNotFoundException($"Unable to load library '{libraryName}'.");
+            }
+
+            return handle;
+        }
+
         private static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
         {
 #if ANDROID
