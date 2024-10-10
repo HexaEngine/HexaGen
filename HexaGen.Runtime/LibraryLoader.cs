@@ -30,39 +30,6 @@
         Any = FreeBSD | Linux | OSX | Windows | Android | IOS | Tizen | ChromeOS | WebAssembly | Solaris | WatchOS | TVO
     }
 
-    public struct LibraryName
-    {
-        public string Name;
-        public TargetPlatform TargetPlatform;
-    }
-
-    public struct LibraryExtension
-    {
-        public string Extension;
-        public TargetPlatform TargetPlatform;
-    }
-
-    public struct LibraryLoaderHints
-    {
-        public LibraryName[] Names;
-        public LibraryExtension[] Extensions;
-        public string[] Paths;
-
-        public LibraryLoaderHints(LibraryName[] names, LibraryExtension[] extensions, string[] paths)
-        {
-            Names = names;
-            Extensions = extensions;
-            Paths = paths;
-        }
-
-        public LibraryLoaderHints(LibraryName[] names, LibraryExtension[] extensions)
-        {
-            Names = names;
-            Extensions = extensions;
-            Paths = [];
-        }
-    }
-
     public static class LibraryLoader
     {
         public static OSPlatform FreeBSD { get; } = OSPlatform.Create("FREEBSD");
@@ -89,16 +56,8 @@
 
         public static OSPlatform TVOS { get; } = OSPlatform.Create("TVOS");
 
-        public static string GetExtension(IEnumerable<NativeLibraryExtensionAttribute> extensionAttributes)
+        public static string GetExtension()
         {
-            foreach (var extensionAttribute in extensionAttributes)
-            {
-                if (RuntimeInformation.IsOSPlatform(extensionAttribute.TargetPlatform.Convert()))
-                {
-                    return extensionAttribute.Extension;
-                }
-            }
-
             // Default extension based on platform
             if (RuntimeInformation.IsOSPlatform(Windows))
             {
@@ -153,36 +112,6 @@
             return ".so";
         }
 
-        public static nint LoadLibrary()
-        {
-            var libraryAttributes = Assembly.GetCallingAssembly().GetCustomAttributes<NativeLibraryAttribute>();
-            var extensionAttributes = Assembly.GetCallingAssembly().GetCustomAttributes<NativeLibraryExtensionAttribute>();
-
-            var libraryName = GetLibraryName(libraryAttributes);
-
-            var extension = GetExtension(extensionAttributes);
-
-            if (!libraryName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
-            {
-                libraryName += extension;
-            }
-
-            var osPlatform = GetOSPlatform();
-            var architecture = GetArchitecture();
-            var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
-
-            nint handle;
-
-            handle = NativeLibrary.Load(libraryPath);
-
-            if (handle == IntPtr.Zero)
-            {
-                throw new DllNotFoundException($"Unable to load library '{libraryName}'.");
-            }
-
-            return handle;
-        }
-
         public delegate string LibraryNameCallback();
 
         public delegate string LibraryExtensionCallback();
@@ -191,7 +120,7 @@
         {
             var libraryName = libraryNameCallback();
 
-            var extension = libraryExtensionCallback != null ? libraryExtensionCallback() : GetExtension([]);
+            var extension = libraryExtensionCallback != null ? libraryExtensionCallback() : GetExtension();
 
             if (!libraryName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
             {
@@ -311,110 +240,5 @@
 
             throw new ArgumentException("Unsupported OS platform.");
         }
-
-        private static string GetLibraryName(IEnumerable<NativeLibraryAttribute> nativeLibraries)
-        {
-            NativeLibraryAttribute? nativeLibrary = null;
-            foreach (NativeLibraryAttribute attri in nativeLibraries)
-            {
-                if (attri.TargetPlatform == TargetPlatform.Any)
-                {
-                    nativeLibrary = attri; // Default
-                    continue;
-                }
-
-                if (RuntimeInformation.IsOSPlatform(attri.TargetPlatform.Convert()))
-                {
-                    nativeLibrary = attri;
-                    break;
-                }
-            }
-
-            if (nativeLibrary == null)
-            {
-                throw new Exception("Dll not specified for this platform");
-            }
-
-            return nativeLibrary.LibraryName;
-        }
-
-        private static OSPlatform Convert(this TargetPlatform targetPlatform)
-        {
-            switch (targetPlatform)
-            {
-                case TargetPlatform.FreeBSD:
-                    return FreeBSD;
-
-                case TargetPlatform.Linux:
-                    return Linux;
-
-                case TargetPlatform.OSX:
-                    return OSX;
-
-                case TargetPlatform.Windows:
-                    return Windows;
-
-                case TargetPlatform.Android:
-                    return Android;
-
-                case TargetPlatform.IOS:
-                    return IOS;
-
-                case TargetPlatform.Tizen:
-                    return Tizen;
-
-                case TargetPlatform.ChromeOS:
-                    return ChromeOS;
-
-                case TargetPlatform.WebAssembly:
-                    return WebAssembly;
-
-                case TargetPlatform.Solaris:
-                    return Solaris;
-
-                case TargetPlatform.WatchOS:
-                    return WatchOS;
-
-                case TargetPlatform.TVO:
-                    return TVOS;
-
-                default:
-                    throw new PlatformNotSupportedException();
-            }
-        }
-    }
-
-    [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-    public sealed class NativeLibraryExtensionAttribute : Attribute
-    {
-        private readonly string extension;
-        private readonly TargetPlatform targetPlatform;
-
-        public NativeLibraryExtensionAttribute(string extension, TargetPlatform targetPlatform = TargetPlatform.Any)
-        {
-            this.extension = extension;
-            this.targetPlatform = targetPlatform;
-        }
-
-        public string Extension => extension;
-
-        public TargetPlatform TargetPlatform => targetPlatform;
-    }
-
-    [System.AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-    public sealed class NativeLibraryAttribute : Attribute
-    {
-        private readonly string libraryName;
-        private readonly TargetPlatform targetPlatform;
-
-        public NativeLibraryAttribute(string libraryName, TargetPlatform targetPlatform = TargetPlatform.Any)
-        {
-            this.libraryName = libraryName;
-            this.targetPlatform = targetPlatform;
-        }
-
-        public string LibraryName => libraryName;
-
-        public TargetPlatform TargetPlatform => targetPlatform;
     }
 }

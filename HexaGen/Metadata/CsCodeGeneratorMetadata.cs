@@ -22,7 +22,7 @@
 
         public Dictionary<string, string> WrappedPointers { get; set; } = new();
 
-        public int VTableLength { get; set; }
+        public CsFunctionTableMetadata FunctionTable { get; set; } = null!;
 
         public void CopyFrom(CsCodeGenerator generator)
         {
@@ -35,10 +35,10 @@
             DefinedTypes.AddRange(generator.DefinedTypes);
             DefinedDelegates.AddRange(generator.DefinedDelegates);
             Copy(generator.WrappedPointers, WrappedPointers);
-            VTableLength = generator.VTableLength;
+            FunctionTable = new(generator.FunctionTableBuilder.Entries);
         }
 
-        public void Merge(CsCodeGeneratorMetadata from, bool copyFnTableLen)
+        public void Merge(CsCodeGeneratorMetadata from, bool mergeFunctionTable)
         {
             DefinedConstants.AddRange(from.DefinedConstants);
             DefinedEnums.AddRange(from.DefinedEnums);
@@ -48,9 +48,9 @@
             DefinedTypes.AddRange(from.DefinedTypes);
             DefinedDelegates.AddRange(from.DefinedDelegates);
             Copy(from.WrappedPointers, WrappedPointers);
-            if (copyFnTableLen)
+            if (mergeFunctionTable)
             {
-                VTableLength = from.VTableLength;
+                FunctionTable.Merge(from.FunctionTable);
             }
         }
 
@@ -67,7 +67,7 @@
                 DefinedTypes = new List<string>(DefinedTypes),
                 DefinedDelegates = new List<string>(DefinedDelegates),
                 WrappedPointers = new Dictionary<string, string>(WrappedPointers),
-                VTableLength = VTableLength
+                FunctionTable = FunctionTable.Clone()
             };
 
             return clonedMetadata;

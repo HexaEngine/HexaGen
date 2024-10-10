@@ -12,7 +12,7 @@
         protected FunctionGenerator funcGen;
         protected PatchEngine patchEngine = new();
         protected ConfigComposer configComposer = new();
-        private CsCodeGeneratorMetadata? metadata;
+        private CsCodeGeneratorMetadata metadata = new();
 
         public static CsCodeGenerator Create(string configPath)
         {
@@ -91,6 +91,7 @@
 
         public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
         {
+            metadata = new();
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
@@ -156,6 +157,8 @@
             {
                 GenerateDelegates(compilation, outputPath);
             }
+
+            metadata.CopyFrom(this);
 
             patchEngine.ApplyPostPatches(GetMetadata(), outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
 
@@ -269,12 +272,6 @@
 
         public CsCodeGeneratorMetadata GetMetadata()
         {
-            if (metadata == null)
-            {
-                metadata = new();
-                metadata.CopyFrom(this);
-            }
-
             return metadata;
         }
 

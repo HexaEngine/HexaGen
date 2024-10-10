@@ -23,8 +23,7 @@
         public readonly HashSet<string> DefinedFunctions = new();
         protected readonly HashSet<string> DefinedVariationsFunctions = new();
         protected readonly HashSet<string> OutReturnFunctions = new();
-
-        public int VTableLength { get; private set; }
+        public readonly FunctionTableBuilder FunctionTableBuilder = new();
 
         protected virtual List<string> SetupFunctionUsings()
         {
@@ -111,10 +110,10 @@
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
             GenContext context = new(compilation, filePath, writer);
 
-            VTableBuilder vTableBuilder = new(config.VTableStart);
+            FunctionTableBuilder.Append(config.FunctionTableEntries);
             using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
             {
-                if (!config.UseVTable)
+                if (!config.UseFunctionTable)
                 {
                     writer.WriteLine($"internal const string LibName = \"{config.LibName}\";\n");
                 }
@@ -167,8 +166,9 @@
                             modifiers = "internal static partial";
                             break;
 
-                        case ImportType.VTable:
+                        case ImportType.FunctionTable:
 
+                            writer.WriteLine($"[MethodImpl(MethodImplOptions.AggressiveInlining)]");
                             if (boolReturn)
                             {
                                 writer.BeginBlock($"internal static {config.GetBoolType()} {csName}Native({argumentsString})");
@@ -201,15 +201,15 @@
                             // isolates the argument names
                             string argumentNames = config.WriteFunctionMarshalling(cppFunction.Parameters);
 
-                            int vTableIndex = vTableBuilder.Add(cppFunction.Name);
+                            int funcTableableIndex = FunctionTableBuilder.Add(cppFunction.Name);
 
                             if (returnCsName == "void")
                             {
-                                writer.WriteLine($"(({delegateType})vt[{vTableIndex}])({argumentNames});");
+                                writer.WriteLine($"(({delegateType})funcTable[{funcTableableIndex}])({argumentNames});");
                             }
                             else
                             {
-                                writer.WriteLine($"return (({delegateType})vt[{vTableIndex}])({argumentNames});");
+                                writer.WriteLine($"return (({delegateType})funcTable[{funcTableableIndex}])({argumentNames});");
                             }
 
                             writer.WriteLine("#else");
@@ -237,11 +237,11 @@
 
                             if (returnCsName == "void")
                             {
-                                writer.WriteLine($"(({delegateTypeOld})vt[{vTableIndex}])({argumentNamesOld});");
+                                writer.WriteLine($"(({delegateTypeOld})funcTable[{funcTableableIndex}])({argumentNamesOld});");
                             }
                             else
                             {
-                                writer.WriteLine($"return ({returnType})(({delegateTypeOld})vt[{vTableIndex}])({argumentNamesOld});");
+                                writer.WriteLine($"return ({returnType})(({delegateTypeOld})funcTable[{funcTableableIndex}])({argumentNamesOld});");
                             }
 
                             writer.WriteLine("#endif");
@@ -272,28 +272,26 @@
                 }
             }
 
-            if (config.UseVTable)
+            if (config.UseFunctionTable)
             {
-                var initString = vTableBuilder.Finish(out var count);
-                string filePathVT = Path.Combine(outputPath, "Functions.VT.cs");
-                using var writerVt = new CsCodeWriter(filePathVT, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
-                using (writerVt.PushBlock($"public unsafe partial class {config.ApiName}"))
+                var initString = FunctionTableBuilder.Finish(out var count);
+                string filePathfuncTable = Path.Combine(outputPath, "FunctionTable.cs");
+                using var writerfuncTable = new CsCodeWriter(filePathfuncTable, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
+                using (writerfuncTable.PushBlock($"public unsafe partial class {config.ApiName}"))
                 {
-                    writerVt.WriteLine("internal static VTable vt;");
-                    writerVt.WriteLine();
-                    using (writerVt.PushBlock("public static void InitApi()"))
+                    writerfuncTable.WriteLine("internal static FunctionTable funcTable;");
+                    writerfuncTable.WriteLine();
+                    using (writerfuncTable.PushBlock("public static void InitApi()"))
                     {
-                        writerVt.WriteLine($"vt = new VTable(LibraryLoader.LoadLibrary(), {count});");
-                        writerVt.WriteLines(initString);
+                        writerfuncTable.WriteLine($"funcTable = new FunctionTable(LibraryLoader.LoadLibrary({config.GetLibraryNameFunctionName}, {config.GetLibraryExtensionFunctionName ?? "null"}), {count});");
+                        writerfuncTable.WriteLines(initString);
                     }
-                    writerVt.WriteLine();
-                    using (writerVt.PushBlock("public static void FreeApi()"))
+                    writerfuncTable.WriteLine();
+                    using (writerfuncTable.PushBlock("public static void FreeApi()"))
                     {
-                        writerVt.WriteLine("vt.Free();");
+                        writerfuncTable.WriteLine("funcTable.Free();");
                     }
                 }
-
-                VTableLength = count;
             }
         }
 

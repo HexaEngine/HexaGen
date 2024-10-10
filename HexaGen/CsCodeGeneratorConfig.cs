@@ -5,6 +5,7 @@
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using HexaGen.Metadata;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -25,7 +26,7 @@
     {
         DllImport,
         LibraryImport,
-        VTable
+        FunctionTable
     }
 
     public enum MergeOptions : ulong
@@ -295,7 +296,7 @@
             if (!result.EnableExperimentalOptions)
             {
                 result.GenerateConstructorsForStructs = false;
-                if (result.UseVTable)
+                if (result.UseFunctionTable)
                 {
                     result.ImportType = ImportType.LibraryImport;
                 }
@@ -366,14 +367,18 @@
         public bool UseLibraryImport => ImportType == ImportType.LibraryImport;
 
         /// <summary>
-        /// This causes the code generator to use a VTable.
+        /// This causes the code generator to use a FunctionTable.
         /// </summary>
-        public bool UseVTable => ImportType == ImportType.VTable;
+        public bool UseFunctionTable => ImportType == ImportType.FunctionTable;
 
         /// <summary>
-        /// Specifies the start of the VTable. (Default: 0)
+        /// Specifies the existing entries in the function table.
         /// </summary>
-        public int VTableStart { get; set; }
+        public List<CsFunctionTableEntry> FunctionTableEntries { get; set; } = [];
+
+        public string GetLibraryNameFunctionName { get; set; } = "GetLibraryName";
+
+        public string? GetLibraryExtensionFunctionName { get; set; } = null;
 
         /// <summary>
         /// Determines the import type. (Default: <see cref="ImportType.LibraryImport"/>)

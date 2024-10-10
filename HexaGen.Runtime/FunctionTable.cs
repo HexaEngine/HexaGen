@@ -2,19 +2,19 @@
 {
     using System.Runtime.InteropServices;
 
-    public unsafe class VTable : IDisposable
+    public unsafe class FunctionTable : IDisposable
     {
         private nint library;
         private void** _vtable;
         private int length;
 
-        public VTable(void** vtable, int length)
+        public FunctionTable(void** vtable, int length)
         {
             _vtable = vtable;
             this.length = length;
         }
 
-        public VTable(nint library, int length)
+        public FunctionTable(nint library, int length)
         {
             _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
             new Span<nint>(_vtable, length).Clear(); // Fill with null pointers
@@ -22,7 +22,7 @@
             this.length = length;
         }
 
-        public VTable(string libraryPath, int length)
+        public FunctionTable(string libraryPath, int length)
         {
             library = NativeLibrary.Load(libraryPath);
             _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
