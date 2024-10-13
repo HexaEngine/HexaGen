@@ -187,14 +187,17 @@
                             {
                                 returnType = config.GetBoolType();
                             }
+
+                            string attributes = $"{cppFunction.CallingConvention.GetCallingConventionDelegate()}";
+
                             string delegateType;
                             if (cppFunction.Parameters.Count == 0)
                             {
-                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{returnType}>";
+                                delegateType = $"delegate* unmanaged[{attributes}]<{returnType}>";
                             }
                             else
                             {
-                                delegateType = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
+                                delegateType = $"delegate* unmanaged[{attributes}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {returnType}>";
                             }
 
                             writer.WriteLine("#if NET5_0_OR_GREATER");
@@ -281,6 +284,9 @@
                 {
                     writerfuncTable.WriteLine("internal static FunctionTable funcTable;");
                     writerfuncTable.WriteLine();
+                    writerfuncTable.WriteLine("/// <summary>");
+                    writerfuncTable.WriteLine("/// Initializes the function table, automatically called. Do not call manually, only after <see cref=\"FreeApi\"/>.");
+                    writerfuncTable.WriteLine("/// </summary>");
                     using (writerfuncTable.PushBlock("public static void InitApi()"))
                     {
                         writerfuncTable.WriteLine($"funcTable = new FunctionTable(LibraryLoader.LoadLibrary({config.GetLibraryNameFunctionName}, {config.GetLibraryExtensionFunctionName ?? "null"}), {count});");

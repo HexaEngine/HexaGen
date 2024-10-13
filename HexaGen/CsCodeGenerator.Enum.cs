@@ -103,13 +103,19 @@
                     }
                     WriteEnumFile(compilation, folder, filePath, csEnum);
                 }
+
+                for (int i = 0; i < config.CustomEnums.Count; i++)
+                {
+                    var csEnum = config.CustomEnums[i];
+                    WriteEnumFile(compilation, folder, filePath, csEnum);
+                }
             }
             else
             {
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupEnumUsings(), config.HeaderInjector, 1);
                 GenContext context = new(compilation, filePath, writer);
 
-                List<CsEnumMetadata> enums = new();
+                List<CsEnumMetadata> enums = [.. config.CustomEnums];
 
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {

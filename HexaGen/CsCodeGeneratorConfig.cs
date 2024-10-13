@@ -680,6 +680,8 @@
         /// </summary>
         public List<string> AdditionalArguments { get; set; } = new();
 
+        public readonly List<CsEnumMetadata> CustomEnums = [];
+
         public void Save(string path)
         {
             File.WriteAllText(path, JsonSerializer.Serialize(this, new JsonSerializerOptions()

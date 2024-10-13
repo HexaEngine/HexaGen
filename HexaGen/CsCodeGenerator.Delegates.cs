@@ -3,7 +3,6 @@
     using CppAst;
     using HexaGen.Core;
     using System.IO;
-    using System.Security.Cryptography;
 
     public partial class CsCodeGenerator
     {
