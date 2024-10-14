@@ -1,16 +1,43 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Core;
+    using HexaGen.Metadata;
     using System.IO;
 
-    public partial class CsCodeGenerator
+    public class DelegateGenerationStep : GenerationStep
     {
         protected readonly HashSet<string> LibDefinedDelegates = new();
-
         public readonly HashSet<string> DefinedDelegates = new();
-
         private readonly HashSet<string> CsNames = new();
+
+        public DelegateGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
+        public override string Name { get; } = "Delegates";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateDelegates;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedDelegates.AddRange(DefinedDelegates);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedDelegates.AddRange(metadata.DefinedDelegates);
+        }
+
+        public override void Reset()
+        {
+            LibDefinedDelegates.Clear();
+            DefinedDelegates.Clear();
+            CsNames.Clear();
+        }
 
         protected virtual List<string> SetupDelegateUsings()
         {
@@ -54,7 +81,7 @@
             return false;
         }
 
-        protected virtual void GenerateDelegates(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Delegates");
             if (Directory.Exists(folder))

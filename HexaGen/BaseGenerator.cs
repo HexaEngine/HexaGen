@@ -1,9 +1,5 @@
 ﻿namespace HexaGen
 {
-    using HexaGen.Core.Logging;
-    using System;
-    using System.Collections.Generic;
-
     public class BaseGenerator : LoggerBase
     {
         protected readonly CsCodeGeneratorConfig config;

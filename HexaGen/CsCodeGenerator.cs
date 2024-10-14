@@ -4,8 +4,10 @@
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.FunctionGeneration;
+    using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
+    using System.Text;
     using System.Text.Json;
 
     public partial class CsCodeGenerator : BaseGenerator
@@ -14,6 +16,8 @@
         protected PatchEngine patchEngine = new();
         protected ConfigComposer configComposer = new();
         private CsCodeGeneratorMetadata metadata = new();
+        public readonly FunctionTableBuilder FunctionTableBuilder = new();
+        private Dictionary<string, string> wrappedPointers = null!;
 
         public static CsCodeGenerator Create(string configPath)
         {
@@ -27,6 +31,13 @@
         public CsCodeGenerator(CsCodeGeneratorConfig config, FunctionGenerator functionGenerator) : base(config)
         {
             funcGen = functionGenerator;
+            GenerationSteps.Add(new EnumGenerationStep(this, config));
+            GenerationSteps.Add(new ConstantGenerationStep(this, config));
+            GenerationSteps.Add(new HandleGenerationStep(this, config));
+            GenerationSteps.Add(new TypeGenerationStep(this, config));
+            GenerationSteps.Add(new FunctionGenerationStep(this, config));
+            GenerationSteps.Add(new ExtensionGenerationStep(this, config));
+            GenerationSteps.Add(new DelegateGenerationStep(this, config));
         }
 
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
@@ -34,6 +45,21 @@
         public PatchEngine PatchEngine => patchEngine;
 
         public ConfigComposer ConfigComposer => configComposer;
+
+        public List<GenerationStep> GenerationSteps { get; } = new();
+
+        public T GetGenerationStep<T>() where T : GenerationStep
+        {
+            foreach (var step in GenerationSteps)
+            {
+                if (step is T t)
+                {
+                    return t;
+                }
+            }
+
+            throw new InvalidOperationException($"Step of type '{typeof(T)}' was not found.");
+        }
 
         protected virtual CppParserOptions PrepareSettings()
         {
@@ -120,47 +146,29 @@
             configComposer.LogEvent += Log;
             configComposer.Compose(config);
             configComposer.LogEvent -= Log;
+            LogInfo("Applying Pre-Patches...");
             patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
 
-            config.DefinedCppEnums = DefinedCppEnums;
+            config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
+            wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
 
-            if (config.GenerateEnums)
+            LogInfo($"Configuring Steps...");
+            foreach (var step in GenerationSteps)
             {
-                GenerateEnums(compilation, outputPath);
+                step.Configure(config);
             }
 
-            if (config.GenerateConstants)
+            foreach (var step in GenerationSteps)
             {
-                GenerateConstants(compilation, outputPath);
+                if (step.Enabled)
+                {
+                    LogInfo($"Generating {step.Name}...");
+                    step.Generate(compilation, outputPath, config, metadata);
+                    step.CopyToMetadata(metadata);
+                }
             }
 
-            if (config.GenerateHandles)
-            {
-                GenerateHandles(compilation, outputPath);
-            }
-
-            if (config.GenerateTypes)
-            {
-                GenerateTypes(compilation, outputPath);
-            }
-
-            if (config.GenerateFunctions)
-            {
-                GenerateFunctions(compilation, outputPath);
-            }
-
-            if (config.GenerateExtensions)
-            {
-                GenerateExtensions(compilation, outputPath);
-            }
-
-            if (config.GenerateDelegates)
-            {
-                GenerateDelegates(compilation, outputPath);
-            }
-
-            metadata.CopyFrom(this);
-
+            LogInfo("Applying Post-Patches...");
             patchEngine.ApplyPostPatches(GetMetadata(), outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
 
             return true;
@@ -168,96 +176,22 @@
 
         public virtual void Reset()
         {
-            DefinedConstants.Clear();
-            DefinedEnums.Clear();
-            DefinedExtensions.Clear();
-            DefinedFunctions.Clear();
-            DefinedTypedefs.Clear();
-            DefinedTypes.Clear();
-            DefinedDelegates.Clear();
-        }
-
-        public virtual void CopyFrom(List<CsConstantMetadata> constants, List<CsEnumMetadata> enums, List<string> extensions, List<string> functions, List<string> typedefs, List<string> types, List<string> delegates)
-        {
-            for (int i = 0; i < constants.Count; i++)
+            foreach (var step in GenerationSteps)
             {
-                LibDefinedConstants.Add(constants[i]);
-            }
-            for (int i = 0; i < enums.Count; i++)
-            {
-                LibDefinedEnums.Add(enums[i]);
-            }
-            for (int i = 0; i < extensions.Count; i++)
-            {
-                LibDefinedExtensions.Add(extensions[i]);
-            }
-            for (int i = 0; i < functions.Count; i++)
-            {
-                LibDefinedFunctions.Add(functions[i]);
-            }
-            for (int i = 0; i < typedefs.Count; i++)
-            {
-                LibDefinedTypedefs.Add(typedefs[i]);
-            }
-            for (int i = 0; i < types.Count; i++)
-            {
-                LibDefinedTypes.Add(types[i]);
-            }
-            for (int i = 0; i < delegates.Count; i++)
-            {
-                LibDefinedDelegates.Add(delegates[i]);
+                step.Reset();
             }
         }
 
         public void CopyFrom(CsCodeGeneratorMetadata metadata)
         {
-            var constants = metadata.DefinedConstants;
-            var enums = metadata.DefinedEnums;
-            var extensions = metadata.DefinedExtensions;
-            var functions = metadata.DefinedFunctions;
-            var typedefs = metadata.DefinedTypes;
-            var types = metadata.DefinedTypes;
-            var delegates = metadata.DefinedDelegates;
-            var wrappedPointers = metadata.WrappedPointers;
-            for (int i = 0; i < constants.Count; i++)
+            foreach (var step in GenerationSteps)
             {
-                LibDefinedConstants.Add(constants[i]);
-            }
-            foreach (var enumMeta in enums)
-            {
-                LibDefinedEnums.Add(enumMeta);
-                DefinedCppEnums.Add(enumMeta.Identifier, enumMeta);
-            }
-            for (int i = 0; i < extensions.Count; i++)
-            {
-                LibDefinedExtensions.Add(extensions[i]);
-            }
-            for (int i = 0; i < functions.Count; i++)
-            {
-                LibDefinedFunctions.Add(functions[i]);
-            }
-            for (int i = 0; i < typedefs.Count; i++)
-            {
-                LibDefinedTypedefs.Add(typedefs[i]);
-            }
-            for (int i = 0; i < types.Count; i++)
-            {
-                LibDefinedTypes.Add(types[i]);
-            }
-            for (int i = 0; i < delegates.Count; i++)
-            {
-                LibDefinedDelegates.Add(delegates[i]);
-            }
-            foreach (var item in wrappedPointers)
-            {
-                WrappedPointers[item.Key] = item.Value;
+                step.CopyFromMetadata(metadata);
             }
         }
 
         public void SaveMetadata(string path)
         {
-            CsCodeGeneratorMetadata metadata = new();
-            metadata.CopyFrom(this);
             JsonSerializerOptions options = new(JsonSerializerDefaults.General);
             options.WriteIndented = true;
             var json = JsonSerializer.Serialize(metadata, options);
@@ -276,7 +210,7 @@
             return metadata;
         }
 
-        protected static CppFunction FindFunction(CppCompilation compilation, string name)
+        public static CppFunction FindFunction(CppCompilation compilation, string name)
         {
             for (int i = 0; i < compilation.Functions.Count; i++)
             {
@@ -284,12 +218,13 @@
                 if (function.Name == name)
                     return function;
             }
-            return null;
+
+            throw new Exception($"Function '{name}' not found!");
         }
 
-        protected void PrepareArgs(CsFunctionVariation variation, CsType csReturnType)
+        public void PrepareArgs(CsFunctionVariation variation, CsType csReturnType)
         {
-            if (WrappedPointers.TryGetValue(csReturnType.Name, out string? value))
+            if (wrappedPointers.TryGetValue(csReturnType.Name, out string? value))
             {
                 csReturnType.Name = value;
             }
@@ -297,7 +232,7 @@
             for (int i = 0; i < variation.Parameters.Count; i++)
             {
                 var cppParameter = variation.Parameters[i];
-                if (WrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
+                if (wrappedPointers.TryGetValue(cppParameter.Type.Name, out string? v))
                 {
                     cppParameter.Type.Name = v;
                     cppParameter.Type.Classify();
@@ -305,7 +240,7 @@
             }
         }
 
-        protected virtual CsFunction CreateCsFunction(CppFunction cppFunction, CsFunctionKind kind, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
+        public virtual CsFunction CreateCsFunction(CppFunction cppFunction, CsFunctionKind kind, string csName, List<CsFunction> functions, out CsFunctionOverload overload)
         {
             config.TryGetFunctionMapping(cppFunction.Name, out var mapping);
 
@@ -352,12 +287,99 @@
                 overload.Parameters.Add(csParameter);
                 if (config.TryGetDefaultValue(cppFunction.Name, cppParameter, false, out var defaultValue))
                 {
-                    overload.DefaultValues.Add(paramCsName, defaultValue);
+                    overload.DefaultValues.Add(paramCsName, defaultValue!);
                 }
             }
 
             function.Overloads.Add(overload);
             return function;
+        }
+
+        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
+        {
+            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
+            StringBuilder sb = new();
+            bool isFirst = true;
+
+            if (flags == WriteFunctionFlags.Extension)
+            {
+                isFirst = false;
+                var first = variation.Parameters[0];
+                if (useNames)
+                {
+                    sb.Append($"this {first.Type} {first.Name}");
+                }
+                else
+                {
+                    sb.Append($"this {first.Type}");
+                }
+            }
+
+            for (int i = offset; i < variation.Parameters.Count; i++)
+            {
+                var param = variation.Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                if (useAttributes)
+                {
+                    sb.Append($"{string.Join(" ", param.Attributes)} ");
+                }
+
+                sb.Append($"{param.Type}");
+
+                if (useNames)
+                {
+                    sb.Append($" {param.Name}");
+                }
+
+                isFirst = false;
+            }
+
+            return sb.ToString();
+        }
+
+        public virtual string BuildFunctionHeaderId(CsFunctionVariation variation, WriteFunctionFlags flags)
+        {
+            string signature = BuildFunctionSignature(variation, false, false, flags);
+            return $"{variation.Name}({signature})";
+        }
+
+        public virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
+        {
+            string signature = BuildFunctionSignature(variation, generateMetadata, true, flags);
+            return $"{csReturnType.Name} {variation.Name}({signature})";
+        }
+
+        public static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)
+        {
+            firstParamReturn = false;
+            if (!csReturnType.IsString && csReturnType.Name != overload.ReturnType.Name)
+            {
+                firstParamReturn = true;
+            }
+
+            offset = firstParamReturn ? 1 : 0;
+            hasManaged = false;
+            for (int j = 0; j < variation.Parameters.Count - offset; j++)
+            {
+                var cppParameter = variation.Parameters[j + offset];
+
+                if (cppParameter.DefaultValue == null)
+                {
+                    continue;
+                }
+
+                var paramCsDefault = cppParameter.DefaultValue;
+                if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
+                {
+                    hasManaged = true;
+                }
+            }
         }
     }
 }

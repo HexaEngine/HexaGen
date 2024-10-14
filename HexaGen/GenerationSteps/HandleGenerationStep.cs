@@ -1,37 +1,41 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
-    using ClangSharp;
     using CppAst;
+    using HexaGen.Metadata;
     using System.Collections.Generic;
     using System.IO;
-    using System.Text.Json.Serialization;
-    using System.Xml.Serialization;
 
-    public class CsHandleMetadata
-    {
-        public CsHandleMetadata(string name, CppTypedef cppType, string? comment, bool isDispatchable)
-        {
-            Name = name;
-            CppType = cppType;
-            Comment = comment;
-            IsDispatchable = isDispatchable;
-        }
-
-        public string Name { get; set; }
-
-        [XmlIgnore]
-        [JsonIgnore]
-        public CppTypedef CppType { get; set; }
-
-        public string? Comment { get; set; }
-
-        public bool IsDispatchable { get; set; }
-    }
-
-    public partial class CsCodeGenerator
+    public class HandleGenerationStep : GenerationStep
     {
         protected readonly HashSet<string> LibDefinedTypedefs = new();
         public readonly HashSet<string> DefinedTypedefs = new();
+
+        public HandleGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
+        public override string Name { get; } = "Handles";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateHandles;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedTypedefs.AddRange(DefinedTypedefs);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedTypedefs.AddRange(metadata.DefinedTypedefs);
+        }
+
+        public override void Reset()
+        {
+            LibDefinedTypedefs.Clear();
+            DefinedTypedefs.Clear();
+        }
 
         protected virtual List<string> SetupHandleUsings()
         {
@@ -67,7 +71,7 @@
             return true;
         }
 
-        protected virtual void GenerateHandles(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Handles");
             if (Directory.Exists(folder))

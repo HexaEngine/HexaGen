@@ -1,9 +1,13 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using System.Collections.Generic;
 
-    public partial class CsComCodeGenerator
+    public class ComEnumGenerationStep : EnumGenerationStep
     {
+        public ComEnumGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
         protected override List<string> SetupEnumUsings()
         {
             var usings = base.SetupEnumUsings();

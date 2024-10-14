@@ -13,15 +13,9 @@
         private readonly List<FunctionGenRule> rules = new();
         private readonly List<FunctionGenStep> steps = new();
 
-        public FunctionGenerator(CsCodeGeneratorConfig settings)
+        protected FunctionGenerator(CsCodeGeneratorConfig settings)
         {
             this.settings = settings;
-            rules.Add(new FunctionGenRuleRef());
-            rules.Add(new FunctionGenRuleSpan());
-            rules.Add(new FunctionGenRuleString());
-            steps.Add(new DefaultValueGenStep());
-            steps.Add(new ReturnVariationGenStep());
-            steps.Add(new StringReturnGenStep());
         }
 
         public static FunctionGenerator CreateDefault(CsCodeGeneratorConfig config)

@@ -1,19 +1,13 @@
 ﻿namespace HexaGen
 {
     using CppAst;
-    using HexaGen.Core;
-    using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using HexaGen.Metadata;
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Text;
     using System.Text.Json;
     using System.Text.Json.Serialization;
-    using System.Xml.Linq;
 
     public class UnexposedTypeException : Exception
     {

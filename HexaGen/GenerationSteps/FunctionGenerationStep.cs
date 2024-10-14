@@ -1,31 +1,59 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.FunctionGeneration;
     using HexaGen.FunctionGeneration.ParameterWriters;
+    using HexaGen.Metadata;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
 
-    public enum WriteFunctionFlags
-    {
-        None = 0,
-        UseHandle = 1,
-        UseThis = 2,
-        Extension = 4,
-        COM = 8,
-    }
-
-    public partial class CsCodeGenerator
+    public class FunctionGenerationStep : GenerationStep
     {
         protected readonly HashSet<string> LibDefinedFunctions = new();
         public readonly HashSet<string> CppDefinedFunctions = new();
         public readonly HashSet<string> DefinedFunctions = new();
-        protected readonly HashSet<string> DefinedVariationsFunctions = new();
+        public readonly HashSet<string> DefinedVariationsFunctions = new();
         protected readonly HashSet<string> OutReturnFunctions = new();
-        public readonly FunctionTableBuilder FunctionTableBuilder = new();
+
+        private readonly CsCodeGenerator csGenerator;
+        private readonly FunctionGenerator funcGen;
+        private readonly FunctionTableBuilder FunctionTableBuilder;
+
+        public FunctionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+            csGenerator = generator;
+            funcGen = generator.FunctionGenerator;
+            FunctionTableBuilder = generator.FunctionTableBuilder;
+        }
+
+        public override string Name { get; } = "Functions";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateFunctions;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedFunctions.AddRange(DefinedFunctions);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedFunctions.AddRange(metadata.DefinedFunctions);
+        }
+
+        public override void Reset()
+        {
+            LibDefinedFunctions.Clear();
+            CppDefinedFunctions.Clear();
+            DefinedFunctions.Clear();
+            DefinedVariationsFunctions.Clear();
+            OutReturnFunctions.Clear();
+        }
 
         protected virtual List<string> SetupFunctionUsings()
         {
@@ -96,7 +124,7 @@
             return false;
         }
 
-        protected virtual void GenerateFunctions(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Functions");
             if (Directory.Exists(folder))
@@ -144,7 +172,7 @@
                         continue;
                     }
 
-                    var function = CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
+                    var function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
 
                     writer.WriteLines(function.Comment);
                     if (config.GenerateMetadata)
@@ -308,7 +336,7 @@
             funcGen.GenerateVariations(cppFunction.Parameters, overload);
         }
 
-        protected virtual void WriteFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
+        public virtual void WriteFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
@@ -364,13 +392,13 @@
             return sb.ToString();
         }
 
-        protected virtual string BuildFunctionHeaderId(CsFunctionVariation variation, WriteFunctionFlags flags)
+        public virtual string BuildFunctionHeaderId(CsFunctionVariation variation, WriteFunctionFlags flags)
         {
             string signature = BuildFunctionSignature(variation, false, false, flags);
             return $"{variation.Name}({signature})";
         }
 
-        protected virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
+        public virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
             string signature = BuildFunctionSignature(variation, generateMetadata, true, flags);
             return $"{csReturnType.Name} {variation.Name}({signature})";
@@ -418,7 +446,7 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            PrepareArgs(variation, csReturnType);
+            csGenerator.PrepareArgs(variation, csReturnType);
 
             string header = BuildFunctionHeader(variation, csReturnType, flags, config.GenerateMetadata);
             string id = BuildFunctionHeaderId(variation, flags);
@@ -542,7 +570,7 @@
             writer.WriteLine();
         }
 
-        protected static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)
+        public static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)
         {
             firstParamReturn = false;
             if (!csReturnType.IsString && csReturnType.Name != overload.ReturnType.Name)

@@ -4,7 +4,7 @@
 
     public class CsCodeGeneratorMetadata
     {
-        public CsCodeGeneratorConfig Settings { get; set; }
+        public CsCodeGeneratorConfig Settings { get; set; } = null!;
 
         public List<CsConstantMetadata> DefinedConstants { get; set; } = new();
 
@@ -23,20 +23,6 @@
         public Dictionary<string, string> WrappedPointers { get; set; } = new();
 
         public CsFunctionTableMetadata FunctionTable { get; set; } = null!;
-
-        public void CopyFrom(CsCodeGenerator generator)
-        {
-            Settings = generator.Settings;
-            DefinedConstants.AddRange(generator.DefinedConstants);
-            DefinedEnums.AddRange(generator.DefinedEnums);
-            DefinedExtensions.AddRange(generator.DefinedExtensions);
-            DefinedFunctions.AddRange(generator.CppDefinedFunctions);
-            DefinedTypedefs.AddRange(generator.DefinedTypedefs);
-            DefinedTypes.AddRange(generator.DefinedTypes);
-            DefinedDelegates.AddRange(generator.DefinedDelegates);
-            Copy(generator.WrappedPointers, WrappedPointers);
-            FunctionTable = new(generator.FunctionTableBuilder.Entries);
-        }
 
         public void Merge(CsCodeGeneratorMetadata from, bool mergeFunctionTable)
         {

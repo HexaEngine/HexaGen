@@ -1,14 +1,14 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
-    using CppAst;
-    using HexaGen.Core.CSharp;
-    using HexaGen.FunctionGeneration;
     using HexaGen.FunctionGeneration.ParameterWriters;
     using System.Collections.Generic;
-    using System.Text;
 
-    public partial class CsComCodeGenerator
+    public class ComFunctionGenerationStep : FunctionGenerationStep
     {
+        public ComFunctionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
         protected override List<string> SetupFunctionUsings()
         {
             var usings = base.SetupFunctionUsings();

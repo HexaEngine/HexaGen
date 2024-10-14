@@ -1,7 +1,6 @@
 ﻿namespace HexaGen
 {
     using System;
-    using System.IO.IsolatedStorage;
     using System.Text.Json;
 
     public class BaseConfig

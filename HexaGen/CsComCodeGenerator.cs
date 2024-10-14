@@ -1,8 +1,8 @@
 ﻿namespace HexaGen
 {
     using CppAst;
-    using HexaGen.Core.Logging;
     using HexaGen.FunctionGeneration;
+    using HexaGen.GenerationSteps;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -12,11 +12,19 @@
     {
         public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings, FunctionGenerator.CreateForCOM(settings))
         {
+            GenerationSteps.Clear();
+            GenerationSteps.Add(new ComEnumGenerationStep(this, config));
+            GenerationSteps.Add(new ComConstantGenerationStep(this, config));
+            GenerationSteps.Add(new ComHandleGenerationStep(this, config));
+            GenerationSteps.Add(new ComTypeGenerationStep(this, config));
+            GenerationSteps.Add(new ComFunctionGenerationStep(this, config));
+            GenerationSteps.Add(new ComExtensionGenerationStep(this, config));
+            GenerationSteps.Add(new ComDelegateGenerationStep(this, config));
         }
 
-        private List<(string, Guid)> _guids = new();
-        private Dictionary<string, Guid> _guidMap = new();
-        private Regex regex = RegexExtraceGUID();
+        private readonly List<(string, Guid)> _guids = [];
+        private readonly Dictionary<string, Guid> _guidMap = [];
+        private readonly Regex regex = RegexExtraceGUID();
 
         [GeneratedRegex("DEFINE_GUID\\((.*?)\\)", RegexOptions.Compiled | RegexOptions.Singleline)]
         private static partial Regex RegexExtraceGUID();
@@ -117,97 +125,6 @@
             CppCompilation compilation = CppParser.ParseFile(headerFile, options);
 
             return Generate(compilation, [headerFile], outputPath);
-        }
-
-        public override bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
-        {
-            Directory.CreateDirectory(outputPath);
-            // Print diagnostic messages
-            for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
-            {
-                CppDiagnosticMessage? message = compilation.Diagnostics.Messages[i];
-                if (message.Type == CppLogMessageType.Error && config.CppLogLevel <= LogSeverity.Error)
-                {
-                    LogError(message.ToString());
-                }
-                if (message.Type == CppLogMessageType.Warning && config.CppLogLevel <= LogSeverity.Warning)
-                {
-                    LogWarn(message.ToString());
-                }
-                if (message.Type == CppLogMessageType.Info && config.CppLogLevel <= LogSeverity.Information)
-                {
-                    LogInfo(message.ToString());
-                }
-            }
-
-            if (compilation.HasErrors)
-            {
-                return false;
-            }
-
-            List<Task> tasks = new();
-
-            if (config.GenerateEnums)
-            {
-                Task taskEnums = new(() => GenerateEnums(compilation, outputPath));
-                tasks.Add(taskEnums);
-                taskEnums.Start();
-            }
-
-            if (config.GenerateConstants)
-            {
-                Task taskConstants = new(() => GenerateConstants(compilation, outputPath));
-                tasks.Add(taskConstants);
-                taskConstants.Start();
-            }
-
-            if (config.GenerateHandles)
-            {
-                Task taskHandles = new(() => GenerateHandles(compilation, outputPath));
-                tasks.Add(taskHandles);
-                taskHandles.RunSynchronously();
-            }
-
-            if (config.GenerateTypes)
-            {
-                Task taskTypes = new(() => GenerateTypes(compilation, outputPath));
-                tasks.Add(taskTypes);
-                taskTypes.RunSynchronously();
-            }
-
-            if (config.GenerateFunctions)
-            {
-                Task taskFuncs = new(() => GenerateFunctions(compilation, outputPath));
-                tasks.Add(taskFuncs);
-                taskFuncs.Start();
-            }
-
-            if (config.GenerateExtensions)
-            {
-                Task taskExtensions = new(() => GenerateExtensions(compilation, outputPath));
-                tasks.Add(taskExtensions);
-                taskExtensions.Start();
-            }
-
-            if (config.GenerateDelegates)
-            {
-                Task taskDelegates = new(() => GenerateDelegates(compilation, outputPath));
-                tasks.Add(taskDelegates);
-                taskDelegates.Start();
-            }
-
-            bool failed = false;
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                var task = tasks[i];
-                if (task.Exception != null)
-                {
-                    LogError(task.Exception.ToString());
-                    failed = true;
-                }
-            }
-
-            return !failed;
         }
     }
 }

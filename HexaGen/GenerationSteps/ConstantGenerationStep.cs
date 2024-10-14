@@ -1,14 +1,42 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Metadata;
     using System.Collections.Generic;
 
-    public unsafe partial class CsCodeGenerator
+    public class ConstantGenerationStep : GenerationStep
     {
         protected readonly HashSet<CsConstantMetadata> LibDefinedConstants = new(IdentifierComparer<CsConstantMetadata>.Default);
         public readonly HashSet<CsConstantMetadata> DefinedConstants = new(IdentifierComparer<CsConstantMetadata>.Default);
-        protected readonly Dictionary<string, CsConstantMetadata> DefinedCppConstants = new();
+        protected readonly Dictionary<string, CsConstantMetadata> DefinedCppConstants = [];
+
+        public ConstantGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
+        public override string Name { get; } = "Constants";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateConstants;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedConstants.AddRange(DefinedConstants);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedConstants.AddRange(metadata.DefinedConstants);
+        }
+
+        public override void Reset()
+        {
+            LibDefinedConstants.Clear();
+            DefinedConstants.Clear();
+            DefinedCppConstants.Clear();
+        }
 
         protected virtual List<string> SetupConstantUsings()
         {
@@ -46,7 +74,7 @@
             return false;
         }
 
-        protected virtual void GenerateConstants(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Constants");
             if (Directory.Exists(folder))
@@ -114,7 +142,7 @@
             }
             else if (!string.IsNullOrWhiteSpace(value))
             {
-                int start = 0;
+                //int start = 0;
                 bool capture = false;
                 for (int i = 0; i < value.Length; i++)
                 {

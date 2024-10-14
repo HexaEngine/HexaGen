@@ -135,7 +135,7 @@
             return false;
         }
 
-        public static bool IsClass(this CppType cppType, out CppClass cppClass)
+        public static bool IsClass(this CppType cppType, [NotNullWhen(true)] out CppClass? cppClass)
         {
             if (cppType is CppPointerType pointerType)
             {
@@ -162,7 +162,7 @@
             return false;
         }
 
-        public static bool IsDelegate(this CppPointerType cppPointer, out CppFunctionType cppFunction)
+        public static bool IsDelegate(this CppPointerType cppPointer, [NotNullWhen(true)] out CppFunctionType? cppFunction)
         {
             if (cppPointer.ElementType is CppFunctionType functionType)
             {
@@ -173,7 +173,7 @@
             return false;
         }
 
-        public static bool IsDelegate(this CppType cppType, out CppFunctionType cppFunction)
+        public static bool IsDelegate(this CppType cppType, [NotNullWhen(true)] out CppFunctionType? cppFunction)
         {
             if (cppType is CppTypedef typedefType)
             {

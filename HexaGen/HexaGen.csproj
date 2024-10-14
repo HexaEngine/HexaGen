@@ -7,7 +7,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
 		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.1.8</PackageVersion>
+		<PackageVersion>1.1.9-rc1</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -34,9 +34,5 @@
 	<ItemGroup>
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="GenerationSteps\" />
 	</ItemGroup>
 </Project>

@@ -1,12 +1,23 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Core.CSharp;
+    using HexaGen.Metadata;
     using System.Collections.Generic;
     using System.Text;
 
-    public partial class CsComCodeGenerator
+    public class ComExtensionGenerationStep : ExtensionGenerationStep
     {
+        public readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
+        public readonly HashSet<string> DefinedTypes = new();
+        protected readonly HashSet<string> LibDefinedTypes = new();
+        private readonly CsComCodeGenerator comGenerator;
+
+        public ComExtensionGenerationStep(CsComCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+            comGenerator = generator;
+        }
+
         protected override List<string> SetupExtensionUsings()
         {
             var usings = base.SetupExtensionUsings();
@@ -31,7 +42,7 @@
                 return true;
             }
 
-            if (!HasGUID(cppClass.Name) && (cppClass.Fields.Count != 0 || cppClass.Functions.Count == 0 || !cppClass.IsAbstract))
+            if (!comGenerator.HasGUID(cppClass.Name) && (cppClass.Fields.Count != 0 || cppClass.Functions.Count == 0 || !cppClass.IsAbstract))
             {
                 return true;
             }
@@ -54,7 +65,7 @@
             return false;
         }
 
-        protected override void GenerateExtensions(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 
@@ -128,7 +139,7 @@
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
                 var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
-                CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, commands, out var overload);
+                generator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, commands, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
 
                 if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedExtensions))
@@ -159,7 +170,7 @@
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
 
-            PrepareArgs(variation, csReturnType);
+            generator.PrepareArgs(variation, csReturnType);
 
             string modifierString = string.Join(" ", modifiers);
             string header = variation.BuildFullExtensionSignatureForCOM(className, config.GenerateMetadata);
@@ -219,7 +230,7 @@
 
                 if (csReturnType.IsString)
                 {
-                    WriteStringConvertToManaged(sb, variation.ReturnType);
+                    MarshalHelper.WriteStringConvertToManaged(sb, variation.ReturnType);
                 }
 
                 var retType = csReturnType.IsBool ? config.GetBoolType() : csReturnType.Name;
@@ -247,7 +258,7 @@
                     if (paramFlags.HasFlag(ParameterFlags.Default))
                     {
                         var rootParam = overload.Parameters[i + 0];
-                        var paramCsDefault = cppParameter.DefaultValue;
+                        var paramCsDefault = cppParameter.DefaultValue!;
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                         {
                             sb.Append($"(string){paramCsDefault}");
@@ -273,7 +284,7 @@
                     {
                         if (paramFlags.HasFlag(ParameterFlags.Array))
                         {
-                            WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, arrays.Count);
+                            MarshalHelper.WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, arrays.Count);
                             sb.Append($"pStrArray{arrays.Count}");
                             arrays.Push(cppParameter.Name);
                         }
@@ -284,7 +295,7 @@
                                 stack.Push((cppParameter.Name, cppParameter, $"pStr{strings}"));
                             }
 
-                            WriteStringConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, strings);
+                            MarshalHelper.WriteStringConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, strings);
                             sb.Append($"pStr{strings}");
                             strings++;
                         }
@@ -352,18 +363,18 @@
 
                 while (stack.TryPop(out var stackItem))
                 {
-                    WriteStringConvertToManaged(writer, stackItem.Item2.Type, stackItem.Item1, stackItem.Item3);
+                    MarshalHelper.WriteStringConvertToManaged(writer, stackItem.Item2.Type, stackItem.Item1, stackItem.Item3);
                 }
 
                 while (arrays.TryPop(out var arrayName))
                 {
-                    WriteFreeUnmanagedStringArray(writer, arrayName, arrays.Count);
+                    MarshalHelper.WriteFreeUnmanagedStringArray(writer, arrayName, arrays.Count);
                 }
 
                 while (strings > 0)
                 {
                     strings--;
-                    WriteFreeString(writer, strings);
+                    MarshalHelper.WriteFreeString(writer, strings);
                 }
 
                 if (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)

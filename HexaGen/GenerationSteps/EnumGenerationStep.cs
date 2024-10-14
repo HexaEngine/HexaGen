@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Core.Mapping;
@@ -6,13 +6,46 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Text.RegularExpressions;
 
-    public partial class CsCodeGenerator
+    public class EnumGenerationStep : GenerationStep
     {
-        protected readonly HashSet<CsEnumMetadata> LibDefinedEnums = new(IdentifierComparer<CsEnumMetadata>.Default);
+        public readonly HashSet<CsEnumMetadata> LibDefinedEnums = new(IdentifierComparer<CsEnumMetadata>.Default);
         public readonly HashSet<CsEnumMetadata> DefinedEnums = new(IdentifierComparer<CsEnumMetadata>.Default);
-        protected readonly Dictionary<string, CsEnumMetadata> DefinedCppEnums = new();
+        public readonly Dictionary<string, CsEnumMetadata> DefinedCppEnums = new();
+        private int unknownEnumCounter = 0;
+
+        public EnumGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
+        public override string Name { get; } = "Enums";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateEnums;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedEnums.AddRange(DefinedEnums);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedEnums.AddRange(metadata.DefinedEnums);
+            foreach (var item in metadata.DefinedEnums)
+            {
+                DefinedCppEnums.Add(item.Identifier, item);
+            }
+        }
+
+        public override void Reset()
+        {
+            LibDefinedEnums.Clear();
+            DefinedEnums.Clear();
+            DefinedCppEnums.Clear();
+            unknownEnumCounter = 0;
+        }
 
         protected virtual List<string> SetupEnumUsings()
         {
@@ -65,7 +98,7 @@
             return false;
         }
 
-        protected virtual void GenerateEnums(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Enums");
             if (Directory.Exists(folder))
@@ -161,8 +194,6 @@
             WriteEnum(context, csEnum);
         }
 
-        private int unknownEnumCounter = 0;
-
         protected virtual CsEnumMetadata ParseEnum(CppEnum cppEnum, ICppMember cppMember)
         {
             string csName = config.GetCsCleanName(cppEnum.Name);
@@ -205,14 +236,14 @@
                 // do Flags check post mapper, cuz value could change.
                 if (long.TryParse(item.Value, out var numLong))
                 {
-                    if (!(numLong == 0 || (numLong > 0 && (numLong & (numLong - 1)) == 0)))
+                    if (!(numLong == 0 || numLong > 0 && (numLong & numLong - 1) == 0))
                     {
                         flags = false;
                     }
                 }
                 if (ulong.TryParse(item.Value, out ulong numULong))
                 {
-                    if (!(numULong == 0 || (numULong > 0 && (numULong & (numULong - 1)) == 0)))
+                    if (!(numULong == 0 || numULong > 0 && (numULong & numULong - 1) == 0))
                     {
                         flags = false;
                     }

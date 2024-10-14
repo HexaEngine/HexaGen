@@ -1,15 +1,14 @@
 ﻿namespace HexaGen
 {
     using CppAst;
-    using HexaGen.Core.Mapping;
     using HexaGen.Core;
+    using HexaGen.Core.Mapping;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
     using System.Xml.Linq;
 
     public partial class CsCodeGeneratorConfig
@@ -1476,7 +1475,7 @@
         public string GetEnumNameEx(string value, EnumPrefix enumPrefix)
         {
             return GetEnumName(value, enumPrefix);
-
+            /*
             if (KnownEnumValueNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
@@ -1546,6 +1545,7 @@
             }
 
             return name; //char.IsNumber(prettyName[0]) ? parts[^1].ToCamelCase() + prettyName : prettyName;
+            */
         }
 
         public string GetEnumName(string value, EnumPrefix enumPrefix)

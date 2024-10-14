@@ -24,7 +24,7 @@
             {
                 var relativePath = Path.GetRelativePath(root, file);
                 var fullPath = Path.Combine(stage, relativePath);
-                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
                 File.Copy(file, fullPath, true);
                 if (!files.Contains(relativePath))
                 {
@@ -44,7 +44,7 @@
             {
                 var relativePath = file;
                 var fullPath = Path.Combine(root, relativePath);
-                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
                 File.Copy(GetFullPath(file), fullPath, true);
             }
         }
@@ -55,7 +55,7 @@
             {
                 var relativePath = file;
                 var fullPath = Path.Combine(stage, relativePath);
-                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
                 File.Copy(context.GetFullPath(file), fullPath, true);
                 if (!files.Contains(fullPath))
                 {
@@ -73,7 +73,7 @@
         public void WriteFile(string path, string content)
         {
             var fullPath = Path.Combine(stage, path);
-            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
             File.WriteAllText(fullPath, content);
             if (!files.Contains(path))
             {

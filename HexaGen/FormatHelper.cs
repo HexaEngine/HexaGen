@@ -3,6 +3,7 @@
     using CppAst;
     using Microsoft.CodeAnalysis;
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
     public static class FormatHelper
@@ -110,11 +111,10 @@
 
         public static bool IsType(this CppType a, CppType b)
         {
-           
             return a.GetDisplayName() == b.GetDisplayName();
         }
 
-        public static bool IsPrimitive(this CppType cppType, out CppPrimitiveType primitive)
+        public static bool IsPrimitive(this CppType cppType, [NotNullWhen(true)] out CppPrimitiveType? primitive)
         {
             if (cppType is CppPrimitiveType cppPrimitive)
             {

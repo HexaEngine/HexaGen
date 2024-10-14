@@ -52,7 +52,7 @@
             {
                 return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
             }
-
+            /*
             if (name == "Guid"
                 && cppParameter.Name == "riid"
                 && cppParameter.Type is CppReferenceType refer
@@ -60,7 +60,6 @@
                 && qual.ElementType is CppTypedef def
                 && def.Name == "IID")
             {
-                /*
                 if (j + 1 < parameters.Count)
                 {
                     var next = parameters[j + 1];
@@ -91,8 +90,8 @@
                         }
                     }
                 }
-                */
             }
+            */
         }
     }
 }

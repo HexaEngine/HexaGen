@@ -2,9 +2,7 @@
 {
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
-    using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
     public class FunctionWriterContext

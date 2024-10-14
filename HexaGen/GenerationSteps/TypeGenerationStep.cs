@@ -1,20 +1,57 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
+    using HexaGen.FunctionGeneration;
+    using HexaGen.Metadata;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Text;
 
-    public partial class CsCodeGenerator
+    public class TypeGenerationStep : GenerationStep
     {
         protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
         public readonly Dictionary<string, string> WrappedPointers = new();
         public readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
+
+        private readonly CsCodeGenerator csGenerator;
+        protected readonly FunctionGenerator funcGen;
+
+        public TypeGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+            csGenerator = generator;
+            funcGen = generator.FunctionGenerator;
+        }
+
+        public override string Name { get; } = "Types";
+
+        public override void Configure(CsCodeGeneratorConfig config)
+        {
+            Enabled = config.GenerateTypes;
+        }
+
+        public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            metadata.DefinedTypes.AddRange(DefinedTypes);
+        }
+
+        public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
+        {
+            LibDefinedTypes.AddRange(metadata.DefinedTypes);
+            WrappedPointers.AddRange(metadata.WrappedPointers);
+        }
+
+        public override void Reset()
+        {
+            LibDefinedTypes.Clear();
+            DefinedTypes.Clear();
+            WrappedPointers.Clear();
+            MemberFunctions.Clear();
+        }
 
         protected virtual List<string> SetupTypeUsings()
         {
@@ -58,7 +95,7 @@
             return false;
         }
 
-        protected virtual void GenerateTypes(CppCompilation compilation, string outputPath)
+        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Structs");
             if (Directory.Exists(folder))
@@ -382,7 +419,7 @@
         {
             var writer = context.Writer;
             CsType returnType = variation.ReturnType;
-            PrepareArgs(variation, returnType);
+            csGenerator.PrepareArgs(variation, returnType);
 
             string header = variation.BuildFullConstructorSignature(config.GenerateMetadata);
             string id = variation.BuildConstructorSignatureIdentifier();
@@ -392,7 +429,7 @@
                 return;
             }
 
-            ClassifyParameters(overload, variation, returnType, out _, out _, out _);
+            CsCodeGenerator.ClassifyParameters(overload, variation, returnType, out _, out _, out _);
 
             LogInfo("defined constructor " + header);
 
@@ -848,10 +885,10 @@
             List<CsFunction> commands = new();
             for (int i = 0; i < functions.Count; i++)
             {
-                CppFunction cppFunction = FindFunction(context.Compilation, functions[i]);
+                CppFunction cppFunction = CsCodeGenerator.FindFunction(context.Compilation, functions[i]);
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
 
-                CsFunction function = CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
+                CsFunction function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
 
                 bool useThisRef = false;
@@ -868,7 +905,7 @@
 
                 if (useThis || useThisRef)
                 {
-                    WriteFunctions(context, definedFunctions, function, overload, flags, "public unsafe");
+                    GetGenerationStep<FunctionGenerationStep>().WriteFunctions(context, definedFunctions, function, overload, flags, "public unsafe");
                 }
             }
 

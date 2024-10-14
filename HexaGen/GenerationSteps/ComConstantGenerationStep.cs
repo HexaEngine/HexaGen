@@ -1,9 +1,13 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.GenerationSteps
 {
     using System.Collections.Generic;
 
-    public partial class CsComCodeGenerator
+    public class ComConstantGenerationStep : ConstantGenerationStep
     {
+        public ComConstantGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
+        {
+        }
+
         protected override List<string> SetupConstantUsings()
         {
             var usings = base.SetupConstantUsings();
