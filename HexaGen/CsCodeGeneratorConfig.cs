@@ -289,11 +289,6 @@
 
             if (!result.EnableExperimentalOptions)
             {
-                result.GenerateConstructorsForStructs = false;
-                if (result.UseFunctionTable)
-                {
-                    result.ImportType = ImportType.LibraryImport;
-                }
             }
 
             result.Save(file);
@@ -336,7 +331,7 @@
         public bool GenerateSizeOfStructs { get; set; } = false;
 
         /// <summary>
-        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>) (EXPERIMENTAL)
+        /// The generator will generate default constructors for all structs. (Default: <see langword="true"/>)
         /// </summary>
         public bool GenerateConstructorsForStructs { get; set; } = true;
 

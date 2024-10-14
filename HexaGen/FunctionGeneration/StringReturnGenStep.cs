@@ -10,6 +10,11 @@
     public class StringReturnGenStep : FunctionGenStep
     {
         /// <summary>
+        /// Allows char** or byte**
+        /// </summary>
+        public bool AllowMultiPointer { get; set; }
+
+        /// <summary>
         /// Determines whether the specified return type is allowed.
         /// </summary>
         /// <param name="function">The function to check.</param>
@@ -20,7 +25,30 @@
         /// </returns>
         protected virtual bool AllowReturnType(CsFunctionOverload function, CsFunctionVariation variation, CsType returnType)
         {
-            return returnType.IsPointer && (returnType.PrimitiveType == CsPrimitiveType.Byte || returnType.PrimitiveType == CsPrimitiveType.Char);
+            if (!returnType.IsPointer || returnType.PrimitiveType != CsPrimitiveType.Byte && returnType.PrimitiveType != CsPrimitiveType.Char)
+            {
+                return false;
+            }
+
+            if (AllowMultiPointer)
+            {
+                return true;
+            }
+
+            int p = 0;
+            foreach (char c in returnType.Name)
+            {
+                if (c == '*')
+                {
+                    p++;
+                    if (p > 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
