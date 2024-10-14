@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Core.Logging;
+    using HexaGen.FunctionGeneration;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -9,11 +10,8 @@
 
     public partial class CsComCodeGenerator : CsCodeGenerator
     {
-        private FunctionGenerator funcGen;
-
-        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings)
+        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings, FunctionGenerator.CreateForCOM(settings))
         {
-            funcGen = new(settings);
         }
 
         private List<(string, Guid)> _guids = new();

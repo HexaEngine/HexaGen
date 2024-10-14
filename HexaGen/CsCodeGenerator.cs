@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using HexaGen.FunctionGeneration;
     using HexaGen.Metadata;
     using HexaGen.Patching;
     using System.Text.Json;
@@ -19,7 +20,7 @@
             return new(CsCodeGeneratorConfig.Load(configPath));
         }
 
-        public CsCodeGenerator(CsCodeGeneratorConfig config) : this(config, new(config))
+        public CsCodeGenerator(CsCodeGeneratorConfig config) : this(config, FunctionGenerator.CreateDefault(config))
         {
         }
 

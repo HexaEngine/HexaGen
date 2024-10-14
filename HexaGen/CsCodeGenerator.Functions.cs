@@ -3,6 +3,8 @@
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
+    using HexaGen.FunctionGeneration;
+    using HexaGen.FunctionGeneration.ParameterWriters;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
@@ -270,7 +272,7 @@
 
                     overload.Modifiers.Add("public");
                     overload.Modifiers.Add("static");
-                    funcGen.GenerateVariations(cppFunction.Parameters, overload);
+                    GenerateVariations(cppFunction, overload);
                     WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
                 }
             }
@@ -299,6 +301,11 @@
                     }
                 }
             }
+        }
+
+        protected virtual void GenerateVariations(CppFunction cppFunction, CsFunctionOverload overload)
+        {
+            funcGen.GenerateVariations(cppFunction.Parameters, overload);
         }
 
         protected virtual void WriteFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
@@ -369,226 +376,7 @@
             return $"{csReturnType.Name} {variation.Name}({signature})";
         }
 
-        protected virtual void WriteFunction(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
-        {
-            var writer = context.Writer;
-            CsType csReturnType = variation.ReturnType;
-            PrepareArgs(variation, csReturnType);
-
-            string header = BuildFunctionHeader(variation, csReturnType, flags, config.GenerateMetadata);
-            string id = BuildFunctionHeaderId(variation, flags);
-
-            if (FilterFunction(context, definedFunctions, id))
-            {
-                return;
-            }
-
-            ClassifyParameters(overload, variation, csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged);
-
-            LogInfo("defined function " + header);
-
-            writer.WriteLines(overload.Comment);
-            if (config.GenerateMetadata)
-            {
-                writer.WriteLines(overload.Attributes);
-            }
-            using (writer.PushBlock($"{string.Join(" ", modifiers)} {header}"))
-            {
-                StringBuilder sb = new();
-
-                if (!firstParamReturn && (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer))
-                {
-                    if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
-                    {
-                        sb.Append($"{config.GetBoolType()} ret = ");
-                    }
-                    else
-                    {
-                        sb.Append($"{csReturnType.Name} ret = ");
-                    }
-                }
-
-                if (csReturnType.IsString)
-                {
-                    WriteStringConvertToManaged(sb, variation.ReturnType);
-                }
-
-                if (flags != WriteFunctionFlags.None)
-                {
-                    sb.Append($"{config.ApiName}.");
-                }
-
-                if (hasManaged)
-                {
-                    sb.Append($"{overload.Name}(");
-                }
-                else if (firstParamReturn)
-                {
-                    sb.Append($"{overload.Name}Native(&ret" + (overload.Parameters.Count > 1 ? ", " : ""));
-                }
-                else
-                {
-                    sb.Append($"{overload.Name}Native(");
-                }
-
-                Stack<(string, CsParameterInfo, string)> strings = new();
-                Stack<string> stringArrays = new();
-                int stringCounter = 0;
-                int blockCounter = 0;
-
-                for (int i = 0; i < overload.Parameters.Count - offset; i++)
-                {
-                    var cppParameter = overload.Parameters[i + offset];
-                    var paramFlags = ParameterFlags.None;
-
-                    if (variation.TryGetParameter(cppParameter.Name, out var param))
-                    {
-                        paramFlags = param.Flags;
-                        cppParameter = param;
-                    }
-
-                    if (flags.HasFlag(WriteFunctionFlags.UseHandle) && i == 0)
-                    {
-                        sb.Append("Handle");
-                    }
-                    else if (flags.HasFlag(WriteFunctionFlags.UseThis) && i == 0 && overload.Parameters[i].Type.IsPointer)
-                    {
-                        writer.BeginBlock($"fixed ({overload.Parameters[i].Type.Name} @this = &this)");
-                        sb.Append("@this");
-                        blockCounter++;
-                    }
-                    else if (flags.HasFlag(WriteFunctionFlags.UseThis) && i == 0)
-                    {
-                        sb.Append("this");
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.Default))
-                    {
-                        var rootParam = overload.Parameters[i + offset];
-                        var paramCsDefault = cppParameter.DefaultValue;
-                        if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
-                        {
-                            sb.Append($"(string){paramCsDefault}");
-                        }
-                        else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
-                        {
-                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
-                        }
-                        else if (rootParam.Type.IsEnum || cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
-                        {
-                            sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
-                        }
-                        else
-                        {
-                            sb.Append($"{paramCsDefault}");
-                        }
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.String))
-                    {
-                        if (paramFlags.HasFlag(ParameterFlags.Array))
-                        {
-                            WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, stringArrays.Count);
-                            sb.Append($"pStrArray{stringArrays.Count}");
-                            stringArrays.Push(cppParameter.Name);
-                        }
-                        else
-                        {
-                            if (paramFlags.HasFlag(ParameterFlags.Ref))
-                            {
-                                strings.Push((cppParameter.Name, cppParameter, $"pStr{stringCounter}"));
-                            }
-
-                            WriteStringConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, stringCounter);
-                            sb.Append($"pStr{stringCounter}");
-                            stringCounter++;
-                        }
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.Ref))
-                    {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = &{cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
-                        blockCounter++;
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.Span))
-                    {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = {cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
-                        blockCounter++;
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.Array))
-                    {
-                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = {cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.CleanName}");
-                        blockCounter++;
-                    }
-                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
-                    {
-                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0");
-                    }
-                    else
-                    {
-                        sb.Append(cppParameter.Name);
-                    }
-
-                    if (i != overload.Parameters.Count - 1 - offset)
-                    {
-                        sb.Append(", ");
-                    }
-                }
-
-                if (csReturnType.IsString)
-                {
-                    sb.Append("));");
-                }
-                else
-                {
-                    sb.Append(");");
-                }
-
-                if (firstParamReturn)
-                {
-                    writer.WriteLine($"{csReturnType.Name} ret;");
-                }
-                writer.WriteLine(sb.ToString());
-
-                while (strings.TryPop(out var stackItem))
-                {
-                    WriteStringConvertToManaged(writer, stackItem.Item2.Type, stackItem.Item1, stackItem.Item3);
-                }
-
-                while (stringArrays.TryPop(out var arrayName))
-                {
-                    WriteFreeUnmanagedStringArray(writer, arrayName, stringArrays.Count);
-                }
-
-                while (stringCounter > 0)
-                {
-                    stringCounter--;
-                    WriteFreeString(writer, stringCounter);
-                }
-
-                if (firstParamReturn || !csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)
-                {
-                    if (csReturnType.IsBool && !csReturnType.IsPointer && !hasManaged)
-                    {
-                        writer.WriteLine("return ret != 0;");
-                    }
-                    else
-                    {
-                        writer.WriteLine("return ret;");
-                    }
-                }
-
-                while (blockCounter > 0)
-                {
-                    blockCounter--;
-                    writer.EndBlock();
-                }
-            }
-
-            writer.WriteLine();
-        }
-
-        private readonly List<IParameterWriter> parameterWriters =
+        public virtual List<IParameterWriter> ParameterWriters { get; } =
         [
             new HandleParameterWriter(),
             new UseThisParameterWriter(),
@@ -601,31 +389,29 @@
             new FallthroughParameterWriter(),
         ];
 
-        public IReadOnlyList<IParameterWriter> ParameterWriters => parameterWriters;
-
         public void AddParamterWriter(IParameterWriter writer)
         {
-            parameterWriters.Add(writer);
-            parameterWriters.Sort(new ParameterPriorityComparer());
+            ParameterWriters.Add(writer);
+            ParameterWriters.Sort(new ParameterPriorityComparer());
         }
 
         public void RemoveParamterWriter(IParameterWriter writer)
         {
-            parameterWriters.Remove(writer);
+            ParameterWriters.Remove(writer);
         }
 
         public void OverwriteParameterWriter<T>(IParameterWriter newWriter) where T : IParameterWriter
         {
-            for (int i = 0; i < parameterWriters.Count; i++)
+            for (int i = 0; i < ParameterWriters.Count; i++)
             {
-                var writer = parameterWriters[i];
+                var writer = ParameterWriters[i];
                 if (writer is T)
                 {
-                    parameterWriters[i] = newWriter;
+                    ParameterWriters[i] = newWriter;
                     break;
                 }
             }
-            parameterWriters.Sort(new ParameterPriorityComparer());
+            ParameterWriters.Sort(new ParameterPriorityComparer());
         }
 
         protected virtual void WriteFunctionEx(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
@@ -703,7 +489,7 @@
                         cppParameter = param;
                     }
 
-                    foreach (var parameterWriter in parameterWriters)
+                    foreach (var parameterWriter in ParameterWriters)
                     {
                         if (parameterWriter.CanWrite(writerContext, overload.Parameters[i + offset], cppParameter, paramFlags, i, offset))
                         {

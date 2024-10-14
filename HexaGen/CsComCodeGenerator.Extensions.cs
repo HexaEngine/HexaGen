@@ -129,7 +129,7 @@
                 var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
                 CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, commands, out var overload);
-                funcGen.GenerateCOMVariations(cppFunction.Parameters, overload);
+                funcGen.GenerateVariations(cppFunction.Parameters, overload);
 
                 if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedExtensions))
                 {
