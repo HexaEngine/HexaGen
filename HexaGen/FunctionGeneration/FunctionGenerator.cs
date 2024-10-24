@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen;
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System;
     using System.Collections.Generic;
@@ -252,6 +253,14 @@
                     }
                 }
 
+                foreach (var valueVariation in GenerateAdditionalOverloads(function.Name, parameterLists))
+                {
+                    if (function.TryAddVariation(valueVariation, out var variation))
+                    {
+                        ApplySteps(function, variation);
+                    }
+                }
+
                 if (customParameterList != null)
                 {
                     for (int i = 0; i < customParameterList.Length; i++)
@@ -264,6 +273,102 @@
                         }
                     }
                 }
+            }
+        }
+
+        private static (int, int) FindDifferenceRange(CsParameterInfo[][] overloads)
+        {
+            int start = -1;
+            int end = -1;
+            for (int i = 0; i < overloads[0].Length; i++)
+            {
+                bool found = false;
+                for (int j = 1; j < overloads.Length; j++)
+                {
+                    var overload = overloads[j];
+                    if (overloads[0][i].Type.Name != overload[i].Type.Name || overloads[0][i].DefaultValue != overload[i].DefaultValue)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    if (start == -1)
+                    {
+                        start = i;
+                    }
+                    end = i + 1;
+                }
+            }
+
+            return (start, end);
+        }
+
+        private IEnumerable<ValueVariation> GenerateAdditionalOverloads(string name, CsParameterInfo[][] overloads)
+        {
+            var (start, end) = FindDifferenceRange(overloads);
+
+            if (start == -1)
+            {
+                return Array.Empty<ValueVariation>();
+            }
+
+            HashSet<ValueVariation> variations = [];
+
+            foreach (var originalOverload in overloads)
+            {
+                variations.Add(new ValueVariation(name, originalOverload));
+            }
+
+            var baseList = new List<CsParameterInfo>();
+            baseList.AddRange(overloads[0].AsSpan(0, start));
+
+            return GenerateCombinations(name, overloads, variations, baseList, start, end);
+        }
+
+        private IEnumerable<ValueVariation> GenerateCombinations(string name, CsParameterInfo[][] overloads, HashSet<ValueVariation> variations, List<CsParameterInfo> current, int depth, int end)
+        {
+            if (depth == end)
+            {
+                int delta = overloads[0].Length - end;
+                if (delta != 0)
+                {
+                    current.AddRange(overloads[0].AsSpan(end, delta));
+                }
+
+                var variation = new ValueVariation(name, current);
+                if (!variations.Contains(variation))
+                {
+                    var clone = current.Clone();
+                    var newVariation = new ValueVariation(name, clone);
+                    yield return newVariation;
+                    variations.Add(newVariation);
+                }
+
+                if (delta != 0)
+                {
+                    current.RemoveRange(end, delta);
+                }
+
+                yield break;
+            }
+
+            for (int i = 0; i < overloads.Length; i++)
+            {
+                var param = overloads[i][depth];
+                if (settings.VaryingTypes.Count > 0 && !settings.VaryingTypes.Contains(param.Type.Name))
+                {
+                    param = overloads[0][depth];
+                }
+
+                current.Add(param);
+                foreach (var variation in GenerateCombinations(name, overloads, variations, current, depth + 1, end))
+                {
+                    yield return variation;
+                }
+                current.RemoveAt(current.Count - 1);
             }
         }
 

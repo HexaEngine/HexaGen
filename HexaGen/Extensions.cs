@@ -7,7 +7,7 @@
     using System.Runtime.InteropServices;
     using System.Text;
 
-    internal static class Extensions
+    public static class Extensions
     {
         public static string FormatLocationAttribute(this CppElement element)
         {

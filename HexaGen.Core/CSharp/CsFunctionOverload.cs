@@ -2,6 +2,7 @@
 {
     using HexaGen.Core.Collections;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text.Json.Serialization;
 
     public enum CsFunctionKind
@@ -30,6 +31,10 @@
             Variations = new(variations);
             Modifiers = modifiers;
             Attributes = attributes;
+            for (int i = 0; i < variations.Count; i++)
+            {
+                ValueVariations.Add(variations[i]);
+            }
         }
 
         public CsFunctionOverload(string exportedName, string name, string? comment, string structName, CsFunctionKind kind, CsType returnType)
@@ -65,6 +70,9 @@
 
         public ConcurrentList<CsFunctionVariation> Variations { get; set; }
 
+        [JsonIgnore]
+        public HashSet<ValueVariation> ValueVariations { get; set; } = [];
+
         public List<string> Modifiers { get; set; }
 
         public List<string> Attributes { get; set; }
@@ -73,31 +81,15 @@
         {
             lock (Variations.SyncObject)
             {
-                for (int i = 0; i < Variations.Count; i++)
-                {
-                    var iation = Variations[i];
-                    if (variation.Parameters.Count != iation.Parameters.Count)
-                        continue;
-                    if (variation.Name != iation.Name)
-                        continue;
+                return ValueVariations.Contains(variation);
+            }
+        }
 
-                    bool skip = false;
-                    for (int j = 0; j < iation.Parameters.Count; j++)
-                    {
-                        if (variation.Parameters[j].Type.Name != iation.Parameters[j].Type.Name || variation.Parameters[j].DefaultValue != iation.Parameters[j].DefaultValue)
-                        {
-                            skip = true;
-                            break;
-                        }
-                    }
-
-                    if (skip)
-                        continue;
-
-                    return true;
-                }
-
-                return false;
+        public bool HasVariation(ValueVariation variation)
+        {
+            lock (Variations.SyncObject)
+            {
+                return ValueVariations.Contains(variation);
             }
         }
 
@@ -105,12 +97,28 @@
         {
             lock (Variations.SyncObject)
             {
-                if (!HasVariation(variation))
+                if (ValueVariations.Add(variation))
                 {
                     Variations.Add(variation);
                     return true;
                 }
             }
+            return false;
+        }
+
+        public bool TryAddVariation(ValueVariation valueVariation, [NotNullWhen(true)] out CsFunctionVariation? variation)
+        {
+            lock (Variations.SyncObject)
+            {
+                if (ValueVariations.Add(valueVariation))
+                {
+                    variation = CreateVariationWith();
+                    variation.Parameters.AddRange(valueVariation.Parameters);
+                    Variations.Add(variation);
+                    return true;
+                }
+            }
+            variation = null;
             return false;
         }
 
@@ -122,6 +130,9 @@
                 {
                     Variations.Add(newVariation);
                     Variations.Remove(oldVariation);
+
+                    ValueVariations.Remove(oldVariation);
+                    ValueVariations.Add(newVariation);
                     return true;
                 }
             }

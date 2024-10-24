@@ -257,7 +257,8 @@
             {
                 "HWND",
                 "nint"
-            }
+            },
+            VaryingTypes = ["ReadOnlySpan<byte>", "string", "ref string"]
         };
 
         public static CsCodeGeneratorConfig Load(string file)
@@ -285,6 +286,11 @@
             foreach (var item in Default.IgnoredTypedefs)
             {
                 result.IgnoredTypedefs.Add(item);
+            }
+
+            foreach (var item in Default.VaryingTypes)
+            {
+                result.VaryingTypes.Add(item);
             }
 
             if (!result.EnableExperimentalOptions)
@@ -672,6 +678,16 @@
         public List<string> AdditionalArguments { get; set; } = new();
 
         public readonly List<CsEnumMetadata> CustomEnums = [];
+
+        /// <summary>
+        /// A list of allowed types for generating additional overloads.
+        /// </summary>
+        public HashSet<string> VaryingTypes { get; set; } = new();
+
+        /// <summary>
+        /// Generates additional overloads, <c>WARNING</c> this option can really generate many overloads. To filter which type is allowed use <see cref="VaryingTypes"/>
+        /// </summary>
+        public bool GenerateAdditionalOverloads { get; set; }
 
         public void Save(string path)
         {

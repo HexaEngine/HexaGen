@@ -293,5 +293,10 @@
         {
             return new CsFunctionVariation(Identifier, ExportedName, Name, StructName, Kind, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
+
+        public static implicit operator ValueVariation(CsFunctionVariation variation)
+        {
+            return new ValueVariation(variation.Name, variation.Parameters);
+        }
     }
 }
