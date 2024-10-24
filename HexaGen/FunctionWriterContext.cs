@@ -19,7 +19,7 @@
 
         public WriteFunctionFlags Flags { get; }
 
-        private Stack<(string paramName, CsParameterInfo param, string varName)> strings = new();
+        private Stack<(string paramName, CsParameterInfo param, string varName, string? convertBackCondition)> strings = new();
         private Stack<(string paramName, CsParameterInfo param, string varName)> stringArrays = new();
         private int stringCounter = 0;
         private int blockCounter = 0;
@@ -68,21 +68,21 @@
             stringArrays.Push((paramName, parameter, varName));
         }
 
-        public void WriteStringConvertToUnmanaged(CsParameterInfo parameter, bool isRef)
+        public void WriteStringConvertToUnmanaged(CsParameterInfo parameter, bool isRef, string? convertBackCondition = null)
         {
             int stringCounter = IncrementStringCounter();
             if (isRef)
             {
-                PushString(parameter.Name, parameter, $"pStr{stringCounter}");
+                PushString(parameter.Name, parameter, $"pStr{stringCounter}", convertBackCondition);
             }
 
             MarshalHelper.WriteStringConvertToUnmanaged(Writer, parameter.Type, parameter.Name, stringCounter);
             AppendParam($"pStr{stringCounter}");
         }
 
-        public void PushString(string paramName, CsParameterInfo parameter, string varName)
+        public void PushString(string paramName, CsParameterInfo parameter, string varName, string? convertBackCondition)
         {
-            strings.Push((paramName, parameter, varName));
+            strings.Push((paramName, parameter, varName, convertBackCondition));
         }
 
         public int IncrementStringCounter()
@@ -90,7 +90,7 @@
             return stringCounter++;
         }
 
-        public bool TryPopString(out (string paramName, CsParameterInfo param, string varName) stackItem)
+        public bool TryPopString(out (string paramName, CsParameterInfo param, string varName, string? convertBackCondition) stackItem)
         {
             return strings.TryPop(out stackItem);
         }
@@ -118,7 +118,7 @@
         {
             while (strings.TryPop(out var stackItem))
             {
-                MarshalHelper.WriteStringConvertToManaged(Writer, stackItem.param.Type, stackItem.paramName, stackItem.varName);
+                MarshalHelper.WriteStringConvertToManaged(Writer, stackItem.param.Type, stackItem.paramName, stackItem.varName, stackItem.convertBackCondition);
             }
         }
 

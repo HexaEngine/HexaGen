@@ -2,14 +2,17 @@
 {
     using CppAst;
     using HexaGen.Core;
+    using HexaGen.Core.CSharp;
     using HexaGen.Metadata;
+    using System;
     using System.IO;
+    using System.Linq;
 
     public class DelegateGenerationStep : GenerationStep
     {
-        protected readonly HashSet<string> LibDefinedDelegates = new();
-        public readonly HashSet<string> DefinedDelegates = new();
-        private readonly HashSet<string> CsNames = new();
+        protected readonly HashSet<CsDelegate> LibDefinedDelegates = new(IdentifierComparer<CsDelegate>.Default);
+        public readonly HashSet<CsDelegate> DefinedDelegates = new(IdentifierComparer<CsDelegate>.Default);
+        private readonly HashSet<string> csDelegateNames = [];
 
         public DelegateGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
@@ -36,7 +39,7 @@
         {
             LibDefinedDelegates.Clear();
             DefinedDelegates.Clear();
-            CsNames.Clear();
+            csDelegateNames.Clear();
         }
 
         protected virtual List<string> SetupDelegateUsings()
@@ -60,23 +63,23 @@
             return false;
         }
 
-        protected virtual bool FilterDelegate(GenContext context, ICppMember member)
+        protected virtual bool FilterDelegate(GenContext context, CsDelegate csDelegate)
         {
-            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(member.Name))
+            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(csDelegate.Name))
                 return true;
-            if (config.IgnoredDelegates.Contains(member.Name))
-                return true;
-
-            if (LibDefinedDelegates.Contains(member.Name))
+            if (config.IgnoredDelegates.Contains(csDelegate.Name))
                 return true;
 
-            if (DefinedDelegates.Contains(member.Name))
+            if (LibDefinedDelegates.Contains(csDelegate))
+                return true;
+
+            if (DefinedDelegates.Contains(csDelegate))
             {
-                LogWarn($"{context.FilePath}: {member.Name} delegate is already defined!");
+                LogWarn($"{context.FilePath}: {csDelegate.Name} delegate is already defined!");
                 return true;
             }
 
-            DefinedDelegates.Add(member.Name);
+            DefinedDelegates.Add(csDelegate);
 
             return false;
         }
@@ -158,39 +161,42 @@
                 }
                 else if (cppField.Type is CppTypedef typedef && typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType cppFunctionType)
                 {
-                    WriteDelegate(context, cppField, cppFunctionType, false);
+                    WriteDelegate(context, cppField, cppFunctionType);
                 }
             }
         }
 
-        private void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType, bool isReadOnly = false) where T : class, ICppDeclaration, ICppMember
+        private void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType) where T : class, ICppDeclaration, ICppMember
         {
-            if (FilterDelegate(context, field))
+            string csDelegateName = config.GetFieldName(field.Name);
+
+            int i = 1;
+            string name = csDelegateName;
+            while (csDelegateNames.Contains(name))
+            {
+                name = $"{csDelegateName}{i++}";
+            }
+            csDelegateName = name;
+            csDelegateNames.Add(name);
+
+            CsDelegate csDelegate = generator.CreateCsDelegate(field, csDelegateName, functionType);
+
+            if (FilterDelegate(context, csDelegate))
             {
                 return;
             }
 
             var writer = context.Writer;
 
-            string csFieldName = config.GetFieldName(field.Name);
-            string fieldPrefix = isReadOnly ? "readonly " : string.Empty;
-
-            int i = 1;
-            while (CsNames.Contains(csFieldName))
-            {
-                csFieldName += $"{i++}";
-            }
-            CsNames.Add(csFieldName);
-
             writer.WriteLine("#if NET5_0_OR_GREATER");
-            WriteFinal(writer, field, functionType, csFieldName, fieldPrefix);
+            WriteFinal(writer, field, functionType, csDelegateName);
             writer.WriteLine("#else");
-            WriteFinal(writer, field, functionType, csFieldName, fieldPrefix, compatibility: true);
+            WriteFinal(writer, field, functionType, csDelegateName, compatibility: true);
             writer.WriteLine("#endif");
             writer.WriteLine();
         }
 
-        private void WriteFinal<T>(ICodeWriter writer, T field, CppFunctionType functionType, string csFieldName, string fieldPrefix, bool compatibility = false) where T : class, ICppDeclaration, ICppMember
+        private void WriteFinal<T>(ICodeWriter writer, T field, CppFunctionType functionType, string csFieldName, bool compatibility = false) where T : class, ICppDeclaration, ICppMember
         {
             string signature = config.GetParameterSignature(functionType.Parameters, canUseOut: false, delegateType: true, compatibility: compatibility);
             string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
@@ -227,7 +233,7 @@
                 writer.WriteLine($"[NativeName(NativeNameType.Delegate, \"{field.Name}\")]");
             }
             writer.WriteLine($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
-            writer.WriteLine($"public unsafe {fieldPrefix}delegate {header};");
+            writer.WriteLine($"public unsafe delegate {header};");
             writer.WriteLine();
         }
     }

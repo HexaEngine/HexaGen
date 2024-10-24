@@ -1,9 +1,12 @@
 ﻿namespace HexaGen.Core.CSharp
 {
+    using System;
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     public class CsFunction
     {
+        [JsonConstructor]
         public CsFunction(string name, string? comment, List<CsFunctionOverload> overloads)
         {
             Name = name;
@@ -27,6 +30,11 @@
         public override string ToString()
         {
             return Name;
+        }
+
+        public CsFunction Clone()
+        {
+            return new(Name, Comment, Overloads.Select(overload => overload.Clone()).ToList());
         }
     }
 }

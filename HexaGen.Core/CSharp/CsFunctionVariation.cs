@@ -3,11 +3,14 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
+    using System.Text.Json.Serialization;
 
-    public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>
+    public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>, IHasIdentifier
     {
-        public CsFunctionVariation(string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters, List<string> modifiers, List<string> attributes)
+        [JsonConstructor]
+        public CsFunctionVariation(string identifier, string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType, List<CsParameterInfo> parameters, List<CsGenericParameterInfo> genericParameters, List<string> modifiers, List<string> attributes)
         {
+            Identifier = identifier;
             ExportedName = exportedName;
             Name = name;
 
@@ -20,8 +23,9 @@
             Attributes = attributes;
         }
 
-        public CsFunctionVariation(string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType)
+        public CsFunctionVariation(string identifier, string exportedName, string name, string structName, CsFunctionKind kind, CsType returnType)
         {
+            Identifier = identifier;
             ExportedName = exportedName;
             Name = name;
             StructName = structName;
@@ -32,6 +36,8 @@
             Modifiers = new();
             Attributes = new();
         }
+
+        public string Identifier { get; set; }
 
         public string ExportedName { get; set; }
 
@@ -55,29 +61,79 @@
 
         #region IDs
 
-        public string BuildSignatureIdentifier()
+        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
         {
-            return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
+            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
+            StringBuilder sb = new();
+            bool isFirst = true;
+
+            if (flags == WriteFunctionFlags.Extension)
+            {
+                isFirst = false;
+                var first = variation.Parameters[0];
+                if (useNames)
+                {
+                    sb.Append($"this {first.Type} {first.Name}");
+                }
+                else
+                {
+                    sb.Append($"this {first.Type}");
+                }
+            }
+
+            for (int i = offset; i < variation.Parameters.Count; i++)
+            {
+                var param = variation.Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                if (useAttributes)
+                {
+                    sb.Append($"{string.Join(" ", param.Attributes)} ");
+                }
+
+                sb.Append($"{param.Type}");
+
+                if (useNames)
+                {
+                    sb.Append($" {param.Name}");
+                }
+
+                isFirst = false;
+            }
+
+            return sb.ToString();
+        }
+
+        public string BuildFunctionHeaderId(WriteFunctionFlags flags)
+        {
+            string signature = BuildFunctionSignature(this, false, false, flags);
+            return Identifier = $"{Name}({signature})";
+        }
+
+        public string BuildFunctionHeader(CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
+        {
+            string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
+            return Identifier = $"{csReturnType.Name} {Name}({signature})";
         }
 
         public string BuildConstructorSignatureIdentifier()
         {
-            return $"{StructName}({BuildConstructorSignature(false, false, false)})";
-        }
-
-        public string BuildExtensionSignatureIdentifier(string type)
-        {
-            return $"{Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignature(type, null, false, false)})";
+            return Identifier = $"{StructName}({BuildConstructorSignature(false, false, false)})";
         }
 
         public string BuildSignatureIdentifierForCOM()
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
+            return Identifier = $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildSignature(false, false)})";
         }
 
         public string BuildExtensionSignatureIdentifierForCOM(string comObject)
         {
-            return $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, false, false)})";
+            return Identifier = $"{ReturnType.Name} {Name}{(IsGeneric ? $"<{BuildGenericSignature()}>" : string.Empty)}({BuildExtensionSignatureForCOM(comObject, false, false)})";
         }
 
         #endregion IDs
@@ -230,12 +286,12 @@
 
         public CsFunctionVariation ShallowClone()
         {
-            return new CsFunctionVariation(ExportedName, Name, StructName, Kind, ReturnType.Clone());
+            return new CsFunctionVariation(Identifier, ExportedName, Name, StructName, Kind, ReturnType.Clone());
         }
 
         public CsFunctionVariation Clone()
         {
-            return new CsFunctionVariation(ExportedName, Name, StructName, Kind, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
+            return new CsFunctionVariation(Identifier, ExportedName, Name, StructName, Kind, ReturnType.Clone(), Parameters.CloneValues(), GenericParameters.CloneValues(), Modifiers.Clone(), Attributes.Clone());
         }
     }
 }

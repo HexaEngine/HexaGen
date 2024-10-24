@@ -1,4 +1,4 @@
-﻿namespace HexaGen.Metadata
+﻿namespace HexaGen.Core
 {
     using System.Diagnostics.CodeAnalysis;
 

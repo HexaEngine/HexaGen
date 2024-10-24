@@ -3,17 +3,17 @@
     using HexaGen;
     using HexaGen.Core.CSharp;
 
-    public readonly struct UseThisParameterWriter : IParameterWriter
+    public class UseThisParameterWriter : IParameterWriter
     {
-        public int Priority => 7 * IParameterWriter.PriorityMultiplier;
+        public virtual int Priority => 7 * IParameterWriter.PriorityMultiplier;
 
-        public bool CanWrite(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
+        public virtual bool CanWrite(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
             var writeFunctionFlags = context.Flags;
             return writeFunctionFlags.HasFlag(WriteFunctionFlags.UseThis) && index == 0;
         }
 
-        public void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
+        public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
             var overload = context.Overload;
             if (overload.Parameters[index].Type.IsPointer)

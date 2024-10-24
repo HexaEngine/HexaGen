@@ -1,6 +1,9 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen.Core.CSharp;
     using Microsoft.CodeAnalysis.CSharp;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
 
     public class CsCodeGeneratorMetadata
     {
@@ -10,15 +13,19 @@
 
         public List<CsEnumMetadata> DefinedEnums { get; set; } = new();
 
-        public List<string> DefinedExtensions { get; set; } = new();
+        public List<string> DefinedTypeExtensions { get; set; } = new();
 
-        public List<string> DefinedFunctions { get; set; } = new();
+        public List<CsFunction> DefinedExtensions { get; set; } = new();
+
+        public List<string> CppDefinedFunctions { get; set; } = new();
+
+        public List<CsFunction> DefinedFunctions { get; set; } = new();
 
         public List<string> DefinedTypedefs { get; set; } = new();
 
         public List<string> DefinedTypes { get; set; } = new();
 
-        public List<string> DefinedDelegates { get; set; } = new();
+        public List<CsDelegate> DefinedDelegates { get; set; } = new();
 
         public Dictionary<string, string> WrappedPointers { get; set; } = new();
 
@@ -28,7 +35,9 @@
         {
             DefinedConstants.AddRange(from.DefinedConstants);
             DefinedEnums.AddRange(from.DefinedEnums);
+            DefinedTypeExtensions.AddRange(from.DefinedTypeExtensions);
             DefinedExtensions.AddRange(from.DefinedExtensions);
+            CppDefinedFunctions.AddRange(from.CppDefinedFunctions);
             DefinedFunctions.AddRange(from.DefinedFunctions);
             DefinedTypedefs.AddRange(from.DefinedTypedefs);
             DefinedTypes.AddRange(from.DefinedTypes);
@@ -47,11 +56,13 @@
                 Settings = Settings,
                 DefinedConstants = DefinedConstants.Select(constant => constant.Clone()).ToList(),
                 DefinedEnums = DefinedEnums.Select(enumItem => enumItem.Clone()).ToList(),
-                DefinedExtensions = new List<string>(DefinedExtensions),
-                DefinedFunctions = new List<string>(DefinedFunctions),
+                DefinedTypeExtensions = new List<string>(DefinedTypeExtensions),
+                DefinedExtensions = DefinedExtensions.Select(x => x.Clone()).ToList(),
+                CppDefinedFunctions = new List<string>(CppDefinedFunctions),
+                DefinedFunctions = DefinedFunctions.Select(function => function.Clone()).ToList(),
                 DefinedTypedefs = new List<string>(DefinedTypedefs),
                 DefinedTypes = new List<string>(DefinedTypes),
-                DefinedDelegates = new List<string>(DefinedDelegates),
+                DefinedDelegates = DefinedDelegates.Select(del => del.Clone()).ToList(),
                 WrappedPointers = new Dictionary<string, string>(WrappedPointers),
                 FunctionTable = FunctionTable.Clone()
             };
@@ -65,6 +76,24 @@
             {
                 destination[item.Key] = item.Value;
             }
+        }
+
+        private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.General)
+        {
+            WriteIndented = true,
+            Converters = { new JsonStringEnumConverter() }
+        };
+
+        public void Save(string path)
+        {
+            using var fs = File.Create(path);
+            JsonSerializer.Serialize(fs, this, options);
+        }
+
+        public static CsCodeGeneratorMetadata Load(string path)
+        {
+            using var fs = File.OpenRead(path);
+            return (CsCodeGeneratorMetadata?)JsonSerializer.Deserialize(fs, typeof(CsCodeGeneratorMetadata), options) ?? new();
         }
     }
 

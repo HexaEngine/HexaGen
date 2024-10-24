@@ -151,6 +151,7 @@
 
             config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
             wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
+            metadata.Settings = Settings;
 
             LogInfo($"Configuring Steps...");
             foreach (var step in GenerationSteps)
@@ -169,7 +170,7 @@
             }
 
             LogInfo("Applying Post-Patches...");
-            patchEngine.ApplyPostPatches(GetMetadata(), outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
+            patchEngine.ApplyPostPatches(metadata, outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
 
             return true;
         }
@@ -293,6 +294,43 @@
 
             function.Overloads.Add(overload);
             return function;
+        }
+
+        public virtual CsDelegate CreateCsDelegate<T>(T member, string csName, CppFunctionType functionType) where T : class, ICppDeclaration, ICppMember
+        {
+            config.WriteCsSummary(member.Comment, out string? comment);
+
+            string returnCsName = config.GetCsReturnType(functionType.ReturnType);
+            CppPrimitiveKind returnKind = functionType.ReturnType.GetPrimitiveKind();
+
+            List<CsParameterInfo> parameters = [];
+
+            for (int j = 0; j < functionType.Parameters.Count; j++)
+            {
+                var cppParameter = functionType.Parameters[j];
+                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type, false);
+                var paramCsName = config.GetParameterName(j, cppParameter.Name);
+                var direction = cppParameter.Type.GetDirection();
+                var primKind = cppParameter.Type.GetPrimitiveKind();
+
+                CsType csType = new(paramCsTypeName, primKind);
+
+                CsParameterInfo csParameter = new(paramCsName, cppParameter.Type, csType, direction);
+                csParameter.Attributes.Add($"[NativeName(NativeNameType.Param, \"{cppParameter.Name}\")]");
+                csParameter.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppParameter.Type.GetDisplayName()}\")]");
+                parameters.Add(csParameter);
+            }
+
+            List<string> attributes = [];
+
+            if (config.GenerateMetadata)
+            {
+                attributes.Add($"[NativeName(NativeNameType.Delegate, \"{member.Name}\")]");
+                attributes.Add($"[return: NativeName(NativeNameType.Type, \"{functionType.ReturnType.GetDisplayName()}\")]");
+            }
+            attributes.Add($"[UnmanagedFunctionPointer(CallingConvention.{functionType.CallingConvention.GetCallingConvention()})]");
+
+            return new(member.Name, csName, new(returnCsName, returnKind), parameters, attributes, comment);
         }
 
         protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)

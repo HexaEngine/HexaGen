@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen.Core;
     using System.Text.Json.Serialization;
 
     public class CsConstantMetadata : IHasIdentifier

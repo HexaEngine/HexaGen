@@ -57,8 +57,12 @@
             }
         }
 
-        public static void WriteStringConvertToManaged(ICodeWriter writer, CsType type, string variable, string pointer)
+        public static void WriteStringConvertToManaged(ICodeWriter writer, CsType type, string variable, string pointer, string? convertCondition = null)
         {
+            if (convertCondition != null)
+            {
+                writer.BeginBlock($"if ({convertCondition})");
+            }
             if (type.StringType == CsStringType.StringUTF8)
             {
                 writer.WriteLine($"{variable} = Utils.DecodeStringUTF8({pointer});");
@@ -70,6 +74,10 @@
             else
             {
                 throw new NotSupportedException($"String type ({type.StringType}) is not supported");
+            }
+            if (convertCondition != null)
+            {
+                writer.EndBlock();
             }
         }
 

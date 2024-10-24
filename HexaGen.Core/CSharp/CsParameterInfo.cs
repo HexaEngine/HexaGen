@@ -23,6 +23,7 @@
 
     public class CsParameterInfo : ICloneable<CsParameterInfo>
     {
+        [JsonConstructor]
         public CsParameterInfo(string name, CppType cppType, CsType type, List<string> modifiers, List<string> attributes, Direction direction, string? defaultValue, string? fieldName)
         {
             Name = name;

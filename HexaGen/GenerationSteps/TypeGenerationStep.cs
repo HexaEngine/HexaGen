@@ -16,7 +16,7 @@
         protected readonly HashSet<string> LibDefinedTypes = new();
         public readonly HashSet<string> DefinedTypes = new();
         public readonly Dictionary<string, string> WrappedPointers = new();
-        public readonly Dictionary<string, HashSet<string>> MemberFunctions = new();
+        public readonly Dictionary<string, HashSet<CsFunctionVariation>> MemberFunctions = new();
 
         private readonly CsCodeGenerator csGenerator;
         protected readonly FunctionGenerator funcGen;
@@ -37,6 +37,7 @@
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
         {
             metadata.DefinedTypes.AddRange(DefinedTypes);
+            metadata.WrappedPointers.AddRange(WrappedPointers);
         }
 
         public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
@@ -881,7 +882,7 @@
 
         private void WriteMemberFunctions(GenContext context, CppClass cppClass, List<string> functions, WriteFunctionFlags flags)
         {
-            HashSet<string> definedFunctions = new();
+            HashSet<CsFunctionVariation> definedFunctions = new(IdentifierComparer<CsFunctionVariation>.Default);
             List<CsFunction> commands = new();
             for (int i = 0; i < functions.Count; i++)
             {
@@ -913,10 +914,8 @@
             {
                 if (MemberFunctions.TryGetValue(cppClass.Name, out var funcs))
                 {
-                    foreach (string f in definedFunctions)
+                    foreach (var f in definedFunctions)
                     {
-                        if (funcs.Contains(f))
-                            continue;
                         funcs.Add(f);
                     }
                 }

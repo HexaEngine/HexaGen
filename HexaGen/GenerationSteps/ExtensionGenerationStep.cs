@@ -10,8 +10,11 @@
     public class ExtensionGenerationStep : GenerationStep
     {
         protected readonly HashSet<string> LibDefinedExtensions = new();
-        public readonly HashSet<string> DefinedExtensions = new();
-        protected HashSet<string> DefinedVariationsFunctions;
+        public readonly HashSet<string> DefinedTypeExtensions = new();
+        protected HashSet<CsFunctionVariation> DefinedVariationsFunctions;
+
+        public readonly List<CsFunction> DefinedExtensions = [];
+
         protected readonly CsCodeGenerator csGenerator;
         protected readonly FunctionGenerator funcGen;
 
@@ -31,17 +34,19 @@
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
         {
+            metadata.DefinedTypeExtensions.AddRange(DefinedTypeExtensions);
             metadata.DefinedExtensions.AddRange(DefinedExtensions);
         }
 
         public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
         {
-            LibDefinedExtensions.AddRange(metadata.DefinedExtensions);
+            LibDefinedExtensions.AddRange(metadata.DefinedTypeExtensions);
         }
 
         public override void Reset()
         {
             LibDefinedExtensions.Clear();
+            DefinedTypeExtensions.Clear();
             DefinedExtensions.Clear();
         }
 
@@ -113,6 +118,21 @@
             return false;
         }
 
+        protected virtual bool FilterExtension(GenContext context, HashSet<CsFunctionVariation> definedExtensions, CsFunctionVariation variation)
+        {
+            lock (definedExtensions)
+            {
+                if (definedExtensions.Contains(variation))
+                {
+                    LogWarn($"{context.FilePath}: {variation} extension is already defined!");
+                    return true;
+                }
+
+                definedExtensions.Add(variation);
+            }
+            return false;
+        }
+
         public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             DefinedVariationsFunctions = GetGenerationStep<FunctionGenerationStep>().DefinedVariationsFunctions;
@@ -144,7 +164,7 @@
 
             string handleName = typedef.Name;
             var compilation = context.Compilation;
-            List<CsFunction> functions = new();
+
             for (int i = 0; i < compilation.Functions.Count; i++)
             {
                 var cppFunction = compilation.Functions[i];
@@ -157,13 +177,13 @@
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
                 var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
-                csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, functions, out var overload);
+                csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, DefinedExtensions, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
                 WriteExtensions(context, DefinedVariationsFunctions, csFunctionName, overload, "public static");
             }
         }
 
-        protected virtual void WriteExtensions(GenContext context, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, params string[] modifiers)
+        protected virtual void WriteExtensions(GenContext context, HashSet<CsFunctionVariation> definedExtensions, string originalFunction, CsFunctionOverload overload, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
@@ -171,16 +191,16 @@
             }
         }
 
-        protected virtual void WriteExtension(GenContext context, HashSet<string> definedExtensions, string originalFunction, CsFunctionOverload overload, CsFunctionVariation variation, string[] modifiers)
+        protected virtual void WriteExtension(GenContext context, HashSet<CsFunctionVariation> definedExtensions, string originalFunction, CsFunctionOverload overload, CsFunctionVariation variation, string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
             csGenerator.PrepareArgs(variation, csReturnType);
 
             string header = csGenerator.BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
-            string id = csGenerator.BuildFunctionHeaderId(variation, WriteFunctionFlags.Extension);
+            variation.BuildFunctionHeaderId(WriteFunctionFlags.Extension);
 
-            if (FilterExtension(context, definedExtensions, id))
+            if (FilterExtension(context, definedExtensions, variation))
             {
                 return;
             }

@@ -12,11 +12,12 @@
 
     public class FunctionGenerationStep : GenerationStep
     {
-        protected readonly HashSet<string> LibDefinedFunctions = new();
-        public readonly HashSet<string> CppDefinedFunctions = new();
-        public readonly HashSet<string> DefinedFunctions = new();
-        public readonly HashSet<string> DefinedVariationsFunctions = new();
-        protected readonly HashSet<string> OutReturnFunctions = new();
+        protected readonly HashSet<string> LibDefinedFunctions = [];
+        public readonly HashSet<string> CppDefinedFunctions = [];
+        public readonly HashSet<string> DefinedNativeFunctions = [];
+        public readonly List<CsFunction> DefinedFunctions = [];
+        public readonly HashSet<CsFunctionVariation> DefinedVariationsFunctions = new(IdentifierComparer<CsFunctionVariation>.Default);
+        protected readonly HashSet<string> OutReturnFunctions = [];
 
         private readonly CsCodeGenerator csGenerator;
         private readonly FunctionGenerator funcGen;
@@ -38,21 +39,24 @@
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
         {
+            metadata.CppDefinedFunctions.AddRange(CppDefinedFunctions);
             metadata.DefinedFunctions.AddRange(DefinedFunctions);
+            metadata.FunctionTable = new(FunctionTableBuilder.Entries);
         }
 
         public override void CopyFromMetadata(CsCodeGeneratorMetadata metadata)
         {
-            LibDefinedFunctions.AddRange(metadata.DefinedFunctions);
+            LibDefinedFunctions.AddRange(metadata.CppDefinedFunctions);
         }
 
         public override void Reset()
         {
             LibDefinedFunctions.Clear();
             CppDefinedFunctions.Clear();
-            DefinedFunctions.Clear();
+            DefinedNativeFunctions.Clear();
             DefinedVariationsFunctions.Clear();
             OutReturnFunctions.Clear();
+            DefinedFunctions.Clear();
         }
 
         protected virtual List<string> SetupFunctionUsings()
@@ -102,25 +106,25 @@
 
             CppDefinedFunctions.Add(cppFunction.Name);
 
-            if (DefinedFunctions.Contains(header))
+            if (DefinedNativeFunctions.Contains(header))
             {
                 LogWarn($"{context.FilePath}: function {cppFunction}, C#: {header} is already defined!");
                 return true;
             }
 
-            DefinedFunctions.Add(header);
+            DefinedNativeFunctions.Add(header);
 
             return false;
         }
 
-        protected virtual bool FilterFunction(GenContext context, HashSet<string> definedFunctions, string header)
+        protected virtual bool FilterFunction(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunctionVariation variation)
         {
-            if (definedFunctions.Contains(header))
+            if (definedFunctions.Contains(variation))
             {
-                LogWarn($"{context.FilePath}: {header} function is already defined!");
+                LogWarn($"{context.FilePath}: {variation} function is already defined!");
                 return true;
             }
-            definedFunctions.Add(header);
+            definedFunctions.Add(variation);
             return false;
         }
 
@@ -148,7 +152,6 @@
                     writer.WriteLine($"internal const string LibName = \"{config.LibName}\";\n");
                 }
 
-                List<CsFunction> functions = new();
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
                     CppFunction? cppFunction = compilation.Functions[i];
@@ -172,7 +175,7 @@
                         continue;
                     }
 
-                    var function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, functions, out var overload);
+                    var function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, DefinedFunctions, out var overload);
 
                     writer.WriteLines(function.Comment);
                     if (config.GenerateMetadata)
@@ -308,6 +311,7 @@
             if (config.UseFunctionTable)
             {
                 var initString = FunctionTableBuilder.Finish(out var count);
+
                 string filePathfuncTable = Path.Combine(outputPath, "FunctionTable.cs");
                 using var writerfuncTable = new CsCodeWriter(filePathfuncTable, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
                 using (writerfuncTable.PushBlock($"public unsafe partial class {config.ApiName}"))
@@ -317,10 +321,22 @@
                     writerfuncTable.WriteLine("/// <summary>");
                     writerfuncTable.WriteLine("/// Initializes the function table, automatically called. Do not call manually, only after <see cref=\"FreeApi\"/>.");
                     writerfuncTable.WriteLine("/// </summary>");
-                    using (writerfuncTable.PushBlock("public static void InitApi()"))
+
+                    if (config.UseCustomContext)
                     {
-                        writerfuncTable.WriteLine($"funcTable = new FunctionTable(LibraryLoader.LoadLibrary({config.GetLibraryNameFunctionName}, {config.GetLibraryExtensionFunctionName ?? "null"}), {count});");
-                        writerfuncTable.WriteLines(initString);
+                        using (writerfuncTable.PushBlock("public static void InitApi(INativeContext context)"))
+                        {
+                            writerfuncTable.WriteLine($"funcTable = new FunctionTable(context, {count});");
+                            writerfuncTable.WriteLines(initString);
+                        }
+                    }
+                    else
+                    {
+                        using (writerfuncTable.PushBlock("public static void InitApi()"))
+                        {
+                            writerfuncTable.WriteLine($"funcTable = new FunctionTable(LibraryLoader.LoadLibrary({config.GetLibraryNameFunctionName}, {config.GetLibraryExtensionFunctionName ?? "null"}), {count});");
+                            writerfuncTable.WriteLines(initString);
+                        }
                     }
                     writerfuncTable.WriteLine();
                     using (writerfuncTable.PushBlock("public static void FreeApi()"))
@@ -336,72 +352,12 @@
             funcGen.GenerateVariations(cppFunction.Parameters, overload);
         }
 
-        public virtual void WriteFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
+        public virtual void WriteFunctions(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
                 WriteFunctionEx(context, definedFunctions, csFunction, overload, overload.Variations[j], flags, modifiers);
             }
-        }
-
-        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
-        {
-            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
-            StringBuilder sb = new();
-            bool isFirst = true;
-
-            if (flags == WriteFunctionFlags.Extension)
-            {
-                isFirst = false;
-                var first = variation.Parameters[0];
-                if (useNames)
-                {
-                    sb.Append($"this {first.Type} {first.Name}");
-                }
-                else
-                {
-                    sb.Append($"this {first.Type}");
-                }
-            }
-
-            for (int i = offset; i < variation.Parameters.Count; i++)
-            {
-                var param = variation.Parameters[i];
-
-                if (param.DefaultValue != null)
-                    continue;
-
-                if (!isFirst)
-                    sb.Append(", ");
-
-                if (useAttributes)
-                {
-                    sb.Append($"{string.Join(" ", param.Attributes)} ");
-                }
-
-                sb.Append($"{param.Type}");
-
-                if (useNames)
-                {
-                    sb.Append($" {param.Name}");
-                }
-
-                isFirst = false;
-            }
-
-            return sb.ToString();
-        }
-
-        public virtual string BuildFunctionHeaderId(CsFunctionVariation variation, WriteFunctionFlags flags)
-        {
-            string signature = BuildFunctionSignature(variation, false, false, flags);
-            return $"{variation.Name}({signature})";
-        }
-
-        public virtual string BuildFunctionHeader(CsFunctionVariation variation, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
-        {
-            string signature = BuildFunctionSignature(variation, generateMetadata, true, flags);
-            return $"{csReturnType.Name} {variation.Name}({signature})";
         }
 
         public virtual List<IParameterWriter> ParameterWriters { get; } =
@@ -442,18 +398,18 @@
             ParameterWriters.Sort(new ParameterPriorityComparer());
         }
 
-        protected virtual void WriteFunctionEx(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
+        protected virtual bool WriteFunctionEx(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
             csGenerator.PrepareArgs(variation, csReturnType);
 
-            string header = BuildFunctionHeader(variation, csReturnType, flags, config.GenerateMetadata);
-            string id = BuildFunctionHeaderId(variation, flags);
+            string header = variation.BuildFunctionHeader(csReturnType, flags, config.GenerateMetadata);
+            variation.BuildFunctionHeaderId(flags);
 
-            if (FilterFunction(context, definedFunctions, id))
+            if (FilterFunction(context, definedFunctions, variation))
             {
-                return;
+                return false;
             }
 
             ClassifyParameters(overload, variation, csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged);
@@ -568,6 +524,8 @@
             }
 
             writer.WriteLine();
+
+            return true;
         }
 
         public static void ClassifyParameters(CsFunctionOverload overload, CsFunctionVariation variation, CsType csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged)

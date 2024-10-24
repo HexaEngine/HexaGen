@@ -1,30 +1,32 @@
 ﻿namespace HexaGen.Runtime
 {
+    using System;
     using System.Runtime.InteropServices;
 
     public unsafe class FunctionTable : IDisposable
     {
-        private nint library;
         private void** _vtable;
         private int length;
+        private readonly INativeContext context;
 
         public FunctionTable(void** vtable, int length)
         {
+            context = null!;
             _vtable = vtable;
             this.length = length;
         }
 
-        public FunctionTable(nint library, int length)
+        public FunctionTable(nint library, int length) : this(new NativeLibraryContext(library), length)
         {
-            _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
-            new Span<nint>(_vtable, length).Clear(); // Fill with null pointers
-            this.library = library;
-            this.length = length;
         }
 
-        public FunctionTable(string libraryPath, int length)
+        public FunctionTable(string libraryPath, int length) : this(new NativeLibraryContext(libraryPath), length)
         {
-            library = NativeLibrary.Load(libraryPath);
+        }
+
+        public FunctionTable(INativeContext context, int length)
+        {
+            this.context = context;
             _vtable = (void**)Marshal.AllocHGlobal(length * sizeof(void*));
             new Span<nint>(_vtable, length).Clear(); // Fill with null pointers
             this.length = length;
@@ -34,7 +36,7 @@
 
         public void Load(int index, string export)
         {
-            if (!NativeLibrary.TryGetExport(library, export, out var address))
+            if (!context.TryGetProcAddress(export, out var address))
             {
                 _vtable[index] = null;
                 return;
@@ -66,11 +68,7 @@
                 _vtable = null;
             }
 
-            if (library != 0)
-            {
-                NativeLibrary.Free(library);
-                library = 0;
-            }
+            context.Dispose();
         }
 
         public void Dispose()

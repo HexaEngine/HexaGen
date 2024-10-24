@@ -77,6 +77,19 @@
             return false;
         }
 
+        protected virtual bool FilterCOMMemberFunction(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunctionVariation variation)
+        {
+            if (definedFunctions.Contains(variation))
+            {
+                LogWarn($"{context.FilePath}: {variation} member function is already defined!");
+                return true;
+            }
+
+            definedFunctions.Add(variation);
+
+            return false;
+        }
+
         public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             // Print All classes, structs
@@ -302,7 +315,7 @@
             }
         }
 
-        private bool WriteCOMFunctions(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunctions(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
         {
             bool hasWritten = false;
             for (int j = 0; j < overload.Variations.Count; j++)
@@ -312,7 +325,7 @@
             return hasWritten;
         }
 
-        private bool WriteCOMFunction(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunction(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
@@ -320,9 +333,9 @@
 
             string header = variation.BuildFullSignatureForCOM(config.GenerateMetadata);
             string signatureNameless = overload.BuildSignatureNamelessForCOM(className, config);
+            variation.BuildSignatureIdentifierForCOM();
 
-            string identifier = variation.BuildSignatureIdentifierForCOM();
-            if (FilterCOMMemberFunction(context, definedFunctions, identifier))
+            if (FilterCOMMemberFunction(context, definedFunctions, variation))
             {
                 return false;
             }

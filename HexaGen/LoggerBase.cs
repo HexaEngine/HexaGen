@@ -109,5 +109,55 @@
         {
             Log(LogSeverity.Warning, message);
         }
+
+        public void LogToConsole()
+        {
+            LogEvent += GeneratorLogEvent;
+        }
+
+        private static void GeneratorLogEvent(LogSeverity severity, string message)
+        {
+            switch (severity)
+            {
+                case LogSeverity.Trace:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+
+                case LogSeverity.Information:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+
+                case LogSeverity.Warning:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+
+                case LogSeverity.Error:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+
+                case LogSeverity.Critical:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+            }
+
+            string type = severity switch
+            {
+                LogSeverity.Trace => "[Trc] ",
+                LogSeverity.Debug => "[Dbg] ",
+                LogSeverity.Information => "[Inf] ",
+                LogSeverity.Warning => "[Wrn] ",
+                LogSeverity.Error => "[Err] ",
+                LogSeverity.Critical => "[Crt] ",
+                _ => "[Unk] ",
+            };
+
+            Console.Write(type);
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }

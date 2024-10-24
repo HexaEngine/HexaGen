@@ -2,6 +2,7 @@
 {
     using HexaGen.Core.Collections;
     using System.Collections.Generic;
+    using System.Text.Json.Serialization;
 
     public enum CsFunctionKind
     {
@@ -15,6 +16,7 @@
 
     public class CsFunctionOverload : ICsFunction, ICloneable<CsFunctionOverload>
     {
+        [JsonConstructor]
         public CsFunctionOverload(string exportedName, string name, string? comment, Dictionary<string, string> defaultValues, string structName, CsFunctionKind kind, CsType returnType, List<CsParameterInfo> parameters, List<CsFunctionVariation> variations, List<string> modifiers, List<string> attributes)
         {
             ExportedName = exportedName;
@@ -158,7 +160,7 @@
 
         public CsFunctionVariation CreateVariationWith()
         {
-            return new(ExportedName, Name, StructName, Kind, ReturnType);
+            return new(null!, ExportedName, Name, StructName, Kind, ReturnType);
         }
 
         public CsFunctionOverload Clone()

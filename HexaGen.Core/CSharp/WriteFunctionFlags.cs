@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core.CSharp
 {
     public enum WriteFunctionFlags
     {

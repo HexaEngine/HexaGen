@@ -1,9 +1,11 @@
 ﻿namespace HexaGen.Core.CSharp
 {
     using CppAst;
+    using System.Text.Json.Serialization;
 
     public class CsType : ICloneable<CsType>
     {
+        [JsonConstructor]
         public CsType(string name, string cleanName, bool isPointer, bool isOut, bool isRef, bool isSpan, bool isString, bool isPrimitive, bool isVoid, bool isBool, bool isArray, bool isEnum, CsStringType stringType, CsPrimitiveType primitiveType)
         {
             Name = name;

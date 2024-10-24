@@ -365,6 +365,8 @@
         /// </summary>
         public List<CsFunctionTableEntry> FunctionTableEntries { get; set; } = [];
 
+        public bool UseCustomContext { get; set; }
+
         public string GetLibraryNameFunctionName { get; set; } = "GetLibraryName";
 
         public string? GetLibraryExtensionFunctionName { get; set; } = null;
