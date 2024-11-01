@@ -253,11 +253,14 @@
                     }
                 }
 
-                foreach (var valueVariation in GenerateAdditionalOverloads(function.Name, parameterLists))
+                if (settings.GenerateAdditionalOverloads)
                 {
-                    if (function.TryAddVariation(valueVariation, out var variation))
+                    foreach (var valueVariation in GenerateAdditionalOverloads(function.Name, parameterLists))
                     {
-                        ApplySteps(function, variation);
+                        if (function.TryAddVariation(valueVariation, out var variation))
+                        {
+                            ApplySteps(function, variation);
+                        }
                     }
                 }
 

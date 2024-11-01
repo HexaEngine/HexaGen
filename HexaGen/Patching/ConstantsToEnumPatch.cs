@@ -31,7 +31,6 @@ namespace HexaGen.Patching
                 {
                     keyEnums.Add(macro);
                     itemNames.Add(macro.Name);
-                    settings.IgnoredConstants.Add(macro.Name);
                 }
             }
 
@@ -45,9 +44,12 @@ namespace HexaGen.Patching
                 var itemName = settings.GetEnumName(macro.Name, prefix);
 
                 string csValue = macro.Value;
-                if (csValue.IsNumeric(NumberParseOptions.All))
+                if (csValue.IsNumeric(out var numberType, NumberParseOptions.All))
                 {
-                    // nothing to do.
+                    if (numberType == NumberType.AnyFloat)
+                    {
+                        continue;
+                    }
                 }
                 else if (csValue.IsConstantExpression())
                 {
@@ -76,6 +78,7 @@ namespace HexaGen.Patching
 
                 CsEnumItemMetadata itemMeta = new(macro.Name, macro.Value, itemName, csValue, [], null);
                 metadata.Items.Add(itemMeta);
+                settings.IgnoredConstants.Add(macro.Name);
             }
             settings.CustomEnums.Add(metadata);
         }

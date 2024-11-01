@@ -167,7 +167,7 @@
                     bool boolReturn = returnCsName == "bool";
                     bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
                     var argumentsString = config.GetParameterSignature(cppFunction.Parameters, canUseOut, config.GenerateMetadata);
-                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, canUseOut, false)})";
+                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
                     if (FilterNativeFunction(context, cppFunction, headerId))

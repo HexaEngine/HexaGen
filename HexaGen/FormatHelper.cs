@@ -327,6 +327,11 @@
                 return IsString(qualified.ElementType, isPointer);
             }
 
+            if (cppType is CppTypedef typedef)
+            {
+                return IsString(typedef.ElementType, isPointer);
+            }
+
             if (isPointer && cppType is CppPrimitiveType primitive)
             {
                 return primitive.Kind == CppPrimitiveKind.WChar || primitive.Kind == CppPrimitiveKind.Char;
@@ -416,6 +421,11 @@
             if (cppType is CppQualifiedType qualified)
             {
                 return GetPrimitiveKind(qualified.ElementType, isPointer);
+            }
+
+            if (cppType is CppTypedef typedef)
+            {
+                return GetPrimitiveKind(typedef.ElementType, isPointer);
             }
 
             if (isPointer && cppType is CppPrimitiveType primitive)

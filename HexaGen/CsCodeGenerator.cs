@@ -116,6 +116,20 @@
             return Generate(compilation, headerFiles, outputPath);
         }
 
+        public virtual bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath)
+        {
+            var compilation = CppParser.ParseFile(headerFile, parserOptions);
+
+            return Generate(compilation, [headerFile], outputPath);
+        }
+
+        public virtual bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath)
+        {
+            var compilation = CppParser.ParseFiles(headerFiles, parserOptions);
+
+            return Generate(compilation, headerFiles, outputPath);
+        }
+
         public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
         {
             metadata = new();

@@ -480,15 +480,18 @@
                             }
                         }
                     }
-                    else if (cppField.Type.IsDelegate())
+                    else if (cppField.Type.IsDelegate(out var cppFunction))
                     {
+                        int depth = 0;
+                        cppField.Type.IsPointer(ref depth);
+                        string delegateType = $"({config.MakeDelegatePointer(cppFunction, false)}{new string('*', depth)})";
                         if (cppParameter.Type.Name.StartsWith("delegate*<"))
-                        {
-                            writer.WriteLine($"{fieldName} = (void*){cppParameter.Name};");
+                        {                       
+                            writer.WriteLine($"{fieldName} = {delegateType}{cppParameter.Name};");
                         }
                         else
                         {
-                            writer.WriteLine($"{fieldName} = (void*)Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
+                            writer.WriteLine($"{fieldName} = {delegateType}Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
                         }
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))

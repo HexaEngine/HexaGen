@@ -369,16 +369,31 @@
             return GetCsTypeNameInternal(pointerType.ElementType, true);
         }
 
-        public string MakeDelegatePointer(CppFunctionType functionType)
+        public string MakeDelegatePointer(CppFunctionType functionType, bool withConvention=false)
         {
-            if (functionType.Parameters.Count == 0)
+            if (withConvention)
             {
-                return $"delegate*<{GetCsTypeNameInternal(functionType.ReturnType)}>";
+                if (functionType.Parameters.Count == 0)
+                {
+                    return $"delegate* unmanaged[{functionType.CallingConvention.GetCallingConventionDelegate()}]<{GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
+                else
+                {
+                    return $"delegate* unmanaged[{functionType.CallingConvention.GetCallingConventionDelegate()}]<{GetNamelessParameterSignature(functionType.Parameters, false, true)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
             }
             else
             {
-                return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false, true)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
+                if (functionType.Parameters.Count == 0)
+                {
+                    return $"delegate*<{GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
+                else
+                {
+                    return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false, true)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
+                }
             }
+         
         }
 
         private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
