@@ -262,6 +262,15 @@
                     return cppEnum.Name;
                 }
 
+                if (TypeMappings.TryGetValue(typedef.Name, out var typeMapping))
+                {
+                    if (isPointer)
+                    {
+                        return $"{typeMapping}*";
+                    }
+                    return typeMapping;
+                }
+
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)
                 {
                     var csPrimitiveName = GetCsTypeNameInternal(cppPrimitive);
@@ -322,6 +331,10 @@
 
             if (type is CppUnexposedType unexposedType)
             {
+                if (isPointer)
+                {
+                    return "void*";
+                }
                 throw new UnexposedTypeException(unexposedType);
             }
 
@@ -369,7 +382,7 @@
             return GetCsTypeNameInternal(pointerType.ElementType, true);
         }
 
-        public string MakeDelegatePointer(CppFunctionType functionType, bool withConvention=false)
+        public string MakeDelegatePointer(CppFunctionType functionType, bool withConvention = false)
         {
             if (withConvention)
             {
@@ -393,11 +406,14 @@
                     return $"delegate*<{GetNamelessParameterSignature(functionType.Parameters, false, true)}, {GetCsTypeNameInternal(functionType.ReturnType)}>";
                 }
             }
-         
         }
 
         private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
         {
+            if (primitiveType.FullName == "unsigned long long")
+            {
+
+            }
             switch (primitiveType.Kind)
             {
                 case CppPrimitiveKind.Void:
@@ -417,6 +433,12 @@
 
                 case CppPrimitiveKind.Int:
                     return isPointer ? "int*" : "int";
+
+                case CppPrimitiveKind.Long:
+                    return isPointer ? "int*" : "int";
+
+                case CppPrimitiveKind.UnsignedLong:
+                    return isPointer ? "uint*" : "uint";
 
                 case CppPrimitiveKind.LongLong:
                     return isPointer ? "long*" : "long";
@@ -535,6 +557,15 @@
                     return cppEnum.Name;
                 }
 
+                if (TypeMappings.TryGetValue(typedef.Name, out var mappedType))
+                {
+                    if (isPointer)
+                    {
+                        return $"ref {mappedType}";
+                    }
+                    return mappedType;
+                }
+
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)
                 {
                     var csPrimitiveName = GetCsWrapperTypeNameInternal(cppPrimitive);
@@ -626,8 +657,14 @@
                 case CppPrimitiveKind.Int:
                     return isPointer ? "ref int" : "int";
 
+                case CppPrimitiveKind.Long:
+                    return isPointer ? "ref int" : "int";
+
+                case CppPrimitiveKind.UnsignedLong:
+                    return isPointer ? "ref uint" : "uint";
+
                 case CppPrimitiveKind.LongLong:
-                    break;
+                    return isPointer ? "ref long" : "long";
 
                 case CppPrimitiveKind.UnsignedChar:
                     return isPointer ? "ref byte" : "byte";
@@ -639,7 +676,7 @@
                     return isPointer ? "ref uint" : "uint";
 
                 case CppPrimitiveKind.UnsignedLongLong:
-                    break;
+                    return isPointer ? "ref ulong" : "ulong";
 
                 case CppPrimitiveKind.Float:
                     return isPointer ? "ref float" : "float";
@@ -867,6 +904,12 @@
                 case CppPrimitiveKind.Int:
                     return isPointer ? "Pointer<int>" : "int";
 
+                case CppPrimitiveKind.Long:
+                    return isPointer ? "Pointer<int>" : "int";
+
+                case CppPrimitiveKind.UnsignedLong:
+                    return isPointer ? "Pointer<uint>" : "uint";
+
                 case CppPrimitiveKind.LongLong:
                     return isPointer ? "Pointer<long>" : "long";
 
@@ -1042,6 +1085,82 @@
         {
             var argumentBuilder = new StringBuilder();
             int index = 0;
+
+            foreach (CppParameter cppParameter in parameters)
+            {
+                string direction = string.Empty;
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+
+                CppType ptrType = cppParameter.Type;
+                int depth = 0;
+                if (cppParameter.Type.IsPointer(ref depth, out var pointerType))
+                {
+                    ptrType = pointerType;
+                }
+
+                if (cppParameter.Type is CppQualifiedType qualifiedType)
+                {
+                    ptrType = qualifiedType.ElementType;
+                }
+
+                if (delegateType && ptrType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction))
+                {
+                    if (cppFunction.Parameters.Count == 0)
+                    {
+                        paramCsTypeName = $"delegate*<{GetCsTypeName(cppFunction.ReturnType)}>";
+                    }
+                    else
+                    {
+                        paramCsTypeName = $"delegate*<{GetNamelessParameterSignature(cppFunction.Parameters, false, delegateType)}, {GetCsTypeName(cppFunction.ReturnType)}>";
+                    }
+
+                    while (depth-- > 0)
+                    {
+                        paramCsTypeName += "*";
+                    }
+                }
+
+                if (paramCsTypeName == "bool")
+                {
+                    paramCsTypeName = "byte";
+                }
+
+                if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
+                {
+                    argumentBuilder.Append("out ");
+                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                }
+
+                if (compatibility && paramCsTypeName.Contains('*'))
+                {
+                    paramCsTypeName = "nint";
+                }
+
+                argumentBuilder.Append(paramCsTypeName);
+                if (index < parameters.Count - 1)
+                {
+                    argumentBuilder.Append(", ");
+                }
+
+                index++;
+            }
+
+            return argumentBuilder.ToString();
+        }
+
+        public string GetNamelessParameterSignatureForCOM(string comClass, IList<CppParameter> parameters, bool canUseOut, bool delegateType = false, bool compatibility = false)
+        {
+            var argumentBuilder = new StringBuilder();
+            int index = 0;
+
+            if (compatibility)
+            {
+                argumentBuilder.Append(parameters.Count > 0 ? "nint, " : "nint");
+            }
+            else
+            {
+                argumentBuilder.Append(parameters.Count > 0 ? $"{comClass}*, " : $"{comClass}*");
+            }
 
             foreach (CppParameter cppParameter in parameters)
             {
@@ -1327,6 +1446,11 @@
             {
                 if (mapping.FriendlyName != null)
                     return mapping.FriendlyName;
+            }
+
+            if (FunctionNamingConvention == NamingConvention.Unknown)
+            {
+                return function;
             }
 
             string[] parts = GetCsCleanName(function).SplitByCase();
@@ -1633,6 +1757,11 @@
             if (KnownExtensionNames.TryGetValue(value, out string? knownName))
             {
                 return knownName;
+            }
+
+            if (ExtensionNamingConvention == NamingConvention.Unknown)
+            {
+                return value;
             }
 
             string[] parts = value.Split('_', StringSplitOptions.RemoveEmptyEntries).SelectMany(x => x.SplitByCase()).ToArray();

@@ -2,9 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Text.Json.Serialization;
 
-    public class CsFunction
+    public class CsFunction : ICloneable<CsFunction>
     {
         [JsonConstructor]
         public CsFunction(string name, string? comment, List<CsFunctionOverload> overloads)

@@ -1,10 +1,12 @@
 ﻿namespace HexaGen.GenerationSteps
 {
     using CppAst;
+    using HexaGen;
     using HexaGen.Core;
     using HexaGen.Core.Mapping;
     using HexaGen.Metadata;
     using System;
+    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.IO;
 
@@ -99,7 +101,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Enums");
             if (Directory.Exists(folder))
@@ -115,6 +117,9 @@
                 {
                     CppEnum cppEnum = compilation.Enums[i];
 
+                    if (!files.Contains(cppEnum.SourceFile))
+                        continue;
+
                     var csEnum = ParseEnum(cppEnum, cppEnum);
                     if (FilterEnum(null, csEnum))
                     {
@@ -126,6 +131,10 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typeDef = compilation.Typedefs[i];
+
+                    if (!files.Contains(typeDef.SourceFile))
+                        continue;
+
                     if (!typeDef.IsEnum(out var cppEnum))
                     {
                         continue;
@@ -197,7 +206,9 @@
 
         protected virtual CsEnumMetadata ParseEnum(CppEnum cppEnum, ICppMember cppMember)
         {
-            string csName = config.GetCsCleanName(cppEnum.Name);
+            string cppName = cppEnum.Name;
+            string cppPrefixName = cppMember.Name;
+            string csName = config.GetCsCleanName(cppName);
 
             if (csName.StartsWith("(unnamed enum at ") && csName.EndsWith(')'))
             {
@@ -205,22 +216,33 @@
                 csName = $"UnknownEnum{unknownEnumCounter++}";
             }
 
-            EnumPrefix enumNamePrefix = config.GetEnumNamePrefixEx(cppMember.Name);
+            if (string.IsNullOrEmpty(cppName))
+            {
+                csName = config.GetCsCleanName($"UnnamedEnum{unknownEnumCounter++}");
+                LogWarn($"Unnamed enum, {cppEnum.FormatLocationAttribute()}");
+                cppName = csName;
+                if (string.IsNullOrEmpty(cppPrefixName))
+                {
+                    cppPrefixName = csName;
+                }
+            }
+
+            EnumPrefix enumNamePrefix = config.GetEnumNamePrefixEx(cppPrefixName);
 
             if (csName.EndsWith("_"))
             {
                 csName = csName.Remove(csName.Length - 1);
             }
 
-            var mapping = config.GetEnumMapping(cppEnum.Name);
+            var mapping = config.GetEnumMapping(cppName);
             csName = mapping?.FriendlyName ?? csName;
 
             List<string> attributes = [];
             if (config.GenerateMetadata)
             {
-                attributes.AddRange([$"[NativeName(NativeNameType.Enum, \"{cppEnum.Name.Replace("\\", "\\\\")}\")]"]);
+                attributes.AddRange([$"[NativeName(NativeNameType.Enum, \"{cppName.Replace("\\", "\\\\")}\")]"]);
             }
-            CsEnumMetadata csEnum = new(cppEnum.Name, csName, attributes, config.WriteCsSummary(cppEnum.Comment));
+            CsEnumMetadata csEnum = new(cppName, csName, attributes, config.WriteCsSummary(cppEnum.Comment));
             csEnum.BaseType = config.GetCsTypeName(cppEnum.IntegerType);
             bool flags = true;
             bool noneAdded = false;
@@ -251,7 +273,7 @@
                 }
             }
 
-            flags |= cppEnum.Name.Contains("flag", StringComparison.OrdinalIgnoreCase); // another heuristric for flags.
+            flags |= cppName.Contains("flag", StringComparison.OrdinalIgnoreCase); // another heuristric for flags.
 
             if (flags)
             {

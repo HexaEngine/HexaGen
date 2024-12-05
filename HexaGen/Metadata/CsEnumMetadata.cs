@@ -1,9 +1,9 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core;
-    using System.Text.Json.Serialization;
+    
 
-    public class CsEnumMetadata : IHasIdentifier
+    public class CsEnumMetadata : IHasIdentifier, ICloneable<CsEnumMetadata>
     {
         [JsonConstructor]
         public CsEnumMetadata(string cppName, string name, List<string> attributes, string? comment, string baseType, List<CsEnumItemMetadata> items)

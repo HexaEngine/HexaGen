@@ -1,117 +1,197 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core.CSharp;
-    using Microsoft.CodeAnalysis.CSharp;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json.Converters;
+    using System.Diagnostics.CodeAnalysis;
 
     public class CsCodeGeneratorMetadata
     {
+        private readonly Dictionary<string, GeneratorMetadataEntry> entries = [];
+
         public CsCodeGeneratorConfig Settings { get; set; } = null!;
 
-        public List<CsConstantMetadata> DefinedConstants { get; set; } = new();
+        public Dictionary<string, GeneratorMetadataEntry> Entries => entries;
 
-        public List<CsEnumMetadata> DefinedEnums { get; set; } = new();
-
-        public List<string> DefinedTypeExtensions { get; set; } = new();
-
-        public List<CsFunction> DefinedExtensions { get; set; } = new();
-
-        public List<string> CppDefinedFunctions { get; set; } = new();
-
-        public List<CsFunction> DefinedFunctions { get; set; } = new();
-
-        public List<string> DefinedTypedefs { get; set; } = new();
-
-        public List<string> DefinedTypes { get; set; } = new();
-
-        public List<CsDelegate> DefinedDelegates { get; set; } = new();
-
-        public Dictionary<string, string> WrappedPointers { get; set; } = new();
-
-        public CsFunctionTableMetadata FunctionTable { get; set; } = null!;
-
-        public void Merge(CsCodeGeneratorMetadata from, bool mergeFunctionTable)
+        public GeneratorMetadataEntry this[string index]
         {
-            DefinedConstants.AddRange(from.DefinedConstants);
-            DefinedEnums.AddRange(from.DefinedEnums);
-            DefinedTypeExtensions.AddRange(from.DefinedTypeExtensions);
-            DefinedExtensions.AddRange(from.DefinedExtensions);
-            CppDefinedFunctions.AddRange(from.CppDefinedFunctions);
-            DefinedFunctions.AddRange(from.DefinedFunctions);
-            DefinedTypedefs.AddRange(from.DefinedTypedefs);
-            DefinedTypes.AddRange(from.DefinedTypes);
-            DefinedDelegates.AddRange(from.DefinedDelegates);
-            Copy(from.WrappedPointers, WrappedPointers);
-            if (mergeFunctionTable)
+            get => Entries[index];
+            set => Entries[index] = value;
+        }
+
+        public List<CsConstantMetadata> DefinedConstants
+        {
+            get => GetOrCreate<MetadataListEntry<CsConstantMetadata>>("DefinedConstants").Values;
+            set => entries["DefinedConstants"] = new MetadataListEntry<CsConstantMetadata>(value);
+        }
+
+        public List<CsEnumMetadata> DefinedEnums
+        {
+            get => GetOrCreate<MetadataListEntry<CsEnumMetadata>>("DefinedEnums").Values;
+            set => entries["DefinedEnums"] = new MetadataListEntry<CsEnumMetadata>(value);
+        }
+
+        public List<string> DefinedExtensionTypes
+        {
+            get => GetOrCreate<MetadataListEntry<string>>("DefinedExtensionTypes").Values;
+            set => entries["DefinedExtensionTypes"] = new MetadataListEntry<string>(value);
+        }
+
+        public List<CsFunction> DefinedExtensions
+        {
+            get => GetOrCreate<MetadataListEntry<CsFunction>>("DefinedExtensions").Values;
+            set => entries["DefinedExtensions"] = new MetadataListEntry<CsFunction>(value);
+        }
+
+        public List<string> DefinedCOMExtensionTypes
+        {
+            get => GetOrCreate<MetadataListEntry<string>>("DefinedCOMExtensionTypes").Values;
+            set => entries["DefinedCOMExtensionTypes"] = new MetadataListEntry<string>(value);
+        }
+
+        public Dictionary<string, HashSet<CsFunctionVariation>> DefinedCOMExtensions
+        {
+            get => GetOrCreate<MetadataDictionaryEntry<string, HashSet<CsFunctionVariation>>>("DefinedCOMExtensions").Dictionary;
+            set => entries["DefinedCOMExtensions"] = new MetadataDictionaryEntry<string, HashSet<CsFunctionVariation>>(value);
+        }
+
+        public List<string> CppDefinedFunctions
+        {
+            get => GetOrCreate<MetadataListEntry<string>>("CppDefinedFunctions").Values;
+            set => entries["CppDefinedFunctions"] = new MetadataListEntry<string>(value);
+        }
+
+        public List<CsFunction> DefinedFunctions
+        {
+            get => GetOrCreate<MetadataListEntry<CsFunction>>("DefinedFunctions").Values;
+            set => entries["DefinedFunctions"] = new MetadataListEntry<CsFunction>(value);
+        }
+
+        public List<string> DefinedTypedefs
+        {
+            get => GetOrCreate<MetadataListEntry<string>>("DefinedTypedefs").Values;
+            set => entries["DefinedTypedefs"] = new MetadataListEntry<string>(value);
+        }
+
+        public List<string> DefinedTypes
+        {
+            get => GetOrCreate<MetadataListEntry<string>>("DefinedTypes").Values;
+            set => entries["DefinedTypes"] = new MetadataListEntry<string>(value);
+        }
+
+        public List<CsDelegate> DefinedDelegates
+        {
+            get => GetOrCreate<MetadataListEntry<CsDelegate>>("DefinedDelegates").Values;
+            set => entries["DefinedDelegates"] = new MetadataListEntry<CsDelegate>(value);
+        }
+
+        public Dictionary<string, string> WrappedPointers
+        {
+            get => GetOrCreate<MetadataDictionaryEntry<string, string>>("WrappedPointers").Dictionary;
+            set => entries["WrappedPointers"] = new MetadataDictionaryEntry<string, string>(value);
+        }
+
+        public CsFunctionTableMetadata FunctionTable
+        {
+            get => GetOrCreate<CsFunctionTableMetadata>("FunctionTable");
+            set => entries["FunctionTable"] = value;
+        }
+
+        public bool ContainsKey(string key)
+        {
+            return Entries.ContainsKey(key);
+        }
+
+        public bool TryGetEntry(string key, [NotNullWhen(true)] out GeneratorMetadataEntry? entry)
+        {
+            return Entries.TryGetValue(key, out entry);
+        }
+
+        public bool TryGetEntry<T>(string key, [NotNullWhen(true)] out T? entry) where T : GeneratorMetadataEntry
+        {
+            bool result = Entries.TryGetValue(key, out var metadataEntry);
+            if (result && metadataEntry is T t)
             {
-                FunctionTable.Merge(from.FunctionTable);
+                entry = t;
+                return true;
+            }
+            entry = default;
+            return false;
+        }
+
+        public T? GetEntry<T>(string key) where T : GeneratorMetadataEntry
+        {
+            bool result = Entries.TryGetValue(key, out var metadataEntry);
+            if (result && metadataEntry is T t)
+            {
+                return t;
+            }
+
+            return default;
+        }
+
+        public T GetOrCreate<T>(string key) where T : GeneratorMetadataEntry, new()
+        {
+            T entryT;
+            if (TryGetEntry(key, out var entry))
+            {
+                if (entry is T t)
+                {
+                    return t;
+                }
+            }
+
+            entryT = new T();
+            Entries[key] = entryT;
+            return entryT;
+        }
+
+        public void Merge(CsCodeGeneratorMetadata from, in MergeOptions options)
+        {
+            foreach (var item in from.Entries)
+            {
+                if (TryGetEntry(item.Key, out var entry))
+                {
+                    entry.Merge(item.Value, options);
+                }
             }
         }
 
-        public CsCodeGeneratorMetadata Clone()
+        public CsCodeGeneratorMetadata Clone(bool shallow = false)
         {
-            var clonedMetadata = new CsCodeGeneratorMetadata
+            CsCodeGeneratorMetadata metadata = new();
+            metadata.Settings = Settings;
+            foreach (var item in Entries)
             {
-                Settings = Settings,
-                DefinedConstants = DefinedConstants.Select(constant => constant.Clone()).ToList(),
-                DefinedEnums = DefinedEnums.Select(enumItem => enumItem.Clone()).ToList(),
-                DefinedTypeExtensions = new List<string>(DefinedTypeExtensions),
-                DefinedExtensions = DefinedExtensions.Select(x => x.Clone()).ToList(),
-                CppDefinedFunctions = new List<string>(CppDefinedFunctions),
-                DefinedFunctions = DefinedFunctions.Select(function => function.Clone()).ToList(),
-                DefinedTypedefs = new List<string>(DefinedTypedefs),
-                DefinedTypes = new List<string>(DefinedTypes),
-                DefinedDelegates = DefinedDelegates.Select(del => del.Clone()).ToList(),
-                WrappedPointers = new Dictionary<string, string>(WrappedPointers),
-                FunctionTable = FunctionTable.Clone()
-            };
-
-            return clonedMetadata;
-        }
-
-        public static void Copy<TKey, TValue>(Dictionary<TKey, TValue> source, Dictionary<TKey, TValue> destination) where TKey : notnull
-        {
-            foreach (var item in source)
-            {
-                destination[item.Key] = item.Value;
+                if (shallow)
+                {
+                    metadata.Entries[item.Key] = item.Value;
+                }
+                else
+                {
+                    metadata.Entries[item.Key] = item.Value.Clone();
+                }
             }
+            return metadata;
         }
 
-        private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.General)
+        private static readonly JsonSerializerSettings options = new()
         {
-            WriteIndented = true,
-            Converters = { new JsonStringEnumConverter() }
+            TypeNameHandling = TypeNameHandling.Auto,
+            Converters = { new StringEnumConverter() }
         };
+
+        private static readonly JsonSerializer serializer = JsonSerializer.Create(options);
 
         public void Save(string path)
         {
-            using var fs = File.Create(path);
-            JsonSerializer.Serialize(fs, this, options);
+            using var fs = File.CreateText(path);
+            serializer.Serialize(fs, this, typeof(CsCodeGeneratorMetadata));
         }
 
         public static CsCodeGeneratorMetadata Load(string path)
         {
-            using var fs = File.OpenRead(path);
-            return (CsCodeGeneratorMetadata?)JsonSerializer.Deserialize(fs, typeof(CsCodeGeneratorMetadata), options) ?? new();
-        }
-    }
-
-    public static class TextHelper
-    {
-        /// <summary>
-        /// Returns a C# string literal with the given value.
-        /// </summary>
-        /// <param name="value">The value that the resulting string literal should have.</param>
-        /// <param name="quote">True to put (double) quotes around the string literal.</param>
-        /// <returns>A string literal with the given value.</returns>
-        /// <remarks>
-        /// Escapes non-printable characters.
-        /// </remarks>
-        public static string ToLiteral(this string value, bool quote = false)
-        {
-            var literal = SymbolDisplay.FormatLiteral(value, quote);
-            return literal.Replace("\"", "\\\"");
+            using var fs = File.OpenText(path);
+            return (CsCodeGeneratorMetadata?)serializer.Deserialize(fs, typeof(CsCodeGeneratorMetadata)) ?? new();
         }
     }
 }

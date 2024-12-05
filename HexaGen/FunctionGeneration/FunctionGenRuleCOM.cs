@@ -3,11 +3,12 @@
     using CppAst;
     using HexaGen;
     using HexaGen.Core.CSharp;
+    using HexaGen.Core.Mapping;
     using System.Collections.Generic;
 
     public class FunctionGenRuleCOM : FunctionGenRule
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
         {
             int pointerDepth = 0;
             var name = settings.GetCsTypeName(cppParameter.Type, false).Replace("*", string.Empty);
@@ -16,7 +17,11 @@
                 if (pointerDepth != 0 && name == "void")
                 {
                     name = "T";
-                    variation.GenericParameters.Add(new("T", "where T : unmanaged, IComObject, IComObject<T>"));
+                    if (variation.GenericParameters.Count > 0)
+                    {
+                        name += $"{variation.GenericParameters.Count}";
+                    }
+                    variation.GenericParameters.Add(new(name, $"where {name} : unmanaged, IComObject, IComObject<{name}>"));
 
                     if (paramIndex > 0 && csParameterList[paramIndex - 1]?.Type?.Name == "Guid*")
                     {
@@ -25,7 +30,7 @@
                             function.DefaultValues.Add(comPtrParameterList[j - 1].Name, "ComUtils.GuidPtrOf<T>()");
                         }*/
 
-                        csParameterList[paramIndex - 1].DefaultValue = "ComUtils.GuidPtrOf<T>()";
+                        csParameterList[paramIndex - 1].DefaultValue = $"ComUtils.GuidPtrOf<{name}>()";
                     }
                 }
                 if (pointerDepth == 1)
@@ -50,7 +55,7 @@
             }
             else
             {
-                return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+                return CreateDefaultWrapperParameter(cppParameter, mapping, csParamName, kind, direction, settings);
             }
             /*
             if (name == "Guid"

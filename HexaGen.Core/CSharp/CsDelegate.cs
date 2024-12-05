@@ -1,11 +1,9 @@
 ﻿namespace HexaGen.Core.CSharp
 {
     using HexaGen.Core;
-    using System;
     using System.Collections.Generic;
-    using System.Text.Json.Serialization;
 
-    public class CsDelegate : IHasIdentifier
+    public class CsDelegate : IHasIdentifier, ICloneable<CsDelegate>
     {
         [JsonConstructor]
         public CsDelegate(string cppName, string name, CsType returnType, List<CsParameterInfo> parameters, List<string>? attributes = null, string? comment = null)

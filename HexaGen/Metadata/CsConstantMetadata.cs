@@ -1,9 +1,10 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen;
     using HexaGen.Core;
-    using System.Text.Json.Serialization;
+    
 
-    public class CsConstantMetadata : IHasIdentifier
+    public class CsConstantMetadata : IHasIdentifier, ICloneable<CsConstantMetadata>
     {
         public CsConstantMetadata(string cppName, string cppValue)
         {

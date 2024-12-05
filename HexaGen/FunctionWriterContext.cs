@@ -147,5 +147,33 @@
                 Writer.EndBlock();
             }
         }
+
+        public string UniqueName(string name)
+        {
+            var nname = name;
+            int i = 0;
+            while (true)
+            {
+                bool found = false;
+                foreach (var param in Variation.Parameters)
+                {
+                    if (param.DefaultValue == null && param.CleanName == nname)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    break;
+                }
+
+                nname = $"{name}{i}";
+                i++;
+            }
+
+            return nname;
+        }
     }
 }

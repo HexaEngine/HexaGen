@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
-    using System.Text.Json.Serialization;
+    
 
     public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>, IHasIdentifier
     {
@@ -118,7 +118,14 @@
         public string BuildFunctionHeader(CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
             string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
-            return Identifier = $"{csReturnType.Name} {Name}({signature})";
+            if (IsGeneric)
+            {
+                return Identifier = $"{csReturnType.Name} {Name}<{BuildGenericSignature()}>({signature}) {BuildGenericConstraint()}";
+            }
+            else
+            {
+                return Identifier = $"{csReturnType.Name} {Name}({signature})";
+            }
         }
 
         public string BuildConstructorSignatureIdentifier()

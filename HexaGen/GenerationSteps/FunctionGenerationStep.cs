@@ -1,11 +1,13 @@
 ﻿namespace HexaGen.GenerationSteps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.FunctionGeneration;
     using HexaGen.FunctionGeneration.ParameterWriters;
     using HexaGen.Metadata;
+    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
@@ -128,7 +130,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Functions");
             if (Directory.Exists(folder))
@@ -155,6 +157,10 @@
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
                     CppFunction? cppFunction = compilation.Functions[i];
+
+                    if (!files.Contains(cppFunction.SourceFile))
+                        continue;
+
                     if (FilterFunctionIgnored(context, cppFunction))
                     {
                         continue;
@@ -165,9 +171,8 @@
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
 
                     bool boolReturn = returnCsName == "bool";
-                    bool canUseOut = OutReturnFunctions.Contains(cppFunction.Name);
-                    var argumentsString = config.GetParameterSignature(cppFunction.Parameters, canUseOut, config.GenerateMetadata);
-                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, canUseOut, false, false)})";
+                    var argumentsString = config.GetParameterSignature(cppFunction.Parameters, false, config.GenerateMetadata);
+                    var headerId = $"{csName}({config.GetParameterSignature(cppFunction.Parameters, false, false, false)})";
                     var header = $"{returnCsName} {csName}Native({argumentsString})";
 
                     if (FilterNativeFunction(context, cppFunction, headerId))
@@ -311,7 +316,7 @@
             if (config.UseFunctionTable)
             {
                 var initString = FunctionTableBuilder.Finish(out var count);
-
+                if (count == 0) return;
                 string filePathfuncTable = Path.Combine(outputPath, "FunctionTable.cs");
                 using var writerfuncTable = new CsCodeWriter(filePathfuncTable, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
                 using (writerfuncTable.PushBlock($"public unsafe partial class {config.ApiName}"))

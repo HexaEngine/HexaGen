@@ -3,11 +3,16 @@
     using CppAst;
     using HexaGen;
     using HexaGen.Core.CSharp;
+    using HexaGen.Core.Mapping;
 
     public class FunctionGenRuleRef : FunctionGenRuleMatch<CppArrayType>
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, CppArrayType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, ParameterMapping? mapping, CppArrayType type, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
+            if (mapping != null && mapping.UseOut)
+            {
+                return new(csParamName, cppParameter.Type, new("out " + settings.GetCsTypeName(type.ElementType, false), kind), direction);
+            }
             return new(csParamName, cppParameter.Type, new("ref " + settings.GetCsTypeName(type.ElementType, false), kind), direction);
         }
 

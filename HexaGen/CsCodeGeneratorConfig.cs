@@ -4,10 +4,9 @@
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
     using HexaGen.Metadata;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
 
     public class UnexposedTypeException : Exception
     {
@@ -23,6 +22,7 @@
         FunctionTable
     }
 
+    [Flags]
     public enum MergeOptions : ulong
     {
         None = 0,
@@ -157,6 +157,9 @@
                 {"LPWSTR", "char*"},
                 {"BSTR", "void*"},
                 {"GUID", "Guid"},
+                {"HANDLE", "nint"},
+                {"HMODULE", "nint"},
+                {"HMONITOR", "nint"},
                 {"HWND", "nint"},
                 {"LPCVOID", "void*"},
                 {"LPVOID", "void*"},
@@ -170,6 +173,7 @@
                 {"LPARAM", "nint"},
                 {"HDC", "nint"},
                 {"HINSTANCE", "nint"},
+                {"HRESULT", "HResult"}
             },
             Keywords = new()
             {
@@ -266,7 +270,7 @@
             CsCodeGeneratorConfig result;
             if (File.Exists(file))
             {
-                result = JsonSerializer.Deserialize<CsCodeGeneratorConfig>(File.ReadAllText(file)) ?? new();
+                result = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(File.ReadAllText(file)) ?? new();
             }
             else
             {
@@ -380,8 +384,8 @@
         /// <summary>
         /// Determines the import type. (Default: <see cref="ImportType.LibraryImport"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ImportType ImportType { get; set; } = ImportType.LibraryImport;
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ImportType ImportType { get; set; } = ImportType.FunctionTable;
 
         /// <summary>
         /// The generator will generate [NativeName] attributes.
@@ -598,61 +602,61 @@
         /// <summary>
         /// The naming convention for constants, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.Unknown"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.Unknown;
 
         /// <summary>
         /// The naming convention for enums, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention EnumNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for enum items, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention EnumItemNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for extension functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ExtensionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention FunctionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for handles, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention HandleNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for classes and structs, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention TypeNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for delegates, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention DelegateNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for parameters, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.CamelCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ParameterNamingConvention { get; set; } = NamingConvention.CamelCase;
 
         /// <summary>
         /// The naming convention for members, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention MemberNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         public bool AutoSquashTypedef { get; set; } = true;
@@ -691,11 +695,7 @@
 
         public void Save(string path)
         {
-            File.WriteAllText(path, JsonSerializer.Serialize(this, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = JsonIgnoreCondition.Never,
-                WriteIndented = true,
-            }));
+            File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
         }
 
         public void Merge(CsCodeGeneratorConfig baseConfig, MergeOptions mergeOptions)

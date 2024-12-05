@@ -100,8 +100,9 @@
             }
         }
 
-        public override bool Generate(List<string> headerFiles, string outputPath)
+        public override bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
             for (int i = 0; i < headerFiles.Count; i++)
@@ -110,21 +111,24 @@
                 ExtractGuids(text);
             }
 
+            LogInfo("Parsing Headers...");
             CppCompilation compilation = CppParser.ParseFiles(headerFiles, options);
 
-            return Generate(compilation, headerFiles, outputPath);
+            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
         }
 
-        public override bool Generate(string headerFile, string outputPath)
+        public override bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
             string text = File.ReadAllText(headerFile);
             ExtractGuids(text);
 
+            LogInfo("Parsing Headers...");
             CppCompilation compilation = CppParser.ParseFile(headerFile, options);
 
-            return Generate(compilation, [headerFile], outputPath);
+            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
         }
     }
 }

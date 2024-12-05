@@ -1,12 +1,12 @@
 ﻿namespace HexaGen.GenerationSteps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Metadata;
-    using System;
+    using System.Collections.Frozen;
     using System.IO;
-    using System.Linq;
 
     public class DelegateGenerationStep : GenerationStep
     {
@@ -84,7 +84,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Delegates");
             if (Directory.Exists(folder))
@@ -104,6 +104,9 @@
             {
                 CppClass? cppClass = compilation.Classes[i];
 
+                if (!files.Contains(cppClass.SourceFile))
+                    continue;
+
                 if (FilterIgnoredType(context, cppClass))
                     continue;
 
@@ -115,6 +118,9 @@
             for (int i = 0; i < compilation.Typedefs.Count; i++)
             {
                 CppTypedef typedef = compilation.Typedefs[i];
+
+                if (!files.Contains(typedef.SourceFile))
+                    continue;
 
                 if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType)
                 {
@@ -168,7 +174,7 @@
 
         private void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType) where T : class, ICppDeclaration, ICppMember
         {
-            string csDelegateName = config.GetFieldName(field.Name);
+            string csDelegateName = config.GetDelegateName(field.Name);
 
             int i = 1;
             string name = csDelegateName;

@@ -19,5 +19,14 @@
                 destination[pair.Key] = pair.Value;
             }
         }
+
+        public static T? Get<T>(this List<T>? list, int index)
+        {
+            if (list == null)
+            {
+                return default;
+            }
+            return list[index];
+        }
     }
 }

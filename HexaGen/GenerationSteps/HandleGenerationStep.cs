@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Metadata;
+    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.IO;
 
@@ -71,7 +72,7 @@
             return true;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Handles");
             if (Directory.Exists(folder))
@@ -85,6 +86,9 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typedef = compilation.Typedefs[i];
+                    if (!files.Contains(typedef.SourceFile))
+                        continue;
+
                     var handle = ParseHandle(typedef);
                     if (FilterHandle(null, handle))
                         continue;
@@ -104,6 +108,9 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typedef = compilation.Typedefs[i];
+                    if (!files.Contains(typedef.SourceFile))
+                        continue;
+
                     var handle = ParseHandle(typedef);
                     if (FilterHandle(context, handle))
                         continue;

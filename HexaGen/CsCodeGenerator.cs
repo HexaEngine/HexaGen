@@ -7,6 +7,7 @@
     using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
+    using System.Collections.Frozen;
     using System.Text;
     using System.Text.Json;
 
@@ -68,7 +69,9 @@
                 ParseMacros = true,
                 ParseComments = true,
                 ParseSystemIncludes = true,
+          
                 ParseAsCpp = true,
+
                 AutoSquashTypedef = config.AutoSquashTypedef,
             };
 
@@ -98,39 +101,49 @@
             return options;
         }
 
-        public virtual bool Generate(string headerFile, string outputPath)
+        public virtual bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFile(headerFile, options);
 
-            return Generate(compilation, [headerFile], outputPath);
+            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(List<string> headerFiles, string outputPath)
+        public virtual bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFiles(headerFiles, options);
 
-            return Generate(compilation, headerFiles, outputPath);
+            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath)
+        public virtual bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
+
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFile(headerFile, parserOptions);
 
-            return Generate(compilation, [headerFile], outputPath);
+            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath)
+        public virtual bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
+
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFiles(headerFiles, parserOptions);
 
-            return Generate(compilation, headerFiles, outputPath);
+            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
+        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
             metadata = new();
             Directory.CreateDirectory(outputPath);
@@ -173,12 +186,17 @@
                 step.Configure(config);
             }
 
+            allowedHeaders ??= [];
+            allowedHeaders.AddRange(headerFiles);
+
+            FileSet files = new(allowedHeaders.Select(PathHelper.GetPath));
+
             foreach (var step in GenerationSteps)
             {
                 if (step.Enabled)
                 {
                     LogInfo($"Generating {step.Name}...");
-                    step.Generate(compilation, outputPath, config, metadata);
+                    step.Generate(files, compilation, outputPath, config, metadata);
                     step.CopyToMetadata(metadata);
                 }
             }

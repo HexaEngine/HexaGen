@@ -206,15 +206,16 @@
 
         public static unsafe string Capitalize(this string input)
         {
-            fixed (char* c = input)
+            string copy = input.ToString();
+            fixed (char* c = copy)
             {
                 c[0] = char.ToUpper(c[0]);
-                for (int i = 1; i < input.Length; i++)
+                for (int i = 1; i < copy.Length; i++)
                 {
                     c[i] = char.ToLower(c[i]);
                 }
             }
-            return input;
+            return copy;
         }
     }
 }

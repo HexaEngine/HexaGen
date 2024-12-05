@@ -4,6 +4,7 @@
     using HexaGen;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
+    using HexaGen.Core.Mapping;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -178,6 +179,8 @@
                 function.Comment = settings.WriteCsSummary(mapping.Comment);
             }
 
+            List<ParameterMapping>? parameterMappings = mapping?.Parameters;
+
             long maxVariations = (long)Math.Pow(2L, parameters.Count);
             for (long ix = 0; ix < maxVariations; ix++)
             {
@@ -208,12 +211,19 @@
                     var paramCsName = settings.GetParameterName(j, cppParameter.Name);
                     var direction = cppParameter.Type.GetDirection();
 
+                    ParameterMapping? paramMapping = parameterMappings.Get(j);
+
+                    if (paramMapping?.FriendlyName != null)
+                    {
+                        paramCsName = paramMapping.FriendlyName;
+                    }
+
                     for (int i = 0; i < rules.Count; i++)
                     {
                         var rule = rules[i];
                         parameterLists[i][j] = bit
-                            ? rule.CreateParameter(cppParameter, paramCsName, kind, direction, settings, parameters, parameterLists[i], j, variations[i])
-                            : rule.CreateDefaultParameter(cppParameter, paramCsName, kind, direction, settings);
+                            ? rule.CreateParameter(cppParameter, paramMapping, paramCsName, kind, direction, settings, parameters, parameterLists[i], j, variations[i])
+                            : rule.CreateDefaultParameter(cppParameter, paramMapping, paramCsName, kind, direction, settings);
                     }
 
                     if (customParameterList != null)
