@@ -30,6 +30,10 @@
         Any = FreeBSD | Linux | OSX | Windows | Android | IOS | Tizen | ChromeOS | WebAssembly | Solaris | WatchOS | TVO
     }
 
+    public delegate void ResolvePathHandler(string libraryName, out string? pathToLibrary);
+
+    public delegate void LibraryNameInterceptor(ref string libraryName);
+
     public static class LibraryLoader
     {
         public static OSPlatform FreeBSD { get; } = OSPlatform.Create("FREEBSD");
@@ -55,6 +59,12 @@
         public static OSPlatform WatchOS { get; } = OSPlatform.Create("WATCHOS");
 
         public static OSPlatform TVOS { get; } = OSPlatform.Create("TVOS");
+
+        public static List<string> CustomLoadFolders { get; } = [];
+
+        public static ResolvePathHandler? ResolvePath;
+
+        public static LibraryNameInterceptor? InterceptLibraryName;
 
         public static string GetExtension()
         {
@@ -120,6 +130,8 @@
         {
             var libraryName = libraryNameCallback();
 
+            InterceptLibraryName?.Invoke(ref libraryName);
+
             var extension = libraryExtensionCallback != null ? libraryExtensionCallback() : GetExtension();
 
             if (!libraryName.EndsWith(extension, StringComparison.OrdinalIgnoreCase))
@@ -145,6 +157,12 @@
 
         private static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
         {
+            if (ResolvePath != null)
+            {
+                ResolvePath.Invoke(libraryName, out var pathToLibrary);
+                if (pathToLibrary != null) return pathToLibrary;
+            }
+
 #if ANDROID
             // Get the application info
             ApplicationInfo appInfo = Application.Context.ApplicationInfo!;
@@ -156,13 +174,25 @@
             string assemblyLocation = AppContext.BaseDirectory;
 #endif
 
-            var paths = new[]
+            List<string> paths =
+            [
+                 Path.Combine(assemblyLocation, libraryName),
+                 Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
+                 Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "debug", libraryName), // allows debug builds sideload.
+                 Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
+            ];
+
+            foreach (var customPath in CustomLoadFolders)
             {
-                    Path.Combine(assemblyLocation, libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", osPlatform, "native", libraryName),
-                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "debug", libraryName), // allows debug builds sideload.
-                    Path.Combine(assemblyLocation, "runtimes", $"{osPlatform}-{architecture}", "native", libraryName),
-                };
+                if (IsPathFullyQualified(customPath))
+                {
+                    paths.Add(Path.Combine(customPath, libraryName));
+                }
+                else
+                {
+                    paths.Add(Path.Combine(assemblyLocation, customPath, libraryName));
+                }
+            }
 
             foreach (var path in paths)
             {
@@ -173,6 +203,47 @@
             }
 
             return libraryName;
+        }
+
+        public static bool IsPathFullyQualified(string path)
+        {
+            if (path.Length == 0)
+            {
+                return false;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return IsFullyQualifiedWindows(path);
+            }
+
+            return IsFullyQualifiedUnix(path);
+        }
+
+        private static bool IsFullyQualifiedWindows(string path)
+        {
+            if (path.Length < 2)
+            {
+                return false;
+            }
+
+            if (char.IsLetter(path[0]) && path[1] == ':' &&
+                (path.Length > 2 && (path[2] == '\\' || path[2] == '/')))
+            {
+                return true;
+            }
+
+            if (path.Length > 1 && path[0] == '\\' && path[1] == '\\')
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsFullyQualifiedUnix(string path)
+        {
+            return path.Length > 0 && path[0] == '/';
         }
 
         private static string GetArchitecture()
