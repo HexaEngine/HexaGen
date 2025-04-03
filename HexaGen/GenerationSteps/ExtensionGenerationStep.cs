@@ -92,16 +92,39 @@
 
         protected virtual bool FilterExtensionFunction(GenContext context, CppFunction cppFunction, CppTypedef typedef, bool isCustomHandle)
         {
+            if (!cppFunction.IsPublicExport())
+            {
+                return true;
+            }
+
 #if CPPAST_15_OR_GREATER
             if (cppFunction.IsFunctionTemplate)
+            {
                 return true;
+            }
 #endif
+
+            if (cppFunction.Flags == CppFunctionFlags.Inline)
+            {
+                return true;
+            }
+
             if (config.AllowedFunctions.Count != 0 && !config.AllowedFunctions.Contains(cppFunction.Name))
             {
                 return true;
             }
 
+            if (config.AllowedExtensions.Count != 0 && !config.AllowedExtensions.Contains(cppFunction.Name))
+            {
+                return true;
+            }
+
             if (config.IgnoredFunctions.Contains(cppFunction.Name))
+            {
+                return true;
+            }
+
+            if (config.IgnoredExtensions.Contains(cppFunction.Name))
             {
                 return true;
             }
@@ -137,8 +160,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             DefinedVariationsFunctions = GetGenerationStep<FunctionGenerationStep>().DefinedVariationsFunctions;
             string folder = Path.Combine(outputPath, "Extensions");
             if (Directory.Exists(folder))
@@ -150,7 +174,7 @@
 
             // Generate Extensions
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupExtensionUsings(), config.HeaderInjector);
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
 
             using (writer.PushBlock($"public static unsafe partial class Extensions"))
             {

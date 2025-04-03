@@ -5,12 +5,15 @@
 
     public class GenContext
     {
-        public GenContext(CppCompilation compilation, string filePath, ICodeWriter codeWriter)
+        public GenContext(ParseResult result, string filePath, ICodeWriter codeWriter)
         {
-            Compilation = compilation;
+            ParseResult = result;
+            Compilation = result.Compilation;
             FilePath = filePath;
             Writer = codeWriter;
         }
+
+        public ParseResult ParseResult { get; set; }
 
         public CppCompilation Compilation { get; set; }
 

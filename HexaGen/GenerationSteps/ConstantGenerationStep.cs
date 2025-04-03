@@ -1,11 +1,12 @@
 ﻿namespace HexaGen.GenerationSteps
 {
-    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Metadata;
+    using System;
     using System.Collections.Frozen;
     using System.Collections.Generic;
+    using System.Reflection.Metadata;
 
     public class ConstantGenerationStep : GenerationStep
     {
@@ -77,8 +78,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Constants");
             if (Directory.Exists(folder))
             {
@@ -88,15 +90,43 @@
             string filePath = Path.Combine(folder, "Constants.cs");
 
             using CsSplitCodeWriter writer = new(filePath, config.Namespace, SetupConstantUsings(), config.HeaderInjector);
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
+            List<CsConstantMetadata> constants = [];
+
+            for (int i = 0; i < compilation.Macros.Count; i++)
+            {
+                if (!files.Contains(compilation.Macros[i].SourceFile))
+                    continue;
+
+                var constant = ParseConstant(compilation.Macros[i]);
+
+                constants.Add(constant);
+            }
+
+            Dictionary<string, CsConstantMetadata> constantsLookupTable = [];
+            foreach (var constant in constants)
+            {
+                constantsLookupTable.TryAdd(constant.CppName, constant);
+            }
+
+            var frozenTable = constantsLookupTable.ToFrozenDictionary();
+
+            foreach (var constant in constants)
+            {
+                if (constant.Type == CsConstantType.Unknown)
+                {
+                    if (constant.Value != null && frozenTable.ContainsKey(constant.Value))
+                    {
+                        constant.Type = CsConstantType.Reference;
+                    }
+                }
+            }
+
             using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
             {
-                for (int i = 0; i < compilation.Macros.Count; i++)
+                foreach (var constant in constants)
                 {
-                    if (!files.Contains(compilation.Macros[i].SourceFile))
-                        continue;
-
-                    WriteConstant(context, ParseConstant(compilation.Macros[i]));
+                    WriteConstant(context, constant, frozenTable);
                 }
             }
         }
@@ -107,10 +137,20 @@
             var name = config.GetConstantName(macro.Name);
             var value = macro.Value.NormalizeConstantValue();
 
-            return new(macro.Name, macro.Value, name, value, null);
+            CsConstantType constantType = CsConstantType.Unknown;
+            if (value.IsNumeric(out NumberType type))
+            {
+                constantType = type.GetConstantType();
+            }
+            else if (value.IsString())
+            {
+                constantType = CsConstantType.String;
+            }
+
+            return new(macro.Name, macro.Value, name, value, constantType, null);
         }
 
-        protected virtual void WriteConstant(GenContext context, CsConstantMetadata csConstant)
+        protected virtual void WriteConstant(GenContext context, CsConstantMetadata csConstant, FrozenDictionary<string, CsConstantMetadata> constantsLookupTable)
         {
             if (FilterConstant(context, csConstant))
                 return;
@@ -124,46 +164,50 @@
                 return;
             }
 
-            if (value.IsNumeric(out var type))
+            if (csConstant.Type == CsConstantType.Unknown)
+            {
+                return;
+            }
+
+            switch (csConstant.Type)
+            {
+                case CsConstantType.Reference:
+                    string? resolveBaseType = ResolveBaseType(value, constantsLookupTable);
+                    if (resolveBaseType == null) return;
+                    WriteMetadata(csConstant, writer);
+                    writer.WriteLine($"public const {resolveBaseType} {name} = {value};");
+                    break;
+
+                case CsConstantType.Custom:
+                    WriteMetadata(csConstant, writer);
+                    writer.WriteLine($"public const {csConstant.CustomType} {name} = {value};");
+                    break;
+
+                default:
+                    WriteMetadata(csConstant, writer);
+                    writer.WriteLine($"public const {csConstant.Type.GetCSharpType()} {name} = {value};");
+                    break;
+            }
+
+            writer.WriteLine();
+
+            void WriteMetadata(CsConstantMetadata csConstant, ICodeWriter writer)
             {
                 if (config.GenerateMetadata)
                 {
                     writer.WriteLine($"[NativeName(NativeNameType.Const, \"{csConstant.CppName}\")]");
                     writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csConstant.EscapedCppValue}\")]");
                 }
+            }
+        }
 
-                writer.WriteLine($"public const {type.GetNumberType()} {name} = {value};");
-                writer.WriteLine();
-            }
-            else if (value.IsString())
-            {
-                if (config.GenerateMetadata)
-                {
-                    writer.WriteLine($"[NativeName(NativeNameType.Const, \"{csConstant.CppName}\")]");
-                    writer.WriteLine($"[NativeName(NativeNameType.Value, \"{csConstant.EscapedCppValue}\")]");
-                }
-
-                writer.WriteLine($"public const string {name} = {value};");
-                writer.WriteLine();
-            }
-            else if (!string.IsNullOrWhiteSpace(value))
-            {
-                //int start = 0;
-                bool capture = false;
-                for (int i = 0; i < value.Length; i++)
-                {
-                    var c = value[i];
-                    if (c == '(')
-                    {
-                        if (capture) // not supported early exit.
-                        {
-                            return;
-                        }
-                        capture = true;
-                    }
-                }
-                //var result = CppMacroParser.Default.Parse(value, "");
-            }
+        private static string? ResolveBaseType(string value, FrozenDictionary<string, CsConstantMetadata> constantsLookupTable)
+        {
+            var metadata = constantsLookupTable[value];
+            if (metadata.Type == CsConstantType.Unknown) return null;
+            if (metadata.Type == CsConstantType.Reference) return metadata.Value == null ? null : ResolveBaseType(metadata.Value, constantsLookupTable);
+            if (metadata.Type == CsConstantType.Custom) return metadata.CustomType;
+            return metadata.Type.GetCSharpType();
         }
     }
 }

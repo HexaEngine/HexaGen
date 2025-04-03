@@ -130,8 +130,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Functions");
             if (Directory.Exists(folder))
             {
@@ -144,7 +145,7 @@
 
             // Generate Functions
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
 
             FunctionTableBuilder.Append(config.FunctionTableEntries);
             using (writer.PushBlock($"public unsafe partial class {config.ApiName}"))
@@ -359,9 +360,28 @@
 
         public virtual void WriteFunctions(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, WriteFunctionFlags flags, params string[] modifiers)
         {
-            for (int j = 0; j < overload.Variations.Count; j++)
+            foreach (CsFunctionVariation variation in overload.Variations)
             {
-                WriteFunctionEx(context, definedFunctions, csFunction, overload, overload.Variations[j], flags, modifiers);
+                WriteFunctionEx(context, definedFunctions, csFunction, overload, variation, flags, modifiers);
+
+                foreach (var alias in context.ParseResult.EnumerateFunctionAliases(overload.ExportedName))
+                {
+                    var mapping = config.GetFunctionAliasMapping(alias.ExportedName, alias.ExportedAliasName);
+                    if (mapping != null)
+                    {
+                        if (mapping.FriendlyName != null)
+                        {
+                            alias.FriendlyName = mapping.FriendlyName;
+                        }
+
+                        if (mapping.Comment != null)
+                        {
+                            alias.Comment = mapping.Comment;
+                        }
+                    }
+
+                    WriteAlias(context, definedFunctions, csFunction, overload, variation, flags, alias, modifiers);
+                }
             }
         }
 
@@ -528,6 +548,33 @@
                 writerContext.EndBlocks();
             }
 
+            writer.WriteLine();
+
+            return true;
+        }
+
+        protected virtual bool WriteAlias(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags, FunctionAlias alias, params string[] modifiers)
+        {
+            var writer = context.Writer;
+            CsType csReturnType = variation.ReturnType;
+            csGenerator.PrepareArgs(variation, csReturnType);
+
+            string header = variation.BuildFunctionHeader(alias.FriendlyName, csReturnType, flags, config.GenerateMetadata);
+            variation.BuildFunctionHeaderId(alias.FriendlyName, flags);
+
+            if (FilterFunction(context, definedFunctions, variation))
+            {
+                return false;
+            }
+
+            ClassifyParameters(overload, variation, csReturnType, out bool firstParamReturn, out int offset, out bool hasManaged);
+
+            LogInfo("defined alias function " + header);
+
+            writer.WriteLines(alias.Comment);
+            var overloadString = variation.BuildFunctionOverload(flags);
+
+            writer.WriteLine($"{string.Join(" ", modifiers)} {header} => {overloadString};");
             writer.WriteLine();
 
             return true;

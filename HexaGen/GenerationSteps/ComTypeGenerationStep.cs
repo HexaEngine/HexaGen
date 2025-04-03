@@ -91,8 +91,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Structs");
             if (Directory.Exists(folder))
             {
@@ -138,7 +139,7 @@
 
                 string filePath = Path.Combine(folder, $"{csName}.cs");
                 using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 if (comGenerator.TryGetGUID(cppClass.Name, out var guid))
                 {

@@ -101,8 +101,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Enums");
             if (Directory.Exists(folder))
             {
@@ -125,7 +126,7 @@
                     {
                         continue;
                     }
-                    WriteEnumFile(compilation, folder, filePath, csEnum);
+                    WriteEnumFile(result, folder, filePath, csEnum);
                 }
 
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
@@ -144,19 +145,19 @@
                     {
                         continue;
                     }
-                    WriteEnumFile(compilation, folder, filePath, csEnum);
+                    WriteEnumFile(result, folder, filePath, csEnum);
                 }
 
                 for (int i = 0; i < config.CustomEnums.Count; i++)
                 {
                     var csEnum = config.CustomEnums[i];
-                    WriteEnumFile(compilation, folder, filePath, csEnum);
+                    WriteEnumFile(result, folder, filePath, csEnum);
                 }
             }
             else
             {
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupEnumUsings(), config.HeaderInjector, 1);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 List<CsEnumMetadata> enums = [.. config.CustomEnums];
 
@@ -197,10 +198,10 @@
             }
         }
 
-        private void WriteEnumFile(CppCompilation compilation, string folder, string filePath, CsEnumMetadata csEnum)
+        private void WriteEnumFile(ParseResult result, string folder, string filePath, CsEnumMetadata csEnum)
         {
             using var writer = new CsCodeWriter(Path.Combine(folder, $"{csEnum.Name}.cs"), config.Namespace, SetupEnumUsings(), config.HeaderInjector);
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
             WriteEnum(context, csEnum);
         }
 

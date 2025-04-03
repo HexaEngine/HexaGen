@@ -20,8 +20,9 @@ namespace HexaGen.Patching
             this.extra = extra ?? [];
         }
 
-        protected override void PatchCompilation(CsCodeGeneratorConfig settings, CppCompilation compilation)
+        protected override void PatchCompilation(CsCodeGeneratorConfig settings, ParseResult result)
         {
+            var compilation = result.Compilation;
             List<CppMacro> keyEnums = [];
             HashSet<string> itemNames = [];
             foreach (var macro in compilation.Macros)

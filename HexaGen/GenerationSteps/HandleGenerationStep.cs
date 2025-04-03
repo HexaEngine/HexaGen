@@ -72,8 +72,9 @@
             return true;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Handles");
             if (Directory.Exists(folder))
             {
@@ -95,7 +96,7 @@
 
                     string filePath = Path.Combine(folder, $"{handle.Name}.cs");
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector);
-                    GenContext context = new(compilation, filePath, writer);
+                    GenContext context = new(result, filePath, writer);
                     WriteHandle(context, handle);
                 }
             }
@@ -103,7 +104,7 @@
             {
                 string filePath = Path.Combine(folder, "Handles.cs");
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector, 1);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {

@@ -412,7 +412,6 @@
         {
             if (primitiveType.FullName == "unsigned long long")
             {
-
             }
             switch (primitiveType.Kind)
             {
@@ -819,6 +818,15 @@
                     if (isPointer)
                         return cppEnum.Name + "*";
                     return cppEnum.Name;
+                }
+
+                if (TypeMappings.TryGetValue(typedef.Name, out var mappedType))
+                {
+                    if (isPointer)
+                    {
+                        return $"Pointer<{mappedType}>";
+                    }
+                    return mappedType;
                 }
 
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)

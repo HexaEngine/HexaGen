@@ -97,8 +97,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Structs");
             if (Directory.Exists(folder))
             {
@@ -124,7 +125,7 @@
                         continue;
                     string filePath = Path.Combine(folder, $"{csNameDefault}.cs");
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
-                    GenContext context = new(compilation, filePath, writer);
+                    GenContext context = new(result, filePath, writer);
 
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
@@ -140,7 +141,7 @@
 
                 // Generate Structures
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector, 1);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 // Print All classes, structs
                 for (int i = 0; i < compilation.Classes.Count; i++)

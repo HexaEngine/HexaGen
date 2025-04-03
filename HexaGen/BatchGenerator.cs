@@ -13,6 +13,13 @@
         private readonly List<IPostPatch> postPatches = [];
         private DateTime start;
 
+        public static BatchGenerator Create()
+        {
+            BatchGenerator generator = new();
+            generator.Start();
+            return generator;
+        }
+
         public BatchGenerator Start()
         {
             start = DateTime.Now;

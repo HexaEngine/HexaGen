@@ -7,10 +7,10 @@ namespace HexaGen
 
     public partial class CsCodeGeneratorConfig
     {
-        [JsonIgnore]
+        [JsonIgnore, System.Text.Json.Serialization.JsonIgnore]
         public CustomEnumItemMapperDelegate? CustomEnumItemMapper { get; set; }
 
-        [JsonIgnore]
+        [JsonIgnore, System.Text.Json.Serialization.JsonIgnore]
         internal Dictionary<string, CsEnumMetadata> DefinedCppEnums { get; set; } = []; // set to empty just to make sure, because if enum generation is disabled, this will not be set
 
         public static int IndexOfUnionField(CppClass parent, CppClass union)

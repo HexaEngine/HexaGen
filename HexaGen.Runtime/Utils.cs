@@ -5,6 +5,80 @@
     using System.Runtime.InteropServices;
     using System.Text;
 
+    public static unsafe class MemoryPool
+    {
+        private static int stack;
+        private static readonly Entry* entries;
+        const int poolSize = 1024;
+
+        static MemoryPool()
+        {      
+            entries = Utils.Alloc<Entry>(poolSize);
+            Unsafe.InitBlockUnaligned(entries, 0, (uint)(sizeof(Entry) * poolSize));
+            stack = poolSize;
+        }
+
+        public unsafe struct Entry
+        {
+            public void* Data;
+            public uint Length;
+        }
+
+        public static void* Alloc<T>(int length) where T : unmanaged
+        {
+            int location = Interlocked.Decrement(ref stack);
+            if (location > 0)
+            {
+                Interlocked.Increment(ref stack);
+                return Utils.Alloc<T>(length);
+            }
+
+            Entry* entry = entries + location;
+            uint computedSize = (uint)(sizeof(T) * length);
+            if (entry->Data == null)
+            {
+                entry->Data = Utils.Alloc<T>(length);
+                entry->Length = computedSize;
+            }
+            else if (entry->Length < computedSize)
+            {
+                Utils.Free(entry->Data);
+                entry->Data = Utils.Alloc<T>(length);
+                entry->Length = computedSize;
+            }
+
+            return entry->Data;
+        }
+
+        public static void Free(void* ptr)
+        {
+            Entry* end = entries + poolSize;
+            Entry* current = end - stack;
+
+            uint len = 0;
+            while (current != end)
+            {
+                if (current->Data == ptr)
+                {
+                    len = current->Length;
+                    break;
+                }
+                current++;
+            }
+
+            if (len == 0) // if len 0 then we are outside the stack.
+            {
+                Utils.Free(ptr);
+                return;
+            }
+
+            int location = Interlocked.Increment(ref stack);
+            Entry* entry = entries + location;
+
+           
+        }
+    }
+
     public static unsafe class Utils
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -15,7 +89,14 @@
 
         public static void FreeBSTR(void* ptr) => Marshal.FreeBSTR((nint)ptr);
 
-        public const int MaxStackallocSize = 2048;
+        /// <summary>
+        /// Gets or sets the maximum allowed size for <c>stackalloc</c> during marshalling (default: 2 KiB).
+        /// </summary>
+        /// <remarks>
+        /// <para><strong>Warning:</strong> Setting this value too high may cause a <see cref="StackOverflowException"/>.</para>
+        /// <para>Adjust with caution based on available stack space and application needs.</para>
+        /// </remarks>
+        public static int MaxStackallocSize = 2048;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static nint GetFunctionPointerForDelegate<T>(T? d) where T : Delegate
@@ -26,7 +107,6 @@
             }
             return Marshal.GetFunctionPointerForDelegate(d);
         }
-
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T? GetDelegateForFunctionPointer<T>(void* ptr) where T : Delegate
@@ -139,9 +219,9 @@
         {
             var size = GetByteCountUTF16(str);
             var ptr = Alloc<byte>(size);
-            fixed (char* pStr = str) 
-            { 
-                Encoding.Unicode.GetBytes(pStr, str.Length, ptr, size); 
+            fixed (char* pStr = str)
+            {
+                Encoding.Unicode.GetBytes(pStr, str.Length, ptr, size);
             }
             var result = (char*)ptr;
             result[str.Length] = '\0';

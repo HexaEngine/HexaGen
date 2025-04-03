@@ -65,9 +65,9 @@
 
         protected virtual bool FilterDelegate(GenContext context, CsDelegate csDelegate)
         {
-            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(csDelegate.Name))
+            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(csDelegate.CppName))
                 return true;
-            if (config.IgnoredDelegates.Contains(csDelegate.Name))
+            if (config.IgnoredDelegates.Contains(csDelegate.CppName))
                 return true;
 
             if (LibDefinedDelegates.Contains(csDelegate))
@@ -84,8 +84,9 @@
             return false;
         }
 
-        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Delegates");
             if (Directory.Exists(folder))
             {
@@ -97,7 +98,7 @@
             // Generate Delegates
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupDelegateUsings(), config.HeaderInjector, 1);
 
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
 
             // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)

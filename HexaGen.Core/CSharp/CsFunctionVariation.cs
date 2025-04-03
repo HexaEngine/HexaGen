@@ -1,9 +1,9 @@
 ﻿namespace HexaGen.Core.CSharp
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Text;
-    
 
     public class CsFunctionVariation : ICsFunction, ICloneable<CsFunctionVariation>, IHasIdentifier
     {
@@ -115,6 +115,12 @@
             return Identifier = $"{Name}({signature})";
         }
 
+        public string BuildFunctionHeaderId(string alias, WriteFunctionFlags flags)
+        {
+            string signature = BuildFunctionSignature(this, false, false, flags);
+            return Identifier = $"{alias}({signature})";
+        }
+
         public string BuildFunctionHeader(CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
             string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
@@ -126,6 +132,79 @@
             {
                 return Identifier = $"{csReturnType.Name} {Name}({signature})";
             }
+        }
+
+        public string BuildFunctionHeader(string alias, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
+        {
+            string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
+            if (IsGeneric)
+            {
+                return Identifier = $"{csReturnType.Name} {alias}<{BuildGenericSignature()}>({signature}) {BuildGenericConstraint()}";
+            }
+            else
+            {
+                return Identifier = $"{csReturnType.Name} {alias}({signature})";
+            }
+        }
+
+        public string BuildFunctionOverload(WriteFunctionFlags flags)
+        {
+            string signature = BuildFunctionOverload(this, flags);
+            if (IsGeneric)
+            {
+                return $"{Name}<{BuildGenericSignature()}>({signature})";
+            }
+            else
+            {
+                return $"{Name}({signature})";
+            }
+        }
+
+        protected virtual string BuildFunctionOverload(CsFunctionVariation variation, WriteFunctionFlags flags)
+        {
+            int offset = flags == WriteFunctionFlags.None ? 0 : 1;
+            StringBuilder sb = new();
+            bool isFirst = true;
+
+            if (flags == WriteFunctionFlags.Extension)
+            {
+                isFirst = false;
+                var first = variation.Parameters[0];
+                sb.Append("this");
+
+                sb.Append($" {first.Name}");
+            }
+
+            for (int i = offset; i < variation.Parameters.Count; i++)
+            {
+                bool written = false;
+                var param = variation.Parameters[i];
+
+                if (param.DefaultValue != null)
+                    continue;
+
+                if (!isFirst)
+                    sb.Append(", ");
+
+                if (param.Type.IsRef)
+                {
+                    sb.Append("ref");
+                    written = true;
+                }
+
+                if (param.Type.IsOut)
+                {
+                    sb.Append("out");
+                    written = true;
+                }
+
+                if (written) sb.Append(' ');
+                sb.Append(param.Name);
+
+                isFirst = false;
+            }
+
+            return sb.ToString();
         }
 
         public string BuildConstructorSignatureIdentifier()

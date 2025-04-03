@@ -1,4 +1,6 @@
-﻿using CppAst;
+﻿using ClangSharp.Interop;
+using CppAst;
+using HexaGen.Core.CSharp;
 
 namespace HexaGen.Patching
 {
@@ -31,6 +33,40 @@ namespace HexaGen.Patching
             this.prefixes = prefixes;
             this.options = options;
             this.mode = mode;
+        }
+
+        protected override void PatchCompilation(CsCodeGeneratorConfig config, ParseResult result)
+        {
+            base.PatchCompilation(config, result);
+
+            foreach (var aliases in result.FunctionAliases)
+            {
+                foreach (var alias in aliases.Value)
+                {
+                    PatchAlias(config, alias);
+                }
+            }
+        }
+
+        protected virtual void PatchAlias(CsCodeGeneratorConfig config, FunctionAlias alias)
+        {
+            if ((mode & NamingPatchMode.Functions) == 0) return;
+            var name = config.GetCsFunctionName(alias.ExportedAliasName);
+            name = Process(name);
+            if (!config.TryGetFunctionAliasMapping(alias.ExportedName, alias.ExportedAliasName, out var mapping))
+            {
+                mapping = new(alias.ExportedName, alias.ExportedAliasName, name, null);
+                config.AddFunctionAliasMapping(mapping);
+            }
+
+            if ((options & NamingPatchOptions.OverwriteNames) != 0)
+            {
+                mapping.FriendlyName = name;
+            }
+            else
+            {
+                mapping.FriendlyName ??= name;
+            }
         }
 
         protected override void PatchEnum(CsCodeGeneratorConfig config, CppEnum cppEnum)
@@ -110,7 +146,7 @@ namespace HexaGen.Patching
             var name = config.GetCsFunctionName(cppFunction.Name);
             name = Process(name);
 
-            if (!config.TryGetFunctionMapping(name, out var mapping))
+            if (!config.TryGetFunctionMapping(cppFunction.Name, out var mapping))
             {
                 mapping = new(cppFunction.Name, name, null, [], []);
                 config.FunctionMappings.Add(mapping);
