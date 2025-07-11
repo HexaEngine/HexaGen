@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "BgfxTest": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}
