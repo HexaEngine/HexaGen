@@ -1,7 +1,11 @@
 ﻿namespace HexaGen.Runtime
 {
     using System;
+    using System.Collections;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using System.Runtime.CompilerServices;
     using System.Runtime.InteropServices;
 
 #if !NET5_0_OR_GREATER
@@ -30,12 +34,21 @@
         Any = FreeBSD | Linux | OSX | Windows | Android | IOS | Tizen | ChromeOS | WebAssembly | Solaris | WatchOS | TVO
     }
 
-    public delegate void ResolvePathHandler(string libraryName, out string? pathToLibrary);
+    public delegate bool ResolvePathHandler(string libraryName, out string? pathToLibrary);
 
-    public delegate void LibraryNameInterceptor(ref string libraryName);
+    public delegate bool LibraryNameInterceptor(ref string libraryName);
+
+    public delegate bool LibraryLoadInterceptor(string libraryName, out nint pointer);
+
+    public delegate bool NativeContextInterceptor(string libraryName, out INativeContext? context);
 
     public static class LibraryLoader
     {
+        private static readonly EventHandlerList<ResolvePathHandler> resolvePathHandlers = [];
+        private static readonly EventHandlerList<LibraryNameInterceptor> libraryNameInterceptors = [];
+        private static readonly EventHandlerList<LibraryLoadInterceptor> libraryLoadInterceptors = [];
+        private static readonly EventHandlerList<NativeContextInterceptor> nativeContextInterceptors = [];
+
         public static OSPlatform FreeBSD { get; } = OSPlatform.Create("FREEBSD");
 
         public static OSPlatform Linux { get; } = OSPlatform.Create("LINUX");
@@ -62,9 +75,13 @@
 
         public static List<string> CustomLoadFolders { get; } = [];
 
-        public static ResolvePathHandler? ResolvePath;
+        public static event ResolvePathHandler ResolvePath { add => resolvePathHandlers.Add(value); remove => resolvePathHandlers.Remove(value); }
 
-        public static LibraryNameInterceptor? InterceptLibraryName;
+        public static event LibraryNameInterceptor InterceptLibraryName { add => libraryNameInterceptors.Add(value); remove => libraryNameInterceptors.Remove(value); }
+
+        public static event LibraryLoadInterceptor InterceptLibraryLoad { add => libraryLoadInterceptors.Add(value); remove => libraryLoadInterceptors.Remove(value); }
+
+        public static event NativeContextInterceptor InterceptNativeContext { add => nativeContextInterceptors.Add(value); remove => nativeContextInterceptors.Remove(value); }
 
         public static string GetExtension()
         {
@@ -126,11 +143,62 @@
 
         public delegate string LibraryExtensionCallback();
 
-        public static nint LoadLibrary(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback)
+        public static void LoadFromMainModule(string targetLibraryName)
+        {
+            LoadFrom(targetLibraryName, Process.GetCurrentProcess().MainModule!.BaseAddress);
+        }
+
+        public static void LoadFrom(string targetLibraryName, nint address)
+        {
+            bool Callback(string libraryName, out nint pointer)
+            {
+                if (libraryName == targetLibraryName)
+                {
+                    pointer = address;
+                    return true;
+                }
+
+                pointer = 0;
+                return false;
+            }
+
+            libraryLoadInterceptors.Add(Callback);
+        }
+
+        public static INativeContext LoadLibraryEx(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback)
         {
             var libraryName = libraryNameCallback();
 
-            InterceptLibraryName?.Invoke(ref libraryName);
+            foreach (var callback in nativeContextInterceptors)
+            {
+                if (callback(libraryName, out var context))
+                {
+                    return context ?? throw new InvalidOperationException("'context' cannot be null when returning true.");
+                }
+            }
+
+            return new NativeLibraryContext(LoadLibrary(libraryNameCallback, libraryExtensionCallback));
+        }
+
+        public static nint LoadLibrary(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback, [CallerMemberName] string? name = "")
+        {
+            var libraryName = libraryNameCallback();
+
+            foreach (var callback in libraryNameInterceptors)
+            {
+                if (callback(ref libraryName))
+                {
+                    break;
+                }
+            }
+
+            foreach (var callback in libraryLoadInterceptors)
+            {
+                if (callback(libraryName, out nint pointer))
+                {
+                    return pointer;
+                }
+            }
 
             var extension = libraryExtensionCallback != null ? libraryExtensionCallback() : GetExtension();
 
@@ -143,9 +211,7 @@
             var architecture = GetArchitecture();
             var libraryPath = GetNativeAssemblyPath(osPlatform, architecture, libraryName);
 
-            nint handle;
-
-            handle = NativeLibrary.Load(libraryPath);
+            nint handle = NativeLibrary.Load(libraryPath);
 
             if (handle == IntPtr.Zero)
             {
@@ -157,10 +223,12 @@
 
         private static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
         {
-            if (ResolvePath != null)
+            foreach (var callback in resolvePathHandlers)
             {
-                ResolvePath.Invoke(libraryName, out var pathToLibrary);
-                if (pathToLibrary != null) return pathToLibrary;
+                if (callback(libraryName, out var pathToLibrary))
+                {
+                    return pathToLibrary ?? throw new InvalidOperationException("'pathToLibrary' cannot be null when returning true.");
+                }
             }
 
 #if ANDROID
