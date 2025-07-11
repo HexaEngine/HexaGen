@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "XAudioTest": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}

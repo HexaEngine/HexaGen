@@ -1,1 +1,0 @@
-﻿A .NET Wrapper for X3DAudio (v 1.7)
