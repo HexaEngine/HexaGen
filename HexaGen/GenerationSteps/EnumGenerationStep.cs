@@ -258,14 +258,14 @@
 
                 if (item?.Value == null) continue; // skip on null.
                 // do Flags check post mapper, cuz value could change.
-                if (long.TryParse(item.Value, out var numLong))
+                if (long.TryParse(item.CppValue, out var numLong))
                 {
                     if (!(numLong == 0 || numLong > 0 && (numLong & numLong - 1) == 0))
                     {
                         flags = false;
                     }
                 }
-                if (ulong.TryParse(item.Value, out ulong numULong))
+                if (ulong.TryParse(item.CppValue, out ulong numULong))
                 {
                     if (!(numULong == 0 || numULong > 0 && (numULong & numULong - 1) == 0))
                     {
