@@ -1,12 +1,12 @@
 ﻿namespace HexaGen.GenerationSteps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Metadata;
-    using System;
+    using System.Collections.Frozen;
     using System.IO;
-    using System.Linq;
 
     public class DelegateGenerationStep : GenerationStep
     {
@@ -65,9 +65,9 @@
 
         protected virtual bool FilterDelegate(GenContext context, CsDelegate csDelegate)
         {
-            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(csDelegate.Name))
+            if (config.AllowedDelegates.Count != 0 && !config.AllowedDelegates.Contains(csDelegate.CppName))
                 return true;
-            if (config.IgnoredDelegates.Contains(csDelegate.Name))
+            if (config.IgnoredDelegates.Contains(csDelegate.CppName))
                 return true;
 
             if (LibDefinedDelegates.Contains(csDelegate))
@@ -84,8 +84,9 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Delegates");
             if (Directory.Exists(folder))
             {
@@ -97,12 +98,15 @@
             // Generate Delegates
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupDelegateUsings(), config.HeaderInjector, 1);
 
-            GenContext context = new(compilation, filePath, writer);
+            GenContext context = new(result, filePath, writer);
 
             // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
                 CppClass? cppClass = compilation.Classes[i];
+
+                if (!files.Contains(cppClass.SourceFile))
+                    continue;
 
                 if (FilterIgnoredType(context, cppClass))
                     continue;
@@ -115,6 +119,9 @@
             for (int i = 0; i < compilation.Typedefs.Count; i++)
             {
                 CppTypedef typedef = compilation.Typedefs[i];
+
+                if (!files.Contains(typedef.SourceFile))
+                    continue;
 
                 if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType)
                 {
@@ -168,7 +175,7 @@
 
         private void WriteDelegate<T>(GenContext context, T field, CppFunctionType functionType) where T : class, ICppDeclaration, ICppMember
         {
-            string csDelegateName = config.GetFieldName(field.Name);
+            string csDelegateName = config.GetDelegateName(field.Name);
 
             int i = 1;
             string name = csDelegateName;

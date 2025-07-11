@@ -52,7 +52,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("xaudio2/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("xaudio2", "*.h").ToList(), "../../../../Hexa.NET.XAudio2/Generated");
+            generator1.Generate([.. Directory.GetFiles("xaudio2", "*.h")], "../../../../Hexa.NET.XAudio2/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -112,7 +112,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3d11/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("d3d11", "*.h").ToList(), "../../../../Hexa.NET.D3D11/Generated");
+            generator1.Generate([.. Directory.GetFiles("d3d11", "*.h")], "../../../../Hexa.NET.D3D11/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }
@@ -122,7 +122,7 @@ namespace HexaGen.Tests
         {
             CsCodeGeneratorConfig generatorSettings = CsCodeGeneratorConfig.Load("d3d12/generator.json");
             CsComCodeGenerator generator1 = new(generatorSettings);
-            generator1.Generate(Directory.GetFiles("d3d12", "*.h").ToList(), "../../../../Hexa.NET.D3D12/Generated");
+            generator1.Generate([.. Directory.GetFiles("d3d12", "*.h")], "../../../../Hexa.NET.D3D12/Generated");
             EvaluateResult(generator1);
             Assert.Pass();
         }

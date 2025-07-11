@@ -1,31 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0;netstandard2.0;netstandard2.1;net472;net8.0-android</TargetFrameworks>
+		<TargetFrameworks>net9.0;net8.0;net7.0;net6.0;netstandard2.0;netstandard2.1;net472;net8.0-android;net9.0-android</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<LangVersion>12</LangVersion>
 		
-		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
+		<LangVersion>13</LangVersion>
+
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
+		<EnableAotAnalyzer>true</EnableAotAnalyzer>
+		<IsAotCompatible>true</IsAotCompatible>
 
 		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.13</PackageVersion>
+		<PackageVersion>1.1.19-b1</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
+		<Copyright>Copyright (c) 2024 Juna Meinhold</Copyright>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/JunaMeinhold/HexaGen</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
 
-		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-		<EnableSingleFileAnalyzer>true</EnableSingleFileAnalyzer>
-		<EnableAotAnalyzer>true</EnableAotAnalyzer>
-		<IsAotCompatible>true</IsAotCompatible>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -34,10 +36,10 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard2.1' OR '$(TargetFramework)' == 'net472'">
-		<PackageReference Include="System.Memory" Version="4.5.5" />
+		<PackageReference Include="System.Memory" Version="4.6.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-		<PackageReference Include="Xamarin.AndroidX.Core" Version="1.13.1.3" />
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android' or '$(TargetFramework)' == 'net9.0-android'">
+		<PackageReference Include="Xamarin.AndroidX.Core" Version="1.15.0.1" />
 	</ItemGroup>
 </Project>

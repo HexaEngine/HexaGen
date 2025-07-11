@@ -1,22 +1,19 @@
 ---
-name: Generator Lib Support Template
-about: Describe this issue template's purpose here.
-title: Generator Support for [NAME]
+name: Generator Lib Support/C# Wrapper Request
+about: Suggest adding C# wrapper support for a library.
+title: C# Wrapper for [NAME]
 labels: enhancement
-assignees: JunaMeinhold
-
 ---
 
-### Generation Tasks
-- [ ] Functions
-- [ ] Handles
-- [ ] Structs
-- [ ] Enums
-- [ ] Delegates
-- [ ] Extensions
-- [ ] Constants
+### About the Library
+- [ ] Has C-Interface (C header files)
+- [ ] Has COM-Interface
+- [ ] Has C++ only Interface (exclusively C++ classes)
 
-### Final Tasks
-- [ ] Compatibility checks
-- [ ] Generation Tests
-- [ ] Execution Tests
+**Link to repository:** [insert-link-here]
+
+#### Short Description of the Library:
+[Provide a brief description of the library and its features.]
+
+#### Why This Library Deserves a Wrapper:
+[Explain why this library is important and should have a C# wrapper.]

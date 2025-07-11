@@ -31,6 +31,9 @@
     "object",
     "event"
   ],
+  "NameMappings": {
+    "PFN_DESTRUCTION_CALLBACK": "PfnDestructionCallback"
+  },
   "TypeMappings": {
     "uint8_t": "byte",
     "uint16_t": "ushort",

@@ -47,21 +47,31 @@
             return (IUnknown*)@this.Handle;
         }
 
-#if NET5_0_OR_GREATER
+        public static unsafe implicit operator ComPtr<IUnknown>(ComPtr<T> @this)
+        {
+            return *(ComPtr<IUnknown>*)&@this;
+        }
 
-        [SupportedOSPlatform("windows")]
+        /// <summary>
+        /// Casts the current <see cref="ComPtr{T}"/> to a <see cref="ComPtr{TAs}"/> of a different type.
+        /// </summary>
+        /// <typeparam name="TAs">The target interface type to cast to, which must implement <see cref="IComObject{TAs}"/>.</typeparam>
+        /// <returns>A <see cref="ComPtr{TAs}"/> cast from the original <see cref="ComPtr{T}"/>. The casted pointer should be used only if both types are compatible.</returns>
+        /// <remarks>
+        /// Ensure the compatibility of <typeparamref name="T"/> and <typeparamref name="TAs"/>; this method does not enforce type safety.
+        /// It is intended for scenarios where a valid cast is known but cannot be verified at compile time.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public readonly unsafe ComPtr<TAs> As<TAs>() where TAs : unmanaged, IComObject<TAs>
+        {
+            ComPtr<T> ptr = this;
+            return *(ComPtr<TAs>*)&ptr;
+        }
+
         public readonly unsafe ComObject? AsComObject()
         {
             return ComObject.FromPtr((IUnknown*)Handle);
         }
-
-#else
-
-        public readonly unsafe ComObject? AsComObject()
-        {
-            return ComObject.FromPtr((IUnknown*)Handle);
-        }
-#endif
 
         private readonly unsafe void AddRef()
         {

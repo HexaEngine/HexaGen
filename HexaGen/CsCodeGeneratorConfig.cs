@@ -1,106 +1,14 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core.Logging;
-    using HexaGen.Core.Mapping;
     using HexaGen.Metadata;
+    using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
-
-    public class UnexposedTypeException : Exception
-    {
-        public UnexposedTypeException(CppUnexposedType unexposedType) : base($"Cannot handle unexposed type '{unexposedType}'")
-        {
-        }
-    }
-
-    public enum ImportType
-    {
-        DllImport,
-        LibraryImport,
-        FunctionTable
-    }
-
-    public enum MergeOptions : ulong
-    {
-        None = 0,
-        EnableExperimentalOptions = 1L << 0,
-        GenerateSizeOfStructs = 1L << 1,
-        GenerateConstructorsForStructs = 1L << 2,
-        DelegatesAsVoidPointer = 1L << 3,
-        WrapPointersAsHandle = 1L << 4,
-        GeneratePlaceholderComments = 1L << 5,
-        ImportType = 1L << 6,
-        GenerateMetadata = 1L << 7,
-        GenerateConstants = 1L << 8,
-        GenerateEnums = 1L << 9,
-        GenerateExtensions = 1L << 10,
-        GenerateFunctions = 1L << 11,
-        GenerateHandles = 1L << 12,
-        GenerateTypes = 1L << 13,
-        GenerateDelegates = 1L << 14,
-        OneFilePerType = 1L << 15,
-        BoolType = 1L << 16,
-        KnownConstantNames = 1L << 17,
-        KnownEnumValueNames = 1L << 18,
-        KnownEnumPrefixes = 1L << 19,
-        KnownExtensionPrefixes = 1L << 20,
-        KnownExtensionNames = 1L << 21,
-        KnownDefaultValueNames = 1L << 22,
-        KnownConstructors = 1L << 23,
-        KnownMemberFunctions = 1L << 24,
-        IgnoredParts = 1L << 25,
-        Keywords = 1L << 26,
-        IgnoredFunctions = 1L << 27,
-        IgnoredTypes = 1L << 28,
-        IgnoredEnums = 1L << 29,
-        IgnoredTypedefs = 1L << 30,
-        IgnoredDelegates = 1L << 31,
-        IgnoredConstants = 1L << 32,
-        AllowedFunctions = 1L << 33,
-        AllowedTypes = 1L << 34,
-        AllowedEnums = 1L << 35,
-        AllowedTypedefs = 1L << 36,
-        AllowedDelegates = 1L << 37,
-        AllowedConstants = 1L << 38,
-        IIDMappings = 1L << 39,
-        ConstantMappings = 1L << 40,
-        EnumMappings = 1L << 41,
-        FunctionMappings = 1L << 42,
-        HandleMappings = 1L << 43,
-        ClassMappings = 1L << 44,
-        DelegateMappings = 1L << 45,
-        ArrayMappings = 1L << 46,
-        NameMappings = 1L << 47,
-        TypeMappings = 1L << 48,
-        Usings = 1L << 49,
-        IncludeFolders = 1L << 50,
-        SystemIncludeFolders = 1L << 51,
-        Defines = 1L << 52,
-        AdditionalArguments = 1L << 53,
-        ConstantNamingConvention = 1L << 54,
-        EnumNamingConvention = 1L << 55,
-        EnumItemNamingConvention = 1L << 56,
-        ExtensionNamingConvention = 1L << 57,
-        FunctionNamingConvention = 1L << 58,
-        HandleNamingConvention = 1L << 59,
-        TypeNamingConvention = 1L << 60,
-        DelegateNamingConvention = 1L << 61,
-        ParameterNamingConvention = 1L << 62,
-        MemberNamingConvention = 1UL << 63,
-        All = ulong.MaxValue,
-        Allowed = AllowedFunctions | AllowedTypes | AllowedEnums | AllowedTypedefs | AllowedDelegates | AllowedConstants,
-        Ignored = IgnoredFunctions | IgnoredTypes | IgnoredEnums | IgnoredTypedefs | IgnoredDelegates | IgnoredConstants,
-        Known = KnownConstantNames | KnownEnumValueNames | KnownEnumPrefixes | KnownExtensionPrefixes | KnownExtensionNames | KnownDefaultValueNames | KnownConstructors | KnownMemberFunctions | IIDMappings,
-        Mappings = ConstantMappings | EnumMappings | FunctionMappings | HandleMappings | ClassMappings | DelegateMappings | ArrayMappings | NameMappings | TypeMappings,
-        NamingConventions = ConstantNamingConvention | EnumNamingConvention | EnumItemNamingConvention | ExtensionNamingConvention | FunctionNamingConvention | HandleNamingConvention | TypeNamingConvention | DelegateNamingConvention | ParameterNamingConvention | MemberNamingConvention,
-        Experiments = EnableExperimentalOptions | GenerateConstructorsForStructs | DelegatesAsVoidPointer | WrapPointersAsHandle | GeneratePlaceholderComments | ImportType,
-    }
 
     public partial class CsCodeGeneratorConfig : IGeneratorConfig
     {
+        [JsonIgnore, System.Text.Json.Serialization.JsonIgnore]
         public HeaderInjectionDelegate? HeaderInjector { get; set; }
 
         public BaseConfig BaseConfig { get; set; } = new();
@@ -157,6 +65,9 @@
                 {"LPWSTR", "char*"},
                 {"BSTR", "void*"},
                 {"GUID", "Guid"},
+                {"HANDLE", "nint"},
+                {"HMODULE", "nint"},
+                {"HMONITOR", "nint"},
                 {"HWND", "nint"},
                 {"LPCVOID", "void*"},
                 {"LPVOID", "void*"},
@@ -170,6 +81,7 @@
                 {"LPARAM", "nint"},
                 {"HDC", "nint"},
                 {"HINSTANCE", "nint"},
+                {"HRESULT", "HResult"}
             },
             Keywords = new()
             {
@@ -266,7 +178,7 @@
             CsCodeGeneratorConfig result;
             if (File.Exists(file))
             {
-                result = JsonSerializer.Deserialize<CsCodeGeneratorConfig>(File.ReadAllText(file)) ?? new();
+                result = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(File.ReadAllText(file)) ?? new();
             }
             else
             {
@@ -380,8 +292,8 @@
         /// <summary>
         /// Determines the import type. (Default: <see cref="ImportType.LibraryImport"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
-        public ImportType ImportType { get; set; } = ImportType.LibraryImport;
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ImportType ImportType { get; set; } = ImportType.FunctionTable;
 
         /// <summary>
         /// The generator will generate [NativeName] attributes.
@@ -486,6 +398,11 @@
         public HashSet<string> IgnoredFunctions { get; set; } = new();
 
         /// <summary>
+        /// All extension function names in this HashSet will be ignored in the generation process. (Default: Empty)
+        /// </summary>
+        public HashSet<string> IgnoredExtensions { get; set; } = new();
+
+        /// <summary>
         /// All types names in this HashSet will be ignored in the generation process. (Default: Empty)
         /// </summary>
         public HashSet<string> IgnoredTypes { get; set; } = new();
@@ -516,6 +433,11 @@
         public HashSet<string> AllowedFunctions { get; set; } = new();
 
         /// <summary>
+        /// Acts as a whitelist, if the list is empty no whitelisting is applied on extension functions. (Default: Empty)
+        /// </summary>
+        public HashSet<string> AllowedExtensions { get; set; } = new();
+
+        /// <summary>
         /// Acts as a whitelist, if the list is empty no whitelisting is applied on types. (Default: Empty)
         /// </summary>
         public HashSet<string> AllowedTypes { get; set; } = new();
@@ -541,56 +463,6 @@
         public HashSet<string> AllowedConstants { get; set; } = new();
 
         /// <summary>
-        /// Allows to define or overwrite COM object Guids. where the Key is the com object name and the value the guid. (Default: Empty)
-        /// </summary>
-        public Dictionary<string, string> IIDMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify constants. (Default: Empty)
-        /// </summary>
-        public List<ConstantMapping> ConstantMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify enums. (Default: Empty)
-        /// </summary>
-        public List<EnumMapping> EnumMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify functions. (Default: Empty)
-        /// </summary>
-        public List<FunctionMapping> FunctionMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify handles. (Default: Empty)
-        /// </summary>
-        public List<HandleMapping> HandleMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify classes. (Default: Empty)
-        /// </summary>
-        public List<TypeMapping> ClassMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify delegates. (Default: Empty)
-        /// </summary>
-        public List<DelegateMapping> DelegateMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to inject data and modify arrays. (Default: Empty)
-        /// </summary>
-        public List<ArrayMapping> ArrayMappings { get; set; } = new();
-
-        /// <summary>
-        /// Allows to modify names fully or partially. newName = newName.Replace(item.Key, item.Value, StringComparison.InvariantCultureIgnoreCase); (Default: Empty)
-        /// </summary>
-        public Dictionary<string, string> NameMappings { get; set; } = new();
-
-        /// <summary>
-        /// Maps type Key to type Value. (Default: a list with common types, like size_t : nuint)
-        /// </summary>
-        public Dictionary<string, string> TypeMappings { get; set; } = new();
-
-        /// <summary>
         /// Allows to add or manage usings. (Default: Empty)
         /// </summary>
         public List<string> Usings { get; set; } = new();
@@ -598,61 +470,61 @@
         /// <summary>
         /// The naming convention for constants, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.Unknown"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ConstantNamingConvention { get; set; } = NamingConvention.Unknown;
 
         /// <summary>
         /// The naming convention for enums, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention EnumNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for enum items, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention EnumItemNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for extension functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ExtensionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for functions, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention FunctionNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for handles, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention HandleNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for classes and structs, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention TypeNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for delegates, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention DelegateNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         /// <summary>
         /// The naming convention for parameters, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.CamelCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention ParameterNamingConvention { get; set; } = NamingConvention.CamelCase;
 
         /// <summary>
         /// The naming convention for members, set it to <see cref="NamingConvention.Unknown"/> to keep the original name. (Default: <see cref="NamingConvention.PascalCase"/>)
         /// </summary>
-        [JsonConverter(typeof(JsonStringEnumConverter))]
+        [JsonConverter(typeof(StringEnumConverter))]
         public NamingConvention MemberNamingConvention { get; set; } = NamingConvention.PascalCase;
 
         public bool AutoSquashTypedef { get; set; } = true;
@@ -691,11 +563,7 @@
 
         public void Save(string path)
         {
-            File.WriteAllText(path, JsonSerializer.Serialize(this, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = JsonIgnoreCondition.Never,
-                WriteIndented = true,
-            }));
+            File.WriteAllText(path, JsonConvert.SerializeObject(this, Formatting.Indented));
         }
 
         public void Merge(CsCodeGeneratorConfig baseConfig, MergeOptions mergeOptions)

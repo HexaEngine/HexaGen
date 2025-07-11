@@ -1,8 +1,10 @@
 ﻿namespace HexaGen
 {
+    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
+    using System.Security.Cryptography;
     using System.Text;
 
     public class FunctionWriterContext
@@ -70,6 +72,15 @@
 
         public void WriteStringConvertToUnmanaged(CsParameterInfo parameter, bool isRef, string? convertBackCondition = null)
         {
+            // Lightweight branch for readonly strings.
+            if (!isRef && parameter.Type.StringType == CsStringType.StringUTF16)
+            {
+                var varName = UniqueName($"p{parameter.CleanName}");
+                BeginBlock($"fixed (char* {varName} = {parameter.Name})");
+                AppendParam(varName);
+                return;
+            }
+
             int stringCounter = IncrementStringCounter();
             if (isRef)
             {
@@ -146,6 +157,34 @@
                 blockCounter--;
                 Writer.EndBlock();
             }
+        }
+
+        public string UniqueName(string name)
+        {
+            var nname = name;
+            int i = 0;
+            while (true)
+            {
+                bool found = false;
+                foreach (var param in Variation.Parameters)
+                {
+                    if (param.DefaultValue == null && param.CleanName == nname)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    break;
+                }
+
+                nname = $"{name}{i}";
+                i++;
+            }
+
+            return nname;
         }
     }
 }

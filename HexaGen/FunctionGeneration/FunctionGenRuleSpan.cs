@@ -3,11 +3,12 @@
     using CppAst;
     using HexaGen;
     using HexaGen.Core.CSharp;
+    using HexaGen.Core.Mapping;
     using System.Collections.Generic;
 
     public class FunctionGenRuleSpan : FunctionGenRule
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
         {
             if (cppParameter.Type is CppArrayType arrayType)
             {
@@ -16,21 +17,21 @@
                     return new(csParamName, cppParameter.Type, new($"ReadOnlySpan<{settings.GetCsTypeName(arrayType.ElementType, false)}>", kind), direction);
                 }
             }
-            else if (cppParameter.Type.IsString())
+            else if (cppParameter.Type.IsString(settings, out var stringKind))
             {
-                switch (kind)
+                switch (stringKind)
                 {
                     case CppPrimitiveKind.Char:
                         if (direction == Direction.InOut || direction == Direction.Out) break;
-                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<byte>", kind), direction);
+                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<byte>", stringKind), direction);
 
                     case CppPrimitiveKind.WChar:
                         if (direction == Direction.InOut || direction == Direction.Out) break;
-                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<char>", kind), direction);
+                        return new(csParamName, cppParameter.Type, new("ReadOnlySpan<char>", stringKind), direction);
                 }
             }
 
-            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+            return CreateDefaultWrapperParameter(cppParameter, mapping, csParamName, kind, direction, settings);
         }
     }
 }

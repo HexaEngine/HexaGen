@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Metadata
 {
     using CppAst;
-    using System.Text.Json.Serialization;
+    
     using System.Xml.Serialization;
 
     public class CsHandleMetadata

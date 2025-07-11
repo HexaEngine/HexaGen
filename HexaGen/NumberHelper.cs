@@ -1,5 +1,7 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Metadata;
+
     public static class NumberHelper
     {
         public static bool IsNumeric(this string name)
@@ -377,6 +379,38 @@
                 NumberType.Long => "long",
                 NumberType.ULong => "ulong",
                 _ => throw new InvalidOperationException(),
+            };
+        }
+
+        public static string GetCSharpType(this CsConstantType number)
+        {
+            return number switch
+            {
+                CsConstantType.Unknown => throw new InvalidOperationException(),
+                CsConstantType.Int => "int",
+                CsConstantType.Double => "double",
+                CsConstantType.Float => "float",
+                CsConstantType.Decimal => "decimal",
+                CsConstantType.UInt => "uint",
+                CsConstantType.Long => "long",
+                CsConstantType.ULong => "ulong",
+                CsConstantType.String => "string",
+                _ => throw new InvalidOperationException(),
+            };
+        }
+
+        public static CsConstantType GetConstantType(this NumberType type)
+        {
+            return type switch
+            {
+                NumberType.Int => CsConstantType.Int,
+                NumberType.Double => CsConstantType.Double,
+                NumberType.Float => CsConstantType.Float,
+                NumberType.Decimal => CsConstantType.Decimal,
+                NumberType.UInt => CsConstantType.UInt,
+                NumberType.Long => CsConstantType.Long,
+                NumberType.ULong => CsConstantType.ULong,
+                _ => CsConstantType.Unknown,
             };
         }
     }

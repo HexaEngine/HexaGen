@@ -9,13 +9,14 @@
 
         public virtual bool CanWrite(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            return paramFlags.HasFlag(ParameterFlags.Ref);
+            return (paramFlags & (ParameterFlags.Ref | ParameterFlags.Out)) != 0;
         }
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            context.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.CleanName} = &{cppParameter.Name})");
-            context.AppendParam($"({rootParameter.Type.Name})p{cppParameter.CleanName}");
+            var varName = context.UniqueName($"p{cppParameter.CleanName}");
+            context.BeginBlock($"fixed ({cppParameter.Type.CleanName}* {varName} = &{cppParameter.Name})");
+            context.AppendParam($"({rootParameter.Type.Name}){varName}");
         }
     }
 }

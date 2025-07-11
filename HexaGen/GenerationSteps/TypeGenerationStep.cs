@@ -6,6 +6,7 @@
     using HexaGen.Core.Mapping;
     using HexaGen.FunctionGeneration;
     using HexaGen.Metadata;
+    using System.Collections.Frozen;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
@@ -96,8 +97,9 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Structs");
             if (Directory.Exists(folder))
             {
@@ -115,11 +117,15 @@
                 for (int i = 0; i < compilation.Classes.Count; i++)
                 {
                     CppClass cppClass = compilation.Classes[i];
+
+                    if (!files.Contains(cppClass.SourceFile))
+                        continue;
+
                     if (FilterType(null, cppClass, out var mapping, out var csNameDefault))
                         continue;
                     string filePath = Path.Combine(folder, $"{csNameDefault}.cs");
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
-                    GenContext context = new(compilation, filePath, writer);
+                    GenContext context = new(result, filePath, writer);
 
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
@@ -135,12 +141,16 @@
 
                 // Generate Structures
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector, 1);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 // Print All classes, structs
                 for (int i = 0; i < compilation.Classes.Count; i++)
                 {
                     CppClass cppClass = compilation.Classes[i];
+
+                    if (!files.Contains(cppClass.SourceFile))
+                        continue;
+
                     if (FilterType(context, cppClass, out var mapping, out var csNameDefault))
                         continue;
 
@@ -217,7 +227,7 @@
                 {
                     CppField cppField = cppClass.Fields[j];
                     var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
-                    if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
+                    if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union && cppClass1.FullParentName == cppClass.FullName)
                     {
                         var fieldCommentWritten = config.WriteCsSummary(cppField.Comment, writer);
                         if (!fieldCommentWritten)
@@ -480,15 +490,18 @@
                             }
                         }
                     }
-                    else if (cppField.Type.IsDelegate())
+                    else if (cppField.Type.IsDelegate(out var cppFunction))
                     {
+                        int depth = 0;
+                        cppField.Type.IsPointer(ref depth);
+                        string delegateType = $"({config.MakeDelegatePointer(cppFunction, false)}{new string('*', depth)})";
                         if (cppParameter.Type.Name.StartsWith("delegate*<"))
                         {
-                            writer.WriteLine($"{fieldName} = (void*){cppParameter.Name};");
+                            writer.WriteLine($"{fieldName} = {delegateType}{cppParameter.Name};");
                         }
                         else
                         {
-                            writer.WriteLine($"{fieldName} = (void*)Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
+                            writer.WriteLine($"{fieldName} = {delegateType}Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
                         }
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))

@@ -5,6 +5,7 @@
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using HexaGen.Metadata;
+    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.Text;
 
@@ -90,20 +91,23 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
-            // Print All classes, structs
-            string filePath = Path.Combine(outputPath, "Structures.cs");
+            var compilation = result.Compilation;
+            string folder = Path.Combine(outputPath, "Structs");
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            Directory.CreateDirectory(folder);
 
-            // Generate Structures
-            using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector, 1);
-
-            GenContext context = new(compilation, filePath, writer);
-
-            // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
                 CppClass? cppClass = compilation.Classes[i];
+
+                if (!files.Contains(cppClass.SourceFile))
+                    continue;
+
                 if (config.AllowedTypes.Count != 0 && !config.AllowedTypes.Contains(cppClass.Name))
                 {
                     continue;
@@ -121,7 +125,7 @@
 
                 if (DefinedTypes.Contains(cppClass.Name))
                 {
-                    LogWarn($"{filePath}: {cppClass} is already defined!");
+                    LogWarn($"{cppClass} is already defined!");
                     continue;
                 }
 
@@ -132,6 +136,10 @@
                 var mapping = config.GetTypeMapping(cppClass.Name);
 
                 csName = mapping?.FriendlyName ?? csName;
+
+                string filePath = Path.Combine(folder, $"{csName}.cs");
+                using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
+                GenContext context = new(result, filePath, writer);
 
                 if (comGenerator.TryGetGUID(cppClass.Name, out var guid))
                 {
@@ -214,7 +222,7 @@
 
                 WriteCOMConstructor(writer, csName);
 
-                WriteCOMObjectMemberFunctions(context, cppClass, cppClass, csName, ref vTableIndex);
+                WriteCOMObjectMemberFunctions(context, cppClass, cppClass, csName, ref vTableIndex, []);
 
                 using (writer.PushBlock($"unsafe void*** IComObject.AsVtblPtr()"))
                 {
@@ -235,7 +243,7 @@
             writer.WriteLine();
         }
 
-        private void WriteCOMObjectMemberFunctions(GenContext context, CppClass targetClass, CppClass cppClass, string csName, ref int vTableIndex)
+        private void WriteCOMObjectMemberFunctions(GenContext context, CppClass targetClass, CppClass cppClass, string csName, ref int vTableIndex, HashSet<string> signatures)
         {
             for (int i = 0; i < cppClass.BaseTypes.Count; i++)
             {
@@ -247,8 +255,12 @@
                         continue;
                     }
 
-                    WriteCOMObjectMemberFunctions(context, targetClass, baseClass, csName, ref vTableIndex);
+                    WriteCOMObjectMemberFunctions(context, targetClass, baseClass, csName, ref vTableIndex, signatures);
                 }
+            }
+
+            if (targetClass.Name == "ID3D11ShaderReflection")
+            {
             }
 
             List<CsFunction> commands = new();
@@ -258,6 +270,12 @@
 
 #if CPPAST_15_OR_GREATER
                 if (cppFunction.IsFunctionTemplate)
+                {
+                    vTableIndex--;
+                    continue;
+                }
+#else
+                if (!cppFunction.IsVirtual)
                 {
                     vTableIndex--;
                     continue;
@@ -276,11 +294,11 @@
 
                 if (!MemberFunctions.TryGetValue(targetClass.Name, out var definedFunctions))
                 {
-                    definedFunctions = new();
+                    definedFunctions = new(IdentifierComparer<CsFunctionVariation>.Default);
                     MemberFunctions.Add(targetClass.Name, definedFunctions);
                 }
 
-                if (!WriteCOMFunctions(context, definedFunctions, function, overload, csName, vTableIndex, "public readonly unsafe"))
+                if (!WriteCOMFunctions(context, definedFunctions, cppFunction, overload, csName, vTableIndex, "public readonly unsafe"))
                 {
                     vTableIndex--;
                 }
@@ -315,30 +333,36 @@
             }
         }
 
-        private bool WriteCOMFunctions(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunctions(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CppFunction cppFunction, CsFunctionOverload overload, string className, int index, params string[] modifiers)
         {
             bool hasWritten = false;
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                hasWritten |= WriteCOMFunction(context, definedFunctions, csFunction, overload, overload.Variations[j], className, index, modifiers);
+                hasWritten |= WriteCOMFunction(context, definedFunctions, cppFunction, overload, overload.Variations[j], className, index, modifiers);
+                if (j == 0 && !hasWritten) // if the first function hasn't been written (the overload) then all variations are invalid.
+                {
+                    break;
+                }
             }
             return hasWritten;
         }
 
-        private bool WriteCOMFunction(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
+        private bool WriteCOMFunction(GenContext context, HashSet<CsFunctionVariation> definedFunctions, CppFunction cppFunction, CsFunctionOverload overload, CsFunctionVariation variation, string className, int index, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
             generator.PrepareArgs(variation, csReturnType);
 
-            string header = variation.BuildFullSignatureForCOM(config.GenerateMetadata);
-            string signatureNameless = overload.BuildSignatureNamelessForCOM(className, config);
             variation.BuildSignatureIdentifierForCOM();
 
             if (FilterCOMMemberFunction(context, definedFunctions, variation))
             {
                 return false;
             }
+
+            string header = variation.BuildFullSignatureForCOM(config.GenerateMetadata);
+            string signatureNameless = config.GetNamelessParameterSignatureForCOM(className, cppFunction.Parameters, false);
+            string signatureNamelessCompat = config.GetNamelessParameterSignatureForCOM(className, cppFunction.Parameters, false, compatibility: true);
 
             CsCodeGenerator.ClassifyParameters(overload, variation, csReturnType, out _, out int offset, out bool hasManaged);
 
@@ -354,6 +378,7 @@
             {
                 writer.WriteLine($"{className}* ptr = ({className}*)Unsafe.AsPointer(ref Unsafe.AsRef(in this));");
                 StringBuilder sb = new();
+                StringBuilder builder = new();
 
                 if (!csReturnType.IsVoid || csReturnType.IsVoid && csReturnType.IsPointer)
                 {
@@ -372,16 +397,30 @@
                     MarshalHelper.WriteStringConvertToManaged(sb, variation.ReturnType);
                 }
 
-                var retType = csReturnType.IsBool ? config.GetBoolType() : csReturnType.Name;
                 var ptr = index == 0 ? "*LpVtbl" : $"LpVtbl[{index}]";
                 var tail = variation.Parameters.Count > 0 ? ", " : string.Empty;
 
-                sb.Append($"((delegate* unmanaged[Stdcall]<{signatureNameless}, {retType}>)({ptr}))(ptr{tail}");
+                builder.Append(sb);
+                builder.Append($"((delegate* unmanaged[Stdcall]<{signatureNamelessCompat}, {overload.ReturnType.Name}>)({ptr}))((nint)ptr{tail}");
+                sb.Append($"((delegate* unmanaged[Stdcall]<{signatureNameless}, {overload.ReturnType.Name}>)({ptr}))(ptr{tail}");
+                int start = sb.Length;
 
                 Stack<(string, CsParameterInfo, string)> stack = new();
                 int strings = 0;
                 Stack<string> arrays = new();
                 int stacks = 0;
+
+                void Append(string str)
+                {
+                    sb.Append(str);
+                    builder.Append(str);
+                }
+
+                void AppendD(string str, string compat)
+                {
+                    sb.Append(str);
+                    builder.Append(compat);
+                }
 
                 for (int i = 0; i < overload.Parameters.Count - offset; i++)
                 {
@@ -400,23 +439,30 @@
                         var paramCsDefault = cppParameter.DefaultValue!;
                         if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
                         {
-                            sb.Append($"(string){paramCsDefault}");
+                            Append($"(string){paramCsDefault}");
                         }
                         else if (cppParameter.Type.IsBool && !cppParameter.Type.IsPointer && !cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({config.GetBoolType()})({paramCsDefault})");
+                            Append($"({config.GetBoolType()})({paramCsDefault})");
                         }
                         else if (rootParam.Type.IsEnum)
                         {
-                            sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
+                            Append($"({rootParam.Type.Name})({paramCsDefault})");
                         }
                         else if (cppParameter.Type.IsPrimitive || cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
                         {
-                            sb.Append($"({rootParam.Type.Name})({paramCsDefault})");
+                            if (cppParameter.Type.IsPointer || cppParameter.Type.IsArray)
+                            {
+                                AppendD($"({rootParam.Type.Name})({paramCsDefault})", $"(nint)({paramCsDefault})");
+                            }
+                            else
+                            {
+                                Append($"({rootParam.Type.Name})({paramCsDefault})");
+                            }
                         }
                         else
                         {
-                            sb.Append($"{paramCsDefault}");
+                            Append($"{paramCsDefault}");
                         }
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.String))
@@ -424,7 +470,7 @@
                         if (paramFlags.HasFlag(ParameterFlags.Array))
                         {
                             MarshalHelper.WriteStringArrayConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, arrays.Count);
-                            sb.Append($"pStrArray{arrays.Count}");
+                            AppendD($"pStrArray{arrays.Count}", $"(nint)pStrArray{arrays.Count}");
                             arrays.Push(cppParameter.Name);
                         }
                         else
@@ -435,14 +481,20 @@
                             }
 
                             MarshalHelper.WriteStringConvertToUnmanaged(writer, cppParameter.Type, cppParameter.Name, strings);
-                            sb.Append($"pStr{strings}");
+                            AppendD($"pStr{strings}", $"(nint)pStr{strings}");
                             strings++;
                         }
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Ref))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = &{cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
+                        AppendD($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}", $"(nint)p{cppParameter.Name}");
+                        stacks++;
+                    }
+                    else if (paramFlags.HasFlag(ParameterFlags.Span))
+                    {
+                        writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name.Replace("@", string.Empty)} = {cppParameter.Name})");
+                        AppendD($"({overload.Parameters[i + 0].Type.Name})p{cppParameter.Name}", $"(nint)p{cppParameter.Name}");
                         stacks++;
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Out))
@@ -450,55 +502,66 @@
                         writer.WriteLine($"{cppParameter.Name} = default;");
                         if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                         {
-                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                            AppendD($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()", $"(nint){cppParameter.Name}.GetAddressOf()");
                         }
                         else
                         {
-                            sb.Append($"out {cppParameter.Name}");
+                            Append($"out {cppParameter.Name}");
                         }
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Array))
                     {
                         writer.BeginBlock($"fixed ({cppParameter.Type.CleanName}* p{cppParameter.Name} = {cppParameter.Name})");
-                        sb.Append($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}");
+                        AppendD($"({overload.Parameters[i + offset].Type.Name})p{cppParameter.Name}", $"(nint)p{cppParameter.Name}");
                         stacks++;
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
-                        sb.Append($"{cppParameter.Name} ? ({config.GetBoolType()} )1 : ( {config.GetBoolType()})0");
+                        Append($"{cppParameter.Name} ? ({config.GetBoolType()} )1 : ( {config.GetBoolType()})0");
                     }
                     else if (paramFlags.HasFlag(ParameterFlags.COMPtr))
                     {
                         if (paramFlags.HasFlag(ParameterFlags.Ref))
                         {
-                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()");
+                            AppendD($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.GetAddressOf()", $"(nint){cppParameter.Name}.GetAddressOf()");
                         }
                         else
                         {
-                            sb.Append($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.Handle");
+                            AppendD($"({overload.Parameters[i + 0].Type.Name}){cppParameter.Name}.Handle", $"(nint){cppParameter.Name}.Handle");
                         }
                     }
                     else
                     {
-                        sb.Append(cppParameter.Name);
+                        if (cppParameter.Type.IsPointer)
+                        {
+                            AppendD(cppParameter.Name, $"(nint){cppParameter.Name}");
+                        }
+                        else
+                        {
+                            Append(cppParameter.Name);
+                        }
                     }
 
                     if (i != overload.Parameters.Count - 1 - offset)
                     {
-                        sb.Append(", ");
+                        Append(", ");
                     }
                 }
 
                 if (csReturnType.IsString)
                 {
-                    sb.Append("));");
+                    Append("));");
                 }
                 else
                 {
-                    sb.Append(");");
+                    Append(");");
                 }
 
+                writer.WriteLine("#if NET5_0_OR_GREATER");
                 writer.WriteLine(sb.ToString());
+                writer.WriteLine("#else");
+                writer.WriteLine(builder.ToString());
+                writer.WriteLine("#endif");
 
                 while (stack.TryPop(out var stackItem))
                 {

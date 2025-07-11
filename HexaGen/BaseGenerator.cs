@@ -6,8 +6,7 @@
 
         public BaseGenerator(CsCodeGeneratorConfig settings)
         {
-            this.config = settings;
-            settings.TypeMappings.Add("HRESULT", "HResult");
+            config = settings;
         }
 
         public CsCodeGeneratorConfig Settings => config;

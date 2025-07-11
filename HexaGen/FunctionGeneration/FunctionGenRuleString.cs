@@ -3,23 +3,24 @@
     using CppAst;
     using HexaGen;
     using HexaGen.Core.CSharp;
+    using HexaGen.Core.Mapping;
     using System.Collections.Generic;
 
     public class FunctionGenRuleString : FunctionGenRule
     {
-        public override CsParameterInfo CreateParameter(CppParameter cppParameter, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
+        public override CsParameterInfo CreateParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
         {
-            if (cppParameter.Type is CppArrayType arrayType && arrayType.ElementType.IsString())
+            if (cppParameter.Type is CppArrayType arrayType && arrayType.ElementType.IsString(settings, out var stringKind0))
             {
-                return new(csParamName, cppParameter.Type, new("string[]", kind), direction);
+                return new(csParamName, cppParameter.Type, new("string[]", stringKind0), direction);
             }
 
-            if (cppParameter.Type.IsString())
+            if (cppParameter.Type.IsString(settings, out var stringKind1))
             {
-                return new(csParamName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", kind), direction);
+                return new(csParamName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", stringKind1), direction);
             }
 
-            return CreateDefaultWrapperParameter(cppParameter, csParamName, kind, direction, settings);
+            return CreateDefaultWrapperParameter(cppParameter, mapping, csParamName, kind, direction, settings);
         }
     }
 }

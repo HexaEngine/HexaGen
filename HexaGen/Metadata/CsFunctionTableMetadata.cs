@@ -1,9 +1,10 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen.Core;
     using System.Collections.Frozen;
-    using System.Text.Json.Serialization;
+    
 
-    public class CsFunctionTableMetadata
+    public class CsFunctionTableMetadata : GeneratorMetadataEntry, ICloneable<CsFunctionTableMetadata>
     {
         [JsonConstructor]
         public CsFunctionTableMetadata(List<CsFunctionTableEntry> entries)
@@ -48,9 +49,22 @@
             }
         }
 
-        public CsFunctionTableMetadata Clone()
+        CsFunctionTableMetadata ICloneable<CsFunctionTableMetadata>.Clone()
         {
             return new(Entries.Select(x => x.Clone()).ToList());
+        }
+
+        public override GeneratorMetadataEntry Clone()
+        {
+            return new CsFunctionTableMetadata(Entries.Select(x => x.Clone()).ToList());
+        }
+
+        public override void Merge(GeneratorMetadataEntry from, in MergeOptions options)
+        {
+            if (options.MergeFunctionTable && from is CsFunctionTableMetadata metadata)
+            {
+                Merge(metadata);
+            }
         }
     }
 }

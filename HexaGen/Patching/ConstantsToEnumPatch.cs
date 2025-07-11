@@ -20,8 +20,9 @@ namespace HexaGen.Patching
             this.extra = extra ?? [];
         }
 
-        protected override void PatchCompilation(CsCodeGeneratorConfig settings, CppCompilation compilation)
+        protected override void PatchCompilation(CsCodeGeneratorConfig settings, ParseResult result)
         {
+            var compilation = result.Compilation;
             List<CppMacro> keyEnums = [];
             HashSet<string> itemNames = [];
             foreach (var macro in compilation.Macros)
@@ -31,7 +32,6 @@ namespace HexaGen.Patching
                 {
                     keyEnums.Add(macro);
                     itemNames.Add(macro.Name);
-                    settings.IgnoredConstants.Add(macro.Name);
                 }
             }
 
@@ -45,9 +45,12 @@ namespace HexaGen.Patching
                 var itemName = settings.GetEnumName(macro.Name, prefix);
 
                 string csValue = macro.Value;
-                if (csValue.IsNumeric(NumberParseOptions.All))
+                if (csValue.IsNumeric(out var numberType, NumberParseOptions.All))
                 {
-                    // nothing to do.
+                    if (numberType == NumberType.AnyFloat)
+                    {
+                        continue;
+                    }
                 }
                 else if (csValue.IsConstantExpression())
                 {
@@ -76,6 +79,7 @@ namespace HexaGen.Patching
 
                 CsEnumItemMetadata itemMeta = new(macro.Name, macro.Value, itemName, csValue, [], null);
                 metadata.Items.Add(itemMeta);
+                settings.IgnoredConstants.Add(macro.Name);
             }
             settings.CustomEnums.Add(metadata);
         }

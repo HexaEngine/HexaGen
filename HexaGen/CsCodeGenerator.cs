@@ -7,6 +7,8 @@
     using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
+    using HexaGen.PreProcessSteps;
+    using System.Collections.Frozen;
     using System.Text;
     using System.Text.Json;
 
@@ -31,6 +33,9 @@
         public CsCodeGenerator(CsCodeGeneratorConfig config, FunctionGenerator functionGenerator) : base(config)
         {
             funcGen = functionGenerator;
+
+            PreProcessSteps.Add(new ConstantPreProcessStep(this, config));
+
             GenerationSteps.Add(new EnumGenerationStep(this, config));
             GenerationSteps.Add(new ConstantGenerationStep(this, config));
             GenerationSteps.Add(new HandleGenerationStep(this, config));
@@ -48,6 +53,8 @@
 
         public List<GenerationStep> GenerationSteps { get; } = new();
 
+        public List<PreProcessStep> PreProcessSteps { get; } = new();
+
         public T GetGenerationStep<T>() where T : GenerationStep
         {
             foreach (var step in GenerationSteps)
@@ -61,6 +68,18 @@
             throw new InvalidOperationException($"Step of type '{typeof(T)}' was not found.");
         }
 
+        public void OverwriteGenerationStep<TTarget>(GenerationStep newStep) where TTarget : GenerationStep
+        {
+            for (int i = 0; i < GenerationSteps.Count; i++)
+            {
+                GenerationStep step = GenerationSteps[i];
+                if (step is TTarget)
+                {
+                    GenerationSteps[i] = newStep;
+                }
+            }
+        }
+
         protected virtual CppParserOptions PrepareSettings()
         {
             var options = new CppParserOptions
@@ -68,7 +87,9 @@
                 ParseMacros = true,
                 ParseComments = true,
                 ParseSystemIncludes = true,
+
                 ParseAsCpp = true,
+
                 AutoSquashTypedef = config.AutoSquashTypedef,
             };
 
@@ -98,25 +119,49 @@
             return options;
         }
 
-        public virtual bool Generate(string headerFile, string outputPath)
+        public virtual bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFile(headerFile, options);
 
-            return Generate(compilation, [headerFile], outputPath);
+            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(List<string> headerFiles, string outputPath)
+        public virtual bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            LogInfo($"Generating: {config.ApiName}");
             var options = PrepareSettings();
 
+            LogInfo("Parsing Headers...");
             var compilation = CppParser.ParseFiles(headerFiles, options);
 
-            return Generate(compilation, headerFiles, outputPath);
+            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
         }
 
-        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
+        public virtual bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        {
+            LogInfo($"Generating: {config.ApiName}");
+
+            LogInfo("Parsing Headers...");
+            var compilation = CppParser.ParseFile(headerFile, parserOptions);
+
+            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
+        }
+
+        public virtual bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        {
+            LogInfo($"Generating: {config.ApiName}");
+
+            LogInfo("Parsing Headers...");
+            var compilation = CppParser.ParseFiles(headerFiles, parserOptions);
+
+            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
+        }
+
+        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
             metadata = new();
             Directory.CreateDirectory(outputPath);
@@ -143,11 +188,30 @@
                 return false;
             }
 
+            allowedHeaders ??= [];
+            allowedHeaders.AddRange(headerFiles);
+
+            FileSet files = new(allowedHeaders.Select(PathHelper.GetPath));
+
+            LogInfo($"Configuring Pre-Processing Steps...");
+            foreach (var step in PreProcessSteps)
+            {
+                step.Configure(config);
+            }
+
+            LogInfo("Running Pre-Processing Steps...");
+
+            ParseResult result = new(compilation);
+            foreach (var step in PreProcessSteps)
+            {
+                step.PreProcess(files, compilation, config, metadata, result);
+            }
+
             configComposer.LogEvent += Log;
             configComposer.Compose(config);
             configComposer.LogEvent -= Log;
             LogInfo("Applying Pre-Patches...");
-            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, result);
 
             config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
             wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
@@ -164,7 +228,7 @@
                 if (step.Enabled)
                 {
                     LogInfo($"Generating {step.Name}...");
-                    step.Generate(compilation, outputPath, config, metadata);
+                    step.Generate(files, result, outputPath, config, metadata);
                     step.CopyToMetadata(metadata);
                 }
             }

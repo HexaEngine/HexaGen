@@ -16,7 +16,7 @@
             context.Writer.WriteLine($"{cppParameter.Name} = default;");
             if (paramFlags.HasFlag(ParameterFlags.COMPtr))
             {
-                context.AppendParam($"({cppParameter.Type.Name}){cppParameter.Name}.GetAddressOf()");
+                context.AppendParam($"({rootParameter.Type.Name}){cppParameter.Name}.GetAddressOf()");
             }
             else
             {

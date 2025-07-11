@@ -315,23 +315,45 @@
             return false;
         }
 
-        public static bool IsString(this CppType cppType, bool isPointer = false)
+        public static bool IsString(this CppType cppType, CsCodeGeneratorConfig config, out CppPrimitiveKind stringKind, bool isPointer = false)
         {
             if (cppType is CppPointerType pointer && !isPointer)
             {
-                return IsString(pointer.ElementType, true);
+                return IsString(pointer.ElementType, config, out stringKind, true);
             }
 
             if (cppType is CppQualifiedType qualified)
             {
-                return IsString(qualified.ElementType, isPointer);
+                return IsString(qualified.ElementType, config, out stringKind, isPointer);
+            }
+
+            if (cppType is CppTypedef typedef)
+            {
+                if (config.TypeMappings.TryGetValue(typedef.Name, out var type))
+                {
+                    if (!isPointer && type == "char*")
+                    {
+                        stringKind = CppPrimitiveKind.WChar;
+                        return true;
+                    }
+                    if (!isPointer && type == "byte*")
+                    {
+                        stringKind = CppPrimitiveKind.Char;
+                        return true;
+                    }
+                    stringKind = CppPrimitiveKind.Void;
+                    return false;
+                }
+                return IsString(typedef.ElementType, config, out stringKind, isPointer);
             }
 
             if (isPointer && cppType is CppPrimitiveType primitive)
             {
+                stringKind = primitive.Kind;
                 return primitive.Kind == CppPrimitiveKind.WChar || primitive.Kind == CppPrimitiveKind.Char;
             }
 
+            stringKind = CppPrimitiveKind.Void;
             return false;
         }
 
@@ -416,6 +438,11 @@
             if (cppType is CppQualifiedType qualified)
             {
                 return GetPrimitiveKind(qualified.ElementType, isPointer);
+            }
+
+            if (cppType is CppTypedef typedef)
+            {
+                return GetPrimitiveKind(typedef.ElementType, isPointer);
             }
 
             if (isPointer && cppType is CppPrimitiveType primitive)

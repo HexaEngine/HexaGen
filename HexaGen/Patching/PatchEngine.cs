@@ -109,7 +109,7 @@
 
         private JsonSerializerOptions options = new() { WriteIndented = true };
 
-        public void ApplyPrePatches(CsCodeGeneratorConfig settings, string outputDir, List<string> files, CppCompilation compilation)
+        public void ApplyPrePatches(CsCodeGeneratorConfig settings, string outputDir, List<string> files, ParseResult result)
         {
             PatchContext? last = null;
             for (int i = 0; i < preGenerationPatches.Count; i++)
@@ -125,7 +125,7 @@
                     context.CopyFromInput(outputDir, files);
                 }
 
-                patch.Apply(context, settings, files, compilation);
+                patch.Apply(context, settings, files, result);
                 context.WriteFile("settings.json", JsonSerializer.Serialize(settings, options));
             }
 
@@ -160,7 +160,7 @@
 
     public interface IPrePatch : IPatch
     {
-        void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, CppCompilation compilation);
+        void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, ParseResult compilation);
     }
 
     public interface IPostPatch : IPatch
@@ -177,35 +177,36 @@
             regexPatches.Add(patch);
         }
 
-        public virtual void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, CppCompilation compilation)
+        public virtual void Apply(PatchContext context, CsCodeGeneratorConfig settings, List<string> files, ParseResult result)
         {
-            PatchFiles(context, settings, compilation, files);
+            PatchFiles(context, settings, result, files);
 
-            PatchCompilation(settings, compilation);
+            PatchCompilation(settings, result);
         }
 
-        protected virtual void PatchFiles(PatchContext context, CsCodeGeneratorConfig settings, CppCompilation compilation, List<string> files)
+        protected virtual void PatchFiles(PatchContext context, CsCodeGeneratorConfig settings, ParseResult result, List<string> files)
         {
             foreach (var file in files)
             {
-                PatchFile(context, settings, compilation, file);
+                PatchFile(context, settings, result, file);
             }
         }
 
-        protected virtual void PatchFile(PatchContext context, CsCodeGeneratorConfig settings, CppCompilation compilation, string file)
+        protected virtual void PatchFile(PatchContext context, CsCodeGeneratorConfig settings, ParseResult result, string file)
         {
             var text = File.ReadAllText(file);
 
             foreach (var patch in regexPatches)
             {
-                patch.PrePatch(settings, compilation, file, ref text);
+                patch.PrePatch(settings, result, file, ref text);
             }
 
             File.WriteAllText(file, text);
         }
 
-        protected virtual void PatchCompilation(CsCodeGeneratorConfig settings, CppCompilation compilation)
+        protected virtual void PatchCompilation(CsCodeGeneratorConfig settings, ParseResult result)
         {
+            var compilation = result.Compilation;
             foreach (var type in compilation.Classes)
             {
                 PatchClass(settings, type);
@@ -272,7 +273,7 @@
             this.targetFile = targetFile;
         }
 
-        public virtual void PrePatch(CsCodeGeneratorConfig settings, CppCompilation compilation, string file, ref string text)
+        public virtual void PrePatch(CsCodeGeneratorConfig settings, ParseResult result, string file, ref string text)
         {
             if (targetFile != null && file != targetFile)
             {
@@ -283,11 +284,11 @@
 
             foreach (Match match in matches)
             {
-                PrePatchMatch(settings, compilation, ref text, match);
+                PrePatchMatch(settings, result, ref text, match);
             }
         }
 
-        protected virtual void PrePatchMatch(CsCodeGeneratorConfig settings, CppCompilation compilation, ref string text, Match match)
+        protected virtual void PrePatchMatch(CsCodeGeneratorConfig settings, ParseResult result, ref string text, Match match)
         {
         }
 

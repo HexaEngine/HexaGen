@@ -13,7 +13,17 @@
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            context.AppendParam($"({cppParameter.Type.Name}){cppParameter.Name}.GetAddressOf()");
+            int count = rootParameter.Type.Name.AsSpan().Count('*');
+            switch (count)
+            {
+                case 1:
+                    context.AppendParam($"({rootParameter.Type.Name}){cppParameter.Name}.Handle");
+                    break;
+
+                default:
+                    context.AppendParam($"({rootParameter.Type.Name}){cppParameter.Name}.GetAddressOf()");
+                    break;
+            }
         }
     }
 }

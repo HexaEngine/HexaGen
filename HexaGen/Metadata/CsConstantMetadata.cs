@@ -1,23 +1,25 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen;
     using HexaGen.Core;
-    using System.Text.Json.Serialization;
 
-    public class CsConstantMetadata : IHasIdentifier
+    public class CsConstantMetadata : IHasIdentifier, ICloneable<CsConstantMetadata>
     {
-        public CsConstantMetadata(string cppName, string cppValue)
+        public CsConstantMetadata(string cppName, string cppValue, CsConstantType type)
         {
             CppName = cppName;
             CppValue = cppValue;
+            Type = type;
         }
 
         [JsonConstructor]
-        public CsConstantMetadata(string cppName, string cppValue, string? name, string? value, string? comment)
+        public CsConstantMetadata(string cppName, string cppValue, string? name, string? value, CsConstantType type, string? comment)
         {
             CppName = cppName;
             CppValue = cppValue;
             Name = name;
             Value = value;
+            Type = type;
             Comment = comment;
         }
 
@@ -33,6 +35,10 @@
 
         public string? Value { get; set; }
 
+        public CsConstantType Type { get; set; }
+
+        public string? CustomType { get; set; }
+
         public string? Comment { get; set; }
 
         public override int GetHashCode()
@@ -47,7 +53,7 @@
 
         public CsConstantMetadata Clone()
         {
-            return new CsConstantMetadata(CppName, CppValue, Name, Value, Comment);
+            return new CsConstantMetadata(CppName, CppValue, Name, Value, Type, Comment);
         }
     }
 }

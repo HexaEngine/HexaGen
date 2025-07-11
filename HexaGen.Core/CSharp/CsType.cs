@@ -1,7 +1,6 @@
 ﻿namespace HexaGen.Core.CSharp
 {
     using CppAst;
-    using System.Text.Json.Serialization;
 
     public class CsType : ICloneable<CsType>
     {
@@ -153,6 +152,10 @@
             {
                 return Name.Replace("ref ", string.Empty);
             }
+            if (IsOut)
+            {
+                return Name.Replace("out ", string.Empty);
+            }
             if (IsSpan)
             {
                 var temp = Name.AsSpan();
@@ -195,6 +198,8 @@
                 CppPrimitiveKind.Float => CsPrimitiveType.Float,
                 CppPrimitiveKind.Double => CsPrimitiveType.Double,
                 CppPrimitiveKind.LongDouble => CsPrimitiveType.Double,
+                CppPrimitiveKind.UnsignedLong => CsPrimitiveType.UInt,
+                CppPrimitiveKind.Long => CsPrimitiveType.Int,
 
                 _ => throw new NotSupportedException($"The kind '{kind}' is not supported"),
             };

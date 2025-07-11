@@ -2,6 +2,7 @@
 {
     using CppAst;
     using HexaGen.Metadata;
+    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.IO;
 
@@ -71,8 +72,9 @@
             return true;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, ParseResult result, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
+            var compilation = result.Compilation;
             string folder = Path.Combine(outputPath, "Handles");
             if (Directory.Exists(folder))
             {
@@ -85,13 +87,16 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typedef = compilation.Typedefs[i];
+                    if (!files.Contains(typedef.SourceFile))
+                        continue;
+
                     var handle = ParseHandle(typedef);
                     if (FilterHandle(null, handle))
                         continue;
 
                     string filePath = Path.Combine(folder, $"{handle.Name}.cs");
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector);
-                    GenContext context = new(compilation, filePath, writer);
+                    GenContext context = new(result, filePath, writer);
                     WriteHandle(context, handle);
                 }
             }
@@ -99,11 +104,14 @@
             {
                 string filePath = Path.Combine(folder, "Handles.cs");
                 using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupHandleUsings(), config.HeaderInjector, 1);
-                GenContext context = new(compilation, filePath, writer);
+                GenContext context = new(result, filePath, writer);
 
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typedef = compilation.Typedefs[i];
+                    if (!files.Contains(typedef.SourceFile))
+                        continue;
+
                     var handle = ParseHandle(typedef);
                     if (FilterHandle(context, handle))
                         continue;
