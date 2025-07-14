@@ -262,6 +262,15 @@
                     return cppEnum.Name;
                 }
 
+                if (TypeMappings.TryGetValue(typedef.Name, out var typeMapping))
+                {
+                    if (isPointer)
+                    {
+                        return $"{typeMapping}*";
+                    }
+                    return typeMapping;
+                }
+
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)
                 {
                     var csPrimitiveName = GetCsTypeNameInternal(cppPrimitive);
