@@ -381,18 +381,26 @@
                 {
                     int depth = depths[j];
                     LogDebug("used as pointer: " + cppClass.Name + ", depth: " + depth);
-                    StringBuilder sb1 = new();
-                    StringBuilder sb2 = new();
-                    sb1.Append(csName);
-                    sb2.Append(csName);
+                    StringBuilder sbHandleType = new();
+                    StringBuilder sbPointerType = new();
+                    sbHandleType.Append(csName);
+                    sbPointerType.Append(csName);
                     for (int jj = 0; jj < depth; jj++)
                     {
-                        sb1.Append("Ptr");
-                        sb2.Append('*');
+                        sbHandleType.Append("Ptr");
+                        sbPointerType.Append('*');
                     }
 
-                    WriteStructHandle(context, cppClass, mapping, sb1.ToString(), sb2.ToString());
-                    WrappedPointers.Add(sb2.ToString(), sb1.ToString());
+                    var pointerType = sbPointerType.ToString();
+                    var handleType = sbHandleType.ToString();
+                    if (!WrappedPointers.TryAdd(pointerType, handleType))
+                    {
+                        LogError($"Conflicting pointer handle mapping: key '{pointerType}' already exists with value '{WrappedPointers[pointerType]}', attempted to add value '{handleType}'.");
+                    }
+                    else
+                    {
+                        WriteStructHandle(context, cppClass, mapping, handleType, pointerType);
+                    }
                 }
             }
         }
