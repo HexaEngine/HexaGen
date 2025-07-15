@@ -1,8 +1,8 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Batteries.Legacy.Steps;
     using HexaGen.FunctionGeneration;
-    using HexaGen.GenerationSteps;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -10,16 +10,8 @@
 
     public partial class CsComCodeGenerator : CsCodeGenerator
     {
-        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings, FunctionGenerator.CreateForCOM(settings))
+        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings)
         {
-            GenerationSteps.Clear();
-            GenerationSteps.Add(new ComEnumGenerationStep(this, config));
-            GenerationSteps.Add(new ComConstantGenerationStep(this, config));
-            GenerationSteps.Add(new ComHandleGenerationStep(this, config));
-            GenerationSteps.Add(new ComTypeGenerationStep(this, config));
-            GenerationSteps.Add(new ComFunctionGenerationStep(this, config));
-            GenerationSteps.Add(new ComExtensionGenerationStep(this, config));
-            GenerationSteps.Add(new ComDelegateGenerationStep(this, config));
         }
 
         private readonly List<(string, Guid)> _guids = [];
@@ -100,31 +92,27 @@
             }
         }
 
-        public override bool Generate(List<string> headerFiles, string outputPath)
+        protected override void ConfigureGeneratorCore(List<GenerationStep> generationSteps, out FunctionGenerator functionGenerator)
         {
-            var options = PrepareSettings();
+            functionGenerator = FunctionGenerator.CreateForCOM(config);
+            generationSteps.Add(new ComEnumGenerationStep(this, config));
+            generationSteps.Add(new ComConstantGenerationStep(this, config));
+            generationSteps.Add(new ComHandleGenerationStep(this, config));
+            generationSteps.Add(new ComTypeGenerationStep(this, config));
+            generationSteps.Add(new ComFunctionGenerationStep(this, config));
+            generationSteps.Add(new ComExtensionGenerationStep(this, config));
+            generationSteps.Add(new ComDelegateGenerationStep(this, config));
+        }
 
-            for (int i = 0; i < headerFiles.Count; i++)
+        protected override CppCompilation ParseFiles(List<string> cppFiles)
+        {
+            for (int i = 0; i < cppFiles.Count; i++)
             {
-                string text = File.ReadAllText(headerFiles[i]);
+                string text = File.ReadAllText(cppFiles[i]);
                 ExtractGuids(text);
             }
 
-            CppCompilation compilation = CppParser.ParseFiles(headerFiles, options);
-
-            return Generate(compilation, headerFiles, outputPath);
-        }
-
-        public override bool Generate(string headerFile, string outputPath)
-        {
-            var options = PrepareSettings();
-
-            string text = File.ReadAllText(headerFile);
-            ExtractGuids(text);
-
-            CppCompilation compilation = CppParser.ParseFile(headerFile, options);
-
-            return Generate(compilation, [headerFile], outputPath);
+            return base.ParseFiles(cppFiles);
         }
     }
 }

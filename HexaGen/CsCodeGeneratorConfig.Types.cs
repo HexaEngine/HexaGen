@@ -529,6 +529,15 @@
                     return cppEnum.Name;
                 }
 
+                if (TypeMappings.TryGetValue(typedef.Name, out var typeMapping))
+                {
+                    if (isPointer)
+                    {
+                        return $"{typeMapping}*";
+                    }
+                    return typeMapping;
+                }
+
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)
                 {
                     var csPrimitiveName = GetCsWrapperTypeNameInternal(cppPrimitive);
@@ -621,7 +630,7 @@
                     return isPointer ? "ref int" : "int";
 
                 case CppPrimitiveKind.LongLong:
-                    break;
+                    return isPointer ? "ref long" : "long";
 
                 case CppPrimitiveKind.UnsignedChar:
                     return isPointer ? "ref byte" : "byte";
@@ -633,7 +642,7 @@
                     return isPointer ? "ref uint" : "uint";
 
                 case CppPrimitiveKind.UnsignedLongLong:
-                    break;
+                    return isPointer ? "ref ulong" : "ulong";
 
                 case CppPrimitiveKind.Float:
                     return isPointer ? "ref float" : "float";
@@ -776,6 +785,15 @@
                     if (isPointer)
                         return cppEnum.Name + "*";
                     return cppEnum.Name;
+                }
+
+                if (TypeMappings.TryGetValue(typedef.Name, out var typeMapping))
+                {
+                    if (isPointer)
+                    {
+                        return $"{typeMapping}*";
+                    }
+                    return typeMapping;
                 }
 
                 if (typedef.ElementType is CppPrimitiveType cppPrimitive)

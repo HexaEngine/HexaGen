@@ -1,4 +1,4 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
     using CppAst;
     using HexaGen.Core.CSharp;
@@ -65,7 +65,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string filePath = Path.Combine(outputPath, "Extensions.cs");
 

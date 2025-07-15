@@ -1,4 +1,4 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
     using System.Collections.Generic;
 

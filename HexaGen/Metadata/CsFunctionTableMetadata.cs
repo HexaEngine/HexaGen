@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Metadata
 {
     using System.Collections.Frozen;
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
 
     public class CsFunctionTableMetadata
     {

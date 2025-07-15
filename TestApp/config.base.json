@@ -1,0 +1,7 @@
+{
+  "IgnoredTypes": [ "a", "b" ],
+  "UseCustomContext": true,
+  "GenerateExtensions": false,
+  "ImportType": "FunctionTable",
+  "Usings": [ "S" ]
+}

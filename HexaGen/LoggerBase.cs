@@ -75,8 +75,8 @@
 
         public void Log(LogSeverity severtiy, string message)
         {
-            if (severtiy >= LogLevel)
-                messages.Add(new LogMessage(severtiy, message));
+            if (severtiy < LogLevel) return;
+            messages.Add(new LogMessage(severtiy, message));
             LogEvent?.Invoke(severtiy, message);
         }
 

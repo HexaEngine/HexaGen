@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Core.Mapping
 {
     using System.Diagnostics.CodeAnalysis;
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
 
     public class EnumMapping
     {

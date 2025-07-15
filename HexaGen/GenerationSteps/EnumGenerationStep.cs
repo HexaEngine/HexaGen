@@ -1,5 +1,6 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.Mapping;
@@ -99,7 +100,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Enums");
             if (Directory.Exists(folder))
@@ -114,6 +115,8 @@
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
                     CppEnum cppEnum = compilation.Enums[i];
+                    if (!files.Contains(cppEnum.SourceFile))
+                        continue;
 
                     var csEnum = ParseEnum(cppEnum, cppEnum);
                     if (FilterEnum(null, csEnum))
@@ -126,6 +129,9 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typeDef = compilation.Typedefs[i];
+                    if (!files.Contains(typeDef.SourceFile))
+                        continue;
+
                     if (!typeDef.IsEnum(out var cppEnum))
                     {
                         continue;
@@ -154,6 +160,9 @@
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
                     CppEnum cppEnum = compilation.Enums[i];
+                    if (!files.Contains(cppEnum.SourceFile))
+                        continue;
+
                     var csEnum = ParseEnum(cppEnum, cppEnum);
                     if (FilterEnum(context, csEnum))
                     {
@@ -165,6 +174,10 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typeDef = compilation.Typedefs[i];
+
+                    if (!files.Contains(typeDef.SourceFile))
+                        continue;
+
                     if (!typeDef.IsEnum(out var cppEnum))
                     {
                         continue;

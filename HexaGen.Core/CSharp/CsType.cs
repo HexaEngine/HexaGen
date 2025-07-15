@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Core.CSharp
 {
     using CppAst;
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
 
     public class CsType : ICloneable<CsType>
     {

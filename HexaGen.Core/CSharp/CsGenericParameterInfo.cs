@@ -1,6 +1,6 @@
 ﻿namespace HexaGen.Core.CSharp
 {
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
 
     public class CsGenericParameterInfo : ICloneable<CsGenericParameterInfo>
     {

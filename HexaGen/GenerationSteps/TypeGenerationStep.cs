@@ -1,5 +1,6 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
@@ -18,13 +19,10 @@
         public readonly Dictionary<string, string> WrappedPointers = new();
         public readonly Dictionary<string, HashSet<CsFunctionVariation>> MemberFunctions = new();
 
-        private readonly CsCodeGenerator csGenerator;
-        protected readonly FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen = null!;
 
         public TypeGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
-            csGenerator = generator;
-            funcGen = generator.FunctionGenerator;
         }
 
         public override string Name { get; } = "Types";
@@ -32,6 +30,7 @@
         public override void Configure(CsCodeGeneratorConfig config)
         {
             Enabled = config.GenerateTypes;
+            funcGen = generator.FunctionGenerator;
         }
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
@@ -96,7 +95,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Structs");
             if (Directory.Exists(folder))
@@ -111,10 +110,12 @@
             {
                 // Generate Structures
 
-                // Print All classes, structs
                 for (int i = 0; i < compilation.Classes.Count; i++)
                 {
                     CppClass cppClass = compilation.Classes[i];
+                    if (!files.Contains(cppClass.SourceFile))
+                        continue;
+
                     if (FilterType(null, cppClass, out var mapping, out var csNameDefault))
                         continue;
                     string filePath = Path.Combine(folder, $"{csNameDefault}.cs");
@@ -125,7 +126,7 @@
 
                     if (config.WrapPointersAsHandle)
                     {
-                        WriteHandle(context, compilation.Classes[i]);
+                        WriteHandle(context, cppClass);
                     }
                 }
             }
@@ -141,6 +142,9 @@
                 for (int i = 0; i < compilation.Classes.Count; i++)
                 {
                     CppClass cppClass = compilation.Classes[i];
+                    if (!files.Contains(cppClass.SourceFile))
+                        continue;
+
                     if (FilterType(context, cppClass, out var mapping, out var csNameDefault))
                         continue;
 
@@ -148,7 +152,7 @@
 
                     if (config.WrapPointersAsHandle)
                     {
-                        WriteHandle(context, compilation.Classes[i]);
+                        WriteHandle(context, cppClass);
                     }
                 }
             }
@@ -395,7 +399,7 @@
                     var handleType = sbHandleType.ToString();
                     if (!WrappedPointers.TryAdd(pointerType, handleType))
                     {
-                        LogError($"Conflicting pointer handle mapping: key '{pointerType}' already exists with value '{WrappedPointers[pointerType]}', attempted to add value '{handleType}'.");
+                        LogInfo($"Conflicting pointer handle mapping: key '{pointerType}' already exists with value '{WrappedPointers[pointerType]}', attempted to add value '{handleType}'.");
                     }
                     else
                     {
@@ -428,7 +432,7 @@
         {
             var writer = context.Writer;
             CsType returnType = variation.ReturnType;
-            csGenerator.PrepareArgs(variation, returnType);
+            generator.PrepareArgs(variation, returnType);
 
             string header = variation.BuildFullConstructorSignature(config.GenerateMetadata);
             string id = variation.BuildConstructorSignatureIdentifier();
@@ -897,7 +901,7 @@
                 CppFunction cppFunction = CsCodeGenerator.FindFunction(context.Compilation, functions[i]);
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
 
-                CsFunction function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
+                CsFunction function = generator.CreateCsFunction(cppFunction, CsFunctionKind.Member, csFunctionName, commands, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
 
                 bool useThisRef = false;

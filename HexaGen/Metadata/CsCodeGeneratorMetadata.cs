@@ -2,8 +2,9 @@
 {
     using HexaGen.Core.CSharp;
     using Microsoft.CodeAnalysis.CSharp;
-    using System.Text.Json;
-    using System.Text.Json.Serialization;
+
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     public class CsCodeGeneratorMetadata
     {
@@ -78,22 +79,26 @@
             }
         }
 
-        private static readonly JsonSerializerOptions options = new(JsonSerializerDefaults.General)
+        private static readonly JsonSerializerSettings options = new()
         {
-            WriteIndented = true,
-            Converters = { new JsonStringEnumConverter() }
+            Formatting = Formatting.Indented,
+            Converters = { new StringEnumConverter() }
         };
+
+        private static readonly JsonSerializer serializer = JsonSerializer.Create(options);
 
         public void Save(string path)
         {
-            using var fs = File.Create(path);
-            JsonSerializer.Serialize(fs, this, options);
+            using var fs = File.CreateText(path);
+            using JsonTextWriter writer = new(fs);
+            serializer.Serialize(writer, this);
         }
 
         public static CsCodeGeneratorMetadata Load(string path)
         {
-            using var fs = File.OpenRead(path);
-            return (CsCodeGeneratorMetadata?)JsonSerializer.Deserialize(fs, typeof(CsCodeGeneratorMetadata), options) ?? new();
+            using var fs = File.OpenText(path);
+            using JsonTextReader reader = new(fs);
+            return serializer.Deserialize<CsCodeGeneratorMetadata>(reader) ?? new();
         }
     }
 

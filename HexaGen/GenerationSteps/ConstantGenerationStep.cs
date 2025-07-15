@@ -1,4 +1,4 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
     using CppAst;
     using HexaGen.Core;
@@ -75,7 +75,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Constants");
             if (Directory.Exists(folder))
@@ -91,6 +91,9 @@
             {
                 for (int i = 0; i < compilation.Macros.Count; i++)
                 {
+                    if (!files.Contains(compilation.Macros[i].SourceFile))
+                        continue;
+
                     WriteConstant(context, ParseConstant(compilation.Macros[i]));
                 }
             }

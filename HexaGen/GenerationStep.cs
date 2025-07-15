@@ -21,7 +21,7 @@
 
         public abstract void Configure(CsCodeGeneratorConfig config);
 
-        public abstract void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata);
+        public abstract void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata);
 
         public abstract void CopyToMetadata(CsCodeGeneratorMetadata metadata);
 

@@ -1,43 +1,33 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.Batteries.Legacy.Steps;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.FunctionGeneration;
-    using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
+    using Microsoft.CodeAnalysis;
+    using Newtonsoft.Json;
     using System.Text;
-    using System.Text.Json;
 
     public partial class CsCodeGenerator : BaseGenerator
     {
-        protected FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen = null!;
         protected PatchEngine patchEngine = new();
         protected ConfigComposer configComposer = new();
         private CsCodeGeneratorMetadata metadata = new();
         public readonly FunctionTableBuilder FunctionTableBuilder = new();
         private Dictionary<string, string> wrappedPointers = null!;
+        private List<CsCodeGeneratorMetadata> copyFromPending = [];
 
         public static CsCodeGenerator Create(string configPath)
         {
             return new(CsCodeGeneratorConfig.Load(configPath));
         }
 
-        public CsCodeGenerator(CsCodeGeneratorConfig config) : this(config, FunctionGenerator.CreateDefault(config))
+        public CsCodeGenerator(CsCodeGeneratorConfig config) : base(config)
         {
-        }
-
-        public CsCodeGenerator(CsCodeGeneratorConfig config, FunctionGenerator functionGenerator) : base(config)
-        {
-            funcGen = functionGenerator;
-            GenerationSteps.Add(new EnumGenerationStep(this, config));
-            GenerationSteps.Add(new ConstantGenerationStep(this, config));
-            GenerationSteps.Add(new HandleGenerationStep(this, config));
-            GenerationSteps.Add(new TypeGenerationStep(this, config));
-            GenerationSteps.Add(new FunctionGenerationStep(this, config));
-            GenerationSteps.Add(new ExtensionGenerationStep(this, config));
-            GenerationSteps.Add(new DelegateGenerationStep(this, config));
         }
 
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
@@ -61,7 +51,7 @@
             throw new InvalidOperationException($"Step of type '{typeof(T)}' was not found.");
         }
 
-        protected virtual CppParserOptions PrepareSettings()
+        protected virtual CppParserOptions PrepareCppConfig()
         {
             var options = new CppParserOptions
             {
@@ -98,27 +88,63 @@
             return options;
         }
 
-        public virtual bool Generate(string headerFile, string outputPath)
+        internal virtual void Configure()
         {
-            var options = PrepareSettings();
+            ConfigureGeneratorCore(GenerationSteps, out funcGen);
+            foreach (var metadata in copyFromPending)
+            {
+                foreach (var step in GenerationSteps)
+                {
+                    step.CopyFromMetadata(metadata);
+                }
+            }
+            copyFromPending.Clear();
 
-            var compilation = CppParser.ParseFile(headerFile, options);
-
-            return Generate(compilation, [headerFile], outputPath);
+            OnPostConfigure(config);
         }
 
-        public virtual bool Generate(List<string> headerFiles, string outputPath)
+        protected virtual void ConfigureGeneratorCore(List<GenerationStep> generationSteps, out FunctionGenerator functionGenerator)
         {
-            var options = PrepareSettings();
-
-            var compilation = CppParser.ParseFiles(headerFiles, options);
-
-            return Generate(compilation, headerFiles, outputPath);
+            functionGenerator = FunctionGenerator.CreateDefault(config);
+            generationSteps.Add(new EnumGenerationStep(this, config));
+            generationSteps.Add(new ConstantGenerationStep(this, config));
+            generationSteps.Add(new HandleGenerationStep(this, config));
+            generationSteps.Add(new TypeGenerationStep(this, config));
+            generationSteps.Add(new FunctionGenerationStep(this, config));
+            generationSteps.Add(new ExtensionGenerationStep(this, config));
+            generationSteps.Add(new DelegateGenerationStep(this, config));
+            OnConfigureGenerator();
         }
 
-        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath)
+        protected virtual void OnConfigureGenerator()
+        {
+        }
+
+        protected virtual CppCompilation ParseFiles(List<string> cppFiles)
+        {
+            var options = PrepareCppConfig();
+
+            return CppParser.ParseFiles(cppFiles, options);
+        }
+
+        public bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        {
+            return Generate([headerFile], outputPath, allowedHeaders);
+        }
+
+        public bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        {
+            Configure();
+
+            var compilation = ParseFiles(headerFiles);
+
+            return GenerateCore(compilation, headerFiles, outputPath, allowedHeaders);
+        }
+
+        public virtual bool GenerateCore(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
             metadata = new();
+            if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
@@ -143,11 +169,12 @@
                 return false;
             }
 
-            configComposer.LogEvent += Log;
-            configComposer.Compose(config);
-            configComposer.LogEvent -= Log;
-            LogInfo("Applying Pre-Patches...");
-            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+            allowedHeaders ??= [];
+            allowedHeaders.AddRange(headerFiles);
+
+            FileSet files = new(allowedHeaders.Select(PathHelper.GetPath));
+
+            OnPrePatchCore(compilation, headerFiles);
 
             config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
             wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
@@ -164,7 +191,7 @@
                 if (step.Enabled)
                 {
                     LogInfo($"Generating {step.Name}...");
-                    step.Generate(compilation, outputPath, config, metadata);
+                    step.Generate(files, compilation, outputPath, config, metadata);
                     step.CopyToMetadata(metadata);
                 }
             }
@@ -173,6 +200,17 @@
             patchEngine.ApplyPostPatches(metadata, outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
 
             return true;
+        }
+
+        protected virtual void OnPrePatchCore(CppCompilation compilation, List<string> headerFiles)
+        {
+            LogInfo("Applying Pre-Patches...");
+            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+            OnPrePatch(compilation, headerFiles);
+        }
+
+        protected virtual void OnPrePatch(CppCompilation compilation, List<string> headerFiles)
+        {
         }
 
         public virtual void Reset()
@@ -185,24 +223,20 @@
 
         public void CopyFrom(CsCodeGeneratorMetadata metadata)
         {
-            foreach (var step in GenerationSteps)
-            {
-                step.CopyFromMetadata(metadata);
-            }
+            copyFromPending.Add(metadata);
         }
 
         public void SaveMetadata(string path)
         {
-            JsonSerializerOptions options = new(JsonSerializerDefaults.General);
-            options.WriteIndented = true;
-            var json = JsonSerializer.Serialize(metadata, options);
+            JsonSerializerSettings options = new() { Formatting = Formatting.Indented };
+            var json = JsonConvert.SerializeObject(metadata, options);
             File.WriteAllText(path, json);
         }
 
         public void LoadMetadata(string path)
         {
             var json = File.ReadAllText(path);
-            var metadata = JsonSerializer.Deserialize<CsCodeGeneratorMetadata>(json) ?? new();
+            var metadata = JsonConvert.DeserializeObject<CsCodeGeneratorMetadata>(json) ?? new();
             CopyFrom(metadata);
         }
 

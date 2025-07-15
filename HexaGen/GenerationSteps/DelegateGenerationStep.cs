@@ -1,4 +1,4 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
     using CppAst;
     using HexaGen.Core;
@@ -84,7 +84,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             string folder = Path.Combine(outputPath, "Delegates");
             if (Directory.Exists(folder))
@@ -99,10 +99,12 @@
 
             GenContext context = new(compilation, filePath, writer);
 
-            // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
-                CppClass? cppClass = compilation.Classes[i];
+                CppClass cppClass = compilation.Classes[i];
+
+                if (!files.Contains(cppClass.SourceFile))
+                    continue;
 
                 if (FilterIgnoredType(context, cppClass))
                     continue;
@@ -115,6 +117,9 @@
             for (int i = 0; i < compilation.Typedefs.Count; i++)
             {
                 CppTypedef typedef = compilation.Typedefs[i];
+
+                if (!files.Contains(typedef.SourceFile))
+                    continue;
 
                 if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType)
                 {

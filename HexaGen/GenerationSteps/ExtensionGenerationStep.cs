@@ -1,4 +1,4 @@
-﻿namespace HexaGen.GenerationSteps
+﻿namespace HexaGen.Batteries.Legacy.Steps
 {
     using CppAst;
     using HexaGen.Core.CSharp;
@@ -15,14 +15,11 @@
 
         public readonly List<CsFunction> DefinedExtensions = [];
 
-        protected readonly CsCodeGenerator csGenerator;
-        protected readonly FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen = null!;
 
         public ExtensionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
             DefinedVariationsFunctions = null!;
-            csGenerator = generator;
-            funcGen = generator.FunctionGenerator;
         }
 
         public override string Name { get; } = "Extensions";
@@ -30,6 +27,7 @@
         public override void Configure(CsCodeGeneratorConfig config)
         {
             Enabled = config.GenerateExtensions;
+            funcGen = generator.FunctionGenerator;
         }
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
@@ -133,7 +131,7 @@
             return false;
         }
 
-        public override void Generate(CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
+        public override void Generate(FileSet files, CppCompilation compilation, string outputPath, CsCodeGeneratorConfig config, CsCodeGeneratorMetadata metadata)
         {
             DefinedVariationsFunctions = GetGenerationStep<FunctionGenerationStep>().DefinedVariationsFunctions;
             string folder = Path.Combine(outputPath, "Extensions");
@@ -152,7 +150,10 @@
             {
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
-                    WriteExtensionsForHandle(context, compilation.Typedefs[i]);
+                    var typedef = compilation.Typedefs[i];
+                    if (!files.Contains(typedef.SourceFile))
+                        continue;
+                    WriteExtensionsForHandle(context, typedef);
                 }
             }
         }
@@ -177,7 +178,7 @@
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
                 var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
-                csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, DefinedExtensions, out var overload);
+                generator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, DefinedExtensions, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
                 WriteExtensions(context, DefinedVariationsFunctions, csFunctionName, overload, "public static");
             }
@@ -195,9 +196,9 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            csGenerator.PrepareArgs(variation, csReturnType);
+            generator.PrepareArgs(variation, csReturnType);
 
-            string header = csGenerator.BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
+            string header = generator.BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
             variation.BuildFunctionHeaderId(WriteFunctionFlags.Extension);
 
             if (FilterExtension(context, definedExtensions, variation))

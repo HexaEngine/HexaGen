@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core;
-    using System.Text.Json.Serialization;
+    using Newtonsoft.Json;
 
     public class CsEnumMetadata : IHasIdentifier
     {

@@ -1,15 +1,23 @@
 ﻿namespace HexaGen
 {
+    public delegate void GenEventHandler<TSender, TArgs>(TSender sender, TArgs args);
+
     public class BaseGenerator : LoggerBase
     {
-        protected readonly CsCodeGeneratorConfig config;
+        protected CsCodeGeneratorConfig config;
 
-        public BaseGenerator(CsCodeGeneratorConfig settings)
+        public BaseGenerator(CsCodeGeneratorConfig config)
         {
-            this.config = settings;
-            settings.TypeMappings.Add("HRESULT", "HResult");
+            this.config = config;
         }
 
         public CsCodeGeneratorConfig Settings => config;
+
+        public event GenEventHandler<CsCodeGenerator, CsCodeGeneratorConfig>? PostConfigure;
+
+        protected virtual void OnPostConfigure(CsCodeGeneratorConfig config)
+        {
+            PostConfigure?.Invoke((CsCodeGenerator)this, config);
+        }
     }
 }
