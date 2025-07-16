@@ -7,7 +7,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
 		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.1.15-rc34</PackageVersion>
+		<PackageVersion>1.1.15-rc35</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -37,4 +37,11 @@
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
 	</ItemGroup>
+
+	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">
+		<PropertyGroup>
+			<NuPkgFile>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</NuPkgFile>
+		</PropertyGroup>
+		<Copy SourceFiles="$(NuPkgFile)" DestinationFolder="C:\nuget" SkipUnchangedFiles="true" Condition="Exists('$(NuPkgFile)')" />
+	</Target>
 </Project>

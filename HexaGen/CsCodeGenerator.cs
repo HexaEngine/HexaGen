@@ -88,7 +88,9 @@
                 ParseComments = true,
                 ParseSystemIncludes = true,
 
-                ParseAsCpp = true,
+                ParseCommentAttribute = true,
+                ParseTokenAttributes = true,
+                ParserKind = CppParserKind.C,
 
                 AutoSquashTypedef = config.AutoSquashTypedef,
             };
