@@ -3,6 +3,7 @@
     using HexaGen.Core.Collections;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using Newtonsoft.Json;
 
     public enum CsFunctionKind
     {

@@ -17,14 +17,11 @@
 
         public readonly List<CsFunction> DefinedExtensions = [];
 
-        protected readonly CsCodeGenerator csGenerator;
-        protected readonly FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen = null!;
 
         public ExtensionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
             DefinedVariationsFunctions = null!;
-            csGenerator = generator;
-            funcGen = generator.FunctionGenerator;
         }
 
         public override string Name { get; } = "Extensions";
@@ -32,6 +29,7 @@
         public override void Configure(CsCodeGeneratorConfig config)
         {
             Enabled = config.GenerateExtensions;
+            funcGen = generator.FunctionGenerator;
         }
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
@@ -268,9 +266,9 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            csGenerator.PrepareArgs(variation, csReturnType);
+            generator.PrepareArgs(variation, csReturnType);
 
-            string header = csGenerator.BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
+            string header = generator.BuildFunctionHeader(variation, csReturnType, WriteFunctionFlags.Extension, config.GenerateMetadata);
             variation.BuildFunctionHeaderId(WriteFunctionFlags.Extension);
 
             if (FilterExtension(context, definedExtensions, variation))

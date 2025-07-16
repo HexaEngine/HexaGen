@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -17,6 +18,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGen.PerformanceTests", "HexaGen.PerformanceTests\HexaGen.PerformanceTests.csproj", "{8380270B-0225-41A4-97CE-3AC812474489}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGen.Cpp2C", "HexaGen.Cpp2C\HexaGen.Cpp2C.csproj", "{B9F8CB09-219F-489B-8B23-A2CCA53C99C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{E8A79291-393A-481F-B174-3731A53176D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGen.Batteries.Legacy", "HexaGen.Batteries.Legacy\HexaGen.Batteries.Legacy.csproj", "{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,5 +68,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0008876-626C-499C-8C57-D2BF57FBEE36}
 	EndGlobalSection
 EndGlobal

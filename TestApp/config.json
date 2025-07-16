@@ -1,0 +1,9 @@
+{
+  "BaseConfig": {
+    "Url": "file://config.base.json",
+    "IgnoredProperties": [ "IgnoredTypes" ]
+  },
+  "ImportType": "DllImport",
+  "GenerateExtensions": false,
+  "Usings": [ "A" ]
+}

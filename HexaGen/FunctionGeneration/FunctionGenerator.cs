@@ -12,8 +12,8 @@
     public class FunctionGenerator
     {
         private readonly CsCodeGeneratorConfig settings;
-        private readonly List<FunctionGenRule> rules = new();
-        private readonly List<FunctionGenStep> steps = new();
+        private readonly List<FunctionGenRule> rules = [];
+        private readonly List<FunctionGenStep> steps = [];
 
         protected FunctionGenerator(CsCodeGeneratorConfig settings)
         {

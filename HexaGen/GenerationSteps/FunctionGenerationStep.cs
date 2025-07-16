@@ -9,6 +9,7 @@
     using HexaGen.Metadata;
     using System.Collections.Frozen;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Text;
 
@@ -21,15 +22,11 @@
         public readonly HashSet<CsFunctionVariation> DefinedVariationsFunctions = new(IdentifierComparer<CsFunctionVariation>.Default);
         protected readonly HashSet<string> OutReturnFunctions = [];
 
-        private readonly CsCodeGenerator csGenerator;
-        private readonly FunctionGenerator funcGen;
-        private readonly FunctionTableBuilder FunctionTableBuilder;
+        private FunctionGenerator funcGen = null!;
+        private FunctionTableBuilder FunctionTableBuilder = null!;
 
         public FunctionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
-            csGenerator = generator;
-            funcGen = generator.FunctionGenerator;
-            FunctionTableBuilder = generator.FunctionTableBuilder;
         }
 
         public override string Name { get; } = "Functions";
@@ -37,6 +34,8 @@
         public override void Configure(CsCodeGeneratorConfig config)
         {
             Enabled = config.GenerateFunctions;
+            funcGen = generator.FunctionGenerator;
+            FunctionTableBuilder = generator.FunctionTableBuilder;
         }
 
         public override void CopyToMetadata(CsCodeGeneratorMetadata metadata)
@@ -123,7 +122,7 @@
         {
             if (definedFunctions.Contains(variation))
             {
-                LogWarn($"{context.FilePath}: {variation} function is already defined!");
+                LogInfo($"{context.FilePath}: {variation} function is already defined!");
                 return true;
             }
             definedFunctions.Add(variation);
@@ -158,7 +157,6 @@
                 for (int i = 0; i < compilation.Functions.Count; i++)
                 {
                     CppFunction? cppFunction = compilation.Functions[i];
-
                     if (!files.Contains(cppFunction.SourceFile))
                         continue;
 
@@ -181,7 +179,7 @@
                         continue;
                     }
 
-                    var function = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, DefinedFunctions, out var overload);
+                    var function = generator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, DefinedFunctions, out var overload);
 
                     writer.WriteLines(function.Comment);
                     if (config.GenerateMetadata)
@@ -427,7 +425,7 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            csGenerator.PrepareArgs(variation, csReturnType);
+            generator.PrepareArgs(variation, csReturnType);
 
             string header = variation.BuildFunctionHeader(csReturnType, flags, config.GenerateMetadata);
             variation.BuildFunctionHeaderId(flags);

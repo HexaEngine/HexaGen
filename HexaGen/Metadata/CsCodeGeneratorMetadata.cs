@@ -1,8 +1,10 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core.CSharp;
+    using Microsoft.CodeAnalysis.CSharp;
+
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
-    using System.Diagnostics.CodeAnalysis;
 
     public class CsCodeGeneratorMetadata
     {
@@ -176,7 +178,7 @@
 
         private static readonly JsonSerializerSettings options = new()
         {
-            TypeNameHandling = TypeNameHandling.Auto,
+            Formatting = Formatting.Indented,
             Converters = { new StringEnumConverter() }
         };
 
@@ -185,13 +187,15 @@
         public void Save(string path)
         {
             using var fs = File.CreateText(path);
-            serializer.Serialize(fs, this, typeof(CsCodeGeneratorMetadata));
+            using JsonTextWriter writer = new(fs);
+            serializer.Serialize(writer, this);
         }
 
         public static CsCodeGeneratorMetadata Load(string path)
         {
             using var fs = File.OpenText(path);
-            return (CsCodeGeneratorMetadata?)serializer.Deserialize(fs, typeof(CsCodeGeneratorMetadata)) ?? new();
+            using JsonTextReader reader = new(fs);
+            return serializer.Deserialize<CsCodeGeneratorMetadata>(reader) ?? new();
         }
     }
 }

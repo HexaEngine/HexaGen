@@ -2,6 +2,7 @@
 {
     using HexaGen;
     using HexaGen.Core;
+    using Newtonsoft.Json;
 
     public class CsConstantMetadata : IHasIdentifier, ICloneable<CsConstantMetadata>
     {

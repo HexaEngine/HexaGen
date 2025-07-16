@@ -1,7 +1,7 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core;
-    
+    using Newtonsoft.Json;
 
     public class CsEnumMetadata : IHasIdentifier, ICloneable<CsEnumMetadata>
     {

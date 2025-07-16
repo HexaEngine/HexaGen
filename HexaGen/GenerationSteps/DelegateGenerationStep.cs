@@ -100,10 +100,12 @@
 
             GenContext context = new(result, filePath, writer);
 
-            // Print All classes, structs
             for (int i = 0; i < compilation.Classes.Count; i++)
             {
-                CppClass? cppClass = compilation.Classes[i];
+                CppClass cppClass = compilation.Classes[i];
+
+                if (!files.Contains(cppClass.SourceFile))
+                    continue;
 
                 if (!files.Contains(cppClass.SourceFile))
                     continue;

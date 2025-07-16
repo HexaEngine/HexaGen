@@ -2,7 +2,7 @@
 {
     using HexaGen.Core;
     using System.Collections.Frozen;
-    
+    using Newtonsoft.Json;
 
     public class CsFunctionTableMetadata : GeneratorMetadataEntry, ICloneable<CsFunctionTableMetadata>
     {

@@ -1,33 +1,103 @@
 ﻿namespace HexaGen
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
-    using System.Text.Json;
 
     public class BaseConfig
     {
         public string? Url { get; set; }
 
-        public MergeOptions MergeOptions { get; set; } = MergeOptions.All;
+        public HashSet<string> IgnoredProperties { get; set; } = [];
     }
 
-    public class ConfigComposer : LoggerBase
+    public class ConfigComposer : LoggerBase, IConfigComposer
     {
         private const string FileProtocol = "file://";
         private const string HttpProtocol = "http://";
         private const string HttpsProtocol = "https://";
 
-        public void Compose(CsCodeGeneratorConfig config)
+        private static readonly JsonMergeSettings mergeSettings = new()
         {
-            if (config.BaseConfig.Url == null)
+            MergeArrayHandling = MergeArrayHandling.Union,
+            MergeNullValueHandling = MergeNullValueHandling.Merge,
+            PropertyNameComparison = StringComparison.Ordinal
+        };
+
+        public void Compose(ref CsCodeGeneratorConfig config)
+        {
+            var stack = new Stack<CsCodeGeneratorConfig>();
+            var current = config;
+            while (true)
             {
-                return;
+                stack.Push(current);
+                if (current.BaseConfig?.Url == null)
+                    break;
+                current = LoadBaseConfig(current.BaseConfig);
             }
 
-            var baseConfig = LoadBaseConfig(config.BaseConfig);
+            var merged = CsCodeGeneratorConfig.Default;
+            while (stack.TryPop(out var top))
+            {
+                merged = Merge(top, merged);
+            }
+            CollectionNormalizer.Normalize(merged);
+            config = merged;
+        }
 
-            Compose(baseConfig); // Recursively load base configs
+        private static CsCodeGeneratorConfig Merge(CsCodeGeneratorConfig config, CsCodeGeneratorConfig baseConfig)
+        {
+            var baseJ = JObject.FromObject(baseConfig, CsCodeGeneratorConfig.MergeSerializer);
 
-            config.Merge(baseConfig, config.BaseConfig.MergeOptions);
+            if (config.BaseConfig != null)
+            {
+                ApplyConstrains(baseJ, config.BaseConfig.IgnoredProperties);
+            }
+
+            var overrideJ = JObject.FromObject(config, CsCodeGeneratorConfig.MergeSerializer);
+
+            baseJ.Merge(overrideJ, mergeSettings);
+
+            config = baseJ.ToObject<CsCodeGeneratorConfig>(CsCodeGeneratorConfig.MergeSerializer)!;
+            return config;
+        }
+
+        private static void ApplyConstrains(JObject baseJ, HashSet<string> ignoredPropPaths)
+        {
+            baseJ.Remove("BaseConfig");
+            foreach (var ignoredPropPath in ignoredPropPaths)
+            {
+                ReadOnlySpan<char> span = ignoredPropPath.AsSpan().Trim();
+                JToken current = baseJ;
+                while (!span.IsEmpty)
+                {
+                    int idx = span.IndexOf('.');
+                    if (idx == -1) idx = span.Length;
+                    var part = span[..idx].Trim();
+                    JToken? token = current[part.ToString()];
+                    if (token == null) break;
+                    current = token;
+                    if (idx == span.Length)
+                    {
+                        switch (token.Type)
+                        {
+                            case JTokenType.Object:
+                                token.Remove();
+                                break;
+
+                            case JTokenType.Array:
+                                ((JArray)token).RemoveAll();
+                                break;
+
+                            case JTokenType.Property:
+                                ((JProperty)token).Remove();
+                                break;
+                        }
+                        break;
+                    }
+                    span = span[(idx + 1)..];
+                }
+            }
         }
 
         private CsCodeGeneratorConfig LoadBaseConfig(BaseConfig baseConfig)
@@ -45,7 +115,7 @@
                     throw new FileNotFoundException($"File not found: {path}");
                 }
 
-                baseGeneratorConfig = CsCodeGeneratorConfig.Load(path);
+                baseGeneratorConfig = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(File.ReadAllText(path));
             }
             if (url.StartsWith(HttpProtocol))
             {
@@ -79,7 +149,7 @@
             }
 
             var json = response.Content.ReadAsStringAsync().Result;
-            baseGeneratorConfig = JsonSerializer.Deserialize<CsCodeGeneratorConfig>(json);
+            baseGeneratorConfig = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(json);
             return baseGeneratorConfig;
         }
     }

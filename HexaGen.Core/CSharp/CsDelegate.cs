@@ -2,6 +2,7 @@
 {
     using HexaGen.Core;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     public class CsDelegate : IHasIdentifier, ICloneable<CsDelegate>
     {

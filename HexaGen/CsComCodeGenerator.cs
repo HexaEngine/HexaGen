@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.GenerationSteps;
     using HexaGen.FunctionGeneration;
     using HexaGen.GenerationSteps;
     using HexaGen.PreProcessSteps;
@@ -11,7 +12,7 @@
 
     public partial class CsComCodeGenerator : CsCodeGenerator
     {
-        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings, FunctionGenerator.CreateForCOM(settings))
+        public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings)
         {
             PreProcessSteps.Clear();
             PreProcessSteps.Add(new ConstantPreProcessStep(this, config));

@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.GenerationSteps
 {
+    using ClangSharp;
     using CppAst;
     using HexaGen;
     using HexaGen.Core;
@@ -117,6 +118,8 @@
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
                     CppEnum cppEnum = compilation.Enums[i];
+                    if (!files.Contains(cppEnum.SourceFile))
+                        continue;
 
                     if (!files.Contains(cppEnum.SourceFile))
                         continue;
@@ -132,7 +135,6 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typeDef = compilation.Typedefs[i];
-
                     if (!files.Contains(typeDef.SourceFile))
                         continue;
 
@@ -164,6 +166,9 @@
                 for (int i = 0; i < compilation.Enums.Count; i++)
                 {
                     CppEnum cppEnum = compilation.Enums[i];
+                    if (!files.Contains(cppEnum.SourceFile))
+                        continue;
+
                     var csEnum = ParseEnum(cppEnum, cppEnum);
                     if (FilterEnum(context, csEnum))
                     {
@@ -175,6 +180,10 @@
                 for (int i = 0; i < compilation.Typedefs.Count; i++)
                 {
                     var typeDef = compilation.Typedefs[i];
+
+                    if (!files.Contains(typeDef.SourceFile))
+                        continue;
+
                     if (!typeDef.IsEnum(out var cppEnum))
                     {
                         continue;

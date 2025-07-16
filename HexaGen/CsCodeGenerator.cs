@@ -1,32 +1,32 @@
 ﻿namespace HexaGen
 {
     using CppAst;
+    using HexaGen.GenerationSteps;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.FunctionGeneration;
-    using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
     using HexaGen.PreProcessSteps;
     using System.Collections.Frozen;
     using System.Text;
-    using System.Text.Json;
 
     public partial class CsCodeGenerator : BaseGenerator
     {
-        protected FunctionGenerator funcGen;
+        protected FunctionGenerator funcGen = null!;
         protected PatchEngine patchEngine = new();
         protected ConfigComposer configComposer = new();
         private CsCodeGeneratorMetadata metadata = new();
         public readonly FunctionTableBuilder FunctionTableBuilder = new();
         private Dictionary<string, string> wrappedPointers = null!;
+        private List<CsCodeGeneratorMetadata> copyFromPending = [];
 
         public static CsCodeGenerator Create(string configPath)
         {
             return new(CsCodeGeneratorConfig.Load(configPath));
         }
 
-        public CsCodeGenerator(CsCodeGeneratorConfig config) : this(config, FunctionGenerator.CreateDefault(config))
+        public CsCodeGenerator(CsCodeGeneratorConfig config) : base(config)
         {
         }
 
@@ -166,6 +166,7 @@
         public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
             metadata = new();
+            if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
@@ -241,6 +242,17 @@
             return true;
         }
 
+        protected virtual void OnPrePatchCore(CppCompilation compilation, List<string> headerFiles)
+        {
+            LogInfo("Applying Pre-Patches...");
+            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
+            OnPrePatch(compilation, headerFiles);
+        }
+
+        protected virtual void OnPrePatch(CppCompilation compilation, List<string> headerFiles)
+        {
+        }
+
         public virtual void Reset()
         {
             foreach (var step in GenerationSteps)
@@ -251,24 +263,20 @@
 
         public void CopyFrom(CsCodeGeneratorMetadata metadata)
         {
-            foreach (var step in GenerationSteps)
-            {
-                step.CopyFromMetadata(metadata);
-            }
+            copyFromPending.Add(metadata);
         }
 
         public void SaveMetadata(string path)
         {
-            JsonSerializerOptions options = new(JsonSerializerDefaults.General);
-            options.WriteIndented = true;
-            var json = JsonSerializer.Serialize(metadata, options);
+            JsonSerializerSettings options = new() { Formatting = Formatting.Indented };
+            var json = JsonConvert.SerializeObject(metadata, options);
             File.WriteAllText(path, json);
         }
 
         public void LoadMetadata(string path)
         {
             var json = File.ReadAllText(path);
-            var metadata = JsonSerializer.Deserialize<CsCodeGeneratorMetadata>(json) ?? new();
+            var metadata = JsonConvert.DeserializeObject<CsCodeGeneratorMetadata>(json) ?? new();
             CopyFrom(metadata);
         }
 
