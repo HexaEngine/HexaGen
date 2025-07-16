@@ -210,7 +210,7 @@
                 var csFunctionName = config.GetCsFunctionName(cppFunction.Name);
                 var csName = config.GetExtensionName(csFunctionName, extensionPrefix);
 
-                var csFunction = csGenerator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, DefinedExtensions, out var overload);
+                var csFunction = generator.CreateCsFunction(cppFunction, CsFunctionKind.Extension, csName, DefinedExtensions, out var overload);
                 funcGen.GenerateVariations(cppFunction.Parameters, overload);
                 WriteExtensions(context, DefinedVariationsFunctions, csFunctionName, overload, "public static");
             }

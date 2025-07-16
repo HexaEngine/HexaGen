@@ -15,7 +15,6 @@
     {
         protected FunctionGenerator funcGen = null!;
         protected PatchEngine patchEngine = new();
-        protected ConfigComposer configComposer = new();
         private CsCodeGeneratorMetadata metadata = new();
         public readonly FunctionTableBuilder FunctionTableBuilder = new();
         private Dictionary<string, string> wrappedPointers = null!;
@@ -48,8 +47,6 @@
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
 
         public PatchEngine PatchEngine => patchEngine;
-
-        public ConfigComposer ConfigComposer => configComposer;
 
         public List<GenerationStep> GenerationSteps { get; } = new();
 
@@ -210,9 +207,6 @@
                 step.PreProcess(files, compilation, config, metadata, result);
             }
 
-            configComposer.LogEvent += Log;
-            configComposer.Compose(config);
-            configComposer.LogEvent -= Log;
             LogInfo("Applying Pre-Patches...");
             patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, result);
 
@@ -242,14 +236,14 @@
             return true;
         }
 
-        protected virtual void OnPrePatchCore(CppCompilation compilation, List<string> headerFiles)
+        protected virtual void OnPrePatchCore(ParseResult result, List<string> headerFiles)
         {
             LogInfo("Applying Pre-Patches...");
-            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, compilation);
-            OnPrePatch(compilation, headerFiles);
+            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, result);
+            OnPrePatch(result, headerFiles);
         }
 
-        protected virtual void OnPrePatch(CppCompilation compilation, List<string> headerFiles)
+        protected virtual void OnPrePatch(ParseResult result, List<string> headerFiles)
         {
         }
 

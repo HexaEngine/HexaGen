@@ -5,6 +5,7 @@
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using System.Diagnostics.CodeAnalysis;
 
     public class CsCodeGeneratorMetadata
     {

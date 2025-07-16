@@ -555,7 +555,7 @@
         {
             var writer = context.Writer;
             CsType csReturnType = variation.ReturnType;
-            csGenerator.PrepareArgs(variation, csReturnType);
+            generator.PrepareArgs(variation, csReturnType);
 
             string header = variation.BuildFunctionHeader(alias.FriendlyName, csReturnType, flags, config.GenerateMetadata);
             variation.BuildFunctionHeaderId(alias.FriendlyName, flags);

@@ -2,13 +2,9 @@
 {
     using CppAst;
     using HexaGen.GenerationSteps;
-    using HexaGen.FunctionGeneration;
-    using HexaGen.GenerationSteps;
     using HexaGen.PreProcessSteps;
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text.RegularExpressions;
 
     public partial class CsComCodeGenerator : CsCodeGenerator
     {

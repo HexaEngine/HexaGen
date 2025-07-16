@@ -3,6 +3,7 @@
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
 
     public partial class CsCodeGeneratorConfig
@@ -66,13 +67,11 @@
         /// </summary>
         [DefaultValue(null)]
         public Dictionary<string, string> TypeMappings { get; set; } = null!;
-        
+
         [DefaultValue(null)]
         public Dictionary<string, List<FunctionAliasMapping>> FunctionAliasMappings { get; set; } = null!;
 
-
         #region FunctionAlias
-
 
         public bool TryGetFunctionAliasMapping(string name, string aliasName, [NotNullWhen(true)] out FunctionAliasMapping? mapping)
         {
