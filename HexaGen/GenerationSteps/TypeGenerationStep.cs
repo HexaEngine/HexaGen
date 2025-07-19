@@ -361,7 +361,7 @@
                     }
 
                     funcGen.GenerateConstructorVariations(cppClass, subClasses, csName, overload);
-                    WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, subClasses, "public unsafe");
+                    WriteConstructors(context, definedConstructors, function, overload, cppClass.Fields, properties, subClasses, "public unsafe");
                 }
 
                 writer.WriteLine();
@@ -478,15 +478,15 @@
             return false;
         }
 
-        protected virtual void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
+        protected virtual void WriteConstructors(GenContext context, HashSet<string> definedFunctions, CsFunction csFunction, CsFunctionOverload overload, IList<CppField> fields, List<CsPropertyMetadata> properties, List<CsSubClass> subClasses, params string[] modifiers)
         {
             for (int j = 0; j < overload.Variations.Count; j++)
             {
-                WriteConstructor(context, definedFunctions, csFunction, overload, overload.Variations[j], fields, subClasses, modifiers);
+                WriteConstructor(context, definedFunctions, csFunction, overload, overload.Variations[j], fields, subClasses, properties, modifiers);
             }
         }
 
-        protected virtual void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, List<CsSubClass> subClasses, params string[] modifiers)
+        protected virtual void WriteConstructor(GenContext context, HashSet<string> definedFunctions, CsFunction function, CsFunctionOverload overload, CsFunctionVariation variation, IList<CppField> fields, List<CsSubClass> subClasses, List<CsPropertyMetadata> properties, params string[] modifiers)
         {
             var writer = context.Writer;
             CsType returnType = variation.ReturnType;
@@ -538,6 +538,12 @@
                         fieldName = $"this.{fieldName}";
                     }
 
+                    bool targetsProperty = false;
+                    if (properties.Any(x => x.Name == cppParameter.FieldName))
+                    {
+                        targetsProperty = true;
+                    }
+
                     // skip array field types.
                     // TODO: Add support for array field types.
                     if (cppField.Type is CppArrayType arrayType)
@@ -561,7 +567,7 @@
                             writer.WriteLine($"{fieldName} = (void*)Marshal.GetFunctionPointerForDelegate({cppParameter.Name});");
                         }
                     }
-                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
+                    else if (paramFlags.HasFlag(ParameterFlags.Bool) && !targetsProperty && !paramFlags.HasFlag(ParameterFlags.Ref) && !paramFlags.HasFlag(ParameterFlags.Pointer))
                     {
                         writer.WriteLine($"{fieldName} = {cppParameter.Name} ? ({config.GetBoolType()})1 : ({config.GetBoolType()})0;");
                     }

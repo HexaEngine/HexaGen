@@ -18,40 +18,24 @@ namespace TestLibGen
 	[StructLayout(LayoutKind.Sequential)]
 	public partial struct Test
 	{
-		public Foo RawBits0;
-		public ulong X;
-		public uint RawBits1;
-		public uint RawBits2;
-		public uint RawBits3;
-		public ulong H;
+		public bool RawBits0;
 
-		public unsafe Test(Foo a = default, Foo b = default, Foo c = default, Foo d = default, ulong x = default, uint e = default, uint f = default, uint g = default, ulong h = default)
+		public unsafe Test(bool a = default, bool b = default, bool c = default, bool d = default)
 		{
 			A = a;
 			B = b;
 			C = c;
 			D = d;
-			X = x;
-			E = e;
-			F = f;
-			G = g;
-			H = h;
 		}
 
 
-		public Foo A { get => Bitfield.Get(RawBits0, 0, 8); set => Bitfield.Set(ref RawBits0, value, 0, 8); }
+		public bool A { get => Bitfield.Get(RawBits0, 0, 1); set => Bitfield.Set(ref RawBits0, value, 0, 1); }
 
-		public Foo B { get => Bitfield.Get(RawBits0, 8, 8); set => Bitfield.Set(ref RawBits0, value, 8, 8); }
+		public bool B { get => Bitfield.Get(RawBits0, 1, 1); set => Bitfield.Set(ref RawBits0, value, 1, 1); }
 
-		public Foo C { get => Bitfield.Get(RawBits0, 16, 8); set => Bitfield.Set(ref RawBits0, value, 16, 8); }
+		public bool C { get => Bitfield.Get(RawBits0, 2, 1); set => Bitfield.Set(ref RawBits0, value, 2, 1); }
 
-		public Foo D { get => Bitfield.Get(RawBits0, 24, 8); set => Bitfield.Set(ref RawBits0, value, 24, 8); }
-
-		public uint E { get => Bitfield.Get(RawBits1, 0, 8); set => Bitfield.Set(ref RawBits1, value, 0, 8); }
-
-		public uint F { get => Bitfield.Get(RawBits2, 0, 25); set => Bitfield.Set(ref RawBits2, value, 0, 25); }
-
-		public uint G { get => Bitfield.Get(RawBits3, 0, 8); set => Bitfield.Set(ref RawBits3, value, 0, 8); }
+		public bool D { get => Bitfield.Get(RawBits0, 3, 1); set => Bitfield.Set(ref RawBits0, value, 3, 1); }
 
 	}
 
