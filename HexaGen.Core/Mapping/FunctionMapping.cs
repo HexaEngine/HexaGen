@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.Core.Mapping
 {
     using CppAst;
+    using HexaGen.CppAst.Model.Declarations;
 
     public class FunctionMapping
     {

@@ -1,6 +1,6 @@
 ﻿namespace HexaGen.Metadata
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Declarations;
     using Newtonsoft.Json;
     using System.Xml.Serialization;
 

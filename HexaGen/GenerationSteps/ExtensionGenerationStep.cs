@@ -1,11 +1,11 @@
 ﻿namespace HexaGen.GenerationSteps
 {
-    using CppAst;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Types;
     using HexaGen.FunctionGeneration;
     using HexaGen.FunctionGeneration.ParameterWriters;
     using HexaGen.Metadata;
-    using System.Collections.Frozen;
     using System.Collections.Generic;
     using System.Text;
 

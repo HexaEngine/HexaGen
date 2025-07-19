@@ -1,6 +1,6 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Metadata;
     using HexaGen.Metadata;
 
     public abstract class PreProcessStep : LoggerBase

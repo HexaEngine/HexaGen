@@ -1,12 +1,10 @@
 ﻿namespace HexaGen.GenerationSteps
 {
-    using CppAst;
     using HexaGen.Core;
+    using HexaGen.CppAst.Model;
     using HexaGen.Metadata;
-    using System;
     using System.Collections.Frozen;
     using System.Collections.Generic;
-    using System.Reflection.Metadata;
 
     public class ConstantGenerationStep : GenerationStep
     {

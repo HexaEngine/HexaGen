@@ -1,6 +1,5 @@
-﻿using ClangSharp.Interop;
-using CppAst;
-using HexaGen.Core.CSharp;
+﻿using HexaGen.Core.CSharp;
+using HexaGen.CppAst.Model.Declarations;
 
 namespace HexaGen.Patching
 {

@@ -1,6 +1,5 @@
-﻿using CppAst;
+﻿using HexaGen.CppAst.Model.Declarations;
 using HexaGen.Metadata;
-using Newtonsoft.Json;
 
 namespace HexaGen
 {

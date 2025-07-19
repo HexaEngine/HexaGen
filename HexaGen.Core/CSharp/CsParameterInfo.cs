@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using System.Xml.Serialization;
+    using HexaGen.CppAst.Model.Types;
 
     [Flags]
     public enum ParameterFlags

@@ -1,6 +1,5 @@
 ﻿namespace HexaGen
 {
-    using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
     using System.Collections.Generic;
     using System.ComponentModel;

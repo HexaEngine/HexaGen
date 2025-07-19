@@ -1,6 +1,6 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Types;
     using System;
 
     public class UnexposedTypeException : Exception

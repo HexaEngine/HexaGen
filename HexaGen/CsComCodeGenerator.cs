@@ -1,6 +1,8 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Parsing;
+    using HexaGen.FunctionGeneration;
     using HexaGen.GenerationSteps;
     using HexaGen.PreProcessSteps;
     using System;
@@ -10,17 +12,6 @@
     {
         public CsComCodeGenerator(CsCodeGeneratorConfig settings) : base(settings)
         {
-            PreProcessSteps.Clear();
-            PreProcessSteps.Add(new ConstantPreProcessStep(this, config));
-
-            GenerationSteps.Clear();
-            GenerationSteps.Add(new ComEnumGenerationStep(this, config));
-            GenerationSteps.Add(new ComConstantGenerationStep(this, config));
-            GenerationSteps.Add(new ComHandleGenerationStep(this, config));
-            GenerationSteps.Add(new ComTypeGenerationStep(this, config));
-            GenerationSteps.Add(new ComFunctionGenerationStep(this, config));
-            GenerationSteps.Add(new ComExtensionGenerationStep(this, config));
-            GenerationSteps.Add(new ComDelegateGenerationStep(this, config));
         }
 
         private ComGUIDExtractor comGUIDExtractor = new();
@@ -48,30 +39,23 @@
             return guidMap.ContainsKey(name);
         }
 
-        public override bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        protected override void ConfigureGeneratorCore(List<PreProcessStep> preProcessSteps, List<GenerationStep> generationSteps, out FunctionGenerator funcGen)
         {
-            LogInfo($"Generating: {config.ApiName}");
-            var options = PrepareSettings();
-
-            comGUIDExtractor.ExtractGuidsFromFiles(headerFiles, this, guids, guidMap);
-
-            LogInfo("Parsing Headers...");
-            CppCompilation compilation = CppParser.ParseFiles(headerFiles, options);
-
-            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
+            funcGen = FunctionGenerator.CreateForCOM(config);
+            preProcessSteps.Add(new ConstantPreProcessStep(this, config));
+            generationSteps.Add(new ComEnumGenerationStep(this, config));
+            generationSteps.Add(new ComConstantGenerationStep(this, config));
+            generationSteps.Add(new ComHandleGenerationStep(this, config));
+            generationSteps.Add(new ComTypeGenerationStep(this, config));
+            generationSteps.Add(new ComFunctionGenerationStep(this, config));
+            generationSteps.Add(new ComExtensionGenerationStep(this, config));
+            generationSteps.Add(new ComDelegateGenerationStep(this, config));
         }
 
-        public override bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        protected override CppCompilation ParseFiles(CppParserOptions parserOptions, List<string> headerFiles)
         {
-            LogInfo($"Generating: {config.ApiName}");
-            var options = PrepareSettings();
-
-            comGUIDExtractor.ExtractGuidsFromFile(headerFile, this, guids, guidMap);
-
-            LogInfo("Parsing Headers...");
-            CppCompilation compilation = CppParser.ParseFile(headerFile, options);
-
-            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
+            comGUIDExtractor.ExtractGuidsFromFiles(headerFiles, this, guids, guidMap);
+            return base.ParseFiles(parserOptions, headerFiles);
         }
     }
 }

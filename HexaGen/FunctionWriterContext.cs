@@ -1,10 +1,8 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using System.Collections.Generic;
-    using System.Security.Cryptography;
     using System.Text;
 
     public class FunctionWriterContext

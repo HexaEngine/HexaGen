@@ -1,8 +1,9 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core.Logging;
     using HexaGen.Core.Mapping;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Types;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
 

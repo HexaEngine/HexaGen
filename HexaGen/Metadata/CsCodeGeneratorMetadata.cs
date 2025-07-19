@@ -1,7 +1,6 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core.CSharp;
-    using Microsoft.CodeAnalysis.CSharp;
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;

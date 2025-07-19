@@ -1,7 +1,7 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model.Types;
 
     public class CsSubClass
     {

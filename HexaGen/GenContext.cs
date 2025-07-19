@@ -1,7 +1,7 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core;
+    using HexaGen.CppAst.Model.Metadata;
 
     public class GenContext
     {

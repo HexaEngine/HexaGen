@@ -1,8 +1,8 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core;
-    using System.Collections.Frozen;
     using Newtonsoft.Json;
+    using System.Collections.Frozen;
 
     public class CsFunctionTableMetadata : GeneratorMetadataEntry, ICloneable<CsFunctionTableMetadata>
     {

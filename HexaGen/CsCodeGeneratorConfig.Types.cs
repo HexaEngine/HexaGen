@@ -1,8 +1,10 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.Mapping;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Model.Types;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -410,9 +412,6 @@
 
         private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
         {
-            if (primitiveType.FullName == "unsigned long long")
-            {
-            }
             switch (primitiveType.Kind)
             {
                 case CppPrimitiveKind.Void:

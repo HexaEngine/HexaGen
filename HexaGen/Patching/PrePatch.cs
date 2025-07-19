@@ -1,6 +1,6 @@
 ﻿namespace HexaGen.Patching
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Declarations;
     using System.Collections.Generic;
 
     public abstract class PrePatch : IPrePatch

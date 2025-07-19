@@ -1,11 +1,11 @@
 ﻿namespace HexaGen.GenerationSteps
 {
-    using ClangSharp;
-    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Interfaces;
+    using HexaGen.CppAst.Model.Types;
     using HexaGen.Metadata;
-    using System.Collections.Frozen;
     using System.IO;
 
     public class DelegateGenerationStep : GenerationStep

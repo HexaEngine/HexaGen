@@ -1,14 +1,18 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
-    using HexaGen.GenerationSteps;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using HexaGen.CppAst.Diagnostics;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Interfaces;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Model.Types;
+    using HexaGen.CppAst.Parsing;
     using HexaGen.FunctionGeneration;
+    using HexaGen.GenerationSteps;
     using HexaGen.Metadata;
     using HexaGen.Patching;
     using HexaGen.PreProcessSteps;
-    using System.Collections.Frozen;
     using System.Text;
 
     public partial class CsCodeGenerator : BaseGenerator
@@ -27,21 +31,6 @@
 
         public CsCodeGenerator(CsCodeGeneratorConfig config) : base(config)
         {
-        }
-
-        public CsCodeGenerator(CsCodeGeneratorConfig config, FunctionGenerator functionGenerator) : base(config)
-        {
-            funcGen = functionGenerator;
-
-            PreProcessSteps.Add(new ConstantPreProcessStep(this, config));
-
-            GenerationSteps.Add(new EnumGenerationStep(this, config));
-            GenerationSteps.Add(new ConstantGenerationStep(this, config));
-            GenerationSteps.Add(new HandleGenerationStep(this, config));
-            GenerationSteps.Add(new TypeGenerationStep(this, config));
-            GenerationSteps.Add(new FunctionGenerationStep(this, config));
-            GenerationSteps.Add(new ExtensionGenerationStep(this, config));
-            GenerationSteps.Add(new DelegateGenerationStep(this, config));
         }
 
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
@@ -77,6 +66,60 @@
             }
         }
 
+        public bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        {
+            return Generate([headerFile], outputPath, allowedHeaders);
+        }
+
+        public bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        {
+            return Generate(PrepareSettings(), headerFiles, outputPath, allowedHeaders);
+        }
+
+        public bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        {
+            return Generate([headerFile], outputPath, allowedHeaders);
+        }
+
+        public bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        {
+            ConfigureCore();
+            LogInfo($"Generating: {config.ApiName}");
+
+            LogInfo("Parsing Headers...");
+            var compilation = ParseFiles(parserOptions, headerFiles);
+
+            return GenerateCore(compilation, headerFiles, outputPath, allowedHeaders);
+        }
+
+        protected virtual void ConfigureCore()
+        {
+            ConfigureGeneratorCore(PreProcessSteps, GenerationSteps, out funcGen);
+            config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
+            wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
+            metadata = new();
+            metadata.Settings = Settings;
+            OnPostConfigure(config);
+        }
+
+        protected virtual void ConfigureGeneratorCore(List<PreProcessStep> preProcessSteps, List<GenerationStep> generationSteps, out FunctionGenerator funcGen)
+        {
+            funcGen = FunctionGenerator.CreateDefault(config);
+            preProcessSteps.Add(new ConstantPreProcessStep(this, config));
+            generationSteps.Add(new EnumGenerationStep(this, config));
+            generationSteps.Add(new ConstantGenerationStep(this, config));
+            generationSteps.Add(new HandleGenerationStep(this, config));
+            generationSteps.Add(new TypeGenerationStep(this, config));
+            generationSteps.Add(new FunctionGenerationStep(this, config));
+            generationSteps.Add(new ExtensionGenerationStep(this, config));
+            generationSteps.Add(new DelegateGenerationStep(this, config));
+            OnConfigureGenerator();
+        }
+
+        protected virtual void OnConfigureGenerator()
+        {
+        }
+
         protected virtual CppParserOptions PrepareSettings()
         {
             var options = new CppParserOptions
@@ -86,10 +129,10 @@
                 ParseSystemIncludes = true,
 
                 ParseCommentAttribute = true,
-                ParseTokenAttributes = true,
-                ParserKind = CppParserKind.C,
+                //ParseTokenAttributes = true,
+                ParserKind = CppParserKind.Cpp,
 
-                AutoSquashTypedef = config.AutoSquashTypedef,
+                AutoSquashTypedef = false,
             };
 
             for (int i = 0; i < config.AdditionalArguments.Count; i++)
@@ -118,51 +161,13 @@
             return options;
         }
 
-        public virtual bool Generate(string headerFile, string outputPath, List<string>? allowedHeaders = null)
+        protected virtual CppCompilation ParseFiles(CppParserOptions parserOptions, List<string> headerFiles)
         {
-            LogInfo($"Generating: {config.ApiName}");
-            var options = PrepareSettings();
-
-            LogInfo("Parsing Headers...");
-            var compilation = CppParser.ParseFile(headerFile, options);
-
-            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
+            return CppParser.ParseFiles(headerFiles, parserOptions);
         }
 
-        public virtual bool Generate(List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
+        public virtual bool GenerateCore(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
-            LogInfo($"Generating: {config.ApiName}");
-            var options = PrepareSettings();
-
-            LogInfo("Parsing Headers...");
-            var compilation = CppParser.ParseFiles(headerFiles, options);
-
-            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
-        }
-
-        public virtual bool Generate(CppParserOptions parserOptions, string headerFile, string outputPath, List<string>? allowedHeaders = null)
-        {
-            LogInfo($"Generating: {config.ApiName}");
-
-            LogInfo("Parsing Headers...");
-            var compilation = CppParser.ParseFile(headerFile, parserOptions);
-
-            return Generate(compilation, [headerFile], outputPath, allowedHeaders);
-        }
-
-        public virtual bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
-        {
-            LogInfo($"Generating: {config.ApiName}");
-
-            LogInfo("Parsing Headers...");
-            var compilation = CppParser.ParseFiles(headerFiles, parserOptions);
-
-            return Generate(compilation, headerFiles, outputPath, allowedHeaders);
-        }
-
-        public virtual bool Generate(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
-        {
-            metadata = new();
             if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages
@@ -207,12 +212,7 @@
                 step.PreProcess(files, compilation, config, metadata, result);
             }
 
-            LogInfo("Applying Pre-Patches...");
-            patchEngine.ApplyPrePatches(config, AppDomain.CurrentDomain.BaseDirectory, headerFiles, result);
-
-            config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
-            wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
-            metadata.Settings = Settings;
+            OnPrePatchCore(result, headerFiles);
 
             LogInfo($"Configuring Steps...");
             foreach (var step in GenerationSteps)

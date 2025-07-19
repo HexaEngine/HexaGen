@@ -1,9 +1,9 @@
 ﻿namespace HexaGen
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.Frozen;
     using System;
+    using System.Collections;
+    using System.Collections.Frozen;
+    using System.Collections.Generic;
 
     public class FileSet : ISet<string>, IReadOnlySet<string>, IReadOnlyCollection<string>, ICollection
     {
@@ -39,7 +39,7 @@
 
         public bool Contains(string path)
         {
-            if (path == null) return true;
+            if (string.IsNullOrEmpty(path)) return true;
             path = PathHelper.GetPath(path);
             return set.Contains(path);
         }

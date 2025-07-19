@@ -1,7 +1,8 @@
 ﻿namespace HexaGen.PreProcessSteps
 {
-    using CppAst;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model;
+    using HexaGen.CppAst.Model.Metadata;
     using HexaGen.Metadata;
     using System.Collections.Frozen;
 

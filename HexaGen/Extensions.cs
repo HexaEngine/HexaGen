@@ -1,7 +1,10 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Model.Types;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.InteropServices;

@@ -1,15 +1,13 @@
 ﻿namespace HexaGen.GenerationSteps
 {
-    using ClangSharp;
-    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Types;
     using HexaGen.FunctionGeneration;
     using HexaGen.FunctionGeneration.ParameterWriters;
     using HexaGen.Metadata;
-    using System.Collections.Frozen;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Text;
 

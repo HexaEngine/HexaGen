@@ -1,6 +1,6 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Parsing;
     using HexaGen.Metadata;
     using HexaGen.Patching;
     using System.Diagnostics.CodeAnalysis;

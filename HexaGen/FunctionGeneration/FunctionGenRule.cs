@@ -1,9 +1,10 @@
 ﻿namespace HexaGen.FunctionGeneration
 {
-    using CppAst;
     using HexaGen;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Mapping;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Types;
     using System.Collections.Generic;
 
     public abstract class FunctionGenRule

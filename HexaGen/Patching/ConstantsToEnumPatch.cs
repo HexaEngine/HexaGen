@@ -1,5 +1,4 @@
-﻿using CppAst;
-using HexaGen.Metadata;
+﻿using HexaGen.Metadata;
 
 namespace HexaGen.Patching
 {

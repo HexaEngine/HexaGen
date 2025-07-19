@@ -1,6 +1,8 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Model.Types;
     using Microsoft.CodeAnalysis;
     using System;
     using System.Diagnostics.CodeAnalysis;

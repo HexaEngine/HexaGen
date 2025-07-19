@@ -1,8 +1,8 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
+    using HexaGen.CppAst.Model.Types;
     using System.Text;
 
     public static class MarshalHelper

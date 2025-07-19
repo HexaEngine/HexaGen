@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Model.Types;
 
     public class ReferenceResolver
     {
@@ -59,7 +60,6 @@
                 }
             }
         }
-
 
         public virtual void Resolve(CppType cppType, CppCompilation input, CppCompilation output)
         {

@@ -1,8 +1,6 @@
 ﻿namespace HexaGen
 {
-    using CppAst;
     using HexaGen.Metadata;
-    using System.Collections.Frozen;
 
     public abstract class GenerationStep : LoggerBase
     {
