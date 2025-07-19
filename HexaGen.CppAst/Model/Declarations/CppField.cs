@@ -79,9 +79,14 @@ namespace HexaGen.CppAst.Model.Declarations
         public int BitFieldWidth { get; set; }
 
         /// <summary>
+        /// Gets or sets the offset of the field in bits.
+        /// </summary>
+        public long BitOffset { get; set; }
+
+        /// <summary>
         /// Gets or sets the offset of the field in bytes.
         /// </summary>
-        public long Offset { get; set; }
+        public long Offset => BitOffset / 8;
 
         /// <inheritdoc />
         public override string ToString()

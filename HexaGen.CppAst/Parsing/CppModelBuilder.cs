@@ -569,12 +569,12 @@ namespace HexaGen.CppAst.Parsing
                             // We try to recover the offset from the previous field
                             // Might not be always correct (with alignment rules),
                             // but not sure how to recover the offset without recalculating the entire offsets
-                            var offset = 0;
+                            long offset = 0;
                             var cppClassContainer = containerContext.Container as CppClass;
                             if (cppClassContainer is object && cppClassContainer.Fields.Count > 0)
                             {
                                 var lastField = cppClassContainer.Fields[cppClassContainer.Fields.Count - 1];
-                                offset = (int)lastField.Offset + lastField.Type.SizeOf;
+                                offset = lastField.BitOffset + lastField.Type.SizeOf;
                             }
 
                             // Create an anonymous field for the type
@@ -583,7 +583,7 @@ namespace HexaGen.CppAst.Parsing
                                 Visibility = containerContext.CurrentVisibility,
                                 StorageQualifier = GetStorageQualifier(cursor),
                                 IsAnonymous = true,
-                                Offset = offset,
+                                BitOffset = offset,
                             };
                             ParseAttributes(cursor, cppField, true);
                             containerContext.DeclarationContainer.Fields.Add(cppField);
@@ -1217,7 +1217,7 @@ namespace HexaGen.CppAst.Parsing
                 cppField = previousField;
                 cppField.Name = fieldName;
                 cppField.Type = type;
-                cppField.Offset = cursor.OffsetOfField / 8;
+                cppField.BitOffset = cursor.OffsetOfField;
             }
             else
             {
@@ -1227,7 +1227,7 @@ namespace HexaGen.CppAst.Parsing
                     StorageQualifier = GetStorageQualifier(cursor),
                     IsBitField = cursor.IsBitField,
                     BitFieldWidth = cursor.FieldDeclBitWidth,
-                    Offset = cursor.OffsetOfField / 8,
+                    BitOffset = cursor.OffsetOfField,
                 };
                 containerContext.DeclarationContainer.Fields.Add(cppField);
                 ParseAttributes(cursor, cppField, true);
@@ -1251,7 +1251,7 @@ namespace HexaGen.CppAst.Parsing
                 Visibility = GetVisibility(cursor.CXXAccessSpecifier),
                 StorageQualifier = GetStorageQualifier(cursor),
                 IsAnonymous = true,
-                Offset = cursor.OffsetOfField / 8,
+                BitOffset = cursor.OffsetOfField,
             };
             containerContext.DeclarationContainer.Fields.Add(cppField);
             ParseAttributes(cursor, cppField, true);
