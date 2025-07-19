@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGen.Cpp2C", "HexaGen.Cp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{E8A79291-393A-481F-B174-3731A53176D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexaGen.Batteries.Legacy", "HexaGen.Batteries.Legacy\HexaGen.Batteries.Legacy.csproj", "{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +63,6 @@ Global
 		{E8A79291-393A-481F-B174-3731A53176D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8A79291-393A-481F-B174-3731A53176D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8A79291-393A-481F-B174-3731A53176D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1C57872-2CE7-405B-B715-0EB9F8E9FD93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

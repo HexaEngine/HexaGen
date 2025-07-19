@@ -7,6 +7,7 @@
     using HexaGen.Core.Mapping;
     using HexaGen.FunctionGeneration;
     using HexaGen.Metadata;
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
@@ -217,9 +218,18 @@
                     subClasses.Add(new(subClass, csSubName, cppClass.Name, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));
                 }
 
+                List<CsPropertyMetadata> properties = [];
+                int bitfieldCount = 0;
                 for (int j = 0; j < cppClass.Fields.Count; j++)
                 {
                     CppField cppField = cppClass.Fields[j];
+
+                    if (cppField.IsBitField)
+                    {
+                        GenerateBitfields(context, cppClass, csName, ref j, properties, ref bitfieldCount);
+                        continue;
+                    }
+
                     var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
                     if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union)
                     {
@@ -356,6 +366,12 @@
 
                 writer.WriteLine();
 
+                foreach (var property in properties)
+                {
+                    writer.WriteLine($"public {property.Type.Name} {property.Name} {{ {property.Getter} {property.Setter} }}");
+                    writer.WriteLine();
+                }
+
                 for (int j = 0; j < cppClass.Fields.Count; j++)
                 {
                     CppField cppField = cppClass.Fields[j];
@@ -372,6 +388,48 @@
             }
 
             writer.WriteLine();
+        }
+
+        private void GenerateBitfields(GenContext context, CppClass cppClass, string csClassName, ref int fieldIndex, List<CsPropertyMetadata> properties, ref int bitfieldCount)
+        {
+            var writer = context.Writer;
+            var fields = cppClass.Fields;
+            var baseOffset = fields[fieldIndex].BitOffset;
+            var baseType = fields[fieldIndex].Type;
+            int storageBitSize = baseType.SizeOf * 8;
+            var csBaseType = new CsType(config.GetCsTypeName(baseType), baseType.IsEnum(), baseType.GetPrimitiveKind());
+
+            var bitfieldId = bitfieldCount++;
+            var bitfieldCsName = $"RawBits{bitfieldId}";
+            writer.WriteLine($"public {csBaseType.Name} {bitfieldCsName};");
+
+            int bitfieldOffset = 0;
+            int i = fieldIndex;
+            for (; i < fields.Count; ++i)
+            {
+                var field = fields[i];
+                if (!field.IsBitField)
+                {
+                    break;
+                }
+
+                if (!field.Type.IsType(baseType))
+                {
+                    break;
+                }
+
+                var bitfieldOffsetNext = bitfieldOffset + field.BitFieldWidth;
+                if (bitfieldOffsetNext > storageBitSize)
+                {
+                    break;
+                }
+                var csFieldName = config.GetFieldName(field.Name);
+                CsPropertyMetadata property = new(baseType, csBaseType, csFieldName, $"get => Bitfield.Get({bitfieldCsName}, {field.BitOffset - baseOffset}, {field.BitFieldWidth});", $"set => Bitfield.Set(ref {bitfieldCsName}, value, {field.BitOffset - baseOffset}, {field.BitFieldWidth});");
+                properties.Add(property);
+                bitfieldOffset = bitfieldOffsetNext;
+            }
+
+            fieldIndex = i - 1;
         }
 
         protected virtual void WriteHandle(GenContext context, CppClass cppClass)
@@ -745,7 +803,7 @@
                     csFieldType = sb.ToString();
                 }
 
-                if (csFieldType.EndsWith('*'))
+                if (csFieldType.EndsWith('*') || field.IsBitField)
                 {
                     if (isReadOnly)
                     {

@@ -5,19 +5,33 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HexaGen.Runtime\HexaGen.Runtime.csproj" />
     <ProjectReference Include="..\HexaGen\HexaGen.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="config.base.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="main.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Output\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Output\Structs\" />
   </ItemGroup>
 
 </Project>

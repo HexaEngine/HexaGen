@@ -27,7 +27,6 @@
             return Marshal.GetFunctionPointerForDelegate(d);
         }
 
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T? GetDelegateForFunctionPointer<T>(void* ptr) where T : Delegate
         {
@@ -139,9 +138,9 @@
         {
             var size = GetByteCountUTF16(str);
             var ptr = Alloc<byte>(size);
-            fixed (char* pStr = str) 
-            { 
-                Encoding.Unicode.GetBytes(pStr, str.Length, ptr, size); 
+            fixed (char* pStr = str)
+            {
+                Encoding.Unicode.GetBytes(pStr, str.Length, ptr, size);
             }
             var result = (char*)ptr;
             result[str.Length] = '\0';

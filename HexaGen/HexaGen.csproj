@@ -7,8 +7,8 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
 		<PackageId>HexaGen.Legacy</PackageId>
-		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.0.4</PackageVersion>
+		<AssemblyVersion>1.1.2</AssemblyVersion>
+		<PackageVersion>1.0.6</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>

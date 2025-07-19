@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.1.4.1</PackageVersion>
+		<AssemblyVersion>1.1.2</AssemblyVersion>
+		<PackageVersion>1.1.4.2</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -21,7 +21,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="CppAst" Version="0.11.0" />
+		<PackageReference Include="ClangSharp" Version="15.0.2" />
 		<PackageReference Include="libclang.runtime.win-x64" Version="15.0.0" />
 		<PackageReference Include="libClangSharp.runtime.win-x64" Version="15.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -37,4 +37,11 @@
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
 	</ItemGroup>
+
+	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">
+		<PropertyGroup>
+			<NuPkgFile>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</NuPkgFile>
+		</PropertyGroup>
+		<Copy SourceFiles="$(NuPkgFile)" DestinationFolder="C:\nuget" SkipUnchangedFiles="true" Condition="Exists('$(NuPkgFile)')" />
+	</Target>
 </Project>
