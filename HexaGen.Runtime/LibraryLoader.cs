@@ -180,7 +180,7 @@
             return new NativeLibraryContext(LoadLibrary(libraryNameCallback, libraryExtensionCallback));
         }
 
-        public static nint LoadLibrary(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback, [CallerMemberName] string? name = "")
+        public static nint LoadLibrary(LibraryNameCallback libraryNameCallback, LibraryExtensionCallback? libraryExtensionCallback)
         {
             var libraryName = libraryNameCallback();
 

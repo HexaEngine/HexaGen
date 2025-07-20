@@ -14,7 +14,7 @@
 		<IsAotCompatible>true</IsAotCompatible>
 
 		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.20</PackageVersion>
+		<PackageVersion>1.1.21</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
 		<Authors>Juna Meinhold</Authors>
 		<Copyright>Copyright (c) 2024 Juna Meinhold</Copyright>
