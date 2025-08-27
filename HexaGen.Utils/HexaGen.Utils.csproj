@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">
+		<PropertyGroup>
+			<NuPkgFile>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</NuPkgFile>
+		</PropertyGroup>
+		<Copy SourceFiles="$(NuPkgFile)" DestinationFolder="C:\nuget" SkipUnchangedFiles="true" Condition="Exists('$(NuPkgFile)')" />
+	</Target>
+
 </Project>

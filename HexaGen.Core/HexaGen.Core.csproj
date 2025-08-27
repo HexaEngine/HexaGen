@@ -7,7 +7,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
 		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.1.7-rc5</PackageVersion>
+		<PackageVersion>1.1.7-rc6</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -42,4 +42,11 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\HexaGen.CppAst\HexaGen.CppAst.csproj" />
 	</ItemGroup>
+
+	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">
+		<PropertyGroup>
+			<NuPkgFile>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</NuPkgFile>
+		</PropertyGroup>
+		<Copy SourceFiles="$(NuPkgFile)" DestinationFolder="C:\nuget" SkipUnchangedFiles="true" Condition="Exists('$(NuPkgFile)')" />
+	</Target>
 </Project>

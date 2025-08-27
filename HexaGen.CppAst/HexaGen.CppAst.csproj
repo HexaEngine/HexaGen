@@ -1,15 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <PackageId>CppAst</PackageId>
+    <PackageId>HexaGen.CppAst</PackageId>
     <Description>CppAst is a .NET library providing a C/C++ parser for header files with access to the full AST, comments and macros</Description>
     <Copyright>Alexandre Mutel</Copyright>
-    <Authors>Alexandre Mutel</Authors>
-    <PackageTags>parser;c++;ast;syntax</PackageTags>
-    <PackageProjectUrl>https://github.com/xoofx/CppAst</PackageProjectUrl>
-    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+	  <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,14 +14,16 @@
 
   <ItemGroup>
     <PackageReference Include="Irony" Version="1.5.3" />
-    <PackageReference Include="MinVer" Version="6.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HexaGen.Utils\HexaGen.Utils.csproj" />
   </ItemGroup>
+
+	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">
+		<PropertyGroup>
+			<NuPkgFile>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</NuPkgFile>
+		</PropertyGroup>
+		<Copy SourceFiles="$(NuPkgFile)" DestinationFolder="C:\nuget" SkipUnchangedFiles="true" Condition="Exists('$(NuPkgFile)')" />
+	</Target>
 </Project>
