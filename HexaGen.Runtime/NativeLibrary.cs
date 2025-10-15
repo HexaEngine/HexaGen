@@ -25,6 +25,16 @@ namespace HexaGen.Runtime
         [DllImport("libdl.so", EntryPoint = "dlsym")]
         private static extern nint DLSymNative(nint handle, byte* name);
 
+        // OSX
+        [DllImport("libSystem.dylib", EntryPoint = "dlopen")]
+        private static extern nint DLOpenNativeOSX(byte* fileName, int flags);
+
+        [DllImport("libSystem.dylib", EntryPoint = "dlclose")]
+        private static extern int DLCloseNativeOSX(nint handle);
+
+        [DllImport("libSystem.dylib", EntryPoint = "dlsym")]
+        private static extern nint DLSymNativeOSX(nint handle, byte* name);
+
         private const int RTLD_NOW = 2;
 
         public static nint Load(string libraryPath)
@@ -35,10 +45,13 @@ namespace HexaGen.Runtime
             {
                 libraryHandle = LoadLibraryNative(pLibraryPath);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                     RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 libraryHandle = DLOpenNative(pLibraryPath, RTLD_NOW);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                libraryHandle = DLOpenNativeOSX(pLibraryPath, RTLD_NOW);
             }
             else
             {
@@ -54,10 +67,13 @@ namespace HexaGen.Runtime
             {
                 return FreeLibraryNative(libraryHandle);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                     RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 return DLCloseNative(libraryHandle) == 0;
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return DLCloseNativeOSX(libraryHandle) == 0;
             }
             else
             {
@@ -71,10 +87,13 @@ namespace HexaGen.Runtime
             {
                 functionAddress = GetProcAddressNative(libraryHandle, pFunctionName);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
-                     RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 functionAddress = DLSymNative(libraryHandle, pFunctionName);
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                functionAddress = DLSymNativeOSX(libraryHandle, pFunctionName);
             }
             else
             {
