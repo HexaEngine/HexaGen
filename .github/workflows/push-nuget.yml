@@ -20,6 +20,9 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Install .NET workloads
+        run: dotnet workload install android
+
       - name: Restore dependencies
         run: |
           dotnet restore HexaGen.Core/HexaGen.Core.csproj
