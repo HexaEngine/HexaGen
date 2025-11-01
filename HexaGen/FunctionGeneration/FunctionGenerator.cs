@@ -113,7 +113,7 @@
                 CppPrimitiveKind kind = cppField.Type.GetPrimitiveKind();
 
                 var fieldCsName = settings.GetFieldName(cppField.Name);
-                var paramCsTypeName = settings.GetCsTypeName(cppField.Type, false);
+                var paramCsTypeName = settings.GetCsTypeName(cppField.Type);
                 var paramCsName = settings.GetParameterName(i, cppField.Name);
                 var direction = cppField.Type.GetDirection();
 
@@ -150,7 +150,7 @@
                 {
                     if (cppField.Type is CppArrayType arrayType)
                     {
-                        var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType, false);
+                        var arrayElementTypeName = settings.GetCsWrappedPointerTypeName(arrayType.ElementType);
                         spanParameterList[i] = new(paramCsName, cppField.Type, new($"Span<{arrayElementTypeName}>", kind), direction, "default", fieldCsName);
                     }
                     else
@@ -234,7 +234,7 @@
                             // mapping cant be null here, because customParameterList is only created if mapping is not null
                             customParameterList[i][j] = mapping!.CustomVariations[i].TryGetValue(paramCsName, out var paramType)
                                 ? new CsParameterInfo(paramCsName, cppParameter.Type, new CsType(paramType, kind), direction)
-                                : new CsParameterInfo(paramCsName, cppParameter.Type, new CsType(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                                : new CsParameterInfo(paramCsName, cppParameter.Type, new CsType(settings.GetCsWrapperTypeName(cppParameter.Type), kind), direction);
                         }
                     }
 

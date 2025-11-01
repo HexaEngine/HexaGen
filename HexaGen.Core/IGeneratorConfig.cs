@@ -65,17 +65,11 @@
 
         string GetCsSubTypeName(CppClass parentClass, string parentCsName, CppClass subClass, int idxSubClass);
 
-        string GetCsTypeName(CppPointerType pointerType);
+        string GetCsTypeName(CppType? type);
 
-        string GetCsTypeName(CppPrimitiveType primitiveType, bool isPointer);
+        string GetCsWrapperTypeName(CppType? type);
 
-        string GetCsTypeName(CppType? type, bool isPointer = false);
-
-        string GetCsWrapperTypeName(CppPointerType pointerType);
-
-        string GetCsWrapperTypeName(CppPrimitiveType primitiveType, bool isPointer);
-
-        string GetCsWrapperTypeName(CppType? type, bool isPointer = false);
+        string GetCsWrappedPointerTypeName(CppType? type);
 
         DelegateMapping? GetDelegateMapping(string delegateName);
 

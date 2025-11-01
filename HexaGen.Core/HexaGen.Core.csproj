@@ -19,6 +19,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="HexaGen.CppAst" Version="1.0.2" />

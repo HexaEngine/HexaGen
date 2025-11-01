@@ -5,5 +5,7 @@
   },
   "ImportType": "DllImport",
   "GenerateExtensions": false,
-  "Usings": [ "A" ]
+  "Usings": [ "A" ],
+  "ApiName": "Test",
+  "Namespace": "TestApp.Generated"
 }

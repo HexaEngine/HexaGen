@@ -13,13 +13,14 @@
         Default = 1 << 0,
         Out = 1 << 1,
         Ref = 1 << 2,
-        Span = 1 << 3,
-        Pointer = 1 << 4,
-        String = 1 << 5,
-        Array = 1 << 6,
-        Bool = 1 << 7,
-        IID = 1 << 8,
-        COMPtr = 1 << 9,
+        In = 1 << 3,
+        Span = 1 << 4,
+        Pointer = 1 << 5,
+        String = 1 << 6,
+        Array = 1 << 7,
+        Bool = 1 << 8,
+        IID = 1 << 9,
+        COMPtr = 1 << 10,
     }
 
     public class CsParameterInfo : ICloneable<CsParameterInfo>
@@ -97,6 +98,7 @@
                 result |= DefaultValue != null ? ParameterFlags.Default : ParameterFlags.None;
                 result |= Type.IsOut ? ParameterFlags.Out : ParameterFlags.None;
                 result |= Type.IsRef ? ParameterFlags.Ref : ParameterFlags.None;
+                result |= Type.IsIn ? ParameterFlags.In : ParameterFlags.None;
                 result |= Type.IsSpan ? ParameterFlags.Span : ParameterFlags.None;
                 result |= Type.IsPointer ? ParameterFlags.Pointer : ParameterFlags.None;
                 result |= Type.IsString ? ParameterFlags.String : ParameterFlags.None;

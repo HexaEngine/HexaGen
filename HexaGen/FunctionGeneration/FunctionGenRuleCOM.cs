@@ -12,7 +12,7 @@
         public override CsParameterInfo CreateParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings, IList<CppParameter> cppParameters, CsParameterInfo[] csParameterList, int paramIndex, CsFunctionVariation variation)
         {
             int pointerDepth = 0;
-            var name = settings.GetCsTypeName(cppParameter.Type, false).Replace("*", string.Empty);
+            var name = settings.GetCsTypeName(cppParameter.Type).Replace("*", string.Empty);
             if (cppParameter.Type.IsPointer(ref pointerDepth, out var pointerType) && (cppParameter.Type.IsClass(out var cppClass) && cppClass.IsCOMObject() || pointerType.IsVoid()))
             {
                 if (pointerDepth != 0 && name == "void")
@@ -51,7 +51,7 @@
                 }
                 else
                 {
-                    return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+                    return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type), kind), direction);
                 }
             }
             else

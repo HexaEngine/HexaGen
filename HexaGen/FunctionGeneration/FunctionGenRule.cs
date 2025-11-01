@@ -13,16 +13,16 @@
 
         public virtual CsParameterInfo CreateDefaultParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
-            return new(csParamName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type, false), kind), direction);
+            return new(csParamName, cppParameter.Type, new(settings.GetCsTypeName(cppParameter.Type), kind), direction);
         }
 
         public virtual CsParameterInfo CreateDefaultWrapperParameter(CppParameter cppParameter, ParameterMapping? mapping, string csParamName, CppPrimitiveKind kind, Direction direction, CsCodeGeneratorConfig settings)
         {
             if (mapping?.UseOut ?? false)
             {
-                return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false).Replace("ref", "out"), kind), direction);
+                return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type).Replace("ref", "out"), kind), direction);
             }
-            return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type, false), kind), direction);
+            return new(csParamName, cppParameter.Type, new(settings.GetCsWrapperTypeName(cppParameter.Type), kind), direction);
         }
     }
 }

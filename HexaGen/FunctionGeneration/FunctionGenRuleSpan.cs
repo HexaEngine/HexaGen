@@ -15,7 +15,7 @@
             {
                 if (arrayType.Size > 0)
                 {
-                    return new(csParamName, cppParameter.Type, new($"ReadOnlySpan<{settings.GetCsTypeName(arrayType.ElementType, false)}>", kind), direction);
+                    return new(csParamName, cppParameter.Type, new($"ReadOnlySpan<{settings.GetCsTypeName(arrayType.ElementType)}>", kind), direction);
                 }
             }
             else if (cppParameter.Type.IsString(settings, out var stringKind))

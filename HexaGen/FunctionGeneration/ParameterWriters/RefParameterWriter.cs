@@ -9,7 +9,7 @@
 
         public virtual bool CanWrite(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            return (paramFlags & (ParameterFlags.Ref | ParameterFlags.Out)) != 0;
+            return (paramFlags & (ParameterFlags.Ref | ParameterFlags.Out | ParameterFlags.In)) != 0;
         }
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)

@@ -18,6 +18,8 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

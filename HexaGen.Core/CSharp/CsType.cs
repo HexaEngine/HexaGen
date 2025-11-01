@@ -70,6 +70,8 @@
 
         public bool IsRef { get; set; }
 
+        public bool IsIn { get; set; }
+
         public bool IsSpan { get; set; }
 
         public bool IsString { get; set; }
@@ -128,6 +130,7 @@
         public string Classify()
         {
             IsRef = Name.StartsWith("ref ");
+            IsIn = Name.StartsWith("in ");
             IsSpan = Name.StartsWith("ReadOnlySpan<") || Name.StartsWith("Span<");
             IsOut = Name.StartsWith("out ");
             IsArray = Name.Contains("[]");
@@ -136,7 +139,7 @@
             IsString = Name.Contains("string");
             IsVoid = Name.StartsWith("void");
 
-            IsPrimitive = !IsOut && !IsRef && !IsArray && !IsPointer && !IsArray && !IsString;
+            IsPrimitive = !IsOut && !IsRef && !IsIn && !IsArray && !IsPointer && !IsArray && !IsString;
 
             if (IsString)
             {
@@ -157,6 +160,10 @@
             if (IsOut)
             {
                 return Name.Replace("out ", string.Empty);
+            }
+            if (IsIn)
+            {
+                return Name.Replace("in ", string.Empty);
             }
             if (IsSpan)
             {

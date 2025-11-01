@@ -208,7 +208,7 @@
         private void WriteFinal<T>(ICodeWriter writer, T field, CppFunctionType functionType, string csFieldName, bool compatibility = false) where T : class, ICppDeclaration, ICppMember
         {
             string signature = config.GetParameterSignature(functionType.Parameters, canUseOut: false, delegateType: true, compatibility: compatibility);
-            string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+            string returnCsName = config.GetCsTypeName(functionType.ReturnType);
             returnCsName = returnCsName.Replace("bool", config.GetBoolType());
 
             if (functionType.ReturnType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction) && !returnCsName.Contains('*'))

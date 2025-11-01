@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Conversion;
     using HexaGen.Core.Logging;
     using HexaGen.Metadata;
     using Newtonsoft.Json;
@@ -9,6 +10,13 @@
 
     public partial class CsCodeGeneratorConfig : IGeneratorConfig
     {
+        private readonly CppTypeConverter converter;
+
+        public CsCodeGeneratorConfig()
+        {
+            converter = new(this);
+        }
+
         [DefaultValue(null)]
         public HeaderInjectionDelegate? HeaderInjector { get; set; }
 

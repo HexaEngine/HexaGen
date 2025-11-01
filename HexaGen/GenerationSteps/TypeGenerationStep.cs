@@ -287,7 +287,7 @@
                         }
 
                         string csFieldName = config.GetFieldName(cppField.Name);
-                        string returnCsName = config.GetCsTypeName(cppFunctionType.ReturnType, false);
+                        string returnCsName = config.GetCsTypeName(cppFunctionType.ReturnType);
                         string signature = config.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
                         returnCsName = returnCsName.Replace("bool", config.GetBoolType());
                         if (config.DelegatesAsVoidPointer)
@@ -322,7 +322,7 @@
                     {
                         var cppField = cppClass.Fields[j];
                         var csFieldName = config.GetFieldName(cppField.Name);
-                        var paramCsTypeName = config.GetCsTypeName(cppField.Type, false);
+                        var paramCsTypeName = config.GetCsTypeName(cppField.Type);
                         var paramCsName = config.GetParameterName(j, cppField.Name);
                         var direction = cppField.Type.GetDirection();
                         var kind = cppField.Type.GetPrimitiveKind();
@@ -625,7 +625,7 @@
             }
             else
             {
-                string csFieldType = config.GetCsTypeName(field.Type, false);
+                string csFieldType = config.GetCsTypeName(field.Type);
 
                 var subClass = subClasses.Find(x => x.CppType == field.Type);
                 if (subClass != null)
@@ -653,7 +653,7 @@
                     for (int i = 0; i < functionType.Parameters.Count; i++)
                     {
                         CppParameter parameter = functionType.Parameters[i];
-                        string paramCsType = config.GetCsTypeName(parameter.Type, false);
+                        string paramCsType = config.GetCsTypeName(parameter.Type);
                         // Otherwise we get interop issues with non blittable types
 
                         builder.Append(paramCsType);
@@ -661,7 +661,7 @@
                         builder.Append(", ");
                     }
 
-                    string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+                    string returnCsName = config.GetCsTypeName(functionType.ReturnType);
                     returnCsName = returnCsName.Replace("bool", config.GetBoolType());
                     builder.Append(returnCsName);
 
@@ -701,11 +701,11 @@
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = config.GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = config.GetCsTypeName(arrayType.ElementType);
 
                 if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
                 {
-                    csFieldType = config.GetCsTypeName(primitive, false);
+                    csFieldType = config.GetCsTypeName(primitive);
                 }
 
                 if (csFieldType.EndsWith('*'))
@@ -736,12 +736,12 @@
                     }
                     else
                     {
-                        csFieldType = config.GetCsTypeName(field.Type, false);
+                        csFieldType = config.GetCsTypeName(field.Type);
                     }
                 }
                 else
                 {
-                    csFieldType = config.GetCsTypeName(field.Type, false);
+                    csFieldType = config.GetCsTypeName(field.Type);
                 }
 
                 if (field.Type.IsDelegate(out var functionType))
@@ -750,7 +750,7 @@
                     for (int i = 0; i < functionType.Parameters.Count; i++)
                     {
                         CppParameter parameter = functionType.Parameters[i];
-                        string paramCsType = config.GetCsTypeName(parameter.Type, false);
+                        string paramCsType = config.GetCsTypeName(parameter.Type);
                         // Otherwise we get interop issues with non blittable types
 
                         builder.Append(paramCsType);
@@ -758,7 +758,7 @@
                         builder.Append(", ");
                     }
 
-                    string returnCsName = config.GetCsTypeName(functionType.ReturnType, false);
+                    string returnCsName = config.GetCsTypeName(functionType.ReturnType);
                     returnCsName = returnCsName.Replace("bool", config.GetBoolType());
                     builder.Append(returnCsName);
 
@@ -836,7 +836,7 @@
 
             if (field.Type is CppArrayType arrayType)
             {
-                string csFieldType = config.GetCsTypeName(arrayType.ElementType, false);
+                string csFieldType = config.GetCsTypeName(arrayType.ElementType);
                 string spanType = csFieldType;
                 bool canUseFixed = false;
                 if (arrayType.ElementType is CppPrimitiveType)
@@ -845,7 +845,7 @@
                 }
                 else if (arrayType.ElementType is CppTypedef typedef && typedef.IsPrimitive(out var primitive))
                 {
-                    csFieldType = config.GetCsTypeName(primitive, false);
+                    csFieldType = config.GetCsTypeName(primitive);
                     canUseFixed = true;
                 }
 

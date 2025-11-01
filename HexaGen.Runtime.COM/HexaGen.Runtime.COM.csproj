@@ -28,6 +28,8 @@
 		<NoWarn>$(NoWarn);1591</NoWarn>
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

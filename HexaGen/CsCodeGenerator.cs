@@ -176,10 +176,6 @@
             }
             else
             {
-                string outputPath2 = Path.Combine(PathHelper.FindBase(), outputPath);
-                if (!Directory.Exists(outputPath2))
-                {
-                }
             }
 
             if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
@@ -357,7 +353,7 @@
             for (int j = 0; j < cppFunction.Parameters.Count; j++)
             {
                 var cppParameter = cppFunction.Parameters[j];
-                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type);
                 var paramCsName = config.GetParameterName(j, cppParameter.Name);
                 var direction = cppParameter.Type.GetDirection();
                 var primKind = cppParameter.Type.GetPrimitiveKind();
@@ -390,7 +386,7 @@
             for (int j = 0; j < functionType.Parameters.Count; j++)
             {
                 var cppParameter = functionType.Parameters[j];
-                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = config.GetCsTypeName(cppParameter.Type);
                 var paramCsName = config.GetParameterName(j, cppParameter.Name);
                 var direction = cppParameter.Type.GetDirection();
                 var primKind = cppParameter.Type.GetPrimitiveKind();

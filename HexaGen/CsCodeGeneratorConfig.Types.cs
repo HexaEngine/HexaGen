@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Conversion;
     using HexaGen.Core;
     using HexaGen.Core.Mapping;
     using HexaGen.CppAst.Model.Declarations;
@@ -199,17 +200,7 @@
             return name;
         }
 
-        public string GetCsTypeName(CppType? type, bool isPointer = false)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsTypeNameInternal(type, isPointer);
-
-            return name;
-        }
-
-        public string GetCsTypeName(CppPointerType type)
+        public string GetCsTypeName(CppType? type)
         {
             if (type == null)
                 return string.Empty;
@@ -217,171 +208,6 @@
             var name = GetCsTypeNameInternal(type);
 
             return name;
-        }
-
-        public string GetCsTypeName(CppPrimitiveType type, bool isPointer)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsTypeNameInternal(type, isPointer);
-
-            return name;
-        }
-
-        internal string GetCsTypeNameInternal(CppType? type, bool isPointer = false)
-        {
-            if (type is CppPrimitiveType primitiveType)
-            {
-                return GetCsTypeNameInternal(primitiveType, isPointer);
-            }
-
-            if (type is CppQualifiedType qualifiedType)
-            {
-                return GetCsTypeNameInternal(qualifiedType.ElementType, isPointer);
-            }
-
-            if (type is CppReferenceType referenceType)
-            {
-                return GetCsTypeNameInternal(referenceType.ElementType, true);
-            }
-
-            if (type is CppEnum enumType)
-            {
-                var enumCsName = GetCsCleanName(enumType.Name);
-                if (isPointer)
-                    return enumCsName + "*";
-
-                return enumCsName;
-            }
-
-            if (type is CppTypedef typedef)
-            {
-                if (DefinedCppEnums.TryGetValue(typedef.Name, out var cppEnum) || DefinedCppEnums.TryGetValue($"{typedef.Name}_", out cppEnum))
-                {
-                    if (isPointer)
-                        return cppEnum.Name + "*";
-                    return cppEnum.Name;
-                }
-
-                if (TypeMappings.TryGetValue(typedef.Name, out var typeMapping))
-                {
-                    if (isPointer)
-                    {
-                        return $"{typeMapping}*";
-                    }
-                    return typeMapping;
-                }
-
-                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
-                {
-                    var csPrimitiveName = GetCsTypeNameInternal(cppPrimitive);
-                    if (!string.IsNullOrEmpty(csPrimitiveName))
-                    {
-                        if (isPointer)
-                        {
-                            return $"{csPrimitiveName}*";
-                        }
-                        return csPrimitiveName;
-                    }
-                }
-
-                var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate(out var cppFunction))
-                {
-                    if (isPointer)
-                    {
-                        return MakeDelegatePointer(cppFunction) + "*";
-                    }
-                    else
-                    {
-                        return typeDefCsName;
-                    }
-                }
-
-                if (isPointer)
-                {
-                    return typeDefCsName + "*";
-                }
-
-                return typeDefCsName;
-            }
-
-            if (type is CppClass @class)
-            {
-                var className = GetCsCleanName(@class.Name);
-                if (isPointer)
-                    return className + "*";
-
-                return className;
-            }
-
-            if (type is CppPointerType pointerType)
-            {
-                var pointerName = GetCsTypeNameInternal(pointerType);
-                if (isPointer)
-                    return pointerName + "*";
-
-                return pointerName;
-            }
-
-            if (type is CppArrayType arrayType)
-            {
-                var arrayName = GetCsTypeNameInternal(arrayType.ElementType, false);
-                return arrayName + "*";
-            }
-
-            if (type is CppUnexposedType unexposedType)
-            {
-                if (isPointer)
-                {
-                    return "void*";
-                }
-                throw new UnexposedTypeException(unexposedType);
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCsTypeNameInternal(CppPointerType pointerType)
-        {
-            if (pointerType.ElementType is CppQualifiedType qualifiedType)
-            {
-                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
-                {
-                    return GetCsTypeNameInternal(primitiveType, true);
-                }
-                else if (qualifiedType.ElementType is CppClass @classType)
-                {
-                    return GetCsTypeNameInternal(@classType, true);
-                }
-                else if (qualifiedType.ElementType is CppPointerType subPointerType)
-                {
-                    return GetCsTypeNameInternal(subPointerType.ElementType, true) + "*";
-                }
-                else if (qualifiedType.ElementType is CppTypedef typedef)
-                {
-                    return GetCsTypeNameInternal(typedef, true);
-                }
-                else if (qualifiedType.ElementType is CppEnum @enum)
-                {
-                    return GetCsTypeNameInternal(@enum, true);
-                }
-
-                return GetCsTypeNameInternal(qualifiedType.ElementType, true);
-            }
-
-            if (pointerType.ElementType is CppFunctionType functionType)
-            {
-                return MakeDelegatePointer(functionType);
-            }
-
-            if (pointerType.ElementType is CppPointerType subPointer)
-            {
-                return GetCsTypeNameInternal(subPointer) + "*";
-            }
-
-            return GetCsTypeNameInternal(pointerType.ElementType, true);
         }
 
         public string MakeDelegatePointer(CppFunctionType functionType, bool withConvention = false)
@@ -410,345 +236,23 @@
             }
         }
 
-        private string GetCsTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
+        private string GetCsTypeNameInternal(CppType type)
         {
-            switch (primitiveType.Kind)
-            {
-                case CppPrimitiveKind.Void:
-                    return isPointer ? "void*" : "void";
-
-                case CppPrimitiveKind.Char:
-                    return isPointer ? "byte*" : "byte";
-
-                case CppPrimitiveKind.Bool:
-                    return isPointer ? $"{GetBoolType(isPointer)}*" : "bool";
-
-                case CppPrimitiveKind.WChar:
-                    return isPointer ? "char*" : "char";
-
-                case CppPrimitiveKind.Short:
-                    return isPointer ? "short*" : "short";
-
-                case CppPrimitiveKind.Int:
-                    return isPointer ? "int*" : "int";
-
-                case CppPrimitiveKind.Long:
-                    return isPointer ? "int*" : "int";
-
-                case CppPrimitiveKind.UnsignedLong:
-                    return isPointer ? "uint*" : "uint";
-
-                case CppPrimitiveKind.LongLong:
-                    return isPointer ? "long*" : "long";
-
-                case CppPrimitiveKind.UnsignedChar:
-                    return isPointer ? "byte*" : "byte";
-
-                case CppPrimitiveKind.UnsignedShort:
-                    return isPointer ? "ushort*" : "ushort";
-
-                case CppPrimitiveKind.UnsignedInt:
-                    return isPointer ? "uint*" : "uint";
-
-                case CppPrimitiveKind.UnsignedLongLong:
-                    return isPointer ? "ulong*" : "ulong";
-
-                case CppPrimitiveKind.Float:
-                    return isPointer ? "float*" : "float";
-
-                case CppPrimitiveKind.Double:
-                    return isPointer ? "double*" : "double";
-
-                case CppPrimitiveKind.LongDouble:
-                    break;
-
-                default:
-                    return string.Empty;
-            }
-
-            return string.Empty;
+            return converter.Convert(type, CsTypeStyle.Raw);
         }
 
         /// <summary>
         /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="isPointer"></param>
+        /// 
         /// <returns></returns>
-        public string GetCsWrapperTypeName(CppType? type, bool isPointer = false)
+        public string GetCsWrapperTypeName(CppType? type)
         {
             if (type == null)
                 return string.Empty;
 
-            var name = GetCsWrapperTypeNameInternal(type, isPointer);
-            if (name == "ref void") // exception for void type
-            {
-                name = "void*";
-            }
-
-            return name;
-        }
-
-        /// <summary>
-        /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public string GetCsWrapperTypeName(CppPointerType type)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsWrapperTypeNameInternal(type);
-
-            return name;
-        }
-
-        /// <summary>
-        /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="isPointer"></param>
-        /// <returns></returns>
-        public string GetCsWrapperTypeName(CppPrimitiveType type, bool isPointer)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsWrapperTypeNameInternal(type, isPointer);
-
-            return name;
-        }
-
-        private string GetCsWrapperTypeNameInternal(CppType? type, bool isPointer = false)
-        {
-            if (type is CppPrimitiveType primitiveType)
-            {
-                return GetCsWrapperTypeNameInternal(primitiveType, isPointer);
-            }
-
-            if (type is CppQualifiedType qualifiedType)
-            {
-                return GetCsWrapperTypeNameInternal(qualifiedType.ElementType, isPointer);
-            }
-
-            if (type is CppReferenceType referenceType)
-            {
-                return GetCsWrapperTypeNameInternal(referenceType.ElementType, true);
-            }
-
-            if (type is CppEnum enumType)
-            {
-                var enumCsName = GetCsCleanName(enumType.Name);
-                if (isPointer)
-                    return "ref " + enumCsName;
-
-                return enumCsName;
-            }
-
-            if (type is CppTypedef typedef)
-            {
-                if (DefinedCppEnums.TryGetValue(typedef.Name, out var cppEnum) || DefinedCppEnums.TryGetValue($"{typedef.Name}_", out cppEnum))
-                {
-                    if (isPointer)
-                        return cppEnum.Name + "*";
-                    return cppEnum.Name;
-                }
-
-                if (TypeMappings.TryGetValue(typedef.Name, out var mappedType))
-                {
-                    if (isPointer)
-                    {
-                        return $"ref {mappedType}";
-                    }
-                    return mappedType;
-                }
-
-                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
-                {
-                    var csPrimitiveName = GetCsWrapperTypeNameInternal(cppPrimitive);
-                    if (!string.IsNullOrEmpty(csPrimitiveName))
-                    {
-                        if (isPointer)
-                        {
-                            return $"ref {csPrimitiveName}";
-                        }
-                        return csPrimitiveName;
-                    }
-                }
-
-                var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate(out var cppFunction))
-                {
-                    if (isPointer)
-                    {
-                        return MakeDelegatePointer(cppFunction) + "*";
-                    }
-                    else
-                    {
-                        return typeDefCsName;
-                    }
-                }
-
-                if (isPointer && typeDefCsName == "void")
-                    return "void*";
-
-                if (isPointer)
-                    return "ref " + typeDefCsName;
-
-                return typeDefCsName;
-            }
-
-            if (type is CppClass @class)
-            {
-                var className = GetCsCleanName(@class.Name);
-                if (isPointer && className == "void")
-                    return "void*";
-                if (isPointer)
-                    return "ref " + className;
-
-                return className;
-            }
-
-            if (type is CppPointerType pointerType)
-            {
-                return GetCsWrapperTypeNameInternal(pointerType);
-            }
-
-            if (type is CppArrayType arrayType && arrayType.Size > 0)
-            {
-                if (TryGetArrayMapping(arrayType, out string? mapping))
-                {
-                    return mapping;
-                }
-
-                return GetCsWrapperTypeNameInternal(arrayType.ElementType, true);
-            }
-            else if (type is CppArrayType arrayType1 && arrayType1.Size < 0)
-            {
-                var arrayName = GetCsTypeName(arrayType1.ElementType, false);
-                return arrayName + "*";
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCsWrapperTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
-        {
-            switch (primitiveType.Kind)
-            {
-                case CppPrimitiveKind.Void:
-                    return isPointer ? "void*" : "void";
-
-                case CppPrimitiveKind.Char:
-                    return isPointer ? "ref byte" : "byte";
-
-                case CppPrimitiveKind.Bool:
-                    return isPointer ? $"ref {GetBoolType(isPointer)}" : "bool";
-
-                case CppPrimitiveKind.WChar:
-                    return isPointer ? "ref char" : "char";
-
-                case CppPrimitiveKind.Short:
-                    return isPointer ? "ref short" : "short";
-
-                case CppPrimitiveKind.Int:
-                    return isPointer ? "ref int" : "int";
-
-                case CppPrimitiveKind.Long:
-                    return isPointer ? "ref int" : "int";
-
-                case CppPrimitiveKind.UnsignedLong:
-                    return isPointer ? "ref uint" : "uint";
-
-                case CppPrimitiveKind.LongLong:
-                    return isPointer ? "ref long" : "long";
-
-                case CppPrimitiveKind.UnsignedChar:
-                    return isPointer ? "ref byte" : "byte";
-
-                case CppPrimitiveKind.UnsignedShort:
-                    return isPointer ? "ref ushort" : "ushort";
-
-                case CppPrimitiveKind.UnsignedInt:
-                    return isPointer ? "ref uint" : "uint";
-
-                case CppPrimitiveKind.UnsignedLongLong:
-                    return isPointer ? "ref ulong" : "ulong";
-
-                case CppPrimitiveKind.Float:
-                    return isPointer ? "ref float" : "float";
-
-                case CppPrimitiveKind.Double:
-                    return isPointer ? "ref double" : "double";
-
-                case CppPrimitiveKind.LongDouble:
-                    break;
-
-                default:
-                    return string.Empty;
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCsWrapperTypeNameInternal(CppPointerType pointerType)
-        {
-            if (pointerType.ElementType is CppQualifiedType qualifiedType)
-            {
-                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
-                {
-                    return GetCsWrapperTypeNameInternal(primitiveType, true);
-                }
-                else if (qualifiedType.ElementType is CppClass @classType)
-                {
-                    return GetCsWrapperTypeNameInternal(@classType, true);
-                }
-                else if (qualifiedType.ElementType is CppPointerType subPointerType)
-                {
-                    return GetCsWrapperTypeNameInternal(subPointerType, true) + "*";
-                }
-                else if (qualifiedType.ElementType is CppTypedef typedef)
-                {
-                    return GetCsWrapperTypeNameInternal(typedef, true);
-                }
-                else if (qualifiedType.ElementType is CppEnum @enum)
-                {
-                    return GetCsWrapperTypeNameInternal(@enum, true);
-                }
-
-                return GetCsWrapperTypeNameInternal(qualifiedType.ElementType, true);
-            }
-
-            if (pointerType.ElementType is CppFunctionType functionType)
-            {
-                return MakeDelegatePointer(functionType);
-            }
-
-            if (pointerType.ElementType is CppPointerType subPointer)
-            {
-                return GetCsWrapperTypeNameInternal(subPointer) + "*";
-            }
-
-            return GetCsWrapperTypeNameInternal(pointerType.ElementType, true);
-        }
-
-        /// <summary>
-        /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="isPointer"></param>
-        /// <returns></returns>
-        public string GetCsWrappedPointerTypeName(CppType? type, bool isPointer = false)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsWrappedPointerTypeNameInternal(type, isPointer);
-            if (type is CppPointerType pointerType && pointerType.ElementType is CppFunctionType)
-            {
-                name = "nint";
-            }
+            var name = converter.Convert(type, CsTypeStyle.Ref);
 
             return name;
         }
@@ -757,236 +261,16 @@
         /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
         /// </summary>
         /// <param name="type"></param>
+        /// 
         /// <returns></returns>
-        public string GetCsWrappedPointerTypeName(CppPointerType type)
+        public string GetCsWrappedPointerTypeName(CppType? type)
         {
             if (type == null)
                 return string.Empty;
 
-            var name = GetCsWrappedPointerTypeNameInternal(type);
+            var name = converter.Convert(type, CsTypeStyle.Wrapped);
 
             return name;
-        }
-
-        /// <summary>
-        /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="isPointer"></param>
-        /// <returns></returns>
-        public string GetCsWrappedPointerTypeName(CppPrimitiveType type, bool isPointer)
-        {
-            if (type == null)
-                return string.Empty;
-
-            var name = GetCsWrappedPointerTypeNameInternal(type, isPointer);
-
-            return name;
-        }
-
-        private string GetCsWrappedPointerTypeNameInternal(CppType? type, bool isPointer = false)
-        {
-            if (type is CppPrimitiveType primitiveType)
-            {
-                return GetCsWrappedPointerTypeNameInternal(primitiveType, isPointer);
-            }
-
-            if (type is CppQualifiedType qualifiedType)
-            {
-                return GetCsWrappedPointerTypeNameInternal(qualifiedType.ElementType, isPointer);
-            }
-
-            if (type is CppReferenceType referenceType)
-            {
-                return GetCsWrappedPointerTypeNameInternal(referenceType.ElementType, true);
-            }
-
-            if (type is CppEnum enumType)
-            {
-                var enumCsName = GetCsCleanName(enumType.Name);
-                if (isPointer)
-                    return $"Pointer<{enumCsName}>";
-
-                return enumCsName;
-            }
-
-            if (type is CppTypedef typedef)
-            {
-                if (DefinedCppEnums.TryGetValue(typedef.Name, out var cppEnum) || DefinedCppEnums.TryGetValue($"{typedef.Name}_", out cppEnum))
-                {
-                    if (isPointer)
-                        return cppEnum.Name + "*";
-                    return cppEnum.Name;
-                }
-
-                if (TypeMappings.TryGetValue(typedef.Name, out var mappedType))
-                {
-                    if (isPointer)
-                    {
-                        return $"Pointer<{mappedType}>";
-                    }
-                    return mappedType;
-                }
-
-                if (typedef.ElementType is CppPrimitiveType cppPrimitive)
-                {
-                    var csPrimitiveName = GetCsWrappedPointerTypeNameInternal(cppPrimitive);
-                    if (!string.IsNullOrEmpty(csPrimitiveName))
-                    {
-                        if (isPointer)
-                        {
-                            return $"Pointer<{csPrimitiveName}>";
-                        }
-
-                        return csPrimitiveName;
-                    }
-                }
-
-                var typeDefCsName = GetCsCleanName(typedef.Name);
-                if (typedef.IsDelegate())
-                {
-                    return typeDefCsName;
-                }
-                if (isPointer && typeDefCsName == "void")
-                    return "nint";
-                if (isPointer)
-                    return $"Pointer<{typeDefCsName}>";
-
-                return typeDefCsName;
-            }
-
-            if (type is CppClass @class)
-            {
-                var className = GetCsCleanName(@class.Name);
-                if (isPointer && className == "void")
-                    return "nint";
-                if (isPointer)
-                    return $"Pointer<{className}>";
-
-                return className;
-            }
-
-            if (type is CppPointerType pointerType)
-            {
-                return GetCsWrappedPointerTypeNameInternal(pointerType);
-            }
-
-            if (type is CppArrayType arrayType && arrayType.Size > 0)
-            {
-                if (TryGetArrayMapping(arrayType, out string? mapping))
-                {
-                    return mapping;
-                }
-
-                return GetCsWrappedPointerTypeNameInternal(arrayType.ElementType, true);
-            }
-            else if (type is CppArrayType arrayType1 && arrayType1.Size < 0)
-            {
-                var arrayName = GetCsTypeName(arrayType1.ElementType, false);
-                return $"Pointer<{arrayName}>";
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCsWrappedPointerTypeNameInternal(CppPrimitiveType primitiveType, bool isPointer)
-        {
-            switch (primitiveType.Kind)
-            {
-                case CppPrimitiveKind.Void:
-                    return isPointer ? "nint" : "nint";
-
-                case CppPrimitiveKind.Char:
-                    return isPointer ? "Pointer<byte>" : "byte";
-
-                case CppPrimitiveKind.Bool:
-                    return isPointer ? $"Pointer<{GetBoolType(isPointer)}>" : "bool";
-
-                case CppPrimitiveKind.WChar:
-                    return isPointer ? "Pointer<char>" : "char";
-
-                case CppPrimitiveKind.Short:
-                    return isPointer ? "Pointer<short>" : "short";
-
-                case CppPrimitiveKind.Int:
-                    return isPointer ? "Pointer<int>" : "int";
-
-                case CppPrimitiveKind.Long:
-                    return isPointer ? "Pointer<int>" : "int";
-
-                case CppPrimitiveKind.UnsignedLong:
-                    return isPointer ? "Pointer<uint>" : "uint";
-
-                case CppPrimitiveKind.LongLong:
-                    return isPointer ? "Pointer<long>" : "long";
-
-                case CppPrimitiveKind.UnsignedChar:
-                    return isPointer ? "Pointer<byte>" : "byte";
-
-                case CppPrimitiveKind.UnsignedShort:
-                    return isPointer ? "Pointer<ushort>" : "ushort";
-
-                case CppPrimitiveKind.UnsignedInt:
-                    return isPointer ? "Pointer<uint>" : "uint";
-
-                case CppPrimitiveKind.UnsignedLongLong:
-                    return isPointer ? "Pointer<ulong>" : "ulong";
-
-                case CppPrimitiveKind.Float:
-                    return isPointer ? "Pointer<float>" : "float";
-
-                case CppPrimitiveKind.Double:
-                    return isPointer ? "Pointer<double>" : "double";
-
-                case CppPrimitiveKind.LongDouble:
-                    break;
-
-                default:
-                    return string.Empty;
-            }
-
-            return string.Empty;
-        }
-
-        private string GetCsWrappedPointerTypeNameInternal(CppPointerType pointerType)
-        {
-            if (pointerType.ElementType is CppQualifiedType qualifiedType)
-            {
-                if (qualifiedType.ElementType is CppPrimitiveType primitiveType)
-                {
-                    return GetCsWrappedPointerTypeNameInternal(primitiveType, true);
-                }
-                else if (qualifiedType.ElementType is CppClass @classType)
-                {
-                    return GetCsWrappedPointerTypeNameInternal(@classType, true);
-                }
-                else if (qualifiedType.ElementType is CppPointerType subPointerType)
-                {
-                    return $"Pointer<{GetCsWrappedPointerTypeNameInternal(subPointerType, true)}>";
-                }
-                else if (qualifiedType.ElementType is CppTypedef typedef)
-                {
-                    return GetCsWrappedPointerTypeNameInternal(typedef, true);
-                }
-                else if (qualifiedType.ElementType is CppEnum @enum)
-                {
-                    return GetCsWrappedPointerTypeNameInternal(@enum, true);
-                }
-
-                return GetCsWrappedPointerTypeNameInternal(qualifiedType.ElementType, true);
-            }
-
-            if (pointerType.ElementType is CppFunctionType functionType)
-            {
-                return MakeDelegatePointer(functionType);
-            }
-
-            if (pointerType.ElementType is CppPointerType subPointer)
-            {
-                return $"Pointer<{GetCsWrappedPointerTypeNameInternal(subPointer)}>";
-            }
-
-            return GetCsWrappedPointerTypeNameInternal(pointerType.ElementType, true);
         }
 
         public string GetParameterSignature(IList<CppParameter> parameters, bool canUseOut, bool attributes = true, bool names = true, bool delegateType = false, bool compatibility = false)
@@ -997,7 +281,7 @@
             for (int i = 0; i < parameters.Count; i++)
             {
                 CppParameter cppParameter = parameters[i];
-                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type);
                 var paramCsName = GetParameterName(i, cppParameter.Name);
 
                 CppType ptrType = cppParameter.Type;
@@ -1031,7 +315,7 @@
                 if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
                 {
                     argumentBuilder.Append("out ");
-                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
                 }
 
                 if (compatibility && paramCsTypeName.Contains('*'))
@@ -1065,7 +349,7 @@
             for (int i = 0; i < parameters.Count; i++)
             {
                 CppParameter cppParameter = parameters[i];
-                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type);
                 var paramCsName = GetParameterName(i, cppParameter.Name);
 
                 CppType ptrType = cppParameter.Type;
@@ -1096,7 +380,7 @@
             foreach (CppParameter cppParameter in parameters)
             {
                 string direction = string.Empty;
-                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type);
 
                 CppType ptrType = cppParameter.Type;
                 int depth = 0;
@@ -1135,7 +419,7 @@
                 if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
                 {
                     argumentBuilder.Append("out ");
-                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
                 }
 
                 if (compatibility && paramCsTypeName.Contains('*'))
@@ -1172,7 +456,7 @@
             foreach (CppParameter cppParameter in parameters)
             {
                 string direction = string.Empty;
-                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type);
 
                 CppType ptrType = cppParameter.Type;
                 int depth = 0;
@@ -1211,7 +495,7 @@
                 if (canUseOut && cppParameter.Type.CanBeUsedAsOutput(out CppTypeDeclaration? cppTypeDeclaration))
                 {
                     argumentBuilder.Append("out ");
-                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration, false);
+                    paramCsTypeName = GetCsTypeName(cppTypeDeclaration);
                 }
 
                 if (compatibility && paramCsTypeName.Contains('*'))
@@ -1240,7 +524,7 @@
             {
                 CppParameter cppParameter = parameters[i];
                 string direction = string.Empty;
-                var paramCsTypeName = GetCsTypeName(cppParameter.Type, false);
+                var paramCsTypeName = GetCsTypeName(cppParameter.Type);
                 var paramCsName = GetParameterName(i, cppParameter.Name);
 
                 CppType ptrType = cppParameter.Type;

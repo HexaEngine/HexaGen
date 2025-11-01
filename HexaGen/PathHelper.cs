@@ -32,7 +32,7 @@
 
         static readonly char[] separators = [Path.PathSeparator, Path.AltDirectorySeparatorChar];
 
-        public static string FindBase()
+        public static string? FindBase()
         {
             ReadOnlySpan<char> dirD = Environment.CurrentDirectory;
             Span<char> dir = stackalloc char[dirD.Length];
@@ -50,7 +50,7 @@
                 dir = MemoryMarshal.CreateSpan(ref ba, span.Length);
             }
 
-            throw new DirectoryNotFoundException("Couldn't locate base directory.");
+            return null;
         }
     }
 }

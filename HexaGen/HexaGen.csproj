@@ -20,6 +20,7 @@
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<DefineConstants>$(DefinedConstants);CPPAST_15_OR_GREATER</DefineConstants>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
