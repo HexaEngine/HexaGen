@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using CommandLine;
     using HexaGen.CppAst.Parsing;
     using HexaGen.Metadata;
     using HexaGen.Patching;
@@ -7,8 +8,9 @@
 
     public class BatchGenerator
     {
-        private CsCodeGeneratorConfig config;
-        private CsCodeGenerator generator;
+        private CsCodeGeneratorConfig config = null!;
+        private CsCodeGenerator generator = null!;
+        private CLIGeneratorOptions? options;
         private readonly List<IPrePatch> prePatches = [];
         private readonly List<IPostPatch> postPatches = [];
         private DateTime start;
@@ -33,6 +35,7 @@
             var ctor = type.GetConstructor([typeof(CsCodeGeneratorConfig)]);
             generator = (T)ctor!.Invoke([config]);
             generator.LogToConsole();
+            generator.CLIOptions = options;
             foreach (var patch in prePatches)
             {
                 generator.PatchEngine.RegisterPrePatch(patch);
@@ -41,6 +44,17 @@
             {
                 generator.PatchEngine.RegisterPostPatch(patch);
             }
+            return this;
+        }
+
+        public BatchGenerator WithArgs(string[] args)
+        {
+            options = Parser.Default.ParseArguments<CLIGeneratorOptions>(args).Value;
+            if (generator != null)
+            {
+                generator.CLIOptions = options;
+            }
+
             return this;
         }
 

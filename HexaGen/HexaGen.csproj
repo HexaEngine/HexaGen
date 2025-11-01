@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0;net8.0</TargetFrameworks>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<PackageVersion>1.1.15-rc38</PackageVersion>
+		<AssemblyVersion>1.1.19</AssemblyVersion>
+		<PackageVersion>1.1.19</PackageVersion>
 		<Description></Description>
 		<PackageTags></PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -23,6 +23,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommandLineParser" Version="2.9.1" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>

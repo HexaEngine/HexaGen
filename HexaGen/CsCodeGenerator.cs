@@ -41,6 +41,8 @@
 
         public List<PreProcessStep> PreProcessSteps { get; } = new();
 
+        public CLIGeneratorOptions? CLIOptions { get; set; }
+
         public T GetGenerationStep<T>() where T : GenerationStep
         {
             foreach (var step in GenerationSteps)
@@ -168,6 +170,18 @@
 
         public virtual bool GenerateCore(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            if (CLIOptions != null && CLIOptions.OutputDirectory != null)
+            {
+                outputPath = Path.Combine(CLIOptions.OutputDirectory, outputPath);
+            }
+            else
+            {
+                string outputPath2 = Path.Combine(PathHelper.FindBase(), outputPath);
+                if (!Directory.Exists(outputPath2))
+                {
+                }
+            }
+
             if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
             Directory.CreateDirectory(outputPath);
             // Print diagnostic messages

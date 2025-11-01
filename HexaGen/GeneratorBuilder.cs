@@ -1,7 +1,9 @@
 ﻿namespace HexaGen
 {
+    using CommandLine;
     using HexaGen.Metadata;
     using HexaGen.Patching;
+    using Microsoft.Extensions.Options;
     using System.Diagnostics.CodeAnalysis;
 
     public readonly ref struct MacroBuilder
@@ -88,6 +90,7 @@
     {
         private CsCodeGeneratorConfig config = null!;
         private CsCodeGenerator generator = null!;
+        private CLIGeneratorOptions? options;
         private readonly List<IPrePatch> prePatches = [];
         private readonly List<IPostPatch> postPatches = [];
         private readonly List<GenEventHandler<CsCodeGenerator, CsCodeGeneratorConfig>> onPostConfigureCallbacks = [];
@@ -139,6 +142,17 @@
             }
 
             generator.PostConfigure += OnPostConfigure;
+            return this;
+        }
+
+        public GeneratorBuilder WithArgs(string[] args)
+        {
+            options = Parser.Default.ParseArguments<CLIGeneratorOptions>(args).Value;
+            if (generator != null)
+            {
+                generator.CLIOptions = options;
+            }
+
             return this;
         }
 
