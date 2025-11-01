@@ -13,9 +13,10 @@
 		<EnableAotAnalyzer>true</EnableAotAnalyzer>
 		<IsAotCompatible>true</IsAotCompatible>
 
-		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<PackageVersion>1.1.22</PackageVersion>
+		<AssemblyVersion>1.1.23</AssemblyVersion>
+		<PackageVersion>1.1.23</PackageVersion>
 		<Description>The C Runtime for all C Wrappers generated with the HexaGen Code Generator.</Description>
+		<PackageTags>code-generation;csharp;c;runtime;interop;wrapper;toolkit</PackageTags>
 		<Authors>Juna Meinhold</Authors>
 		<Copyright>Copyright (c) 2024 Juna Meinhold</Copyright>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
@@ -23,6 +24,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
 
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
@@ -35,6 +37,7 @@
 	<ItemGroup>
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+		<Content Include="../icon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netstandard2.1' OR '$(TargetFramework)' == 'net472'">

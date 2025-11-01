@@ -6,10 +6,10 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.8</AssemblyVersion>
-		<PackageVersion>1.1.8</PackageVersion>
-		<Description></Description>
-		<PackageTags></PackageTags>
+		<AssemblyVersion>1.1.9</AssemblyVersion>
+		<PackageVersion>1.1.9</PackageVersion>
+		<Description>HexaGen.Core provides core functionality for the HexaGen code generation toolkit, supporting C++ and C# projects.</Description>
+		<PackageTags>code-generation;csharp;c++;toolkit;core;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>
 		<Copyright>Copyright (c) 2023 Juna Meinhold</Copyright>
 		<PackageProjectUrl>https://github.com/HexaEngine/HexaGen</PackageProjectUrl>
@@ -17,6 +17,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
@@ -40,6 +41,7 @@
 	<ItemGroup>
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
+		<Content Include="../icon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<Target Name="CopyNuGetPackage" AfterTargets="Pack" Condition=" '$(Configuration)' == 'Release' ">

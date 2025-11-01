@@ -1,0 +1,51 @@
+name: Publish NuGet Packages
+
+on: 
+  push:
+    tags:
+      - 2.**
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: |
+          dotnet restore HexaGen.Core/HexaGen.Core.csproj
+          dotnet restore HexaGen.Language/HexaGen.Language.csproj
+          dotnet restore HexaGen/HexaGen.csproj
+          dotnet restore HexaGen.Runtime/HexaGen.Runtime.csproj
+          dotnet restore HexaGen.Runtime.COM/HexaGen.Runtime.COM.csproj
+
+      - name: Build the project
+        run: |
+          dotnet build HexaGen.Core/HexaGen.Core.csproj --configuration Release
+          dotnet build HexaGen.Language/HexaGen.Language.csproj --configuration Release
+          dotnet build HexaGen/HexaGen.csproj --configuration Release
+          dotnet build HexaGen.Runtime/HexaGen.Runtime.csproj --configuration Release
+          dotnet build HexaGen.Runtime.COM/HexaGen.Runtime.COM.csproj --configuration Release
+
+      - name: Pack the project
+        run: |
+          dotnet pack HexaGen.Core/HexaGen.Core.csproj --configuration Release --output ./nupkgs
+          dotnet pack HexaGen.Language/HexaGen.Language.csproj --configuration Release --output ./nupkgs
+          dotnet pack HexaGen/HexaGen.csproj --configuration Release --output ./nupkgs
+          dotnet pack HexaGen.Runtime/HexaGen.Runtime.csproj --configuration Release --output ./nupkgs
+          dotnet pack HexaGen.Runtime.COM/HexaGen.Runtime.COM.csproj --configuration Release --output ./nupkgs
+          
+      - name: List packages
+        run: ls ./nupkgs/
+
+      - name: Publish the package
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

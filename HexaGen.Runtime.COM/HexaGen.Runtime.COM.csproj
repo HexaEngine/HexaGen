@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0;net8.0;net7.0;net6.0;netstandard2.0;netstandard2.1;net472</TargetFrameworks>
@@ -13,9 +13,10 @@
 		<EnableAotAnalyzer>true</EnableAotAnalyzer>
 		<IsAotCompatible>true</IsAotCompatible>
 
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<PackageVersion>1.1.9</PackageVersion>
+		<AssemblyVersion>1.1.10</AssemblyVersion>
+		<PackageVersion>1.1.10</PackageVersion>
 		<Description>The COM Runtime for all COM Wrappers generated with the HexaGen Code Generator.</Description>
+		<PackageTags>code-generation;csharp;com;runtime;interop;wrapper;toolkit</PackageTags>
 		<Authors>Juna Meinhold</Authors>
 		<Copyright>Copyright (c) 2024 Juna Meinhold</Copyright>
 		<PackageProjectUrl>https://github.com/JunaMeinhold/HexaGen</PackageProjectUrl>
@@ -23,6 +24,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
 
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
@@ -39,5 +41,6 @@
 	<ItemGroup>
 		<Content Include="../README.md" Pack="true" PackagePath="/" />
 		<Content Include="../LICENSE.txt" Pack="true" PackagePath="/" />
+		<Content Include="../icon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>
