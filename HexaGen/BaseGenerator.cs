@@ -1,5 +1,7 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core;
+
     public delegate void GenEventHandler<TSender, TArgs>(TSender sender, TArgs args);
 
     public class BaseGenerator : LoggerBase

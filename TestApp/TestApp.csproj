@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HexaGen.Cpp2C\HexaGen.Cpp2C.csproj" />
     <ProjectReference Include="..\HexaGen\HexaGen.csproj" />
   </ItemGroup>
 

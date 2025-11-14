@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Cpp2C
 {
     using HexaGen.Core;
     using HexaGen.Core.Collections;
@@ -26,9 +26,9 @@
             PropertyNameComparison = StringComparison.Ordinal
         };
 
-        public void Compose(ref CsCodeGeneratorConfig config)
+        public void Compose(ref Cpp2CCodeGeneratorConfig config)
         {
-            var stack = new Stack<CsCodeGeneratorConfig>();
+            var stack = new Stack<Cpp2CCodeGeneratorConfig>();
             var current = config;
             while (true)
             {
@@ -38,7 +38,7 @@
                 current = LoadBaseConfig(current.BaseConfig);
             }
 
-            var merged = CsCodeGeneratorConfig.Default;
+            var merged = Cpp2CCodeGeneratorConfig.Default;
             while (stack.TryPop(out var top))
             {
                 merged = Merge(top, merged);
@@ -47,20 +47,20 @@
             config = merged;
         }
 
-        private static CsCodeGeneratorConfig Merge(CsCodeGeneratorConfig config, CsCodeGeneratorConfig baseConfig)
+        private static Cpp2CCodeGeneratorConfig Merge(Cpp2CCodeGeneratorConfig config, Cpp2CCodeGeneratorConfig baseConfig)
         {
-            var baseJ = JObject.FromObject(baseConfig, CsCodeGeneratorConfig.MergeSerializer);
+            var baseJ = JObject.FromObject(baseConfig, Cpp2CCodeGeneratorConfig.MergeSerializer);
 
             if (config.BaseConfig != null)
             {
                 ApplyConstrains(baseJ, config.BaseConfig.IgnoredProperties);
             }
 
-            var overrideJ = JObject.FromObject(config, CsCodeGeneratorConfig.MergeSerializer);
+            var overrideJ = JObject.FromObject(config, Cpp2CCodeGeneratorConfig.MergeSerializer);
 
             baseJ.Merge(overrideJ, mergeSettings);
 
-            config = baseJ.ToObject<CsCodeGeneratorConfig>(CsCodeGeneratorConfig.MergeSerializer)!;
+            config = baseJ.ToObject<Cpp2CCodeGeneratorConfig>(Cpp2CCodeGeneratorConfig.MergeSerializer)!;
             return config;
         }
 
@@ -102,9 +102,9 @@
             }
         }
 
-        private CsCodeGeneratorConfig LoadBaseConfig(BaseConfig baseConfig)
+        private Cpp2CCodeGeneratorConfig LoadBaseConfig(BaseConfig baseConfig)
         {
-            CsCodeGeneratorConfig? baseGeneratorConfig = null;
+            Cpp2CCodeGeneratorConfig? baseGeneratorConfig = null;
 
             ReadOnlySpan<char> url = baseConfig.Url;
 
@@ -117,7 +117,7 @@
                     throw new FileNotFoundException($"File not found: {path}");
                 }
 
-                baseGeneratorConfig = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(File.ReadAllText(path));
+                baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CCodeGeneratorConfig>(File.ReadAllText(path));
             }
             if (url.StartsWith(HttpProtocol))
             {
@@ -138,9 +138,9 @@
             return baseGeneratorConfig;
         }
 
-        private CsCodeGeneratorConfig? DownloadConfig(ReadOnlySpan<char> url)
+        private Cpp2CCodeGeneratorConfig? DownloadConfig(ReadOnlySpan<char> url)
         {
-            CsCodeGeneratorConfig? baseGeneratorConfig;
+            Cpp2CCodeGeneratorConfig? baseGeneratorConfig;
             var uri = new Uri(url.ToString());
             var client = new HttpClient();
             var response = client.GetAsync(uri).Result;
@@ -151,7 +151,7 @@
             }
 
             var json = response.Content.ReadAsStringAsync().Result;
-            baseGeneratorConfig = JsonConvert.DeserializeObject<CsCodeGeneratorConfig>(json);
+            baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CCodeGeneratorConfig>(json);
             return baseGeneratorConfig;
         }
     }

@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.Metadata
 {
+    using HexaGen.Core.Collections;
     using System.Collections;
     using System.Diagnostics.CodeAnalysis;
 

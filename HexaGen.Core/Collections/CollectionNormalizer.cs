@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core.Collections
 {
     using System;
     using System.Collections;

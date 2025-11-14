@@ -4,10 +4,10 @@
 
     public class BaseGenerator
     {
-        protected readonly Cpp2CCodeGeneratorSettings settings;
+        protected readonly Cpp2CCodeGeneratorConfig settings;
         private readonly List<LogMessage> messages = new();
 
-        public BaseGenerator(Cpp2CCodeGeneratorSettings settings)
+        public BaseGenerator(Cpp2CCodeGeneratorConfig settings)
         {
             this.settings = settings;
         }

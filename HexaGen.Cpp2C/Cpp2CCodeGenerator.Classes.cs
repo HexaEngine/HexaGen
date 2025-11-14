@@ -1,6 +1,9 @@
 ﻿namespace HexaGen.Cpp2C
 {
     using CppAst;
+    using HexaGen.CppAst.Model;
+    using HexaGen.CppAst.Model.Declarations;
+    using HexaGen.CppAst.Model.Metadata;
     using System.Text;
 
     public class Function

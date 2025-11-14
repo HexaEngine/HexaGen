@@ -1,9 +1,13 @@
 ﻿namespace HexaGen.Cpp2C
 {
     using HexaGen.Core.Logging;
+    using System.ComponentModel;
 
-    public class Cpp2CCodeGeneratorSettings
+    public partial class Cpp2CCodeGeneratorConfig
     {
+        [DefaultValue(null)]
+        public BaseConfig? BaseConfig { get; set; }
+
         /// <summary>
         /// The log level of the generator. (Default <see cref="LogSeverity.Warning"/>)
         /// </summary>

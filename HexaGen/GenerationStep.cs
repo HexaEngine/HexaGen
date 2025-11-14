@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core;
     using HexaGen.Metadata;
 
     public abstract class GenerationStep : LoggerBase

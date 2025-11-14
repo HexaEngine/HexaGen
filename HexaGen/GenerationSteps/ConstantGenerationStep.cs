@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.GenerationSteps
 {
     using HexaGen.Core;
+    using HexaGen.Core.Collections;
     using HexaGen.CppAst.Model;
     using HexaGen.Metadata;
     using System.Collections.Frozen;

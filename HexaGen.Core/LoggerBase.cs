@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core
 {
     using HexaGen.Core.Logging;
     using System;

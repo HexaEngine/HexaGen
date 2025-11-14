@@ -2,12 +2,15 @@
 {
     using CppAst;
     using HexaGen.Core.Logging;
+    using HexaGen.CppAst.Diagnostics;
+    using HexaGen.CppAst.Model.Metadata;
+    using HexaGen.CppAst.Parsing;
 
     public partial class Cpp2CCodeGenerator : BaseGenerator
     {
         private Metadata metadata = new();
 
-        public Cpp2CCodeGenerator(Cpp2CCodeGeneratorSettings settings) : base(settings)
+        public Cpp2CCodeGenerator(Cpp2CCodeGeneratorConfig settings) : base(settings)
         {
         }
 
@@ -18,7 +21,7 @@
                 ParseMacros = true,
                 ParseComments = true,
                 ParseSystemIncludes = true,
-                ParseAsCpp = true,
+                ParserKind = CppParserKind.Cpp,
                 AutoSquashTypedef = true,
             };
 

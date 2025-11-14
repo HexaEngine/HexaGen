@@ -2,6 +2,7 @@
 {
     using HexaGen;
     using HexaGen.Core;
+    using HexaGen.Core.Collections;
     using HexaGen.Core.Mapping;
     using HexaGen.CppAst.Model.Declarations;
     using HexaGen.CppAst.Model.Expressions;

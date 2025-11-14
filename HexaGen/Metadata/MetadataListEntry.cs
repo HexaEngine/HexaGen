@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.Metadata
 {
     using HexaGen.Core;
+    using HexaGen.Core.Collections;
     using System.Collections;
 
     public class MetadataListEntry<T> : GeneratorMetadataEntry, IList<T>
