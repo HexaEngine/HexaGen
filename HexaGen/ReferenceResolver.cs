@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core;
     using HexaGen.CppAst.Model.Metadata;
     using HexaGen.CppAst.Model.Types;
 

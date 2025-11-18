@@ -26,9 +26,9 @@
             PropertyNameComparison = StringComparison.Ordinal
         };
 
-        public void Compose(ref Cpp2CCodeGeneratorConfig config)
+        public void Compose(ref Cpp2CGeneratorConfig config)
         {
-            var stack = new Stack<Cpp2CCodeGeneratorConfig>();
+            var stack = new Stack<Cpp2CGeneratorConfig>();
             var current = config;
             while (true)
             {
@@ -38,7 +38,7 @@
                 current = LoadBaseConfig(current.BaseConfig);
             }
 
-            var merged = Cpp2CCodeGeneratorConfig.Default;
+            var merged = Cpp2CGeneratorConfig.Default;
             while (stack.TryPop(out var top))
             {
                 merged = Merge(top, merged);
@@ -47,20 +47,20 @@
             config = merged;
         }
 
-        private static Cpp2CCodeGeneratorConfig Merge(Cpp2CCodeGeneratorConfig config, Cpp2CCodeGeneratorConfig baseConfig)
+        private static Cpp2CGeneratorConfig Merge(Cpp2CGeneratorConfig config, Cpp2CGeneratorConfig baseConfig)
         {
-            var baseJ = JObject.FromObject(baseConfig, Cpp2CCodeGeneratorConfig.MergeSerializer);
+            var baseJ = JObject.FromObject(baseConfig, Cpp2CGeneratorConfig.MergeSerializer);
 
             if (config.BaseConfig != null)
             {
                 ApplyConstrains(baseJ, config.BaseConfig.IgnoredProperties);
             }
 
-            var overrideJ = JObject.FromObject(config, Cpp2CCodeGeneratorConfig.MergeSerializer);
+            var overrideJ = JObject.FromObject(config, Cpp2CGeneratorConfig.MergeSerializer);
 
             baseJ.Merge(overrideJ, mergeSettings);
 
-            config = baseJ.ToObject<Cpp2CCodeGeneratorConfig>(Cpp2CCodeGeneratorConfig.MergeSerializer)!;
+            config = baseJ.ToObject<Cpp2CGeneratorConfig>(Cpp2CGeneratorConfig.MergeSerializer)!;
             return config;
         }
 
@@ -102,9 +102,9 @@
             }
         }
 
-        private Cpp2CCodeGeneratorConfig LoadBaseConfig(BaseConfig baseConfig)
+        private Cpp2CGeneratorConfig LoadBaseConfig(BaseConfig baseConfig)
         {
-            Cpp2CCodeGeneratorConfig? baseGeneratorConfig = null;
+            Cpp2CGeneratorConfig? baseGeneratorConfig = null;
 
             ReadOnlySpan<char> url = baseConfig.Url;
 
@@ -117,7 +117,7 @@
                     throw new FileNotFoundException($"File not found: {path}");
                 }
 
-                baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CCodeGeneratorConfig>(File.ReadAllText(path));
+                baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CGeneratorConfig>(File.ReadAllText(path));
             }
             if (url.StartsWith(HttpProtocol))
             {
@@ -138,9 +138,9 @@
             return baseGeneratorConfig;
         }
 
-        private Cpp2CCodeGeneratorConfig? DownloadConfig(ReadOnlySpan<char> url)
+        private Cpp2CGeneratorConfig? DownloadConfig(ReadOnlySpan<char> url)
         {
-            Cpp2CCodeGeneratorConfig? baseGeneratorConfig;
+            Cpp2CGeneratorConfig? baseGeneratorConfig;
             var uri = new Uri(url.ToString());
             var client = new HttpClient();
             var response = client.GetAsync(uri).Result;
@@ -151,7 +151,7 @@
             }
 
             var json = response.Content.ReadAsStringAsync().Result;
-            baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CCodeGeneratorConfig>(json);
+            baseGeneratorConfig = JsonConvert.DeserializeObject<Cpp2CGeneratorConfig>(json);
             return baseGeneratorConfig;
         }
     }

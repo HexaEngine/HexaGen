@@ -3,7 +3,7 @@
     using HexaGen.Core.Logging;
     using System.ComponentModel;
 
-    public partial class Cpp2CCodeGeneratorConfig
+    public partial class Cpp2CGeneratorConfig
     {
         [DefaultValue(null)]
         public BaseConfig? BaseConfig { get; set; }
@@ -37,5 +37,7 @@
         /// List of the additional arguments passed directly to the C++ Clang compiler. (Default: Empty)
         /// </summary>
         public List<string> AdditionalArguments { get; set; } = new();
+
+        public string NamePrefix { get; set; } = string.Empty;
     }
 }

@@ -1,0 +1,8 @@
+{
+  "ImportType": "DllImport",
+  "GenerateExtensions": false,
+  "Usings": [ "A" ],
+  "ApiName": "Test",
+  "Namespace": "TestApp.Generated",
+  "NamePrefix": "Cpp2C"
+}

@@ -2,6 +2,6 @@
 {
     public interface IConfigComposer
     {
-        void Compose(ref Cpp2CCodeGeneratorConfig config);
+        void Compose(ref Cpp2CGeneratorConfig config);
     }
 }

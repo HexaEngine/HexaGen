@@ -44,7 +44,7 @@
         [Test]
         public void ImGuiTest()
         {
-            Cpp2CCodeGeneratorConfig settings = new();
+            Cpp2CGeneratorConfig settings = new();
             Cpp2CCodeGenerator generator = new(settings);
 
             generator.Generate("./cpp2c/imgui/imgui.h", "./cpp2c/results/imgui");

@@ -4,19 +4,19 @@
 
     public class BaseGenerator
     {
-        protected readonly Cpp2CCodeGeneratorConfig settings;
+        protected readonly Cpp2CGeneratorConfig config;
         private readonly List<LogMessage> messages = new();
 
-        public BaseGenerator(Cpp2CCodeGeneratorConfig settings)
+        public BaseGenerator(Cpp2CGeneratorConfig settings)
         {
-            this.settings = settings;
+            this.config = settings;
         }
 
         public IReadOnlyList<LogMessage> Messages => messages;
 
         public void Log(LogSeverity severtiy, string message)
         {
-            if (severtiy >= settings.LogLevel)
+            if (severtiy >= config.LogLevel)
                 messages.Add(new LogMessage(severtiy, message));
         }
 

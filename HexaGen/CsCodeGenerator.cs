@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
     using HexaGen.CppAst.Diagnostics;
@@ -13,6 +14,7 @@
     using HexaGen.Metadata;
     using HexaGen.Patching;
     using HexaGen.PreProcessSteps;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
     public partial class CsCodeGenerator : BaseGenerator
@@ -21,6 +23,7 @@
         protected PatchEngine patchEngine = new();
         private CsCodeGeneratorMetadata metadata = new();
         public readonly FunctionTableBuilder FunctionTableBuilder = new();
+        private readonly List<GenerationStep> generationSteps = new();
         private Dictionary<string, string> wrappedPointers = null!;
         private List<CsCodeGeneratorMetadata> copyFromPending = [];
 
@@ -37,7 +40,7 @@
 
         public PatchEngine PatchEngine => patchEngine;
 
-        public List<GenerationStep> GenerationSteps { get; } = new();
+        public IReadOnlyList<GenerationStep> GenerationSteps => generationSteps;
 
         public List<PreProcessStep> PreProcessSteps { get; } = new();
 
@@ -54,6 +57,17 @@
             }
 
             throw new InvalidOperationException($"Step of type '{typeof(T)}' was not found.");
+        }
+
+        public void AddGenerationStep(GenerationStep step)
+        {
+            generationSteps.Add(step);
+        }
+
+        public void AddGenerationStep<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>() where T : GenerationStep
+        {
+            var step = (GenerationStep)Activator.CreateInstance(typeof(T), this, config)!;
+            generationSteps.Add(step);
         }
 
         public void OverwriteGenerationStep<TTarget>(GenerationStep newStep) where TTarget : GenerationStep
@@ -207,6 +221,14 @@
             allowedHeaders.AddRange(headerFiles);
 
             FileSet files = new(allowedHeaders.Select(PathHelper.GetPath));
+
+            foreach (var meta in copyFromPending)
+            {
+                foreach (var step in generationSteps)
+                {
+                    step.CopyFromMetadata(meta);
+                }
+            }   
 
             LogInfo($"Configuring Pre-Processing Steps...");
             foreach (var step in PreProcessSteps)

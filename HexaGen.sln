@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33815.320
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGen", "HexaGen\HexaGen.csproj", "{93F673CD-B2FE-4D0D-AAC4-D89B9C54A120}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HexaGen.Cpp2C", "HexaGen.Cpp2C\HexaGen.Cpp2C.csproj", "{B9F8CB09-219F-489B-8B23-A2CCA53C99C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{E8A79291-393A-481F-B174-3731A53176D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.Cpp2C", "TestApp.Cpp2C\TestApp.Cpp2C.csproj", "{1B0DAE63-3CA2-4209-B736-648EE79C883E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,14 @@ Global
 		{E8A79291-393A-481F-B174-3731A53176D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8A79291-393A-481F-B174-3731A53176D7}.Release|x64.ActiveCfg = Release|x64
 		{E8A79291-393A-481F-B174-3731A53176D7}.Release|x64.Build.0 = Release|x64
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Debug|x64.ActiveCfg = Debug|x64
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Debug|x64.Build.0 = Debug|x64
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Release|x64.ActiveCfg = Release|Any CPU
+		{1B0DAE63-3CA2-4209-B736-648EE79C883E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

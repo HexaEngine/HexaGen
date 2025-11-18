@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.PreProcessSteps
 {
+    using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.CppAst.Model;
     using HexaGen.CppAst.Model.Metadata;

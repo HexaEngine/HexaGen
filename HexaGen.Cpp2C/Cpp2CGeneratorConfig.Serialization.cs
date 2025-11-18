@@ -1,14 +1,9 @@
 ﻿namespace HexaGen.Cpp2C
 {
     using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
 
-    public partial class Cpp2CCodeGeneratorConfig
+    public partial class Cpp2CGeneratorConfig
     {
         public static readonly JsonSerializerSettings SerializerSettings = new()
         {
@@ -25,12 +20,12 @@
 
         public static readonly JsonSerializer MergeSerializer = JsonSerializer.Create(MergeSerializerSettings);
 
-        public static Cpp2CCodeGeneratorConfig Load(string file, IConfigComposer? composer = null)
+        public static Cpp2CGeneratorConfig Load(string file, IConfigComposer? composer = null)
         {
-            Cpp2CCodeGeneratorConfig result;
+            Cpp2CGeneratorConfig result;
             if (File.Exists(file))
             {
-                result = JsonConvert.DeserializeObject<Cpp2CCodeGeneratorConfig>(File.ReadAllText(file)) ?? new();
+                result = JsonConvert.DeserializeObject<Cpp2CGeneratorConfig>(File.ReadAllText(file)) ?? new();
             }
             else
             {

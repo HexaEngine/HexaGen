@@ -122,6 +122,15 @@
             WriteLine("}");
         }
 
+        public void EndBlock(string marker = "}")
+        {
+            if (blocks <= 0)
+                return;
+            blocks--;
+            Unindent(1);
+            WriteLine(marker);
+        }
+
         public IDisposable PushBlock(string marker = "{") => new CodeBlock(this, marker);
 
         public void Indent(int count = 1)

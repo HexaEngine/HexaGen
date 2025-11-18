@@ -1,4 +1,4 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core
 {
     using System.Runtime.InteropServices;
     using System.Text;

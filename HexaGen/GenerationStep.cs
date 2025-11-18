@@ -31,15 +31,7 @@
 
         public T GetGenerationStep<T>() where T : GenerationStep
         {
-            foreach (var step in generator.GenerationSteps)
-            {
-                if (step is T t)
-                {
-                    return t;
-                }
-            }
-
-            throw new InvalidOperationException($"Step of type '{typeof(T)}' was not found.");
+            return generator.GetGenerationStep<T>();
         }
     }
 }
