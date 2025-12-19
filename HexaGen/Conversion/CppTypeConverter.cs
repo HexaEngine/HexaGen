@@ -3,6 +3,7 @@
     using HexaGen.CppAst.Model.Declarations;
     using HexaGen.CppAst.Model.Interfaces;
     using HexaGen.CppAst.Model.Types;
+    using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
     public enum CsTypeStyle
@@ -247,6 +248,12 @@
             {
                 if (!typedefCache.TryGetValue(typedef, out var result))
                 {
+                    if (typedef.IsOpaqueHandle())
+                    {
+                        result = new() { BaseType = typedef.Name };
+                        typedefCache.Add(typedef, result);
+                        return result;
+                    }
                     result = AnalyzeType(typedef.ElementType);
                     if (result.IsFunctionPointer)
                     {

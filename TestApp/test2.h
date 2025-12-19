@@ -1,5 +1,8 @@
-﻿typedef void (*TestCallback)(int* data);
-void TestCallbackFunc(TestCallback callback, void* data);
-void GetCallbackFunc(TestCallback* outCallback);
+﻿typedef struct VkInstance_T* VkInstance;
 
-void AnonymousCallbackFunc(float(*values_getter)(void* data, int idx));
+typedef struct
+{
+	VkInstance Instance;
+} VkTest;
+
+//void vkTestInitialize(VkTest* test);

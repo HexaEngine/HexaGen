@@ -259,6 +259,15 @@
             return false;
         }
 
+        public static bool IsOpaqueHandle(this CppTypedef typedef)
+        {
+            if (typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppClass classType)
+            {
+                return !classType.IsDefinition;
+            }
+            return false;
+        }
+
         public static unsafe string ToCamelCase(this string str)
         {
             bool wasNumber = false;
