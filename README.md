@@ -1,58 +1,135 @@
 # HexaGen
 
-HexaGen is a code generation tool designed to generate bindings for C# for C and COM libraries using [CppAst.NET](https://github.com/xoofx/CppAst.NET). Additionally, it includes a generator for creating wrappers around C++ libraries for C. HexaGen aims to simplify the process of integrating native libraries with C# applications.
+HexaGen is a comprehensive code generation toolkit for C# and C++ projects. It uses [HexaGen.CppAst](https://github.com/HexaEngine/HexaGen.CppAst) to parse C/C++ headers and automatically generates C# bindings and wrappers. HexaGen simplifies the process of integrating native libraries with C# applications by automating the creation of interop code.
 
-## Features
+## :sparkles: Features
 
-- **C# Bindings for C Libraries:** Automatically generate C# bindings for C libraries.
-- **C# Bindings for COM Libraries:** Easily create C# bindings for COM libraries.
-- **C++ to C Wrappers:** Generate C wrappers for C++ libraries, facilitating their use in C projects.
+- **C# Bindings for C Libraries:** Automatically generate C# bindings from C headers with support for functions, structs, enums, and callbacks
+- **C# Bindings for COM Libraries:** Create C# bindings for COM interfaces and objects
+- **C++ to C Wrappers:** Generate C wrappers around C++ libraries to facilitate C interop
+- **Flexible Configuration:** JSON-based configuration system with inheritance and composition support
+- **Advanced Function Generation:** Multiple parameter handling strategies including spans, refs, delegates, and default values
+- **Type Mapping:** Configurable type mappings and conversions
+- **Extension Methods:** Generate extension methods for improved API ergonomics
+- **Constants to Enums:** Convert C preprocessor constants to strongly-typed C# enums
 
-## Work in Progress
+## :file_folder: Project Structure
 
-- **Cpp to C Generator:** A feature under development to create wrappers around C++ libraries for C.
+- **HexaGen** - Main code generation tool and CLI
+- **HexaGen.Core** - Core functionality and utilities for code generation
+- **HexaGen.Cpp2C** - C++ to C wrapper generator
+- **HexaGen.Runtime** - Runtime support library for generated code (multi-target: .NET 9/8/7/6, .NET Standard 2.0/2.1, .NET Framework 4.7.2, Android)
+- **HexaGen.Runtime.COM** - Runtime support for COM interop (multi-target: .NET 9/8/7/6, .NET Standard 2.0/2.1, .NET Framework 4.7.2)
+- **HexaGen.Language** - Language parsing and processing utilities
+- **HexaGen.Tests** - Unit tests
+- **HexaGen.PerformanceTests** - Performance benchmarks
 
-## Requirements
+## :wrench: Requirements
 
-To build and use HexaGen, ensure you have the following tools installed:
+- **.NET SDK 9.0** (or compatible version)
+- **Clang 17.0.4 or later** (for parsing C/C++ headers)
+- **Visual Studio 2022 or later** (recommended for development)
 
-- **.NET SDK 8.0**
-- **Clang 17.0.4 or later**
-- **Visual Studio 2022 or later**
+## :package: Installation
 
-## Build Instructions
+### NuGet Package
 
-To build HexaGen, follow these steps:
+Install HexaGen via NuGet Package Manager:
 
-1. **Install .NET SDK 8.0:**
-   Download and install the .NET SDK 8.0 from the official [.NET website](https://dotnet.microsoft.com/download/dotnet/8.0).
+```bash
+dotnet add package HexaGen
+```
 
-2. **Install Clang:**
-   Ensure you have Clang 17.0.4 or later installed. You can download it from the [official Clang website](https://clang.llvm.org/).
+### Build from Source
 
-3. **Install Visual Studio 2022:**
-   Download and install Visual Studio 2022 or later from the [Visual Studio website](https://visualstudio.microsoft.com/).
-
-4. **Clone the Repository:**
-   Clone the HexaGen repository from GitHub to your local machine:
+1. **Clone the Repository:**
    ```bash
    git clone https://github.com/HexaEngine/HexaGen.git
    cd HexaGen
    ```
-5. **Build the Project:**
-   Open the project in Visual Studio 2022 and build the solution, or use the .NET CLI:
+
+2. **Build the Project:**
    ```bash
    dotnet build
    ```
 
-## Usage
+## :rocket: Usage
 
-Instructions on how to use HexaGen will be provided once the project reaches a stable release. Stay tuned for updates!
+### Basic Example
 
-## Contributing
+Create a configuration file (e.g., `config.json`):
 
-Contributions are welcome! Please fork the repository and submit a pull request with your changes. Ensure that your code follows the project's coding standards and includes appropriate tests.
+```json
+{
+  "ApiName": "MyLibrary",
+  "Namespace": "MyLibrary.Generated",
+  "ImportType": "DllImport",
+  "GenerateExtensions": true
+}
+```
 
-## License
+Generate C# bindings programmatically:
 
-HexaGen is licensed under the MIT License. See the LICENSE file for more details.
+```csharp
+using HexaGen;
+
+var config = CsCodeGeneratorConfig.Load("config.json");
+var generator = new CsCodeGenerator(config);
+generator.Generate("mylibrary.h", "Output");
+```
+
+### :gear: Configuration
+
+HexaGen uses a JSON-based configuration system that supports:
+
+- **BaseConfig**: Configuration inheritance from other files
+- **Type Mappings**: Custom type conversions
+- **Function Rules**: Advanced parameter transformation rules
+- **Constants to Enum**: Convert preprocessor defines to enums
+- **Import Types**: DllImport, LibraryImport, or delegates
+
+Example configuration with inheritance:
+
+```json
+{
+  "BaseConfig": {
+    "Url": "file://config.base.json",
+    "IgnoredProperties": ["IgnoredTypes"]
+  },
+  "ApiName": "MyAPI",
+  "Namespace": "MyAPI.Generated",
+  "ImportType": "LibraryImport"
+}
+```
+
+### C++ to C Generation
+
+For generating C wrappers around C++ libraries:
+
+```csharp
+using HexaGen.Cpp2C;
+
+var config = Cpp2CGeneratorConfig.Load("cpp2c-config.json");
+var generator = new Cpp2CGenerator(config);
+generator.Generate("mylibrary.hpp", "Output");
+```
+
+## :handshake: Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes following the project's coding standards
+4. Add appropriate tests
+5. Submit a pull request
+
+## :scroll: License
+
+HexaGen is licensed under the MIT License. See the [LICENSE.txt](LICENSE.txt) file for details.
+
+## :link: Links
+
+- [GitHub Repository](https://github.com/HexaEngine/HexaGen)
+- [NuGet Package](https://www.nuget.org/packages/HexaGen)
+- [HexaGen.CppAst](https://github.com/HexaEngine/HexaGen.CppAst) - The underlying C++ parser (custom fork)
