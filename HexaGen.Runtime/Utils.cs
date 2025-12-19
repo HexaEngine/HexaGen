@@ -12,7 +12,7 @@
         const int poolSize = 1024;
 
         static MemoryPool()
-        {      
+        {
             entries = Utils.Alloc<Entry>(poolSize);
             Unsafe.InitBlockUnaligned(entries, 0, (uint)(sizeof(Entry) * poolSize));
             stack = poolSize;
@@ -74,8 +74,6 @@
 
             int location = Interlocked.Increment(ref stack);
             Entry* entry = entries + location;
-
-           
         }
     }
 
