@@ -3,6 +3,7 @@
     using CppAst;
     using HexaGen.CppAst.Model.Types;
     using Newtonsoft.Json;
+    using System.Globalization;
 
     public class CsType : ICloneable<CsType>
     {
@@ -89,6 +90,8 @@
         public CsStringType StringType { get; set; }
 
         public CsPrimitiveType PrimitiveType { get; set; }
+
+        public bool IsRefOrIn => IsRef || IsIn;
 
         public static bool IsKnownPrimitive(string name)
         {
@@ -222,6 +225,42 @@
         public CsType Clone()
         {
             return new CsType(Name, CleanName, IsPointer, IsOut, IsRef, IsSpan, IsString, IsPrimitive, IsVoid, IsBool, IsArray, IsEnum, StringType, PrimitiveType);
+        }
+
+        public ReadOnlySpan<char> GetNormalizedName()
+        {
+            var nameNormalized = Name.AsSpan();
+            if (IsRef)
+                nameNormalized = nameNormalized["ref ".Length..];
+            if (IsIn)
+                nameNormalized = nameNormalized["in ".Length..];
+            return nameNormalized.Trim();
+        }
+
+        public bool Conflicts(CsType other)
+        {
+            if (IsRefOrIn && other.IsRefOrIn)
+            {
+                return GetNormalizedName().SequenceEqual(other.GetNormalizedName());
+            }
+            return Name == other.Name;
+        }
+
+        private static readonly CompareInfo CompareInfo = CultureInfo.InvariantCulture.CompareInfo;
+
+        public int GetConflictHashCode()
+        {
+            HashCode code = new();
+            if (IsRefOrIn)
+            {
+                code.Add("ref");
+                code.Add(CompareInfo.GetHashCode(GetNormalizedName(), CompareOptions.None));
+            }
+            else
+            {
+                code.Add(CompareInfo.GetHashCode(Name, CompareOptions.None));
+            }
+            return code.ToHashCode();
         }
     }
 }

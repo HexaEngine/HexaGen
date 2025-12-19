@@ -119,5 +119,10 @@
         {
             return new CsParameterInfo(Name, CppType, Type.Clone(), Modifiers.Clone(), Attributes.Clone(), Direction, DefaultValue, FieldName);
         }
+
+        public bool Conflicts(CsParameterInfo other)
+        {
+            return Type.Conflicts(other.Type) && DefaultValue == other.DefaultValue;
+        }
     }
 }

@@ -62,7 +62,7 @@
 
         #region IDs
 
-        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, WriteFunctionFlags flags)
+        protected virtual string BuildFunctionSignature(CsFunctionVariation variation, bool useAttributes, bool useNames, bool conflictResolution, WriteFunctionFlags flags)
         {
             int offset = flags == WriteFunctionFlags.None ? 0 : 1;
             StringBuilder sb = new();
@@ -97,7 +97,15 @@
                     sb.Append($"{string.Join(" ", param.Attributes)} ");
                 }
 
-                sb.Append($"{param.Type}");
+                if (conflictResolution && param.Type.IsRefOrIn)
+                {
+                    sb.Append("ref ");
+                    sb.Append(param.Type.GetNormalizedName());
+                }
+                else
+                {
+                    sb.Append($"{param.Type}");
+                }
 
                 if (useNames)
                 {
@@ -112,19 +120,19 @@
 
         public string BuildFunctionHeaderId(WriteFunctionFlags flags)
         {
-            string signature = BuildFunctionSignature(this, false, false, flags);
+            string signature = BuildFunctionSignature(this, false, false, true, flags);
             return Identifier = $"{Name}({signature})";
         }
 
         public string BuildFunctionHeaderId(string alias, WriteFunctionFlags flags)
         {
-            string signature = BuildFunctionSignature(this, false, false, flags);
+            string signature = BuildFunctionSignature(this, false, false, true, flags);
             return Identifier = $"{alias}({signature})";
         }
 
         public string BuildFunctionHeader(CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
-            string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
+            string signature = BuildFunctionSignature(this, generateMetadata, true, false, flags);
             if (IsGeneric)
             {
                 return Identifier = $"{csReturnType.Name} {Name}<{BuildGenericSignature()}>({signature}) {BuildGenericConstraint()}";
@@ -137,7 +145,7 @@
 
         public string BuildFunctionHeader(string alias, CsType csReturnType, WriteFunctionFlags flags, bool generateMetadata)
         {
-            string signature = BuildFunctionSignature(this, generateMetadata, true, flags);
+            string signature = BuildFunctionSignature(this, generateMetadata, true, false, flags);
             if (IsGeneric)
             {
                 return Identifier = $"{csReturnType.Name} {alias}<{BuildGenericSignature()}>({signature}) {BuildGenericConstraint()}";

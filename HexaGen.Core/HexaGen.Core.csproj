@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.10</AssemblyVersion>
-		<PackageVersion>1.1.10</PackageVersion>
+		<AssemblyVersion>1.1.11</AssemblyVersion>
+		<PackageVersion>1.1.11</PackageVersion>
 		<Description>HexaGen.Core provides core functionality for the HexaGen code generation toolkit, supporting C++ and C# projects.</Description>
 		<PackageTags>code-generation;csharp;c++;toolkit;core;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>

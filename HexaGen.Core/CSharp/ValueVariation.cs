@@ -28,7 +28,7 @@
             if (other.name != name) return false;
             for (int i = 0; i < parameters.Count; i++)
             {
-                if (other.parameters[i].Type.Name != parameters[i].Type.Name || other.parameters[i].DefaultValue != parameters[i].DefaultValue)
+                if (!other.parameters[i].Conflicts(parameters[i]))
                 {
                     return false;
                 }
@@ -43,7 +43,7 @@
             code.Add(name);
             foreach (var parameter in parameters)
             {
-                code.Add(parameter.Type.Name);
+                code.Add(parameter.Type.GetConflictHashCode());
             }
             return code.ToHashCode();
         }
