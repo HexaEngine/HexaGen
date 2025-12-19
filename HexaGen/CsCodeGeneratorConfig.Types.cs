@@ -245,7 +245,7 @@
         /// This method will return <see langword="ref"/> <see cref="T"/> instead of <see cref="T"/>*
         /// </summary>
         /// <param name="type"></param>
-        /// 
+        ///
         /// <returns></returns>
         public string GetCsWrapperTypeName(CppType? type)
         {
@@ -261,7 +261,7 @@
         /// This method will return <see cref="Pointer&lt;T&gt;"/> instead of <see cref="T"/>*
         /// </summary>
         /// <param name="type"></param>
-        /// 
+        ///
         /// <returns></returns>
         public string GetCsWrappedPointerTypeName(CppType? type)
         {
@@ -539,43 +539,15 @@
                     ptrType = qualifiedType.ElementType;
                 }
 
-                if (ptrType is CppTypedef typedef && typedef.ElementType.IsDelegate(out var cppFunction))
+                if (ptrType is CppTypedef typedef && typedef.ElementType.IsDelegate())
                 {
-                    if (cppFunction.Parameters.Count == 0)
+                    if (compatibility)
                     {
-                        paramCsTypeName = $"delegate*<{GetCsTypeName(cppFunction.ReturnType)}>";
+                        argumentBuilder.Append($"(nint){paramCsName}");
                     }
                     else
                     {
-                        paramCsTypeName = $"delegate*<{GetNamelessParameterSignature(cppFunction.Parameters, false, true)}, {GetCsTypeName(cppFunction.ReturnType)}>";
-                    }
-
-                    bool isPointer = depth > 0;
-
-                    while (depth-- > 0)
-                    {
-                        paramCsTypeName += "*";
-                    }
-
-                    if (compatibility && paramCsTypeName.Contains('*'))
-                    {
-                        paramCsTypeName = "nint";
-                    }
-
-                    if (isPointer)
-                    {
-                        if (compatibility)
-                        {
-                            argumentBuilder.Append($"(nint){paramCsName}");
-                        }
-                        else
-                        {
-                            argumentBuilder.Append($"{paramCsName}");
-                        }
-                    }
-                    else
-                    {
-                        argumentBuilder.Append($"({paramCsTypeName})Utils.GetFunctionPointerForDelegate({paramCsName})");
+                        argumentBuilder.Append($"{paramCsName}");
                     }
                 }
                 else

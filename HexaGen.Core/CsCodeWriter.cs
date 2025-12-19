@@ -158,13 +158,13 @@
             blocks++;
         }
 
-        public void EndBlock()
+        public void EndBlock(string marker = "}")
         {
             if (blocks <= 0)
                 return;
             blocks--;
             Unindent(1);
-            WriteLine("}");
+            WriteLine(marker);
         }
 
         public IDisposable PushBlock(string marker = "{") => new CodeBlock(this, marker);

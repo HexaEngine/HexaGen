@@ -14,7 +14,14 @@
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            context.AppendParam(cppParameter.Name);
+            if (rootParameter.Type.Name != cppParameter.Type.Name)
+            {
+                context.AppendParam($"({rootParameter.Type.Name}){cppParameter.Name}");
+            }
+            else
+            {
+                context.AppendParam(cppParameter.Name);
+            }
         }
     }
 }

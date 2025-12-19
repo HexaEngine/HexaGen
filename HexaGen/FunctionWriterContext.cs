@@ -9,7 +9,7 @@
     {
         public ICodeWriter Writer { get; }
 
-        public IGeneratorConfig Settings { get; }
+        public CsCodeGeneratorConfig Config { get; }
 
         public StringBuilder StringBuilder { get; }
 
@@ -24,10 +24,10 @@
         private int stringCounter = 0;
         private int blockCounter = 0;
 
-        public FunctionWriterContext(ICodeWriter writer, IGeneratorConfig settings, StringBuilder stringBuilder, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags)
+        public FunctionWriterContext(ICodeWriter writer, CsCodeGeneratorConfig config, StringBuilder stringBuilder, CsFunctionOverload overload, CsFunctionVariation variation, WriteFunctionFlags flags)
         {
             Writer = writer;
-            Settings = settings;
+            Config = config;
             StringBuilder = stringBuilder;
             Overload = overload;
             Variation = variation;

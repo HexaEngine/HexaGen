@@ -14,7 +14,7 @@
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            var settings = context.Settings;
+            var settings = context.Config;
             var paramCsDefault = cppParameter.DefaultValue!;
             if (cppParameter.Type.IsString || paramCsDefault.StartsWith("\"") && paramCsDefault.EndsWith("\""))
             {

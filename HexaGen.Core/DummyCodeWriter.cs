@@ -16,7 +16,7 @@
         {
         }
 
-        public void EndBlock()
+        public void EndBlock(string marker = "}")
         {
         }
 

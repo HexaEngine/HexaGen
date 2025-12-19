@@ -13,7 +13,7 @@
 
         void Dispose();
 
-        void EndBlock();
+        void EndBlock(string marker = "}");
 
         void Indent(int count = 1);
 

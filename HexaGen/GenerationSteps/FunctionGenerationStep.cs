@@ -265,11 +265,11 @@
                             string delegateTypeOld;
                             if (cppFunction.Parameters.Count == 0)
                             {
-                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{returnTypeOld}>";
+                                delegateTypeOld = $"delegate* unmanaged[{attributes}]<{returnTypeOld}>";
                             }
                             else
                             {
-                                delegateTypeOld = $"delegate* unmanaged[{cppFunction.CallingConvention.GetCallingConventionDelegate()}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true, compatibility: true)}, {returnTypeOld}>";
+                                delegateTypeOld = $"delegate* unmanaged[{attributes}]<{config.GetNamelessParameterSignature(cppFunction.Parameters, false, true, compatibility: true)}, {returnTypeOld}>";
                             }
 
                             string argumentNamesOld = config.WriteFunctionMarshalling(cppFunction.Parameters, compatibility: true);
@@ -388,6 +388,7 @@
             new UseThisParameterWriter(),
             new DefaultValueParameterWriter(),
             new StringParameterWriter(),
+            new DelegateParameterWriter(),
             new RefParameterWriter(),
             new SpanParameterWriter(),
             new ArrayParameterWriter(),

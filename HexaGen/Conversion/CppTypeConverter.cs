@@ -17,10 +17,45 @@
         private readonly CsCodeGeneratorConfig config;
         private readonly Dictionary<CppType, AnalysisResult> typedefCache = [];
         private readonly Lock syncObj = new();
+        private Dictionary<string, CppEnum> typeDefToEnum = [];
 
         public CppTypeConverter(CsCodeGeneratorConfig config)
         {
             this.config = config;
+        }
+
+        public void Initialize(ParseResult result)
+        {
+            typedefCache.Clear();
+
+            var compilation = result.Compilation;
+            typeDefToEnum = compilation.Enums.ToDictionary(e => PreprocessEnumName(e.Name));
+
+            var enumMap = compilation.Enums.ToDictionary(e => e.Name);
+            foreach (var pair in config.TypedefToEnumMappings)
+            {
+                if (pair.Value == null)
+                {
+                    typeDefToEnum.Remove(pair.Key);
+                }
+                else if (enumMap.TryGetValue(pair.Value, out var cppEnum))
+                {
+                    typeDefToEnum[pair.Key] = cppEnum;
+                }
+            }
+        }
+
+        private static string PreprocessEnumName(ReadOnlySpan<char> name)
+        {
+            if (name.EndsWith("_t"))
+            {
+                name = name[..^2];
+            }
+            else if (name.EndsWith('_'))
+            {
+                name = name[..^1];
+            }
+            return name.ToString();
         }
 
         private struct AnalysisResult
@@ -57,20 +92,31 @@
                 _ => throw new NotSupportedException(),
             };
         }
+
         private string FormatRaw(AnalysisResult result)
         {
             if (result.Function != null)
             {
                 result.BaseType = config.MakeDelegatePointer(result.Function);
+                --result.PointerLevel;
             }
             return result.BaseType + new string('*', result.PointerLevel);
         }
 
-        private static string FormatRef(AnalysisResult result)
+        private string FormatRef(AnalysisResult result)
         {
             if (result.BaseType == "void" && result.PointerLevel > 0)
             {
                 result.BaseType = "nint";
+                --result.PointerLevel;
+            }
+
+            if (result.Function != null)
+            {
+                if (result.PointerLevel > 1 || string.IsNullOrWhiteSpace(result.BaseType))
+                {
+                    return FormatRaw(result);
+                }
                 --result.PointerLevel;
             }
 
@@ -90,13 +136,23 @@
             return sb.ToString();
         }
 
-        private static string FormatWrapped(AnalysisResult result)
+        private string FormatWrapped(AnalysisResult result)
         {
             if (result.BaseType == "void" && result.PointerLevel > 0)
             {
                 result.BaseType = "nint";
                 --result.PointerLevel;
             }
+
+            if (result.Function != null)
+            {
+                if (result.PointerLevel > 1 || string.IsNullOrWhiteSpace(result.BaseType))
+                {
+                    return FormatRaw(result);
+                }
+                --result.PointerLevel;
+            }
+
             StringBuilder sb = new();
             for (int i = 0; i < result.PointerLevel; ++i)
             {
@@ -179,6 +235,10 @@
 
         private AnalysisResult ResolveTypedef(CppTypedef typedef)
         {
+            if (typeDefToEnum.TryGetValue(typedef.Name, out var cppEnum))
+            {
+                return new() { BaseType = GetMapping(cppEnum) };
+            }
             if (config.TypeMappings.TryGetValue(typedef.Name, out var name))
             {
                 return new() { BaseType = name };
@@ -209,7 +269,7 @@
             {
                 CppPrimitiveKind.Void => "void",
                 CppPrimitiveKind.Char => "byte",
-                CppPrimitiveKind.Bool => config.GetBoolType(),
+                CppPrimitiveKind.Bool => "bool",
                 CppPrimitiveKind.WChar => "char",
                 CppPrimitiveKind.Short => "short",
                 CppPrimitiveKind.Int => "int",

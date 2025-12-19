@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.Cpp2C
 {
+    using HexaGen.Core.CSharp;
     using HexaGen.CppAst.Model.Declarations;
     using HexaGen.CppAst.Model.Types;
     using System;
@@ -7,65 +8,79 @@
 
     public partial class Cpp2CGeneratorConfig
     {
-        public struct TypeAnalysisResult
-        {
-            public int PointerDepth;
-            public string TypeName;
-        }
-
         public string GetCType(CppType type)
         {
             // TODO: Improve type mapping
 
-            TypeAnalysisResult result = default;
             var currentType = type;
+
+            List<CppType> chain = new();
+
             while (currentType != null)
             {
-                if (currentType is CppPointerType pointerType)
+                chain.Add(currentType);
+                if (currentType is CppPointerType pointer)
                 {
-                    result.PointerDepth++;
-                    currentType = pointerType.ElementType;
+                    currentType = pointer.ElementType;
                 }
-                else if (currentType is CppArrayType arrayType)
+                else if (currentType is CppArrayType array)
                 {
-                    result.PointerDepth++;
-                    currentType = arrayType.ElementType;
+                    currentType = array.ElementType;
                 }
-                else if (currentType is CppReferenceType referenceType)
+                else if (currentType is CppReferenceType reference)
                 {
-                    result.PointerDepth++;
-                    currentType = referenceType.ElementType;
+                    currentType = reference.ElementType;
                 }
-                else if (currentType is CppPrimitiveType primitiveType)
+                else if (currentType is CppPrimitiveType)
                 {
-                    result.TypeName = GetPrimitiveName(primitiveType);
                     break;
                 }
-                else if (currentType is CppTypedef typedefType)
+                else if (currentType is CppTypedef)
                 {
-                    currentType = typedefType.ElementType;
-                }
-                else if (currentType is CppClass classType)
-                {
-                    result.TypeName = GetCTypeName(classType);
                     break;
                 }
-                else if (currentType is CppEnum enumType)
+                else if (currentType is CppClass)
                 {
-                    result.TypeName = enumType.Name;
                     break;
                 }
-                else
+                else if (currentType is CppEnum)
                 {
                     break;
                 }
             }
 
             StringBuilder sb = new();
-            sb.Append(result.TypeName);
-            for (int i = 0; i < result.PointerDepth; i++)
+            for (int i = chain.Count - 1; i >= 0; i--)
             {
-                sb.Append('*');
+                var t = chain[i];
+                if (currentType is CppPointerType)
+                {
+                    sb.Append('*');
+                }
+                else if (currentType is CppArrayType)
+                {
+                    sb.Append('*');
+                }
+                else if (currentType is CppReferenceType)
+                {
+                    sb.Append('*');
+                }
+                else if (currentType is CppPrimitiveType primitiveType)
+                {
+                    sb.Append(GetPrimitiveName(primitiveType));
+                }
+                else if (currentType is CppTypedef typedefType)
+                {
+                    sb.Append(typedefType.Name);
+                }
+                else if (currentType is CppClass classType)
+                {
+                    sb.Append(GetCTypeName(classType));
+                }
+                else if (currentType is CppEnum enumType)
+                {
+                    sb.Append(enumType.Name);
+                }
             }
 
             return sb.ToString();
@@ -105,7 +120,7 @@
 
         public string GetCTypeName(CppClass c)
         {
-            return $"{NamePrefix}_{c.Name}";
+            return $"{NamePrefix}{c.Name}";
         }
     }
 }

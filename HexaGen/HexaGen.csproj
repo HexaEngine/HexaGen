@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.20</AssemblyVersion>
-		<PackageVersion>1.1.20</PackageVersion>
+		<AssemblyVersion>1.1.22</AssemblyVersion>
+		<PackageVersion>1.1.22</PackageVersion>
 		<Description>HexaGen is a code generation toolkit for C++ and C# projects.</Description>
 		<PackageTags>code-generation;csharp;c++;toolkit;roslyn;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>

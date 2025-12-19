@@ -190,10 +190,10 @@
             Indent(1);
         }
 
-        public void EndBlock()
+        public void EndBlock(string marker = "}")
         {
             Unindent(1);
-            WriteLine("}");
+            WriteLine(marker);
             TrySplit();
         }
 

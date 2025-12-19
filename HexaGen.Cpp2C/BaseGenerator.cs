@@ -16,8 +16,10 @@
 
         public void Log(LogSeverity severtiy, string message)
         {
-            if (severtiy >= config.LogLevel)
-                messages.Add(new LogMessage(severtiy, message));
+            if (severtiy < config.LogLevel) return;
+            LogMessage msg = new(severtiy, message);
+            messages.Add(msg);
+            WriteMessage(msg);
         }
 
         public void LogTrace(string message)
@@ -57,37 +59,9 @@
             for (int i = 0; i < messages.Count; i++)
             {
                 var msg = messages[i];
-                switch (msg.Severtiy)
-                {
-                    case LogSeverity.Trace:
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        break;
-
-                    case LogSeverity.Debug:
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                        break;
-
-                    case LogSeverity.Information:
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
-
-                    case LogSeverity.Warning:
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        warns++;
-                        break;
-
-                    case LogSeverity.Error:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        errors++;
-                        break;
-
-                    case LogSeverity.Critical:
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        errors++;
-                        break;
-                }
-                Console.WriteLine(messages[i]);
-                Console.ForegroundColor = ConsoleColor.White;
+                WriteMessage(msg);
+                if (msg.Severtiy == LogSeverity.Critical || msg.Severtiy == LogSeverity.Error) ++errors;
+                else if (msg.Severtiy == LogSeverity.Warning) ++warns;
             }
 
             Console.WriteLine();
@@ -105,6 +79,38 @@
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
             messages.Clear();
+        }
+
+        private void WriteMessage(in LogMessage msg)
+        {
+            switch (msg.Severtiy)
+            {
+                case LogSeverity.Trace:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+
+                case LogSeverity.Debug:
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    break;
+
+                case LogSeverity.Information:
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+
+                case LogSeverity.Warning:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+
+                case LogSeverity.Error:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+
+                case LogSeverity.Critical:
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+            }
+            Console.WriteLine(msg.Message);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

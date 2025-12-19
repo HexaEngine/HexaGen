@@ -14,7 +14,7 @@
 
         public virtual void Write(FunctionWriterContext context, CsParameterInfo rootParameter, CsParameterInfo cppParameter, ParameterFlags paramFlags, int index, int offset)
         {
-            var settings = context.Settings;
+            var settings = context.Config;
             context.AppendParam($"{cppParameter.Name} ? ({settings.GetBoolType()})1 : ({settings.GetBoolType()})0");
         }
     }

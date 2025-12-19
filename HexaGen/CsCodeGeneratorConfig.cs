@@ -17,6 +17,9 @@
             converter = new(this);
         }
 
+        [JsonIgnore]
+        public CppTypeConverter TypeConverter => converter;
+
         [DefaultValue(null)]
         public HeaderInjectionDelegate? HeaderInjector { get; set; }
 

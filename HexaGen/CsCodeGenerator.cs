@@ -77,7 +77,7 @@
                 GenerationStep step = GenerationSteps[i];
                 if (step is TTarget)
                 {
-                    GenerationSteps[i] = newStep;
+                    generationSteps[i] = newStep;
                 }
             }
         }
@@ -110,7 +110,7 @@
 
         protected virtual void ConfigureCore()
         {
-            ConfigureGeneratorCore(PreProcessSteps, GenerationSteps, out funcGen);
+            ConfigureGeneratorCore(PreProcessSteps, generationSteps, out funcGen);
             config.DefinedCppEnums = GetGenerationStep<EnumGenerationStep>().DefinedCppEnums;
             wrappedPointers = GetGenerationStep<TypeGenerationStep>().WrappedPointers;
             metadata = new();
@@ -228,7 +228,7 @@
                 {
                     step.CopyFromMetadata(meta);
                 }
-            }   
+            }
 
             LogInfo($"Configuring Pre-Processing Steps...");
             foreach (var step in PreProcessSteps)
@@ -239,6 +239,7 @@
             LogInfo("Running Pre-Processing Steps...");
 
             ParseResult result = new(compilation);
+            config.TypeConverter.Initialize(result);
             foreach (var step in PreProcessSteps)
             {
                 step.PreProcess(files, compilation, config, metadata, result);

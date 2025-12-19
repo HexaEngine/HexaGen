@@ -67,6 +67,15 @@
         [DefaultValue(null)]
         public Dictionary<string, string> TypeMappings { get; set; } = null!;
 
+        /// <summary>
+        /// Gets or sets the mappings from typedef names to corresponding enum names.
+        /// </summary>
+        /// <remarks>Use this property to specify how typedefs should be mapped to enums during code
+        /// generation or processing. Each key represents a typedef name, and its value specifies the enum name to use
+        /// in place of the typedef.</remarks>
+        [DefaultValue(null)]
+        public Dictionary<string, string?> TypedefToEnumMappings { get; set; } = null!;
+
         [DefaultValue(null)]
         public Dictionary<string, List<FunctionAliasMapping>> FunctionAliasMappings { get; set; } = null!;
 

@@ -190,7 +190,7 @@
                     continue;
                 }
 #else
-                if (!cppFunction.IsVirtual)
+                if (!cppFunction.HasVirtualMembers)
                 {
                     vTableIndex--;
                     continue;

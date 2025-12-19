@@ -88,8 +88,8 @@
                 options.Defines.Add(config.Defines[i]);
             }
 
-            options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
-            options.AdditionalArguments.Add("-std=c++17");
+            //options.ConfigureForWindowsMsvc(CppTargetCpu.X86_64);
+            options.AdditionalArguments.Add("-std=c++23");
 
             return options;
         }
