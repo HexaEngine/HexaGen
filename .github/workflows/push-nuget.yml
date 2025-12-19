@@ -3,13 +3,15 @@ name: Publish NuGet Packages
 on: 
   push:
     tags:
-      - 2.**
+      - 1.**
   workflow_dispatch:
   
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -50,5 +52,11 @@ jobs:
       - name: List packages
         run: ls ./nupkgs/
 
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
       - name: Publish the package
-        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
