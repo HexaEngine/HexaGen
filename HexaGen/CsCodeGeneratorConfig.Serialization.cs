@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     public partial class CsCodeGeneratorConfig
     {
@@ -8,6 +9,7 @@
         {
             DefaultValueHandling = DefaultValueHandling.Ignore,
             Formatting = Formatting.Indented,
+            Converters = [new StringEnumConverter()]
         };
 
         public static readonly JsonSerializer Serializer = JsonSerializer.Create(SerializerSettings);

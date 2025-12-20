@@ -28,6 +28,7 @@
             generator.rules.Add(new FunctionGenRuleRef());
             generator.rules.Add(new FunctionGenRuleSpan());
             generator.rules.Add(new FunctionGenRuleString());
+            generator.rules.Add(new FunctionGenRuleArray(config));
             generator.steps.Add(new DefaultValueGenStep());
             generator.steps.Add(new ReturnVariationGenStep());
             generator.steps.Add(new StringReturnGenStep());
@@ -41,6 +42,7 @@
             generator.rules.Add(new FunctionGenRuleSpan());
             generator.rules.Add(new FunctionGenRuleString());
             generator.rules.Add(new FunctionGenRuleCOM());
+            generator.rules.Add(new FunctionGenRuleArray(config));
             generator.steps.Add(new DefaultValueGenStep());
             generator.steps.Add(new ReturnVariationGenStep());
             generator.steps.Add(new StringReturnGenStep());

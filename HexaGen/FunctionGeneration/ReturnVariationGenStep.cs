@@ -37,7 +37,7 @@
         /// </returns>
         protected virtual bool IsParameterAllowed(CsParameterInfo parameter)
         {
-            return AllowedParameterNames.Contains(parameter.Name) && parameter.Type.IsPointer;
+            return AllowedParameterNames.Contains(parameter.Name) && parameter.Type.IsPointer && !parameter.Type.IsVoid;
         }
 
         /// <summary>

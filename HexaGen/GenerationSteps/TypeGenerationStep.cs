@@ -8,10 +8,12 @@
     using HexaGen.CppAst.Model.Types;
     using HexaGen.FunctionGeneration;
     using HexaGen.Metadata;
+    using Irony.Parsing.Construction;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using System.Text;
 
     public class TypeGenerationStep : GenerationStep
@@ -161,6 +163,107 @@
             }
         }
 
+        public class CsStruct
+        {
+            public string Name;
+            public CppClass CppType;
+            public LayoutKind LayoutKind = LayoutKind.Sequential;
+            public List<CsStruct> SubTypes = [];
+            public List<CsField> Fields = [];
+            public List<CsPropertyMetadata> Properties = [];
+            public List<string> Attributes = [];
+            public string? Comment;
+
+            public CsStruct(string name, CppClass cppType)
+            {
+                Name = name;
+                CppType = cppType;
+            }
+
+            public bool IsAnonymous => CppType.IsAnonymous;
+        }
+
+        public class CsField
+        {
+            public string Name;
+            public CsType Type;
+            public CppField CppField;
+            public List<string> Attributes = [];
+            public string? Comment;
+
+            public CsField(string name, CsType type, CppField cppField)
+            {
+                Name = name;
+                Type = type;
+                CppField = cppField;
+            }
+
+            public bool IsAnonymous => CppField.IsAnonymous;
+
+            public long Offset => CppField.Offset;
+
+            public long BitOffset => CppField.BitOffset;
+
+            public bool IsBitField => CppField.IsBitField;
+
+            public int BitFieldWidth => CppField.BitFieldWidth;
+
+            public int SizeOf => CppField.Type.SizeOf;
+        }
+
+        protected CsStruct ParseClass(CppClass cppClass, TypeMapping? mapping, string csName)
+        {
+            CsStruct csStruct = new(csName, cppClass);
+
+            if (mapping?.Comment != null)
+            {
+                config.WriteCsSummary(mapping.Comment, out csStruct.Comment);
+            }
+            else
+            {
+                config.WriteCsSummary(cppClass.Comment, out csStruct.Comment);
+            }
+
+            if (config.GenerateMetadata)
+            {
+                csStruct.Attributes.Add($"[NativeName(NativeNameType.StructOrClass, \"{cppClass.FullName}\")]");
+            }
+
+            if (cppClass.ClassKind == CppClassKind.Union)
+            {
+                csStruct.LayoutKind = LayoutKind.Explicit;
+            }
+
+            for (int i = 0; i < cppClass.Classes.Count; i++)
+            {
+                var subClass = cppClass.Classes[i];
+                var csSubName = config.GetCsSubTypeName(cppClass, csName, subClass, i);
+                var subClassMapping = config.GetTypeMapping(subClass.FullName);
+                csStruct.SubTypes.Add(ParseClass(subClass, subClassMapping, csSubName));
+            }
+
+            for (int i = 0; i < cppClass.Fields.Count; i++)
+            {
+                CppField cppField = cppClass.Fields[i];
+            }
+
+            return csStruct;
+        }
+
+        protected virtual CsField ParseField(CppField cppField)
+        {
+            CsField csField = new(config.GetFieldName(cppField.Name), new CsType(config.GetCsTypeName(cppField.Type), cppField.Type.IsEnum(), cppField.Type.GetPrimitiveKind()), cppField);
+            config.WriteCsSummary(cppField.Comment, out csField.Comment);
+
+            if (config.GenerateMetadata)
+            {
+                csField.Attributes.Add($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
+                csField.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
+            }
+
+            return csField;
+        }
+
         protected virtual void WriteClass(GenContext context, CppClass cppClass, TypeMapping? mapping, string csName)
         {
             var writer = context.Writer;
@@ -207,7 +310,8 @@
                     writer.WriteLine();
                 }
 
-                List<CsSubClass> subClasses = new();
+                List<CsSubClass> subClasses = [];
+
                 for (int j = 0; j < cppClass.Classes.Count; j++)
                 {
                     var subClass = cppClass.Classes[j];
@@ -215,6 +319,10 @@
                     var subClassMapping = config.GetTypeMapping(subClass.FullName);
 
                     csSubName = subClassMapping?.FriendlyName ?? csSubName;
+                    if (subClass.IsAnonymous)
+                    {
+                        config.TypeConverter.AddAnonymousMapping(subClass, csSubName);
+                    }
 
                     WriteClass(context, subClass, subClassMapping, csSubName);
                     subClasses.Add(new(subClass, csSubName, cppClass.Name, $"Union{(cppClass.Classes.Count == 1 ? "" : j.ToString())}"));

@@ -7,5 +7,27 @@
   "GenerateExtensions": false,
   "Usings": [ "A" ],
   "ApiName": "Test",
-  "Namespace": "TestApp.Generated"
+  "Namespace": "TestApp.Generated",
+  "ArrayMappings": [
+    {
+      "Primitive": "Float",
+      "Size": 4,
+      "Name": "Vector4"
+    },
+    {
+      "Primitive": "Float",
+      "Size": 3,
+      "Name": "Vector3"
+    },
+    {
+      "Primitive": "Float",
+      "Size": 2,
+      "Name": "Vector2"
+    },
+    {
+      "Primitive": "Float",
+      "Size": 16,
+      "Name": "Matrix4x4"
+    }
+  ]
 }

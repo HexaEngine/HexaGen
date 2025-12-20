@@ -3,7 +3,6 @@
     using HexaGen.CppAst.Model.Declarations;
     using HexaGen.CppAst.Model.Interfaces;
     using HexaGen.CppAst.Model.Types;
-    using System.Diagnostics.CodeAnalysis;
     using System.Text;
 
     public enum CsTypeStyle
@@ -19,6 +18,7 @@
         private readonly Dictionary<CppType, AnalysisResult> typedefCache = [];
         private readonly Lock syncObj = new();
         private Dictionary<string, CppEnum> typeDefToEnum = [];
+        private Dictionary<CppType, string> anonymousMapping = [];
 
         public CppTypeConverter(CsCodeGeneratorConfig config)
         {
@@ -28,6 +28,7 @@
         public void Initialize(ParseResult result)
         {
             typedefCache.Clear();
+            anonymousMapping.Clear();
 
             var compilation = result.Compilation;
             typeDefToEnum = compilation.Enums.ToDictionary(e => PreprocessEnumName(e.Name));
@@ -44,6 +45,11 @@
                     typeDefToEnum[pair.Key] = cppEnum;
                 }
             }
+        }
+
+        public void AddAnonymousMapping(CppType anon, string name)
+        {
+            anonymousMapping[anon] = name;
         }
 
         private static string PreprocessEnumName(ReadOnlySpan<char> name)
@@ -211,12 +217,6 @@
                 }
                 else if (currentType is CppArrayType arrayType)
                 {
-                    if (arrayType.Size > 0 && config.TryGetArrayMapping(arrayType, out string? mapping))
-                    {
-                        result.BaseType = mapping;
-                        break;
-                    }
-
                     ++result.PointerLevel;
                     currentType = arrayType.ElementType;
                 }
@@ -265,8 +265,12 @@
             }
         }
 
-        private string GetMapping<T>(T member) where T : ICppMember
+        private string GetMapping<T>(T member) where T : CppType, ICppMember
         {
+            if (anonymousMapping.TryGetValue(member, out var name))
+            {
+                return name;
+            }
             return config.GetCsCleanName(member.Name);
         }
 

@@ -131,6 +131,36 @@
             return false;
         }
 
+        public static CppType GetCanonicalRoot(this CppType cppType, bool followTypedefs)
+        {
+            while (true)
+            {
+                if (cppType is CppTypeWithElementType elementType)
+                {
+                    cppType = elementType.ElementType;
+                }
+                else if (followTypedefs && cppType is CppTypedef typedefType)
+                {
+                    cppType = typedefType.ElementType;
+                }
+                else
+                {
+                    return cppType;
+                }
+            }
+        }
+
+        public static bool TryCast<TFrom, TTo>(this TFrom from, [NotNullWhen(true), MaybeNullWhen(false)] out TTo? to)
+        {
+            if (from is TTo casted)
+            {
+                to = casted;
+                return true;
+            }
+            to = default;
+            return false;
+        }
+
         public static bool IsCOMObject(this CppClass cppClass)
         {
             if (cppClass.Fields.Count == 0 && cppClass.Functions.Count > 0 && cppClass.IsAbstract)
@@ -140,29 +170,31 @@
 
         public static bool IsClass(this CppType cppType, [NotNullWhen(true)] out CppClass? cppClass)
         {
-            if (cppType is CppPointerType pointerType)
+            while (true)
             {
-                return IsClass(pointerType.ElementType, out cppClass);
+                if (cppType is CppPointerType pointerType)
+                {
+                    cppType = pointerType.ElementType;
+                }
+                else if (cppType is CppReferenceType referenceType)
+                {
+                    cppType = referenceType.ElementType;
+                }
+                else if (cppType is CppQualifiedType qualifiedType)
+                {
+                    cppType = qualifiedType.ElementType;
+                }
+                else if (cppType is CppClass cpp)
+                {
+                    cppClass = cpp;
+                    return true;
+                }
+                else
+                {
+                    cppClass = null;
+                    return false;
+                }
             }
-
-            if (cppType is CppReferenceType referenceType)
-            {
-                return IsClass(referenceType.ElementType, out cppClass);
-            }
-
-            if (cppType is CppQualifiedType qualifiedType)
-            {
-                return IsClass(qualifiedType.ElementType, out cppClass);
-            }
-
-            if (cppType is CppClass cpp)
-            {
-                cppClass = cpp;
-                return true;
-            }
-
-            cppClass = null;
-            return false;
         }
 
         public static bool IsDelegate(this CppPointerType cppPointer, [NotNullWhen(true)] out CppFunctionType? cppFunction)
@@ -178,22 +210,10 @@
 
         public static bool IsDelegate(this CppType cppType, [NotNullWhen(true)] out CppFunctionType? cppFunction)
         {
-            if (cppType is CppTypedef typedefType)
-            {
-                return IsDelegate(typedefType.ElementType, out cppFunction);
-            }
-            if (cppType is CppPointerType cppPointer)
-            {
-                return IsDelegate(cppPointer.ElementType, out cppFunction);
-            }
-            if (cppType is CppFunctionType functionType)
-            {
-                cppFunction = functionType;
-                return true;
-            }
-            cppFunction = null;
-            return false;
+            return cppType.GetCanonicalRoot(true).TryCast(out cppFunction);
         }
+
+        public static bool IsDelegate(this CppType cppType) => cppType.IsDelegate(out _);
 
         public static bool IsDelegate(this CppPointerType cppPointer)
         {
@@ -205,58 +225,38 @@
             return false;
         }
 
-        public static bool IsDelegate(this CppType cppType)
+        public static bool IsEnum(this CppType cppType, [NotNullWhen(true)] out CppEnum? cppEnum)
         {
-            if (cppType is CppTypedef typedefType)
+            while (true)
             {
-                return IsDelegate(typedefType.ElementType);
+                if (cppType is CppQualifiedType qualifiedType)
+                {
+                    cppType = qualifiedType.ElementType;
+                }
+                else if (cppType is CppTypedef cppTypedef)
+                {
+                    cppType = cppTypedef.ElementType;
+                }
+                else if (cppType is CppPointerType cppPointer)
+                {
+                    cppType = cppPointer.ElementType;
+                }
+                else if (cppType is CppEnum cppEnumType)
+                {
+                    cppEnum = cppEnumType;
+                    return true;
+                }
+                else
+                {
+                    cppEnum = null;
+                    return false;
+                }
             }
-            if (cppType is CppPointerType cppPointer)
-            {
-                return IsDelegate(cppPointer.ElementType);
-            }
-            if (cppType is CppFunctionType functionType)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public static bool IsEnum(this CppType cppType)
         {
-            if (cppType is CppTypedef cppTypedef)
-            {
-                return IsEnum(cppTypedef.ElementType);
-            }
-            if (cppType is CppPointerType cppPointer)
-            {
-                return IsEnum(cppPointer.ElementType);
-            }
-            if (cppType is CppEnum cppEnum)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool IsEnum(this CppType cppType, [NotNullWhen(true)] out CppEnum? cppEnum)
-        {
-            if (cppType is CppTypedef cppTypedef)
-            {
-                return IsEnum(cppTypedef.ElementType, out cppEnum);
-            }
-            if (cppType is CppPointerType cppPointer)
-            {
-                return IsEnum(cppPointer.ElementType, out cppEnum);
-            }
-            if (cppType is CppEnum cppEnum1)
-            {
-                cppEnum = cppEnum1;
-                return true;
-            }
-            cppEnum = null;
-            return false;
+            return cppType.IsEnum(out _);
         }
 
         public static bool IsOpaqueHandle(this CppTypedef typedef)

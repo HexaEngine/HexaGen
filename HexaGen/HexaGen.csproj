@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.23</AssemblyVersion>
-		<PackageVersion>1.1.23</PackageVersion>
+		<AssemblyVersion>1.1.23.3</AssemblyVersion>
+		<PackageVersion>1.1.23.3</PackageVersion>
 		<Description>HexaGen is a code generation toolkit for C++ and C# projects.</Description>
 		<PackageTags>code-generation;csharp;c++;toolkit;roslyn;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -27,7 +27,6 @@
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.9.1" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

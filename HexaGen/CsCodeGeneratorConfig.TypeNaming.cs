@@ -1,4 +1,5 @@
 ﻿using HexaGen.CppAst.Model.Declarations;
+using HexaGen.CppAst.Model.Types;
 using HexaGen.Metadata;
 
 namespace HexaGen
@@ -13,12 +14,12 @@ namespace HexaGen
         [JsonIgnore, System.Text.Json.Serialization.JsonIgnore]
         internal Dictionary<string, CsEnumMetadata> DefinedCppEnums { get; set; } = []; // set to empty just to make sure, because if enum generation is disabled, this will not be set
 
-        public static int IndexOfUnionField(CppClass parent, CppClass union)
+        public static int IndexOfAnonymousField(CppClass parent, CppClass union)
         {
             for (int i = 0; i < parent.Fields.Count; i++)
             {
                 var field = parent.Fields[i];
-                if (field.Type == union)
+                if (field.Type.GetCanonicalRoot(true) == union)
                     return i;
             }
             return -1;
@@ -27,9 +28,9 @@ namespace HexaGen
         public string GetCsSubTypeName(CppClass parentClass, string parentCsName, CppClass subClass, int idxSubClass)
         {
             string csSubName;
-            if (string.IsNullOrEmpty(subClass.Name))
+            if (subClass.IsAnonymous)
             {
-                idxSubClass = IndexOfUnionField(parentClass, subClass);
+                idxSubClass = IndexOfAnonymousField(parentClass, subClass);
                 if (idxSubClass != -1)
                 {
                     var field = parentClass.Fields[idxSubClass];
@@ -40,22 +41,31 @@ namespace HexaGen
                         if (string.IsNullOrEmpty(csFieldName))
                         {
                             string label = parentClass.Classes.Count == 1 ? "" : idxSubClass.ToString();
-                            csSubName = parentCsName + "Union" + label;
+                            csSubName = parentCsName + "Anonymous" + label;
                             return csSubName;
                         }
 
-                        csSubName = csFieldName + "Union";
+                        csSubName = csFieldName + "Anonymous";
+                    }
+                    else if (field.Type is CppArrayType)
+                    {
+                        string csFieldName = GetFieldName(field.Name);
+                        if (csFieldName.EndsWith('s'))
+                        {
+                            csFieldName = csFieldName[..^1];
+                        }
+                        csSubName = csFieldName;
                     }
                     else
                     {
                         string label = parentClass.Classes.Count == 1 ? "" : idxSubClass.ToString();
-                        csSubName = parentCsName + "Union" + label;
+                        csSubName = parentCsName + "Anonymous" + label;
                     }
                 }
                 else
                 {
                     string label = parentClass.Classes.Count == 1 ? "" : idxSubClass.ToString();
-                    csSubName = parentCsName + "Union" + label;
+                    csSubName = parentCsName + "Anonymous" + label;
                 }
             }
             else
@@ -63,9 +73,13 @@ namespace HexaGen
                 csSubName = GetCsCleanName(subClass.Name);
             }
 
-            if (parentClass.Fields.Any(x => x.Name == csSubName))
+            foreach (var field in parentClass.Fields)
             {
-                csSubName = parentCsName + csSubName;
+                if (field.Name == csSubName)
+                {
+                    csSubName = parentCsName + csSubName;
+                    break;
+                }
             }
 
             return csSubName;

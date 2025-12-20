@@ -1,8 +1,39 @@
-﻿typedef struct VkInstance_T* VkInstance;
-
-typedef struct
+﻿typedef struct
 {
-	VkInstance Instance;
-} VkTest;
+	union
+	{
+		int a;
+		float b;
+	} uni;
 
-//void vkTestInitialize(VkTest* test);
+	struct
+	{
+		int value;
+		int anotherValue;
+	} array[2];
+
+	int simpleValue;
+
+	union
+	{
+		int a;
+		float b;
+	} uniArray[2];
+
+	union
+	{
+		int y;
+		float z;
+	};
+
+	struct
+	{
+		int m;
+		float n;
+		struct
+		{
+			int m2;
+			float n2;
+		};
+	};
+} TestStruct;
