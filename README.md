@@ -29,6 +29,7 @@ HexaGen is a comprehensive code generation toolkit for C# and C++ projects. It u
 - **.NET SDK 9.0** (or compatible version)
 - **Clang 17.0.4 or later** (for parsing C/C++ headers)
 - **Visual Studio 2022 or later** (recommended for development)
+- **The ability to read**
 
 ## :package: Installation
 
