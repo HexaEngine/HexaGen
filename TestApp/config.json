@@ -1,33 +1,21 @@
 {
-  "BaseConfig": {
-    "Url": "file://config.base.json",
-    "IgnoredProperties": [ "IgnoredTypes" ]
+  "Namespace": "Hexa.NET.MiniAudio",
+  "ApiName": "MiniAudio",
+  "LibName": "MiniAudio",
+  "GenerateConstructorsForStructs": true,
+  "GeneratePlaceholderComments": false,
+  "GenerateMetadata": false,
+  "WrapPointersAsHandle": true,
+  "ImportType": "FunctionTable",
+  "TypeMappings": {
   },
-  "ImportType": "DllImport",
-  "GenerateExtensions": false,
-  "Usings": [ "A" ],
-  "ApiName": "Test",
-  "Namespace": "TestApp.Generated",
   "ArrayMappings": [
-    {
-      "Primitive": "Float",
-      "Size": 4,
-      "Name": "Vector4"
-    },
     {
       "Primitive": "Float",
       "Size": 3,
       "Name": "Vector3"
-    },
-    {
-      "Primitive": "Float",
-      "Size": 2,
-      "Name": "Vector2"
-    },
-    {
-      "Primitive": "Float",
-      "Size": 16,
-      "Name": "Matrix4x4"
     }
-  ]
+  ],
+  "GenerateAdditionalOverloads": true,
+  "VaryingTypes": []
 }

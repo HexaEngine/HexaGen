@@ -52,7 +52,7 @@ struct BlendDescription
 
 	bool alphaToCoverageEnable = false;
 	bool independentBlendEnable = false;
-	std::array<RenderTargetBlendDescription, SimultaneousRenderTargetCount> renderTargets;
+	Array<RenderTargetBlendDescription, SimultaneousRenderTargetCount> renderTargets;
 
 private:
 	static constexpr bool IsBlendEnabled(const RenderTargetBlendDescription& renderTarget)
@@ -142,7 +142,6 @@ namespace BlendDescriptions
 	static constexpr auto Additive = BlendDescription(Blend::SourceAlpha, Blend::One);
 	static constexpr auto NonPremultiplied = BlendDescription(Blend::SourceAlpha, Blend::InverseSourceAlpha);
 }
-
 
 struct RasterizerDescription
 {
@@ -359,8 +358,8 @@ namespace DepthStencilDescriptions
 }
 
 struct InputElementDescription
-{	
-	std::string semanticName;
+{
+	String semanticName;
 	uint32_t semanticIndex;
 	Format format;
 	uint32_t slot;

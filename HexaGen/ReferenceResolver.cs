@@ -4,6 +4,7 @@
     using HexaGen.CppAst.Model.Metadata;
     using HexaGen.CppAst.Model.Types;
 
+    /*
     public class ReferenceResolver
     {
         public virtual void Prefilter(FileSet set, CppCompilation compilation, CsCodeGeneratorConfig config)
@@ -73,5 +74,5 @@
                 output.Enums.Add(cppEnum);
             }
         }
-    }
+    }*/
 }

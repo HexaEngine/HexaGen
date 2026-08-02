@@ -3,7 +3,9 @@ using HexaGen.CppAst.Model.Types;
 
 namespace HexaGen.Cpp2C.GenerationSteps
 {
+    using ClangSharp.Interop;
     using HexaGen.Core;
+    using HexaGen.Cpp2C.GenerationSteps.ParameterWriters;
     using HexaGen.Cpp2C.Metadata;
     using HexaGen.CppAst.Model;
     using HexaGen.CppAst.Model.Declarations;
@@ -13,8 +15,7 @@ namespace HexaGen.Cpp2C.GenerationSteps
     public class ClassGenerationStep : GenerationStep
     {
         private readonly HashSet<string> definedFunctions = [];
-        private readonly HashSet<string> definedTypes = [];
-        private List<CFunction> definedCFunctions = [];
+        private readonly List<CFunction> definedCFunctions = [];
 
         private readonly Dictionary<(CppClass, CppFunction), string> mapping = [];
 
@@ -99,68 +100,209 @@ namespace HexaGen.Cpp2C.GenerationSteps
             string headerName = $"Classes.h";
             string filePathHeader = Path.Combine(outputPath, "include", headerName);
             string filePathCpp = Path.Combine(outputPath, "src", $"Classes.cpp");
-            using var headerWriter = new CodeWriter(filePathHeader, IncludeBuilder.Create().AddInclude("common.h").Build(), null);
-            using var cppWriter = new CodeWriter(filePathCpp, IncludeBuilder.Create().AddInclude(headerName).Build(), null);
+            using var headerWriter = CodeWriter.CreateFile(filePathHeader, IncludeBuilder.Create().AddInclude("common.h").AddInclude("enums.h").Build(), null);
+            using var cppWriter = CodeWriter.CreateFile(filePathCpp, IncludeBuilder.Create().AddSystemInclude("HexaGenRuntime.hpp").AddInclude(headerName).AddIncludes(config.Includes).Build(), null);
 
-            WriteClasses(compilation.Classes, headerWriter, cppWriter);
+            TypeGraph graph = new();
+
+            foreach (var c in compilation.Classes)
+            {
+                var node = graph.GetOrCreate(c);
+            }
+            foreach (var c in compilation.TemplateSpecializations)
+            {
+                var node = graph.GetOrCreate(c);
+                node.Flags |= TypeNodeFlags.TemplateSpecialization;
+            }
+
             foreach (var ns in compilation.EnumerateNamespaces())
             {
-                WriteClasses(ns.Classes, headerWriter, cppWriter);
+                foreach (var c in ns.Classes)
+                {
+                    var node = graph.GetOrCreate(c);
+                }
+                foreach (var c in ns.TemplateSpecializations)
+                {
+                    var node = graph.GetOrCreate(c);
+                    node.Flags |= TypeNodeFlags.TemplateSpecialization;
+                }
             }
+
+            Stack<CppClass> stack = new();
+            foreach (var n in graph.Nodes)
+            {
+                stack.Push(n.Type);
+                while (stack.TryPop(out var c))
+                {
+                    foreach (var b in c.BaseTypes)
+                    {
+                        if (b.Type is CppClass cppClass)
+                        {
+                            graph.TryAddDependency(n, cppClass);
+                        }
+                    }
+                    foreach (var sub in c.Classes)
+                    {
+                        stack.Push(sub);
+                    }
+                    foreach (var field in c.Fields)
+                    {
+                        var type = field.Type.TryFlattenByValue();
+                        if (type != null)
+                        {
+                            graph.TryAddDependency(n, type);
+                        }
+                    }
+                    foreach (var arg in c.TemplateSpecializedArguments)
+                    {
+                        var type = arg.ArgAsType.TryFlattenByValue();
+                        if (type != null)
+                        {
+                            graph.TryAddDependency(n, type);
+                        }
+                    }
+                }
+            }
+
+            var classes = graph.TopologicalSort();
+
+            WriteClasses(classes, headerWriter, cppWriter);
         }
 
         private static void WriteCommon(string outputPath, Cpp2CGeneratorConfig config)
         {
             string filePathHeader = Path.Combine(outputPath, "include", "common.h");
-            using var headerWriter = new CodeWriter(filePathHeader, "", null);
+            using var headerWriter = CodeWriter.CreateFile(filePathHeader, "", null);
             headerWriter.Write(templateHeader.Replace("{PREFIX}", config.NamePrefix));
         }
 
-        private void WriteClasses(IEnumerable<CppClass> classes, ICodeWriter headerWriter, ICodeWriter cppWriter)
+        private unsafe void WriteClasses(IEnumerable<TypeNode> classes, ICodeWriter headerWriter, ICodeWriter cppWriter)
         {
-            foreach (var c in classes)
+            foreach (var n in classes.Where(c => c.Type.TemplateKind != CppTemplateKind.TemplateClass))
             {
-                if (c.ClassKind != CppClassKind.Class && c.ClassKind != CppClassKind.Struct)
-                {
-                    continue;
-                }
+                var c = n.Type;
+                var dissolver = config.FindTemplateDissolver(c);
+                if (dissolver != null) continue;
+                var typeName = config.GetCTypeName(c);
+                headerWriter.WriteLine($"typedef {ClassKindToString(c.ClassKind)} {typeName} {typeName};");
+            }
+            headerWriter.WriteLine();
 
-                if (c.TemplateKind == CppTemplateKind.TemplateClass)
+            foreach (var n in classes)
+            {
+                var c = n.Type;
+                if ((n.Flags & TypeNodeFlags.TemplateSpecialization) != 0)
                 {
-                    continue;
-                }
-
-                if (c.SourceFile == null) continue;
-
-                if (c.HasVirtualMembers())
-                {
-                    WriteClass(c, headerWriter, cppWriter);
+                    var dissolver = config.FindTemplateDissolver(c);
+                    if (dissolver != null) continue;
+                    WriteCppClass(headerWriter, cppWriter, c);
                 }
                 else
                 {
-                    WriteDto(c, headerWriter, cppWriter);
+                    if (c.ClassKind != CppClassKind.Class && c.ClassKind != CppClassKind.Struct && c.ClassKind != CppClassKind.Union || c.TemplateKind == CppTemplateKind.TemplateClass || c.TemplateKind == CppTemplateKind.TemplateSpecializedClass)
+                    {
+                        continue;
+                    }
+
+                    if (c.SourceFile == null) continue;
+
+                    WriteCppClass(headerWriter, cppWriter, c);
+                }
+            }
+
+            foreach (var n in classes)
+            {
+                var c = n.Type;
+                if (c.ClassKind != CppClassKind.Class && c.ClassKind != CppClassKind.Struct && c.ClassKind != CppClassKind.Union || c.TemplateKind == CppTemplateKind.TemplateClass)
+                {
+                    continue;
+                }
+
+                if (c.HasVirtualMembers())
+                {
+                    WriteClassFunctions(c, headerWriter, cppWriter);
+                }
+                else
+                {
+                    WriteFunctions(c, headerWriter, cppWriter);
                 }
             }
         }
 
-        private void WriteDto(CppClass cppClass, ICodeWriter headerWriter, ICodeWriter cppWriter)
+        private void WriteCppClass(ICodeWriter headerWriter, ICodeWriter cppWriter, CppClass c)
         {
-            headerWriter.BeginBlock($"typedef struct");
+            if (!c.HasVirtualMembers())
+            {
+                WritePOD(c, headerWriter, cppWriter);
+                headerWriter.WriteLine();
+            }
+        }
+
+        private HashSet<CppClass> FindInlineStructs(CppClass cppClass)
+        {
+            HashSet<CppClass> found = [];
+            foreach (var field in cppClass.Fields)
+            {
+                var cursor = field.Cursor;
+                var type = cursor.Type;
+
+                var ownedTagDecl = type.OwnedTagDecl;
+                if (ownedTagDecl != CXCursor.Null)
+                {
+                    foreach (var subClass in cppClass.Classes)
+                    {
+                        if (subClass.Cursor == ownedTagDecl)
+                        {
+                            found.Add(subClass);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return found;
+        }
+
+        private void WritePOD(CppClass cppClass, ICodeWriter headerWriter, ICodeWriter cppWriter, string? typeName = null)
+        {
+            var inlineStructFields = FindInlineStructs(cppClass);
+            typeName ??= config.GetCTypeName(cppClass);
+
+            foreach (var subClass in cppClass.Classes)
+            {
+                if (subClass.IsAnonymous)
+                {
+                    continue;
+                }
+                if (inlineStructFields.Contains(subClass))
+                {
+                    continue;
+                }
+                string nestedTypeName = $"{typeName}_{subClass.Name}";
+
+                WritePOD(subClass, headerWriter, cppWriter, nestedTypeName);
+                config.SubClasses.Add(subClass, nestedTypeName);
+            }
+
+            string typeKeyword = ClassKindToString(cppClass.ClassKind);
+
+            headerWriter.BeginBlock($"{typeKeyword} {typeName}");
+
             if (cppClass.BaseTypes.Any())
             {
                 Stack<(CppClass cls, bool close)> stack = new();
                 stack.Push((cppClass, false));
                 while (stack.Count > 0)
                 {
-                    var pair = stack.Pop();
-                    if (pair.close)
+                    var (cls, close) = stack.Pop();
+                    if (close)
                     {
-                        WriteFields(headerWriter, pair.cls.Fields);
+                        WriteFields(headerWriter, cls, cls.Fields, inlineStructFields);
                     }
                     else
                     {
-                        stack.Push((pair.cls, true));
-                        foreach (var baseType in pair.cls.BaseTypes)
+                        stack.Push((cls, true));
+                        foreach (var baseType in cls.BaseTypes)
                         {
                             if (baseType.Type is CppClass baseClass)
                             {
@@ -172,26 +314,53 @@ namespace HexaGen.Cpp2C.GenerationSteps
             }
             else
             {
-                WriteFields(headerWriter, cppClass.Fields);
+                WriteFields(headerWriter, cppClass, cppClass.Fields, inlineStructFields);
             }
 
-            headerWriter.EndBlock($"}} {config.GetCTypeName(cppClass)};");
+            headerWriter.EndBlock($"}};");
         }
 
-        private void WriteClass(CppClass cppClass, ICodeWriter headerWriter, ICodeWriter cppWriter)
+        private void WriteClassFunctions(CppClass cppClass, ICodeWriter headerWriter, ICodeWriter cppWriter)
         {
             var typeName = config.GetCTypeName(cppClass);
-            headerWriter.WriteLine($"typedef struct {typeName} {typeName};");
-            headerWriter.WriteLine();
-            headerWriter.WriteLine($"{config.NamePrefix}API({typeName}*) {typeName}Create();");
+            if (!cppClass.IsAbstract)
+            {
+                foreach (var ctor in cppClass.Constructors)
+                {
+                    WriteConstructor(cppClass, ctor, headerWriter, cppWriter, typeName);
+                }
+            }
+
             headerWriter.WriteLine($"{config.NamePrefix}API(void) {typeName}Destroy({typeName}* self);");
 
-            cppWriter.WriteLine($"{config.NamePrefix}API_INTERNAL({typeName}*) {typeName}Create()");
+            WriteFunctions(cppClass, headerWriter, cppWriter, typeName);
+        }
 
+        private void WriteConstructor(CppClass cppClass, CppFunction ctor, ICodeWriter headerWriter, ICodeWriter cppWriter, string typeName)
+        {
+            if (ctor.Parameters.Count != 0) return;
+            headerWriter.WriteLine($"{config.NamePrefix}API({typeName}*) {typeName}Create();");
+
+            cppWriter.BeginBlock($"{config.NamePrefix}API_INTERNAL(::{typeName}*) {typeName}Create()");
+            cppWriter.WriteLine($"return reinterpret_cast<::{typeName}*>(new {cppClass.FullName}());");
+            cppWriter.EndBlock();
+        }
+
+        private void WriteFunctions(CppClass cppClass, ICodeWriter headerWriter, ICodeWriter cppWriter, string? typeName = null)
+        {
+            typeName ??= config.GetCTypeName(cppClass);
             for (int j = 0; j < cppClass.Functions.Count; j++)
             {
                 var f = cppClass.Functions[j];
                 if (f.Visibility != CppVisibility.Public)
+                {
+                    continue;
+                }
+                if (f.Cursor.IsOverloadedOperator)
+                {
+                    continue;
+                }
+                if (f.IsFunctionTemplate)
                 {
                     continue;
                 }
@@ -201,23 +370,78 @@ namespace HexaGen.Cpp2C.GenerationSteps
             }
         }
 
-        private void WriteFields(ICodeWriter writer, IEnumerable<CppField> fields)
+        private void WriteFields(ICodeWriter writer, CppClass parent, IEnumerable<CppField> fields, HashSet<CppClass>? inlineStructFields)
         {
+            if (parent.TemplateKind == CppTemplateKind.TemplateSpecializedClass)
+            {
+                fields = parent.SpecializedTemplate!.Fields;
+            }
             foreach (var field in fields)
             {
                 if ((field.StorageQualifier & CppStorageQualifier.Static) != 0)
                 {
                     continue;
                 }
-                writer.WriteLine($"{config.GetCType(field.Type)} {field.Name};");
+
+                var type = field.Type;
+
+                if (type is CppClass cppClass)
+                {
+                    // Handle nested unions and anonymous structs
+                    if (cppClass.IsAnonymous)
+                    {
+                        WriteInline(writer, cppClass, cppClass.Name);
+                        continue;
+                    }
+                    if (inlineStructFields?.Contains(cppClass) ?? false)
+                    {
+                        WriteInline(writer, cppClass, fieldName: field.Name);
+                        continue;
+                    }
+                }
+                writer.WriteLine($"{config.GetCType(field.Type, field.Name, parent)};");
             }
         }
 
-        private string GetCFunctionSignature(CppClass c, CppFunction f)
+        public static string ClassKindToString(CppClassKind kind)
+        {
+            return kind switch
+            {
+                CppClassKind.Class => "struct",
+                CppClassKind.Struct => "struct",
+                CppClassKind.Union => "union",
+                _ => throw new NotSupportedException(),
+            };
+        }
+
+        private void WriteInline(ICodeWriter writer, CppClass cppClass, string? name = null, string? fieldName = null)
+        {
+            name ??= cppClass.Name;
+            if (string.IsNullOrEmpty(name))
+            {
+                writer.BeginBlock($"{ClassKindToString(cppClass.ClassKind)}");
+            }
+            else
+            {
+                writer.BeginBlock($"{ClassKindToString(cppClass.ClassKind)} {name}");
+            }
+
+            WriteFields(writer, cppClass, cppClass.Fields, null);
+            if (string.IsNullOrEmpty(name))
+            {
+                writer.EndBlock($"}};");
+            }
+            else
+            {
+                writer.EndBlock($"}} {fieldName};");
+            }
+        }
+
+        private string GetCFunctionSignature(CppClass c, CppFunction f, bool globalNamespace)
         {
             StringBuilder sb = new();
 
-            sb.Append($"{config.GetCType(c)}* self");
+            sb.Append($"{config.GetCType(c!, null, globalNamespace: globalNamespace)}* self");
             if (f.Parameters.Count > 0)
             {
                 sb.Append(", ");
@@ -226,7 +450,24 @@ namespace HexaGen.Cpp2C.GenerationSteps
             for (int i = 0; i < f.Parameters.Count; i++)
             {
                 var param = f.Parameters[i];
-                sb.Append($"{config.GetCType(param.Type)} {param.Name}");
+                sb.Append($"{config.GetCType(param.Type, param.Name, c, globalNamespace: globalNamespace)}");
+                if (i < f.Parameters.Count - 1)
+                {
+                    sb.Append(", ");
+                }
+            }
+
+            return sb.ToString();
+        }
+
+        private string GetCFunctionSignature(CppFunction f, bool globalNamespace)
+        {
+            StringBuilder sb = new();
+
+            for (int i = 0; i < f.Parameters.Count; i++)
+            {
+                var param = f.Parameters[i];
+                sb.Append($"{config.GetCType(param.Type, param.Name, null, globalNamespace: globalNamespace)}");
                 if (i < f.Parameters.Count - 1)
                 {
                     sb.Append(", ");
@@ -282,28 +523,73 @@ namespace HexaGen.Cpp2C.GenerationSteps
             return currentName;
         }
 
-        private void WriteFunctionH(CppClass c, CppFunction f, ICodeWriter writer)
+        private void WriteFunctionH(CppClass c, CppFunction f, ICodeWriter writer, string? name = null)
         {
-            string name = GetUniqueCFunctionName(c, f);
-            string cSignature = GetCFunctionSignature(c, f);
+            name ??= GetUniqueCFunctionName(c, f);
+            string cSignature = GetCFunctionSignature(c, f, false);
             definedFunctions.Add(name);
             mapping.Add((c, f), name);
 
             definedCFunctions.Add(new(name, f.Name, f.Comment?.ToString()));
-
-            writer.WriteLine($"{config.NamePrefix}API({f.ReturnType}) {name}({cSignature});");
+            string returnType = config.GetCType(f.ReturnType, null);
+            writer.WriteLine($"{config.NamePrefix}API({returnType}) {name}({cSignature});");
         }
+
+        private readonly List<ParameterWriter> parameterWriters = [new PointerToClassParameterWriter(), new ReferenceParameterWriter(), new OpaquePointerParameterWriter(), new EnumParameterWriter(), new FallbackParameterWriter()];
 
         private void WriteFunctionCpp(CppClass c, string typeName, CppFunction f, ICodeWriter writer)
         {
             var name = mapping[(c, f)];
-            string cSignature = GetCFunctionSignature(c, f);
-            string signature = GetCppFunctionSignatureTypeless(f);
+            string cSignature = GetCFunctionSignature(c, f, true);
 
-            using (writer.PushBlock($"{config.NamePrefix}API_INTERNAL({f.ReturnType}) {name}({cSignature})"))
+            string returnType = config.GetCType(f.ReturnType, null, globalNamespace: true);
+            bool isVoid = returnType == "void";
+            bool isRef = f.ReturnType.IsReferenceType();
+            using (writer.PushBlock($"{config.NamePrefix}API_INTERNAL({returnType}) {name}({cSignature})"))
             {
-                writer.WriteLine($"auto* ptr = reinterpret_cast<{c.Name}*>(self);");
-                writer.WriteLine($"return ptr->{f.Name}({signature});");
+                writer.WriteLine($"auto* ptr = reinterpret_cast<{c.FullName}*>(self);");
+                using FunctionWriteContext context = new(f, writer);
+                foreach (var param in f.Parameters)
+                {
+                    var cppType = param.Type;
+                    CType cType = new(config.GetCType(param.Type, null, c, globalNamespace: true));
+                    foreach (var pw in parameterWriters.OrderByDescending(pw => pw.Priority))
+                    {
+                        if (pw.CanWriteParameter(context, param, cppType, cType))
+                        {
+                            pw.WriteParameter(context, param, cppType, cType);
+                            break;
+                        }
+                    }
+                }
+
+                if (!isVoid)
+                {
+                    if (isRef)
+                    {
+                        writer.Write("auto& ret = ");
+                    }
+                    else
+                    {
+                        writer.Write("auto ret = ");
+                    }
+                }
+                writer.WriteLine($"ptr->{f.Name}({context.GetParamString()});");
+                if (!isVoid)
+                {
+                    if (isRef)
+                    {
+                        writer.WriteLine($"return reinterpret_cast<{returnType}>(&ret);");
+                    }
+                    else if (f.ReturnType.IsPointerType())
+                    {
+                        writer.WriteLine($"return reinterpret_cast<{returnType}>(ret);");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"return HexaGenRuntime::bit_cast<{returnType}>(ret);");
+                    }
+                }
             }
         }
     }

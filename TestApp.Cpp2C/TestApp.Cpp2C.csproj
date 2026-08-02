@@ -16,6 +16,9 @@
 		<None Update="config.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="include\test.hpp">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="include\common.hpp">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

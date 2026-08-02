@@ -54,7 +54,7 @@
 
         private static string PreprocessEnumName(ReadOnlySpan<char> name)
         {
-            if (name.EndsWith("_t"))
+            if (name.EndsWith("_t", StringComparison.InvariantCultureIgnoreCase))
             {
                 name = name[..^2];
             }

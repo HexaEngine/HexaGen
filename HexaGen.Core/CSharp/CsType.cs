@@ -7,6 +7,8 @@
 
     public class CsType : ICloneable<CsType>
     {
+        private TypeFlags flags;
+
         [JsonConstructor]
         public CsType(string name, string cleanName, bool isPointer, bool isOut, bool isRef, bool isSpan, bool isString, bool isPrimitive, bool isVoid, bool isBool, bool isArray, bool isEnum, CsStringType stringType, CsPrimitiveType primitiveType)
         {
@@ -61,31 +63,64 @@
             CleanName = Classify();
         }
 
+        public enum TypeFlags
+        {
+            None = 0,
+            IsPointer = 1 << 0,
+            IsOut = 1 << 1,
+            IsRef = 1 << 2,
+            IsIn = 1 << 3,
+            IsSpan = 1 << 4,
+            IsString = 1 << 5,
+            IsPrimitive = 1 << 6,
+            IsVoid = 1 << 7,
+            IsBool = 1 << 8,
+            IsArray = 1 << 9,
+            IsEnum = 1 << 10,
+        }
+
+        public bool HasFlag(TypeFlags flag)
+        {
+            return (flags & flag) == flag;
+        }
+
+        public void SetFlag(TypeFlags flag, bool value)
+        {
+            if (value)
+            {
+                flags |= flag;
+            }
+            else
+            {
+                flags &= ~flag;
+            }
+        }
+
         public string Name { get; set; }
 
         public string CleanName { get; set; }
 
-        public bool IsPointer { get; set; }
+        public bool IsPointer { get => HasFlag(TypeFlags.IsPointer); set => SetFlag(TypeFlags.IsPointer, value); }
 
-        public bool IsOut { get; set; }
+        public bool IsOut { get => HasFlag(TypeFlags.IsOut); set => SetFlag(TypeFlags.IsOut, value); }
 
-        public bool IsRef { get; set; }
+        public bool IsRef { get => HasFlag(TypeFlags.IsRef); set => SetFlag(TypeFlags.IsRef, value); }
 
-        public bool IsIn { get; set; }
+        public bool IsIn { get => HasFlag(TypeFlags.IsIn); set => SetFlag(TypeFlags.IsIn, value); }
 
-        public bool IsSpan { get; set; }
+        public bool IsSpan { get => HasFlag(TypeFlags.IsSpan); set => SetFlag(TypeFlags.IsSpan, value); }
 
-        public bool IsString { get; set; }
+        public bool IsString { get => HasFlag(TypeFlags.IsString); set => SetFlag(TypeFlags.IsString, value); }
 
-        public bool IsPrimitive { get; set; }
+        public bool IsPrimitive { get => HasFlag(TypeFlags.IsPrimitive); set => SetFlag(TypeFlags.IsPrimitive, value); }
 
-        public bool IsVoid { get; set; }
+        public bool IsVoid { get => HasFlag(TypeFlags.IsVoid); set => SetFlag(TypeFlags.IsVoid, value); }
 
-        public bool IsBool { get; set; }
+        public bool IsBool { get => HasFlag(TypeFlags.IsBool); set => SetFlag(TypeFlags.IsBool, value); }
 
-        public bool IsArray { get; set; }
+        public bool IsArray { get => HasFlag(TypeFlags.IsArray); set => SetFlag(TypeFlags.IsArray, value); }
 
-        public bool IsEnum { get; set; }
+        public bool IsEnum { get => HasFlag(TypeFlags.IsEnum); set => SetFlag(TypeFlags.IsEnum, value); }
 
         public CsStringType StringType { get; set; }
 
@@ -130,6 +165,19 @@
             return false;
         }
 
+        public void FlagAsString()
+        {
+            IsString = true;
+            if (PrimitiveType == CsPrimitiveType.Byte)
+            {
+                StringType = CsStringType.StringUTF8;
+            }
+            else if (PrimitiveType == CsPrimitiveType.Char)
+            {
+                StringType = CsStringType.StringUTF16;
+            }
+        }
+
         public string Classify()
         {
             IsRef = Name.StartsWith("ref ");
@@ -146,14 +194,7 @@
 
             if (IsString)
             {
-                if (PrimitiveType == CsPrimitiveType.Byte)
-                {
-                    StringType = CsStringType.StringUTF8;
-                }
-                if (PrimitiveType == CsPrimitiveType.Char)
-                {
-                    StringType = CsStringType.StringUTF16;
-                }
+                FlagAsString();
             }
 
             if (IsRef)

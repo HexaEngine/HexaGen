@@ -10,6 +10,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
     public class FunctionGenerator
     {
@@ -208,7 +209,8 @@
 
                 for (int j = 0; j < parameters.Count; j++)
                 {
-                    var bit = (ix & 1 << j - 64) != 0;
+                    //var bit = (ix & (1 << (j - 64))) != 0;
+                    var bit = (ix & (1L << j)) != 0;
                     CppParameter cppParameter = parameters[j];
                     CppPrimitiveKind kind = cppParameter.Type.GetPrimitiveKind();
 
@@ -267,17 +269,6 @@
                     }
                 }
 
-                if (settings.GenerateAdditionalOverloads)
-                {
-                    foreach (var valueVariation in GenerateAdditionalOverloads(function.Name, parameterLists))
-                    {
-                        if (function.TryAddVariation(valueVariation, out var variation))
-                        {
-                            ApplySteps(function, variation);
-                        }
-                    }
-                }
-
                 if (customParameterList != null)
                 {
                     for (int i = 0; i < customParameterList.Length; i++)
@@ -291,19 +282,33 @@
                     }
                 }
             }
+
+            if (settings.GenerateAdditionalOverloads)
+            {
+                foreach (var valueVariation in GenerateAdditionalOverloads(function.Name, function.Variations))
+                {
+                    if (function.TryAddVariation(valueVariation, out var variation))
+                    {
+                        ApplySteps(function, variation);
+                    }
+                }
+            }
         }
 
-        private static (int, int) FindDifferenceRange(CsParameterInfo[][] overloads)
+        private static (int, int) FindDifferenceRange(ConcurrentList<CsFunctionVariation> overloads)
         {
             int start = -1;
             int end = -1;
-            for (int i = 0; i < overloads[0].Length; i++)
+
+            var baseOverload = overloads[0];
+            for (int i = 0; i < baseOverload.Parameters.Count; i++)
             {
+                var rootParam = baseOverload.Parameters[i];
                 bool found = false;
-                for (int j = 1; j < overloads.Length; j++)
+                for (int j = 1; j < overloads.Count; j++)
                 {
                     var overload = overloads[j];
-                    if (overloads[0][i].Type.Name != overload[i].Type.Name || overloads[0][i].DefaultValue != overload[i].DefaultValue)
+                    if (rootParam.Type.Name != overload.Parameters[i].Type.Name || rootParam.DefaultValue != overload.Parameters[i].DefaultValue)
                     {
                         found = true;
                         break;
@@ -323,36 +328,156 @@
             return (start, end);
         }
 
-        private IEnumerable<ValueVariation> GenerateAdditionalOverloads(string name, CsParameterInfo[][] overloads)
+        private static int FindDifference(ConcurrentList<CsFunctionVariation> overloads, ref Bitset bitset)
         {
-            var (start, end) = FindDifferenceRange(overloads);
-
-            if (start == -1)
+            int setBits = 0;
+            var baseOverload = overloads[0];
+            for (int i = 0; i < baseOverload.Parameters.Count; i++)
             {
-                return Array.Empty<ValueVariation>();
+                var rootParam = baseOverload.Parameters[i];
+                for (int j = 1; j < overloads.Count; j++)
+                {
+                    var overload = overloads[j];
+                    if (rootParam.Type.Name != overload.Parameters[i].Type.Name || rootParam.DefaultValue != overload.Parameters[i].DefaultValue)
+                    {
+                        ++setBits;
+                        bitset[i] = true;
+                        break;
+                    }
+                }
+            }
+            return setBits;
+        }
+
+        public unsafe struct Bitset
+        {
+            public const int ArraySize = 8;
+
+            private long* bits;
+            private int length;
+
+            public Bitset(long* bits, int length, bool zero) // meant to be used with stackalloc, so no need to free the memory
+            {
+                this.bits = bits;
+                this.length = length;
+                if (zero)
+                {
+                    Clear();
+                }
+            }
+
+            public bool this[int index]
+            {
+                readonly get
+                {
+                    int bitIndex = index & 63;
+                    int arrayIndex = index >> 6;
+                    if (arrayIndex >= length || arrayIndex < 0)
+                    {
+                        throw new IndexOutOfRangeException();
+                    }
+                    return (bits[arrayIndex] & (1L << bitIndex)) != 0;
+                }
+                set
+                {
+                    int bitIndex = index & 63;
+                    int arrayIndex = index >> 6;
+                    if (arrayIndex >= length || arrayIndex < 0)
+                    {
+                        throw new IndexOutOfRangeException();
+                    }
+                    if (value)
+                    {
+                        bits[arrayIndex] |= (1L << bitIndex);
+                    }
+                    else
+                    {
+                        bits[arrayIndex] &= ~(1L << bitIndex);
+                    }
+                }
+            }
+
+            public readonly int Length => length;
+
+            public readonly int BitCount => length * 64;
+
+            public void Clear()
+            {
+                for (int i = 0; i < Length; i++)
+                {
+                    bits[i] = 0;
+                }
+            }
+
+            public void Resize(long* newBits, int newLength, bool zero)
+            {
+                var toCopy = Math.Min(length, newLength);
+                for (int i = 0; i < toCopy; i++)
+                {
+                    newBits[i] = bits[i];
+                }
+                if (zero && newLength > length)
+                {
+                    for (int i = toCopy; i < newLength; i++)
+                    {
+                        newBits[i] = 0;
+                    }
+                }
+                bits = newBits;
+                length = newLength;
+            }
+
+            public readonly int FindFirstSet(int startIndex)
+            {
+                for (int i = startIndex; i < BitCount; i++)
+                {
+                    if (this[i])
+                    {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+        }
+
+        private unsafe IEnumerable<ValueVariation> GenerateAdditionalOverloads(string name, ConcurrentList<CsFunctionVariation> overloads)
+        {
+            var overloadsBoundary = overloads.Count;
+            var bits = overloads[0].Parameters.Count;
+            var bitsetArraySize = (bits + 63) / 64;
+            ulong* bitsetArray = stackalloc ulong[bitsetArraySize];
+            Bitset bitset = new((long*)bitsetArray, bitsetArraySize, true);
+            var setBits = FindDifference(overloads, ref bitset);
+
+            // var (start, end) = FindDifferenceRange(overloads);
+
+            if (setBits == 0)
+            {
+                return [];
             }
 
             HashSet<ValueVariation> variations = [];
 
             foreach (var originalOverload in overloads)
             {
-                variations.Add(new ValueVariation(name, originalOverload));
+                variations.Add(new ValueVariation(name, originalOverload.Parameters));
             }
 
+            var start = bitset.FindFirstSet(0);
             var baseList = new List<CsParameterInfo>();
-            baseList.AddRange(overloads[0].AsSpan(0, start));
+            baseList.AddRange(overloads[0].Parameters.Take(start));
 
-            return GenerateCombinations(name, overloads, variations, baseList, start, end);
+            return GenerateCombinations(name, overloads, variations, baseList, bitset, start, setBits, overloadsBoundary);
         }
 
-        private IEnumerable<ValueVariation> GenerateCombinations(string name, CsParameterInfo[][] overloads, HashSet<ValueVariation> variations, List<CsParameterInfo> current, int depth, int end)
+        private IEnumerable<ValueVariation> GenerateCombinations(string name, ConcurrentList<CsFunctionVariation> overloads, HashSet<ValueVariation> variations, List<CsParameterInfo> current, int depth, int end, int overloadsBoundary)
         {
             if (depth == end)
             {
-                int delta = overloads[0].Length - end;
+                int delta = overloads[0].Parameters.Count - end;
                 if (delta != 0)
                 {
-                    current.AddRange(overloads[0].AsSpan(end, delta));
+                    current.AddRange(overloads[0].Parameters.Skip(end).Take(delta));
                 }
 
                 var variation = new ValueVariation(name, current);
@@ -372,20 +497,78 @@
                 yield break;
             }
 
-            for (int i = 0; i < overloads.Length; i++)
+            for (int i = 0; i < overloadsBoundary; i++)
             {
-                var param = overloads[i][depth];
+                var param = overloads[i].Parameters[depth];
                 if (settings.VaryingTypes.Count > 0 && !settings.VaryingTypes.Contains(param.Type.Name))
                 {
-                    param = overloads[0][depth];
+                    param = overloads[0].Parameters[depth];
                 }
 
                 current.Add(param);
-                foreach (var variation in GenerateCombinations(name, overloads, variations, current, depth + 1, end))
+                foreach (var variation in GenerateCombinations(name, overloads, variations, current, depth + 1, end, overloadsBoundary))
                 {
                     yield return variation;
                 }
                 current.RemoveAt(current.Count - 1);
+            }
+        }
+
+        private IEnumerable<ValueVariation> GenerateCombinations(string name, ConcurrentList<CsFunctionVariation> overloads, HashSet<ValueVariation> variations, List<CsParameterInfo> current, Bitset bitset, int index, int setBits, int overloadsBoundary)
+        {
+            int nextIndex = bitset.FindFirstSet(index);
+
+            if (nextIndex == -1 || setBits == 0)
+            {
+                int totalParams = overloads[0].Parameters.Count;
+                int delta = totalParams - current.Count;
+                if (delta > 0)
+                {
+                    current.AddRange(overloads[0].Parameters.Skip(current.Count).Take(delta));
+                }
+
+                var variation = new ValueVariation(name, current);
+                if (!variations.Contains(variation))
+                {
+                    var clone = current.Clone();
+                    var newVariation = new ValueVariation(name, clone);
+                    yield return newVariation;
+                    variations.Add(newVariation);
+                }
+
+                if (delta > 0)
+                {
+                    current.RemoveRange(current.Count - delta, delta);
+                }
+
+                yield break;
+            }
+
+            int diff = nextIndex - current.Count;
+            if (diff > 0)
+            {
+                current.AddRange(overloads[0].Parameters.Skip(current.Count).Take(diff));
+            }
+
+            for (int i = 0; i < overloadsBoundary; i++)
+            {
+                var param = overloads[i].Parameters[nextIndex];
+                if (settings.VaryingTypes.Count > 0 && !settings.VaryingTypes.Contains(param.Type.Name))
+                {
+                    param = overloads[0].Parameters[nextIndex];
+                }
+
+                current.Add(param);
+                foreach (var variation in GenerateCombinations(name, overloads, variations, current, bitset, nextIndex + 1, setBits - 1, overloadsBoundary))
+                {
+                    yield return variation;
+                }
+                current.RemoveAt(current.Count - 1);
+            }
+
+            if (diff > 0)
+            {
+                current.RemoveRange(current.Count - diff, diff);
             }
         }
 

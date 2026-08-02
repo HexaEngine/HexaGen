@@ -18,7 +18,9 @@
 
             if (cppParameter.Type.IsString(settings, out var stringKind1))
             {
-                return new(csParamName, cppParameter.Type, new(direction == Direction.InOut ? "ref string" : "string", stringKind1), direction);
+                CsType type = new(direction == Direction.InOut ? "ref string" : "ReadOnlySpan<char>", stringKind1);
+                type.FlagAsString();
+                return new(csParamName, cppParameter.Type, type, direction);
             }
 
             return CreateDefaultWrapperParameter(cppParameter, mapping, csParamName, kind, direction, settings);

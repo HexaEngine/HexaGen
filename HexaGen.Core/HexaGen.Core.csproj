@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-		<AssemblyVersion>1.1.11</AssemblyVersion>
-		<PackageVersion>1.1.11</PackageVersion>
+		<AssemblyVersion>1.1.11.2</AssemblyVersion>
+		<PackageVersion>1.1.11.2</PackageVersion>
 		<Description>HexaGen.Core provides core functionality for the HexaGen code generation toolkit, supporting C++ and C# projects.</Description>
 		<PackageTags>code-generation;csharp;c++;toolkit;core;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>
@@ -24,7 +24,7 @@
 		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="HexaGen.CppAst" Version="1.0.3" />
+		<PackageReference Include="HexaGen.CppAst" Version="1.0.9" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.7" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />

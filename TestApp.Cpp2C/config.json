@@ -4,5 +4,6 @@
   "Usings": [ "A" ],
   "ApiName": "Test",
   "Namespace": "TestApp.Generated",
-  "NamePrefix": ""
+  "NamePrefix": "",
+  "Includes": [ "prism.hpp" ]
 }

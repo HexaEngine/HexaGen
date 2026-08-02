@@ -132,11 +132,12 @@
 
         public static void WriteStringConvertToUnmanaged(ICodeWriter writer, CsType type, string name, int i)
         {
+            bool isSpan = type.IsSpan;
             if (type.StringType == CsStringType.StringUTF8)
             {
                 writer.WriteLine($"byte* pStr{i} = null;");
                 writer.WriteLine($"int pStrSize{i} = 0;");
-                using (writer.PushBlock($"if ({name} != null)"))
+                using (writer.PushBlock(isSpan ? $"if (!{name}.IsEmpty)" : $"if ({name} != null)"))
                 {
                     writer.WriteLine($"pStrSize{i} = Utils.GetByteCountUTF8({name});");
                     using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))
@@ -156,7 +157,7 @@
             {
                 writer.WriteLine($"char* pStr{i} = null;");
                 writer.WriteLine($"int pStrSize{i} = 0;");
-                using (writer.PushBlock($"if ({name} != null)"))
+                using (writer.PushBlock(isSpan ? $"if (!{name}.IsEmpty)" : $"if ({name} != null)"))
                 {
                     writer.WriteLine($"pStrSize{i} = Utils.GetByteCountUTF16({name});");
                     using (writer.PushBlock($"if (pStrSize{i} >= Utils.MaxStackallocSize)"))

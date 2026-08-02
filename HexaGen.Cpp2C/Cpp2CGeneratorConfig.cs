@@ -39,5 +39,7 @@
         public List<string> AdditionalArguments { get; set; } = new();
 
         public string NamePrefix { get; set; } = string.Empty;
+
+        public List<string> Includes { get; set; } = [];
     }
 }

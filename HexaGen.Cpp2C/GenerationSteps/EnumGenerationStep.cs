@@ -1,15 +1,10 @@
 ﻿using HexaGen.Core;
 using HexaGen.Cpp2C.Metadata;
 using HexaGen.CppAst.Model.Declarations;
-using HexaGen.CppAst.Model.Interfaces;
 
 namespace HexaGen.Cpp2C.GenerationSteps
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class EnumGenerationStep : GenerationStep
     {
@@ -39,14 +34,14 @@ namespace HexaGen.Cpp2C.GenerationSteps
             Cpp2CGeneratorMetadata metadata)
         {
             var fileName = Path.Combine(outputPath, "include", "enums.h");
-            using CodeWriter writer = new CodeWriter(fileName, "", null);
+            using CodeWriter writer = CodeWriter.CreateFile(fileName, "", null);
             WriteEnums(config.NamePrefix, writer, result.Compilation.Enums);
 
             foreach (var ns in result.Compilation.EnumerateNamespaces())
             {
                 var name = ns.GetFullNamespace("::");
                 writer.WriteLine($"// begin namespace {name}");
-                WriteEnums(ns.GetFullNamespace("_"), writer, ns.Enums);
+                WriteEnums("", writer, ns.Enums);
                 writer.WriteLine($"// end namespace {name}");
             }
         }
@@ -73,6 +68,18 @@ namespace HexaGen.Cpp2C.GenerationSteps
                 WriteEnumItem(writer, map[item.Name], item);
             }
             writer.EndBlock($"}} {enumName};");
+
+            string name;
+            if (enumClass.IntegerType is CppTypedef typedef)
+            {
+                name = typedef.Name;
+            }
+            else
+            {
+                name = enumClass.IntegerType?.ToString() ?? "int";
+            }
+
+            writer.WriteLine($"typedef {name} {enumName}_t;");
         }
 
         private void WriteEnumItem(ICodeWriter writer, string enumName, CppEnumItem item)

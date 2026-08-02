@@ -163,7 +163,6 @@
                 "HWND",
                 "nint"
             },
-            VaryingTypes = ["ReadOnlySpan<byte>", "string", "ref string"]
         };
     }
 }

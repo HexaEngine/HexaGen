@@ -9,8 +9,8 @@
     {
         private readonly string[] _indentStrings;
 
-        private readonly StreamWriter _writer;
-
+        private readonly TextWriter _writer;
+        private readonly bool closeStream;
         private int lines;
         private int blocks = 0;
         private int indentLevel;
@@ -22,20 +22,16 @@
 
         public string NewLine { get => _writer.NewLine; }
 
-        public string FileName { get; }
-
-        public CodeWriter(string fileName, string template, HeaderInjectionDelegate? headerInjector)
+        public CodeWriter(TextWriter writer, string template, HeaderInjectionDelegate? headerInjector, bool closeStream)
         {
-            fileName = FileNameHelper.SanitizeFileName(fileName);
-            FileName = fileName;
-
             _indentStrings = new string[10];
             for (int i = 0; i < _indentStrings.Length; i++)
             {
                 _indentStrings[i] = new string('\t', i);
             }
 
-            _writer = File.CreateText(fileName);
+            _writer = writer;
+            this.closeStream = closeStream;
             _writer.NewLine = Environment.NewLine;
 
             StringBuilder stringBuilder = new(template);
@@ -45,14 +41,21 @@
             _writer.Write(stringBuilder.ToString());
         }
 
-        public long Length => _writer.BaseStream.Length;
+        public static CodeWriter CreateFile(string path, string template, HeaderInjectionDelegate? headerInjector)
+        {
+            StreamWriter writer = new(path, false);
+            return new(writer, template, headerInjector, true);
+        }
 
         public int Lines => lines;
 
         public void Dispose()
         {
             EndBlock();
-            _writer.Dispose();
+            if (closeStream)
+            {
+                _writer.Dispose();
+            }
         }
 
         public void Write(char chr)

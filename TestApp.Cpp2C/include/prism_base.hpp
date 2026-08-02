@@ -164,7 +164,7 @@ public:
 	}
 
 	template <typename U>
-	U* AsPtr() const		
+	U* AsPtr() const
 	{
 		return dynamic_cast<U*>(ptr);
 	}
@@ -390,7 +390,6 @@ template <typename T, typename... TArgs>
 	return PrismObj<T>(obj, false);
 }
 
-
 template<typename T>
 class uptr
 {
@@ -398,9 +397,9 @@ class uptr
 
 public:
 	constexpr uptr() noexcept : ptr(nullptr) {}
-	
+
 	explicit uptr(T* p) noexcept : ptr(p) {}
-	
+
 	~uptr()
 	{
 		if (ptr)
@@ -436,7 +435,7 @@ public:
 	constexpr T* operator->() const noexcept { return ptr; }
 	constexpr T& operator*() const noexcept { return *ptr; }
 	constexpr explicit operator bool() const noexcept { return ptr != nullptr; }
-	
+
 	constexpr T* get() const noexcept { return ptr; }
 
 	T* release() noexcept
@@ -542,9 +541,9 @@ class uarray
 
 public:
 	constexpr uarray() noexcept : ptr(nullptr), count(0) {}
-	
+
 	explicit uarray(T* p, size_t n) noexcept : ptr(p), count(n) {}
-	
+
 	~uarray()
 	{
 		if (ptr)
@@ -583,7 +582,7 @@ public:
 	constexpr T& operator[](size_t index) noexcept { return ptr[index]; }
 	constexpr const T& operator[](size_t index) const noexcept { return ptr[index]; }
 	constexpr explicit operator bool() const noexcept { return ptr != nullptr; }
-	
+
 	constexpr T* get() const noexcept { return ptr; }
 	constexpr size_t size() const noexcept { return count; }
 	constexpr T* data() const noexcept { return ptr; }
@@ -628,7 +627,7 @@ protected:
 
 public:
 	constexpr container() noexcept : ptr(nullptr), size_m(0) {}
-	
+
 	explicit container(size_t n) : ptr(nullptr), size_m(n)
 	{
 		if (n > 0)
@@ -646,7 +645,7 @@ public:
 			detail::value_construct_range(ptr, n, value);
 		}
 	}
-	
+
 	~container()
 	{
 		if (ptr)
@@ -675,7 +674,7 @@ public:
 				PrismFree(ptr);
 				ptr = nullptr;
 			}
-			
+
 			size_m = other.size_m;
 			if (size_m > 0)
 			{
@@ -712,7 +711,7 @@ public:
 	constexpr T& operator[](size_t index) noexcept { return ptr[index]; }
 	constexpr const T& operator[](size_t index) const noexcept { return ptr[index]; }
 	constexpr explicit operator bool() const noexcept { return ptr != nullptr; }
-	
+
 	constexpr T* get() const noexcept { return ptr; }
 	constexpr size_t size() const noexcept { return size_m; }
 	constexpr T* data() const noexcept { return ptr; }
@@ -737,18 +736,18 @@ public:
 		if (newSize > 0)
 		{
 			newPtr = PrismAllocT<T>(newSize);
-			
+
 			size_t copyCount = newSize < size_m ? newSize : size_m;
 			detail::move_construct_range(newPtr, ptr, copyCount);
 			detail::default_construct_range(newPtr + copyCount, newSize - copyCount);
 		}
-		
+
 		if (ptr)
 		{
 			detail::destroy_range(ptr, size_m);
 			PrismFree(ptr);
 		}
-		
+
 		ptr = newPtr;
 		size_m = newSize;
 	}
@@ -762,22 +761,22 @@ public:
 		if (newSize > 0)
 		{
 			newPtr = PrismAllocT<T>(newSize);
-			
+
 			size_t copyCount = newSize < size_m ? newSize : size_m;
 			detail::move_construct_range(newPtr, ptr, copyCount);
-			
+
 			if (newSize > size_m)
 			{
 				detail::value_construct_range(newPtr + copyCount, newSize - copyCount, value);
 			}
 		}
-		
+
 		if (ptr)
 		{
 			detail::destroy_range(ptr, size_m);
 			PrismFree(ptr);
 		}
-		
+
 		ptr = newPtr;
 		size_m = newSize;
 	}
@@ -785,16 +784,16 @@ public:
 	void push_back(const T& value)
 	{
 		T* newPtr = PrismAllocT<T>(size_m + 1);
-		
+
 		detail::move_construct_range(newPtr, ptr, size_m);
 		new (newPtr + size_m) T(value);
-		
+
 		if (ptr)
 		{
 			detail::destroy_range(ptr, size_m);
 			PrismFree(ptr);
 		}
-		
+
 		ptr = newPtr;
 		++size_m;
 	}
@@ -802,16 +801,16 @@ public:
 	void push_back(T&& value)
 	{
 		T* newPtr = PrismAllocT<T>(size_m + 1);
-		
+
 		detail::move_construct_range(newPtr, ptr, size_m);
 		new (newPtr + size_m) T(std::move(value));
-		
+
 		if (ptr)
 		{
 			detail::destroy_range(ptr, size_m);
 			PrismFree(ptr);
 		}
-		
+
 		ptr = newPtr;
 		++size_m;
 	}
@@ -820,16 +819,16 @@ public:
 	void emplace_back(Args&&... args)
 	{
 		T* newPtr = PrismAllocT<T>(size_m + 1);
-		
+
 		detail::move_construct_range(newPtr, ptr, size_m);
 		new (newPtr + size_m) T(std::forward<Args>(args)...);
-		
+
 		if (ptr)
 		{
 			detail::destroy_range(ptr, size_m);
 			PrismFree(ptr);
 		}
-		
+
 		ptr = newPtr;
 		++size_m;
 	}
@@ -886,7 +885,7 @@ class String : public container<char>
 {
 public:
 	constexpr String() = default;
-	
+
 	String(const char* str)
 	{
 		if (str)
@@ -918,7 +917,7 @@ public:
 				PrismFree(ptr);
 				ptr = nullptr;
 			}
-			
+
 			if (other.ptr && other.size_m > 0)
 			{
 				size_m = other.size_m;
@@ -948,6 +947,24 @@ public:
 	{
 		return ptr ? ptr : "";
 	}
+};
+
+template<typename T, size_t N>
+class Array
+{
+	T elements[N];
+
+public:
+	constexpr Array() = default;
+	constexpr size_t size() const noexcept { return N; }
+	constexpr T& operator[](size_t index) noexcept { return elements[index]; }
+	constexpr const T& operator[](size_t index) const noexcept { return elements[index]; }
+	constexpr T* data() noexcept { return elements; }
+	constexpr const T* data() const noexcept { return elements; }
+	T* begin() noexcept { return elements; }
+	const T* begin() const noexcept { return elements; }
+	T* end() noexcept { return elements + N; }
+	const T* end() const noexcept { return elements + N; }
 };
 
 class DeviceChild : public PrismObject

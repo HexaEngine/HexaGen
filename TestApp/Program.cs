@@ -8,7 +8,8 @@
         {
             var config = CsCodeGeneratorConfig.Load("config.json");
             CsCodeGenerator generator = new(config);
-            generator.Generate("test2.h", "Output");
+            generator.LogToConsole();
+            generator.Generate("test.h", "Output");
         }
     }
 }

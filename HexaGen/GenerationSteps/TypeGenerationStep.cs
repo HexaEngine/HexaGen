@@ -127,6 +127,11 @@
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
                     GenContext context = new(result, filePath, writer);
 
+                    if (cppClass.Name == "ma_backend_callbacks")
+                    {
+                        Console.WriteLine();
+                    }
+
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
                     if (config.WrapPointersAsHandle)
@@ -169,7 +174,7 @@
             public CppClass CppType;
             public LayoutKind LayoutKind = LayoutKind.Sequential;
             public List<CsStruct> SubTypes = [];
-            public List<CsField> Fields = [];
+            public List<CsFieldMetadata> Fields = [];
             public List<CsPropertyMetadata> Properties = [];
             public List<string> Attributes = [];
             public string? Comment;
@@ -183,15 +188,16 @@
             public bool IsAnonymous => CppType.IsAnonymous;
         }
 
-        public class CsField
+        public class CsFieldMetadata
         {
             public string Name;
             public CsType Type;
             public CppField CppField;
+            public long ArraySize = -1;
             public List<string> Attributes = [];
             public string? Comment;
 
-            public CsField(string name, CsType type, CppField cppField)
+            public CsFieldMetadata(string name, CsType type, CppField cppField)
             {
                 Name = name;
                 Type = type;
@@ -208,7 +214,7 @@
 
             public int BitFieldWidth => CppField.BitFieldWidth;
 
-            public int SizeOf => CppField.Type.SizeOf;
+            public long SizeOf => CppField.Type.SizeOf;
         }
 
         protected CsStruct ParseClass(CppClass cppClass, TypeMapping? mapping, string csName)
@@ -234,31 +240,153 @@
                 csStruct.LayoutKind = LayoutKind.Explicit;
             }
 
+            Dictionary<CppType, CsSubClass> subClasses = [];
             for (int i = 0; i < cppClass.Classes.Count; i++)
             {
                 var subClass = cppClass.Classes[i];
                 var csSubName = config.GetCsSubTypeName(cppClass, csName, subClass, i);
                 var subClassMapping = config.GetTypeMapping(subClass.FullName);
-                csStruct.SubTypes.Add(ParseClass(subClass, subClassMapping, csSubName));
+                var subType = ParseClass(subClass, subClassMapping, csSubName);
+                csStruct.SubTypes.Add(subType);
+                subClasses.Add(subClass, new(subClass, csSubName, cppClass.Name, $"Union{(cppClass.Classes.Count == 1 ? "" : i.ToString())}"));
             }
 
+            int bitfieldCount = 0;
             for (int i = 0; i < cppClass.Fields.Count; i++)
             {
                 CppField cppField = cppClass.Fields[i];
+
+                if (cppField.IsBitField)
+                {
+                    GenerateBitfields(csStruct, cppClass, csName, ref i, csStruct.Properties, ref bitfieldCount);
+                    continue;
+                }
+
+                csStruct.Fields.Add(ParseField(csStruct, cppClass, cppField, mapping, subClasses));
             }
 
             return csStruct;
         }
 
-        protected virtual CsField ParseField(CppField cppField)
+        protected virtual CsFieldMetadata ParseField(CsStruct csStruct, CppClass cppClass, CppField cppField, TypeMapping? mapping, Dictionary<CppType, CsSubClass> subClasses)
         {
-            CsField csField = new(config.GetFieldName(cppField.Name), new CsType(config.GetCsTypeName(cppField.Type), cppField.Type.IsEnum(), cppField.Type.GetPrimitiveKind()), cppField);
+            CsFieldMetadata csField = new(config.GetFieldName(cppField.Name), null!, cppField);
             config.WriteCsSummary(cppField.Comment, out csField.Comment);
-
+            string csFieldName = config.GetFieldName(cppField.Name);
             if (config.GenerateMetadata)
             {
                 csField.Attributes.Add($"[NativeName(NativeNameType.Field, \"{cppField.Name}\")]");
                 csField.Attributes.Add($"[NativeName(NativeNameType.Type, \"{cppField.Type.GetDisplayName()}\")]");
+            }
+            if (cppClass.ClassKind == CppClassKind.Union)
+            {
+                csField.Attributes.Add("[FieldOffset(0)]");
+            }
+
+            var fieldMapping = mapping?.GetFieldMapping(cppField.Name);
+            csField.Comment = config.WriteCsSummary(cppField.Comment);
+            if (fieldMapping?.Comment != null)
+            {
+                csField.Comment = config.WriteCsSummary(fieldMapping.Comment);
+            }
+
+            if (cppField.Type is CppClass cppClass1 && cppClass1.ClassKind == CppClassKind.Union && cppClass1.FullParentName == cppClass.FullName)
+            {
+                subClasses.TryGetValue(cppClass1, out var subClass);
+
+                if (subClass == null)
+                {
+                    string csFieldType = config.GetCsCleanName(cppClass1.Name);
+                    csField.Name = csFieldName;
+                    csField.Type = new(csFieldType, CsPrimitiveType.Unknown);
+                    subClasses.Add(cppField.Type, new(cppField.Type, csFieldType, cppField.Name, csFieldName));
+                    return csField;
+                }
+
+                csField.Type = new(subClass.Name, CsPrimitiveType.Unknown);
+                csField.Name = subClass.FieldName;
+            }
+            else if (cppField.Type is CppPointerType cppPointer && cppPointer.IsDelegate(out var cppFunctionType))
+            {
+                string returnCsName = config.GetCsTypeName(cppFunctionType.ReturnType);
+                string signature = config.GetNamelessParameterSignature(cppFunctionType.Parameters, false);
+                returnCsName = returnCsName.Replace("bool", config.GetBoolType());
+                csField.Name = csFieldName;
+                if (config.DelegatesAsVoidPointer)
+                {
+                    csField.Type = new("void*", CsPrimitiveType.Void);
+                }
+                else
+                {
+                    csField.Type = new($"delegate* unmanaged[{cppFunctionType.CallingConvention.GetCallingConventionDelegate()}]<{signature}, {returnCsName}>", CsPrimitiveType.Void);
+                }
+            }
+            else
+            {
+                if (cppField.Type is CppArrayType arrayType)
+                {
+                    string csFieldType = config.GetCsTypeName(arrayType.ElementType);
+
+                    if (arrayType.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType && config.DelegatesAsVoidPointer)
+                    {
+                        csFieldType = "nint";
+                    }
+
+                    csField.Name = csFieldName;
+                    csField.Type = new(csFieldType, CsPrimitiveType.Unknown);
+                    csField.ArraySize = arrayType.Size;
+                }
+                else
+                {
+                    string csFieldType = config.GetCsTypeName(cppField.Type);
+                    if (subClasses.TryGetValue(cppField.Type, out var subClass))
+                    {
+                        csFieldType = subClass.Name;
+                    }
+
+                    int depth = 0;
+                    var subClass1 = subClasses.FirstOrDefault(x => x.Value.CppType.IsPointerOf(cppField.Type, ref depth)).Value;
+                    if (subClass1 != null)
+                    {
+                        csFieldType = subClass1.Name + new string('*', depth);
+                    }
+
+                    if (csFieldType == "bool")
+                        csFieldType = config.GetBoolType();
+
+                    if (cppField.Type is CppTypedef typedef && typedef.ElementType is CppPointerType pointerType && pointerType.ElementType is CppFunctionType functionType)
+                    {
+                        StringBuilder builder = new();
+                        for (int i = 0; i < functionType.Parameters.Count; i++)
+                        {
+                            CppParameter parameter = functionType.Parameters[i];
+                            string paramCsType = config.GetCsTypeName(parameter.Type);
+                            // Otherwise we get interop issues with non blittable types
+
+                            builder.Append(paramCsType);
+
+                            builder.Append(", ");
+                        }
+
+                        string returnCsName = config.GetCsTypeName(functionType.ReturnType);
+                        returnCsName = returnCsName.Replace("bool", config.GetBoolType());
+                        builder.Append(returnCsName);
+
+                        csField.Name = csFieldName;
+                        if (config.DelegatesAsVoidPointer)
+                        {
+                            csField.Type = new("void*", CsPrimitiveType.Void);
+                        }
+                        else
+                        {
+                            csField.Type = new($"delegate* unmanaged[{functionType.CallingConvention.GetCallingConventionDelegate()}]<{builder}>", CsPrimitiveType.Unknown);
+                        }
+
+                        return csField;
+                    }
+                    csField.Name = csFieldName;
+                    csField.Type = new(csFieldType, CsPrimitiveType.Unknown);
+                }
             }
 
             return csField;
@@ -500,13 +628,55 @@
             writer.WriteLine();
         }
 
+        private void GenerateBitfields(CsStruct csStruct, CppClass cppClass, string csClassName, ref int fieldIndex, List<CsPropertyMetadata> properties, ref int bitfieldCount)
+        {
+            var fields = cppClass.Fields;
+            var baseOffset = fields[fieldIndex].BitOffset;
+            var baseType = fields[fieldIndex].Type;
+            var storageBitSize = baseType.SizeOf * 8;
+            var csBaseType = new CsType(config.GetCsTypeName(baseType), baseType.IsEnum(), baseType.GetPrimitiveKind());
+
+            var bitfieldId = bitfieldCount++;
+            var bitfieldCsName = $"RawBits{bitfieldId}";
+            CsFieldMetadata csField = new(bitfieldCsName, csBaseType, fields[fieldIndex]);
+            csStruct.Fields.Add(csField);
+
+            int bitfieldOffset = 0;
+            int i = fieldIndex;
+            for (; i < fields.Count; ++i)
+            {
+                var field = fields[i];
+                if (!field.IsBitField)
+                {
+                    break;
+                }
+
+                if (!field.Type.IsType(baseType))
+                {
+                    break;
+                }
+
+                var bitfieldOffsetNext = bitfieldOffset + field.BitFieldWidth;
+                if (bitfieldOffsetNext > storageBitSize)
+                {
+                    break;
+                }
+                var csFieldName = config.GetFieldName(field.Name);
+                CsPropertyMetadata property = new(baseType, csBaseType, csFieldName, $"get => Bitfield.Get({bitfieldCsName}, {field.BitOffset - baseOffset}, {field.BitFieldWidth});", $"set => Bitfield.Set(ref {bitfieldCsName}, value, {field.BitOffset - baseOffset}, {field.BitFieldWidth});");
+                properties.Add(property);
+                bitfieldOffset = bitfieldOffsetNext;
+            }
+
+            fieldIndex = i - 1;
+        }
+
         private void GenerateBitfields(GenContext context, CppClass cppClass, string csClassName, ref int fieldIndex, List<CsPropertyMetadata> properties, ref int bitfieldCount)
         {
             var writer = context.Writer;
             var fields = cppClass.Fields;
             var baseOffset = fields[fieldIndex].BitOffset;
             var baseType = fields[fieldIndex].Type;
-            int storageBitSize = baseType.SizeOf * 8;
+            var storageBitSize = baseType.SizeOf * 8;
             var csBaseType = new CsType(config.GetCsTypeName(baseType), baseType.IsEnum(), baseType.GetPrimitiveKind());
 
             var bitfieldId = bitfieldCount++;
@@ -723,11 +893,12 @@
                     unsafePrefix = "unsafe ";
                 }
 
+                var elementType = arrayType.ElementType;
                 for (int i = 0; i < arrayType.Size; i++)
                 {
                     if (isUnion && i != 0)
                     {
-                        writer.WriteLine($"[FieldOffset({arrayType.SizeOf * i})]");
+                        writer.WriteLine($"[FieldOffset({elementType.SizeOf * i})]");
                     }
                     writer.WriteLine($"public {unsafePrefix}{csFieldType} {csFieldName}_{i};");
                 }

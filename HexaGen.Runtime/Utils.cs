@@ -9,7 +9,7 @@
     {
         private static int stack;
         private static readonly Entry* entries;
-        const int poolSize = 1024;
+        private const int poolSize = 1024;
 
         static MemoryPool()
         {
@@ -123,9 +123,31 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int GetByteCountUTF8(in ReadOnlySpan<char> str)
+        {
+#if NET5_0_OR_GREATER
+            return Encoding.UTF8.GetByteCount(str);
+#else
+            fixed (char* pStr = str)
+                return Encoding.UTF8.GetByteCount(pStr, str.Length);
+#endif
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetByteCountUTF16(string str)
         {
             return Encoding.Unicode.GetByteCount(str);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int GetByteCountUTF16(in ReadOnlySpan<char> str)
+        {
+#if NET5_0_OR_GREATER
+            return Encoding.Unicode.GetByteCount(str);
+#else
+            fixed (char* pStr = str)
+                return Encoding.Unicode.GetByteCount(pStr, str.Length);
+#endif
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -138,7 +160,25 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int EncodeStringUTF8(in ReadOnlySpan<char> str, byte* data, int size)
+        {
+            fixed (char* pStr = str)
+            {
+                return Encoding.UTF8.GetBytes(pStr, str.Length, data, size);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int EncodeStringUTF16(string str, char* data, int size)
+        {
+            fixed (char* pStr = str)
+            {
+                return Encoding.Unicode.GetBytes(pStr, str.Length, (byte*)data, size);
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int EncodeStringUTF16(in ReadOnlySpan<char> str, char* data, int size)
         {
             fixed (char* pStr = str)
             {
@@ -213,7 +253,34 @@
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte* StringToUTF8Ptr(in ReadOnlySpan<char> str)
+        {
+            var size = GetByteCountUTF8(str);
+            var ptr = Alloc<byte>(size + 1);
+            fixed (char* pStr = str)
+            {
+                Encoding.UTF8.GetBytes(pStr, str.Length, ptr, size);
+            }
+            ptr[size] = 0;
+            return ptr;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static char* StringToUTF16Ptr(string str)
+        {
+            var size = GetByteCountUTF16(str);
+            var ptr = Alloc<byte>(size);
+            fixed (char* pStr = str)
+            {
+                Encoding.Unicode.GetBytes(pStr, str.Length, ptr, size);
+            }
+            var result = (char*)ptr;
+            result[str.Length] = '\0';
+            return result;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static char* StringToUTF16Ptr(in ReadOnlySpan<char> str)
         {
             var size = GetByteCountUTF16(str);
             var ptr = Alloc<byte>(size);

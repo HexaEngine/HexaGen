@@ -5,7 +5,7 @@
 
     public struct IncludeBuilder
     {
-        StringBuilder sb = new();
+        private StringBuilder sb = new();
 
         public IncludeBuilder()
         {
@@ -27,6 +27,16 @@
         public ref IncludeBuilder AddInclude(string include)
         {
             sb.AppendLine($"#include \"{include}\"");
+            return ref this;
+        }
+
+        [UnscopedRef]
+        public ref IncludeBuilder AddIncludes(IEnumerable<string> includes)
+        {
+            foreach (string s in includes)
+            {
+                AddInclude(s);
+            }
             return ref this;
         }
 
