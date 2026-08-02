@@ -41,9 +41,9 @@
         {
             HashCode code = new();
             code.Add(name);
-            foreach (var parameter in parameters)
+            for (int i = 0; i < parameters.Count; i++)
             {
-                code.Add(parameter.Type.GetConflictHashCode());
+                code.Add(parameters[i].Type.GetConflictHashCode());
             }
             return code.ToHashCode();
         }

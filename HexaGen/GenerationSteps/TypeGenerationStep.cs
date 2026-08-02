@@ -127,11 +127,6 @@
                     using var writer = new CsCodeWriter(filePath, config.Namespace, SetupTypeUsings(), config.HeaderInjector);
                     GenContext context = new(result, filePath, writer);
 
-                    if (cppClass.Name == "ma_backend_callbacks")
-                    {
-                        Console.WriteLine();
-                    }
-
                     WriteClass(context, cppClass, mapping, csNameDefault);
 
                     if (config.WrapPointersAsHandle)
