@@ -1,4 +1,5 @@
-﻿using HexaGen.Metadata;
+﻿using HexaGen.Core.CSharp;
+using HexaGen.Metadata;
 
 namespace HexaGen.Patching
 {

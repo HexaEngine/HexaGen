@@ -15,6 +15,7 @@
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Text;
+    using TypeMapping = Core.Mapping.TypeMapping;
 
     public class TypeGenerationStep : GenerationStep
     {

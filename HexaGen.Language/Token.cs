@@ -1,6 +1,6 @@
 ﻿namespace HexaGen.Language
 {
-    using HexaGen;
+    using HexaGen.Core.CSharp;
     using System;
 
     public struct Token : IEquatable<Token>

@@ -1,6 +1,7 @@
 ﻿namespace HexaGen
 {
     using HexaGen.Conversion;
+    using HexaGen.Core;
     using HexaGen.Core.Logging;
     using HexaGen.Metadata;
     using Newtonsoft.Json;

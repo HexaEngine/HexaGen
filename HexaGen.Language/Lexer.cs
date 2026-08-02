@@ -1,5 +1,6 @@
 ﻿namespace HexaGen.Language
 {
+    using HexaGen.Core.CSharp;
     using System;
     using System.Linq;
     using System.Runtime.CompilerServices;

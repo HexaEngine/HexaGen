@@ -1,6 +1,6 @@
-﻿namespace Generator.Caching
+﻿namespace HexaGen.Core.Caching
 {
-    using HexaGen.Utils;
+    using HexaGen.Core;
     using System;
     using System.Linq;
     using System.Runtime.CompilerServices;

@@ -1,6 +1,7 @@
 ﻿namespace HexaGen.Core.CSharp
 {
     using CppAst;
+    using HexaGen.Core;
     using HexaGen.CppAst.Model.Types;
     using Newtonsoft.Json;
     using System.Globalization;

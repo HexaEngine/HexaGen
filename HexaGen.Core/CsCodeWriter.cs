@@ -1,6 +1,5 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core
 {
-    using HexaGen.Core;
     using System.Text;
 
     public sealed class CsCodeWriter : ICodeWriter, IDisposable

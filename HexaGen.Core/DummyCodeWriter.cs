@@ -1,7 +1,5 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core
 {
-    using HexaGen.Core;
-
     public sealed class DummyCodeWriter : ICodeWriter, IDisposable
     {
         private int indentLevel;

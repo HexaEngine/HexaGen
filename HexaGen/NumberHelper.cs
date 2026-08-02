@@ -1,5 +1,6 @@
 ﻿namespace HexaGen
 {
+    using HexaGen.Core.CSharp;
     using HexaGen.Metadata;
 
     public static class NumberHelper

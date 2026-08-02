@@ -1,6 +1,5 @@
-﻿namespace HexaGen
+﻿namespace HexaGen.Core
 {
-    using HexaGen.Core;
     using System.Text;
 
     public delegate void HeaderInjectionDelegate(ICodeWriter writer, StringBuilder headerBuilder);

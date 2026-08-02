@@ -1,5 +1,7 @@
 ﻿namespace HexaGen.Language.Cpp.Analysers
 {
+    using HexaGen.Core.CSharp;
+
     public class ExpressionNode : SyntaxNode
     {
     }

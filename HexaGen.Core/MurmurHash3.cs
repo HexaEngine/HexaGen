@@ -1,4 +1,4 @@
-﻿namespace HexaGen.Utils
+﻿namespace HexaGen.Core
 {
     using System;
 
