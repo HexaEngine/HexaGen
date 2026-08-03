@@ -5,8 +5,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<AssemblyVersion>1.1.4</AssemblyVersion>
-		<PackageVersion>1.1.4</PackageVersion>
+		<AssemblyVersion>1.1.5</AssemblyVersion>
+		<PackageVersion>1.1.5</PackageVersion>
 		<Description>HexaGen.Language provides language parsing and analysis features for the HexaGen code generation toolkit.</Description>
 		<PackageTags>code-generation;csharp;c++;toolkit;language;parser</PackageTags>
 		<Authors>Juna Meinhold</Authors>
