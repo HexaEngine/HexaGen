@@ -3,6 +3,7 @@
     using Hexa.NET.Utilities;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Globalization;
 
     /// <summary>
     /// A CPU flame profiler for measuring and visualizing execution time of various stages.
@@ -374,6 +375,129 @@
         public int GetCurrentEntryIndex()
         {
             return (currentFrame + FrameCount - 1) % FrameCount;
+        }
+
+        private static (double factor, string unit) GetDisplayValues(double value, DisplayOptions displayOption)
+        {
+            double factor = 1;
+            string unit;
+
+            switch (displayOption)
+            {
+                case DisplayOptions.Milliseconds:
+                    factor = 1000;
+                    unit = "ms";
+                    break;
+
+                case DisplayOptions.Microseconds:
+                    factor = 1_000_000;
+                    unit = "µs";
+                    break;
+
+                case DisplayOptions.Nanoseconds:
+                    factor = 1_000_000_000;
+                    unit = "ns";
+                    break;
+
+                case DisplayOptions.Ticks:
+                    factor = Stopwatch.Frequency;
+                    unit = "ticks";
+                    break;
+
+                case DisplayOptions.Auto:
+                default:
+                    if (value >= 0.1)
+                    {
+                        unit = "s";
+                    }
+                    else if (value >= 0.00001)
+                    {
+                        factor = 1000;
+                        unit = "ms";
+                    }
+                    else if (value >= 0.000_00001)
+                    {
+                        factor = 1_000_000;
+                        unit = "µs";
+                    }
+                    else
+                    {
+                        factor = 1_000_000_000;
+                        unit = "ns";
+                    }
+                    break;
+            }
+
+            return (factor, unit);
+        }
+
+        /// <summary>
+        /// Prints the stages recorded for the current frame.
+        /// </summary>
+        public void Print()
+        {
+            if (!enabled)
+            {
+                return;
+            }
+
+            lock (blockNames)
+            {
+                ProfilerEntry* entry = entries.GetPointer(currentFrame);
+                Span<char> durationBuffer = stackalloc char[32];
+
+                Console.WriteLine("CPU Profile:");
+                for (int i = 0; i < entry->Stages.Size; i++)
+                {
+                    ProfilerScope* stage = entry->Stages.GetPointer(i);
+                    if (!stage->Finalized)
+                    {
+                        continue;
+                    }
+
+                    for (int j = 0; j < stage->Level; j++)
+                    {
+                        Console.Write("  ");
+                    }
+
+                    Console.Write(blockNames[i]);
+                    Console.Write(": ");
+                    PrintDuration(stage->Duration, durationBuffer);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Prints aggregate statistics for repeated profiling samples.
+        /// </summary>
+        public void PrintStatistics(string name, long count, double minimum, double maximum, double average)
+        {
+            if (!enabled || count == 0)
+            {
+                return;
+            }
+
+            Span<char> durationBuffer = stackalloc char[32];
+            Console.Write(name);
+            Console.WriteLine(" Statistics:");
+            Console.Write("  Count: ");
+            Console.WriteLine(count);
+            Console.Write("  Min: ");
+            PrintDuration(minimum, durationBuffer);
+            Console.Write("  Max: ");
+            PrintDuration(maximum, durationBuffer);
+            Console.Write("  Avg: ");
+            PrintDuration(average, durationBuffer);
+        }
+
+        private static void PrintDuration(double duration, Span<char> durationBuffer)
+        {
+            (double factor, string unit) = MiniProfiler.GetDisplayValues(duration, DisplayOptions.Auto);
+            if ((duration * factor).TryFormat(durationBuffer, out int written, "F3", CultureInfo.InvariantCulture))
+            {
+                Console.Out.Write(durationBuffer[..written]);
+            }
+            Console.WriteLine(unit);
         }
 
         private void ProfilerValueGetter(float* startTimestamp, float* endTimestamp, byte* level, byte** caption, void* data, int idx)

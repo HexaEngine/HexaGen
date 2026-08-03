@@ -58,6 +58,12 @@
         public LogSeverity CppLogLevel { get; set; } = LogSeverity.Error;
 
         /// <summary>
+        /// Enables CPU profiling for generator runs. (Default: <see langword="false"/>)
+        /// </summary>
+        [DefaultValue(false)]
+        public bool EnableProfiling { get; set; } = false;
+
+        /// <summary>
         /// This allows to use the (EXPERIMENTAL) options, otherwise they will be set back to false. (Default: <see langword="false"/>)
         /// </summary>
         [DefaultValue(false)]

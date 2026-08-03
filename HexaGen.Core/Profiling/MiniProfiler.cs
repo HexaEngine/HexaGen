@@ -92,7 +92,7 @@
             avgSamples.Clear();
         }
 
-        private static (double factor, string unit) GetDisplayValues(double value, DisplayOptions displayOption)
+        internal static (double factor, string unit) GetDisplayValues(double value, DisplayOptions displayOption)
         {
             double factor = 1;
             string unit;

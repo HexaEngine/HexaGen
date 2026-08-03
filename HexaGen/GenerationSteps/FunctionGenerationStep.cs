@@ -9,6 +9,7 @@
     using HexaGen.FunctionGeneration.ParameterWriters;
     using HexaGen.Metadata;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Text;
 
@@ -23,6 +24,35 @@
 
         private FunctionGenerator funcGen = null!;
         private FunctionTableBuilder FunctionTableBuilder = null!;
+        private TimingStatistics prepareFunctionStatistics;
+        private TimingStatistics createFunctionStatistics;
+        private TimingStatistics writeNativeFunctionStatistics;
+        private TimingStatistics generateVariationsStatistics;
+        private TimingStatistics writeVariationsStatistics;
+
+        private struct TimingStatistics
+        {
+            public long Count;
+            public long TotalTicks;
+            public long MinTicks;
+            public long MaxTicks;
+
+            public void Reset()
+            {
+                Count = 0;
+                TotalTicks = 0;
+                MinTicks = long.MaxValue;
+                MaxTicks = 0;
+            }
+
+            public void Add(long ticks)
+            {
+                Count++;
+                TotalTicks += ticks;
+                if (ticks < MinTicks) MinTicks = ticks;
+                if (ticks > MaxTicks) MaxTicks = ticks;
+            }
+        }
 
         public FunctionGenerationStep(CsCodeGenerator generator, CsCodeGeneratorConfig config) : base(generator, config)
         {
@@ -140,6 +170,12 @@
             string filePath = Path.Combine(folder, "Functions.cs");
 
             DefinedVariationsFunctions.Clear();
+            prepareFunctionStatistics.Reset();
+            createFunctionStatistics.Reset();
+            writeNativeFunctionStatistics.Reset();
+            generateVariationsStatistics.Reset();
+            writeVariationsStatistics.Reset();
+            bool collectStatistics = generator.Profiler.Enabled;
 
             // Generate Functions
             using var writer = new CsSplitCodeWriter(filePath, config.Namespace, SetupFunctionUsings(), config.HeaderInjector);
@@ -164,6 +200,7 @@
                         continue;
                     }
 
+                    long prepareFunctionStart = collectStatistics ? Stopwatch.GetTimestamp() : 0;
                     string? csName = config.GetCsFunctionName(cppFunction.Name);
                     string returnCsName = config.GetCsReturnType(cppFunction.ReturnType);
                     CppPrimitiveKind returnKind = cppFunction.ReturnType.GetPrimitiveKind();
@@ -177,9 +214,19 @@
                     {
                         continue;
                     }
+                    if (collectStatistics)
+                    {
+                        prepareFunctionStatistics.Add(Stopwatch.GetTimestamp() - prepareFunctionStart);
+                    }
 
+                    long createFunctionStart = collectStatistics ? Stopwatch.GetTimestamp() : 0;
                     var function = generator.CreateCsFunction(cppFunction, CsFunctionKind.Default, csName, DefinedFunctions, out var overload);
+                    if (collectStatistics)
+                    {
+                        createFunctionStatistics.Add(Stopwatch.GetTimestamp() - createFunctionStart);
+                    }
 
+                    long writeNativeFunctionStart = collectStatistics ? Stopwatch.GetTimestamp() : 0;
                     writer.WriteLines(function.Comment);
                     if (config.GenerateMetadata)
                     {
@@ -303,11 +350,26 @@
                         }
                     }
                     writer.WriteLine();
+                    if (collectStatistics)
+                    {
+                        writeNativeFunctionStatistics.Add(Stopwatch.GetTimestamp() - writeNativeFunctionStart);
+                    }
 
+                    long generateVariationsStart = collectStatistics ? Stopwatch.GetTimestamp() : 0;
                     overload.Modifiers.Add("public");
                     overload.Modifiers.Add("static");
                     GenerateVariations(cppFunction, overload);
+                    if (collectStatistics)
+                    {
+                        generateVariationsStatistics.Add(Stopwatch.GetTimestamp() - generateVariationsStart);
+                    }
+
+                    long writeVariationsStart = collectStatistics ? Stopwatch.GetTimestamp() : 0;
                     WriteFunctions(context, DefinedVariationsFunctions, function, overload, WriteFunctionFlags.None, "public static");
+                    if (collectStatistics)
+                    {
+                        writeVariationsStatistics.Add(Stopwatch.GetTimestamp() - writeVariationsStart);
+                    }
                 }
             }
 
@@ -348,6 +410,31 @@
                     }
                 }
             }
+        }
+
+        public void PrintProfilerStatistics()
+        {
+            PrintProfilerStatistics("Function Preparation", prepareFunctionStatistics);
+            PrintProfilerStatistics("Function Model Creation", createFunctionStatistics);
+            PrintProfilerStatistics("Native Wrapper Writing", writeNativeFunctionStatistics);
+            PrintProfilerStatistics("Variation Generation", generateVariationsStatistics);
+            PrintProfilerStatistics("Variation Writing", writeVariationsStatistics);
+        }
+
+        private void PrintProfilerStatistics(string name, in TimingStatistics statistics)
+        {
+            if (statistics.Count == 0)
+            {
+                return;
+            }
+
+            double frequency = Stopwatch.Frequency;
+            generator.Profiler.PrintStatistics(
+                name,
+                statistics.Count,
+                statistics.MinTicks / frequency,
+                statistics.MaxTicks / frequency,
+                statistics.TotalTicks / frequency / statistics.Count);
         }
 
         protected virtual void GenerateVariations(CppFunction cppFunction, CsFunctionOverload overload)

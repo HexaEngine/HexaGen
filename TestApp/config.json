@@ -6,6 +6,7 @@
   "GeneratePlaceholderComments": false,
   "GenerateMetadata": false,
   "WrapPointersAsHandle": true,
+  "EnableProfiling": true,
   "ImportType": "FunctionTable",
   "TypeMappings": {
   },

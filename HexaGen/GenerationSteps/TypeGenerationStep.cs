@@ -8,7 +8,6 @@
     using HexaGen.CppAst.Model.Types;
     using HexaGen.FunctionGeneration;
     using HexaGen.Metadata;
-    using Irony.Parsing.Construction;
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;

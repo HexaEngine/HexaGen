@@ -3,6 +3,7 @@
     using HexaGen.Core;
     using HexaGen.Core.CSharp;
     using HexaGen.Core.Logging;
+    using HexaGen.Core.Profiling;
     using HexaGen.CppAst.Diagnostics;
     using HexaGen.CppAst.Model.Declarations;
     using HexaGen.CppAst.Model.Interfaces;
@@ -39,6 +40,8 @@
         public FunctionGenerator FunctionGenerator { get => funcGen; protected set => funcGen = value; }
 
         public PatchEngine PatchEngine => patchEngine;
+
+        public CPUProfiler Profiler { get; } = new();
 
         public IReadOnlyList<GenerationStep> GenerationSteps => generationSteps;
 
@@ -99,13 +102,33 @@
 
         public bool Generate(CppParserOptions parserOptions, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            Profiler.Enabled = config.EnableProfiling;
+            Profiler.BeginFrame();
+            Profiler.Begin("Configure Generator");
             ConfigureCore();
+            Profiler.End("Configure Generator");
+
             LogInfo($"Generating: {config.ApiName}");
 
             LogInfo("Parsing Headers...");
-            var compilation = ParseFiles(parserOptions, headerFiles);
+            Profiler.Begin("Parse Headers");
+            CppCompilation compilation = ParseFiles(parserOptions, headerFiles);
+            Profiler.End("Parse Headers");
 
-            return GenerateCore(compilation, headerFiles, outputPath, allowedHeaders);
+            Profiler.Begin("Generate Core");
+            bool result = GenerateCore(compilation, headerFiles, outputPath, allowedHeaders);
+            Profiler.End("Generate Core");
+            Profiler.EndFrame();
+            Profiler.Print();
+            for (int i = 0; i < generationSteps.Count; i++)
+            {
+                if (generationSteps[i] is FunctionGenerationStep functionGenerationStep && functionGenerationStep.Enabled)
+                {
+                    functionGenerationStep.PrintProfilerStatistics();
+                    break;
+                }
+            }
+            return result;
         }
 
         protected virtual void ConfigureCore()
@@ -184,16 +207,17 @@
 
         public virtual bool GenerateCore(CppCompilation compilation, List<string> headerFiles, string outputPath, List<string>? allowedHeaders = null)
         {
+            Profiler.Begin("Prepare Output");
             if (CLIOptions != null && CLIOptions.OutputDirectory != null)
             {
                 outputPath = Path.Combine(CLIOptions.OutputDirectory, outputPath);
             }
-            else
-            {
-            }
 
             if (Directory.Exists(outputPath)) Directory.Delete(outputPath, true);
             Directory.CreateDirectory(outputPath);
+            Profiler.End("Prepare Output");
+
+            Profiler.Begin("Diagnostics");
             // Print diagnostic messages
             for (int i = 0; i < compilation.Diagnostics.Messages.Count; i++)
             {
@@ -211,6 +235,7 @@
                     LogInfo(message.ToString());
                 }
             }
+            Profiler.End("Diagnostics");
 
             if (compilation.HasErrors)
             {
@@ -222,6 +247,7 @@
 
             FileSet files = new(allowedHeaders.Select(PathHelper.GetPath));
 
+            Profiler.Begin("Import Metadata");
             foreach (var meta in copyFromPending)
             {
                 foreach (var step in generationSteps)
@@ -229,42 +255,58 @@
                     step.CopyFromMetadata(meta);
                 }
             }
+            Profiler.End("Import Metadata");
 
             LogInfo($"Configuring Pre-Processing Steps...");
+            Profiler.Begin("Configure Pre-Processing");
             foreach (var step in PreProcessSteps)
             {
                 step.Configure(config);
             }
+            Profiler.End("Configure Pre-Processing");
 
             LogInfo("Running Pre-Processing Steps...");
 
             ParseResult result = new(compilation);
+            Profiler.Begin("Initialize Type Converter");
             config.TypeConverter.Initialize(result);
+            Profiler.End("Initialize Type Converter");
+
+            Profiler.Begin("Pre-Processing");
             foreach (var step in PreProcessSteps)
             {
                 step.PreProcess(files, compilation, config, metadata, result);
             }
+            Profiler.End("Pre-Processing");
 
+            Profiler.Begin("Pre-Patches");
             OnPrePatchCore(result, headerFiles);
+            Profiler.End("Pre-Patches");
 
             LogInfo($"Configuring Steps...");
+            Profiler.Begin("Configure Generation Steps");
             foreach (var step in GenerationSteps)
             {
                 step.Configure(config);
             }
+            Profiler.End("Configure Generation Steps");
 
             foreach (var step in GenerationSteps)
             {
                 if (step.Enabled)
                 {
                     LogInfo($"Generating {step.Name}...");
+                    Profiler.Begin(step.Name);
                     step.Generate(files, result, outputPath, config, metadata);
                     step.CopyToMetadata(metadata);
+                    Profiler.End(step.Name);
                 }
             }
 
             LogInfo("Applying Post-Patches...");
+            Profiler.Begin("Post-Patches");
             patchEngine.ApplyPostPatches(metadata, outputPath, Directory.GetFiles(outputPath, "*.*", SearchOption.AllDirectories).ToList());
+            Profiler.End("Post-Patches");
 
             return true;
         }
